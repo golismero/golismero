@@ -1,0 +1,33 @@
+# Dirs
+contrib/
+golismero_0.6.3/
+golismero_2/TODO.txt
+
+# Python and IDE extensions
+*.py[cod]
+*.wpu
+*.wpr
+*.wpr2
+
+# Source control folders
+.svn
+.hg
+
+# Database file extensions
+*.db
+*.dbm
+*.sql
+*.sqlite
+
+# Backup file extensions
+*.bak
+*.back
+*.backup
+
+# Mac files
+.DS_Store
+
+# Build directories
+*/build/
+*/dist/
+*/*/build/
