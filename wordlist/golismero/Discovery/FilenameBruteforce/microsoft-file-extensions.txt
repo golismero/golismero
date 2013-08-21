@@ -1,0 +1,6 @@
+asmx
+asp
+aspx
+vb
+wsh
+accdb

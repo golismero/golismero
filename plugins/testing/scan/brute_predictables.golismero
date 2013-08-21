@@ -1,0 +1,83 @@
+[Core]
+Name = Bruteforce predictables discovery
+Module = url_bruteforcer.py
+Class = PredictablesDisclosureBruteforcer
+
+[Documentation]
+Description = Tries to discover hidden files at predictable locations.
+ For example: (Apache) www.site.com/error_log
+Author = GoLismero project team
+Version = 0.1
+Website = https://github.com/golismero
+Copyright = Copyright (C) 2011-2013 GoLismero Project
+License = GNU Public License
+
+
+[common]
+w1 = fuzzdb/Discovery/PredictableRes/CGI_XPlatform.fuzz.txt
+
+#
+# Predictables by Web server
+#
+
+[unix_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/UnixDotfiles.fuzz.txt
+w2 = fuzzdb/Discovery/PredictableRes/proxy-conf.fuzz.txt
+
+[apache_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/Apache.fuzz.txt
+
+[tomcat_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/ApacheTomcat.fuzz.txt
+
+[iis_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/IIS.fuzz.txt
+w2 = fuzzdb/Discovery/PredictableRes/CGI_Microsoft.fuzz.txt
+
+[vignete_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/Vignette.fuzz.txt
+
+[weblogic_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/Weblogic.fuzz.txt
+
+[glassfish_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/SunAppServerGlassfish.fuzz.txt
+
+[oracle_sun_one_predictables]
+w1= fuzzdb/Discovery/PredictableRes/Oracle9i.fuzz.txt
+
+[oracle_app_server_predictables]
+w1= fuzzdb/Discovery/PredictableRes/OracleAppServer.fuzz.txt
+
+[jboss_predictables]
+w1= fuzzdb/Discovery/PredictableRes/JBoss.fuzz.txt
+
+[hyperion_predictables]
+w1= fuzzdb/Discovery/PredictableRes/Hyperion.fuzz.txt
+
+[sunplanet_predictables]
+w1= fuzzdb/Discovery/PredictableRes/SuniPlanet.fuzz.txt
+
+[websphere_predictables]
+w1= fuzzdb/Discovery/PredictableRes/Websphere.fuzz.txt
+
+
+#
+# Predictables by language
+#
+
+[Java_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/JavaServlets_Common.fuzz.txt
+w2 = fuzzdb/Discovery/PredictableRes/JRun.fuzz.txt
+
+[PHP_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/PHP.fuzz.txt
+w2 = fuzzdb/Discovery/PredictableRes/PHP_CommonBackdoors.fuzz.txt
+
+[Aspx_predictables]
+w2 = fuzzdb/Discovery/PredictableRes/Sharepoint.fuzz.txt
+w3 = fuzzdb/Discovery/PredictableRes/Frontpage.fuzz.txt
+w4 = golismero/Discovery/PredictableRes/microsoft.txt
+
+[CFM_predictables]
+w1 = fuzzdb/Discovery/PredictableRes/ColdFusion.fuzz.txt

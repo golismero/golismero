@@ -1,0 +1,21 @@
+[Core]
+Name = Bruteforce suffixes discovery
+Module = url_bruteforcer.py
+Class = SuffixesDisclosureBruteforcer
+
+[Documentation]
+Description = Tries to discover hidden files by bruteforcing suffixes:
+ www.site.com/index.php -> www.site.com/index2.php
+Author = GoLismero project team
+Version = 0.1
+Website = https://github.com/golismero
+Copyright = Copyright (C) 2011-2013 GoLismero Project
+License = GNU Public License
+
+
+#
+# Suffixes
+#
+
+[common_suffixes]
+w1 = golismero/Discovery/FilenameBruteforce/file-suffixes.txt

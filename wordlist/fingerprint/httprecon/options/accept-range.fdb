@@ -1,0 +1,37 @@
+and-httpd 0.99.11;bytes
+Apache 1.3.37;bytes
+Ashleys Webserver;bytes
+Barracuda Networks Spam Firewall;bytes
+Boa 0.94.14rc21;bytes
+Caudium 1.4.9;bytes
+IBM HTTP Server 6.1.0.19;bytes
+Lotus Domino Go Webserver 4.6.2.5;bytes
+Microsoft IIS 5.0;none
+Microsoft IIS 5.1;none
+Microsoft IIS 6.0;none
+NetBotz 320 thttpd 2.25b;bytes
+NetBotz 420 thttpd 2.25b;bytes
+NetBotz 500 thttpd 2.25b;bytes
+QNAP GNS-8000A 4.1.4.0118;bytes
+QNAP NAS-2108R 2.27.1024;bytes
+QNAP NAS-4010 4.2.0.0606;bytes
+QNAP NAS-4100 2.26.0517;bytes
+QNAP TS-101 2.0.1.0302;bytes
+QNAP TS-101 2.1.0.612T;bytes
+QNAP TS-101 Turbo Station 1.2.0.0629;bytes
+QNAP TS-109 1.1.2.1009T;bytes
+QNAP TS-109 1.1.3.1101T;bytes
+QNAP TS-209 1.1.1.0831T;bytes
+QNAP TS-209 1.1.3.1101T;bytes
+QNAP TS-40IT Turbo Server 1.1.0.0425;bytes
+QNAP TS-411U 1.2.0.0531;bytes
+Roxen 2.2.213;bytes
+Roxen 4.5.111;bytes
+Roxen 4.5.145;bytes
+thttpd 2.19-MX;bytes
+thttpd 2.20b;bytes
+thttpd 2.24;bytes
+thttpd 2.26;bytes
+Virtuoso 5.0.3;bytes
+WallBotz 500 thttpd 2.25b;bytes
+Zeus 4.41;bytes

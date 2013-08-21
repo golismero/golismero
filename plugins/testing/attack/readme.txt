@@ -1,0 +1,1 @@
+These plugins implement the vulnerability exploitation (intrusive) phase of GoLismero.

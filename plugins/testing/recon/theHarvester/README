@@ -1,0 +1,95 @@
+*********************************
+*theHarvester 2.2a              *
+*Coded by Christian Martorella  *
+*cmartorella@edge-security.com  *
+*********************************
+
+What is this?
+-------------
+
+theHarvester is a tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers). 
+
+Is a really simple tool, but very effective for the early stages of a penetration test or just to know the visibility of your company in the Internet.
+
+The actual sources are:
+
+Passive:
+--------
+-google: google search engine  - www.google.com
+
+-google-profiles: google search engine, specific search for Google profiles
+
+-bing: microsoft search engine  - www.bing.com
+
+-bingapi: microsoft search engine, through the API (you need to add your Key in the discovery/bingsearch.py file)
+
+-pgp: pgp key server - pgp.rediris.es 
+
+-linkedin: google search engine, specific search for Linkedin users
+
+-shodan: Shodan Computer search engine, will search for ports and banner of the discovered hosts  (http://www.shodanhq.com/)
+
+-vhost: Bing virtual hosts search
+
+Active:
+-------
+-DNS brute force: this plugin will run a dictionary brute force enumeration
+-DNS reverse lookup: reverse lookup of ip´s discovered in order to find hostnames
+-DNS TDL expansion: TLD dictionary brute force enumeration
+
+
+Dependencies:
+------------
+none
+
+Changelog 2.2a:
+---------------
+-Fixed Linkedin parser (thanks Alton Johnson and Francesco Stillavato)
+-New banner with superpowers
+
+Changelogin 2.2:
+----------------
+-Added Jigsaw (www.jigsaw.com)
+-Added 123People (www.123people.com)
+-Added limit to google searches as the maximum results we can obtain is 1000
+-Removed SET, as service was discontinued by Google
+-Fixed parser to remove wrong results like emails starting with @
+
+
+Changelog in 2.1:
+----------------
+-DNS Bruteforcer
+-DNS Reverse lookups
+-DNS TDL Expansion
+-SHODAN DB integration
+-HTML report
+-DNS server selection 
+
+
+Changelog in 2.0:
+----------------
+-Complete rewrite, more modular and easy to maintain
+-New sources (Exalead, Google-Profiles, Bing-Api)
+-Time delay between request, to prevent search engines from blocking our IP´s
+-You can start the search from the results page that you want, hence you can *resume* a search 
+-Export to xml
+-All search engines harvesting
+
+
+TODO:
+----
+See TODO file.
+
+Comments? Bugs? requests?
+------------------------
+cmartorella@edge-security.com
+
+Updates:
+--------
+http://code.google.com/p/theharvester/
+
+Thanks:
+-------
+John Matherly -  SHODAN project
+Lee Baird for suggestions and bugs reporting
+

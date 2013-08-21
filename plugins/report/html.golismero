@@ -1,0 +1,10 @@
+[Core]
+Name = HTML Report
+
+[Documentation]
+Description = Plugin to generate HTML reports.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License

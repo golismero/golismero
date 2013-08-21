@@ -1,0 +1,3 @@
+"""
+GoLismero plugins API.
+"""

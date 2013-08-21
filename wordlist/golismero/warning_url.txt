@@ -1,0 +1,13 @@
+login
+password
+auth
+manage
+session
+admin
+.~
+backup
+.jar
+/bin
+.exe
+/log
+cmd=

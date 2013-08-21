@@ -1,0 +1,4600 @@
+0W 0.8c;505
+4D WebSTAR 2.0;200
+4D WebSTAR 2.1.1;200
+4D WebSTAR 3.0.2;200
+4D WebSTAR 4.2;200
+4D WebSTAR 4.5;200
+4D WebSTAR 5.3.1;200
+4D WebSTAR 5.3.3;200
+4D WebSTAR 5.4.0;200
+Abyss 2.0.0.20 X2;0
+Abyss 2.4.0.3 X2;0
+Abyss 2.5.0.0 X1;0
+Abyss 2.5.0.0 X2;0
+Abyss 2.6.0.0 X2;0
+AIDeX Mini-Webserver 1.1;200
+AllegroServe 1.2.50;400
+and-httpd 0.99.11;505
+Anti-Web HTTPD 3.0.7;200
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 2.3.3;200
+AOLserver 3.3.1;200
+AOLserver 3.4.2;200
+AOLserver 3.4.2;404
+AOLserver 3.5.0;200
+AOLserver 4.0.10;200
+AOLserver 4.0.10;501
+AOLserver 4.0.10a;200
+AOLserver 4.0.11a;200
+AOLserver 4.5.0;200
+AOLserver 4.5.0;501
+Apache 1.2.6;200
+Apache 1.3.12;200
+Apache 1.3.17;200
+Apache 1.3.26;200
+Apache 1.3.27;200
+Apache 1.3.28;200
+Apache 1.3.29;200
+Apache 1.3.31;200
+Apache 1.3.33;200
+Apache 1.3.33;404
+Apache 1.3.34;200
+Apache 1.3.35;200
+Apache 1.3.37;200
+Apache 1.3.37;403
+Apache 1.3.37;404
+Apache 1.3.37;503
+Apache 1.3.39;200
+Apache 1.3.41;200
+Apache 2.0.45;200
+Apache 2.0.46;200
+Apache 2.0.46;400
+Apache 2.0.48;200
+Apache 2.0.49;200
+Apache 2.0.50;200
+Apache 2.0.51;200
+Apache 2.0.52;200
+Apache 2.0.53;200
+Apache 2.0.54;200
+Apache 2.0.54;501
+Apache 2.0.54;503
+Apache 2.0.55;200
+Apache 2.0.55;403
+Apache 2.0.58;200
+Apache 2.0.58;404
+Apache 2.0.59;200
+Apache 2.0.63;0
+Apache 2.2.0;200
+Apache 2.2.11;200
+Apache 2.2.2;200
+Apache 2.2.3;0
+Apache 2.2.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Apache 2.2.3;501
+Apache 2.2.4;200
+Apache 2.2.6;200
+Apache 2.2.8;200
+Apache 2.2.9;200
+Apache 2.3.0;200
+Araneida 0.84;501
+Ashleys Webserver;200
+AXIS 2400 Video Server;200
+BadBlue 2.4;200
+BadBlue 2.5;200
+BadBlue 2.6;200
+BadBlue 2.7;200
+BarracudaDrive 3.9.1;200
+Barracuda Networks Spam Firewall;200
+BaseHTTPServer 0.3;0
+Belkin Router 2.00.002;200
+Boa 0.92o;200
+Boa 0.93.15;200
+Boa 0.94.14rc21;400
+bozohttpd 20060517;404
+bozohttpd 20080303;404
+Caudium 1.4.9;200
+Cherokee 0.6.0;505
+Cherokee 0.99;505
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+CL-HTTP 70.216;505
+Compaq HTTP Server 5.2;0
+Compaq HTTP Server 5.7;0
+Compaq HTTP Server 5.91;0
+Compaq HTTP Server 5.94;0
+Compaq HTTP Server 9.9;200
+Cougar 9.5.6001.6264;200
+Dell 1710n;200
+Dell 3232;200
+Dell M5200;200
+Divar 1.00;200
+Divar 1.10.538.0;200
+Divar 1.11.626.0;200
+Divar 1.12.649.0;200
+DM Simple http Server Beta 1;200
+Dreambox DM500 Web Interface 6.0.4;0
+dwhttpd 4.0.2a7a;200
+dwhttpd 4.1a6;200
+dwhttpd 4.2a7;200
+eMule 0.48a;200
+eMule 0.49c;200
+Final Web Server;200
+firecat 1.0.0 Beta;200
+FlexWATCH FW-3440-B;200
+fnord 1.8a;400
+Fortinet Fortigate;200
+Gatling 0.10;200
+Gatling 0.9;200
+GlobalSCAPE Secure Server 3.3;401
+Google Web Server 2.1;200
+Hiawatha 6.11;505
+Hiawatha 6.2;505
+HTTPi 1.5.2;200
+HTTPi 1.6.1;200
+IBM HTTP Server 2.0.47.1;200
+IBM HTTP Server 6.0.2.19;200
+IBM HTTP Server 6.1.0.19;200
+IceWarp 8.3.0;200
+Indy IdHTTPServer 9.00.10;200
+IPC@CHIP 1.01;200
+IPC@CHIP 1.04;200
+Jana-Server 2.4.8.51;404
+Jetty 5.1.10;200
+Jetty 5.1.1;200
+Jetty 6.1.1;200
+Jigsaw 2.2.5;401
+Jigsaw 2.2.6;200
+Jigsaw 2.3.0-beta1;200
+KGet web interface 2.1.3;401
+KLone 2.1.0rc1;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+LANCOM DSL/10 Office 3.50.0012;200
+LANCOM DSL/I-10 3.58.0006;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+LANCOM DSL/I-1611 4.02.0003;200
+LANCOM DSL/I-1611 4.12.0031;200
+LANCOM DSL/I-1611 5.06.0005;200
+LANCOM DSL/I-1611 6.02.0008;200
+LANCOM DSL/I-1611 6.06.0012;200
+LANCOM DSL/I-1611 6.24.0012;200
+LANCOM DSL/I-1611 6.26.0022;200
+LANCOM DSL/I-1611 6.32.0021;200
+Lexmark C750;200
+Lexmark E323;200
+Lexmark Optra S 1255;200
+Lexmark T630;200
+lighttpd 1.4.13;505
+lighttpd 1.4.16;505
+lighttpd 1.4.18;505
+lighttpd 1.4.19;505
+lighttpd 1.4.22;505
+lighttpd 1.5.0;505
+Linksys WVC54GC Boa 0.94.13;200
+ListManagerWeb 8.8c;0
+LiteSpeed Web Server 3.3;505
+Lotus Domino Go Webserver 4.6.2.5;200
+Mathopd 1.5p6;505
+Micah Lansing Advanced WebServer 1.2;200
+Microsoft IIS 5.0;200
+Microsoft IIS 5.0;404
+Microsoft IIS 5.1;200
+Microsoft IIS 5.1;401
+Microsoft IIS 6.0;200
+Microsoft IIS 6.0;400
+Microsoft IIS 6.0;505
+Microsoft IIS 7.0;505
+Microsoft ISA Server 2006;200
+Mongrel 1.0;200
+Nanoweb 2.2.10;200
+Net2Phone Rapid Logic 1.1;200
+NetBotz 320 thttpd 2.25b;200
+NetBotz 420 thttpd 2.25b;200
+NetBotz 500 thttpd 2.25b;200
+Netgear RP114 3.26;401
+Netopia Router Allegro RomPager 2.10;200
+Netscape Enterprise Server 2.01;200
+Netscape Enterprise Server 3.5.1;400
+Netscape Enterprise Server 3.5.1G;200
+Netscape Enterprise Server 4.1;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+Netscape Fasttrack 3.02a;200
+NetWare Enterprise Web Server 5.1;200
+nginx 0.5.19;200
+nginx 0.5.30;200
+nginx 0.5.31;200
+nginx 0.5.32;200
+nginx 0.5.33;200
+nginx 0.5.35;200
+nginx 0.6.13;403
+nginx 0.6.16;200
+nginx 0.6.20;200
+nginx 0.6.26;200
+nginx 0.7.35;404
+nostromo 1.9.1;501
+Novell Access Manager 3;200
+OmniHTTPd 2.06;200
+OmniHTTPd 2.09;200
+OmniHTTPd 2.10;200
+OpenSA 1.0.1;200
+OpenSA 1.0.3;200
+OpenSA 1.0.4;200
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 10.1.2.0.2;406
+Oracle Application Server 10g 10.1.2.2.0;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Oracle Application Server 10g 10.1.3.1.0;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Oracle Application Server 10g 9.0.4.2.0;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Oracle Application Server 9i 9.0.2;200
+Oracle Application Server 9i 9.0.2.3.0;200
+Oracle Application Server 9i 9.0.3.1;200
+Orion 2.0.7;200
+OSU 3.12alpha;200
+OSU 3.9;0
+Oversee Webserver 1.3.18;200
+PacketShaper httpd 1.00;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+publicfile;200
+QNAP GNS-8000A 4.1.4.0118;200
+QNAP NAS-2108R 2.27.1024;200
+QNAP NAS-4010 4.2.0.0606;200
+QNAP NAS-4100 2.26.0517;200
+QNAP TS-101 2.0.1.0302;200
+QNAP TS-101 2.1.0.612T;200
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+QNAP TS-109 1.1.2.1009T;200
+QNAP TS-109 1.1.3.1101T;200
+QNAP TS-209 1.1.1.0831T;200
+QNAP TS-209 1.1.3.1101T;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+QNAP TS-411U 1.2.0.0531;200
+Resin 2.1.17;200
+Resin 3.0.23;200
+Resin 3.0.6;200
+Ricoh Aficio 1022 Web-Server 3.0;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Roxen 2.2.213;200
+Roxen 4.5.111;200
+Roxen 4.5.145;200
+SHOUTcast Server 1.9.5;200
+SHOUTcast Server 1.9.8;200
+Snap Appliance 3.1.603;200
+Snap Appliance 3.4.803;200
+Snap Appliance 3.4.805;200
+Snap Appliance 4.0.830;200
+Snap Appliance 4.0.854;200
+Snap Appliance 4.0.860;200
+SnapStream Digital Video Recorder;200
+SonicWALL CSM 3200 2.6.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Sony SNC-RZ30 NetEVI 2.13;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Sony SNC-RZ30 NetEVI 2.24;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Sony SNC-RZ30 NetEVI 3.03;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Sony SNC-Z20 NetZoom 1.00;200
+Squid 2.5.STABLE5;400
+Squid 2.5.STABLE6;400
+Squid 2.5.STABLE9;400
+Squid 2.6.STABLE13;400
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+StWeb 1.3.27;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+Sun Java System Web Server 7.0;505
+Sun ONE Web Server 6.1;200
+Sun ONE Web Server 6.1;505
+SWAT 3.0.24;401
+Symantec Mail Security for SMTP;400
+Tandberg Videoconference Management;200
+TclHttpd 3.5.1;200
+TheServer 2.21L;200
+thttpd 2.19-MX;200
+thttpd 2.20b;200
+thttpd 2.23beta1;200
+thttpd 2.24;403
+thttpd 2.26;200
+Tomcat Web Server 3.2.2;200
+TTB Simple Web Server;200
+UserLand Frontier 9.0.1;505
+UserLand Frontier 9.5;505
+Virtuoso 5.0.3;200
+VMware ESX web server;200
+VNC Server Enterprise Edition E4.2.5;0
+vqServer 1.9.56;200
+VS Web Server 01.00.00;200
+WallBotz 500 thttpd 2.25b;200
+WDaemon 9.6.1;200
+webcamXP PRO 2006 2.16.456x BETA;200
+webcamXP PRO 2006 2.20.024;200
+webcamXP PRO 2006 2.37.144;200
+webcamXP PRO 2007 3.60.220;200
+webcamXP PRO 2007 3.72.440;200
+webcamXP PRO 2007 3.96.000 beta;200
+WEBrick 1.3.1;200
+WN Server 2.4.7;505
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Xerox Phaser 6200;401
+Xerox Phaser 7300;403
+Xerox Phaser 8200;200
+Xerox Phaser 860;200
+Yaws 1.65;0
+Yaws 1.68;0
+Yaws 1.72;0
+Yaws 6.0.5;0
+Zeus 4.3;0
+Zeus 4.3;505
+Zeus 4.41;200
+Zoom ADSL;505
+Zope 2.10.4;200
+Zope 2.5.0;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Zope 2.6.1;200
+Zope 2.6.4;200
+Zope 2.7.4;200
+Zope 2.7.5;200
+Zope 2.7.6;200
+Zope 2.7.6;501
+Zope 2.7.7;200
+Zope 2.7.8;200
+Zope 2.7.9;200
+Zope 2.8.0;200
+Zope 2.8.2;200
+Zope 2.8.4;200
+Zope 2.8.6;200
+Zope 2.8.7;200
+Zope 2.9.2;200
+Zope 2.9.3;200
+Zope 2.9.5;200
+Zope 2.9.6;200
+Zope 2.9.7;200
+Zope 2.9.8;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Zyxel P-661H-D1 RomPager 4.51;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+StWeb 1.3.27;200
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zyxel P-660R-D3 RomPager 4.51;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+Abyss 2.4.0.3 X2;0
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx 0.5.31;200
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zope 2.5.0;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+Abyss 2.6.0.0 X2;0
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+StWeb 1.3.27;200
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zyxel P-660R-D3 RomPager 4.51;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+Abyss 2.4.0.3 X2;0
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx 0.5.31;200
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zope 2.5.0;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+Abyss 2.6.0.0 X2;0
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+StWeb 1.3.27;200
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zyxel P-660R-D3 RomPager 4.51;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+Abyss 2.4.0.3 X2;0
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zope 2.5.0;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+Abyss 2.6.0.0 X2;0
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+StWeb 1.3.27;200
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+Abyss 2.6.0.0 X2;0
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+StWeb 1.3.27;200
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+Abyss 2.6.0.0 X2;0
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+Abyss 2.6.0.0 X2;0
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+Anti-Web HTTPD 4.0beta13;400
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+AOLserver 4.5.0;200
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+Abyss 2.6.0.0 X2;0
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+AOLserver 4.5.0;200
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+Anti-Web HTTPD 4.0beta13;400
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+nginx/1.2.9;404
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+Abyss 2.6.0.0 X2;0
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+AOLserver 4.5.0;200
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+Anti-Web HTTPD 4.0beta13;400
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+nginx/1.4.1;404
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+nginx/1.2.9;404
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+nginx/1.5.1;404
+Abyss 2.6.0.0 X2;0
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+AOLserver 4.5.0;200
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+Anti-Web HTTPD 4.0beta13;400
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+nginx/1.4.1;404
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+nginx/1.2.9;404
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+nginx/1.5.1;404
+Abyss 2.6.0.0 X2;0
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+WSGIServer/0.1 Python/2.7.2;404
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+AOLserver 4.5.0;200
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+Anti-Web HTTPD 4.0beta13;400
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+nginx/1.4.1;404
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+nginx/1.2.9;404
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501
+Boa 0.94.14rc21;400
+Apache 1.3.27;200
+Zope 2.7.8;200
+IBM HTTP Server 2.0.47.1;200
+4D WebSTAR 3.0.2;200
+Jigsaw 2.3.0-beta1;200
+webcamXP PRO 2006 2.37.144;200
+Hiawatha 6.2;505
+Netscape Enterprise Server 4.1;200
+OSU 3.9;0
+Microsoft IIS 5.0;404
+Sun-ONE-Web-Server/6.1;404
+Xerox Phaser 860;200
+publicfile;200
+Jana-Server 2.4.8.51;404
+Apache 2.3.0;200
+Apache 2.0.63;0
+4D WebSTAR 2.0;200
+NetBotz 420 thttpd 2.25b;200
+nginx 0.7.35;404
+nginx 0.6.20;200
+Apache 2.0.48;200
+Apache 1.3.31;200
+Zeus 4.41;200
+TclHttpd 3.5.1;200
+Compaq HTTP Server 5.91;0
+Xerox Phaser 8200;200
+lighttpd 1.4.16;505
+thttpd 2.23beta1;200
+Apache 2.2.9;200
+Oracle Application Server 10g 9.0.4.1.0;403
+Apache 2.0.54;200
+SonicWALL CSM 3200 2.6.0.0;200
+Abyss 2.5.0.0 X2;0
+Zope 2.7.9;200
+Apache 2.0.53;200
+Symantec Mail Security for SMTP;400
+nginx 0.6.13;403
+Apache 1.3.26;200
+LANCOM DSL/I-10 Office 3.59.0006;200
+Abyss 2.5.0.0 X1;0
+Linksys WVC54GC Boa 0.94.13;200
+Apache 2.0.50;200
+Sun Java System Web Server 7.0;505
+nginx 0.5.32;200
+Resin 3.0.6;200
+KGet web interface 2.1.3;401
+Snap Appliance 3.4.805;200
+webcamXP PRO 2007 3.60.220;200
+Philips NetCam 1.2.7 wg_httpd 1.0;200
+QNAP NAS-4100 2.26.0517;200
+Microsoft IIS 6.0;400
+Lotus Domino Go Webserver 4.6.2.5;200
+Abyss 2.6.0.0 X2;0
+Apache 2.0.58;200
+Caudium 1.4.9;200
+Apache 2.2.4;200
+Sony SNC-RZ30 NetEVI 2.05g;200
+firecat 1.0.0 Beta;200
+thttpd 2.24;403
+OpenSA 1.0.3;200
+AllegroServe 1.2.50;400
+IPC@CHIP 1.04;200
+WN Server 2.4.7;505
+nginx 0.5.19;200
+Zope 2.6.1;200
+Apache 2.2.3;0
+lighttpd 1.4.13;505
+Virtuoso 5.0.3;200
+Apache 2.2.3;403
+Apache 2.2.3;404
+Squid 2.5.STABLE9;400
+UserLand Frontier 9.5;505
+Squid 2.5.STABLE6;400
+Snap Appliance 3.4.803;200
+nginx/1.5.1;404
+SimpleHTTP/0.6 Python/2.7.2;404
+Zope 2.9.5;200
+LANCOM DSL/I-1611 4.02.0003;200
+WallBotz 500 thttpd 2.25b;200
+QNAP TS-101 2.0.1.0302;200
+Ricoh Aficio 1045 5.23 Web-Server 3.0;200
+Apache 1.3.12;200
+Sony SNC-RZ30 NetEVI 3.02;200
+Hiawatha 6.11;505
+OpenSA 1.0.5;200
+Oracle Application Server 10g 10.1.2.0.2;406
+QNAP TS-101 Turbo Station 1.2.0.0629;200
+Zope 2.5.0;200
+QNAP TS-411U 1.2.0.0531;200
+Apache 1.3.37;503
+WSGIServer/0.1 Python/2.7.2;404
+Gatling 0.10;200
+QNAP TS-109 1.1.2.1009T;200
+Zope 2.9.2;200
+IBM HTTP Server 6.1.0.19;200
+and-httpd 0.99.11;505
+Zeus 4.3;505
+Snap Appliance 4.0.860;200
+QNAP TS-40IT Turbo Server 1.1.0.0425;200
+FlexWATCH FW-3440-B;200
+webcamXP PRO 2006 2.16.456x BETA;200
+SHOUTcast Server 1.9.8;200
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;200
+Boa 0.92o;200
+4D WebSTAR 4.2;200
+NetWare Enterprise Web Server 5.1;200
+Nanoweb 2.2.10;200
+Belkin Router 2.00.002;200
+Sun ONE Web Server 6.1;505
+nginx/0.7.69;404
+Zope 2.7.5;200
+Zope 2.5.1;200
+Zope 2.6.0;200
+Jetty 5.1.10;200
+Apache 1.3.33;404
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;200
+SWAT 3.0.24;401
+nginx/0.6.39;404
+GlobalSCAPE Secure Server 3.3;401
+WEBrick 1.3.1;200
+webcamXP PRO 2007 3.96.000 beta;200
+Mongrel 1.0;200
+Tomcat Web Server 3.2.2;200
+Microsoft IIS 5.1;200
+QNAP GNS-8000A 4.1.4.0118;200
+Fortinet Fortigate;200
+Snap Appliance 4.0.854;200
+Zope 2.7.6;200
+Oversee Webserver 1.3.18;200
+Compaq HTTP Server 5.94;0
+Oracle Application Server 10g 9.0.4.2.0;200
+Cherokee 0.99;505
+IBM HTTP Server 6.0.2.19;200
+QNAP TS-209 1.1.1.0831T;200
+Zope 2.9.6;200
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;505
+AOLserver 4.5.0;200
+AOLserver 3.4.2;404
+nostromo 1.9.1;501
+Oracle Application Server 10g 10.1.2.2.0;200
+Lexmark T630;200
+LiteSpeed Web Server 3.3;505
+Zope 2.7.6;501
+Jetty 5.1.1;200
+Roxen 4.5.145;200
+BarracudaDrive 3.9.1;200
+Apache 2.0.45;200
+thttpd 2.19-MX;200
+4D WebSTAR 5.3.1;200
+Anti-Web HTTPD 4.0beta13;400
+Zyxel Prestige 662H-63/67 RomPager 4.07;200
+Zope 2.6.4;200
+Zope 2.9.8;200
+dwhttpd 4.1a6;200
+4D WebSTAR 4.5;200
+Zope 2.8.4;200
+Zyxel P-2602HW-D1A RomPager 4.51;200
+Oracle Application Server 9i 9.0.3.1;200
+0W 0.8c;505
+LANCOM DSL/I-10 3.58.0006;200
+thttpd 2.20b;200
+Apache 1.3.17;200
+nginx 0.5.35;200
+OSU 3.12alpha;200
+Jetty 6.1.1;200
+4D WebSTAR 2.1.1;200
+Mathopd 1.5p6;505
+BadBlue 2.7;200
+Divar 1.11.626.0;200
+Zyxel  ZyWALL 10W RomPager 4.07;200
+Zyxel P-660R-D3 RomPager 4.51;200
+Apache 2.2.11;200
+Zope 2.9.7;200
+KLone 2.1.0rc1;200
+Zyxel Prestige 662H-61 RomPager 4.07;200
+Xerox Phaser 6200;401
+Apache 2.0.59;200
+Jigsaw 2.2.6;200
+Cougar 9.5.6001.6264;200
+Abyss 2.0.0.20 X2;0
+Microsoft IIS 7.0;505
+LANCOM DSL/I-1611 6.32.0021;200
+AOLserver 4.0.10a;200
+IPC@CHIP 1.01;200
+AOLserver 3.4.2;200
+Apache 1.3.29;200
+Apache 2.2.3;200
+Resin 3.0.23;200
+PacketShaper httpd 1.00;200
+CL-HTTP 70.216;505
+Apache 2.2.6;200
+Novell Access Manager 3;200
+OpenSA 1.0.1;200
+Squid 2.5.STABLE5;400
+Sony SNC-RZ30 NetEVI 2.24;200
+nginx 0.5.33;200
+Roxen 2.2.213;200
+dwhttpd 4.0.2a7a;200
+Jigsaw 2.2.5;401
+Sony SNC-RZ30 NetEVI 2.13;200
+LANCOM DSL/I-1611 6.02.0008;200
+Zoom ADSL;505
+LANCOM DSL/10 Office 3.50.0012;200
+Apache 2.0.55;200
+Oracle Application Server 10g 10.1.3.0.0;200
+Sony SNC-RZ30 NetEVI 3.03;200
+LANCOM DSL/I-1611 6.26.0022;200
+Divar 1.10.538.0;200
+AOLserver 4.5.0;501
+nginx/1.4.1;404
+Apache 1.3.41;200
+OmniHTTPd 2.10;200
+Netscape Enterprise Server 3.5.1G;200
+SHOUTcast Server 1.9.5;200
+Boa 0.93.15;200
+Squid 2.6.STABLE13;400
+Sun ONE Web Server 6.1;200
+Netopia Router Allegro RomPager 2.10;200
+QNAP NAS-4010 4.2.0.0606;200
+DM Simple http Server Beta 1;200
+Netscape Enterprise Server 3.5.1;400
+QNAP TS-109 1.1.3.1101T;200
+thttpd 2.26;200
+Squid 2.6.STABLE4;403
+Squid 2.6.STABLE7;403
+QNAP TS-101 2.1.0.612T;200
+Oracle Application Server 10g 10.1.2.0.0;200
+Oracle Application Server 9i 9.0.2;200
+Ashleys Webserver;200
+QNAP NAS-2108R 2.27.1024;200
+Microsoft ISA Server 2006;200
+AXIS 2400 Video Server;200
+LANCOM DSL/I-1611 5.06.0005;200
+Sony SNC-RZ30 NetEVI 3.10;200
+Oracle Application Server 10g 10.1.2.0.2;200
+Oracle Application Server 10g 9.0.4.3.0;200
+Sony SNC-RZ30 NetEVI 3.10a;200
+Yaws 1.72;0
+Apache 1.3.37;200
+SnapStream Digital Video Recorder;200
+Apache 2.2.8;200
+webcamXP PRO 2006 2.20.024;200
+LANCOM DSL/I-1611 4.12.0031;200
+Zope 2.8.0;200
+TheServer 2.21L;200
+Apache 1.3.33;200
+LANCOM DSL/I-1611 6.24.0012;200
+4D WebSTAR 5.4.0;200
+Yaws 6.0.5;0
+Resin 2.1.17;200
+Konica IP-421/7020 Allegro RomPager 2.00;200
+Sony SNC-RZ30 NetEVI 2.14;200
+Compaq HTTP Server 5.2;0
+Apache 2.2.2;200
+Sun-Java-System-Web-Server/7.0;404
+Orion 2.0.7;200
+Apache 2.0.55;403
+Compaq HTTP Server 5.7;0
+AOLserver 3.3.1;200
+4D WebSTAR 5.3.3;200
+AOLserver 2.3.3;200
+Zope 2.8.7;200
+Cherokee 0.6.0;505
+HTTPi 1.5.2;200
+ListManagerWeb 8.8c;0
+AOLserver 4.0.10;200
+Lexmark Optra S 1255;200
+webcamXP PRO 2007 3.72.440;200
+StWeb 1.3.27;200
+VS Web Server 01.00.00;200
+Netscape Enterprise Server 4.1;505
+Netscape Enterprise Server 6.0;505
+nginx/1.0.15;404
+Indy IdHTTPServer 9.00.10;200
+Final Web Server;200
+lighttpd 1.5.0;505
+TTB Simple Web Server;200
+Araneida 0.84;501
+Net2Phone Rapid Logic 1.1;200
+Sun Java System Web Server 6.1;505
+Sun Java System Web Server 7.0;200
+LANCOM DSL/I-1611 6.06.0012;200
+OmniHTTPd 2.09;200
+Dell 3232;200
+Apache 2.0.51;200
+Microsoft IIS 5.1;401
+Philips NetCam 1.4.23 wg_httpd 1.0;200
+Philips NetCam 1.2.6 wg_httpd 1.0;200
+Compaq HTTP Server 9.9;200
+Snap Appliance 4.0.830;200
+Apache 2.0.46;200
+Apache 1.2.6;200
+BadBlue 2.4;200
+Netscape Fasttrack 3.02a;200
+Lexmark E323;200
+Abyss 2.4.0.3 X2;0
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;200
+Sony SNC-RZ30 NetEVI 3.14;200
+Dreambox DM500 Web Interface 6.0.4;0
+Oracle Application Server 10g 10.1.3.1.0;200
+Yaws 1.68;0
+Apache 2.0.58;404
+Google Web Server 2.1;200
+Zope 2.8.6;200
+Apache 1.3.34;200
+OmniHTTPd 2.06;200
+Zeus 4.3;0
+nginx 0.5.30;200
+Barracuda Networks Spam Firewall;200
+Divar 1.00;200
+Microsoft IIS 6.0;200
+VMware ESX web server;200
+Zyxel P-661H-D1 RomPager 4.51;200
+WDaemon 9.6.1;200
+eMule 0.48a;200
+lighttpd 1.4.18;505
+nginx/1.2.1;404
+Philips NetCam 1.4.8 wg_httpd 1.0;200
+Apache 2.2.0;200
+Zope 2.9.3;200
+Microsoft IIS 6.0;505
+nginx/1.2.9;404
+dwhttpd 4.2a7;200
+Snap Appliance 3.1.603;200
+Apache 1.3.28;200
+QNAP TS-209 1.1.3.1101T;200
+VNC Server Enterprise Edition E4.2.5;0
+BadBlue 2.5;200
+Zope 2.10.4;200
+bozohttpd 20060517;404
+Ricoh Aficio 1022 Web-Server 3.0;200
+Lexmark C750;200
+Oracle Application Server 9i 9.0.2.3.0;200
+BadBlue 2.6;200
+eMule 0.49c;200
+Tandberg Videoconference Management;200
+Microsoft IIS 5.0;200
+bozohttpd 20080303;404
+nginx 0.6.26;200
+Yaws 1.65;0
+nginx 0.5.31;200
+Sony SNC-RZ30 NetEVI 3.01;200
+Zope 2.8.2;200
+AOLserver 3.5.0;200
+Apache 2.2.3;501
+Dell 1710n;200
+Apache 2.0.46;400
+Apache 1.3.39;200
+lighttpd 1.4.19;505
+Anti-Web HTTPD 3.0.7;200
+NetBotz 320 thttpd 2.25b;200
+Oracle Application Server 10g 9.0.4.0.0;200
+Sony SNC-RZ30 NetEVI 1.09;200
+AOLserver 4.0.10;501
+Zope 2.7.7;200
+IceWarp 8.3.0;200
+Sony SNC-RZ30 NetEVI 2.05;200
+Apache 1.3.37;404
+AOLserver 4.0.11a;200
+Apache 1.3.37;403
+Divar 1.12.649.0;200
+Micah Lansing Advanced WebServer 1.2;200
+Netgear RP114 3.26;401
+Apache 2.0.52;200
+Netscape Enterprise Server 2.01;200
+lighttpd 1.4.22;505
+OpenSA 1.0.4;200
+UserLand Frontier 9.0.1;505
+Apache/2.4.4 (FreeBSD);404
+Xerox Phaser 7300;403
+HTTPi 1.6.1;200
+Apache 2.0.49;200
+NetBotz 500 thttpd 2.25b;200
+Zyxel P-662HW-D1 RomPager 4.51;200
+Apache 1.3.35;200
+Roxen 4.5.111;200
+Gatling 0.9;200
+fnord 1.8a;400
+nginx 0.6.16;200
+Sony SNC-Z20 NetZoom 1.00;200
+Dell M5200;200
+vqServer 1.9.56;200
+AIDeX Mini-Webserver 1.1;200
+Zope 2.7.4;200
+Sony SNC-RZ30 NetEVI 2.06;200
+Apache 2.0.54;503
+BaseHTTPServer 0.3;0
+Apache 2.0.54;501

@@ -1,0 +1,4474 @@
+0W 0.8c;OK
+4D WebSTAR 2.0;OK
+4D WebSTAR 2.1.1;OK
+4D WebSTAR 3.0.2;OK
+4D WebSTAR 4.2;OK
+4D WebSTAR 4.5;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 5.3.3;OK
+4D WebSTAR 5.4.0;OK
+Abyss 2.0.0.20 X2;OK
+Abyss 2.4.0.3 X2;OK
+Abyss 2.5.0.0 X1;OK
+Abyss 2.5.0.0 X2;OK
+Abyss 2.6.0.0 X2;OK
+AIDeX Mini-Webserver 1.1;Ok
+AllegroServe 1.2.50; OK
+and-httpd 0.99.11;OK
+Anti-Web HTTPD 3.0.7;OK
+Anti-Web HTTPD 4.0beta13;OK
+AOLserver 2.3.3;OK
+AOLserver 3.3.1;OK
+AOLserver 3.4.2;Not Found
+AOLserver 3.4.2;OK
+AOLserver 3.5.0;OK
+AOLserver 4.0.10a;OK
+AOLserver 4.0.10;OK
+AOLserver 4.0.11a;OK
+AOLserver 4.5.0;OK
+Apache 1.2.6;OK
+Apache 1.3.12;OK
+Apache 1.3.17;OK
+Apache 1.3.26;OK
+Apache 1.3.27;OK
+Apache 1.3.28;OK
+Apache 1.3.29;OK
+Apache 1.3.31;OK
+Apache 1.3.33;Not Found
+Apache 1.3.33;OK
+Apache 1.3.34;OK
+Apache 1.3.35;OK
+Apache 1.3.37;Not Found
+Apache 1.3.37;OK
+Apache 1.3.39;OK
+Apache 1.3.41;OK
+Apache 2.0.45;OK
+Apache 2.0.46;OK
+Apache 2.0.48;OK
+Apache 2.0.49;OK
+Apache 2.0.50;OK
+Apache 2.0.51;OK
+Apache 2.0.52;OK
+Apache 2.0.53;OK
+Apache 2.0.54;OK
+Apache 2.0.55;Forbidden
+Apache 2.0.55;OK
+Apache 2.0.58;Not Found
+Apache 2.0.58;OK
+Apache 2.0.59;OK
+Apache 2.0.63;OK
+Apache 2.2.0;OK
+Apache 2.2.11;OK
+Apache 2.2.2;OK
+Apache 2.2.3;Forbidden
+Apache 2.2.3;Not Found
+Apache 2.2.3;OK
+Apache 2.2.4;OK
+Apache 2.2.6;OK
+Apache 2.2.8;OK
+Apache 2.2.9;OK
+Apache 2.3.0;OK
+Araneida 0.84;OK
+Ashleys Webserver;OK
+AXIS 2400 Video Server;OK
+BadBlue 2.4;OK
+BadBlue 2.5;OK
+BadBlue 2.6;OK
+BadBlue 2.7;OK
+BarracudaDrive 3.9.1;OK
+Barracuda Networks Spam Firewall;OK
+BaseHTTPServer 0.3;OK
+Belkin Router 2.00.002;OK
+Boa 0.92o;OK
+Boa 0.93.15;OK
+Boa 0.94.14rc21;OK
+bozohttpd 20060517;OK
+bozohttpd 20080303;OK
+Caudium 1.4.9;OK
+Cherokee 0.6.0;OK
+Cherokee 0.99;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+CL-HTTP 70.216;OK
+Compaq HTTP Server 5.2;Ok
+Compaq HTTP Server 5.7;Ok
+Compaq HTTP Server 5.91;Ok
+Compaq HTTP Server 5.94;Ok
+Compaq HTTP Server 9.9;OK
+Cougar 9.5.6001.6264;OK
+Dell 1710n;OK
+Dell 3232;OK
+Dell M5200;OK
+Divar 1.00;OK
+Divar 1.10.538.0;OK
+Divar 1.11.626.0;OK
+Divar 1.12.649.0;OK
+DM Simple http Server Beta 1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+dwhttpd 4.0.2a7a;OK
+dwhttpd 4.1a6;OK
+dwhttpd 4.2a7;OK
+eMule 0.48a;OK
+eMule 0.49c;OK
+Final Web Server;OK
+firecat 1.0.0 Beta;OK
+FlexWATCH FW-3440-B;OK
+fnord 1.8a;OK
+Fortinet Fortigate;OK
+Gatling 0.10;Coming Up
+Gatling 0.9;Coming Up
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Google Web Server 2.1;OK
+Hiawatha 6.11;OK
+Hiawatha 6.2;OK
+HTTPi 1.5.2;OK
+HTTPi 1.6.1;OK
+IBM HTTP Server 2.0.47.1;OK
+IBM HTTP Server 6.0.2.19;OK
+IBM HTTP Server 6.1.0.19;OK
+IceWarp 8.3.0;OK
+Indy IdHTTPServer 9.00.10;OK
+IPC@CHIP 1.01;OK
+IPC@CHIP 1.04;OK
+Jana-Server 2.4.8.51;Not Found
+Jetty 5.1.10;OK
+Jetty 5.1.1;OK
+Jetty 6.1.1;OK
+Jigsaw 2.2.5;Unauthorized
+Jigsaw 2.2.6;OK
+Jigsaw 2.3.0-beta1;OK
+KGet web interface 2.1.3;Authorization Required
+KLone 2.1.0rc1;OK
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+LANCOM DSL/10 Office 3.50.0012;OK
+LANCOM DSL/I-10 3.58.0006;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Lexmark C750;OK
+Lexmark E323;OK
+Lexmark Optra S 1255;OK
+Lexmark T630;OK
+lighttpd 1.4.13;OK
+lighttpd 1.4.16;Not Found
+lighttpd 1.4.18;OK
+lighttpd 1.4.18;Unauthorized
+lighttpd 1.4.19;OK
+lighttpd 1.4.22;OK
+lighttpd 1.5.0;OK
+Linksys WVC54GC Boa 0.94.13;OK
+ListManagerWeb 8.8c;Authorization Required
+LiteSpeed Web Server 3.3;OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+Mathopd 1.5p6;OK
+Micah Lansing Advanced WebServer 1.2;OK
+Microsoft IIS 5.0;Object Not Found
+Microsoft IIS 5.0;OK
+Microsoft IIS 5.1;Access Denied
+Microsoft IIS 5.1;OK
+Microsoft IIS 6.0;OK
+Microsoft IIS 7.0;OK
+Microsoft ISA Server 2006;OK
+Mongrel 1.0;OK
+Nanoweb 2.2.10;OK
+Net2Phone Rapid Logic 1.1;OK
+NetBotz 320 thttpd 2.25b;OK
+NetBotz 420 thttpd 2.25b;OK
+NetBotz 500 thttpd 2.25b;OK
+Netgear RP114 3.26;Unauthorized
+Netopia Router Allegro RomPager 2.10;OK
+Netscape Enterprise Server 2.01;OK
+Netscape Enterprise Server 3.5.1G;OK
+Netscape Enterprise Server 3.5.1;OK
+Netscape Enterprise Server 4.1;OK
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Netscape Enterprise Server 6.0;OK
+Netscape Fasttrack 3.02a;OK
+NetWare Enterprise Web Server 5.1;OK
+nginx 0.5.19;OK
+nginx 0.5.30;OK
+nginx 0.5.31;OK
+nginx 0.5.32;OK
+nginx 0.5.33;OK
+nginx 0.5.35;Ok
+nginx 0.5.35;OK
+nginx 0.6.13;Forbidden
+nginx 0.6.16;OK
+nginx 0.6.20;OK
+nginx 0.6.26;OK
+nginx 0.7.35;Not Found
+nostromo 1.9.1;OK
+Novell Access Manager 3;OK
+OmniHTTPd 2.06;Document Follows
+OmniHTTPd 2.09;Document Follows
+OmniHTTPd 2.10;Document Follows
+OpenSA 1.0.1;OK
+OpenSA 1.0.3;OK
+OpenSA 1.0.4;OK
+OpenSA 1.0.5;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Oracle Application Server 10g 10.1.2.0.2;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Oracle Application Server 9i 9.0.2;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Orion 2.0.7;OK
+OSU 3.12alpha;CGI script execution.
+OSU 3.9;error opening file in request
+Oversee Webserver 1.3.18;OK
+PacketShaper httpd 1.00;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+publicfile;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+QNAP NAS-2108R 2.27.1024;OK
+QNAP NAS-4010 4.2.0.0606;OK
+QNAP NAS-4100 2.26.0517;OK
+QNAP TS-101 2.0.1.0302;OK
+QNAP TS-101 2.1.0.612T;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+QNAP TS-109 1.1.2.1009T;OK
+QNAP TS-109 1.1.3.1101T;OK
+QNAP TS-209 1.1.1.0831T;OK
+QNAP TS-209 1.1.3.1101T;OK
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+QNAP TS-411U 1.2.0.0531;OK
+Resin 2.1.17;OK
+Resin 3.0.23;OK
+Resin 3.0.6;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Roxen 2.2.213;OK
+Roxen 4.5.111;OK
+Roxen 4.5.145;OK
+SHOUTcast Server 1.9.5;OK
+SHOUTcast Server 1.9.8;OK
+Snap Appliance 3.1.603;OK
+Snap Appliance 3.4.803;OK
+Snap Appliance 3.4.805;OK
+Snap Appliance 4.0.830;OK
+Snap Appliance 4.0.854;OK
+Snap Appliance 4.0.860;OK
+SnapStream Digital Video Recorder;OK
+SonicWALL CSM 3200 2.6.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Sony SNC-RZ30 NetEVI 2.05;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+Sony SNC-RZ30 NetEVI 3.02;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+Sony SNC-Z20 NetZoom 1.00;OK
+Squid 2.5.STABLE5;Bad Request
+Squid 2.5.STABLE6;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Squid 2.6.STABLE13;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Squid 2.6.STABLE7;Forbidden
+StWeb 1.3.27;OK
+Sun Java System Web Server 6.1;OK
+Sun Java System Web Server 7.0;OK
+Sun ONE Web Server 6.1;OK
+SWAT 3.0.24;Authorization Required
+Symantec Mail Security for SMTP;OK
+Tandberg Videoconference Management;Document Follows
+TclHttpd 3.5.1;Data follows
+TheServer 2.21L;OK
+thttpd 2.19-MX;OK
+thttpd 2.20b;OK
+thttpd 2.23beta1;OK
+thttpd 2.24;Forbidden
+thttpd 2.26;OK
+Tomcat Web Server 3.2.2;OK
+TTB Simple Web Server;OK
+UserLand Frontier 9.0.1;OK
+UserLand Frontier 9.5;OK
+Virtuoso 5.0.3;OK
+VMware ESX web server;OK
+VNC Server Enterprise Edition E4.2.5;OK
+vqServer 1.9.56;OK
+VS Web Server 01.00.00;OK
+WallBotz 500 thttpd 2.25b;OK
+WDaemon 9.6.1;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+webcamXP PRO 2006 2.20.024;OK
+webcamXP PRO 2006 2.37.144;OK
+webcamXP PRO 2007 3.60.220;OK
+webcamXP PRO 2007 3.72.440;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+WEBrick 1.3.1;OK 
+WN Server 2.4.7;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Xerox Phaser 6200;Unauthorized
+Xerox Phaser 7300;Forbidden
+Xerox Phaser 8200;OK
+Xerox Phaser 860;OK
+Yaws 1.65;OK
+Yaws 1.68;OK
+Yaws 1.72;OK
+Yaws 6.0.5;OK
+Zeus 4.3;Forbidden
+Zeus 4.3;OK
+Zeus 4.41;OK
+Zoom ADSL;Unauthorized
+Zope 2.10.4;OK
+Zope 2.5.0;OK
+Zope 2.5.1;OK
+Zope 2.6.0;OK
+Zope 2.6.1;OK
+Zope 2.6.4;OK
+Zope 2.7.4;OK
+Zope 2.7.5;OK
+Zope 2.7.6;OK
+Zope 2.7.7;OK
+Zope 2.7.8;OK
+Zope 2.7.9;OK
+Zope 2.8.0;OK
+Zope 2.8.2;OK
+Zope 2.8.4;OK
+Zope 2.8.6;OK
+Zope 2.8.7;OK
+Zope 2.9.2;OK
+Zope 2.9.3;OK
+Zope 2.9.5;OK
+Zope 2.9.6;OK
+Zope 2.9.7;OK
+Zope 2.9.8;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+Apache 2.2.3;Not Found
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+Google Web Server 2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+BarracudaDrive 3.9.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+Apache 2.2.3;Not Found
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+Google Web Server 2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+BarracudaDrive 3.9.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+Apache 2.2.3;Not Found
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+Google Web Server 2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+BarracudaDrive 3.9.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+Google Web Server 2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+BarracudaDrive 3.9.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+Google Web Server 2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+BarracudaDrive 3.9.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+BarracudaDrive 3.9.1;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+nginx/1.2.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+AIDeX Mini-Webserver 1.1;Ok
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+nginx/1.2.1;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+Apache 2.0.45;OK
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+BarracudaDrive 3.9.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+nginx/1.2.9;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+nginx/1.4.1;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+nginx/1.2.1;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+AIDeX Mini-Webserver 1.1;Ok
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+BarracudaDrive 3.9.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+nginx/1.2.9;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+nginx/1.5.1;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+nginx/1.4.1;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+nginx/1.2.1;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+AIDeX Mini-Webserver 1.1;Ok
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+BarracudaDrive 3.9.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+nginx/1.2.9;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+nginx/1.5.1;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+nginx/1.4.1;OK
+WSGIServer/0.1 Python/2.7.2;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+nginx/1.2.1;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+AIDeX Mini-Webserver 1.1;Ok
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+BarracudaDrive 3.9.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+nginx/1.2.9;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK
+
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+Xerox Phaser 860;OK
+OmniHTTPd 2.09;Document Follows
+Apache 1.3.31;OK
+Netscape Fasttrack 3.02a;OK
+Boa 0.93.15;OK
+OpenSA 1.0.5;OK
+nginx/1.5.1;OK
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Dell M5200;OK
+CL-HTTP 70.216;OK
+Sun-Java-System-Web-Server/7.0;OK
+VMware ESX web server;OK
+Sony SNC-RZ30 NetEVI 2.05g;OK
+Apache 2.0.59;OK
+Xerox Phaser 6200;Unauthorized
+Mathopd 1.5p6;OK
+AOLserver 3.3.1;OK
+SimpleHTTP/0.6 Python/2.7.2;OK
+Microsoft IIS 6.0;OK
+Divar 1.00;OK
+Oracle Application Server 10g 10.1.2.0.2;OK
+thttpd 2.23beta1;OK
+Compaq HTTP Server 5.94;Ok
+Zope 2.6.1;OK
+Squid 2.5.STABLE5;Bad Request
+Anti-Web HTTPD 3.0.7;OK
+Sony SNC-RZ30 NetEVI 3.01;OK
+dwhttpd 4.0.2a7a;OK
+Oracle Application Server 10g 9.0.4.2.0;OK
+Apache 1.3.29;OK
+eMule 0.49c;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;OK
+Divar 1.12.649.0;OK
+QNAP TS-101 2.0.1.0302;OK
+Tandberg Videoconference Management;Document Follows
+nginx 0.6.26;OK
+Philips NetCam 1.4.8 wg_httpd 1.0;OK
+Oracle Application Server 10g 9.0.4.0.0;OK
+Zope 2.10.4;OK
+Sun ONE Web Server 6.1;OK
+Dreambox DM500 Web Interface 6.0.4;OK
+AOLserver 4.0.11a;OK
+webcamXP PRO 2007 3.96.000 beta;OK
+Divar 1.11.626.0;OK
+Apache 2.0.48;OK
+Yaws 1.65;OK
+VS Web Server 01.00.00;OK
+Netscape Enterprise Server 2.01;OK
+Linksys WVC54GC Boa 0.94.13;OK
+BadBlue 2.6;OK
+Apache 2.2.6;OK
+Boa 0.94.14rc21;OK
+Oracle Application Server 10g 10.1.2.0.2;Not Acceptable
+Apache 2.0.50;OK
+webcamXP PRO 2007 3.72.440;OK
+WN Server 2.4.7;OK
+AOLserver 3.4.2;OK
+Apache 1.3.35;OK
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;OK
+Zeus 4.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;OK
+Cougar 9.5.6001.6264;OK
+Microsoft IIS 5.0;Object Not Found
+Zope 2.8.6;OK
+Zope 2.7.6;OK
+Zope 2.7.4;OK
+NetBotz 420 thttpd 2.25b;OK
+Apache 2.2.4;OK
+Netopia Router Allegro RomPager 2.10;OK
+4D WebSTAR 2.0;OK
+IBM HTTP Server 6.1.0.19;OK
+Zyxel P-662HW-D1 RomPager 4.51;OK
+Jana-Server 2.4.8.51;Not Found
+Zope 2.8.2;OK
+OmniHTTPd 2.10;Document Follows
+AOLserver 2.3.3;OK
+OSU 3.12alpha;CGI script execution.
+Zope 2.9.8;OK
+Zyxel P-661H-D1 RomPager 4.51;OK
+TclHttpd 3.5.1;Data follows
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Roxen 4.5.111;OK
+WEBrick 1.3.1;OK 
+Zoom ADSL;Unauthorized
+Yaws 6.0.5;OK
+Abyss 2.5.0.0 X2;OK
+Zope 2.8.4;OK
+Squid 2.6.STABLE7;Forbidden
+IPC@CHIP 1.01;OK
+Oracle Application Server 10g 10.1.3.0.0;OK
+Oversee Webserver 1.3.18;OK
+Abyss 2.6.0.0 X2;OK
+Sony SNC-RZ30 NetEVI 2.24;OK
+Jigsaw 2.2.6;OK
+thttpd 2.20b;OK
+Apache 2.2.0;OK
+Hiawatha 6.2;OK
+Net2Phone Rapid Logic 1.1;OK
+Virtuoso 5.0.3;OK
+Apache 2.2.11;OK
+Apache 2.0.58;OK
+Sony SNC-RZ30 NetEVI 2.14;OK
+Sony SNC-RZ30 NetEVI 3.10;OK
+Fortinet Fortigate;OK
+Novell Access Manager 3;OK
+Orion 2.0.7;OK
+Zeus 4.3;Forbidden
+BadBlue 2.5;OK
+thttpd 2.26;OK
+lighttpd 1.4.18;OK
+nginx/0.7.69;OK
+Apache 1.3.27;OK
+Apache 2.2.2;OK
+publicfile;OK
+nginx/1.4.1;OK
+WSGIServer/0.1 Python/2.7.2;OK
+QNAP NAS-4010 4.2.0.0606;OK
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Jetty 5.1.1;OK
+Netgear RP114 3.26;Unauthorized
+firecat 1.0.0 Beta;OK
+Apache 2.0.58;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;OK
+Apache 1.3.37;OK
+FlexWATCH FW-3440-B;OK
+HTTPi 1.5.2;OK
+Zope 2.5.0;OK
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+nginx 0.5.31;OK
+Netscape Enterprise Server 3.5.1;OK
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;OK
+Boa 0.92o;OK
+Symantec Mail Security for SMTP;OK
+Apache 2.0.54;OK
+nginx 0.5.33;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;OK
+Apache 2.0.55;Forbidden
+Microsoft IIS 5.1;Access Denied
+Microsoft ISA Server 2006;OK
+QNAP TS-101 2.1.0.612T;OK
+dwhttpd 4.2a7;OK
+dwhttpd 4.1a6;OK
+4D WebSTAR 2.1.1;OK
+Resin 3.0.6;OK
+Zope 2.9.3;OK
+Zope 2.7.8;OK
+Jigsaw 2.3.0-beta1;OK
+nginx 0.6.20;OK
+KLone 2.1.0rc1;OK
+Ricoh Aficio 1022 Web-Server 3.0;OK
+OSU 3.9;error opening file in request
+Zope 2.8.0;OK
+Microsoft IIS 7.0;OK
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Apache 2.0.52;OK
+Zope 2.9.7;OK
+Squid 2.5.STABLE6;Bad Request
+QNAP TS-40IT Turbo Server 1.1.0.0425;OK
+Snap Appliance 3.1.603;OK
+Roxen 2.2.213;OK
+nginx 0.6.16;OK
+NetBotz 500 thttpd 2.25b;OK
+Sony SNC-RZ30 NetEVI 2.06;OK
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Divar 1.10.538.0;OK
+fnord 1.8a;OK
+nginx 0.5.19;OK
+QNAP NAS-2108R 2.27.1024;OK
+Resin 3.0.23;OK
+Anti-Web HTTPD 4.0beta13;OK
+4D WebSTAR 5.3.3;OK
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+QNAP TS-109 1.1.2.1009T;OK
+thttpd 2.24;Forbidden
+Snap Appliance 4.0.860;OK
+Apache 2.2.9;OK
+Apache/2.4.4 (FreeBSD);OK
+Abyss 2.0.0.20 X2;OK
+Barracuda Networks Spam Firewall;OK
+Apache 1.3.17;OK
+nginx 0.5.35;Ok
+HTTPi 1.6.1;OK
+Apache 1.3.41;OK
+nginx 0.5.35;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+IBM HTTP Server 2.0.47.1;OK
+Apache 1.3.39;OK
+Sony SNC-RZ30 NetEVI 3.14;OK
+nginx/0.6.39;OK
+OpenSA 1.0.4;OK
+WallBotz 500 thttpd 2.25b;OK
+nginx/1.2.1;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+QNAP GNS-8000A 4.1.4.0118;OK
+Snap Appliance 3.4.805;OK
+Compaq HTTP Server 5.7;Ok
+SonicWALL CSM 3200 2.6.0.0;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Lexmark Optra S 1255;OK
+QNAP TS-109 1.1.3.1101T;OK
+Abyss 2.4.0.3 X2;OK
+Oracle Application Server 10g 10.1.3.1.0;OK
+Zope 2.9.5;OK
+lighttpd 1.4.16;Not Found
+TheServer 2.21L;OK
+BadBlue 2.7;OK
+Zeus 4.41;OK
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+lighttpd 1.4.22;OK
+eMule 0.48a;OK
+Snap Appliance 3.4.803;OK
+Apache 1.3.28;OK
+Apache 1.3.37;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;OK
+Belkin Router 2.00.002;OK
+Jigsaw 2.2.5;Unauthorized
+UserLand Frontier 9.0.1;OK
+OmniHTTPd 2.06;Document Follows
+Lexmark T630;OK
+Netscape Enterprise Server 4.1;OK
+Apache 2.0.49;OK
+Oracle Application Server 9i 9.0.2;OK
+bozohttpd 20080303;OK
+Apache 2.0.63;OK
+bozohttpd 20060517;OK
+Nanoweb 2.2.10;OK
+Zope 2.7.5;OK
+IceWarp 8.3.0;OK
+Apache 1.3.34;OK
+webcamXP PRO 2006 2.20.024;OK
+Oracle Application Server 9i 9.0.3.1;OK
+Sun Java System Web Server 7.0;OK
+0W 0.8c;OK
+Caudium 1.4.9;OK
+DM Simple http Server Beta 1;OK
+IPC@CHIP 1.04;OK
+Xerox Phaser 7300;Forbidden
+4D WebSTAR 5.4.0;OK
+nginx 0.5.32;OK
+Zope 2.8.7;OK
+thttpd 2.19-MX;OK
+Zyxel P-660R-D3 RomPager 4.51;OK
+Apache 1.3.33;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+BaseHTTPServer 0.3;OK
+Zope 2.7.7;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;OK
+Philips NetCam 1.4.23 wg_httpd 1.0;OK
+Netscape Enterprise Server 3.5.1G;OK
+nginx 0.6.13;Forbidden
+Sony SNC-Z20 NetZoom 1.00;OK
+Oracle Application Server 10g 9.0.4.3.0;OK
+4D WebSTAR 3.0.2;OK
+AOLserver 4.0.10a;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+WDaemon 9.6.1;OK
+nginx 0.5.30;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+Squid 2.5.STABLE9;Bad Request
+Resin 2.1.17;OK
+Sony SNC-RZ30 NetEVI 2.13;OK
+Compaq HTTP Server 5.91;Ok
+Sony SNC-RZ30 NetEVI 3.02;OK
+nostromo 1.9.1;OK
+AIDeX Mini-Webserver 1.1;Ok
+lighttpd 1.4.19;OK
+AllegroServe 1.2.50; OK
+Lotus Domino Go Webserver 4.6.2.5;Document follows
+SHOUTcast Server 1.9.8;OK
+vqServer 1.9.56;OK
+AXIS 2400 Video Server;OK
+Snap Appliance 4.0.854;OK
+Apache 2.2.3;Not Found
+Mongrel 1.0;OK
+Roxen 4.5.145;OK
+nginx/1.0.15;OK
+AOLserver 3.5.0;OK
+Yaws 1.72;OK
+BadBlue 2.4;OK
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Gatling 0.10;Coming Up
+Jetty 6.1.1;OK
+OpenSA 1.0.1;OK
+Abyss 2.5.0.0 X1;OK
+Hiawatha 6.11;OK
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+UserLand Frontier 9.5;OK
+webcamXP PRO 2006 2.37.144;OK
+Final Web Server;OK
+Gatling 0.9;Coming Up
+Dell 1710n;OK
+Sony SNC-RZ30 NetEVI 3.10a;OK
+Apache 1.3.12;OK
+BarracudaDrive 3.9.1;OK
+4D WebSTAR 4.5;OK
+NetBotz 320 thttpd 2.25b;OK
+Dell 3232;OK
+VNC Server Enterprise Edition E4.2.5;OK
+TTB Simple Web Server;OK
+QNAP NAS-4100 2.26.0517;OK
+and-httpd 0.99.11;OK
+nginx 0.7.35;Not Found
+Zope 2.5.1;OK
+Apache 2.2.3;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Zope 2.6.0;OK
+webcamXP PRO 2006 2.16.456x BETA;OK
+Lexmark C750;OK
+OpenSA 1.0.3;OK
+NetWare Enterprise Web Server 5.1;OK
+Compaq HTTP Server 9.9;OK
+Zyxel Prestige 662H-63/67 RomPager 4.07;OK
+Zope 2.9.2;OK
+Zope 2.7.9;OK
+Squid 2.6.STABLE4;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;OK
+lighttpd 1.4.13;OK
+lighttpd 1.5.0;OK
+LANCOM DSL/I-10 Office 3.58.0006;OK
+Zope 2.6.4;OK
+Netscape Enterprise Server 6.0;OK
+webcamXP PRO 2007 3.60.220;OK
+Apache 1.3.33;Not Found
+Sony SNC-RZ30 NetEVI 2.05;OK
+Snap Appliance 4.0.830;OK
+Sun Java System Web Server 6.1;OK
+Tomcat Web Server 3.2.2;OK
+IBM HTTP Server 6.0.2.19;OK
+QNAP TS-209 1.1.1.0831T;OK
+Cherokee 0.6.0;OK
+Ashleys Webserver;OK
+Zope 2.9.6;OK
+Oracle Application Server 10g 10.1.2.2.0;OK
+LiteSpeed Web Server 3.3;OK
+Apache 2.0.53;OK
+QNAP TS-101 Turbo Station 1.2.0.0629;OK
+Lexmark E323;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+Yaws 1.68;OK
+Apache 2.3.0;OK
+Microsoft IIS 5.1;OK
+Sun-ONE-Web-Server/6.1;OK
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Apache 2.0.46;OK
+Compaq HTTP Server 5.2;Ok
+StWeb 1.3.27;OK
+Oracle Application Server 10g 10.1.2.0.0;OK
+nginx/1.2.9;OK
+Sony SNC-RZ30 NetEVI 1.09;OK
+Oracle Application Server 9i 9.0.2.3.0;OK
+Zyxel P-2602HW-D1A RomPager 4.51;OK
+AOLserver 4.5.0;OK
+QNAP TS-411U 1.2.0.0531;OK
+Apache 2.2.8;OK
+QNAP TS-209 1.1.3.1101T;OK
+Jetty 5.1.10;OK
+Cherokee 0.99;OK
+Apache 1.2.6;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+SnapStream Digital Video Recorder;OK
+Apache 2.0.51;OK
+Sony SNC-RZ30 NetEVI 3.03;OK
+Google Web Server 2.1;OK
+AOLserver 3.4.2;Not Found
+Xerox Phaser 8200;OK

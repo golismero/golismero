@@ -1,0 +1,19 @@
+[Core]
+Name   = Nikto
+Module = nikto.py
+Class  = NiktoPlugin
+
+[Documentation]
+Description = Run the Nikto scanner and import the results.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+exec    =
+config  =
+Pause   = 0
+timeout = 10
+Tuning  = x6

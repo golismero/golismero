@@ -1,0 +1,10 @@
+[Core]
+Name = Test plugin
+
+[Documentation]
+Description = Test plugin
+Author = Mario Vilas
+Version = 0.1
+Website = https://github.com/golismero
+Copyright = Copyright (C) 2011-2013 GoLismero Project
+License = GNU Public License

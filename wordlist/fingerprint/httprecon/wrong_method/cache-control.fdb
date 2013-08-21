@@ -1,0 +1,57 @@
+Abyss 2.4.0.3 X2;no-cache
+AOLserver 3.4.2;no-cache
+Apache 1.3.26;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.26;post-check=0, pre-check=0
+Apache 1.3.33;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.37;private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.52;no-cache, must-revalidate
+Apache 2.0.54;no-cache, pre-check=0, post-check=0
+Apache 2.2.11;must-revalidate
+Apache 2.2.3;no-cache
+Apache 2.2.3;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.3;private
+Apache 2.2.4;no-cache, no-store, max-age=0, must-revalidate
+Apache 2.2.4;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.6;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.6;private
+Apache 2.2.8;max-age=86400,
+Barracuda Networks Spam Firewall;no-cache,no-store
+Cherokee 0.6.0;no-cache
+Cherokee 0.99;no-cache
+FlexWATCH FW-3440-B;no-cache
+GlobalSCAPE Secure Server 3.3;private
+IBM HTTP Server 6.0.2.19;no-cache
+IBM HTTP Server 6.1.0.19;no-cache
+KLone 2.1.0rc1;no-cache, must-revalidate
+ListManagerWeb 8.8c;max-age=0
+LiteSpeed Web Server 3.3;private, no-cache, max-age=0
+Lotus Domino Go Webserver 4.6.2.5;no-cache
+Microsoft IIS 6.0;private
+Microsoft IIS 7.0;no-cache
+Mongrel 1.0;no-cache
+NetBotz 320 thttpd 2.25b;no-cache,no-store
+NetBotz 420 thttpd 2.25b;no-cache,no-store
+NetBotz 500 thttpd 2.25b;no-cache,no-store
+nginx 0.5.33;no-cache, must-revalidate, max-age=0
+nginx 0.5.35;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+nginx 0.6.16;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Oracle Application Server 10g 10.1.2.0.2;no-cache, max-age=0, must-revalidate, proxy-mustcheck
+PacketShaper httpd 1.00;no-cache
+Resin 2.1.17;no-cache
+Ricoh Aficio 1022 Web-Server 3.0;no-cache
+Ricoh Aficio 1045 5.23 Web-Server 3.0;no-cache
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;no-cache
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;no-cache
+SnapStream Digital Video Recorder;no-cache
+Squid 2.6.STABLE4;no-cache
+Squid 2.6.STABLE7;no-cache
+thttpd 2.26;no-cache,no-store
+WallBotz 500 thttpd 2.25b;no-cache,no-store
+Xerox Phaser 6200;no-cache
+Xerox Phaser 7300;no-cache
+Xerox Phaser 8200;no-cache
+Xerox Phaser 860;no-cache
+Zoom ADSL;no-cache
+Zope 2.10.4;max-age=10
+Zope 2.7.6;max-age=3600, must-revalidate
+Zope 2.7.6;no-store, no-cache, must-revalidate, post-check=0, pre-check=0

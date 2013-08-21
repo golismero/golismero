@@ -1,0 +1,60 @@
+C:\Users\Mario\Desktop\golismero\golismero\api\data\__init__.py:1280: list comprehension redefines 'data' from line 1176
+C:\Users\Mario\Desktop\golismero\golismero\api\net\dns.py:35: 'from data.information.dns import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\golismero\api\net\dns.py:44: 'from dns.zone import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\golismero\messaging\message.py:39: 'from codes import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theharvester.py:55: 'from discovery import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\theHarvester.py:4: 'httplib' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\theHarvester.py:5: 'from socket import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\theHarvester.py:6: 're' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\theHarvester.py:8: 'from discovery import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\theHarvester.py:340: local variable 'save' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\bingsearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\bingsearch.py:4: 're' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch-threads.py:4: 'socket' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch-threads.py:15: local variable 'nameserver' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch-threads.py:26: local variable 'nameserver' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch-threads.py:78: local variable 'nameserver' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch-threads.py:109: local variable 'e' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch.py:4: 'socket' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch.py:15: local variable 'nameserver' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch.py:24: local variable 'nameserver' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch.py:109: local variable 'e' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\dnssearch.py:185: local variable 'e' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\exaleadsearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\exaleadsearch.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesearch.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesets.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesets.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesets.py:4: 're' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\googlesets.py:5: 'time' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\jigsaw.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\jigsaw.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\linkedinsearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\linkedinsearch.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\linkedinsearch.py:4: 're' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\people123.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\people123.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\pgpsearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\pgpsearch.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\yandexsearch.py:1: 'string' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\yandexsearch.py:2: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\Base.py:87: redefinition of unused 'time' from line 12
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\Base.py:98: redefinition of unused 'time' from line 12
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\Base.py:143: redefinition of unused 'time' from line 12
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\Base.py:143: 'time' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\Lib.py:243: local variable 'res' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\win32dns.py:22: 're' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\win32dns.py:43: redefinition of unused 're' from line 22
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:14: 'Status' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:14: 'Opcode' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:14: 'Type' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:14: 'Class' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:17: 'from Base import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:18: 'from Lib import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\DNS\__init__.py:20: 'from lazy import *' used; unable to detect undefined names
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\shodan\api.py:4: 'dumps' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\discovery\shodan\wps.py:12: 'urlencode' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\lib\hostchecker.py:7: 'sys' imported but unused
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\lib\hostchecker.py:20: local variable 'e' is assigned to but never used
+C:\Users\Mario\Desktop\golismero\plugins\testing\recon\theHarvester\lib\htmlExport.py:142: local variable 'ban' is assigned to but never used

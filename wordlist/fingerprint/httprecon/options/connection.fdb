@@ -1,0 +1,2214 @@
+4D WebSTAR 2.1.1;close
+4D WebSTAR 3.0.2;Keep-Alive
+4D WebSTAR 5.3.1;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+4D WebSTAR 5.4.0;Keep-Alive
+Abyss 2.0.0.20 X2;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+Anti-Web HTTPD 4.0beta13;close
+AOLserver 2.3.3;Keep-Alive
+AOLserver 3.3.1;close
+AOLserver 3.3.1;keep-alive
+AOLserver 3.4.2;close
+AOLserver 3.5.0;close
+AOLserver 4.0.10a;close
+AOLserver 4.0.10;close
+AOLserver 4.0.11a;close
+AOLserver 4.5.0;close
+Apache 1.2.6;Keep-Alive
+Apache 1.3.12;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Apache 1.3.26;close
+Apache 1.3.26;Keep-Alive
+Apache 1.3.27;close
+Apache 1.3.27;Keep-Alive
+Apache 1.3.28;close
+Apache 1.3.29;Keep-Alive
+Apache 1.3.31;close
+Apache 1.3.33;close
+Apache 1.3.33;Keep-Alive
+Apache 1.3.34;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.35;Keep-Alive
+Apache 1.3.37;close
+Apache 1.3.37;Keep-Alive
+Apache 1.3.39;close
+Apache 1.3.39;Keep-Alive
+Apache 1.3.41;Keep-Alive
+Apache 2.0.45;close
+Apache 2.0.46;close
+Apache 2.0.46;keep-alive
+Apache 2.0.46;Keep-alive
+Apache 2.0.46;Keep-Alive
+Apache 2.0.48;close
+Apache 2.0.49;Keep-Alive
+Apache 2.0.50;close
+Apache 2.0.50;Keep-Alive
+Apache 2.0.51;close
+Apache 2.0.52;close
+Apache 2.0.52;Keep-Alive
+Apache 2.0.53;Keep-Alive
+Apache 2.0.54;close
+Apache 2.0.54;Keep-Alive
+Apache 2.0.55;Keep-Alive
+Apache 2.0.58;Keep-Alive
+Apache 2.0.59;close
+Apache 2.0.59;Keep-Alive
+Apache 2.0.63;Keep-Alive
+Apache 2.2.0;Keep-Alive
+Apache 2.2.11;Keep-Alive
+Apache 2.2.2;close
+Apache 2.2.2;keep-alive
+Apache 2.2.2;Keep-Alive
+Apache 2.2.3;close
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Apache 2.2.4;Keep-Alive
+Apache 2.2.6;close
+Apache 2.2.6;Keep-Alive
+Apache 2.2.8;close
+Apache 2.2.8;Keep-Alive
+Apache 2.3.0;Keep-Alive
+Ashleys Webserver;close
+BadBlue 2.4;close
+BadBlue 2.5;close
+BadBlue 2.6;close
+BadBlue 2.7;close
+BarracudaDrive 3.9.1;Keep-Alive
+Barracuda Networks Spam Firewall;close
+BaseHTTPServer 0.3;close
+Boa 0.93.15;close
+Boa 0.94.14rc21;close
+Caudium 1.4.9;close
+Cherokee 0.6.0;close
+Cherokee 0.99;Keep-Alive
+Cougar 9.5.6001.6264;close
+Dreambox DM500 Web Interface 6.0.4;close
+eMule 0.48a;close
+eMule 0.49c;close
+fnord 1.8a;close
+Fortinet Fortigate;Keep-Alive
+Gatling 0.10;close
+Gatling 0.9;close
+GlobalSCAPE Secure Server 3.3;close
+Hiawatha 6.11;keep-alive
+Hiawatha 6.2;keep-alive
+HTTPi 1.5.2;close
+HTTPi 1.6.1;close
+IBM HTTP Server 6.1.0.19;Keep-Alive
+IceWarp 8.3.0;close
+Jana-Server 2.4.8.51;close
+Jetty 5.1.1;close
+Konica IP-421/7020 Allegro RomPager 2.00;close
+lighttpd 1.4.16;close
+Linksys WVC54GC Boa 0.94.13;close
+LiteSpeed Web Server 3.3;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+Mathopd 1.5p6;close
+Microsoft IIS 5.0;close
+Microsoft IIS 6.0;close
+Microsoft IIS 6.0;keep-alive
+Microsoft IIS 6.0;Keep-Alive
+Microsoft ISA Server 2006;close
+Mongrel 1.0;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+NetBotz 320 thttpd 2.25b;close
+NetBotz 420 thttpd 2.25b;close
+NetBotz 500 thttpd 2.25b;close
+Netscape Enterprise Server 6.0;close
+nginx 0.5.19;keep-alive
+nginx 0.5.30;keep-alive
+nginx 0.5.31;close
+nginx 0.5.32;close
+nginx 0.5.32;keep-alive
+nginx 0.5.33;keep-alive
+nginx 0.5.35;close
+nginx 0.5.35;keep-alive
+nginx 0.6.13;keep-alive
+nginx 0.6.16;keep-alive
+nginx 0.6.26;keep-alive
+nostromo 1.9.1;close
+Novell Access Manager 3;close
+OpenSA 1.0.1;Keep-Alive
+OpenSA 1.0.3;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Oracle Application Server 9i 9.0.2;close
+Oracle Application Server 9i 9.0.3.1;close
+Orion 2.0.7;Keep-Alive
+OSU 3.12alpha;close
+Oversee Webserver 1.3.18;Keep-Alive
+publicfile;close
+QNAP GNS-8000A 4.1.4.0118;close
+QNAP NAS-2108R 2.27.1024;close
+QNAP NAS-4010 4.2.0.0606;close
+QNAP NAS-4100 2.26.0517;close
+QNAP TS-101 2.0.1.0302;close
+QNAP TS-101 2.1.0.612T;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+QNAP TS-109 1.1.2.1009T;close
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-209 1.1.1.0831T;close
+QNAP TS-209 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+QNAP TS-411U 1.2.0.0531;close
+Resin 2.1.17;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Roxen 2.2.213;keep-alive
+Roxen 4.5.111;close
+Roxen 4.5.145;keep-alive
+SnapStream Digital Video Recorder;close
+Sony SNC-RZ30 NetEVI 1.09;close
+Sony SNC-RZ30 NetEVI 2.05;close
+Sony SNC-RZ30 NetEVI 2.05g;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Sony SNC-RZ30 NetEVI 2.13;close
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 2.24;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.02;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.14;close
+Sony SNC-Z20 NetZoom 1.00;close
+Squid 2.5.STABLE5;close
+Squid 2.5.STABLE6;close
+Squid 2.5.STABLE9;close
+Squid 2.6.STABLE13;close
+Squid 2.6.STABLE4;close
+Squid 2.6.STABLE7;close
+StWeb 1.3.27;Keep-Alive
+Sun Java System Web Server 7.0;close
+Sun ONE Web Server 6.1;close
+TheServer 2.21L;Keep-Alive
+thttpd 2.19-MX;close
+thttpd 2.20b;close
+thttpd 2.24;close
+thttpd 2.26;close
+UserLand Frontier 9.0.1;close
+UserLand Frontier 9.5;close
+Virtuoso 5.0.3;Keep-Alive
+VMware ESX web server;close
+VNC Server Enterprise Edition E4.2.5;close
+vqServer 1.9.56;Keep-Alive
+VS Web Server 01.00.00;close
+WallBotz 500 thttpd 2.25b;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+webcamXP PRO 2006 2.37.144;keep-alive
+webcamXP PRO 2007 3.60.220;keep-alive
+webcamXP PRO 2007 3.72.440;keep-alive
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+WEBrick 1.3.1;Keep-Alive
+Yaws 6.0.5;Keep-Alive
+Zeus 4.3;close
+Zeus 4.41;keep-alive
+Zope 2.5.0;Keep-Alive
+Zope 2.5.1;close
+Zope 2.6.0;Keep-Alive
+Zope 2.6.4;Keep-Alive
+Zope 2.7.4;close
+Zope 2.7.5;close
+Zope 2.7.6;close
+Zope 2.7.7;close
+Zope 2.7.7;Keep-Alive
+Zope 2.7.9;keep-alive
+Zope 2.8.0;close
+Zope 2.8.4;close
+Zope 2.8.6;close
+Zope 2.8.6;Keep-Alive
+Zope 2.8.7;Keep-Alive
+Zope 2.9.3;Keep-Alive
+Zope 2.9.6;close
+Zope 2.9.8;Keep-Alive
+Zyxel P-660R-D3 RomPager 4.51;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+nginx/1.2.1;keep-alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+nginx/1.2.1;keep-alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+nginx/1.2.9;keep-alive
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+nginx/1.4.1;keep-alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+nginx/1.2.1;keep-alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+nginx/1.2.9;keep-alive
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+nginx/1.5.1;keep-alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+nginx/1.4.1;keep-alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+nginx/1.2.1;keep-alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+nginx/1.2.9;keep-alive
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close
+Apache 1.3.35;Keep-Alive
+UserLand Frontier 9.0.1;close
+nginx 0.5.35;keep-alive
+Abyss 2.5.0.0 X2;Keep-Alive
+Apache 1.3.33;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;close
+webcamXP PRO 2007 3.96.000 beta;keep-alive
+BadBlue 2.7;close
+QNAP TS-209 1.1.3.1101T;close
+Apache 2.0.46;Keep-Alive
+Squid 2.6.STABLE4;close
+Roxen 4.5.145;keep-alive
+Zope 2.8.0;close
+Oracle Application Server 10g 10.1.2.0.0;Keep-Alive
+Hiawatha 6.11;keep-alive
+Apache 1.3.37;close
+Apache 2.0.45;close
+Linksys WVC54GC Boa 0.94.13;close
+publicfile;close
+Apache 2.2.8;close
+Zope 2.7.4;close
+Apache 2.0.46;Keep-alive
+AOLserver 3.5.0;close
+AOLserver 4.0.11a;close
+Lotus Domino Go Webserver 4.6.2.5;Keep-Alive
+IBM HTTP Server 6.1.0.19;Keep-Alive
+Apache 2.2.2;close
+Netscape Enterprise Server 6.0;close
+Ricoh Aficio 1045 5.23 Web-Server 3.0;close
+Cherokee 0.99;Keep-Alive
+Virtuoso 5.0.3;Keep-Alive
+Apache 2.0.52;close
+Apache 2.2.11;Keep-Alive
+Apache 2.0.46;keep-alive
+Zope 2.5.1;close
+nginx 0.5.32;close
+Squid 2.6.STABLE7;close
+QNAP TS-411U 1.2.0.0531;close
+Zope 2.7.7;Keep-Alive
+Abyss 2.5.0.0 X1;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.02;close
+OpenSA 1.0.3;Keep-Alive
+nginx/1.5.1;keep-alive
+Apache 1.3.33;close
+Jana-Server 2.4.8.51;close
+Mathopd 1.5p6;close
+Squid 2.6.STABLE13;close
+fnord 1.8a;close
+WDaemon 9.6.1;close
+webcamXP PRO 2006 2.37.144;keep-alive
+Apache 2.0.58;Keep-Alive
+Gatling 0.10;close
+Abyss 2.0.0.20 X2;Keep-Alive
+Apache 1.3.39;close
+vqServer 1.9.56;Keep-Alive
+eMule 0.48a;close
+4D WebSTAR 3.0.2;Keep-Alive
+OpenSA 1.0.4;Keep-Alive
+Apache 2.0.50;close
+Anti-Web HTTPD 4.0beta13;close
+UserLand Frontier 9.5;close
+BadBlue 2.5;close
+Microsoft IIS 6.0;Keep-Alive
+Apache 2.2.3;Keep-Alive
+Apache 2.2.4;close
+Novell Access Manager 3;close
+QNAP TS-109 1.1.2.1009T;close
+nostromo 1.9.1;close
+nginx/0.7.69;keep-alive
+webcamXP PRO 2006 2.20.024;keep-alive
+thttpd 2.19-MX;close
+Resin 2.1.17;close
+Caudium 1.4.9;close
+4D WebSTAR 5.3.1;Keep-Alive
+VMware ESX web server;close
+Apache 2.3.0;Keep-Alive
+AOLserver 2.3.3;Keep-Alive
+Hiawatha 6.2;keep-alive
+4D WebSTAR 5.4.0;Keep-Alive
+BarracudaDrive 3.9.1;Keep-Alive
+Apache 2.0.59;close
+LiteSpeed Web Server 3.3;close
+Apache 1.3.37;Keep-Alive
+NetBotz 500 thttpd 2.25b;close
+Apache 2.0.49;Keep-Alive
+Apache 2.2.4;Keep-Alive
+QNAP NAS-4100 2.26.0517;close
+nginx 0.6.26;keep-alive
+QNAP NAS-4010 4.2.0.0606;close
+thttpd 2.26;close
+Apache 1.3.26;close
+Squid 2.5.STABLE5;close
+AOLserver 3.3.1;keep-alive
+Gatling 0.9;close
+OSU 3.12alpha;close
+Zope 2.9.6;close
+webcamXP PRO 2007 3.60.220;keep-alive
+Apache 1.2.6;Keep-Alive
+QNAP TS-109 1.1.3.1101T;close
+QNAP TS-40IT Turbo Server 1.1.0.0425;close
+Apache 2.0.54;close
+Apache 2.2.6;Keep-Alive
+Apache 1.3.26;Keep-Alive
+Apache 2.2.0;Keep-Alive
+AOLserver 4.0.10;close
+StWeb 1.3.27;Keep-Alive
+Oracle Application Server 10g 9.0.4.0.0;Keep-Alive
+Oracle Application Server 10g 10.1.2.2.0;Keep-Alive
+WallBotz 500 thttpd 2.25b;close
+Oracle Application Server 9i 9.0.3.1;close
+Mongrel 1.0;Keep-Alive
+NetBotz 420 thttpd 2.25b;close
+nginx 0.6.16;keep-alive
+Oracle Application Server 10g 9.0.4.1.0;Keep-Alive
+Fortinet Fortigate;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.14;close
+Sony SNC-RZ30 NetEVI 3.14;close
+4D WebSTAR 2.1.1;close
+nginx/1.0.15;keep-alive
+Dreambox DM500 Web Interface 6.0.4;close
+Microsoft IIS 6.0;close
+Apache 2.0.50;Keep-Alive
+Boa 0.93.15;close
+Apache 2.0.52;Keep-Alive
+QNAP TS-101 2.1.0.612T;close
+nginx 0.6.13;keep-alive
+Microsoft IIS 6.0;keep-alive
+Apache 2.2.3;close
+Apache 1.3.39;Keep-Alive
+webcamXP PRO 2007 3.72.440;keep-alive
+Oracle Application Server 9i 9.0.2;close
+AOLserver 3.3.1;close
+WEBrick 1.3.1;Keep-Alive
+AllegroServe 1.2.50;Keep-Alive
+4D WebSTAR 5.3.3;Keep-Alive
+nginx 0.5.32;keep-alive
+Jetty 5.1.1;close
+Apache 1.3.41;Keep-Alive
+VS Web Server 01.00.00;close
+thttpd 2.24;close
+Oracle Application Server 10g 10.1.3.1.0;Keep-Alive
+BadBlue 2.4;close
+Zope 2.5.0;Keep-Alive
+Abyss 2.6.0.0 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 1.09;close
+Squid 2.5.STABLE9;close
+Apache 1.3.12;Keep-Alive
+Sony SNC-RZ30 NetEVI 3.10;close
+Sony SNC-RZ30 NetEVI 3.01;close
+Sony SNC-RZ30 NetEVI 3.03;close
+Zope 2.7.5;close
+Zope 2.7.9;keep-alive
+Zope 2.6.0;Keep-Alive
+QNAP GNS-8000A 4.1.4.0118;close
+Zope 2.9.8;Keep-Alive
+Zope 2.8.6;close
+Sony SNC-RZ30 NetEVI 3.10a;close
+QNAP TS-101 Turbo Station 1.2.0.0629;close
+lighttpd 1.4.16;close
+Ricoh Aficio 1022 Web-Server 3.0;close
+Zope 2.9.3;Keep-Alive
+Konica IP-421/7020 Allegro RomPager 2.00;close
+Apache 2.2.2;Keep-Alive
+Barracuda Networks Spam Firewall;close
+Oracle Application Server 10g 9.0.4.3.0;Keep-Alive
+Apache 1.3.28;close
+Yaws 6.0.5;Keep-Alive
+IceWarp 8.3.0;close
+OpenSA 1.0.1;Keep-Alive
+QNAP NAS-2108R 2.27.1024;close
+Sony SNC-Z20 NetZoom 1.00;close
+Sony SNC-RZ30 NetEVI 2.13;close
+thttpd 2.20b;close
+Apache 1.3.27;close
+TheServer 2.21L;Keep-Alive
+nginx/1.4.1;keep-alive
+Nanoweb 2.2.10;Keep-Alive
+eMule 0.49c;close
+Oversee Webserver 1.3.18;Keep-Alive
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;close
+Orion 2.0.7;Keep-Alive
+nginx 0.5.31;close
+Boa 0.94.14rc21;close
+Zope 2.8.4;close
+AOLserver 4.5.0;close
+webcamXP PRO 2006 2.16.456x BETA;keep-alive
+AOLserver 4.0.10a;close
+BadBlue 2.6;close
+AOLserver 3.4.2;close
+Apache 1.3.29;Keep-Alive
+Oracle Application Server 10g 10.1.3.0.0;Keep-Alive
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;close
+Zope 2.8.7;Keep-Alive
+Microsoft IIS 5.0;close
+SimpleHTTP/0.6 Python/2.7.2;close
+QNAP TS-101 2.0.1.0302;close
+Oracle Application Server 10g 9.0.4.2.0;Keep-Alive
+SnapStream Digital Video Recorder;close
+Apache 2.0.53;Keep-Alive
+nginx/1.2.1;keep-alive
+VNC Server Enterprise Edition E4.2.5;close
+Apache 2.0.63;Keep-Alive
+Squid 2.5.STABLE6;close
+Ashleys Webserver;close
+nginx 0.5.30;keep-alive
+HTTPi 1.6.1;close
+Roxen 2.2.213;keep-alive
+GlobalSCAPE Secure Server 3.3;close
+Microsoft ISA Server 2006;close
+BaseHTTPServer 0.3;close
+nginx 0.5.19;keep-alive
+Apache 1.3.31;close
+Apache 2.2.2;keep-alive
+Roxen 4.5.111;close
+nginx/1.2.9;keep-alive
+Apache 2.0.54;Keep-Alive
+QNAP TS-209 1.1.1.0831T;close
+Zope 2.7.7;close
+Sun Java System Web Server 7.0;close
+Sony SNC-RZ30 NetEVI 2.06;close
+Apache 2.0.59;Keep-Alive
+Cougar 9.5.6001.6264;close
+Zyxel P-660R-D3 RomPager 4.51;close
+Cherokee 0.6.0;close
+Sun ONE Web Server 6.1;close
+Apache 2.2.6;close
+Apache 2.0.46;close
+Zope 2.8.6;Keep-Alive
+Abyss 2.4.0.3 X2;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05g;close
+Apache 2.0.51;close
+Zeus 4.3;close
+Apache 2.0.55;Keep-Alive
+Sony SNC-RZ30 NetEVI 2.05;close
+nginx 0.5.33;keep-alive
+Zope 2.7.6;close
+Zope 2.6.4;Keep-Alive
+nginx 0.5.35;close
+NetBotz 320 thttpd 2.25b;close
+nginx/0.6.39;keep-alive
+Apache 2.2.8;Keep-Alive
+Apache 2.0.48;close
+Apache 1.3.34;Keep-Alive
+Apache 1.3.17;Keep-Alive
+Oracle Application Server 10g 10.1.2.0.2;Keep-Alive
+Apache 1.3.34;close
+Zeus 4.41;keep-alive
+Sony SNC-RZ30 NetEVI 2.24;close
+Apache 1.3.27;Keep-Alive
+HTTPi 1.5.2;close

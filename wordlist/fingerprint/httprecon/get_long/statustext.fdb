@@ -1,0 +1,4630 @@
+0W 0.8c;Request-URI Too Long
+4D WebSTAR 2.0;File Not Found
+4D WebSTAR 2.1.1;File Not Found
+4D WebSTAR 3.0.2;File Not Found
+4D WebSTAR 4.2;OK
+4D WebSTAR 4.5;OK
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 5.3.3;Not Found
+4D WebSTAR 5.4.0;Not Found
+Abyss 2.0.0.20 X2;Not Found
+Abyss 2.4.0.3 X2;Internal Server Error
+Abyss 2.5.0.0 X1;Internal Server Error
+Abyss 2.5.0.0 X2;Internal Server Error
+Abyss 2.6.0.0 X2;Internal Server Error
+AIDeX Mini-Webserver 1.1;Bad Request
+AllegroServe 1.2.50; Not Found
+and-httpd 0.99.11;OK
+Anti-Web HTTPD 3.0.7;OK
+Anti-Web HTTPD 4.0beta13;Not Found
+AOLserver 2.3.3;Not Found
+AOLserver 3.3.1;Not Found
+AOLserver 3.3.1;OK
+AOLserver 3.4.2;Forbidden
+AOLserver 3.4.2;Not Found
+AOLserver 3.5.0;Not Found
+AOLserver 4.0.10a;Not Found
+AOLserver 4.0.10;Not Found
+AOLserver 4.0.10;OK
+AOLserver 4.0.11a;Not Found
+AOLserver 4.5.0;Not Found
+Apache 1.2.6;Forbidden
+Apache 1.3.12;Forbidden
+Apache 1.3.17;Forbidden
+Apache 1.3.26;Forbidden
+Apache 1.3.26;Not Found
+Apache 1.3.26;OK
+Apache 1.3.27;Forbidden
+Apache 1.3.27;Not Found
+Apache 1.3.28;Forbidden
+Apache 1.3.29;Forbidden
+Apache 1.3.31;Forbidden
+Apache 1.3.33;Forbidden
+Apache 1.3.33;OK
+Apache 1.3.34;Forbidden
+Apache 1.3.34;Not Found
+Apache 1.3.35;Forbidden
+Apache 1.3.37;Forbidden
+Apache 1.3.37;Not Found
+Apache 1.3.37;OK
+Apache 1.3.39;Forbidden
+Apache 1.3.41;Forbidden
+Apache 2.0.45;Forbidden
+Apache 2.0.45;OK
+Apache 2.0.46;Forbidden
+Apache 2.0.48;Forbidden
+Apache 2.0.49;Forbidden
+Apache 2.0.50;Forbidden
+Apache 2.0.51;Forbidden
+Apache 2.0.52;Forbidden
+Apache 2.0.53;Forbidden
+Apache 2.0.54;Forbidden
+Apache 2.0.55;Forbidden
+Apache 2.0.55;OK
+Apache 2.0.58;Forbidden
+Apache 2.0.59;Forbidden
+Apache 2.0.59;OK
+Apache 2.0.63;OK
+Apache 2.2.0;Forbidden
+Apache 2.2.11;Forbidden
+Apache 2.2.2;Forbidden
+Apache 2.2.3;Forbidden
+Apache 2.2.3;Not Found
+Apache 2.2.3;OK
+Apache 2.2.4;Forbidden
+Apache 2.2.4;OK
+Apache 2.2.6;Forbidden
+Apache 2.2.6;OK
+Apache 2.2.8;Forbidden
+Apache 2.2.9;Forbidden
+Apache 2.3.0;Forbidden
+Araneida 0.84;OK
+Ashleys Webserver;OK
+AXIS 2400 Video Server;Not Found
+BadBlue 2.4;OK
+BadBlue 2.5;OK
+BadBlue 2.6;OK
+BadBlue 2.7;OK
+Barracuda Networks Spam Firewall;Internal Error
+BaseHTTPServer 0.3;OK
+Belkin Router 2.00.002;Bad Request
+Boa 0.92o;Not Found
+Boa 0.93.15;Bad Request
+Boa 0.94.14rc21;Bad Request
+bozohttpd 20060517;Internal Error
+bozohttpd 20080303;Internal Error
+Caudium 1.4.9;No such file or directory.
+Cherokee 0.6.0;Not Found
+Cherokee 0.99;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+CL-HTTP 70.216;Not Found
+Compaq HTTP Server 5.2;Ok
+Compaq HTTP Server 5.7;Ok
+Compaq HTTP Server 5.91;Ok
+Compaq HTTP Server 5.94;Ok
+Compaq HTTP Server 9.9;Forbidden
+Cougar 9.5.6001.6264;OK
+Dell 1710n;Unknown Error
+Dell 3232;Unknown Error
+Dell M5200;Unknown Error
+Divar 1.00;Bad Request
+Divar 1.10.538.0;Bad Request
+Divar 1.11.626.0;Bad Request
+Divar 1.12.649.0;Bad Request
+DM Simple http Server Beta 1;OK
+dwhttpd 4.0.2a7a;Not Found
+dwhttpd 4.1a6;Not Found
+dwhttpd 4.2a7;Not Found
+eMule 0.48a;OK
+eMule 0.49c;OK
+Final Web Server;OK
+firecat 1.0.0 Beta;OK
+FlexWATCH FW-3440-B;Site or Page Not Found
+fnord 1.8a;Not Found
+Fortinet Fortigate;Invalid Request
+Gatling 0.10;Not Found
+Gatling 0.9;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+Google Web Server 2.1;Not Found
+Hiawatha 6.11;OK
+Hiawatha 6.2;Internal Server Error
+HTTPi 1.5.2;File Not Found
+HTTPi 1.6.1;File Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+IBM HTTP Server 6.0.2.19;Forbidden
+IBM HTTP Server 6.0.2.19;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+IceWarp 8.3.0;Not Found
+Indy IdHTTPServer 9.00.10;OK
+IPC@CHIP 1.01;Bad Request
+IPC@CHIP 1.04;Bad Request
+Jana-Server 2.4.8.51;Not Found
+Jetty 5.1.10;OK
+Jetty 5.1.1;Internal Server Error
+Jetty 6.1.1;OK
+Jigsaw 2.2.5;Unauthorized
+Jigsaw 2.2.6;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+KGet web interface 2.1.3;Authorization Required
+KLone 2.1.0rc1;Not Found
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+LANCOM DSL/10 Office 3.50.0012;OK
+LANCOM DSL/I-10 3.58.0006;OK
+LANCOM DSL/I-10 Office 3.59.0006;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+LANCOM DSL/I-1611 4.12.0031;OK
+LANCOM DSL/I-1611 5.06.0005;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+LANCOM DSL/I-1611 6.06.0012;OK
+LANCOM DSL/I-1611 6.24.0012;OK
+LANCOM DSL/I-1611 6.26.0022;OK
+LANCOM DSL/I-1611 6.32.0021;OK
+Lexmark C750;Unknown Error
+Lexmark E323;Unknown Error
+Lexmark Optra S 1255;Unauthorized
+Lexmark T630;Unknown Error
+lighttpd 1.4.13;Internal Server Error
+lighttpd 1.4.16;Internal Server Error
+lighttpd 1.4.18;Internal Server Error
+lighttpd 1.4.18;Unauthorized
+lighttpd 1.4.19;Internal Server Error
+lighttpd 1.4.22;OK
+lighttpd 1.5.0;Not Found
+ListManagerWeb 8.8c;Authorization Required
+LiteSpeed Web Server 3.3;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Mathopd 1.5p6;Request-URI Too Long
+Micah Lansing Advanced WebServer 1.2;OK
+Microsoft IIS 5.0;Object Not Found
+Microsoft IIS 5.0;OK
+Microsoft IIS 5.0;URL Too Long
+Microsoft IIS 5.1;URL Too Long
+Microsoft IIS 6.0;Bad Request
+Microsoft IIS 6.0;Forbidden
+Microsoft IIS 6.0;Not Found
+Microsoft IIS 7.0;Bad Request
+Microsoft ISA Server 2006;OK
+Mongrel 1.0;Proxy Error
+Nanoweb 2.2.10;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+NetBotz 420 thttpd 2.25b;Internal Error
+NetBotz 500 thttpd 2.25b;Internal Error
+Netgear RP114 3.26;Bad Request
+Netopia Router Allegro RomPager 2.10;BadRequest
+Netscape Enterprise Server 2.01;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+Netscape Enterprise Server 3.5.1;Not found
+Netscape Enterprise Server 4.1;OK
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Netscape Enterprise Server 6.0;Forbidden
+Netscape Enterprise Server 6.0;Not found
+Netscape Fasttrack 3.02a;Forbidden
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+nginx 0.5.19;Not Found
+nginx 0.5.30;Not Found
+nginx 0.5.31;Not Found
+nginx 0.5.32;Not Found
+nginx 0.5.32;OK
+nginx 0.5.33;Forbidden
+nginx 0.5.35;Forbidden
+nginx 0.5.35;Not Found
+nginx 0.6.13;Not Found
+nginx 0.6.16;Forbidden
+nginx 0.6.20;Internal error
+nginx 0.6.20;OK
+nginx 0.6.26;Bad Gateway
+nginx 0.7.35;Forbidden
+nostromo 1.9.1;Not Implemented
+Novell Access Manager 3;OK
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+OmniHTTPd 2.09;The filename or extension is too long. 
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+OmniHTTPd 2.10;The filename or extension is too long. 
+OpenSA 1.0.1;Forbidden
+OpenSA 1.0.3;Forbidden
+OpenSA 1.0.4;Forbidden
+OpenSA 1.0.5;Forbidden
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+Oracle Application Server 9i 9.0.2;Forbidden
+Oracle Application Server 9i 9.0.3.1;Not Found
+Orion 2.0.7;Not Found
+OSU 3.12alpha;Forbidden
+OSU 3.9;:    HTTP/1.1
+Oversee Webserver 1.3.18;OK
+PacketShaper httpd 1.00;OK
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+publicfile;file name too long
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+QNAP NAS-2108R 2.27.1024;Internal Error
+QNAP NAS-4010 4.2.0.0606;Internal Error
+QNAP NAS-4100 2.26.0517;Internal Error
+QNAP TS-101 2.0.1.0302;Internal Error
+QNAP TS-101 2.1.0.612T;Internal Error
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+QNAP TS-109 1.1.2.1009T;Internal Error
+QNAP TS-109 1.1.3.1101T;Internal Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+QNAP TS-209 1.1.3.1101T;Internal Error
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+QNAP TS-411U 1.2.0.0531;Internal Error
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Resin 3.0.23;The request contains an illegal URL.
+Resin 3.0.6;The request contains an illegal URL.
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Roxen 2.2.213;No such file or directory.
+Roxen 4.5.111;Forbidden
+Roxen 4.5.145;Not Found
+SHOUTcast Server 1.9.5;OK
+SHOUTcast Server 1.9.8;OK
+Snap Appliance 3.1.603;Not Implemented
+Snap Appliance 3.4.803;Not Implemented
+Snap Appliance 3.4.805;Not Implemented
+Snap Appliance 4.0.830;Not Implemented
+Snap Appliance 4.0.854;Not Implemented
+Snap Appliance 4.0.860;Not Implemented
+SnapStream Digital Video Recorder;Object Not Found
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Squid 2.5.STABLE5;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Squid 2.6.STABLE13;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Squid 2.6.STABLE7;Forbidden
+StWeb 1.3.27;Forbidden
+Sun Java System Web Server 6.1;Forbidden
+Sun Java System Web Server 7.0;Not Found
+Sun Java System Web Server 7.0;OK
+Sun ONE Web Server 6.1;Bad Request
+Sun ONE Web Server 6.1;Forbidden
+Sun ONE Web Server 6.1;OK
+SWAT 3.0.24;Authorization Required
+Symantec Mail Security for SMTP;OK
+Tandberg Videoconference Management;Unauthorized
+TclHttpd 3.5.1;Data follows
+TheServer 2.21L;Not Found
+thttpd 2.19-MX;Internal Error
+thttpd 2.20b;Internal Error
+thttpd 2.23beta1;Internal Error
+thttpd 2.24;Internal Error
+thttpd 2.26;Internal Error
+Tomcat Web Server 3.2.2;Not Found
+UserLand Frontier 9.0.1;Not Found
+UserLand Frontier 9.5;Not Found
+Virtuoso 5.0.3;Not Found
+VMware ESX web server;Not Found
+vqServer 1.9.56;Not found
+VS Web Server 01.00.00;OK
+WallBotz 500 thttpd 2.25b;Internal Error
+WDaemon 9.6.1;Not Found
+webcamXP PRO 2006 2.16.456x BETA;file not found
+webcamXP PRO 2006 2.20.024;file not found
+webcamXP PRO 2006 2.37.144;file not found
+webcamXP PRO 2007 3.60.220;file not found
+webcamXP PRO 2007 3.72.440;file not found
+webcamXP PRO 2007 3.96.000 beta;file not found
+WEBrick 1.3.1;Not Found 
+WN Server 2.4.7;not found
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Xerox Phaser 6200;Not Found
+Xerox Phaser 7300;Not Found
+Xerox Phaser 8200;Not Found
+Xerox Phaser 860;Not Found
+Yaws 1.65;Not Found
+Yaws 1.68;Not Found
+Yaws 1.72;Not Found
+Yaws 6.0.5;Not Found
+Zeus 4.3;Not found
+Zeus 4.41;Not Found
+Zoom ADSL;Not Found
+Zope 2.10.4;Not Found
+Zope 2.5.0;Not Found
+Zope 2.5.1;Not Found
+Zope 2.6.0;Internal Server Error
+Zope 2.6.0;Not Found
+Zope 2.6.1;Not Found
+Zope 2.6.4;Not Found
+Zope 2.7.4;Not Found
+Zope 2.7.5;Not Found
+Zope 2.7.6;Forbidden
+Zope 2.7.6;Not Found
+Zope 2.7.7;Not Found
+Zope 2.7.8;Not Found
+Zope 2.7.9;Not Found
+Zope 2.8.0;Not Found
+Zope 2.8.2;Not Found
+Zope 2.8.4;Not Found
+Zope 2.8.6;Not Found
+Zope 2.8.7;Not Found
+Zope 2.9.2;Not Found
+Zope 2.9.3;Not Found
+Zope 2.9.5;Not Found
+Zope 2.9.6;Not Found
+Zope 2.9.7;Not Found
+Zope 2.9.8;Not Found
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Orion 2.0.7;Not Found
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Nanoweb 2.2.10;Not Found
+BaseHTTPServer 0.3;OK
+Zope 2.8.7;Not Found
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Orion 2.0.7;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Nanoweb 2.2.10;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+AllegroServe 1.2.50; Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+nginx/0.6.39;Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+Yaws 6.0.5;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Abyss 2.0.0.20 X2;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+Abyss 2.0.0.20 X2;Not Found
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+nginx/1.2.9;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Yaws 6.0.5;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+Abyss 2.0.0.20 X2;Not Found
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+nginx/1.4.1;Not Found
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+nginx/1.2.9;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Yaws 6.0.5;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx/1.5.1;Not Found
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+Abyss 2.0.0.20 X2;Not Found
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+nginx/1.4.1;Not Found
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+nginx/1.2.9;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Yaws 6.0.5;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+WSGIServer/0.1 Python/2.7.2;NOT FOUND
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx/1.5.1;Not Found
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+Abyss 2.0.0.20 X2;Not Found
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+nginx/1.4.1;Not Found
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+Apache 1.3.28;Forbidden
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+nginx/1.2.9;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Yaws 6.0.5;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found
+
+dwhttpd 4.1a6;Not Found
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;OK
+ListManagerWeb 8.8c;Authorization Required
+OpenSA 1.0.3;Forbidden
+Squid 2.5.STABLE5;Bad Request
+QNAP NAS-4010 4.2.0.0606;Internal Error
+nginx 0.7.35;Forbidden
+QNAP TS-109 1.1.2.1009T;Internal Error
+Xerox Phaser 6200;Not Found
+Araneida 0.84;OK
+Apache 2.2.3;Forbidden
+Oracle Application Server 10g 9.0.4.1.0;Forbidden
+Netscape Enterprise Server 3.5.1G;Forbidden
+nginx 0.6.26;Bad Gateway
+Sony SNC-RZ30 NetEVI 3.01;Bad Request
+nginx/1.2.1;Not Found
+Xerox Phaser 7300;Not Found
+Apache 2.0.59;OK
+webcamXP PRO 2007 3.60.220;file not found
+Zope 2.9.5;Not Found
+Apache 1.3.31;Forbidden
+Fortinet Fortigate;Invalid Request
+Zope 2.7.5;Not Found
+AOLserver 3.3.1;OK
+Apache 1.3.27;Not Found
+Apache 2.0.51;Forbidden
+Apache 1.3.39;Forbidden
+Zyxel Prestige 662H-61 RomPager 4.07;Bad Request
+Compaq HTTP Server 5.94;Ok
+Zyxel P-660R-D3 RomPager 4.51;Bad Request
+Apache 2.0.49;Forbidden
+QNAP TS-411U 1.2.0.0531;Internal Error
+Anti-Web HTTPD 3.0.7;OK
+Apache 2.3.0;Forbidden
+Zope 2.5.1;Not Found
+lighttpd 1.4.19;Internal Server Error
+Divar 1.11.626.0;Bad Request
+eMule 0.49c;OK
+LANCOM DSL/I-1611 4.02.0003;OK
+Apache 1.3.34;Not Found
+Zope 2.8.4;Not Found
+Sun ONE Web Server 6.1;Bad Request
+Apache 2.0.53;Forbidden
+Snap Appliance 3.1.603;Not Implemented
+WSGIServer/0.1 Python/2.7.2;NOT FOUND
+QNAP TS-209 1.1.3.1101T;Internal Error
+publicfile;file name too long
+Sun ONE Web Server 6.1;OK
+Apache 1.3.33;OK
+thttpd 2.20b;Internal Error
+Zope 2.7.7;Not Found
+Zeus 4.41;Not Found
+Apache 2.2.2;Forbidden
+0W 0.8c;Request-URI Too Long
+VS Web Server 01.00.00;OK
+IBM HTTP Server 6.1.0.19;Forbidden
+Boa 0.92o;Not Found
+Jigsaw 2.2.6;Not Found
+bozohttpd 20080303;Internal Error
+BadBlue 2.6;OK
+Ricoh Aficio 1045 5.23 Web-Server 3.0;Not Found
+Netopia Router Allegro RomPager 2.10;BadRequest
+Gatling 0.10;Not Found
+Apache 2.2.6;OK
+Apache 2.0.58;Forbidden
+vqServer 1.9.56;Not found
+QNAP NAS-4100 2.26.0517;Internal Error
+AOLserver 4.0.10;Not Found
+webcamXP PRO 2007 3.72.440;file not found
+Sony SNC-RZ30 NetEVI 2.13;Bad Request
+Tomcat Web Server 3.2.2;Not Found
+Zope 2.6.4;Not Found
+lighttpd 1.4.18;Internal Server Error
+Apache 2.2.8;Forbidden
+Virtuoso 5.0.3;Not Found
+Cougar 9.5.6001.6264;OK
+IPC@CHIP 1.04;Bad Request
+Microsoft IIS 5.0;Object Not Found
+Zyxel Prestige 662H-63/67 RomPager 4.07;Bad Request
+Apache 2.2.4;OK
+QNAP TS-101 2.0.1.0302;Internal Error
+Oracle Application Server 10g 10.1.2.0.2;Forbidden
+TclHttpd 3.5.1;Data follows
+Jana-Server 2.4.8.51;Not Found
+Mongrel 1.0;Proxy Error
+nginx/1.5.1;Not Found
+nginx 0.6.16;Forbidden
+AOLserver 3.5.0;Not Found
+Oracle Application Server 10g 9.0.4.3.0;Forbidden
+Oracle Application Server 10g 9.0.4.2.0;Forbidden
+nginx 0.6.20;OK
+Sony SNC-RZ30 NetEVI 3.14;Bad Request
+OmniHTTPd 2.09;The filename or extension is too long. 
+WallBotz 500 thttpd 2.25b;Internal Error
+Squid 2.6.STABLE7;Forbidden
+Divar 1.10.538.0;Bad Request
+Roxen 2.2.213;No such file or directory.
+Sony SNC-RZ30 NetEVI 2.05;Bad Request
+Resin 2.1.17;Bad Request The request contains an illegal URL.
+Oversee Webserver 1.3.18;OK
+Apache 1.3.27;Forbidden
+Dell 1710n;Unknown Error
+Apache 2.0.46;Forbidden
+Zope 2.7.9;Not Found
+Lotus Domino Go Webserver 4.6.2.5;The file was not found, even after searching on any extensions to the file name.
+Apache 2.0.50;Forbidden
+SnapStream Digital Video Recorder;Object Not Found
+Novell Access Manager 3;OK
+Abyss 2.0.0.20 X2;Not Found
+BadBlue 2.5;OK
+Zope 2.8.6;Not Found
+Google Web Server 2.1;Not Found
+Zope 2.7.6;Forbidden
+nginx 0.6.13;Not Found
+Oracle Application Server 9i 9.0.3.1;Not Found
+Apache 1.3.26;Not Found
+dwhttpd 4.0.2a7a;Not Found
+Abyss 2.5.0.0 X2;Internal Server Error
+nginx/0.6.39;Not Found
+GlobalSCAPE Secure Server 3.3;Unauthorized
+dwhttpd 4.2a7;Not Found
+firecat 1.0.0 Beta;OK
+Belkin Router 2.00.002;Bad Request
+Apache 1.3.41;Forbidden
+AXIS 2400 Video Server;Not Found
+NetBotz 320 thttpd 2.25b;Internal Error
+Lexmark E323;Unknown Error
+Apache 1.3.37;OK
+OpenSA 1.0.5;Forbidden
+AOLserver 3.3.1;Not Found
+Zope 2.7.6;Not Found
+Net2Phone Rapid Logic 1.1;Not Found
+KGet web interface 2.1.3;Authorization Required
+LANCOM DSL/10 Office 3.50.0012;OK
+Snap Appliance 3.4.803;Not Implemented
+Zope 2.9.3;Not Found
+Zope 2.9.6;Not Found
+Cherokee 0.99;Not Found
+VMware ESX web server;Not Found
+Apache 2.0.55;Forbidden
+LANCOM DSL/I-1611 6.24.0012;OK
+Sony SNC-RZ30 NetEVI 3.10;Bad Request
+Apache 1.3.17;Forbidden
+Netscape Enterprise Server 6.0;500: Server Error [10-0004]
+Zeus 4.3;Not found
+Anti-Web HTTPD 4.0beta13;Not Found
+Hiawatha 6.2;Internal Server Error
+QNAP TS-209 1.1.1.0831T;Internal Error
+Apache 2.0.59;Forbidden
+Zyxel P-2602HW-D1A RomPager 4.51;Bad Request
+nginx/1.0.15;Not Found
+lighttpd 1.4.18;Unauthorized
+Microsoft IIS 5.0;OK
+Sun Java System Web Server 6.1;Forbidden
+Dell M5200;Unknown Error
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;Bad Request
+Sony SNC-RZ30 NetEVI 2.14;Bad Request
+Micah Lansing Advanced WebServer 1.2;OK
+LANCOM DSL/I-1611 6.02.0008;OK
+Dell 3232;Unknown Error
+Apache 2.2.9;Forbidden
+Zope 2.9.8;Not Found
+Philips NetCam 1.4.8 wg_httpd 1.0;Not Found
+WEBrick 1.3.1;Not Found 
+HTTPi 1.6.1;File Not Found
+Apache 1.3.33;Forbidden
+CL-HTTP 70.216;Not Found
+nginx 0.5.19;Not Found
+QNAP TS-40IT Turbo Server 1.1.0.0425;Internal Error
+Nanoweb 2.2.10;Not Found
+Zope 2.8.7;Not Found
+Zyxel P-661H-D1 RomPager 4.51;Bad Request
+HTTPi 1.5.2;File Not Found
+SHOUTcast Server 1.9.5;OK
+Apache 2.0.45;OK
+Apache 1.3.26;Forbidden
+lighttpd 1.5.0;Not Found
+OmniHTTPd 2.10;Nazwa pliku lub jej rozszerzenie s¹ za d³ugie. 
+Netscape Enterprise Server 6.0;Not found
+Divar 1.12.649.0;Bad Request
+Zope 2.6.0;Internal Server Error
+4D WebSTAR 5.3.1;OK
+4D WebSTAR 4.2;OK
+Oracle Application Server 9i 9.0.2;Forbidden
+Netscape Enterprise Server 6.0;Forbidden
+NetBotz 500 thttpd 2.25b;Internal Error
+IPC@CHIP 1.01;Bad Request
+Zope 2.7.4;Not Found
+OpenSA 1.0.1;Forbidden
+Zope 2.9.2;Not Found
+Microsoft IIS 7.0;Bad Request
+Sony SNC-RZ30 NetEVI 3.03;Bad Request
+QNAP TS-101 Turbo Station 1.2.0.0629;Internal Error
+nginx 0.5.31;Not Found
+Oracle Application Server 9i 9.0.2.3.0;Forbidden
+LANCOM DSL/I-1611 5.06.0005;OK
+KLone 2.1.0rc1;Not Found
+Ricoh Aficio 1022 Web-Server 3.0;Not Found
+lighttpd 1.4.16;Internal Server Error
+Konica IP-421/7020 Allegro RomPager 2.00;BadRequest
+Compaq HTTP Server 5.7;Ok
+Apache 1.3.29;Forbidden
+IceWarp 8.3.0;Not Found
+Apache 1.3.12;Forbidden
+webcamXP PRO 2007 3.96.000 beta;file not found
+Yaws 1.65;Not Found
+thttpd 2.26;Internal Error
+Apache 2.0.48;Forbidden
+Snap Appliance 4.0.854;Not Implemented
+nginx 0.5.30;Not Found
+nginx 0.5.32;Not Found
+Caudium 1.4.9;No such file or directory.
+Apache 2.0.45;Forbidden
+Abyss 2.4.0.3 X2;Internal Server Error
+Resin 3.0.6;The request contains an illegal URL.
+Microsoft IIS 5.1;URL Too Long
+nostromo 1.9.1;Not Implemented
+Microsoft IIS 6.0;Not Found
+lighttpd 1.4.13;Internal Server Error
+nginx 0.5.35;Forbidden
+BadBlue 2.7;OK
+Sun ONE Web Server 6.1;Forbidden
+Sony SNC-RZ30 NetEVI 2.05g;Bad Request
+Indy IdHTTPServer 9.00.10;OK
+Squid 2.6.STABLE13;Bad Request
+LiteSpeed Web Server 3.3;Not Found
+lighttpd 1.4.22;OK
+Sun Java System Web Server 7.0;Not Found
+WDaemon 9.6.1;Not Found
+NetBotz 420 thttpd 2.25b;Internal Error
+4D WebSTAR 5.4.0;Not Found
+Divar 1.00;Bad Request
+Compaq HTTP Server 9.9;Forbidden
+Apache 2.2.4;Forbidden
+bozohttpd 20060517;Internal Error
+Microsoft IIS 6.0;Bad Request
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;Not Found
+4D WebSTAR 2.0;File Not Found
+Apache 1.3.37;Not Found
+Jigsaw 2.2.5;Unauthorized
+Zope 2.10.4;Not Found
+Apache 1.3.37;Forbidden
+eMule 0.48a;OK
+Compaq HTTP Server 5.91;Ok
+nginx/1.4.1;Not Found
+Netscape Enterprise Server 4.1;OK
+Sun-Java-System-Web-Server/7.0;Not found
+Snap Appliance 4.0.860;Not Implemented
+nginx 0.6.20;Internal error
+Lexmark Optra S 1255;Unauthorized
+Microsoft IIS 6.0;Forbidden
+Apache 2.0.63;OK
+Snap Appliance 3.4.805;Not Implemented
+StWeb 1.3.27;Forbidden
+OSU 3.9;:    HTTP/1.1
+Lexmark T630;Unknown Error
+Sun Java System Web Server 7.0;OK
+Apache 1.3.28;Forbidden
+Resin 3.0.23;The request contains an illegal URL.
+Yaws 1.72;Not Found
+Symantec Mail Security for SMTP;OK
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;Not Found
+Zope 2.8.2;Not Found
+nginx 0.5.32;OK
+nginx/0.7.69;Not Found
+AOLserver 3.4.2;Not Found
+Apache 2.0.54;Forbidden
+QNAP GNS-8000A 4.1.4.0118;Internal Error
+LANCOM DSL/I-10 Office 3.59.0006;OK
+Orion 2.0.7;Not Found
+BaseHTTPServer 0.3;OK
+Zyxel  ZyWALL 10W RomPager 4.07;Bad Request
+Apache 1.3.35;Forbidden
+AllegroServe 1.2.50; Not Found
+Apache 1.2.6;Forbidden
+Microsoft IIS 5.0;URL Too Long
+Apache 1.3.34;Forbidden
+Sony SNC-Z20 NetZoom 1.00;Bad Request
+Boa 0.93.15;Bad Request
+LANCOM DSL/I-1611 6.26.0022;OK
+Sony SNC-RZ30 NetEVI 1.09;Bad Request
+Squid 2.5.STABLE9;Bad Request
+Zope 2.9.7;Not Found
+Zope 2.6.1;Not Found
+QNAP TS-109 1.1.3.1101T;Internal Error
+4D WebSTAR 3.0.2;File Not Found
+AOLserver 2.3.3;Not Found
+Snap Appliance 4.0.830;Not Implemented
+Boa 0.94.14rc21;Bad Request
+nginx 0.5.33;Forbidden
+webcamXP PRO 2006 2.37.144;file not found
+Apache/2.4.4 (FreeBSD);Not Found
+TheServer 2.21L;Not Found
+Zope 2.7.8;Not Found
+SHOUTcast Server 1.9.8;OK
+Zoom ADSL;Not Found
+Sony SNC-RZ30 NetEVI 3.10a;Bad Request
+thttpd 2.24;Internal Error
+Apache 2.2.3;Not Found
+Philips NetCam 1.2.7 wg_httpd 1.0;Not Found
+IBM HTTP Server 2.0.47.1;Forbidden
+SimpleHTTP/0.6 Python/2.7.2;File not found
+QNAP TS-101 2.1.0.612T;Internal Error
+BadBlue 2.4;OK
+IBM HTTP Server 6.0.2.19;Forbidden
+Apache 2.0.55;OK
+Apache 1.3.26;OK
+Jetty 6.1.1;OK
+Hiawatha 6.11;OK
+Abyss 2.6.0.0 X2;Internal Server Error
+LANCOM DSL/I-10 3.58.0006;OK
+PacketShaper httpd 1.00;OK
+Final Web Server;OK
+UserLand Frontier 9.5;Not Found
+Oracle Application Server 10g 10.1.2.2.0;Forbidden
+4D WebSTAR 2.1.1;File Not Found
+NetWare Enterprise Web Server 5.1;Request-URI Too Long
+OSU 3.12alpha;Forbidden
+4D WebSTAR 4.5;OK
+Gatling 0.9;Not Found
+Sony SNC-RZ30 NetEVI 2.24;Bad Request
+Apache 2.2.11;Forbidden
+Apache 2.2.6;Forbidden
+and-httpd 0.99.11;OK
+Apache 2.2.3;OK
+Zope 2.5.0;Not Found
+Barracuda Networks Spam Firewall;Internal Error
+nginx 0.5.35;Not Found
+DM Simple http Server Beta 1;OK
+fnord 1.8a;Not Found
+Xerox Phaser 860;Not Found
+Mathopd 1.5p6;Request-URI Too Long
+Oracle Application Server 10g 10.1.3.0.0;Forbidden
+Sony SNC-RZ30 NetEVI 3.02;Bad Request
+Squid 2.6.STABLE4;Forbidden
+Zyxel P-662HW-D1 RomPager 4.51;Bad Request
+Cherokee 0.6.0;Not Found
+nginx/1.2.9;Not Found
+AOLserver 4.0.11a;Not Found
+AIDeX Mini-Webserver 1.1;Bad Request
+Microsoft ISA Server 2006;OK
+IBM HTTP Server 6.0.2.19;OK
+4D WebSTAR 5.3.3;Not Found
+Ashleys Webserver;OK
+Apache 2.0.52;Forbidden
+Oracle Application Server 10g 10.1.2.2.0;OK
+UserLand Frontier 9.0.1;Not Found
+LANCOM DSL/I-1611 6.06.0012;OK
+WN Server 2.4.7;not found
+Tandberg Videoconference Management;Unauthorized
+webcamXP PRO 2006 2.20.024;file not found
+Netscape Fasttrack 3.02a;Forbidden
+OmniHTTPd 2.06;ÀÉ¦W©Î°ÆÀÉ¦W¤Óªø¡C 
+Oracle Application Server 10g 10.1.2.0.0;Forbidden
+Roxen 4.5.145;Not Found
+Jetty 5.1.1;Internal Server Error
+Roxen 4.5.111;Forbidden
+AOLserver 4.0.10;OK
+SWAT 3.0.24;Authorization Required
+Netgear RP114 3.26;Bad Request
+Yaws 6.0.5;Not Found
+AOLserver 3.4.2;Forbidden
+OmniHTTPd 2.10;The filename or extension is too long. 
+Sun-ONE-Web-Server/6.1;Not found
+thttpd 2.19-MX;Internal Error
+Compaq HTTP Server 5.2;Ok
+thttpd 2.23beta1;Internal Error
+AOLserver 4.0.10a;Not Found
+Oracle Application Server 10g 10.1.3.1.0;Forbidden
+Philips NetCam 1.4.23 wg_httpd 1.0;Not Found
+Yaws 1.68;Not Found
+Abyss 2.5.0.0 X1;Internal Server Error
+Philips NetCam 1.2.6 wg_httpd 1.0;Not Found
+Jigsaw 2.3.0-beta1;Not Found
+OpenSA 1.0.4;Forbidden
+Netscape Enterprise Server 2.01;Forbidden
+LANCOM DSL/I-1611 6.32.0021;OK
+Jetty 5.1.10;OK
+Sony SNC-RZ30 NetEVI 2.06;Bad Request
+QNAP NAS-2108R 2.27.1024;Internal Error
+Apache 2.2.0;Forbidden
+LANCOM DSL/I-1611 4.12.0031;OK
+Zope 2.8.0;Not Found
+Zope 2.6.0;Not Found
+AOLserver 4.5.0;Not Found
+Netscape Enterprise Server 3.5.1;Not found
+Oracle Application Server 10g 9.0.4.0.0;Forbidden
+FlexWATCH FW-3440-B;Site or Page Not Found
+Xerox Phaser 8200;Not Found
+Lexmark C750;Unknown Error
+webcamXP PRO 2006 2.16.456x BETA;file not found

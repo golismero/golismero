@@ -1,0 +1,32 @@
+oracle_sun_one; Sun ONE
+weblogic; #oracle_sun_one
+oracle_app_server; Oracle Application Server
+ibm; IBM HTTP Server
+iis; IIS, ISA, Jana-Server
+apache; Apache, #litespeed, #compaq, #ibm, AXIS, QNAP, Xerox
+tomcat; Tomcat
+jboss; #tomcat
+aol; AOLserver
+jetty; Jetty
+netscape; Netscape,
+websphere; #netscape
+sunplanet; #netscape
+sun; Sun Java
+lighttpd; lighttpd
+nginx; nginx
+vmware; VMware ESX
+qnap; QNAP
+zope; Zope
+ricoh; Ricoh
+compaq; Compaq
+lotus; Lotus,Domino,NetWare
+python; WSGIServer, BaseHTTPServer
+google; Google Web, GWS
+litespeed; LiteSpeed
+java; Java, #ricoh, #netscape, #aol, #iplanet, SHOUTcast, vqServer, glassfish
+iplanet; iPlanet
+abyss; Abyss
+globalscape; GlobalSCAPE
+hiawatha; Hiawatha
+vignete; Vignete
+hyperion; #iis

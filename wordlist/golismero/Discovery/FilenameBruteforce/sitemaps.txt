@@ -1,0 +1,9 @@
+# List of possible locations for sitemaps
+sitemap.txt
+sitemap.xml
+sitemap1.xml
+sitemap~.txt
+sitemap.xml~
+~sitemap.xml
+sitemap.xml.gz
+sitemap.xml.gz~

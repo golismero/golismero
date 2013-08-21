@@ -1,0 +1,144 @@
+Abyss 2.4.0.3 X2;no-cache
+Abyss 2.5.0.0 X1;no-store, no-cache, must-revalidate
+Abyss 2.5.0.0 X2;must-revalidate
+and-httpd 0.99.11;max-age=691200
+AOLserver 3.4.2;private
+AOLserver 4.0.10a;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+AOLserver 4.0.10;no-cache, no-store, private, max-age=0
+AOLserver 4.0.10;no-store
+AOLserver 4.0.10;private, no-cache, no-cache="Set-Cookie", no-store, must-revalidate, max-age=0, proxy-revalidate, no-transform
+AOLserver 4.5.0;no-cache
+Apache 1.3.26;post-check=0, pre-check=0
+Apache 1.3.27;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.33;max-age=600
+Apache 1.3.33;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.33;private, pre-check=0, post-check=0, max-age=0
+Apache 1.3.34;no-cache
+Apache 1.3.34;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.37;max-age=0
+Apache 1.3.37;no-cache
+Apache 1.3.37;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.37;private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.39;private, no-cache
+Apache 2.0.45;private,no-cache,no-store
+Apache 2.0.46;no-cache
+Apache 2.0.46;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.46;s-maxage=600
+Apache 2.0.52;max-age=900
+Apache 2.0.52;no-cache, must-revalidate
+Apache 2.0.52;no-cache, no-store, must-revalidate
+Apache 2.0.52;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.54;max-age=86400
+Apache 2.0.54;no-cache, pre-check=0, post-check=0
+Apache 2.0.54;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.59;max-age=0
+Apache 2.0.59;no-cache,no-store,max-age=0
+Apache 2.2.11;must-revalidate
+Apache 2.2.2;max-age=60
+Apache 2.2.2;private, must-revalidate, max-age=0
+Apache 2.2.3;max-age=173
+Apache 2.2.3;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.3;private
+Apache 2.2.4;no-cache, no-store, max-age=0, must-revalidate
+Apache 2.2.4;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.4;private, must-revalidate, max-age=0
+Apache 2.2.6;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.6;private
+Apache 2.2.8;max-age=86400,
+Apache 2.2.9;max-age=600
+Apache 2.3.0;max-age=86400
+BadBlue 2.4;public
+BadBlue 2.5;public
+BadBlue 2.6;public
+BadBlue 2.7;public
+Caudium 1.4.9;no-cache, no-store, max-age=0, private, must-revalidate, proxy-revalidate
+Cherokee 0.6.0;no-cache, must-revalidate
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;no-cache
+CL-HTTP 70.216;max-age=900, public
+firecat 1.0.0 Beta;private
+FlexWATCH FW-3440-B;no-cache
+GlobalSCAPE Secure Server 3.3;private
+Google Web Server 2.1;private
+Hiawatha 6.11;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Hiawatha 6.2;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+IBM HTTP Server 6.0.2.19;max-age=0, no-cache, no-store
+IBM HTTP Server 6.0.2.19;no-cache
+IBM HTTP Server 6.1.0.19;no-cache
+IceWarp 8.3.0;no-store, no-cache, must-revalidate
+Jetty 6.1.1;max-age=0, no-store
+Jigsaw 2.3.0-beta1;max-age=86400
+lighttpd 1.4.13;no-cache
+lighttpd 1.4.18;must-revalidate, max-age=30
+lighttpd 1.4.19;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+lighttpd 1.4.22;no-store, no-cache, must-revalidate
+ListManagerWeb 8.8c;max-age=0
+LiteSpeed Web Server 3.3;no-store, no-cache, must-revalidate
+Microsoft IIS 5.0;max-age=86400
+Microsoft IIS 5.0;max-age=900
+Microsoft IIS 5.0;private
+Microsoft IIS 6.0;max-age=0, no-cache, no-store
+Microsoft IIS 6.0;no-cache
+Microsoft IIS 6.0;private
+Microsoft IIS 6.0;private, max-age=0
+Microsoft IIS 6.0;public, must-revalidate, max-age=300
+Microsoft IIS 7.0;max-age=600
+Microsoft IIS 7.0;private
+Mongrel 1.0;no-cache
+Nanoweb 2.2.10;no-cache, must-revalidate
+NetBotz 320 thttpd 2.25b;no-cache,no-store
+NetBotz 420 thttpd 2.25b;no-cache,no-store
+NetBotz 500 thttpd 2.25b;no-cache,no-store
+nginx 0.5.32;max-age=0, no-cache, no-store
+nginx 0.5.33;no-cache, must-revalidate, max-age=0
+nginx 0.5.35;no-cache; max-age=0
+nginx 0.5.35;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+nginx 0.6.16;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+nginx 0.6.20;no-cache
+nginx 0.6.26;private, max-age=0, must-revalidate
+Oracle Application Server 10g 10.1.2.0.2;max-age=0
+Oracle Application Server 10g 10.1.2.2.0;max-age=0
+Oracle Application Server 9i 9.0.2.3.0;private
+Oracle Application Server 9i 9.0.3.1;private
+PacketShaper httpd 1.00;no-cache
+Resin 3.0.6;max-age=5
+Ricoh Aficio 1022 Web-Server 3.0;no-cache
+Ricoh Aficio 1045 5.23 Web-Server 3.0;no-cache
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;no-cache
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;no-cache
+Roxen 2.2.213;no-cache
+SnapStream Digital Video Recorder;no-cache
+Sony SNC-RZ30 NetEVI 1.09;no-cache
+Sony SNC-RZ30 NetEVI 2.05g;no-cache
+Sony SNC-RZ30 NetEVI 2.05;no-cache
+Sony SNC-RZ30 NetEVI 2.06;no-cache
+Sony SNC-RZ30 NetEVI 2.13;no-cache
+Sony SNC-RZ30 NetEVI 2.14;no-cache
+Sony SNC-RZ30 NetEVI 2.24;no-cache
+Sony SNC-RZ30 NetEVI 3.01;no-cache
+Sony SNC-RZ30 NetEVI 3.02;no-cache
+Sony SNC-RZ30 NetEVI 3.03;no-cache
+Sony SNC-RZ30 NetEVI 3.10a;no-cache
+Sony SNC-RZ30 NetEVI 3.10;no-cache
+Sony SNC-RZ30 NetEVI 3.14;no-cache
+Sony SNC-Z20 NetZoom 1.00;no-cache
+Sun Java System Web Server 7.0;public, max-age=1373
+Sun Java System Web Server 7.0;public, max-age=1798
+Sun ONE Web Server 6.1;max-age=600
+WallBotz 500 thttpd 2.25b;no-cache,no-store
+webcamXP PRO 2006 2.16.456x BETA;no-cache, must revalidate
+webcamXP PRO 2006 2.20.024;no-cache, must revalidate
+webcamXP PRO 2006 2.37.144;no-cache, must revalidate
+webcamXP PRO 2007 3.60.220;no-cache, must revalidate
+webcamXP PRO 2007 3.72.440;no-cache, must revalidate
+webcamXP PRO 2007 3.96.000 beta;no-cache, must revalidate
+Xerox DocuPrint N4025 Allegro RomPager 3.06b1;no-cache
+Xerox Phaser 6200;no-cache
+Xerox Phaser 7300;no-cache
+Xerox Phaser 8200;no-cache
+Xerox Phaser 860;no-cache
+Yaws 6.0.5;no-store
+Zeus 4.41;public,max-age=3600,no-check=3600,post-check=3600,pre-check=3600
+Zoom ADSL;no-cache
+Zope 2.10.4;max-age=10
+Zope 2.7.6;max-age=3600, must-revalidate
+Zope 2.7.6;no-store, no-cache, must-revalidate, post-check=0, pre-check=0

@@ -1,0 +1,1 @@
+Report plugins go here. These plugins are the ones that export the results from the GoLismero database to the output files.

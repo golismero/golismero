@@ -1,0 +1,12 @@
+[Core]
+Name = DNS zone transfer
+Module = dns_analyzer/dns_analyzer.py
+Class = DNSZoneTransfer
+
+[Documentation]
+Description = Tries to make a DNS zone transfer.
+Author = GoLismero project team
+Version = 0.1
+Website = https://github.com/golismero
+Copyright = Copyright (C) 2011-2013 GoLismero Project
+License = GNU Public License

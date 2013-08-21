@@ -1,0 +1,47 @@
+# Plugin descriptor file.
+#
+# The format is similar to that of a Windows .ini file. There are some
+# specially named sections and required settings, then you can follow
+# them with any section and key/value pairs. Keys may be repeated across
+# sections, but never within a section.
+
+# Core settings.
+#  Name: (Mandatory) User-friendly name for the plugin.
+#  Module: (Optional) Python file with the plugin code. Path must be
+#           relative to this file. Defaults to the same name as this
+#           file but .py extension.
+#  Class: (Optional) Python class that implements the plugin.
+#          Autodetected when not specified.
+[Core]
+Name = Template for plugin development
+
+# Documentation for this plugin.
+# This section is optional, but recommended.
+[Documentation]
+Description = [DESCRIPTION OF PLUGIN]
+Author = [AUTHOR OF PLUGIN]
+Version = [VERSION]
+Website = [AUTHOR WEB SITE]
+Copyright = Copyright (C) [AUTHOR OF PLUGIN]
+License = GNU Public License
+
+# Optionally override the plugin execution stage.
+#Stage = Recon
+
+# Plugin data dependencies, as a comma-separated list of plugins.
+# It tells GoLismero to make sure all data received by this plugin
+# has been processed before by the plugins specified here.
+#Dependencies = testing/recon/spider, testing/recon/default_error_page
+
+
+# Simple way to specify the plugin's configuration.
+# These key/value pairs go to a dictionary at "Config.plugin_config".
+[Configuration]
+write_your_own = You can write your own key/value pairs here.
+
+# If you need more complex settings, you can define your own
+# sections with their own key/value pairs too. They're loaded
+# as a dictionary of dictionaries at "Config.plugin_extra_config".
+# Note that these settings cannot be overriden by profiles.
+[Arbitrary_Section_Names_May_Go_Here_Too]
+key = value

@@ -1,0 +1,16 @@
+#!/bin/sh
+# Run all tests in the current directory.
+rm *.log 2> /dev/null
+rm *.sql 2> /dev/null
+for f in test_*.sh
+do
+    echo $f
+    ./$f >> test-out.log 2>> test-err.log
+done
+for f in test_*.py
+do
+    echo $f
+    python $f >> test-out.log 2>> test-err.log
+done
+echo test.py
+python test.py >> test-out.log 2>> test-err.log

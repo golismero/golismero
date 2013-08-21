@@ -1,0 +1,18 @@
+[Core]
+Name = OpenVAS
+
+[Documentation]
+Description = Run the OpenVAS scanner and import the results
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+profile   = Full and fast
+user      = admin
+*password = admin
+host      = 127.0.0.1
+port      = 9390
+timeout   = 30

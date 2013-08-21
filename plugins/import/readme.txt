@@ -1,0 +1,1 @@
+Import plugins go here. These plugins are the ones that import the results from external tools into the GoLismero database right before starting an audit.

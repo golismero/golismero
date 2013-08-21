@@ -1,0 +1,45 @@
+Abyss 2.4.0.3 X2;PHP/5.1.2
+Abyss 2.5.0.0 X1;PHP/5.2.2
+Abyss 2.5.0.0 X1;PHP/5.2.4
+Abyss 2.5.0.0 X2;PHP/5.2.2
+Abyss 2.5.0.0 X2;PHP/5.2.5
+Apache 1.3.26;PHP/4.1.2
+Apache 1.3.26;PHP/4.3.11
+Apache 1.3.33;PHP/4.3.8-9
+Apache 1.3.33;PHP/4.4.2
+Apache 1.3.33;PHP/5.2.5-0.dotdeb.1
+Apache 1.3.34;PHP/4.4.2
+Apache 1.3.37;PHP/4.3.10-22
+Apache 1.3.37;PHP/4.4.7
+Apache 1.3.39;PHP/5.2.5
+Apache 2.0.46;PHP/5.1.6
+Apache 2.0.49;PHP/4.3.9
+Apache 2.0.52;PHP/4.3.9
+Apache 2.0.52;PHP/5.1.4
+Apache 2.0.52;PHP/5.1.6
+Apache 2.0.54;PHP/4.3.10-22
+Apache 2.0.54;PHP/4.4.6
+Apache 2.0.59;PHP/5.2.1
+Apache 2.0.59;Zope (www.zope.org), Python (www.python.org)
+Apache 2.2.3;Agavi/0.11.0-dev on PHP/5.2.4
+Apache 2.2.3;PHP/4.3.9
+Apache 2.2.3;PHP/4.4.4-8+etch4
+Apache 2.2.3;PHP/5.1.6
+Apache 2.2.3;PHP/5.2.1
+Apache 2.2.3;PHP/5.2.3
+Apache 2.2.3;PHP/5.2.5-0.dotdeb.1
+Apache 2.2.3;PHP/5.2.8-0.dotdeb.1
+Apache 2.2.4;PHP/5.2.0
+Apache 2.2.4;PHP/5.2.2
+Apache 2.2.6;PHP/5.2.5
+lighttpd 1.4.18;PHP/5.2.1
+lighttpd 1.4.19;PHP/5.2.8
+lighttpd 1.4.22;PHP/5.2.5
+Microsoft IIS 5.0;ASP.NET
+Microsoft IIS 6.0;ASP.NET
+Microsoft IIS 6.0;ASP.NET 2.0
+Microsoft IIS 7.0;ASP.NET
+nginx 0.6.16;PHP/5.2.4
+nginx 0.7.35;PHP/5.2.4
+Oracle Application Server 10g 10.1.2.0.2;PHP/4.3.4
+Zeus 4.3;PHP/5.1.6

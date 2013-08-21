@@ -1,0 +1,221 @@
+[Core]
+Name = Web Server fingerprinting plugin
+
+[Documentation]
+Description = Fingerprinter of web servers.
+Author = GoLismero project team
+Version = 0.1
+Website = https://github.com/golismero
+Copyright = Copyright (C) 2011-2013 GoLismero Project
+License = GNU Public License
+
+[Configuration]
+keywords = fingerprint/webservers_keywords.txt
+
+[Wordlist_get]
+accept-range            = fingerprint/httprecon/get_existing/accept-range.fdb
+banner                  = fingerprint/httprecon/get_existing/banner.fdb
+cache-control           = fingerprint/httprecon/get_existing/cache-control.fdb
+connection              = fingerprint/httprecon/get_existing/connection.fdb
+content-type            = fingerprint/httprecon/get_existing/content-type.fdb
+etag-legth              = fingerprint/httprecon/get_existing/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/get_existing/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/get_existing/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/get_existing/header-order.fdb
+header-space            = fingerprint/httprecon/get_existing/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/get_existing/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/get_existing/pragma.fdb
+protocol-name           = fingerprint/httprecon/get_existing/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/get_existing/protocol-version.fdb
+statuscode              = fingerprint/httprecon/get_existing/statuscode.fdb
+statustext              = fingerprint/httprecon/get_existing/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/get_existing/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/get_existing/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/get_existing/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/get_existing/x-powered-by.fdb
+
+[Wordlist_get_long]
+accept-range            = fingerprint/httprecon/get_long/accept-range.fdb
+banner                  = fingerprint/httprecon/get_long/banner.fdb
+cache-control           = fingerprint/httprecon/get_long/cache-control.fdb
+connection              = fingerprint/httprecon/get_long/connection.fdb
+content-type            = fingerprint/httprecon/get_long/content-type.fdb
+etag-legth              = fingerprint/httprecon/get_long/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/get_long/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/get_long/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/get_long/header-order.fdb
+header-space            = fingerprint/httprecon/get_long/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/get_long/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/get_long/pragma.fdb
+protocol-name           = fingerprint/httprecon/get_long/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/get_long/protocol-version.fdb
+statuscode              = fingerprint/httprecon/get_long/statuscode.fdb
+statustext              = fingerprint/httprecon/get_long/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/get_long/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/get_long/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/get_long/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/get_long/x-powered-by.fdb
+
+[Wordlist_get_notfound]
+accept-range            = fingerprint/httprecon/get_nonexisting/accept-range.fdb
+banner                  = fingerprint/httprecon/get_nonexisting/banner.fdb
+cache-control           = fingerprint/httprecon/get_nonexisting/cache-control.fdb
+connection              = fingerprint/httprecon/get_nonexisting/connection.fdb
+content-type            = fingerprint/httprecon/get_nonexisting/content-type.fdb
+etag-legth              = fingerprint/httprecon/get_nonexisting/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/get_nonexisting/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/get_nonexisting/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/get_nonexisting/header-order.fdb
+header-space            = fingerprint/httprecon/get_nonexisting/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/get_nonexisting/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/get_nonexisting/pragma.fdb
+protocol-name           = fingerprint/httprecon/get_nonexisting/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/get_nonexisting/protocol-version.fdb
+statuscode              = fingerprint/httprecon/get_nonexisting/statuscode.fdb
+statustext              = fingerprint/httprecon/get_nonexisting/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/get_nonexisting/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/get_nonexisting/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/get_nonexisting/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/get_nonexisting/x-powered-by.fdb
+
+[Wordlist_head]
+accept-range            = fingerprint/httprecon/head_existing/accept-range.fdb
+banner                  = fingerprint/httprecon/head_existing/banner.fdb
+cache-control           = fingerprint/httprecon/head_existing/cache-control.fdb
+connection              = fingerprint/httprecon/head_existing/connection.fdb
+content-type            = fingerprint/httprecon/head_existing/content-type.fdb
+etag-legth              = fingerprint/httprecon/head_existing/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/head_existing/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/head_existing/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/head_existing/header-order.fdb
+header-space            = fingerprint/httprecon/head_existing/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/head_existing/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/head_existing/pragma.fdb
+protocol-name           = fingerprint/httprecon/head_existing/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/head_existing/protocol-version.fdb
+statuscode              = fingerprint/httprecon/head_existing/statuscode.fdb
+statustext              = fingerprint/httprecon/head_existing/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/head_existing/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/head_existing/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/head_existing/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/head_existing/x-powered-by.fdb
+options-public          = fingerprint/httprecon/head_existing/options-public.fdb
+
+[Wordlist_options]
+accept-range            = fingerprint/httprecon/options/accept-range.fdb
+banner                  = fingerprint/httprecon/options/banner.fdb
+cache-control           = fingerprint/httprecon/options/cache-control.fdb
+connection              = fingerprint/httprecon/options/connection.fdb
+content-type            = fingerprint/httprecon/options/content-type.fdb
+etag-legth              = fingerprint/httprecon/options/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/options/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/options/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/options/header-order.fdb
+header-space            = fingerprint/httprecon/options/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/options/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/options/pragma.fdb
+protocol-name           = fingerprint/httprecon/options/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/options/protocol-version.fdb
+statuscode              = fingerprint/httprecon/options/statuscode.fdb
+statustext              = fingerprint/httprecon/options/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/options/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/options/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/options/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/options/x-powered-by.fdb
+options-public          = fingerprint/httprecon/options/options-public.fdb
+options-allowed         = fingerprint/httprecon/options/options-allowed.fdb
+options-delimited       = fingerprint/httprecon/options/options-delimited.fdb
+
+[Wordlist_delete]
+accept-range            = fingerprint/httprecon/delete_existing/accept-range.fdb
+banner                  = fingerprint/httprecon/delete_existing/banner.fdb
+cache-control           = fingerprint/httprecon/delete_existing/cache-control.fdb
+connection              = fingerprint/httprecon/delete_existing/connection.fdb
+content-type            = fingerprint/httprecon/delete_existing/content-type.fdb
+etag-legth              = fingerprint/httprecon/delete_existing/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/delete_existing/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/delete_existing/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/delete_existing/header-order.fdb
+header-space            = fingerprint/httprecon/delete_existing/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/delete_existing/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/delete_existing/pragma.fdb
+protocol-name           = fingerprint/httprecon/delete_existing/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/delete_existing/protocol-version.fdb
+statuscode              = fingerprint/httprecon/delete_existing/statuscode.fdb
+statustext              = fingerprint/httprecon/delete_existing/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/delete_existing/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/delete_existing/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/delete_existing/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/delete_existing/x-powered-by.fdb
+options-public          = fingerprint/httprecon/delete_existing/options-public.fdb
+options-allowed         = fingerprint/httprecon/delete_existing/options-allowed.fdb
+options-delimited       = fingerprint/httprecon/delete_existing/options-delimited.fdb
+
+[Wordlist_attack]
+accept-range            = fingerprint/httprecon/attack_request/accept-range.fdb
+banner                  = fingerprint/httprecon/attack_request/banner.fdb
+cache-control           = fingerprint/httprecon/attack_request/cache-control.fdb
+connection              = fingerprint/httprecon/attack_request/connection.fdb
+content-type            = fingerprint/httprecon/attack_request/content-type.fdb
+etag-legth              = fingerprint/httprecon/attack_request/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/attack_request/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/attack_request/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/attack_request/header-order.fdb
+header-space            = fingerprint/httprecon/attack_request/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/attack_request/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/attack_request/pragma.fdb
+protocol-name           = fingerprint/httprecon/attack_request/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/attack_request/protocol-version.fdb
+statuscode              = fingerprint/httprecon/attack_request/statuscode.fdb
+statustext              = fingerprint/httprecon/attack_request/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/attack_request/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/attack_request/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/attack_request/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/attack_request/x-powered-by.fdb
+
+[Wordlist_wrong_method]
+accept-range            = fingerprint/httprecon/wrong_method/accept-range.fdb
+banner                  = fingerprint/httprecon/wrong_method/banner.fdb
+cache-control           = fingerprint/httprecon/wrong_method/cache-control.fdb
+connection              = fingerprint/httprecon/wrong_method/connection.fdb
+content-type            = fingerprint/httprecon/wrong_method/content-type.fdb
+etag-legth              = fingerprint/httprecon/wrong_method/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/wrong_method/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/wrong_method/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/wrong_method/header-order.fdb
+header-space            = fingerprint/httprecon/wrong_method/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/wrong_method/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/wrong_method/pragma.fdb
+protocol-name           = fingerprint/httprecon/wrong_method/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/wrong_method/protocol-version.fdb
+statuscode              = fingerprint/httprecon/wrong_method/statuscode.fdb
+statustext              = fingerprint/httprecon/wrong_method/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/wrong_method/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/wrong_method/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/wrong_method/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/wrong_method/x-powered-by.fdb
+options-public          = fingerprint/httprecon/wrong_method/options-public.fdb
+options-allowed         = fingerprint/httprecon/wrong_method/options-allowed.fdb
+options-delimited       = fingerprint/httprecon/wrong_method/options-delimited.fdb
+
+[Wordlist_wrong_version]
+accept-range            = fingerprint/httprecon/wrong_version/accept-range.fdb
+banner                  = fingerprint/httprecon/wrong_version/banner.fdb
+cache-control           = fingerprint/httprecon/wrong_version/cache-control.fdb
+connection              = fingerprint/httprecon/wrong_version/connection.fdb
+content-type            = fingerprint/httprecon/wrong_version/content-type.fdb
+etag-legth              = fingerprint/httprecon/wrong_version/etag-legth.fdb
+etag-quotes             = fingerprint/httprecon/wrong_version/etag-quotes.fdb
+header-capitalafterdash = fingerprint/httprecon/wrong_version/header-capitalafterdash.fdb
+header-order            = fingerprint/httprecon/wrong_version/header-order.fdb
+header-space            = fingerprint/httprecon/wrong_version/header-space.fdb
+htaccess-realm          = fingerprint/httprecon/wrong_version/htaccess-realm.fdb
+pragma                  = fingerprint/httprecon/wrong_version/pragma.fdb
+protocol-name           = fingerprint/httprecon/wrong_version/protocol-name.fdb
+protocol-version        = fingerprint/httprecon/wrong_version/protocol-version.fdb
+statuscode              = fingerprint/httprecon/wrong_version/statuscode.fdb
+statustext              = fingerprint/httprecon/wrong_version/statustext.fdb
+vary-capitalize         = fingerprint/httprecon/wrong_version/vary-capitalize.fdb
+vary-delimiter          = fingerprint/httprecon/wrong_version/vary-delimiter.fdb
+vary-order              = fingerprint/httprecon/wrong_version/vary-order.fdb
+x-powered-by            = fingerprint/httprecon/wrong_version/x-powered-by.fdb

@@ -1,0 +1,89 @@
+Abyss 2.5.0.0 X1;no-store, no-cache, must-revalidate
+AOLserver 3.4.2;no-cache, must-revalidate, post-check=0, pre-check=0
+AOLserver 4.0.10;max-age=0
+AOLserver 4.0.10;no-cache, no-store, private, max-age=0
+AOLserver 4.0.10;private, no-cache, no-cache="Set-Cookie", no-store, must-revalidate, max-age=0, proxy-revalidate, no-transform
+Apache 1.3.26;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 1.3.26;post-check=0, pre-check=0
+Apache 1.3.33;max-age=60
+Apache 1.3.34;no-cache
+Apache 1.3.37;private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.46;max-age=3600
+Apache 2.0.46;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.52;no-cache, no-store, must-revalidate
+Apache 2.0.52;no-store, no-cache, must-revalidate, post-check=0, pre-check=0, private
+Apache 2.0.54;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.0.59;no-cache,no-store,max-age=0
+Apache 2.2.3;max-age=173
+Apache 2.2.3;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Apache 2.2.4;private, must-revalidate, max-age=0
+Apache 2.2.6;no-store, no-cache, must-revalidate
+Apache 2.2.8;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Barracuda Networks Spam Firewall;no-cache,no-store
+Cherokee 0.6.0;no-cache
+Cherokee 0.99;no-cache
+Cisco VPN 3000 Concentrator Virata EmWeb R6.2.0;no-cache
+Cougar 9.5.6001.6264;max-age=0, no-cache
+firecat 1.0.0 Beta;private
+FlexWATCH FW-3440-B;no-cache
+GlobalSCAPE Secure Server 3.3;private
+Hiawatha 6.11;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Hiawatha 6.2;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+IBM HTTP Server 6.0.2.19;max-age=0, no-cache, no-store
+IBM HTTP Server 6.0.2.19;no-cache
+IBM HTTP Server 6.1.0.19;no-cache
+Jetty 6.1.1;max-age=0, no-store
+KLone 2.1.0rc1;no-cache, must-revalidate
+lighttpd 1.4.18;must-revalidate, max-age=30
+lighttpd 1.4.18;no-cache, must-revalidate, max-age=0
+lighttpd 1.4.19;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+lighttpd 1.4.22;no-store, no-cache, must-revalidate
+lighttpd 1.5.0;no-cache
+ListManagerWeb 8.8c;max-age=0
+LiteSpeed Web Server 3.3;no-store, no-cache, must-revalidate
+Lotus Domino Go Webserver 4.6.2.5;no-cache
+Microsoft IIS 5.0;max-age=900
+Microsoft IIS 6.0;max-age=0, no-cache, no-store
+Microsoft IIS 6.0;no-cache
+Microsoft IIS 6.0;no-cache, no-store, must-revalidate, post-check=0, pre-check=0
+Microsoft IIS 6.0;private,max-age=0
+Microsoft IIS 7.0;max-age=600
+Microsoft IIS 7.0;no-cache
+Microsoft ISA Server 2006;no-cache,max-age=0,must-revalidate
+Mongrel 1.0;no-cache
+NetBotz 320 thttpd 2.25b;no-cache,no-store
+NetBotz 420 thttpd 2.25b;no-cache,no-store
+NetBotz 500 thttpd 2.25b;no-cache,no-store
+nginx 0.5.32;max-age=0, no-cache, no-store
+nginx 0.5.33;no-cache, must-revalidate, max-age=0
+nginx 0.5.35;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+nginx 0.6.16;no-cache, must-revalidate, max-age=0
+nginx 0.6.20;no-cache
+nginx 0.6.26;no-cache
+OpenSA 1.0.5;no-cache, no-store, must-revalidate
+Oracle Application Server 10g 10.1.2.0.2;no-cache, max-age=0, must-revalidate, proxy-mustcheck
+Oracle Application Server 9i 9.0.3.1;private
+PacketShaper httpd 1.00;no-cache
+Resin 2.1.17;no-cache
+Ricoh Aficio 1022 Web-Server 3.0;no-cache
+Ricoh Aficio 1045 5.23 Web-Server 3.0;no-cache
+Ricoh Aficio 1060 3.53.3 Web-Server 3.0;no-cache
+Ricoh Aficio 6002 3.53.3 Web-Server 3.0;no-cache
+SonicWALL CSM 3200 2.6.0.0;no-cache
+Sun Java System Web Server 7.0;public, max-age=1755
+Sun Java System Web Server 7.0;public, max-age=1784
+Sun ONE Web Server 6.1;max-age=600
+Sun ONE Web Server 6.1;max-age=7698
+thttpd 2.26;no-cache,no-store
+WallBotz 500 thttpd 2.25b;no-cache,no-store
+webcamXP PRO 2006 2.16.456x BETA;no-cache, must revalidate
+webcamXP PRO 2006 2.20.024;no-cache, must revalidate
+webcamXP PRO 2006 2.37.144;no-cache, must revalidate
+webcamXP PRO 2007 3.60.220;no-cache, must revalidate
+webcamXP PRO 2007 3.72.440;no-cache, must revalidate
+webcamXP PRO 2007 3.96.000 beta;no-cache, must revalidate
+Zope 2.10.4;max-age=10
+Zope 2.5.0;max-age=3600
+Zope 2.7.6;max-age=3600, must-revalidate
+Zope 2.7.6;no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Zope 2.8.4;max-age=3600
