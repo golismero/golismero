@@ -133,3 +133,11 @@ Need help? Found a bug?
 =======================
 
 If you have found a bug, you can report it using the Github issues system. You can also drop us an email (golismero.project@gmail.com) or find us on Twitter ([@golismero_pro](https://twitter.com/golismero_pro)).
+
+Known bugs
+----------
+
+Some gotchas we already know about:
+* Control-C doesn't work all that well. Something about threads and signals makes Python go berserk sometimes. But most of the times it's rather harmless - it just shows bogus errors on screen, and you can ignore them.
+* IPv6 support could use some more testing, so if you find bugs on IPv6 targets, do let us know!
+* When running the Nikto plugin, GoLismero may appear unresponsive. But everything is OK, this happens because the plugin waits for Nikto to finish its scan before printing anything on screen. So be patient! :) we expect to improve this soon.
