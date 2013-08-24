@@ -199,7 +199,10 @@ class RPCManager (object):
         except Exception:
             if response_queue:
                 error = self.prepare_exception(*sys.exc_info())
-                response_queue.put_nowait( (False, error) )
+                try:
+                    response_queue.put_nowait( (False, error) )
+                except:
+                    exit(1)
 
 
     #----------------------------------------------------------------------
@@ -236,7 +239,10 @@ class RPCManager (object):
 
         # If the call was synchronous, send the response/error back to the plugin.
         if response_queue:
-            response_queue.put_nowait( (success, response) )
+            try:
+                response_queue.put_nowait( (success, response) )
+            except:
+                exit(1)
 
 
     #----------------------------------------------------------------------

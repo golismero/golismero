@@ -248,7 +248,7 @@ class Orchestrator (object):
                                   priority = MessagePriority.MSG_PRIORITY_HIGH)
             try:
                 self.__queue.put_nowait(message)
-            except Exception:
+            except:
                 exit(1)
 
         finally:
@@ -366,7 +366,10 @@ class Orchestrator (object):
         """
         if not isinstance(message, Message):
             raise TypeError("Expected Message, got %s instead" % type(message))
-        self.__queue.put_nowait(message)
+        try:
+            self.__queue.put_nowait(message)
+        except Exception:
+            exit(1)
 
 
     #----------------------------------------------------------------------
@@ -466,6 +469,7 @@ class Orchestrator (object):
                         message = self.__queue.get()
                     except Exception:
                         # If this fails, kill the Orchestrator.
+                        # But let KeyboardInterrupt and SystemExit through.
                         exit(1)
 
                     # Dispatch the message.

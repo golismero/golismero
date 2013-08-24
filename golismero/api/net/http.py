@@ -44,7 +44,7 @@ from ...common import Singleton
 from hashlib import md5
 from requests import Session
 from requests.exceptions import RequestException
-from socket import socket, error
+from socket import socket, error, getaddrinfo, SOCK_STREAM
 from ssl import wrap_socket
 from StringIO import StringIO
 from time import time
@@ -409,12 +409,19 @@ class _HTTP(Singleton):
             raise NotImplementedError("Unicode hostnames not yet supported")
         if type(host) != str:
             raise TypeError("Expected str, got %s instead" % type(host))
-        if type(port) not in (int, long):
+        if proto not in ("http", "https"):
+            raise ValueError("Protocol must be 'http' or 'https', not %r" % proto)
+        if port is None:
+            if proto == "http":
+                port = 80
+            elif proto == "https":
+                port = 443
+            else:
+                assert False, "internal error!"
+        elif type(port) not in (int, long):
             raise TypeError("Expected int, got %s instead" % type(port))
         if port < 1 or port > 32767:
             raise ValueError("Invalid port number: %d" % port)
-        if proto not in ("http", "https"):
-            raise ValueError("Protocol must be 'http' or 'https', not %r" % proto)
         if callback is not None and not callable(callback):
             raise TypeError(
                 "Expected callable (function, class, instance with __call__),"
@@ -435,6 +442,12 @@ class _HTTP(Singleton):
         else:
             timeout = 0.5
 
+        # Resolve the hostname.
+        # FIXME: we're only using the first item, but we could use more
+        #        than one, for example iterate through them if they fail.
+        family, socktype, proto, canonname, sockaddr = \
+            getaddrinfo(host, port, 0, SOCK_STREAM)[0]
+
         # Get a connection slot.
         with ConnectionSlot(host):
 
@@ -443,10 +456,10 @@ class _HTTP(Singleton):
 
             # Connect to the server.
             try:
-                s = socket()        # XXX FIXME: this fails for IPv6!
+                s = socket(family, socktype, proto)
                 try:
                     s.settimeout(timeout)
-                    s.connect((host, port))
+                    s.connect(sockaddr)
                     try:
                         if proto == "https":
                             s = wrap_socket(s)
@@ -459,21 +472,27 @@ class _HTTP(Singleton):
                         while True:
                             data = s.recv(1)
                             if not data:
-                                raise NetworkException("Server has closed the connection")
+                                raise NetworkException(
+                                    "Server has closed the connection")
                             raw_response.write(data)
                             if raw_response.getvalue().endswith("\r\n\r\n"):
                                 break   # full HTTP headers received
                             if len(raw_response.getvalue()) > 65536:
-                                raise NetworkException("Response headers too long")
+                                raise NetworkException(
+                                    "Response headers too long")
 
                         # Stop the timer.
                         t2 = time()
 
-                        # Call the user-defined callback, and cancel if requested.
+                        # Call the user-defined callback,
+                        # and cancel if requested.
                         if callback is not None:
-                            temp_request  = HTTP_Raw_Request(raw_request.raw_request)
-                            temp_response = HTTP_Response(temp_request,
-                                                          raw_response = raw_response.getvalue())
+                            temp_request  = HTTP_Raw_Request(
+                                raw_request.raw_request)
+                            temp_response = HTTP_Response(
+                                temp_request,
+                                raw_response = raw_response.getvalue()
+                            )
                             discard_data(temp_request)
                             discard_data(temp_response)
                             cont = callback(temp_request, temp_response)

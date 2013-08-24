@@ -60,9 +60,10 @@ class IP(Resource):
 
         try:
             if address.startswith("[") and address.endswith("]"):
-                parsed = IPAddress(address[1:-1], version=6)
+                parsed  = IPAddress(address[1:-1], version=6)
+                address = address[1:-1]
             else:
-                parsed = IPAddress(address)
+                parsed  = IPAddress(address)
             version = int( parsed.version )
         except Exception:
             raise ValueError("Invalid IP address: %s" % address)

@@ -1,3 +1,8 @@
+### This repository contains the unstable development version.
+### For the stable version go to: <a href="https://github.com/golismero/golismero">https://github.com/golismero/golismero</a></font></p>
+
+---
+
 What's GoLismero 2.0?
 =====================
 
@@ -138,6 +143,7 @@ Known bugs
 ----------
 
 Some gotchas we already know about:
-* Control-C doesn't work all that well. Something about threads and signals makes Python go berserk sometimes. But most of the times it's rather harmless - it just shows bogus errors on screen, and you can ignore them.
-* IPv6 support could use some more testing, so if you find bugs on IPv6 targets, do let us know!
+* Control-C on Python generally doesn't work very well - sometimes it just shows bogus errors on screen, but you can ignore them. If stopping GoLismero takes too long, try hitting Control-C twice for force shutdown. Even then, sometimes you just have to be a patient!
 * When running the Nikto plugin, GoLismero may appear unresponsive. But everything is OK, this happens because the plugin waits for Nikto to finish its scan before printing anything on screen. So be patient! :) we expect to improve this soon.
+* GoLismero seems to run slower on Windows than on Linux or Mac. We're still not completely sure why, but it seems to be related to the Python standard multiprocessing module and the lack of fork() support on Windows.
+* This is not a bug, just a reminder: GoLismero by default creates a new database file on each run! You can disable the database creation with the -nd switch.

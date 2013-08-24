@@ -63,9 +63,8 @@ enable_plugins = all
 #disable_plugins = attack, intrude
 
 # Plugin settings overrides follow.
-# Add a new section for each plugin.
+# The format is the same as in the main config file.
 #
 # Example:
-#
-# [testing/recon/spider]
-# wordlist_no_spider = ~/my_custom_wordlist.txt
+# [openvas]
+# host = 192.162.56.101

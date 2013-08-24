@@ -495,6 +495,7 @@ class PluginInfo (object):
 
         # Sections beginning with the plugin name are for this plugin.
         section_prefix = self.__plugin_name
+        section_prefix_short = section_prefix[ section_prefix.rfind("/")+1 : ]
 
         # Parse the config file.
         config_parser = RawConfigParser()
@@ -504,22 +505,23 @@ class PluginInfo (object):
         for section in config_parser.sections():
 
             # If the section name is exactly the plugin name,
-            # copy the settings to the plugin configuration.
-            if section == section_prefix:
-                target = self.__plugin_config
+            # copy the settings to the plugin arguments.
+            if section in (section_prefix, section_prefix_short):
+                target = self.__plugin_args
 
             # The section name can also be the plugin name and
             # the plugin config file section separated by a colon.
             elif ":" in section:
                 a, b = section.split(":", 1)
                 a, b = a.strip(), b.strip()
-                if a == section_prefix:
+                if a in (section_prefix, section_prefix_short):
 
                     # Override the arguments.
+                    # Same as just using the plugin name.
                     if b == "Arguments":
                         target = self.__plugin_args
 
-                    # Same as just using the plugin name.
+                    # Override the configuration.
                     elif b == "Configuration":
                         target = self.__plugin_config
 

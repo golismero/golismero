@@ -97,9 +97,10 @@ class AuditScope (object):
                 try:
                     if target.startswith("[") and target.endswith("]"):
                         IPAddress(target[1:-1], version=6)
+                        address = target[1:-1]
                     else:
                         IPAddress(target)
-                    address = target
+                        address = target
                 except Exception:
                     address = None
                 if address is not None:
@@ -147,6 +148,7 @@ class AuditScope (object):
                             try:
                                 if host.startswith("[") and host.endswith("]"):
                                     IPAddress(host[1:-1], version=6)
+                                    host = host[1:-1]
                                 else:
                                     IPAddress(host)
                                 self.__addresses.add(host)
@@ -254,6 +256,21 @@ class AuditScope (object):
             # Extract the host and use it as target.
             target = parsed_url.host
 
+        # If it's an IP address...
+        try:
+            if target.startswith("[") and target.endswith("]"):
+                IPAddress(target[1:-1], version=6)
+                address = target[1:-1]
+            else:
+                IPAddress(target)
+                address = target
+        except Exception:
+            address = None
+        if address is not None:
+
+            # Test if it's one of the target IP addresses.
+            return address in self.__addresses
+
         # If it's a domain name...
         if self._re_is_domain.match(target):
 
@@ -266,20 +283,6 @@ class AuditScope (object):
                 self.__include_subdomains and
                 any(target.endswith("." + domain) for domain in self.__domains)
             )
-
-        # If it's an IP address...
-        try:
-            if target.startswith("[") and target.endswith("]"):
-                IPAddress(target[1:-1], version=6)
-            else:
-                IPAddress(target)
-            address = target
-        except Exception:
-            address = None
-        if address is not None:
-
-            # Test if it's one of the target IP addresses.
-            return address in self.__addresses
 
         # We don't know what this is, so we'll consider it out of scope.
         warnings.warn(

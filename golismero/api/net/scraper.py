@@ -65,7 +65,10 @@ def urldefrag(url):
     p.fragment = ""
     return p.url, f
 
-def urljoin(base_url, url):
+def urljoin(base_url, url, allow_fragments = True):
+    if not allow_fragments:
+        url = urldefrag(url)
+        base_url = urldefrag(base_url)
     return parse_url(url, base_url).url
 
 

@@ -47,15 +47,21 @@ from ..messaging.message import Message
 
 from imp import load_source
 from multiprocessing import Manager
-from multiprocessing import Process as _Original_Process
-from multiprocessing.pool import Pool as _Original_Pool
-from os import getpid
-from warnings import catch_warnings, simplefilter
+from os import getpid, path
+from signal import signal, SIGINT
 from thread import get_ident
 from traceback import format_exc, print_exc, format_exception_only, format_list
-from signal import signal, SIGINT
+from warnings import catch_warnings, simplefilter
 
 import sys
+
+# Make some runtime patches to the multiprocessing module.
+# Just importing this submodule does the magic!
+from ..patches import mp
+
+# Imports needed to override the multiprocessing Process and Pool classes.
+from multiprocessing import Process as _Original_Process
+from multiprocessing.pool import Pool as _Original_Pool
 
 
 #------------------------------------------------------------------------------
@@ -552,7 +558,7 @@ class PluginContext (object):
             self.msg_queue.put_nowait(message)
 
         # If we reached this point we can assume the parent process is dead.
-        except IOError:
+        except:
             exit(1)
 
 
@@ -569,7 +575,12 @@ class PluginContext (object):
         """
 
         # Create the response queue.
-        response_queue = Manager().Queue()
+        try:
+            response_queue = Manager().Queue()
+
+        # If the above fails we can assume the parent process is dead.
+        except:
+            exit(1)
 
         # Send the RPC message.
         self.send_msg(message_type = MessageType.MSG_TYPE_RPC,
@@ -783,8 +794,14 @@ class PluginLauncher (object):
         """
 
         # Initialize the launcher process, but do not start it yet.
-        self.__manager = Manager()
-        self.__queue = self.__manager.Queue()
+        try:
+            self.__manager = Manager()
+            self.__queue = self.__manager.Queue()
+
+        # If the above fails we can assume the parent process is dead.
+        except:
+            exit(1)
+
         self.__process = Process(
             target = launcher,
             args   = (self.__queue, max_process, refresh_after_tasks),
@@ -815,7 +832,16 @@ class PluginLauncher (object):
             raise RuntimeError("Plugin launcher was stopped")
 
         # Send the plugin run request to the launcher process.
-        self.__queue.put_nowait( (context, func, args, kwargs) )
+        try:
+            self.__queue.put_nowait( (context, func, args, kwargs) )
+
+        # If the above fails we can assume the parent process is dead.
+        except:
+            try:
+                self.stop(wait = False)
+            except:
+                pass
+            exit(1)
 
 
     #----------------------------------------------------------------------
@@ -841,22 +867,28 @@ class PluginLauncher (object):
         :type wait: bool
         """
 
-        # Raise an exception if the launcher was already stopped.
+        # Ignore the request if the launcher was already stopped.
         if not self.__alive:
-            raise RuntimeError("Plugin launcher was stopped")
+            return
 
-        # Signal the launcher process to stop.
-        self.__queue.put_nowait(wait)
+        try:
 
-        # Wait for the launcher process to stop.
-        if wait:
-            self.__process.join()
-        else:
-            self.__process.join(3)
-            try:
-                self.__process.terminate()
-            except Exception:
-                pass
+            # Signal the launcher process to stop.
+            self.__queue.put_nowait(wait)
+
+            # Wait for the launcher process to stop.
+            if wait:
+                self.__process.join()
+            else:
+                self.__process.join(3)
+                try:
+                    self.__process.terminate()
+                except Exception:
+                    pass
+
+        # If the pipe is closed, terminate the process.
+        except:
+            self.__process.terminate()
 
         # Clean up.
         self.__alive   = False
@@ -965,18 +997,3 @@ class ProcessManager (object):
 
             # Clean up.
             self.__launcher = None
-
-
-#----------------------------------------------------------------------
-def _suicide(signum, frame):
-    """
-    Child processes Control-C handler.
-
-    .. warning: Do not call!
-    """
-
-    # Kill the process. This should trigger a chain reaction.
-    exit(1)
-
-if __name__ == "__parents_main__":
-    signal(SIGINT, _suicide)
