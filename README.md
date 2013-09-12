@@ -49,13 +49,13 @@ Additionally, you can import results from other tools with the -i option. You ca
 
 ```python golismero.py www.example.com -i nikto_output.csv -o report.html -d all```
 
-![Import export example](https://raw.github.com/golismero/master/doc/screenshots/import_export_win.png "Import export example")
+![Import export example](https://raw.github.com/golismero/golismero/master/doc/screenshots/import_export_win.png "Import export example")
 
 All results are automatically stored in a database file. You can prevent this with the -nd option:
 
 ```python golismero.py <target> -nd```
 
-![No database example](https://raw.github.com/golismero/master/doc/screenshots/no_db_mint.png "No database example")
+![No database example](https://raw.github.com/golismero/golismero/master/doc/screenshots/no_db_mint.png "No database example")
 
 This allows you to scan the target in one step, and generating the report later. For example, to scan without generating a report:
 
@@ -72,13 +72,13 @@ To display the list of available plugins:
 
 ```python golismero.py --plugin-list```
 
-![Plugin list example](https://raw.github.com/golismero/master/doc/screenshots/plugin_list_mac_2.png "Plugin list example")
+![Plugin list example](https://raw.github.com/golismero/golismero/master/doc/screenshots/plugin_list_mac_2.png "Plugin list example")
 
 You can also query more information about specific plugins:
 
 ```python golismero.py --plugin-info <plugin name>```
 
-![Plugin info example](https://raw.github.com/golismero/master/doc/screenshots/plugin_info_mint.png "Plugin list example")
+![Plugin info example](https://raw.github.com/golismero/golismero/master/doc/screenshots/plugin_info_mint.png "Plugin list example")
 
 The full plugin list is also available [online](http://golismero-project.com/doc/plugin_list/index.html).
 
@@ -93,7 +93,7 @@ You can also select multiple plugins using wildcards. For example, you can selec
 
 ```python golismero.py <target> -e brute*```
 
-![Run plugin example](https://raw.github.com/golismero/master/doc/screenshots/run_plugin_mac_2.png "Run plugin example")
+![Run plugin example](https://raw.github.com/golismero/golismero/master/doc/screenshots/run_plugin_mac_2.png "Run plugin example")
 
 Reporting and eye candy
 -----------------------
@@ -104,11 +104,11 @@ This is how to generate an HTML report for an audit:
 
 Report summary:
 
-![Report summary](https://raw.github.com/golismero/master/doc/screenshots/report1.png "Report summary")
+![Report summary](https://raw.github.com/golismero/golismero/master/doc/screenshots/report1.png "Report summary")
 
 Report details:
 
-![Report details](https://raw.github.com/golismero/master/doc/screenshots/report2.png "Report details")
+![Report details](https://raw.github.com/golismero/golismero/master/doc/screenshots/report2.png "Report details")
 
 What will be the next features?
 ===============================
