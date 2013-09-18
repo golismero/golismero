@@ -1,14 +1,12 @@
-[Core]
-Name = Suspicious URL
-
 [Documentation]
+Name        = Suspicious URL
 Description = Flags suspicious words in URLs.
-Author = GoLismero project team
-Version = 0.1
-Website = https://github.com/golismero
-Copyright = Copyright (C) 2011-2013 GoLismero Project
-License = GNU Public License
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
 
 [Configuration]
-middle = golismero/warning_url.txt
-extensions = fuzzdb/Discovery/FilenameBruteforce/Extensions.Backup.fuzz.txt
+middle      = golismero/warning_url.txt
+extensions  = fuzzdb/Discovery/FilenameBruteforce/Extensions.Backup.fuzz.txt

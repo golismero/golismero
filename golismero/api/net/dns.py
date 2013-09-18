@@ -501,7 +501,7 @@ class _DNS(Singleton):
 
             else:
                 # The domain is an DNS server
-                ns_records = (domain)
+                ns_records = set((domain,))
 
         #
         # Make the transfer for each NS Server

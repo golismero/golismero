@@ -70,6 +70,10 @@ def test_pylint():
                     line = line.strip()
                     if not line:
                         continue
+                    if ": Warning (W): FIXME" in line or \
+                       ": Warning (W): TODO" in line or \
+                       ": Warning (W): XXX" in line:
+                        continue
                     if line.startswith(golismero):
                         line = line[ len(golismero) : ]
                     try:
@@ -90,7 +94,7 @@ def test_pylint():
                             ff = false[ : fp ]
                             fd = false[ fq : ]
                             fn = int( false[ fp + 1 : fq ] )
-                            if f == ff and d == fd and (fn - 10) <= n <= (fn + 10):
+                            if f == ff and d == fd: ## and (fn - 10) <= n <= (fn + 10):
                                 found = True
                                 false_pos.append( (ff, fn, fd) )
                                 break

@@ -31,17 +31,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
 __all__ = [
-    "char_count", "line_count", "word_count",
-    "generate_random_string", "calculate_shannon_entropy",
-    "split_first"]
+    "char_count", "line_count", "word_count", "generate_random_string",
+    "uncamelcase", "split_first", "hexdump",
+]
 
-from math import log
+import re
+
 from random import choice
 from re import finditer
-from string import ascii_letters, digits
+from string import ascii_letters, digits, printable
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def char_count(text):
     """
     :param text: Text.
@@ -53,7 +54,7 @@ def char_count(text):
     return sum(1 for _ in finditer(r"\w", text))
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def line_count(text):
     """
     :param text: Text.
@@ -68,7 +69,7 @@ def line_count(text):
     return count
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def word_count(text):
     """
     :param text: Text.
@@ -80,7 +81,7 @@ def word_count(text):
     return sum(1 for _ in finditer(r"\w+", text))
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def generate_random_string(length = 30):
     """
     Generates a random string of the specified length.
@@ -105,32 +106,75 @@ def generate_random_string(length = 30):
     return "".join(choice(m_available_chars) for _ in xrange(length))
 
 
-#----------------------------------------------------------------------
-def calculate_shannon_entropy(string):
+#------------------------------------------------------------------------------
+# Adapted from: http://stackoverflow.com/a/2560017/426293
+__uncamelcase_re = re.compile("%s|%s|%s" % (
+    r"(?<=[A-Z])(?=[A-Z][a-z])",
+    r"(?<=[^A-Z])(?=[A-Z])",
+    r"(?<=[A-Za-z])(?=[^A-Za-z])",
+))
+def uncamelcase(string):
     """
-    Calculates the Shannon entropy for the given string.
+    Converts a CamelCase string into a human-readable string.
 
-    :param string: String to parse.
+    Examples::
+        >>> uncamelcase("lowercase")
+        'lowercase'
+        >>> uncamelcase("Class")
+        'Class'
+        >>> uncamelcase("MyClass")
+        'My Class'
+        >>> uncamelcase("HTML")
+        'HTML'
+        >>> uncamelcase("PDFLoader")
+        'PDF Loader'
+        >>> uncamelcase("AString")
+        'A String'
+        >>> uncamelcase("SimpleXMLParser")
+        'Simple XML Parser'
+        >>> uncamelcase("GL11Version")
+        'GL 11 Version'
+        >>> uncamelcase("99Bottles")
+        '99 Bottles'
+        >>> uncamelcase("May5")
+        'May 5'
+        >>> uncamelcase("BFG9000")
+        'BFG 9000'
+
+    :param string: CamelCase string.
     :type string: str
 
-    :returns: Shannon entropy (min bits per byte-character).
-    :rtype: float
+    :returns: Human-readable string.
+    :rtype: str
     """
-    if isinstance(string, unicode):
-        string = string.encode("ascii")
-    ent = 0.0
-    if len(string) < 2:
-        return ent
-    size = float(len(string))
-    for b in xrange(128):
-        freq = string.count(chr(b))
-        if freq > 0:
-            freq = float(freq) / size
-            ent = ent + freq * log(freq, 2)
-    return -ent
+    string = string.replace("_"," ")
+    string = __uncamelcase_re.sub(" ", string)
+    while "  " in string:
+        string = string.replace("  ", " ")
+    return string
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
+def hexdump(s):
+    """
+    Produce an hexadecimal output from a binary string.
+
+    :param s: Binary string to dump.
+    :type s: str
+
+    :returns: Hexadecimal output.
+    :rtype: str
+    """
+    a = []
+    for i in xrange(0, len(s), 16):
+        h1 = " ".join("%.2x" % ord(c) for c in s[i:i+8])
+        h2 = " ".join("%.2x" % ord(c) for c in s[i+8:i+16])
+        d = "".join(c if c in printable else "." for c in s[i:i+16])
+        a.append("%-32s-%-32s %s\n" % (h1, h2, d))
+    return "".join(a)
+
+
+#------------------------------------------------------------------------------
 # This function was borrowed from the urllib3 project.
 #
 # Urllib3 is copyright 2008-2012 Andrey Petrov and contributors (see
@@ -152,7 +196,8 @@ def split_first(s, delims):
         >>> split_first('foo/bar?baz', '123')
         ('foo/bar?baz', '', None)
 
-    Scales linearly with number of delimiters. Not ideal for a large number of delimiters.
+    Scales linearly with number of delimiters.
+    Not ideal for a large number of delimiters.
 
     .. warning: This function was borrowed from the urllib3 project.
                 It may be removed in future versions of GoLismero.

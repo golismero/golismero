@@ -72,7 +72,7 @@ def test_auditdb_interfaces():
             missing = {
                 name for name in dir(cls) if (
                     name[0] != "_" and
-                    name not in ("audit_name", "compact", "dump", "decode", "encode", "generate_audit_name") and
+                    name not in ("audit_name", "compact", "dump", "decode", "encode", "generate_audit_name", "get_config_from_closed_database") and
                     name not in cls.__dict__
                 )
             }
@@ -107,51 +107,6 @@ def helper_test_auditdb_consistency_setup(audit_name, audit_db):
             helper_test_auditdb_data_consistency(t.audit.database, key, data)
 
 def helper_test_auditdb_general_consistency(db):
-
-    # Test state variables.
-    db.add_state_variable("fake_plugin", "a_string", "string")
-    db.add_state_variable("fake_plugin", "an_integer", 100)
-    db.add_state_variable("fake_plugin", "a_float", 1.0)
-    db.add_state_variable("fake_plugin", "an_object", object())
-    db.add_state_variable("fake_plugin", "a_list", ["string", 100, 1.0])
-    db.add_state_variable("fake_plugin", "a_set", {"string", 100, 1.0})
-    db.add_state_variable("fake_plugin", "a_tuple", ("string", 100, 1.0))
-    db.add_state_variable("fake_plugin", "a_dictionary", {"string": 100, 1.0: None})
-    assert db.get_state_variable_names("fake_plugin") == {"a_string", "an_integer", "a_float", "an_object", "a_list", "a_set", "a_tuple", "a_dictionary"}
-    assert db.has_state_variable("fake_plugin", "a_string")
-    assert db.has_state_variable("fake_plugin", "an_integer")
-    assert db.has_state_variable("fake_plugin", "a_float")
-    assert db.has_state_variable("fake_plugin", "an_object")
-    assert db.has_state_variable("fake_plugin", "a_list")
-    assert db.has_state_variable("fake_plugin", "a_set")
-    assert db.has_state_variable("fake_plugin", "a_tuple")
-    assert db.has_state_variable("fake_plugin", "a_dictionary")
-    assert not db.has_state_variable("fake_plugin", "does_not_exist")
-    assert db.get_state_variable("fake_plugin", "a_string") == "string"
-    assert db.get_state_variable("fake_plugin", "an_integer") == 100
-    assert db.get_state_variable("fake_plugin", "a_float") == 1.0
-    assert type(db.get_state_variable("fake_plugin", "an_object")) == object
-    assert db.get_state_variable("fake_plugin", "a_list") == ["string", 100, 1.0]
-    assert db.get_state_variable("fake_plugin", "a_set") == {"string", 100, 1.0}
-    assert db.get_state_variable("fake_plugin", "a_tuple") == ("string", 100, 1.0)
-    assert db.get_state_variable("fake_plugin", "a_dictionary") == {"string": 100, 1.0: None}
-    db.remove_state_variable("fake_plugin", "a_string")
-    db.remove_state_variable("fake_plugin", "an_integer")
-    db.remove_state_variable("fake_plugin", "a_float")
-    db.remove_state_variable("fake_plugin", "an_object")
-    db.remove_state_variable("fake_plugin", "a_list")
-    db.remove_state_variable("fake_plugin", "a_set")
-    db.remove_state_variable("fake_plugin", "a_tuple")
-    db.remove_state_variable("fake_plugin", "a_dictionary")
-    assert not db.has_state_variable("fake_plugin", "a_string")
-    assert not db.has_state_variable("fake_plugin", "an_integer")
-    assert not db.has_state_variable("fake_plugin", "a_float")
-    assert not db.has_state_variable("fake_plugin", "an_object")
-    assert not db.has_state_variable("fake_plugin", "a_list")
-    assert not db.has_state_variable("fake_plugin", "a_set")
-    assert not db.has_state_variable("fake_plugin", "a_tuple")
-    assert not db.has_state_variable("fake_plugin", "a_dictionary")
-    assert db.get_state_variable_names("fake_plugin") == set()
 
     # Test the shared sets.
     try:
@@ -385,6 +340,7 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert isinstance(db, BaseAuditDB)
 
     # Test the database start and end times.
+    db.set_audit_times(None, None)
     assert db.get_audit_times() == (None, None)
     db.set_audit_start_time(1)
     assert db.get_audit_times() == (1, None)
@@ -577,14 +533,6 @@ def test_auditdb_dump():
             disk.mark_stage_finished(d1.identity, 1)
             disk.mark_stage_finished(d2.identity, 2)
             disk.mark_stage_finished(d3.identity, 3)
-        disk.add_state_variable("fake_plugin", "a_string", "string")
-        disk.add_state_variable("fake_plugin", "an_integer", 100)
-        disk.add_state_variable("fake_plugin", "a_float", 1.0)
-        disk.add_state_variable("fake_plugin", "an_object", object())
-        disk.add_state_variable("fake_plugin", "a_list", ["string", 100, 1.0])
-        disk.add_state_variable("fake_plugin", "a_set", {"string", 100, 1.0})
-        disk.add_state_variable("fake_plugin", "a_tuple", ("string", 100, 1.0))
-        disk.add_state_variable("fake_plugin", "a_dictionary", {"string": 100, 1.0: None})
         disk.add_shared_values("fake_set_id", (
             "string",
             u"unicode",

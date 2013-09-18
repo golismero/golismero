@@ -39,7 +39,7 @@ __all__ = ["ProcessManager", "PluginContext"]
 
 from ..api.config import Config
 from ..api.data import LocalDataCache
-from ..api.file import FileManager
+from ..api.localfile import LocalFile
 from ..api.net.cache import NetworkCache
 from ..api.net.http import HTTP
 from ..messaging.codes import MessageType, MessageCode, MessagePriority
@@ -47,8 +47,7 @@ from ..messaging.message import Message
 
 from imp import load_source
 from multiprocessing import Manager
-from os import getpid, path
-from signal import signal, SIGINT
+from os import getpid
 from thread import get_ident
 from traceback import format_exc, print_exc, format_exception_only, format_list
 from warnings import catch_warnings, simplefilter
@@ -57,7 +56,7 @@ import sys
 
 # Make some runtime patches to the multiprocessing module.
 # Just importing this submodule does the magic!
-from ..patches import mp
+from ..patches import mp  # noqa
 
 # Imports needed to override the multiprocessing Process and Pool classes.
 from multiprocessing import Process as _Original_Process
@@ -108,12 +107,12 @@ def do_nothing(*args, **kwargs):
 # Serializable function to run plugins in subprocesses.
 # This is required for Windows support, since we don't have os.fork() there.
 # See: http://docs.python.org/2/library/multiprocessing.html#windows
-def launcher(queue, max_process, refresh_after_tasks):
-    return _launcher(queue, max_process, refresh_after_tasks)
-def _launcher(queue, max_process, refresh_after_tasks):
+def launcher(queue, max_concurrent, refresh_after_tasks):
+    return _launcher(queue, max_concurrent, refresh_after_tasks)
+def _launcher(queue, max_concurrent, refresh_after_tasks):
 
     # Instance the pool manager.
-    pool = PluginPoolManager(max_process, refresh_after_tasks)
+    pool = PluginPoolManager(max_concurrent, refresh_after_tasks)
 
     # Start the pool manager.
     wait = True
@@ -155,6 +154,7 @@ def bootstrap(context, func, args, kwargs):
     return _bootstrap(context, func, args, kwargs)
 def _bootstrap(context, func, args, kwargs):
     try:
+        do_notify_end = False
         try:
             try:
                 plugin_warnings = []
@@ -180,7 +180,19 @@ def _bootstrap(context, func, args, kwargs):
                             if not input_data.is_in_scope():
                                 return
 
+                            # Save the current crawling depth.
+                            if hasattr(input_data, "depth"):
+                                context._depth = input_data.depth
+
+                                # Check we didn't exceed the maximum depth.
+                                max_depth = context.audit_config.depth
+                                if max_depth is not None and context._depth > max_depth:
+                                    return
+
                         # TODO: hook stdout and stderr to catch print statements
+
+                        # Initialize the private file API.
+                        LocalFile._update_plugin_path()
 
                         # Clear the HTTP connection pool.
                         HTTP._initialize()
@@ -190,9 +202,8 @@ def _bootstrap(context, func, args, kwargs):
 
                         # Initialize the local data cache for this run.
                         LocalDataCache.on_run()
-
-                        # Initialize the private file API.
-                        FileManager._update_plugin_path()
+                        if func == "recv_info":
+                            LocalDataCache.on_create(input_data)
 
                         # Try to get the plugin from the cache.
                         cache_key = (context.plugin_module, context.plugin_class)
@@ -216,6 +227,13 @@ def _bootstrap(context, func, args, kwargs):
                         # Instance the plugin.
                         instance = cls()
 
+                        # Notify the Orchestrator of the plugin execution start.
+                        context.send_msg(
+                            message_type = MessageType.MSG_TYPE_STATUS,
+                            message_code = MessageCode.MSG_STATUS_PLUGIN_BEGIN,
+                        )
+                        do_notify_end = True
+
                         # Call the callback method.
                         result = None
                         try:
@@ -226,57 +244,71 @@ def _bootstrap(context, func, args, kwargs):
                             if func == "recv_info":
 
                                 # Validate and sanitize the result data.
-                                result = LocalDataCache.on_finish(result)
-
-                                # Always send back the input data as a result.
-                                if input_data not in result:
-                                    result.insert(0, input_data)
+                                result = LocalDataCache.on_finish(result, input_data)
 
                                 # Send the result data to the Orchestrator.
                                 if result:
                                     try:
-                                        context.send_msg(message_type = MessageType.MSG_TYPE_DATA,
-                                                         message_code = MessageCode.MSG_DATA,
-                                                         message_info = result)
+                                        context.send_msg(
+                                            message_type = MessageType.MSG_TYPE_DATA,
+                                            message_code = MessageCode.MSG_DATA,
+                                            message_info = result,
+                                        )
                                     except Exception, e:
-                                        context.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                                         message_code = MessageCode.MSG_CONTROL_ERROR,
-                                                         message_info = (str(e), format_exc()),
-                                                             priority = MessagePriority.MSG_PRIORITY_HIGH)
+                                        context.send_msg(
+                                            message_type = MessageType.MSG_TYPE_CONTROL,
+                                            message_code = MessageCode.MSG_CONTROL_ERROR,
+                                            message_info = (str(e), format_exc()),
+                                                priority = MessagePriority.MSG_PRIORITY_HIGH,
+                                        )
 
-                # Send plugin warnings to the Orchestrator.
                 finally:
+
+                    # Send plugin warnings to the Orchestrator.
                     if plugin_warnings:
                         try:
-                            context.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                             message_code = MessageCode.MSG_CONTROL_WARNING,
-                                             message_info = plugin_warnings,
-                                                 priority = MessagePriority.MSG_PRIORITY_HIGH)
+                            context.send_msg(
+                                message_type = MessageType.MSG_TYPE_CONTROL,
+                                message_code = MessageCode.MSG_CONTROL_WARNING,
+                                message_info = plugin_warnings,
+                                    priority = MessagePriority.MSG_PRIORITY_HIGH,
+                            )
                         except Exception, e:
-                            context.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                             message_code = MessageCode.MSG_CONTROL_ERROR,
-                                             message_info = (str(e), format_exc()),
-                                                 priority = MessagePriority.MSG_PRIORITY_HIGH)
+                            context.send_msg(
+                                message_type = MessageType.MSG_TYPE_CONTROL,
+                                message_code = MessageCode.MSG_CONTROL_ERROR,
+                                message_info = (str(e), format_exc()),
+                                    priority = MessagePriority.MSG_PRIORITY_HIGH,
+                            )
 
-            # Tell the Orchestrator there's been an error.
             except Exception, e:
-                context.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                 message_code = MessageCode.MSG_CONTROL_ERROR,
-                                 message_info = (str(e), format_exc()),
-                                     priority = MessagePriority.MSG_PRIORITY_HIGH)
 
-        # Send back an ACK.
+                # Tell the Orchestrator there's been an error.
+                context.send_msg(
+                    message_type = MessageType.MSG_TYPE_CONTROL,
+                    message_code = MessageCode.MSG_CONTROL_ERROR,
+                    message_info = (str(e), format_exc()),
+                        priority = MessagePriority.MSG_PRIORITY_HIGH,
+                )
+
         finally:
-            context.send_ack()
+
+            # Send back an ACK.
+            context.send_ack(do_notify_end)
+
+            # Reset the current crawling depth.
+            context._depth = -1
 
     # On keyboard interrupt or fatal error, tell the Orchestrator we need to stop.
     except:
 
         # Send a message to the Orchestrator to stop.
         try:
-            context.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                             message_code = MessageCode.MSG_CONTROL_STOP,
-                             message_info = False)
+            context.send_msg(
+                message_type = MessageType.MSG_TYPE_CONTROL,
+                message_code = MessageCode.MSG_CONTROL_STOP,
+                message_info = False,
+            )
         except SystemExit:
             raise
         except:
@@ -294,6 +326,9 @@ class PluginContext (object):
     """
     Serializable execution context for the plugins.
     """
+
+    # Current crawling depth, set automatically by the plugin bootstrap.
+    _depth = -1
 
     def __init__(self, msg_queue, ack_identity = None, plugin_info = None,
                  audit_name = None, audit_config = None, audit_scope = None,
@@ -384,13 +419,13 @@ class PluginContext (object):
         return self.__plugin_info
 
     @property
-    def plugin_name(self):
+    def plugin_id(self):
         """"
-        :returns: Plugin name, or None if not running a plugin.
+        :returns: Plugin ID, or None if not running a plugin.
         :rtype: str | None
         """
         if self.__plugin_info:
-            return self.__plugin_info.plugin_name
+            return self.__plugin_info.plugin_id
 
     @property
     def plugin_module(self):
@@ -418,6 +453,14 @@ class PluginContext (object):
         """
         if self.__plugin_info:
             return self.__plugin_info.plugin_config
+
+    @property
+    def depth(self):
+        """"
+        :returns: Current analysis depth.
+        :rtype: int
+        """
+        return self._depth
 
     @property
     def _orchestrator_pid(self):
@@ -454,13 +497,17 @@ class PluginContext (object):
 
 
     #----------------------------------------------------------------------
-    def send_ack(self):
+    def send_ack(self, do_notify_end):
         """
         Send ACK messages from the plugins to the Orchestrator.
+
+        :param do_notify_end: True to send the plugin end notification to
+            the UI plugin, False otherwise.
+        :type do_notify_end: bool
         """
         self.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
                       message_code = MessageCode.MSG_CONTROL_ACK,
-                      message_info = self.ack_identity,
+                      message_info = do_notify_end,
                           priority = MessagePriority.MSG_PRIORITY_LOW)
 
 
@@ -482,7 +529,7 @@ class PluginContext (object):
             if type(progress) in (int, long):
                 progress = float(progress)
             elif type(progress) is not float:
-                raise TypeError("Expected float, got %s instead", type(progress))
+                raise TypeError("Expected float, got %r instead", type(progress))
             if progress < 0.0:
                 progress = 0.0
             elif progress > 100.0:
@@ -491,7 +538,7 @@ class PluginContext (object):
         # Send the status message to the Orchestrator.
         self.send_msg(message_type = MessageType.MSG_TYPE_STATUS,
                       message_code = MessageCode.MSG_STATUS_PLUGIN_STEP,
-                      message_info = (self.ack_identity, progress),
+                      message_info = progress,
                           priority = MessagePriority.MSG_PRIORITY_MEDIUM)
 
 
@@ -531,7 +578,8 @@ class PluginContext (object):
                           message_code = message_code,
                           message_info = message_info,
                             audit_name = self.audit_name,
-                           plugin_name = self.plugin_name,
+                             plugin_id = self.plugin_id,
+                          ack_identity = self.ack_identity,
                               priority = priority)
         self.send_raw_msg(message)
 
@@ -916,7 +964,7 @@ class ProcessManager (object):
         config = orchestrator.config
 
         # Maximum number of processes to create
-        self.__max_processes       = getattr(config, "max_process",         None)
+        self.__max_processes       = getattr(config, "max_concurrent",      None)
 
         # Maximum number of function calls to make before refreshing a subprocess
         self.__refresh_after_tasks = getattr(config, "refresh_after_tasks", None)

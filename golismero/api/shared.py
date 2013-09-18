@@ -231,7 +231,7 @@ class AbstractSharedContainer (object):
 
     #--------------------------------------------------------------------------
     def __init__(self):
-        self.__shared_id = str( uuid4() )
+        self._shared_id = str( uuid4() )
 
 
     #--------------------------------------------------------------------------
@@ -241,7 +241,7 @@ class AbstractSharedContainer (object):
         :returns: Global unique ID of this shared data container.
         :rtype: str
         """
-        return self.__shared_id
+        return self._shared_id
 
 
 #------------------------------------------------------------------------------

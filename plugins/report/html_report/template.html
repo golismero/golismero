@@ -228,6 +228,11 @@
         background-color: #001682;
       }
 
+      .details {
+        padding:5px 10px;
+        line-height:1.5;
+      }
+
     </style>
 
     <!-- Embeded jquery.jqplot.min.css -->
@@ -421,9 +426,9 @@
                     </li>
                     <li class="list-group-item"><b>Start date</b><span class="pull-right">{{start_date}}</span>
                     </li>
-                    <li class="list-group-item"><b>Start date</b><span class="pull-right">{{end_date}}</span>
+                    <li class="list-group-item"><b>End date</b><span class="pull-right">{{end_date}}</span>
                     </li>
-                    <li class="list-group-item"><b>Execution time</b><span class="badge">{{execution_time}} s</span>
+                    <li class="list-group-item"><b>Execution time</b><span class="badge">{{execution_time}}</span>
                     </li>
                     <li class="list-group-item" style="margin-bottom: 10px;">Total vulnerabilities found <span class="badge badge-important">{{summary_vulns.total}}</span>
                       <div style="padding-top: 20px;">
@@ -475,8 +480,8 @@
                   #########
                 -->
                 <div class="tab-pane fade active in" id="by_vuln">
-                    {% for l_vuln in info_by_vuln %}
-
+                    {% for key, l_info in info_by_vuln.items %}
+                      <h3>{{key}}</h3>
                         <div class="row">
                           <div class="col-lg-12">
                               <form id="filter-form-vulns" style="margin-top:10px">Filter:&nbsp;&nbsp;&nbsp;<input name="filter-vulns" id="filter-vulns" value="" maxlength="30" size="30" type="text"></form><br>
@@ -490,6 +495,8 @@
                                 </thead>
 
                                 <tbody>
+
+                                  {% for l_vuln in l_info %}                              
                                     <!-- Start row content -->
                                     <tr>
                                       <!-- Start row number -->
@@ -514,132 +521,106 @@
 
                                             <!-- Accordion target -->
                                             <div id="v_i_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" class="accordion-body collapse">
-                                              <div class="accordion-inner">
+                                              <div class="accordion-inner" style="padding-left: 20px;">
 
                                                 <!-- Vuln properties -->
-                                                <div class="accordion" id="v_p_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" style="margin-left: 15px;">
-                                                  <div class="accordion-group">
-
-                                                    <!-- Vuln accordion header -->
-                                                    <div class="accordion-heading">
-                                                      <div class="row">
-                                                        <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#v_p_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" href="#v_p_i_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" style="color: #383839;"><span>[+]</span>&nbsp;Vuln details</a></div>
-                                                      </div>
+                                                <!--   Vuln accordion header -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                      <h4>Vulnerability details:</h4>
                                                     </div>
-                                                    <!-- End Vuln accordion header -->
+                                                </div>
+                                                <!--   End Vuln accordion header -->
 
-                                                    <!-- Vuln accordion info -->
-                                                    <div id="v_p_i_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" class="accordion-body collapse">
-                                                      <div class="accordion-inner">
-                                                        <div class="row">
-                                                          <div class="col-12">
+                                                <!--   Vuln accordion info -->
+                                                <div class="row">
+                                                  <div class="col-12">
 
-                                                            <!-- Properties of vuln -->
-                                                            <div class="context" style="padding-top: 5px; margin-left: 20px;">
-                                                              <div class="row">
-                                                                <div class="col-12">
-                                                                  <div class="panel accordion-panel" style="border: none;">
-                                                                    <div style="padding-top: 0px;">
-                                                                      <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
-                                                                        <div class="col-3 text-center"><b>Property</b></div>
-                                                                        <div class="col-9 text-center"><b>Value</b></div>
-                                                                      </div>
+                                                    <!-- Properties of vuln -->
+                                                    <div class="context" style="padding-top: 5px; margin-left: 20px;">
+                                                      <div class="row">
+                                                        <div class="col-12">
+                                                          <div class="panel accordion-panel" style="border: none;">
+                                                            <div style="padding-top: 0px;">
+                                                              <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
+                                                                <div class="col-3 text-center"><b>Property</b></div>
+                                                                <div class="col-9 text-center"><b>Value</b></div>
+                                                              </div>
 
-                                                                      {% for l_vuln_pro in l_vuln.properties %}
-                                                                        <div class="row" style="padding: 2px 2px 2px 2px;">
-                                                                          <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_vuln_pro.name}}</span></div>
-                                                                          <div class="col-9" >{{l_vuln_pro.value}}</div>
-                                                                        </div>
-                                                                      {% empty %}
-                                                                        <div class="row">
-                                                                          <div class="col-12">This resource has not properties</div>
-                                                                        </div>
-                                                                      {% endfor %}
-                                                                    </div>
+                                                              {% for l_vuln_pro in l_vuln.properties %}
+                                                                <div class="row" style="padding: 2px 2px 2px 2px;" >
+                                                                  <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_vuln_pro.name}}</span></div>
+                                                                  <div class="col-9 details">
+                                                                    {% if l_vuln_pro.value %}
+                                                                      {{l_vuln_pro.value}}
+                                                                    {% else %}
+                                                                      Not available
+                                                                    {% endif %}
                                                                   </div>
                                                                 </div>
-                                                              </div>
+                                                              {% empty %}
+                                                                <div class="row">
+                                                                  <div class="col-12">This resource has no properties</div>
+                                                                </div>
+                                                              {% endfor %}
                                                             </div>
-                                                            <!-- End Properties of vuln -->
-
                                                           </div>
                                                         </div>
-
                                                       </div>
                                                     </div>
-                                                    <!-- End Vuln accordion info -->
-
+                                                    <!-- End Properties of vuln -->
 
                                                   </div>
-                                                </div>
+                                                </div>                                                    
+                                                <!--   End Vuln accordion info -->
                                                 <!-- End Vuln properties -->
 
 
-
-
-
-
                                                 <!-- Vuln affected resources -->
-                                                <div class="accordion" id="v_ar_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" style="margin-left: 15px;">
-                                                  <div class="accordion-group">
-
-                                                    <!-- Vuln accordion header -->
-                                                    <div class="accordion-heading">
-                                                      <div class="row">
-                                                        <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#v_ar_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" href="#v_af_i_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" style="color: #383839;"><span>[+]</span>&nbsp;Affected resources</a></div>
-                                                      </div>
+                                                <!--   resource accordion header -->
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                      <h4>Affected resources:</h4>
                                                     </div>
-                                                    <!-- End Vuln accordion header -->
+                                                </div>
+                                                <!--   End resource accordion header -->
 
-                                                    <!-- Vuln accordion info -->
-                                                    <div id="v_af_i_{{l_vuln.vuln_name|slugify}}_{{forloop.counter}}_1" class="accordion-body collapse">
-                                                      <div class="accordion-inner">
-                                                        <div class="row">
-                                                          <div class="col-12">
+                                                <!--   resource accordion info -->
+                                                <div class="row">
+                                                  <div class="col-12">
 
-                                                            <!-- Affected resources of vuln -->
-                                                            <div class="context" style="padding-top: 5px; margin-left: 20px;">
-                                                              <div class="row">
-                                                                <div class="col-12">
-                                                                  <div class="panel accordion-panel" style="border: none;">
-                                                                    <div style="padding-top: 0px;">
-                                                                      <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
-                                                                        <div class="col-3 text-center"><b>Resource type</b></div>
-                                                                        <div class="col-9 text-center"><b>Value</b></div>
-                                                                      </div>
-
-                                                                      {% for l_vuln_affected_res in l_vuln.affected_resources %}
-                                                                        <div class="row" style="padding: 2px 2px 2px 2px;">
-                                                                          <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_vuln_affected_res.resource_type}}</span></div>
-                                                                          <div class="col-9" >{{l_vuln_affected_res.main_info}}</div>
-                                                                        </div>
-                                                                      {% empty %}
-                                                                        <div class="row">
-                                                                          <div class="col-12">There is not affected resources</div>
-                                                                        </div>
-                                                                      {% endfor %}
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
+                                                    <!-- Affected resources of vuln -->
+                                                    <div class="context" style="padding-top: 5px; margin-left: 20px;">
+                                                      <div class="row">
+                                                        <div class="col-12">
+                                                          <div class="panel accordion-panel" style="border: none;">
+                                                            <div style="padding-top: 0px;">
+                                                              <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
+                                                                <div class="col-3 text-left"><b>Resource</b></div>
+                                                                <div class="col-9 text-center"><b>Value</b></div>
                                                               </div>
-                                                            </div>
-                                                            <!-- End affected resources of vuln -->
 
+                                                              {% for l_vuln_affected_res in l_vuln.affected_resources %}
+                                                                <div class="row" style="padding: 2px 2px 2px 2px;">
+                                                                  <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_vuln_affected_res.resource_type}}</span></div>
+                                                                  <div class="col-9" >{{l_vuln_affected_res.main_info}}</div>
+                                                                </div>
+                                                              {% empty %}
+                                                                <div class="row">
+                                                                  <div class="col-12">There are no affected resources</div>
+                                                                </div>
+                                                              {% endfor %}
+                                                            </div>
                                                           </div>
                                                         </div>
-
                                                       </div>
                                                     </div>
-                                                    <!-- End Vuln accordion info -->
-
+                                                    <!-- End affected resources of vuln -->
 
                                                   </div>
                                                 </div>
+                                                <!--   End resource accordion info -->
                                                 <!-- End affected resources -->
-
-
-
-
 
 
 
@@ -660,14 +641,11 @@
 
                                     </tr>
                                     <!-- End row content-->
-
+                                  {% endfor %}  
                                 </tbody>
                               </table>
                           </div>
                         </div>
-
-
-
 
                     {% endfor %}
 
@@ -695,7 +673,7 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="first-page-header">
-                              <h3>{{l_vuln.resource_type}}</h3>
+                              <h3><a name="{{l_vuln.resource_type}}">{{l_vuln.resource_type}}</a></h3>
                               <form id="filter-form-resources_{{forloop.counter}}" style="margin-top:10px">Filter:&nbsp;&nbsp;&nbsp;<input name="filter-resources_{{forloop.counter}}" id="filter-resources_{{forloop.counter}}" value="" maxlength="30" size="30" type="text"></form><br>
                             </div>
 
@@ -725,171 +703,153 @@
                                                 <div class="accordion-heading">
                                                   <div class="row no_sep">
                                                     <div class="col-12 vcenter">
-                                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#v_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_1" href="#v_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_2"><span>[+]</span>&nbsp;{{l_row.main_info}}</a>
+                                                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#v_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_1" href="#r_v_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_2"><span>[+]</span>&nbsp;{{l_row.main_info}}</a>
                                                     </div>
                                                   </div>
                                                 </div>
                                                 <!-- End name and affected resource -->
 
                                                 <!-- Accordion target -->
-                                                <div id="v_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_2" class="accordion-body collapse">
-                                                  <div class="accordion-inner">
+                                                <div id="r_v_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_2" class="accordion-body collapse">
+                                                  <div class="accordion-inner" style="padding-left: 20px; padding-bottom: 10px;">
 
-                                                    <!-- Resource properties -->
-                                                    <div class="accordion" id="r_p_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_3" style="margin-left: 15px;">
-                                                      <div class="accordion-group">
-
-                                                        <!-- Vulns of resources accordion header -->
-                                                        <div class="accordion-heading">
-                                                          <div class="row">
-                                                            <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#r_p_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_3" href="#r_p_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_4" style="color: #383839;"><span>[+]</span>&nbsp;Resource details</a></div>
-                                                          </div>
+                                                    <!-- End resource properties -->
+                                                    <!--    Resource properties title -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                          <h4>Resource details</h4>
                                                         </div>
-                                                        <!-- End Vuln of resources accordion header -->
+                                                    </div>
+                                                    <!--    End resource properties title -->
 
-                                                        <!-- Vuln accordion info -->
-                                                        <div id="r_p_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_4" class="accordion-body collapse">
-                                                          <div class="accordion-inner">
-                                                            <div class="row">
-                                                              <div class="col-12">
+                                                    <!--    Resource info -->
+                                                    <div class="row">
+                                                          <div class="col-12">
 
-                                                                <!-- Properties of resource -->
-                                                                <div class="context" style="padding-top: 5px; margin-left: 20px;">
-                                                                  <div class="row">
-                                                                    <div class="col-12">
-                                                                      <div class="panel accordion-panel" style="border: none;">
-                                                                        <div style="padding-top: 0px;">
-                                                                          <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
-                                                                            <div class="col-3 text-center"><b>Property</b></div>
-                                                                            <div class="col-9 text-center"><b>Value</b></div>
-                                                                          </div>
-
-                                                                          {% for l_res_pro in l_row.properties %}
-                                                                            <div class="row" style="padding: 2px 2px 2px 2px;">
-                                                                              <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_res_pro.name}}</span></div>
-                                                                              <div class="col-9" >{{l_res_pro.value}}</div>
-                                                                            </div>
-                                                                          {% empty %}
-                                                                            <div class="row">
-                                                                              <div class="col-12">This resource has not properties</div>
-                                                                            </div>
-                                                                          {% endfor %}
-                                                                        </div>
+                                                            <!-- Properties of resource -->
+                                                            <div class="context" style="padding-top: 5px; margin-left: 20px;">
+                                                              <div class="row">
+                                                                <div class="col-12">
+                                                                  <div class="panel accordion-panel" style="border: none;">
+                                                                    <div style="padding-top: 0px;">
+                                                                      <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
+                                                                        <div class="col-3 text-center"><b>Property</b></div>
+                                                                        <div class="col-9 text-center"><b>Value</b></div>
                                                                       </div>
+
+                                                                      {% for l_res_pro in l_row.properties %}
+                                                                        <div class="row" style="padding: 2px 2px 2px 2px;">
+                                                                          <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_res_pro.name}}</span></div>
+                                                                          <div class="col-9" >{{l_res_pro.value}}</div>
+                                                                        </div>
+                                                                      {% empty %}
+                                                                        <div class="row">
+                                                                          <div class="col-12">This resource has no properties</div>
+                                                                        </div>
+                                                                      {% endfor %}
                                                                     </div>
                                                                   </div>
                                                                 </div>
-                                                                <!-- End Properties of resource -->
-
                                                               </div>
                                                             </div>
+                                                            <!-- End Properties of resource -->
 
                                                           </div>
-                                                        </div>
-                                                        <!-- End Vuln accordion info -->
-
-
-                                                      </div>
                                                     </div>
+                                                    <!--    End resource info -->
                                                     <!-- End resource properties -->
 
 
 
                                                     <!-- Vuln related of resources -->
-                                                    <div class="accordion" id="v_ar_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_4" style="margin-left: 15px;">
-                                                      <div class="accordion-group">
+                                                    <!--    Vuln accordion header -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                          <h4>Related vulnerabilities</h4>
+                                                      </div>
+                                                    <!--    End Vuln accordion header -->
 
-                                                        <!-- Vuln accordion header -->
-                                                        <div class="accordion-heading">
-                                                          <div class="row">
-                                                            <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#v_ar_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_4" href="#v_af_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_5" style="color: #383839;"><span>[+]</span>&nbsp;Related vulns</a></div>
-                                                          </div>
-                                                        </div>
-                                                        <!-- End Vuln accordion header -->
+                                                    <!--    Related vuln accordion info -->
+                                                    <div class="row">
+                                                      <div class="col-12">
 
-                                                        <!-- Related vuln accordion info -->
-                                                        <div id="v_af_i_{{l_vuln.resource_type|slugify}}_{{forloop.counter}}_5" class="accordion-body collapse">
-                                                          <div class="accordion-inner">
-                                                            <div class="row">
-                                                              <div class="col-12">
+                                                        {% for l_res_rel_vuln in l_row.associated_vulns %}
 
-                                                                {% for l_res_rel_vuln in l_row.associated_vulns %}
+                                                          <!-- Related vuln properties -->
+                                                          <div class="accordion" id="res_rel_v_{{l_row.res_id}}_{{l_res_rel_vuln.vuln_id}}" style="padding-left: 20px;">
+                                                            <div class="accordion-group">
 
-                                                                  <!-- Related vuln properties -->
-                                                                  <div class="accordion" id="r_p_rel_v_{{l_vuln.resource_type|slugify}}_{{l_res_rel_vuln.vuln_name}}_{{forloop.counter}}_3" style="margin-left: 30px;">
-                                                                    <div class="accordion-group">
+                                                              <!-- Related Vulns of resources accordion header -->
+                                                              <div class="accordion-heading">
+                                                                <div class="row">
+                                                                  <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#res_rel_v_{{l_row.res_id}}_{{l_res_rel_vuln.vuln_id}}" href="#res_rel_v_prop_{{l_row.res_id}}_{{l_res_rel_vuln.vuln_id}}" style="color: #383839;"><span>[+]</span>&nbsp;{{l_res_rel_vuln.vuln_name}} : {{l_res_rel_vuln.vuln_title}}</a></div>
+                                                                </div>
+                                                              </div>
+                                                              <!-- End Related vuln of resources accordion header -->
 
-                                                                      <!-- Related Vulns of resources accordion header -->
-                                                                      <div class="accordion-heading">
+                                                              <!-- Vuln accordion info -->
+                                                              <div id="res_rel_v_prop_{{l_row.res_id}}_{{l_res_rel_vuln.vuln_id}}" class="accordion-body collapse">
+                                                                <div class="accordion-inner">
+                                                                  <div class="row">
+                                                                    <div class="col-12">
+
+                                                                      <!-- Properties of resource -->
+                                                                      <div class="context" style="padding-top: 5px; margin-left: 20px;">
                                                                         <div class="row">
-                                                                          <div class="col-12"><a class="accordion-toggle" data-toggle="collapse" data-parent="#r_p_rel_v_{{l_vuln.resource_type|slugify}}_{{l_res_rel_vuln.vuln_name}}_{{forloop.counter}}_3" href="#r_p_rel_v_i_{{l_vuln.resource_type|slugify}}_{{l_res_rel_vuln.vuln_name}}_{{forloop.counter}}_4" style="color: #383839;"><span>[+]</span>&nbsp;{{l_res_rel_vuln.vuln_name}}</a></div>
-                                                                        </div>
-                                                                      </div>
-                                                                      <!-- End Related vuln of resources accordion header -->
+                                                                          <div class="col-12">
+                                                                            <div class="panel accordion-panel" style="border: none;">
+                                                                              <div style="padding-top: 0px;">
+                                                                                <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
+                                                                                  <div class="col-3 text-center"><b>Property</b></div>
+                                                                                  <div class="col-9 text-center"><b>Value</b></div>
+                                                                                </div>
 
-                                                                      <!-- Vuln accordion info -->
-                                                                      <div id="r_p_rel_v_i_{{l_vuln.resource_type|slugify}}_{{l_res_rel_vuln.vuln_name}}_{{forloop.counter}}_4" class="accordion-body collapse">
-                                                                        <div class="accordion-inner">
-                                                                          <div class="row">
-                                                                            <div class="col-12">
+                                                                                {% for l_res_rel_pro in l_res_rel_vuln.vuln_properties %}
+                                                                                  <div class="row" style="padding: 2px 2px 2px 2px;">
+                                                                                    <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_res_rel_pro.name}}</span></div>
+                                                                                    <div class="col-9" >
+                                                                                    {% if l_res_rel_pro.value %}
+                                                                                      {{l_res_rel_pro.value}}
+                                                                                    {% else %}
+                                                                                      Not available.
+                                                                                    {% endif %}
 
-                                                                              <!-- Properties of resource -->
-                                                                              <div class="context" style="padding-top: 5px; margin-left: 20px;">
-                                                                                <div class="row">
-                                                                                  <div class="col-12">
-                                                                                    <div class="panel accordion-panel" style="border: none;">
-                                                                                      <div style="padding-top: 0px;">
-                                                                                        <div class="row" style="border-bottom: 1px solid #dcdbd9; padding-bottom: 2px; margin-bottom: 2px;">
-                                                                                          <div class="col-3 text-center"><b>Property</b></div>
-                                                                                          <div class="col-9 text-center"><b>Value</b></div>
-                                                                                        </div>
-
-                                                                                        {% for l_res_rel_pro in l_res_rel_vuln.vuln_properties %}
-                                                                                          <div class="row" style="padding: 2px 2px 2px 2px;">
-                                                                                            <div class="col-3" style="border-right: 1px solid #dcdbd9;"><span class="btn btn-primary btn-small">{{l_res_rel_pro.name}}</span></div>
-                                                                                            <div class="col-9" >{{l_res_rel_pro.value}}</div>
-                                                                                          </div>
-                                                                                        {% empty %}
-                                                                                          <div class="row">
-                                                                                            <div class="col-12">This resource has not properties</div>
-                                                                                          </div>
-                                                                                        {% endfor %}
-                                                                                      </div>
                                                                                     </div>
                                                                                   </div>
-                                                                                </div>
+                                                                                {% empty %}
+                                                                                  <div class="row">
+                                                                                    <div class="col-12">This resource has no properties</div>
+                                                                                  </div>
+                                                                                {% endfor %}
                                                                               </div>
-                                                                              <!-- End Properties of resource -->
-
                                                                             </div>
                                                                           </div>
-
                                                                         </div>
                                                                       </div>
-                                                                      <!-- End Vuln accordion info -->
-
+                                                                      <!-- End Properties of resource -->
 
                                                                     </div>
                                                                   </div>
-                                                                  <!-- End related vuln properties -->
-                                                                {% empty %}
-                                                                  <div class="row">
-                                                                    <div class="col-12">This resource has not vulnerabilities</div>
-                                                                  </div>
 
-                                                                {% endfor %}
-
-
+                                                                </div>
                                                               </div>
-                                                            </div>
+                                                              <!-- End Vuln accordion info -->
 
+
+                                                            </div>
                                                           </div>
-                                                        </div>
-                                                        <!-- End related vuln accordion info -->
+                                                          <!-- End related vuln properties -->
+                                                        {% empty %}
+                                                          <div class="row">
+                                                            <div class="col-12">This resource has no vulnerabilities</div>
+                                                          </div>
+
+                                                        {% endfor %}
 
 
                                                       </div>
-                                                    </div>
+                                                    </div>                                                        
+                                                    <!--    End related vuln accordion info -->
                                                     <!-- End related of resources -->
 
 

@@ -107,7 +107,7 @@ def main():
     # Load the Orchestrator options.
     orchestrator_config = OrchestratorConfig()
     orchestrator_config.ui_mode = "web"
-    orchestrator_config.colorize = False
+    orchestrator_config.color = False
     orchestrator_config.config_file = config_file
     orchestrator_config.from_config_file(orchestrator_config.config_file, allow_profile = True)
     if orchestrator_config.profile:

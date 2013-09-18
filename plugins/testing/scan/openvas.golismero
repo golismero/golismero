@@ -1,13 +1,15 @@
-[Core]
-Name = OpenVAS
-
 [Documentation]
-Description = Run the OpenVAS scanner and import the results
+Name        = OpenVAS
+Description = Integration with OpenVAS: http://www.openvas.org/
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2013 GoLismero Project
 License     = GNU Public License
+
+[Core]
+Module = openvas.py
+Class  = OpenVASPlugin
 
 [Arguments]
 profile   = Full and fast

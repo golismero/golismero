@@ -54,16 +54,16 @@ from collections import defaultdict
 
 
 def test_nikto():
-    plugin_name = "testing/scan/nikto"
+    plugin_id = "testing/scan/nikto"
     csv_file = "test_nikto.csv"
-    print "Testing plugin: %s" % plugin_name
+    print "Testing plugin: %s" % plugin_id
     audit_config = AuditConfig()
     audit_config.targets = ["www.example.com", "localhost"]
     audit_config.include_subdomains = False
     with PluginTester(audit_config = audit_config) as t:
 
         print "Testing Nikto plugin parser..."
-        plugin, plugin_info = t.get_plugin(plugin_name)
+        plugin, plugin_info = t.get_plugin(plugin_id)
         Config._context._PluginContext__plugin_info = plugin_info
         try:
             r, c = plugin.parse_nikto_results(BaseUrl("http://www.example.com/"),
@@ -71,21 +71,21 @@ def test_nikto():
             #for d in r:
                 #print "-" * 10
                 #print repr(d)
-            assert c == 3
-            assert len(r) == 5
+            assert c == 6, c
+            assert len(r) == 10, len(r)
             c = defaultdict(int)
             for d in r:
                 c[d.__class__.__name__] += 1
             #print c
             assert c.pop("IP") == 1
-            assert c.pop("Url") == 1
-            assert c.pop("UrlVulnerability") == 3
+            assert c.pop("Url") == 3
+            assert c.pop("UncategorizedVulnerability") == 6
             assert len(c) == 0
         finally:
             Config._context._PluginContext__plugin_info = None
 
         print "Testing Nikto plugin against localhost..."
-        r = t.run_plugin(plugin_name, BaseUrl("http://localhost/"))
+        r = t.run_plugin(plugin_id, BaseUrl("http://localhost/"))
         for d in r:
             print "\t%r" % d
 

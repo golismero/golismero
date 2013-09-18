@@ -37,7 +37,7 @@ from .orchestrator import Orchestrator
 from .scope import AuditScope, DummyScope
 from ..api.data import Data, LocalDataCache
 from ..api.config import Config
-from ..api.file import FileManager
+from ..api.localfile import LocalFile
 from ..api.net.cache import NetworkCache
 from ..api.net.http import HTTP
 from ..common import OrchestratorConfig
@@ -91,7 +91,7 @@ class PluginTester(object):
 
     #--------------------------------------------------------------------------
     def __init__(self, orchestrator_config = None, audit_config = None,
-                 autoinit = True):
+                 autoinit = True, autodelete = True, mock_audit=True):
         """
         :param orchestrator_config: Optional orchestrator configuration.
         :type orchestrator_config: OrchestratorConfig
@@ -103,12 +103,25 @@ class PluginTester(object):
             False otherwise. If set to False you need to call the
             init_environment() method manually.
         :type autoinit: bool
+
+        :param autodelete: True to automatically delete all files created
+            during the test, False to leave the files on disk.
+        :type autodelete: bool
+
+        :param mock_audit: True to create a mock Audit object as well as
+            the mock Orchestrator object. False to create only the mock
+            Orchestrator object. Note that without a mock Audit object
+            most plugins won't run properly. This is useful for testing
+            UI plugins.
+        :type mock_audit: bool
         """
 
         # Sanitize the config.
         if orchestrator_config is None:
             orchestrator_config = OrchestratorConfig()
-            orchestrator_config.targets = ["http://www.example.com/"]
+            orchestrator_config.ui_mode = "disabled"
+            orchestrator_config.color   = False
+            orchestrator_config.verbose = 4
         orchestrator_config, (audit_config,) = \
             _sanitize_config(orchestrator_config, (audit_config,))
 
@@ -120,9 +133,12 @@ class PluginTester(object):
         self.__orchestrator = None
         self.__audit = None
 
+        # Remember if the user wants to delete the files or not.
+        self.__autodelete = autodelete
+
         # Initialize the environment if requested.
         if autoinit:
-            self.init_environment()
+            self.init_environment(mock_audit)
 
 
     #--------------------------------------------------------------------------
@@ -149,75 +165,99 @@ class PluginTester(object):
     def audit_config(self):
         return self.__audit_config
 
+    @property
+    def audit_name(self):
+        if self.__audit:
+            return self.__audit.name
+        return None
+
+    @property
+    def audit_scope(self):
+        if self.__audit:
+            return self.__audit.scope
+        return DummyScope()
+
 
     #--------------------------------------------------------------------------
-    def init_environment(self):
+    def init_environment(self, mock_audit=True):
+        """
+        Initialize the mock environment.
+
+        Called automatically by the constructor when autoinit is True.
+        Otherwise you have to call this method before testing a plugin.
+
+        :param mock_audit: True to create a mock Audit object as well as
+            the mock Orchestrator object. False to create only the mock
+            Orchestrator object. Note that without a mock Audit object
+            most plugins won't run properly. This is useful for testing
+            UI plugins.
+        :type mock_audit: bool
+        """
 
         # Do nothing if the environment has already been initialized.
-        if self.audit is not None:
+        if self.orchestrator is not None:
             return
 
         # Instance the Orchestrator.
-        orchestrator = Orchestrator(self.orchestrator_config)
-
-        # Instance an Audit.
-        audit = Audit(self.audit_config, orchestrator)
-
-        # Create the audit database.
-        audit._Audit__database = AuditDB(self.audit_config)
-
-        # Calculate the audit scope.
-        if self.audit_config.targets:
-            audit_scope = AuditScope(self.audit_config)
-        else:
-            audit_scope = DummyScope()
-        audit._Audit__audit_scope = audit_scope
-
-        # Create the audit plugin manager.
-        plugin_manager = orchestrator.pluginManager.get_plugin_manager_for_audit(audit)
-        audit._Audit__plugin_manager = plugin_manager
+        self.__orchestrator = orchestrator = Orchestrator(self.orchestrator_config)
 
         # Load all the plugins.
-        plugins = plugin_manager.load_plugins()
+        plugins = orchestrator.pluginManager.load_plugins()
         if not plugins:
             raise RuntimeError("Failed to find any plugins!")
 
-        # Get the audit name.
-        audit_name = self.audit_config.audit_name
+        # If the audit mock is enabled...
+        if mock_audit:
 
-        # Register the Audit with the AuditManager.
-        orchestrator.auditManager._AuditManager__audits[audit_name] = audit
+            # Instance an Audit.
+            self.__audit = audit = Audit(self.audit_config, orchestrator)
+
+            # Create the audit database.
+            audit._Audit__database = AuditDB(self.audit_config)
+
+            # Calculate the audit scope.
+            if self.audit_config.targets:
+                audit_scope = AuditScope(self.audit_config)
+            else:
+                audit_scope = DummyScope()
+            audit._Audit__audit_scope = audit_scope
+
+            # Create the audit plugin manager.
+            plugin_manager = orchestrator.pluginManager.get_plugin_manager_for_audit(audit)
+            audit._Audit__plugin_manager = plugin_manager
+
+            # Get the audit name.
+            audit_name = self.audit_config.audit_name
+
+            # Register the Audit with the AuditManager.
+            orchestrator.auditManager._AuditManager__audits[audit_name] = audit
 
         # Setup a local plugin execution context.
         Config._context  = PluginContext(
             orchestrator_pid = getpid(),
             orchestrator_tid = get_ident(),
                    msg_queue = orchestrator._Orchestrator__queue,
-                audit_name   = audit_name,
+                  audit_name = self.audit_name,
                 audit_config = self.audit_config,
-                audit_scope  = audit_scope,
+                 audit_scope = self.audit_scope,
         )
 
         # Initialize the environment.
         HTTP._initialize()
         NetworkCache._clear_local_cache()
-        FileManager._update_plugin_path()
+        LocalFile._update_plugin_path()
         LocalDataCache._enabled = True  # force enable
         LocalDataCache.on_run()
         LocalDataCache._enabled = True  # force enable
 
-        # Save the Orchestrator and Audit instances.
-        self.__orchestrator = orchestrator
-        self.__audit = audit
-
 
     #--------------------------------------------------------------------------
-    def get_plugin(self, plugin_name):
+    def get_plugin(self, plugin_id):
         """
         Get an instance of the requested plugin.
 
-        :param plugin_name: Name of the plugin to test.
-        :type plugin_name: str
+        :param plugin_id: ID of the plugin to test.
+        :type plugin_id: str
 
         :returns: Plugin instance and information.
         :rtype: tuple(Plugin, PluginInfo)
@@ -227,21 +267,21 @@ class PluginTester(object):
         self.init_environment()
 
         # Load the plugin.
-        plugin_info = self.audit.pluginManager.get_plugin_by_name(plugin_name)
-        plugin = self.audit.pluginManager.load_plugin_by_name(plugin_name)
+        plugin_info = self.audit.pluginManager.get_plugin_by_id(plugin_id)
+        plugin = self.audit.pluginManager.load_plugin_by_id(plugin_id)
         return plugin, plugin_info
 
 
     #--------------------------------------------------------------------------
-    def run_plugin(self, plugin_name, plugin_input):
+    def run_plugin(self, plugin_id, plugin_input):
         """
         Run the requested plugin. You can test both data and messages.
 
         It's the caller's resposibility to check the input message queue of
         the Orchestrator instance if the plugin sends any messages.
 
-        :param plugin_name: Name of the plugin to test.
-        :type plugin_name: str
+        :param plugin_id: ID of the plugin to test.
+        :type plugin_id: str
 
         :param plugin_input: Plugin input.
             Testing plugins accept Data objects, Import and Report plugins
@@ -252,17 +292,18 @@ class PluginTester(object):
         :rtype: \\*
         """
 
-        # Load the plugin.
+        # Load the plugin and reset the ACK identity.
         # The name MUST be the full ID. This is intentional.
-        plugin, plugin_info = self.get_plugin(plugin_name)
-        Config._context._PluginContext__plugin_info = plugin_info
+        plugin, plugin_info = self.get_plugin(plugin_id)
+        Config._context._PluginContext__plugin_info  = plugin_info
+        Config._context._PluginContext__ack_identity = None
 
         try:
 
             # Initialize the environment.
             HTTP._initialize()
             NetworkCache._clear_local_cache()
-            FileManager._update_plugin_path()
+            LocalFile._update_plugin_path()
             LocalDataCache.on_run()
 
             # If it's a message, send it and return.
@@ -286,13 +327,19 @@ class PluginTester(object):
                         break
                 if not found:
                     msg = "Plugin %s cannot process data of type %s"
-                    raise TypeError(msg % (plugin_name, type(data)))
+                    raise TypeError(msg % (plugin_id, type(data)))
+
+                # Set the ACK identity.
+                Config._context._PluginContext__ack_identity = data.identity
 
                 # Call the plugin.
                 result = plugin.recv_info(data)
 
+                # Reset the ACK identity.
+                Config._context._PluginContext__ack_identity = None
+
                 # Process the results.
-                result = LocalDataCache.on_finish(result)
+                result = LocalDataCache.on_finish(result, data)
 
                 # If the input data was not returned, make sure to add it.
                 if data not in result:
@@ -329,8 +376,9 @@ class PluginTester(object):
 
         finally:
 
-            # Unload the plugin.
-            Config._context._PluginContext__plugin_info = None
+            # Unload the plugin and reset the ACK identity.
+            Config._context._PluginContext__plugin_info  = None
+            Config._context._PluginContext__ack_identity = None
 
 
     #--------------------------------------------------------------------------
@@ -339,7 +387,7 @@ class PluginTester(object):
         Cleanup the mock environment.
         """
 
-        FileManager._update_plugin_path()
+        LocalFile._update_plugin_path()
         NetworkCache._clear_local_cache()
         LocalDataCache.on_run()
         HTTP._finalize()
@@ -355,8 +403,10 @@ class PluginTester(object):
         self.__audit = None
         self.__orchestrator = None
 
-        if filename:
-            try:
-                unlink(filename)
-            except IOError:
-                pass
+        if self.__autodelete:
+            if filename:
+                try:
+                    unlink(filename)
+                except IOError:
+                    pass
+            # TODO: delete the report files too

@@ -52,7 +52,7 @@ class Username(Information):
         :type name: str
         """
         if not isinstance(name, basestring):
-            raise TypeError("Expected string, got %s instead" % type(name))
+            raise TypeError("Expected string, got %r instead" % type(name))
         self.__name = name
         super(Username, self).__init__()
 
@@ -83,7 +83,7 @@ class Password(Information):
         :type password: str
         """
         if not isinstance(password, basestring):
-            raise TypeError("Expected string, got %s instead" % type(password))
+            raise TypeError("Expected string, got %r instead" % type(password))
         self.__password = password
         super(Password, self).__init__()
 

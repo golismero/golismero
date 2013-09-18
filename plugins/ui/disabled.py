@@ -41,8 +41,9 @@ class DisabledUIPlugin(UIPlugin):
 
     #--------------------------------------------------------------------------
     def check_params(self, options, *audits):
-        if not audits:
-            raise ValueError("No targets selected!")
+        for audit in audits:
+            if audit.is_new_audit() and not audit.targets:
+                raise ValueError("No targets selected for audit.")
 
 
     #--------------------------------------------------------------------------

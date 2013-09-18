@@ -1,8 +1,6 @@
-[Core]
-Name = Text Report
-
 [Documentation]
-Description = Creates text reports in files or on screen.
+Name        = Text Report
+Description = Writes plain text reports to a file or on screen.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero

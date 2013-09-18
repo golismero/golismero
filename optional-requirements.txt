@@ -1,2 +1,2 @@
-cerealizer
+argcomplete
 python-daemon

@@ -59,11 +59,11 @@ def _add_implementor(rpc_code, blocking, fn):
 
     # Validate the argument types.
     if type(rpc_code) is not int:
-        raise TypeError("Expected int, got %s instead" % type(rpc_code))
+        raise TypeError("Expected int, got %r instead" % type(rpc_code))
     if type(blocking) is not bool:
-        raise TypeError("Expected bool, got %s instead" % type(blocking))
+        raise TypeError("Expected bool, got %r instead" % type(blocking))
     if not callable(fn):
-        raise TypeError("Expected callable, got %s instead" % type(fn))
+        raise TypeError("Expected callable, got %r instead" % type(fn))
 
     # Validate the RPC code.
     if rpc_code in rpcMap:

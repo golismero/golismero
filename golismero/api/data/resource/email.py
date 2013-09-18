@@ -59,9 +59,9 @@ class Email(Resource):
 
         # Check the data types.
         if not isinstance(address, str):
-            raise TypeError("Expected string, got %s instead", type(address))
+            raise TypeError("Expected string, got %r instead", type(address))
         if name is not None and not isinstance(name, str):
-            raise TypeError("Expected string, got %s instead", type(name))
+            raise TypeError("Expected string, got %r instead", type(name))
 
         # Do a very rudimentary validation of the email address.
         # This will at least keep users from confusing the order of the arguments.

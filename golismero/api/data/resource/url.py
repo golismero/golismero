@@ -50,7 +50,7 @@ class _AbstractUrl(Resource):
     resource_type = Resource.RESOURCE_URL
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, url):
         """
         :param url: Absolute URL.
@@ -60,14 +60,18 @@ class _AbstractUrl(Resource):
         """
 
         if not isinstance(url, basestring):
-            raise TypeError("Expected string, got %s instead" % type(url))
+            raise TypeError("Expected string, got %r instead" % type(url))
         url = str(url)
 
         # Parse, verify and canonicalize the URL.
         # TODO: if relative, make it absolute using the referer when available.
         parsed = ParsedURL(url)
         if not parsed.host or not parsed.scheme:
-            raise ValueError("Only absolute URLs must be used!")
+            raise ValueError("Only absolute URLs must be used! Got: %r" % url)
+        if parsed.scheme == "mailto":
+            raise ValueError("For emails use the Email type instead! Got: %r" % url)
+        if parsed.scheme not in ("http", "https", "ftp"):
+            raise ValueError("URL scheme not supported: %r" % parsed.scheme)
         url = parsed.url
 
         # URL.
@@ -80,7 +84,7 @@ class _AbstractUrl(Resource):
         super(_AbstractUrl, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @identity
     def url(self):
@@ -91,7 +95,7 @@ class _AbstractUrl(Resource):
         return self.__url
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @property
     def parsed_url(self):
@@ -126,12 +130,12 @@ class _AbstractUrl(Resource):
         return self.parsed_url.scheme == "https"
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __str__(self):
         return self.url
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __repr__(self):
         cls = self.__class__.__name__
         if "." in cls:
@@ -139,7 +143,7 @@ class _AbstractUrl(Resource):
         return "<%s url=%r>" % (cls, self.url)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def is_in_scope(self):
         return self.url in Config.audit_scope
 
@@ -172,8 +176,8 @@ class Url(_AbstractUrl):
     resource_type = Resource.RESOURCE_URL
 
 
-    #----------------------------------------------------------------------
-    def __init__(self, url, method = "GET", post_params = None, depth = 0, referer = None):
+    #--------------------------------------------------------------------------
+    def __init__(self, url, method = "GET", post_params = None, referer = None):
         """
         :param url: Absolute URL.
         :type url: str
@@ -184,9 +188,6 @@ class Url(_AbstractUrl):
         :param post_params: POST parameters.
         :type post_params: dict(str -> str)
 
-        :param depth: Crawling depth.
-        :type depth: int
-
         :param referer: Referrer URL.
         :type referer: str
 
@@ -195,34 +196,32 @@ class Url(_AbstractUrl):
 
         # Validate the argument types.
         if not isinstance(method, str):
-            raise TypeError("Expected string, got %s instead" % type(method))
+            raise TypeError("Expected string, got %r instead" % type(method))
         if post_params is not None and not isinstance(post_params, dict):
-            raise TypeError("Expected dict, got %s instead" % type(post_params))
-        if not depth:
-            depth = 0
-        elif not isinstance(depth, int):
-            raise TypeError("Expected int, got %s instead" % type(depth))
+            raise TypeError("Expected dict, got %r instead" % type(post_params))
         if referer is not None and not isinstance(referer, str):
-            raise TypeError("Expected string, got %s instead" % type(referer))
+            raise TypeError("Expected string, got %r instead" % type(referer))
 
         # Save the properties.
-        self.__method = method.strip().upper() if method else "GET"
+        self.__method      = method if method else "GET"
         self.__post_params = post_params if post_params else {}
-        self.__depth = depth
-        self.__referer = referer
+        self.__referer     = referer
 
         # Call the parent constructor.
         super(Url, self).__init__(url)
 
+        # Increment the crawling depth by one.
+        self.depth += 1
 
-    #----------------------------------------------------------------------
+
+    #--------------------------------------------------------------------------
     def __repr__(self):
         s = "<Url url=%r, method=%r, params=%r, referer=%r, depth=%r>"
         s %= (self.url, self.method, self.post_params, self.referer, self.depth)
         return s
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @identity
     def method(self):
@@ -241,7 +240,7 @@ class Url(_AbstractUrl):
         return self.__post_params
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @property
     def url_params(self):
@@ -271,14 +270,6 @@ class Url(_AbstractUrl):
         return bool(self.post_params)
 
     @property
-    def depth(self):
-        """
-        :return: The recursion depth reached to find this URL.
-        :rtype: int
-        """
-        return self.__depth
-
-    @property
     def referer(self):
         """
         :return: Referer for this URL.
@@ -287,7 +278,7 @@ class Url(_AbstractUrl):
         return self.__referer
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -325,7 +316,7 @@ class BaseUrl(_AbstractUrl):
     resource_type = Resource.RESOURCE_BASE_URL
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, url):
         """
         :param url: Any **absolute** URL. The base will be extracted from it.
@@ -336,13 +327,13 @@ class BaseUrl(_AbstractUrl):
 
         # Validate the argument types.
         if not isinstance(url, basestring):
-            raise TypeError("Expected string, got %s instead" % type(url))
+            raise TypeError("Expected string, got %r instead" % type(url))
         url = str(url)
 
         # Parse, verify and canonicalize the URL.
         parsed = ParsedURL(url)
         if not parsed.host or not parsed.scheme:
-            raise ValueError("Only absolute URLs must be used!")
+            raise ValueError("Only absolute URLs must be used! Got: %r" % url)
 
         # Convert it into a base URL.
         parsed.auth = None
@@ -355,8 +346,11 @@ class BaseUrl(_AbstractUrl):
         # Call the parent constructor.
         super(BaseUrl, self).__init__(url)
 
+        # Reset the crawling depth.
+        self.depth = 0
 
-    #----------------------------------------------------------------------
+
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -403,7 +397,7 @@ class FolderUrl(_AbstractUrl):
     resource_type = Resource.RESOURCE_FOLDER_URL
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, url):
         """
         :param url: Absolute URL to a folder.
@@ -413,21 +407,21 @@ class FolderUrl(_AbstractUrl):
         """
 
         if not isinstance(url, basestring):
-            raise TypeError("Expected string, got %s instead" % type(url))
+            raise TypeError("Expected string, got %r instead" % type(url))
         url = str(url)
 
         # Parse, verify and canonicalize the URL.
         parsed = ParsedURL(url)
         if not parsed.host or not parsed.scheme:
-            raise ValueError("Only absolute URLs must be used!")
+            raise ValueError("Only absolute URLs must be used! Got: %r" % url)
         if not parsed.path.endswith("/"):
-            raise ValueError("URL does not point to a folder!")
+            raise ValueError("URL does not point to a folder! Got: %r" % url)
 
         # Call the parent constructor.
         super(FolderUrl, self).__init__(parsed.url)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def from_url(url):
         """
@@ -444,7 +438,7 @@ class FolderUrl(_AbstractUrl):
         # Parse, verify and canonicalize the URL.
         parsed = ParsedURL(url)
         if not parsed.host or not parsed.scheme:
-            raise ValueError("Only absolute URLs must be used!")
+            raise ValueError("Only absolute URLs must be used! Got: %r" % url)
 
         # Extract the folders from the path.
         path = parsed.path
@@ -470,7 +464,7 @@ class FolderUrl(_AbstractUrl):
         return [FolderUrl(x) for x in folder_urls]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():

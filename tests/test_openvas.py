@@ -128,12 +128,12 @@ def test_import():
     audit_config.targets  = ["192.168.56.101"]
     audit_config.audit_db = "memory://"
     with PluginTester(orchestrator_config, audit_config) as t:
-        t.run_plugin("import/xml", path.join(here, "test_openvas.xml"))
+        t.run_plugin("import/xml_openvas", path.join(here, "test_openvas.xml"))
         results = Database.get_many( Database.keys(), Data.TYPE_VULNERABILITY )
         assert len(results) == 1
         v = results[0]
         assert v.level == "low"
-        assert v.plugin_id == "import/xml"
+        assert v.plugin_id == "import/xml_openvas"
         assert "Remote web server does not reply with 404 error code." in v.description
 
 

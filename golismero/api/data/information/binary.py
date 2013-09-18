@@ -52,7 +52,7 @@ class Binary(Information):
         :type data: str
         """
         if type(data) is not str:
-            raise TypeError("Expected string, got %s instead" % type(data))
+            raise TypeError("Expected string, got %r instead" % type(data))
 
         # Raw bytes.
         self.__raw_data = data

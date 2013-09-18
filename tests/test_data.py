@@ -98,8 +98,8 @@ def test_data_type_unique_ids():
     helper_test_dupes(Information, "INFORMATION_", numbers)
     helper_test_dupes(Resource, "RESOURCE_", numbers)
 
-    # Make sure the base vulnerability type is "generic".
-    assert Vulnerability.vulnerability_type == "generic"
+    # Make sure the base vulnerability type is "abstract".
+    assert Vulnerability.vulnerability_type == "abstract"
 
 
 # Helper function to load all data types.
@@ -156,6 +156,7 @@ def test_data_types_have_id():
         assert type(clazz.data_type) == int
         if issubclass(clazz, Information):
             assert clazz.data_type == Data.TYPE_INFORMATION
+            assert clazz.data_subtype == clazz.information_type
             assert type(clazz.information_type) == int
             if clazz.__module__ != "golismero.api.data.information":
                 assert clazz.information_type != Information.INFORMATION_UNKNOWN
@@ -164,6 +165,7 @@ def test_data_types_have_id():
                 assert clazz.information_type == Information.INFORMATION_UNKNOWN
         elif issubclass(clazz, Resource):
             assert clazz.data_type == Data.TYPE_RESOURCE
+            assert clazz.data_subtype == clazz.resource_type
             assert type(clazz.resource_type) == int
             if clazz.__module__ != "golismero.api.data.resource":
                 assert clazz.resource_type != Resource.RESOURCE_UNKNOWN
@@ -172,6 +174,7 @@ def test_data_types_have_id():
                 assert clazz.resource_type == Resource.RESOURCE_UNKNOWN
         elif issubclass(clazz, Vulnerability):
             assert clazz.data_type == Data.TYPE_VULNERABILITY
+            assert clazz.data_subtype == clazz.vulnerability_type
             assert type(clazz.vulnerability_type) == str
             if clazz.__module__ != "golismero.api.data.vulnerability":
                 assert clazz.vulnerability_type != "generic"
@@ -200,6 +203,18 @@ def helper_data_links():
     d2 = Text("some text")
     d3 = UrlDisclosure(d1)
     d1.add_information(d2)
+
+    # Test data_type, data_subtype, etc.
+    print "Testing Data type checks..."
+    assert d1.data_type == Data.TYPE_RESOURCE
+    assert d1.data_subtype == Resource.RESOURCE_URL
+    assert d1.resource_type == Resource.RESOURCE_URL
+    assert d2.data_type == Data.TYPE_INFORMATION
+    assert d2.data_subtype == Information.INFORMATION_PLAIN_TEXT
+    assert d2.information_type == Information.INFORMATION_PLAIN_TEXT
+    assert d3.data_type == Data.TYPE_VULNERABILITY
+    assert d3.data_subtype == "information_disclosure/url_disclosure"
+    assert d3.vulnerability_type == d3.data_subtype
 
     # Test validate_link_minimums().
     print "Testing Data.validate_link_minimums()..."
@@ -244,24 +259,24 @@ def helper_data_links():
     # Test the get_linked_data() method.
     # There should be no accesses to the database since all data is local.
     print "Testing Data.get_linked_data()..."
-    assert {x.identity for x in d1.get_linked_data(d1.data_type)} == set()
-    assert {x.identity for x in d1.get_linked_data(d1.data_type, d1.resource_type)} == set()
-    assert {x.identity for x in d1.get_linked_data(d2.data_type)} == {d2.identity}
-    assert {x.identity for x in d1.get_linked_data(d2.data_type, d2.information_type)} == {d2.identity}
-    assert {x.identity for x in d1.get_linked_data(d3.data_type)} == {d3.identity}
-    assert {x.identity for x in d1.get_linked_data(d3.data_type, d3.vulnerability_type)} == {d3.identity}
-    assert {x.identity for x in d2.get_linked_data(d2.data_type)} == set()
-    assert {x.identity for x in d2.get_linked_data(d2.data_type, d2.information_type)} == set()
-    assert {x.identity for x in d2.get_linked_data(d1.data_type)} == {d1.identity}
-    assert {x.identity for x in d2.get_linked_data(d1.data_type, d1.resource_type)} == {d1.identity}
-    assert {x.identity for x in d2.get_linked_data(d3.data_type)} == set()
-    assert {x.identity for x in d2.get_linked_data(d3.data_type, d3.vulnerability_type)} == set()
-    assert {x.identity for x in d3.get_linked_data(d3.data_type)} == set()
-    assert {x.identity for x in d3.get_linked_data(d3.data_type, d3.vulnerability_type)} == set()
-    assert {x.identity for x in d3.get_linked_data(d1.data_type)} == {d1.identity}
-    assert {x.identity for x in d3.get_linked_data(d1.data_type, d1.resource_type)} == {d1.identity}
-    assert {x.identity for x in d3.get_linked_data(d2.data_type)} == set()
-    assert {x.identity for x in d3.get_linked_data(d2.data_type, d2.information_type)} == set()
+    assert {x.identity for x in d1.find_linked_data(d1.data_type)} == set()
+    assert {x.identity for x in d1.find_linked_data(d1.data_type, d1.resource_type)} == set()
+    assert {x.identity for x in d1.find_linked_data(d2.data_type)} == {d2.identity}
+    assert {x.identity for x in d1.find_linked_data(d2.data_type, d2.information_type)} == {d2.identity}
+    assert {x.identity for x in d1.find_linked_data(d3.data_type)} == {d3.identity}
+    assert {x.identity for x in d1.find_linked_data(d3.data_type, d3.vulnerability_type)} == {d3.identity}
+    assert {x.identity for x in d2.find_linked_data(d2.data_type)} == set()
+    assert {x.identity for x in d2.find_linked_data(d2.data_type, d2.information_type)} == set()
+    assert {x.identity for x in d2.find_linked_data(d1.data_type)} == {d1.identity}
+    assert {x.identity for x in d2.find_linked_data(d1.data_type, d1.resource_type)} == {d1.identity}
+    assert {x.identity for x in d2.find_linked_data(d3.data_type)} == set()
+    assert {x.identity for x in d2.find_linked_data(d3.data_type, d3.vulnerability_type)} == set()
+    assert {x.identity for x in d3.find_linked_data(d3.data_type)} == set()
+    assert {x.identity for x in d3.find_linked_data(d3.data_type, d3.vulnerability_type)} == set()
+    assert {x.identity for x in d3.find_linked_data(d1.data_type)} == {d1.identity}
+    assert {x.identity for x in d3.find_linked_data(d1.data_type, d1.resource_type)} == {d1.identity}
+    assert {x.identity for x in d3.find_linked_data(d2.data_type)} == set()
+    assert {x.identity for x in d3.find_linked_data(d2.data_type, d2.information_type)} == set()
 
     # Test the associated_* properties.
     # There should be no accesses to the database since all data is local.
@@ -291,9 +306,8 @@ def helper_data_links():
 
     # Test TempDataStorage.on_finish().
     print "Testing LocalDataCache.on_finish() on ideal conditions..."
-    result_before = [d1, d2, d3]
-    result_after  = LocalDataCache.on_finish(result_before)
-    assert set(result_before) == set(result_after)
+    result = LocalDataCache.on_finish([d2, d3], d1)
+    assert set(result) == set([d1, d2, d3])
     d1.validate_link_minimums()
     d2.validate_link_minimums()
     d3.validate_link_minimums()

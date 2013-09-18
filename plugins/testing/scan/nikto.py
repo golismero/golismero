@@ -31,18 +31,18 @@ from golismero.api.data.db import Database
 from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.ip import IP
 from golismero.api.data.resource.url import BaseUrl, Url
-from golismero.api.data.vulnerability import UrlVulnerability
+from golismero.api.data.vulnerability import UncategorizedVulnerability
+from golismero.api.data.vulnerability.infrastructure.vulnerable_webapp \
+     import VulnerableWebApp
 from golismero.api.external import run_external_tool, \
-     win_to_cygwin_path, cygwin_to_win_path
+     find_cygwin_binary_in_path, tempfile
 from golismero.api.logger import Logger
+from golismero.api.net.scraper import extract_from_text
 from golismero.api.plugin import ImportPlugin, TestingPlugin
-
-import os
-import stat
+from golismero.api.data.vulnerability.vuln_utils import extract_vuln_ids
 
 from csv import reader
-from tempfile import NamedTemporaryFile
-from os.path import abspath, join, exists, pathsep, sep, split
+from os.path import abspath, join, exists, sep, split
 from traceback import format_exc
 from urlparse import urljoin
 
@@ -59,9 +59,6 @@ class NiktoPlugin(TestingPlugin):
     #--------------------------------------------------------------------------
     def recv_info(self, info):
 
-        # We can't calculate how long will Nikto take.
-        self.update_status(progress = None)
-
         # Get the path to the Nikto scanner.
         nikto_script = Config.plugin_args["exec"]
         if nikto_script and exists(nikto_script):
@@ -77,7 +74,8 @@ class NiktoPlugin(TestingPlugin):
                 if not exists(nikto_script):
                     nikto_script = Config.plugin_args["exec"]
                     if nikto_script:
-                        Logger.log_error("Nikto not found! File: %s" % nikto_script)
+                        Logger.log_error(
+                            "Nikto not found! File: %s" % nikto_script)
                     else:
                         Logger.log_error("Nikto not found!")
                     return
@@ -91,46 +89,17 @@ class NiktoPlugin(TestingPlugin):
                 config = "/etc/nikto.conf"
                 if not exists(config):
                     config = Config.plugin_args["config"]
-                    if config:
-                        Logger.log_error("Nikto config file not found! File: %s" % config)
+                    if config and exists(config):
+                        config = abspath(config)
                     else:
-                        Logger.log_error("Nikto config file not found!")
-                    return
-
-        # On Windows, we must always call Perl explicitly.
-        # On POSIX, only if the script is not marked as executable.
-        command = nikto_script
-        if sep == "\\" or os.stat(nikto_script)[stat.ST_MODE] & stat.S_IXUSR == 0:
-
-            # Now the command to run is the Perl interpreter.
-            if sep == "\\":
-                command = "perl.exe"
-            else:
-                command = "perl"
-
-            # Look for the Perl interpreter on the PATH. Fail if not found.
-            found = False
-            for candidate in os.environ.get("PATH", "").split(pathsep):
-                candidate = candidate.strip()
-                candidate = join(candidate, command)
-                if exists(candidate):
-                    found = True
-                    command = candidate
-                    break
-            if not found:
-                Logger.log_error("Perl interpreter not found!")
-
-            # Detect if it's the Cygwin version but we're outside Cygwin.
-            # If so we need to use Unix style paths.
-            use_cygwin = False
-            if sep == "\\":
-                cygwin = split(command)[0]
-                cygwin = join(cygwin, "cygwin1.dll")
-                if exists(cygwin):
-                    nikto_script = win_to_cygwin_path(nikto_script)
-                    if config:
-                        config = win_to_cygwin_path(config)
-                    use_cygwin = True
+                        if config:
+                            Logger.log_error(
+                                "Nikto config file not found! File: %s"
+                                % config
+                            )
+                        else:
+                            Logger.log_error("Nikto config file not found!")
+                        return
 
         # Build the command line arguments.
         # The -output argument will be filled by run_nikto.
@@ -144,48 +113,21 @@ class NiktoPlugin(TestingPlugin):
             ##"-useproxy",
         ]
         if config:
-            args.insert(0, config)
-            args.insert(0, "-config")
-        if command != nikto_script:
-            args.insert(0, nikto_script)
+            args = ["-config", config] + args
         for option in ("Pause", "timeout", "Tuning"):
             value = Config.plugin_args.get(option.lower(), None)
             if value:
                 args.extend(["-" + option, value])
 
-        # Get the current folder, so we can restore it later.
-        cwd = os.getcwd()
+        # Create a temporary output file.
+        with tempfile(suffix = ".csv") as output:
 
-        # On Windows we can't open a temporary file twice (although it's
-        # actually Python who won't let us). Note that there is no exploitable
-        # race condition here, because on Windows you can only create
-        # filesystem links from an Administrator account.
-        if sep == "\\":
-            output_file = NamedTemporaryFile(suffix = ".csv", delete = False)
-            try:
-                output = output_file.name
-                if use_cygwin:
-                    output = win_to_cygwin_path(output)
-                output_file.close()
-                try:
-                    os.chdir(nikto_dir)
-                    return self.run_nikto(info, output, command, args)
-                finally:
-                    os.chdir(cwd)
-            finally:
-                os.unlink(output_file.name)
+            # Append the output file name to the arguments.
+            args.append("-output")
+            args.append(output)
 
-        # On POSIX we can do things more elegantly.
-        # It also prevents a race condition vulnerability, although if you're
-        # running a Python script from root you kinda deserve to get pwned.
-        else:
-            with NamedTemporaryFile(suffix = ".csv") as output_file:
-                output = output_file.name
-                try:
-                    os.chdir(nikto_dir)
-                    return self.run_nikto(info, output, command, args)
-                finally:
-                    os.chdir(cwd)
+            # Run Nikto and parse the output.
+            return self.run_nikto(info, output, nikto_script, args)
 
 
     #--------------------------------------------------------------------------
@@ -198,47 +140,40 @@ class NiktoPlugin(TestingPlugin):
 
         :param output_filename: Path to the output filename.
             The format should always be CSV.
-        :type output_filename:
+        :type output_filename: str
 
-        :param command: Path to the Nikto executable.
-            May also be the Perl interpreter executable, with the
-            Nikto script as its first argument.
+        :param command: Path to the Nikto script.
         :type command: str
 
-        :param args: Arguments to pass to the executable.
+        :param args: Arguments to pass to Nikto.
         :type args: list(str)
 
         :returns: Results from the Nikto scan.
         :rtype: list(Data)
         """
 
-        # Append the output file name to the arguments.
-        args.append("-output")
-        args.append(output_filename)
+        # Get the Nikto directory.
+        cwd = split(abspath(command))[0]
 
-        # Turn off DOS path warnings for Cygwin.
-        # Does nothing on other platforms.
-        env = os.environ.copy()
-        cygwin = env.get("CYGWIN", "")
-        if "nodosfilewarning" not in cygwin:
-            if cygwin:
-                cygwin += " "
-            cygwin += "nodosfilewarning"
-        env["CYGWIN"] = cygwin
+        # On Windows, we must run Perl explicitly.
+        # Also it only works under Cygwin.
+        if sep == "\\":
+            perl = find_cygwin_binary_in_path("perl.exe")
+            if not perl:
+                Logger.log_error("Perl interpreter not found, cannot run Nikto!")
+            args.insert(0, command)
+            command = perl
 
         # Run Nikto and capture the text output.
         Logger.log("Launching Nikto against: %s" % info.hostname)
-        Logger.log_more_verbose("Nikto arguments: %s %s" % (command, " ".join(args)))
-        ##output, code = run_external_tool("C:\\cygwin\\bin\\perl.exe", ["-V"], env) # DEBUG
-        output, code = run_external_tool(command, args, env)
+        Logger.log_more_verbose(
+            "Nikto arguments: %s %s" % (command, " ".join(args)))
+        code = run_external_tool(command, args, cwd = cwd,
+                                 callback = Logger.log_verbose)
 
         # Log the output in extra verbose mode.
         if code:
             Logger.log_error("Nikto execution failed, status code: %d" % code)
-            if output:
-                Logger.log_error_more_verbose(output)
-        elif output:
-            Logger.log_more_verbose(output)
 
         # Parse the results.
         results, vuln_count = self.parse_nikto_results(info, output_filename)
@@ -263,9 +198,9 @@ class NiktoPlugin(TestingPlugin):
     @staticmethod
     def parse_nikto_results(info, output_filename):
         """
-        Run Nikto and convert the output to the GoLismero data model.
+        Convert the output of a Nikto scan to the GoLismero data model.
 
-        :param info: Base URL to scan.
+        :param info: Data object to link all results to (optional).
         :type info: BaseUrl
 
         :param output_filename: Path to the output filename.
@@ -283,8 +218,6 @@ class NiktoPlugin(TestingPlugin):
         hosts_seen = set()
         urls_seen = {}
         try:
-            if output_filename.startswith("/cygdrive/"):
-                output_filename = cygwin_to_win_path(output_filename)
             with open(output_filename, "rU") as f:
                 csv_reader = reader(f)
                 for row in csv_reader:
@@ -297,7 +230,10 @@ class NiktoPlugin(TestingPlugin):
                         host, ip, port, vuln_tag, method, path, text = row[:7]
 
                         # Report domain names and IP addresses.
-                        if (info is None or host != info.hostname) and host not in hosts_seen:
+                        if (
+                            (info is None or host != info.hostname) and
+                            host not in hosts_seen
+                        ):
                             hosts_seen.add(host)
                             if host in Config.audit_scope:
                                 results.append( Domain(host) )
@@ -331,12 +267,30 @@ class NiktoPlugin(TestingPlugin):
                         else:
                             url = urls_seen[ (target, method) ]
 
+                        # Get the reference URLs.
+                        refs = extract_from_text(text)
+                        refs.difference_update(urls_seen.itervalues())
+
                         # Report the vulnerabilities.
-                        vuln = UrlVulnerability(
-                            url = url,
-                            level = "informational",  # TODO: use the OSVDB API
-                            description = "%s: %s" % (vuln_tag, text),
-                        )
+                        if vuln_tag == "OSVDB-0":
+                            kwargs = {"level": "informational"}
+                        else:
+                            kwargs = extract_vuln_ids(
+                                "%s: %s" % (vuln_tag, text))
+                        kwargs["description"] = text if text else None
+                        kwargs["references"]  = refs
+                        if "osvdb" in kwargs and "OSVDB-0" in kwargs["osvdb"]:
+                            tmp = list(kwargs["osvdb"])
+                            tmp.remove("OSVDB-0")
+                            if tmp:
+                                kwargs["osvdb"] = tuple(tmp)
+                            else:
+                                del kwargs["osvdb"]
+                        if vuln_tag == "OSVDB-0":
+                            vuln = UncategorizedVulnerability(**kwargs)
+                            vuln.add_resource(url)
+                        else:
+                            vuln = VulnerableWebApp(url, **kwargs)
                         results.append(vuln)
                         vuln_count += 1
 
@@ -374,15 +328,16 @@ class NiktoImportPlugin(ImportPlugin):
             if results:
                 Database.async_add_many(results)
         except Exception, e:
+            fmt = format_exc()
             Logger.log_error(
                 "Could not load Nikto results from file: %s" % input_file)
             Logger.log_error_verbose(str(e))
-            Logger.log_error_more_verbose(format_exc())
+            Logger.log_error_more_verbose(fmt)
         else:
             if results:
                 Logger.log(
-                    "Loaded %d vulnerabilities and %d resources from file: %s" %
-                    (vuln_count, len(results) - vuln_count, input_file)
+                    "Loaded %d vulnerabilities and %d resources from file: %s"
+                    % (vuln_count, len(results) - vuln_count, input_file)
                 )
             else:
                 Logger.log_verbose("No data found in file: %s" % input_file)

@@ -8,4 +8,5 @@ nltk
 python_cjson
 requests
 requests_ntlm
+texttable
 tldextract

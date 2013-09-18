@@ -1,7 +1,7 @@
 @echo off
 rem Run all tests in the current folder.
-del *.log
-del *.sql
+del *.log 2>> nul
+del *.sql 2>> nul
 for /r %%i in (test_*.bat) do (
     echo %%~ni
     call %%i >> test-out.log 2>> test-err.log

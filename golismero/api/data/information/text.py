@@ -52,7 +52,7 @@ class Text(Information):
         :type data: str
         """
         if not isinstance(data, basestring):
-            raise TypeError("Expected string, got %s instead" % type(data))
+            raise TypeError("Expected string, got %r instead" % type(data))
 
         # Text.
         self.__raw_data = data

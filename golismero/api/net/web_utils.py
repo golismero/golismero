@@ -34,13 +34,14 @@ __all__ = [
     "download", "data_from_http_response", "generate_user_agent",
     "fix_url", "check_auth", "get_auth_obj", "detect_auth_method",
     "split_hostname", "generate_error_page_url", "ParsedURL",
-    "parse_url",
+    "parse_url", "json_decode", "json_encode",
 ]
 
 
 from . import NetworkOutOfScope
 from ..data import LocalDataCache
 from ..text.text_utils import generate_random_string, split_first
+from ...common import json_decode, json_encode
 
 from BeautifulSoup import BeautifulSoup
 from copy import deepcopy
@@ -183,7 +184,7 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True):
     if callback is not None and not callable(callback):
         raise TypeError(
             "Expected callable (function, class, instance with __call__),"
-            " got %s instead" % type(callback)
+            " got %r instead" % type(callback)
         )
 
     # Autogenerate an Url object if a string is given (common mistake).

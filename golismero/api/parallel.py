@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-API for parallel execution within GoLismero plugins.
+Advanced API for parallel execution within GoLismero plugins.
 
 .. note:: It's often best to keep your plugins as simple as possible, breaking
           down complex tasks into simple steps, and into multiple plugins if
@@ -21,6 +21,10 @@ API for parallel execution within GoLismero plugins.
           efficient than they should be, so running pure-Python computation
           tasks in parallel not only gives you no benefit, but may actually run
           slower! See: `GlobalInterpreterLock <http://wiki.python.org/moin/GlobalInterpreterLock>`_
+
+.. warning:: Some parts of the GoLismero API doesn't guarantee thread safety!
+             When in doubt, avoid sharing objects or mutable structures among
+             threads, and pipe the API calls through the main thread.
 """
 
 __license__ = """
@@ -65,7 +69,7 @@ class Counter (object):
 
     def __init__(self, init_val = 0):
         if type(init_val) not in (int, long, float):
-            raise TypeError("Expected a number, got %s instead" % type(init_val))
+            raise TypeError("Expected a number, got %r instead" % type(init_val))
         self.__value = init_val
         self.__lock  = RLock()
 
@@ -80,21 +84,21 @@ class Counter (object):
 
     def add(self, offset):
         if type(offset) not in (int, long, float):
-            raise TypeError("Expected a number, got %s instead" % type(offset))
+            raise TypeError("Expected a number, got %r instead" % type(offset))
         with self.__lock:
             self.__value += offset
             return self.__value
 
     def sub(self, offset):
         if type(offset) not in (int, long, float):
-            raise TypeError("Expected a number, got %s instead" % type(offset))
+            raise TypeError("Expected a number, got %r instead" % type(offset))
         with self.__lock:
             self.__value -= offset
             return self.__value
 
     def setvalue(self, value):
         if type(value) not in (int, long, float):
-            raise TypeError("Expected a number, got %s instead" % type(value))
+            raise TypeError("Expected a number, got %r instead" % type(value))
         with self.__lock:
             old_value = self.__value
             self.__value = value
@@ -148,9 +152,9 @@ def setInterval(interval, times = -1):
     if isinstance(interval, int):
         interval = float(interval)
     elif not isinstance(interval, float):
-        raise TypeError("Expected int or float, got %s instead" % type(interval))
+        raise TypeError("Expected int or float, got %r instead" % type(interval))
     if not isinstance(times, int):
-        raise TypeError("Expected int, got %s instead" % type(times))
+        raise TypeError("Expected int, got %r instead" % type(times))
 
     # Code adapted from: http://stackoverflow.com/q/5179467
 
@@ -158,7 +162,7 @@ def setInterval(interval, times = -1):
     # with fixed interval and times parameter
     def outer_wrap(function):
         if not callable(function):
-            raise TypeError("Expected function, got %s instead" % type(function))
+            raise TypeError("Expected function, got %r instead" % type(function))
 
         # This will be the function to be
         # called
@@ -328,11 +332,11 @@ class Task(object):
 
         # Validate the parameters.
         if type(index) is not int:
-            raise TypeError("Expected int, got %s instead" % type(index))
+            raise TypeError("Expected int, got %r instead" % type(index))
         if not hasattr(output, "__setitem__"):
-            raise TypeError("Expected dict, got %s instead" % type(output))
+            raise TypeError("Expected dict, got %r instead" % type(output))
         if not callable(func):
-            raise TypeError("Expected callable (function, class, instance with __call__), got %s instead" % type(func))
+            raise TypeError("Expected callable (function, class, instance with __call__), got %r instead" % type(func))
 
         # Set the new task data.
         self.__func   = func       # Function to run.
@@ -412,7 +416,7 @@ class TaskGroup(object):
 
         # Validate the parameters.
         if not callable(func):
-            raise TypeError("Expected callable (function, class, instance with __call__), got %s instead" % type(func))
+            raise TypeError("Expected callable (function, class, instance with __call__), got %r instead" % type(func))
 
         # Set the new task group data.
         self.__func   = func       # Function to run.
@@ -640,7 +644,7 @@ class WorkerThread(Thread):
 
         # Validate the parameters.
         if not isinstance(task, Task):
-            raise TypeError("Expected Task, got %s instead" % type(task))
+            raise TypeError("Expected Task, got %r instead" % type(task))
 
         # Prevent reentrance.
         with self.__lock:
@@ -668,7 +672,7 @@ class WorkerPool(Thread):
         :type pool_size: int
         """
         if not isinstance(pool_size, int):
-            raise TypeError("Expected int, got %s instead" % type(pool_size))
+            raise TypeError("Expected int, got %r instead" % type(pool_size))
         if pool_size < 1:
             raise ValueError("pool_size must be greater than 0")
 

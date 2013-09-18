@@ -36,6 +36,9 @@ from golismero.api.net.web_utils import download, parse_url
 from golismero.api.plugin import TestingPlugin
 from golismero.api.text.wordlist import WordListLoader
 
+from traceback import format_exc
+from warnings import warn
+
 
 #----------------------------------------------------------------------
 class Spider(TestingPlugin):
@@ -55,12 +58,6 @@ class Spider(TestingPlugin):
         m_return = []
 
         m_url = info.url
-        m_depth = info.depth
-
-        # Check depth
-        if Config.audit_config.depth is not None and m_depth > Config.audit_config.depth:
-            Logger.log_more_verbose("Spider depth level exceeded for URL: %s" % m_url)
-            return m_return
 
         Logger.log_verbose("Spidering URL: %r" % m_url)
 
@@ -68,7 +65,7 @@ class Spider(TestingPlugin):
         p = None
         try:
             allow_redirects = Config.audit_config.follow_redirects or \
-                             (m_depth == 0 and Config.audit_config.follow_first_redirect)
+                             (info.depth == 0 and Config.audit_config.follow_first_redirect)
             p = download(m_url, self.check_download, allow_redirects=allow_redirects)
         except NetworkException,e:
             Logger.log_more_verbose("Error while processing %r: %s" % (m_url, str(e)))
@@ -101,8 +98,20 @@ class Spider(TestingPlugin):
 
         # Do not follow URLs out of scope
         m_out_of_scope_count = len(m_urls_allowed)
-        m_urls_allowed = [ url for url in m_urls_allowed if url in Config.audit_scope ]
-        m_out_of_scope_count -= len(m_urls_allowed)
+        m_urls_allowed = []
+        m_broken = []
+        for url in m_urls_allowed:
+            try:
+                if url in Config.audit_scope:
+                    m_urls_allowed.append(url)
+            except Exception:
+                m_broken.append(url)
+        if m_broken:
+            if len(m_broken) == 1:
+                Logger.log_more_verbose("Skipped uncrawlable URL: %s" % m_broken[0])
+            else:
+                Logger.log_more_verbose("Skipped uncrawlable URLs:\n    %s" % "\n    ".join(sorted(m_broken)))
+        m_out_of_scope_count = m_out_of_scope_count - len(m_urls_allowed) - len(m_broken)
         if m_out_of_scope_count:
             Logger.log_more_verbose("Skipped %d links out of scope." % m_out_of_scope_count)
 
@@ -113,7 +122,14 @@ class Spider(TestingPlugin):
 
         # Convert to Url data type
         for u in m_urls_allowed:
-            m_resource = Url(url = u, depth = m_depth + 1, referer = m_url)
+            try:
+                p = parse_url(u)
+                if p.scheme == "mailto":
+                    m_resource = Email(p.netloc)
+                elif p.scheme in ("http", "https"):
+                    m_resource = Url(url = u, referer = m_url)
+            except Exception:
+                warn(format_exc(), RuntimeWarning)
             m_resource.add_resource(info)
             m_return.append(m_resource)
 

@@ -30,18 +30,22 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-__all__ = ["WordListLoader"]
+__all__ = ["WordListLoader", "WordlistNotFound"]
 
 from os import walk
-from os.path import join, sep, abspath
+from os.path import join, sep, abspath, exists, isfile
 from golismero.api.text.matching_analyzer import get_diff_ratio
-from golismero.api.file import FileManager
+from golismero.api.localfile import LocalFile
 import bisect
 import re
 import copy
 
 from ..logger import Logger
 from ...common import Singleton, get_wordlists_folder
+
+#------------------------------------------------------------------------------
+class WordlistNotFound(Exception):
+    "Class when wordlist not found"
 
 
 #------------------------------------------------------------------------------
@@ -64,14 +68,20 @@ class _WordListLoader(Singleton):
     #----------------------------------------------------------------------
     def __resolve_wordlist_name(self, wordlist):
         """
-        Looking for the world list name in the internal database and, if it's fails,
-        looking in the plugin directory.
+        Looking for the world list in this order:
+        1 - In the internal database and.
+        2 - Looking in the plugin directory
+        3 - Looking the wordlist in the file system.
+
+        If Wordlist not found, raise WordlistNotFound exception.
 
         :param wordlist: wordlist name
         :type wordlist: str
 
         :return: a file descriptor.
         :rtype: open()
+
+        :raises: WordlistNotFound, TypeError, ValueError
         """
         if not wordlist:
             raise ValueError("Wordlist name can't be an empty value")
@@ -84,12 +94,25 @@ class _WordListLoader(Singleton):
             m_return = open(self.__store[wordlist], "rU")
         except KeyError: # Wordlist is not in the internal database
             # Exits the file
-            if not FileManager.exists(wordlist):
-                raise IOError("Wordlist file '%s' does not exist." % wordlist)
-            if not FileManager.isfile(wordlist):
-                raise TypeError("Wordlist '%s' is not a file." % wordlist)
+            try:
+                if LocalFile.exists(wordlist):
+                    if not LocalFile.isfile(wordlist):
+                        raise TypeError("Wordlist '%s' is not a file." % wordlist)
 
-            m_return = FileManager.open(wordlist, "rU")
+                    m_return = LocalFile.open(wordlist, "rU")
+
+            except ValueError: # Wordlist is out of the plugin path
+
+                # Looking the wordlist in the file system, assuming that the
+                # worllist name is an absolute path.
+                if exists(wordlist):
+                    if not isfile(wordlist):
+                        raise TypeError("Wordlist '%s' is not a file." % wordlist)
+
+                    m_return = open(wordlist, "rU")
+
+                else:
+                    raise WordlistNotFound("Wordlist file '%s' does not exist." % wordlist)
 
         return m_return
 
@@ -556,7 +579,7 @@ class AdvancedDicWordlist(object):
 
 
     #----------------------------------------------------------------------
-    def matches_by_value(self, word, debug = False):
+    def matches_by_value(self, word):
         """
         Search a word passed as parameter in the values of wordlist and return a list of lists with
         matches found.

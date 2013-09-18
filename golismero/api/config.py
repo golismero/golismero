@@ -58,8 +58,8 @@ class _Config (Singleton):
     Example:
 
         >>> from golismero.api.config import Config
-        >>> Config.plugin_name
-        'my_plugin_name'
+        >>> Config.plugin_id
+        'my_plugin_id'
     """
 
     def __init__(self):
@@ -112,12 +112,12 @@ class _Config (Singleton):
 
 
     @property
-    def plugin_name(self):
+    def plugin_id(self):
         """
-        :returns: Plugin name.
+        :returns: Plugin ID.
         :rtype: str
         """
-        return self.plugin_info.plugin_name
+        return self.plugin_info.plugin_id
 
 
     @property
@@ -205,6 +205,15 @@ class _Config (Singleton):
         :rtype: dict(str -> dict(str -> str))
         """
         return self.plugin_info.plugin_extra_config
+
+
+    @property
+    def depth(self):
+        """"
+        :returns: Current analysis depth.
+        :rtype: int
+        """
+        return self._context._depth
 
 
     #--------------------------------------------------------------------------

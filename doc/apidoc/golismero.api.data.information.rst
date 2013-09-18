@@ -73,6 +73,15 @@ information Package
     :special-members:
     :show-inheritance:
 
+:mod:`portscan` Module
+----------------------
+
+.. automodule:: golismero.api.data.information.portscan
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:
+
 :mod:`text` Module
 ------------------
 

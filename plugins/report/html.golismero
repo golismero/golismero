@@ -1,8 +1,6 @@
-[Core]
-Name = HTML Report
-
 [Documentation]
-Description = Plugin to generate HTML reports.
+Name        = HTML Report
+Description = Writes HTML reports.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero

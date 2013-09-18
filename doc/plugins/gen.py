@@ -71,7 +71,7 @@ if __name__ == '__main__':
     with PluginTester(autoinit = False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.verbose = 0
-        t.orchestrator_config.max_process = 0
+        t.orchestrator_config.max_concurrent = 0
         t.init_environment()
         for stage in ("import", "recon", "scan", "attack", "intrude", "cleanup", "report", "ui"):
             with open(path.join(here, "source", stage + ".rst"), "w") as f:
@@ -81,9 +81,9 @@ if __name__ == '__main__':
                 print >>f, stage_descriptions[stage]
                 print >>f, ""
                 plugins = t.orchestrator.pluginManager.get_plugins(stage)
-                for plugin_name in sorted(plugins.keys()):
-                    plugin_info = plugins[plugin_name]
-                    display_name = "%s (*%s*)" % (plugin_info.display_name, plugin_name[plugin_name.rfind("/")+1:])
+                for plugin_id in sorted(plugins.keys()):
+                    plugin_info = plugins[plugin_id]
+                    display_name = "%s (*%s*)" % (plugin_info.display_name, plugin_id[plugin_id.rfind("/")+1:])
                     print >>f, display_name
                     print >>f, "=" * len(display_name)
                     print >>f, ""

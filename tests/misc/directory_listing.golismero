@@ -4,8 +4,8 @@ Recursive = yes
 
 [Documentation]
 Description = Searches for directory listing enabled folders.
-Author      = GoLismero Project team
+Author      = GoLismero Project
 Version     = 0.1
-Website     = www.golismero-project.com
-Copyright   = Copyright (C) [AUTHOR OF PLUGIN]
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
 License     = GNU Public License

@@ -32,7 +32,7 @@ from golismero.api.data import Data
 from golismero.api.data.db import Database
 from golismero.api.config import Config, get_orchestrator_config
 from golismero.api.logger import Logger
-from golismero.api.plugin import UIPlugin, get_plugin_info, get_plugin_names
+from golismero.api.plugin import UIPlugin, get_plugin_info, get_plugin_ids
 from golismero.common import AuditConfig
 from golismero.messaging.message import Message
 from golismero.messaging.codes import MessageType, MessageCode, \
@@ -58,6 +58,15 @@ class WebUIPlugin(UIPlugin):
     """
     Web UI plugin.
     """
+
+
+    #--------------------------------------------------------------------------
+    def check_params(self, options, *audits):
+        for audit in audits:
+            if not audit.audit_db or audit.audit_db.startswith("memory:"):
+                raise ValueError("Database use is mandatory for the Web UI.")
+            if audit.audit_db.startswith("sqlite:"):
+                raise ValueError("Web UI does not support SQLite databases.")
 
 
     #--------------------------------------------------------------------------
@@ -136,18 +145,17 @@ class WebUIPlugin(UIPlugin):
             # A plugin has started processing a Data object.
             if message.message_type == MessageCode.MSG_STATUS_PLUGIN_BEGIN:
                 plugin_name = self.get_plugin_name(message)
-                self.notify_progress(message.audit_name, plugin_name, message.message_info, 0.0)
+                self.notify_progress(message.audit_name, plugin_name, message.ack_identity, 0.0)
 
             # A plugin has finished processing a Data object.
             elif message.message_type == MessageCode.MSG_STATUS_PLUGIN_END:
                 plugin_name = self.get_plugin_name(message)
-                self.notify_progress(message.audit_name, plugin_name, message.message_info, 100.0)
+                self.notify_progress(message.audit_name, plugin_name, message.ack_identity, 100.0)
 
             # A plugin is currently processing a Data object.
             elif message.message_code == MessageCode.MSG_STATUS_PLUGIN_STEP:
                 plugin_name = self.get_plugin_name(message)
-                identity, progress = message.message_info
-                self.notify_progress(message.audit_name, plugin_name, identity, progress)
+                self.notify_progress(message.audit_name, plugin_name, message.ack_identity, message.message_info)
 
             # An audit has switched to another execution stage.
             elif message.message_code == MessageCode.MSG_STATUS_STAGE_UPDATE:
@@ -167,8 +175,8 @@ class WebUIPlugin(UIPlugin):
         :returns: User-friendly name for the plugin.
         :rtype: str
         """
-        if message.plugin_name:
-            plugin_info = get_plugin_info(message.plugin_name)
+        if message.plugin_id:
+            plugin_info = get_plugin_info(message.plugin_id)
             if plugin_info:
                 return plugin_info.display_name
         return "GoLismero"
@@ -335,7 +343,7 @@ class WebUIPlugin(UIPlugin):
 
         # This catch prevents exceptions from being shown in stderr.
         except:
-            raise # XXX DEBUG
+            ##raise # XXX DEBUG
             pass
 
 
@@ -594,21 +602,21 @@ class WebUIPlugin(UIPlugin):
         :returns: List of plugin names.
         :rtype: list(str)
         """
-        return sorted( get_plugin_names() )
+        return sorted( get_plugin_ids() )
 
 
     #--------------------------------------------------------------------------
-    def do_plugin_details(self, plugin_name):
+    def do_plugin_details(self, plugin_id):
         """
         Implementation of: /plugin/details
 
-        :param plugin_name: Name of the plugin to query.
-        :type plugin_name: str
+        :param plugin_id: ID of the plugin to query.
+        :type plugin_id: str
 
         :returns: Plugin information.
         :rtype: PluginInfo
         """
-        return get_plugin_info(plugin_name)    # XXX TODO encode as JSON
+        return get_plugin_info(plugin_id)    # XXX TODO encode as JSON
 
 
     #--------------------------------------------------------------------------

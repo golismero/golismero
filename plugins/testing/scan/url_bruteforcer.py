@@ -691,7 +691,7 @@ def make_url_with_prefixes(wordlist, url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
     if not wordlist:
         raise ValueError("Internal error!")
@@ -729,7 +729,7 @@ def make_url_with_suffixes(wordlist, url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
     if not wordlist:
         raise ValueError("Internal error!")
@@ -764,7 +764,7 @@ def make_url_mutate_filename(url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
     # Change extension to upper case
     m_new                = url_parts.copy()
@@ -803,7 +803,7 @@ def make_url_changing_folder_name(url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
 
     # Making predictables
@@ -838,7 +838,7 @@ def make_url_with_files_or_folder(wordlist, url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
     if not wordlist:
         raise ValueError("Internal error!")
@@ -907,7 +907,7 @@ def make_url_changing_extensions(wordlist, url_parts):
     """
 
     if not isinstance(url_parts, ParsedURL):
-        raise TypeError("Expected ParsedURL, got %s instead" % type(url_parts))
+        raise TypeError("Expected ParsedURL, got %r instead" % type(url_parts))
 
     if not wordlist:
         raise ValueError("Internal error!")

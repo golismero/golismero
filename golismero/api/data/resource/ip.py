@@ -75,6 +75,9 @@ class IP(Resource):
         # Parent constructor.
         super(IP, self).__init__()
 
+        # Reset the crawling depth.
+        self.depth = 0
+
 
     #----------------------------------------------------------------------
     def __str__(self):

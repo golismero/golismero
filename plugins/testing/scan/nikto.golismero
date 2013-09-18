@@ -1,15 +1,15 @@
-[Core]
-Name   = Nikto
-Module = nikto.py
-Class  = NiktoPlugin
-
 [Documentation]
-Description = Run the Nikto scanner and import the results.
+Name        = Nikto
+Description = Integration with Nikto: https://www.cirt.net/nikto2
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2013 GoLismero Project
 License     = GNU Public License
+
+[Core]
+Module = nikto.py
+Class  = NiktoPlugin
 
 [Arguments]
 exec    =

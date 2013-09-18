@@ -57,12 +57,7 @@ Configuration API
 Bundled files API
 -----------------
 
-.. automodule:: golismero.api.file
-   :members:
-   :show-inheritance:
-   :inherited-members:
-
-.. :autoclass:: golismero.api.file._FileManager
+.. automodule:: golismero.api.localfile
    :members:
    :show-inheritance:
    :inherited-members:
@@ -83,6 +78,14 @@ Shared data API
    :show-inheritance:
    :inherited-members:
 
+Progress report API
+-------------------
+
+.. automodule:: golismero.api.progress
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
 Audit database API
 ------------------
 
@@ -97,6 +100,14 @@ Text processing API
 .. toctree::
 
    text
+
+Crypto utilities API
+--------------------
+
+.. automodule:: golismero.api.crypto
+   :members: Database
+   :show-inheritance:
+   :inherited-members:
 
 Audit control API
 -----------------

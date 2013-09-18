@@ -1,0 +1,6 @@
+[
+	{"id":"1", "name":"Scan1", "targets":["www.terra.com"], "status":"Completed", "progress":"100"},
+	{"id":"2", "name":"Scan2", "targets":["www.golismero.com"], "status":"Running", "progress":"50"},
+	{"id":"3", "name":"Scan3", "targets":["www.google.com", "www.rrequero.com"], "status":"Running", "progress":"10"},
+	{"id":"4", "name":"Scan2", "targets":["www.golismero.com"], "status":"Running", "progress":"80"}
+]

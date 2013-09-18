@@ -6,4 +6,4 @@ max_links = 0
 follow_redirects = yes
 follow_first_redirect = no
 enable_plugins = all
-disable_plugins = attack, intrude
+disable_plugins = attack, intrude, robots

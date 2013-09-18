@@ -49,11 +49,11 @@ from os import path
 import collections
 import md5
 import posixpath
+import sqlite3
+import threading
+import time
 import urlparse  # cannot use ParsedURL here!
 import warnings
-
-# Lazy imports
-sqlite3 = None
 
 
 #----------------------------------------------------------------------
@@ -98,26 +98,6 @@ def rpc_data_db_count(orchestrator, audit_name, *args, **kwargs):
 @implementor(MessageCode.MSG_RPC_DATA_PLUGINS)
 def rpc_data_db_plugins(orchestrator, audit_name, *args, **kwargs):
     return orchestrator.auditManager.get_audit(audit_name).database.get_past_plugins(*args, **kwargs)
-
-@implementor(MessageCode.MSG_RPC_STATE_ADD)
-def rpc_plugin_state_add(orchestrator, audit_name, *args, **kwargs):
-    return orchestrator.auditManager.get_audit(audit_name).database.add_state_variable(*args, **kwargs)
-
-@implementor(MessageCode.MSG_RPC_STATE_REMOVE)
-def rpc_plugin_state_remove(orchestrator, audit_name, *args, **kwargs):
-    return orchestrator.auditManager.get_audit(audit_name).database.remove_state_variable(*args, **kwargs)
-
-@implementor(MessageCode.MSG_RPC_STATE_CHECK)
-def rpc_plugin_state_check(orchestrator, audit_name, *args, **kwargs):
-    return orchestrator.auditManager.get_audit(audit_name).database.has_state_variable(*args, **kwargs)
-
-@implementor(MessageCode.MSG_RPC_STATE_GET)
-def rpc_plugin_state_get(orchestrator, audit_name, *args, **kwargs):
-    return orchestrator.auditManager.get_audit(audit_name).database.get_state_variable(*args, **kwargs)
-
-@implementor(MessageCode.MSG_RPC_STATE_KEYS)
-def rpc_plugin_state_keys(orchestrator, audit_name, *args, **kwargs):
-    return orchestrator.auditManager.get_audit(audit_name).database.get_state_variable_names(*args, **kwargs)
 
 @implementor(MessageCode.MSG_RPC_SHARED_MAP_GET)
 def rpc_shared_map_get(orchestrator, audit_name, *args, **kwargs):
@@ -213,8 +193,8 @@ class BaseAuditDB (BaseDB):
         :param audit_name: Optional, audit name.
         :type audit_name: str | None
 
-        :returns: Audit configuration.
-        :rtype: AuditConfig
+        :returns: Audit configuration and scope.
+        :rtype: AuditConfig, AuditScope
 
         :raises IOError: The database could not be opened.
         """
@@ -256,12 +236,28 @@ class BaseAuditDB (BaseDB):
     #--------------------------------------------------------------------------
     def get_audit_times(self):
         """
-        Get the audit start and end times.
+        Get the audit start and stop times.
 
         :returns: Audit start time (None if it hasn't started yet)
-            and audit end time (None if it hasn't finished yet).
+            and audit stop time (None if it hasn't finished yet).
             Times are returned as POSIX timestamps.
         :rtype: tuple(float|None, float|None)
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def set_audit_times(self, start_time, stop_time):
+        """
+        Set the audit start and stop times.
+
+        :param start_time: Audit start time (None if it hasn't started yet).
+            Time is given as a POSIX timestamp.
+        :type start_time: float | None
+
+        :param stop_time: Audit stop time (None if it hasn't finished yet).
+            Time is given as a POSIX timestamp.
+        :type stop_time: float | None
         """
         raise NotImplementedError("Subclasses MUST implement this method!")
 
@@ -273,19 +269,55 @@ class BaseAuditDB (BaseDB):
 
         :param start_time: Audit start time (None if it hasn't started yet).
             Time is given as a POSIX timestamp.
-        :type start_time: float
+        :type start_time: float | None
         """
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
     #--------------------------------------------------------------------------
-    def set_audit_stop_time(self, end_time):
+    def set_audit_stop_time(self, stop_time):
         """
-        Set the audit end time.
+        Set the audit stop time.
 
-        :param end_time: Audit end time (None if it hasn't finished yet).
+        :param stop_time: Audit stop time (None if it hasn't finished yet).
             Time is given as a POSIX timestamp.
-        :type end_time: float
+        :type stop_time: float | None
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def get_audit_config(self):
+        """
+        :returns: Audit configuration.
+        :rtype: AuditConfig
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def save_audit_config(self, audit_config):
+        """
+        :param audit_config: Audit configuration.
+        :type audit_config: AuditConfig
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def get_audit_scope(self):
+        """
+        :returns: Audit scope.
+        :rtype: AuditScope
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def save_audit_scope(self, audit_scope):
+        """
+        :param audit_scope: Audit scope.
+        :type audit_scope: AuditScope
         """
         raise NotImplementedError("Subclasses MUST implement this method!")
 
@@ -462,94 +494,15 @@ class BaseAuditDB (BaseDB):
 
 
     #--------------------------------------------------------------------------
-    def add_state_variable(self, plugin_name, key, value):
-        """
-        Add a plugin state variable to the database.
-
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
-
-        :param key: Variable name.
-        :type key: str
-
-        :param value: Variable value.
-        :type value: anything
-        """
-        raise NotImplementedError("Subclasses MUST implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def remove_state_variable(self, plugin_name, key):
-        """
-        Remove a plugin state variable from the database.
-
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
-
-        :param key: Variable name.
-        :type key: str
-        """
-        raise NotImplementedError("Subclasses MUST implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def has_state_variable(self, plugin_name, key):
-        """
-        Check if plugin state variable is present in the database.
-
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
-
-        :param key: Variable name.
-        :type key: str
-
-        :returns: True if the variable is present, False otherwise.
-        :rtype: bool
-        """
-        raise NotImplementedError("Subclasses MUST implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def get_state_variable(self, plugin_name, key):
-        """
-        Get the value of a plugin state variable given its name.
-
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
-
-        :param key: Variable name.
-        :type key: str
-
-        :returns: Variable value.
-        :rtype: \\*
-        """
-        raise NotImplementedError("Subclasses MUST implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def get_state_variable_names(self, plugin_name):
-        """
-        Get all plugin state variable names in the database.
-
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
-
-        :returns: Variable names.
-        :rtype: set(str)
-        """
-        raise NotImplementedError("Subclasses MUST implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def mark_plugin_finished(self, identity, plugin_name):
+    def mark_plugin_finished(self, identity, plugin_id):
         """
         Mark the data as having been processed by the plugin.
 
         :param identity: Identity hash.
         :type identity: str
 
-        :param plugin_name: Plugin name.
-        :type plugin_name: str
+        :param plugin_id: Plugin ID.
+        :type plplugin_idstr
         """
         raise NotImplementedError("Subclasses MUST implement this method!")
 
@@ -595,7 +548,7 @@ class BaseAuditDB (BaseDB):
         :param identity: Identity hash.
         :type identity: str
 
-        :returns: Set of plugin names.
+        :returns: Set of plugin IDs.
         :rtype: set(str)
         """
         raise NotImplementedError("Subclasses MUST implement this method!")
@@ -879,10 +832,11 @@ class AuditMemoryDB (BaseAuditDB):
     #--------------------------------------------------------------------------
     def __init__(self, audit_config):
         super(AuditMemoryDB, self).__init__(audit_config)
-        self.__start_time   = None
-        self.__end_time     = None
+        self.__start_time   = time.time()
+        self.__stop_time    = None
+        self.__audit_config = audit_config
+        self.__audit_scope  = None
         self.__results      = dict()
-        self.__state        = collections.defaultdict(dict)
         self.__history      = collections.defaultdict(set)
         self.__stages       = collections.defaultdict(int)
         self.__shared_maps  = collections.defaultdict(dict)
@@ -891,12 +845,15 @@ class AuditMemoryDB (BaseAuditDB):
 
     #--------------------------------------------------------------------------
     def close(self):
-        self.__results      = dict()
-        self.__state        = collections.defaultdict(dict)
-        self.__history      = collections.defaultdict(set)
-        self.__stages       = collections.defaultdict(int)
-        self.__shared_maps  = collections.defaultdict(dict)
-        self.__shared_heaps = collections.defaultdict(set)
+        self.__start_time   = None
+        self.__stop_time    = None
+        self.__audit_config = None
+        self.__audit_scope  = None
+        self.__results.clear()
+        self.__history.clear()
+        self.__stages.clear()
+        self.__shared_maps.clear()
+        self.__shared_heaps.clear()
 
 
     #--------------------------------------------------------------------------
@@ -917,7 +874,12 @@ class AuditMemoryDB (BaseAuditDB):
 
     #--------------------------------------------------------------------------
     def get_audit_times(self):
-        return self.__start_time, self.__end_time
+        return self.__start_time, self.__stop_time
+
+
+    #--------------------------------------------------------------------------
+    def set_audit_times(self, start_time, stop_time):
+        self.__start_time, self.__stop_time = start_time, stop_time
 
 
     #--------------------------------------------------------------------------
@@ -926,8 +888,28 @@ class AuditMemoryDB (BaseAuditDB):
 
 
     #--------------------------------------------------------------------------
-    def set_audit_stop_time(self, end_time):
-        self.__end_time = end_time
+    def set_audit_stop_time(self, stop_time):
+        self.__stop_time = stop_time
+
+
+    #--------------------------------------------------------------------------
+    def get_audit_config(self):
+        return self.__audit_config
+
+
+    #--------------------------------------------------------------------------
+    def save_audit_config(self, audit_config):
+        self.__audit_config = audit_config
+
+
+    #--------------------------------------------------------------------------
+    def get_audit_scope(self):
+        return self.__audit_scope
+
+
+    #--------------------------------------------------------------------------
+    def save_audit_scope(self, audit_scope):
+        self.__audit_scope = audit_scope
 
 
     #--------------------------------------------------------------------------
@@ -999,23 +981,10 @@ class AuditMemoryDB (BaseAuditDB):
             return { identity
                      for identity, data in self.__results.iteritems()
                      if data.data_type == data_type }
-        if data_type == Data.TYPE_INFORMATION:
-            return { identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.information_type == data_subtype }
-        if data_type == Data.TYPE_RESOURCE:
-            return { identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.resource_type == data_subtype }
-        if data_type == Data.TYPE_VULNERABILITY:
-            return { identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.vulnerability_type == data_subtype }
-        raise NotImplementedError(
-            "Unknown data type: %r" % data_type)
+        return { identity
+                 for identity, data in self.__results.iteritems()
+                 if data.data_type == data_type
+                 and data.data_subtype == data_subtype }
 
 
     #--------------------------------------------------------------------------
@@ -1029,23 +998,12 @@ class AuditMemoryDB (BaseAuditDB):
 
     def __get_data_type(self, identity):
         data = self.__results.get(identity, None)
-        if data is None:
-            return None
-        data_type = data.data_type
-        if data_type == Data.TYPE_INFORMATION:
-            return data_type, data.information_type
-        if data_type == Data.TYPE_RESOURCE:
-            return data_type, data.resource_type
-        if data_type == Data.TYPE_VULNERABILITY:
-            return data_type, data.vulnerability_type
-        return None
+        if data is not None:
+            return data.data_type, data.data_subtype
 
 
     #--------------------------------------------------------------------------
     def get_data_count(self, data_type = None, data_subtype = None):
-
-        # Ugly but (hopefully) efficient code follows.
-
         if data_type is None:
             if data_subtype is not None:
                 raise NotImplementedError(
@@ -1055,53 +1013,15 @@ class AuditMemoryDB (BaseAuditDB):
             return len({ identity
                      for identity, data in self.__results.iteritems()
                      if data.data_type == data_type })
-        if data_type == Data.TYPE_INFORMATION:
-            return len({ identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.information_type == data_subtype })
-        if data_type == Data.TYPE_RESOURCE:
-            return len({ identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.resource_type == data_subtype })
-        if data_type == Data.TYPE_VULNERABILITY:
-            return len({ identity
-                     for identity, data in self.__results.iteritems()
-                     if data.data_type == data_type
-                     and data.vulnerability_type == data_subtype })
-        raise NotImplementedError(
-            "Unknown data type: %r" % data_type)
+        return len({ identity
+                 for identity, data in self.__results.iteritems()
+                 if data.data_type == data_type
+                 and data.data_subtype == data_subtype })
 
 
     #--------------------------------------------------------------------------
-    def add_state_variable(self, plugin_name, key, value):
-        self.__state[plugin_name][key] = value
-
-
-    #--------------------------------------------------------------------------
-    def remove_state_variable(self, plugin_name, key):
-        del self.__state[plugin_name][key]
-
-
-    #--------------------------------------------------------------------------
-    def has_state_variable(self, plugin_name, key):
-        return key in self.__state[plugin_name]
-
-
-    #--------------------------------------------------------------------------
-    def get_state_variable(self, plugin_name, key):
-        return self.__state[plugin_name][key]
-
-
-    #--------------------------------------------------------------------------
-    def get_state_variable_names(self, plugin_name):
-        return set(self.__state[plugin_name].iterkeys())
-
-
-    #--------------------------------------------------------------------------
-    def mark_plugin_finished(self, identity, plugin_name):
-        self.__history[identity].add(plugin_name)
+    def mark_plugin_finished(self, identity, plugin_id):
+        self.__history[identity].add(plugin_id)
 
 
     #--------------------------------------------------------------------------
@@ -1257,10 +1177,8 @@ class AuditSQLiteDB (BaseAuditDB):
         self.__busy   = False
         self.__cursor = None
 
-        # Load the SQLite module.
-        global sqlite3
-        if sqlite3 is None:
-            import sqlite3
+        # Create the lock to make this class thread safe.
+        self.__lock = threading.RLock()
 
         # Get the filename from the connection string.
         filename = self.__parse_connection_string(
@@ -1404,20 +1322,24 @@ class AuditSQLiteDB (BaseAuditDB):
                 try:
 
                     # Read the config.
-                    cursor.execute("SELECT audit_config FROM golismero LIMIT 1;")
+                    cursor.execute(
+                        "SELECT audit_config, audit_scope"
+                        " FROM golismero"
+                        " LIMIT 1;")
                     row = cursor.fetchone()
                     if not row:
                         raise IOError("Missing data in database!")
                     try:
                         audit_config = cls.decode(row[0])
+                        audit_scope  = cls.decode(row[1])
                     except Exception:
                         raise IOError("Corrupted database!")
 
                     # Finish the transaction.
                     db.commit()
 
-                    # Return the config.
-                    return audit_config
+                    # Return the config and scope.
+                    return audit_config, audit_scope
 
                 except:
 
@@ -1497,23 +1419,22 @@ class AuditSQLiteDB (BaseAuditDB):
         """
         Execute a transactional operation.
         """
-        # this will fail for multithreaded accesses,
-        # but sqlite is not multithreaded either
-        if self.__busy:
-            raise RuntimeError("The database is busy")
-        try:
-            self.__busy = True
-            self.__cursor = self.__db.cursor()
+        with self.__lock:
+            if self.__busy:
+                raise RuntimeError("The database is busy")
             try:
-                retval = fn(self, *args, **kwargs)
-                self.__db.commit()
-                return retval
-            except:
-                self.__db.rollback()
-                raise
-        finally:
-            self.__cursor = None
-            self.__busy = False
+                self.__busy   = True
+                self.__cursor = self.__db.cursor()
+                try:
+                    retval = fn(self, *args, **kwargs)
+                    self.__db.commit()
+                    return retval
+                except:
+                    self.__db.rollback()
+                    raise
+            finally:
+                self.__cursor = None
+                self.__busy   = False
 
 
     #--------------------------------------------------------------------------
@@ -1527,9 +1448,10 @@ class AuditSQLiteDB (BaseAuditDB):
         """
 
         # Check if the schema is already created.
-        self.__cursor.execute((
+        self.__cursor.execute(
             "SELECT count(*) FROM sqlite_master"
-            " WHERE type = 'table' AND name = 'golismero';"))
+            " WHERE type = 'table' AND name = 'golismero';"
+        )
 
         # If it's already present...
         if self.__cursor.fetchone()[0]:
@@ -1565,8 +1487,9 @@ class AuditSQLiteDB (BaseAuditDB):
                 schema_version INTEGER NOT NULL,
                 audit_name STRING NOT NULL,
                 start_time REAL DEFAULT NULL,
-                end_time REAL DEFAULT NULL,
-                audit_config BLOB NOT NULL
+                stop_time REAL DEFAULT NULL,
+                audit_config BLOB NOT NULL,
+                audit_scope BLOB DEFAULT NULL
             );
 
             ----------------------------------------------------------
@@ -1595,21 +1518,12 @@ class AuditSQLiteDB (BaseAuditDB):
             );
 
             ----------------------------------------------------------
-            -- Tables to store the plugin state and history.
+            -- Tables to store the plugin history.
             ----------------------------------------------------------
 
             CREATE TABLE plugin (
                 rowid INTEGER PRIMARY KEY,
                 name STRING UNIQUE NOT NULL
-            );
-
-            CREATE TABLE state (
-                rowid INTEGER PRIMARY KEY,
-                plugin_id INTEGER NOT NULL,
-                key STRING NOT NULL,
-                value BLOB NOT NULL,
-                FOREIGN KEY(plugin_id) REFERENCES plugin(rowid),
-                UNIQUE(plugin_id, key) ON CONFLICT REPLACE
             );
 
             CREATE TABLE history (
@@ -1652,7 +1566,7 @@ class AuditSQLiteDB (BaseAuditDB):
 
             # Insert the file information.
             self.__cursor.execute(
-                "INSERT INTO golismero VALUES (?, ?, NULL, NULL, ?);",
+                "INSERT INTO golismero VALUES (?, ?, NULL, NULL, ?, NULL);",
                 (self.SCHEMA_VERSION,
                  self.audit_name,
                  self.encode(audit_config))
@@ -1718,9 +1632,18 @@ class AuditSQLiteDB (BaseAuditDB):
     @transactional
     def get_audit_times(self):
         self.__cursor.execute(
-            "SELECT start_time, end_time FROM golismero LIMIT 1;")
-        start_time, end_time = self.__cursor.fetchone()
-        return start_time, end_time
+            "SELECT start_time, stop_time FROM golismero LIMIT 1;")
+        start_time, stop_time = self.__cursor.fetchone()
+        return start_time, stop_time
+
+
+    #--------------------------------------------------------------------------
+    @transactional
+    def set_audit_times(self, start_time, stop_time):
+        self.__cursor.execute(
+            "UPDATE golismero SET start_time = ?, stop_time = ?;",
+            (start_time, stop_time)
+        )
 
 
     #--------------------------------------------------------------------------
@@ -1734,11 +1657,53 @@ class AuditSQLiteDB (BaseAuditDB):
 
     #--------------------------------------------------------------------------
     @transactional
-    def set_audit_stop_time(self, end_time):
+    def set_audit_stop_time(self, stop_time):
         self.__cursor.execute(
-            "UPDATE golismero SET end_time = ?;",
-            (end_time,)
+            "UPDATE golismero SET stop_time = ?;",
+            (stop_time,)
         )
+
+
+    #--------------------------------------------------------------------------
+    @transactional
+    def get_audit_config(self):
+        self.__cursor.execute("SELECT audit_config FROM golismero LIMIT 1;")
+        row = self.__cursor.fetchone()
+        if row and row[0]:
+            return self.decode(row[0])
+
+
+    #--------------------------------------------------------------------------
+    @transactional
+    def save_audit_config(self, audit_config):
+        if audit_config:
+            self.__cursor.execute(
+                "UPDATE golismero SET audit_config = ?;",
+                (self.encode(audit_config),)
+            )
+        else:
+            self.__cursor.execute("UPDATE golismero SET audit_config = NULL;")
+
+
+    #--------------------------------------------------------------------------
+    @transactional
+    def get_audit_scope(self):
+        self.__cursor.execute("SELECT audit_scope FROM golismero LIMIT 1;")
+        row = self.__cursor.fetchone()
+        if row and row[0]:
+            return self.decode(row[0])
+
+
+    #--------------------------------------------------------------------------
+    @transactional
+    def save_audit_scope(self, audit_scope):
+        if audit_scope:
+            self.__cursor.execute(
+                "UPDATE golismero SET audit_scope = ?;",
+                (self.encode(audit_scope),)
+            )
+        else:
+            self.__cursor.execute("UPDATE golismero SET audit_scope = NULL;")
 
 
     #--------------------------------------------------------------------------
@@ -1996,152 +1961,28 @@ class AuditSQLiteDB (BaseAuditDB):
 
     #--------------------------------------------------------------------------
     @transactional
-    def add_state_variable(self, plugin_name, key, value):
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
-        if type(key) is not str:
-            raise TypeError("Expected string, got %s" % type(key))
-
-        # Fetch the plugin rowid, add it if missing.
-        self.__cursor.execute(
-            "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
-        rows = self.__cursor.fetchone()
-        if rows:
-            plugin_id = rows[0]
-        else:
-            self.__cursor.execute(
-                "INSERT INTO plugin VALUES (NULL, ?);",
-                (plugin_name,))
-            plugin_id = self.__cursor.lastrowid
-            if plugin_id is None:
-                self.__cursor.execute(
-                    "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-                    (plugin_name,))
-                rows = self.__cursor.fetchone()
-                plugin_id = rows[0]
-
-        # Save the state variable.
-        self.__cursor.execute(
-            "INSERT INTO state VALUES (NULL, ?, ?, ?);",
-            (plugin_id, key, self.encode(value)))
-
-
-    #--------------------------------------------------------------------------
-    @transactional
-    def remove_state_variable(self, plugin_name, key):
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
-        if type(key) is not str:
-            raise TypeError("Expected string, got %s" % type(key))
-
-        # Fetch the plugin rowid, fail if missing.
-        self.__cursor.execute(
-            "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
-        rows = self.__cursor.fetchone()
-        plugin_id = rows[0]
-
-        # Delete the state variable.
-        self.__cursor.execute(
-            "DELETE FROM state WHERE plugin_id = ? AND key = ?;",
-            (plugin_id, key))
-
-
-    #--------------------------------------------------------------------------
-    @transactional
-    def has_state_variable(self, plugin_name, key):
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
-        if type(key) is not str:
-            raise TypeError("Expected string, got %s" % type(key))
-
-        # Fetch the plugin rowid, return False if missing.
-        self.__cursor.execute(
-            "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
-        rows = self.__cursor.fetchone()
-        if not rows:
-            return False
-        plugin_id = rows[0]
-
-        # Check if the state variable is defined.
-        self.__cursor.execute(
-            "SELECT COUNT(rowid) FROM state"
-            " WHERE plugin_id = ? AND key = ? LIMIT 1",
-            (plugin_id, key))
-        return bool(self.__cursor.fetchone()[0])
-
-
-    #--------------------------------------------------------------------------
-    @transactional
-    def get_state_variable(self, plugin_name, key):
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
-        if type(key) is not str:
-            raise TypeError("Expected string, got %s" % type(key))
-
-        # Fetch the plugin rowid, fail if missing.
-        self.__cursor.execute(
-            "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
-        rows = self.__cursor.fetchone()
-        plugin_id = rows[0]
-
-        # Get the state variable value, fail if missing.
-        self.__cursor.execute(
-            "SELECT value FROM state"
-            " WHERE plugin_id = ? AND key = ? LIMIT 1;",
-            (plugin_id, key))
-        return self.decode(self.__cursor.fetchone()[0])
-
-
-    #--------------------------------------------------------------------------
-    @transactional
-    def get_state_variable_names(self, plugin_name):
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
-
-        # Fetch the plugin rowid, return an empty set if missing.
-        self.__cursor.execute(
-            "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
-        rows = self.__cursor.fetchone()
-        if not rows:
-            return set()
-        plugin_id = rows[0]
-
-        # Get the state variable names.
-        self.__cursor.execute(
-            "SELECT key FROM state WHERE plugin_id = ?;",
-            (plugin_id,))
-        return {str(row[0]) for row in self.__cursor.fetchall()}
-
-
-    #--------------------------------------------------------------------------
-    @transactional
-    def mark_plugin_finished(self, identity, plugin_name):
+    def mark_plugin_finished(self, identity, plugin_id):
         if type(identity) is not str:
             raise TypeError("Expected string, got %s" % type(identity))
-        if type(plugin_name) is not str:
-            raise TypeError("Expected string, got %s" % type(plugin_name))
+        if type(plugin_id) is not str:
+            raise TypeError("Expected string, got %s" % type(plugin_id))
 
         # Fetch the plugin rowid, add it if missing.
         self.__cursor.execute(
             "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-            (plugin_name,))
+            (plugin_id,))
         rows = self.__cursor.fetchone()
         if rows:
             plugin_id = rows[0]
         else:
             self.__cursor.execute(
                 "INSERT INTO plugin VALUES (NULL, ?);",
-                (plugin_name,))
+                (plugin_id,))
             plugin_id = self.__cursor.lastrowid
             if plugin_id is None:
                 self.__cursor.execute(
                     "SELECT rowid FROM plugin WHERE name = ? LIMIT 1;",
-                    (plugin_name,))
+                    (plugin_id,))
                 rows = self.__cursor.fetchone()
                 plugin_id = rows[0]
 

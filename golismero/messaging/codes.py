@@ -46,28 +46,28 @@ from ..common import Singleton
 #   message_type = MessageType.MSG_TYPE_DATA
 #   message_code = MessageCode.MSG_DATA
 #   message_info = List of Data objects returned by a plugin
-#   plugin_name  = Name of the plugin that returned them
+#   plugin_id    = ID of the plugin that returned them
 #   priority     = MessagePriority.MSG_PRIORITY_MEDIUM
 #
 # Control messages:
 #   message_type = MessageType.MSG_TYPE_CONTROL
 #   message_code = MessageCode.MSG_CONTROL_*
 #   message_info = Optional, depends on the message, usually None
-#   plugin_name  = Optional, if None the message was sent by the Orchestrator
+#   plugin_id    = Optional, if None the message was sent by the Orchestrator
 #   priority     = MessagePriority.MSG_PRIORITY_* (depends on the message)
 #
 # RPC messages:
 #   message_type = MessageType.MSG_TYPE_RPC
 #   message_code = MessageCode.MSG_RPC_*
 #   message_info = (optional response queue, positional arguments, keyword arguments)
-#   plugin_name  = Name of the plugin that issued the RPC call
+#   plugin_id    = ID of the plugin that issued the RPC call
 #   priority     = MessagePriority.MSG_PRIORITY_HIGH
 #
 # Status messages:
 #   message_type = MessageType.MSG_TYPE_STATUS
 #   message_code = MessageCode.MSG_STATUS_*
 #   message_info = Depends on the message, usually a data identity hash
-#   plugin_name  = Name of the plugin that issued the RPC call
+#   plugin_id    = ID of the plugin that issued the RPC call
 #   priority     = MessagePriority.MSG_PRIORITY_MEDIUM
 #
 # For all message types, audit_name is the name of the current audit
@@ -178,7 +178,7 @@ class MessageCode(MessageConstants):
         :rtype: str
         """
         if type(message_type) != int:
-            raise TypeError("Expected int, got %s instead" % type(message_type))
+            raise TypeError("Expected int, got %r instead" % type(message_type))
         if message_type == MessageType.MSG_TYPE_DATA:
             return "MSG_DATA" if value == MessageCode.MSG_DATA else None
         try:
@@ -251,13 +251,14 @@ class MessageCode(MessageConstants):
     MSG_RPC_DATA_PLUGINS           = 19
 
     # Plugin API
-    MSG_RPC_PLUGIN_GET_NAMES       = 20
+    MSG_RPC_PLUGIN_GET_IDS         = 20
     MSG_RPC_PLUGIN_GET_INFO        = 21
-    MSG_RPC_STATE_ADD              = 22
-    MSG_RPC_STATE_REMOVE           = 23
-    MSG_RPC_STATE_CHECK            = 24
-    MSG_RPC_STATE_GET              = 25
-    MSG_RPC_STATE_KEYS             = 26
+
+    # Audit information
+    MSG_RPC_AUDIT_COUNT            = 30
+    MSG_RPC_AUDIT_NAMES            = 31
+    MSG_RPC_AUDIT_CONFIG           = 32
+    MSG_RPC_AUDIT_TIMES            = 33
 
     # Shared map API
     MSG_RPC_SHARED_MAP_GET         = 40
@@ -278,10 +279,10 @@ class MessageCode(MessageConstants):
     MSG_RPC_SHARED_HEAP_ADD        = 54
     MSG_RPC_SHARED_HEAP_REMOVE     = 55
 
-    # Audit information
-    MSG_RPC_AUDIT_COUNT            = 60
-    MSG_RPC_AUDIT_NAMES            = 61
-    MSG_RPC_AUDIT_CONFIG           = 62
+    # NIST CPE database API
+    MSG_RPC_CPE_GET_TITLE          = 60
+    MSG_RPC_CPE_RESOLVE            = 61
+    MSG_RPC_CPE_SEARCH             = 62
 
 
     #--------------------------------------------------------------------------

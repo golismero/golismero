@@ -73,7 +73,7 @@ def run(options, *audits):
     Console.level = options.verbose
 
     # Set the console color configuration.
-    Console.use_colors = options.colorize
+    Console.use_colors = options.color
 
     # Show the start message.
     Console.display("GoLismero started at %s" % datetime.datetime.now())
@@ -151,7 +151,7 @@ def _sanitize_config(options, audits):
     if options is None:
         options = OrchestratorConfig()
     elif not isinstance(options, OrchestratorConfig):
-        raise TypeError("Expected OrchestratorConfig, got %s instead" % type(options))
+        raise TypeError("Expected OrchestratorConfig, got %r instead" % type(options))
     if not hasattr(options, "profile"):
         options.profile = None
         options.profile_file = None
@@ -167,7 +167,7 @@ def _sanitize_config(options, audits):
         if params is None:
             params = AuditConfig()
         elif not isinstance(params, AuditConfig):
-            raise TypeError("Expected AuditConfig, got %s instead" % type(params))
+            raise TypeError("Expected AuditConfig, got %r instead" % type(params))
         if not hasattr(params, "profile"):
             params.profile = options.profile
             params.profile_file = options.profile_file
@@ -176,9 +176,8 @@ def _sanitize_config(options, audits):
         if not hasattr(params, "plugin_load_overrides"):
             params.plugin_load_overrides = options.plugin_load_overrides
         if not hasattr(params, "targets") or not params.targets:
-            if not hasattr(options, "targets"):
-                raise ValueError("No targets selected!")
-            params.targets = list(options.targets)
+            if hasattr(options, "targets"):
+                params.targets = list(options.targets)
         params.check_params()
         sane_audits.append(params)
 

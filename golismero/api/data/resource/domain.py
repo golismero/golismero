@@ -59,7 +59,7 @@ class Domain(Resource):
         """
 
         if not isinstance(hostname, basestring):
-            raise TypeError("Expected string, got %s instead" % type(hostname))
+            raise TypeError("Expected string, got %r instead" % type(hostname))
         hostname = str(hostname)
 
         # Check we've not confused an IP address for a hostname.
@@ -78,6 +78,9 @@ class Domain(Resource):
 
         # Parent constructor.
         super(Domain, self).__init__()
+
+        # Reset the crawling depth.
+        self.depth = 0
 
 
     #----------------------------------------------------------------------

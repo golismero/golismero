@@ -1,3 +1,2 @@
 @echo off
-shift
-python golismero.py %*
+python "%~dp0\golismero.py" %*

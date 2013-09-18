@@ -30,7 +30,7 @@ from golismero.api.config import Config
 from golismero.api.data import discard_data
 from golismero.api.data.information.http import HTTP_Raw_Request
 from golismero.api.data.information.webserver_fingerprint import WebServerFingerprint
-from golismero.api.data.resource.url import FolderUrl
+from golismero.api.data.resource.url import BaseUrl
 from golismero.api.logger import Logger
 from golismero.api.net import NetworkException
 from golismero.api.net.http import HTTP
@@ -204,7 +204,7 @@ class ServerFingerprinting(TestingPlugin):
 
     #----------------------------------------------------------------------
     def get_accepted_info(self):
-        return [FolderUrl]
+        return [BaseUrl]
 
 
     #----------------------------------------------------------------------

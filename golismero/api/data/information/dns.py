@@ -102,7 +102,7 @@ class DnsSEC(object):
         :rtype: str
         """
         if not isinstance(alg, int):
-            raise TypeError("Expected int, got %s instead" % type(alg))
+            raise TypeError("Expected int, got %r instead" % type(alg))
 
         if alg not in DnsSEC.ALGORITHM_BY_TEXT.values():
             raise TypeError("Invalid algorithm '%s'" % alg)
@@ -118,7 +118,7 @@ class DnsSEC(object):
         :rtype: int
         """
         if not isinstance(alg, basestring):
-            raise TypeError("Expected string, got %s instead" % type(alg))
+            raise TypeError("Expected string, got %r instead" % type(alg))
 
         if alg not in DnsSEC.ALGORITHM_BY_TEXT:
             raise TypeError("Invalid algorithm '%s'" % alg)
@@ -381,7 +381,7 @@ class DNSRegisterAlgorithm(DnsRegister):
             self.__algorithm_name  = DnsSEC.algorithm_to_text(algorithm)
             self.__algorithm_value = DnsSEC.text_to_algorithm(self.__algorithm_name)
         else:
-            raise TypeError("Expected str or int, got %s instead" % type(algorithm))
+            raise TypeError("Expected str or int, got %r instead" % type(algorithm))
 
         super(DNSRegisterAlgorithm, self).__init__(**kwargs)
 
@@ -1684,9 +1684,17 @@ class DnsRegisterRP(DnsRegister):
     def discovered(self):
         result = []
         if self.mbox in Config.audit_scope:
-            result.append( Email(self.mbox) )
+            try:
+                result.append( Email(self.mbox) )
+            except Exception:
+                # Some people put arbitrary text instead.
+                pass
         if self.txt in Config.audit_scope:
-            result.append( Domain(self.txt) )
+            try:
+                result.append( Domain(self.txt) )
+            except Exception:
+                # Same here.
+                pass
         return result
 
 

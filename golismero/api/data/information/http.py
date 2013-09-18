@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = ["HTTP_Request", "HTTP_Response"]
 
 from . import Information
-from .. import identity, overwrite
+from .. import identity, keep_newer
 from ...config import Config
 from ...net.web_utils import ParsedURL
 
@@ -814,7 +814,7 @@ class HTTP_Response (Information):
 
     #----------------------------------------------------------------------
 
-    @overwrite  # TODO: maybe the times should be collected and/or averaged instead?
+    @keep_newer  # TODO: maybe the times should be collected and/or averaged instead?
     def elapsed(self):
         """
         :returns: Time elapsed in seconds since the request was sent

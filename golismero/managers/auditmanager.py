@@ -42,7 +42,7 @@ from ..api.config import Config
 from ..api.logger import Logger
 from ..common import AuditConfig
 from ..database.auditdb import AuditDB
-from ..main.scope import AuditScope
+from ..main.scope import AuditScope, DummyScope
 from ..messaging.codes import MessageType, MessageCode, MessagePriority
 from ..messaging.message import Message
 from ..messaging.notifier import AuditNotifier
@@ -68,6 +68,10 @@ def rpc_audit_get_config(orchestrator, audit_name):
     if audit_name:
         return orchestrator.auditManager.get_audit(audit_name).config
     return orchestrator.config
+
+@implementor(MessageCode.MSG_RPC_AUDIT_TIMES)
+def rpc_audit_get_times(orchestrator, audit_name):
+    return orchestrator.auditManager.get_audit(audit_name).database.get_audit_times()
 
 
 #--------------------------------------------------------------------------
@@ -226,7 +230,7 @@ class AuditManager (object):
         :rtype: bool
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
 
         # Send info messages to their target audit
         if message.message_type == MessageType.MSG_TYPE_DATA:
@@ -286,7 +290,7 @@ class Audit (object):
         """
 
         if not isinstance(audit_config, AuditConfig):
-            raise TypeError("Expected AuditConfig, got %s instead" % type(audit_config))
+            raise TypeError("Expected AuditConfig, got %r instead" % type(audit_config))
 
         # Keep the audit settings.
         self.__audit_config = audit_config
@@ -430,29 +434,21 @@ class Audit (object):
         Start execution of an audit.
         """
 
+        # Tentative audit start time.
+        start_time = time()
+
         # Reset the number of unacknowledged messages.
         self.__expecting_ack = 0
-
-        # Set the audit start time.
-        self.config.start_time = time()
 
         # Keep the original execution context.
         old_context = Config._context
 
         try:
 
+            # Create a dummy scope.
+            self.__audit_scope = DummyScope()
+
             # Update the execution context for this audit.
-            Config._context = PluginContext(       msg_queue = old_context.msg_queue,
-                                                  audit_name = self.name,
-                                                audit_config = self.config,
-                                            orchestrator_pid = old_context._orchestrator_pid,
-                                            orchestrator_tid = old_context._orchestrator_tid)
-
-            # Calculate the audit scope.
-            # This is done here because some DNS queries may be made.
-            self.__audit_scope = AuditScope(self.config)
-
-            # Update the execution context again, with the scope.
             Config._context = PluginContext(       msg_queue = old_context.msg_queue,
                                                   audit_name = self.name,
                                                 audit_config = self.config,
@@ -464,13 +460,13 @@ class Audit (object):
             self.__plugin_manager = self.orchestrator.pluginManager.get_plugin_manager_for_audit(self)
 
             # Load the testing plugins.
-            m_audit_plugins = self.pluginManager.load_plugins("testing")
+            testing_plugins = self.pluginManager.load_plugins("testing")
 
             # Create the notifier.
             self.__notifier = AuditNotifier(self)
 
             # Register the testing plugins with the notifier.
-            self.__notifier.add_multiple_plugins(m_audit_plugins)
+            self.__notifier.add_multiple_plugins(testing_plugins)
 
             # Create the import manager.
             self.__import_manager = ImportManager(self.orchestrator, self)
@@ -478,13 +474,27 @@ class Audit (object):
             # Create the report manager.
             self.__report_manager = ReportManager(self.orchestrator, self)
 
-            # Get the original audit start time, if found.
-            # If not, save the new audit start time.
-            start_time = self.database.get_audit_times()[0]
-            if start_time is not None:
-                self.config.start_time = start_time
+            # (Re)calculate the audit scope. Some DNS queries may be made.
+            audit_scope = self.database.get_audit_scope()
+            if audit_scope is None:
+                if self.config.targets:
+                    audit_scope = AuditScope(self.config)
             else:
-                self.database.set_audit_start_time(self.config.start_time)
+                audit_scope.add_targets(self.config)
+            if audit_scope is not None:
+                self.__audit_scope = audit_scope
+                self.database.save_audit_scope(self.scope)
+                Config._context = PluginContext(
+                                    msg_queue = old_context.msg_queue,
+                                   audit_name = self.name,
+                                 audit_config = self.config,
+                                  audit_scope = self.scope,
+                             orchestrator_pid = old_context._orchestrator_pid,
+                             orchestrator_tid = old_context._orchestrator_tid)
+
+            # If the audit database doesn't have a start time, set the new one.
+            if not self.database.get_audit_times()[0]:
+                self.database.set_audit_start_time(start_time)
 
             # Log the number of objects previously in the database.
             count = self.database.get_data_count()
@@ -520,7 +530,50 @@ class Audit (object):
             # Import external results.
             # This is done after storing the targets, so the importers
             # can overwrite the targets with new information if available.
+            # If we had no scope, build one based on the imported data.
+            if not target_data:
+                target_types = (
+                    Resource.RESOURCE_BASE_URL,
+                    Resource.RESOURCE_FOLDER_URL,
+                    Resource.RESOURCE_URL,
+                    Resource.RESOURCE_IP,
+                    Resource.RESOURCE_DOMAIN,
+                )
+                old_data = set()
+                for data_subtype in target_types:
+                    old_data.update(
+                        self.database.get_data_keys(
+                            Data.TYPE_RESOURCE, data_subtype) )
             imported_count = self.importManager.import_results()
+            if not target_data:
+                new_data = set()
+                for data_subtype in target_types:
+                    new_data.update(
+                        self.database.get_data_keys(
+                            Data.TYPE_RESOURCE, data_subtype) )
+                new_data.difference_update(old_data)
+                old_data.clear()
+                self.config.targets = [
+                    str( self.database.get_data(identity) )
+                    for identity in new_data
+                ]
+                new_data.clear()
+                self.__audit_scope = AuditScope(self.config) # does DNS queries
+                self.database.save_audit_scope(self.scope)
+                Config._context = PluginContext(
+                                    msg_queue = old_context.msg_queue,
+                                   audit_name = self.name,
+                                 audit_config = self.config,
+                                  audit_scope = self.scope,
+                             orchestrator_pid = old_context._orchestrator_pid,
+                             orchestrator_tid = old_context._orchestrator_tid)
+
+            # Show the scope. Abort if the scope is wrong.
+            Logger.log_more_verbose(str(self.scope))
+            assert not isinstance(self.scope, DummyScope), "Internal error!"
+            if not self.scope.targets:
+                raise ValueError(
+                    "No targets selected for audit, aborting execution.")
 
             # Discover new data from the data already in the database.
             # Only add newly discovered data, to avoid overwriting anything.
@@ -546,13 +599,12 @@ class Audit (object):
             Config._context = old_context
 
         # The audit stop time must be updated if:
-        # 1) There are testing plugins enabled, or
+        # 1) Testing plugins were run, or
         # 2) There was new data added to the database.
-        self.__must_update_stop_time = \
-            m_audit_plugins or imported_count or targets_added_count
+        self.__must_update_stop_time = imported_count or targets_added_count
 
         # If there are testing plugins enabled, move to stage 1.
-        if m_audit_plugins:
+        if testing_plugins:
             Logger.log_verbose("Launching tests...")
             self.update_stage()
 
@@ -700,6 +752,10 @@ class Audit (object):
                         # Skip to the next stage.
                         continue
 
+                    # We're going to run testing plugins,
+                    # so we need to update the audit stop time.
+                    self.__must_update_stop_time = True
+
                     # Tell the Orchestrator we just moved to another stage.
                     stage_name = pluginManager.get_stage_name_from_value(stage)
                     self.send_msg(
@@ -736,7 +792,7 @@ class Audit (object):
         :rtype: bool
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
 
         # Keep the original execution context.
         old_context = Config._context
@@ -748,6 +804,7 @@ class Audit (object):
                                                   audit_name = self.name,
                                                 audit_config = self.config,
                                                  audit_scope = self.scope,
+                                                ack_identity = message.ack_identity,
                                             orchestrator_pid = old_context._orchestrator_pid,
                                             orchestrator_tid = old_context._orchestrator_tid)
 
@@ -816,11 +873,11 @@ class Audit (object):
                 if data.is_in_scope():
 
                     # If the plugin is not recursive, mark the data as already processed by it.
-                    plugin_name = message.plugin_name
-                    if plugin_name:
-                        plugin_info = pluginManager.get_plugin_by_name(plugin_name)
+                    plugin_id = message.plugin_id
+                    if plugin_id:
+                        plugin_info = pluginManager.get_plugin_by_id(plugin_id)
                         if not plugin_info.recursive:
-                            database.mark_plugin_finished(data.identity, plugin_name)
+                            database.mark_plugin_finished(data.identity, plugin_id)
 
                     # The data will be sent to the plugins.
                     data_for_plugins.append(data)
@@ -892,10 +949,7 @@ class Audit (object):
             # Before generating the reports, set the audit stop time.
             # This is needed so the report can print the start and stop times.
             if self.__must_update_stop_time:
-                self.config.stop_time = time()
-
-                # Save the audit stop time in the database.
-                self.database.set_audit_stop_time(self.config.stop_time)
+                self.database.set_audit_stop_time( time() )
 
             # Show a log message.
             if self.__report_manager.plugin_count > 0:

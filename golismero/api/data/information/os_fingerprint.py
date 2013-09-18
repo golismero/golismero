@@ -44,10 +44,6 @@ class OSFingerprint(Information):
 
     information_type = Information.INFORMATION_OS_FINGERPRINT
 
-    #----------------------------------------------------------------------
-    # TODO: we may want to add a list of default servers and descriptions.
-    #----------------------------------------------------------------------
-
 
     #----------------------------------------------------------------------
     def __init__(self, family, version=None, cpe=None, others = None):
@@ -67,30 +63,43 @@ class OSFingerprint(Information):
 
         # Check the data types.
         if not isinstance(family, str):
-            raise TypeError("Expected str, got %s instead" % type(family))
+            raise TypeError("Expected str, got %r instead" % type(family))
 
         if version:
             if not isinstance(version, str):
-                raise TypeError("Expected str, got %s instead" % type(version))
+                raise TypeError("Expected str, got %r instead" % type(version))
 
         if cpe is not None:
             if not isinstance(cpe, basestring):
-                raise TypeError("Expected basestring, got '%s' instead" % type(cpe))
+                raise TypeError("Expected str, got '%s' instead" % type(cpe))
 
         if others is not None:
             if not isinstance(others, dict):
-                raise TypeError("Expected dict, got %s instead" % type(others))
+                raise TypeError("Expected dict, got %r instead" % type(others))
             for k, v in others.iteritems():
                 if not isinstance(k, str):
-                    raise TypeError("Expected str, got %s instead" % type(k))
+                    raise TypeError("Expected str, got %r instead" % type(k))
                 if not isinstance(v, float):
-                    raise TypeError("Expected float, got %s instead" % type(v))
+                    raise TypeError("Expected float, got %r instead" % type(v))
+
+        # Convert CPE <2.3 (URI binding) to CPE 2.3 (formatted string binding).
+        if cpe is not None:
+            if not cpe.startswith("cpe:"):
+                raise ValueError("Not a CPE name: %r" % cpe)
+            if cpe.startswith("cpe:/"):
+                cpe_parts = cpe[5:].split(":")
+                if len(cpe_parts) < 11:
+                    cpe_parts.extend( "*" * (11 - len(cpe_parts)) )
+                cpe = "cpe:2.3:" + ":".join(cpe_parts)
 
         # OS name.
         self.__family         = family
 
         # OS version.
         self.__version        = version
+
+        # CPE name.
+        self.__cpe            = cpe
 
         # Other possibilities for this OS.
         self.__others         = others
@@ -101,10 +110,22 @@ class OSFingerprint(Information):
 
     #----------------------------------------------------------------------
     def __repr__(self):
-        return "<OSFingerprint server='%s-%s'>" % (
+        return "<OSFingerprint server='%s-%s' cpe=%r>" % (
             self.__family,
-            self.__version
+            self.__version,
+            self.__cpe,
         )
+
+
+    #----------------------------------------------------------------------
+    def __str__(self):
+        s = self.__family
+        if self.__version:
+            s += " " + self.__version
+        if self.__cpe:
+            s += " (%s)" % self.__cpe
+        return s
+
 
     #----------------------------------------------------------------------
     @identity
@@ -124,6 +145,16 @@ class OSFingerprint(Information):
         :rtype: str
         """
         return self.__version
+
+
+    #----------------------------------------------------------------------
+    @identity
+    def cpe(self):
+        """
+        :return: CPE name.
+        :rtype: str
+        """
+        return self.__cpe
 
 
     #----------------------------------------------------------------------

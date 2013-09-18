@@ -1,0 +1,8 @@
+[Documentation]
+Name        = DNS Zone Transfer
+Description = Detects and exploits DNS zone transfer vulnerabilities.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License

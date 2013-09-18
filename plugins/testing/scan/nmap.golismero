@@ -1,0 +1,18 @@
+[Documentation]
+Name        = Nmap
+Description = Integration with Nmap: http://nmap.org/
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
+[Core]
+Module = nmap.py
+Class  = NmapScanPlugin
+
+[Arguments]
+
+# For now we'll just accept a command line verbatim.
+# In a future version we should "understand" all options instead.
+args = -vv -A -P0

@@ -62,25 +62,30 @@ def test_scope_example():
     audit_config.targets = ["www.example.com"]
     audit_config.include_subdomains = True
     with PluginTester(main_config, audit_config) as t:
+        print Config.audit_scope
 
-        assert None not in Config.audit_scope
-        assert "" not in Config.audit_scope
-        assert "www.example.com" in Config.audit_scope
-        assert "example.com" in Config.audit_scope
-        assert "com" not in Config.audit_scope
-        assert "subdomain.example.com" in Config.audit_scope
-        assert "subdomain.www.example.com" in Config.audit_scope
-        assert "www.example.org" not in Config.audit_scope
-        assert "wwwexample.com" not in Config.audit_scope
-        assert "www.wrong.com" not in Config.audit_scope
-        assert "127.0.0.1" not in Config.audit_scope
-        assert "::1" not in Config.audit_scope
-        assert "[::1]" not in Config.audit_scope
-        assert "http://www.example.com" in Config.audit_scope
-        assert "https://example.com" in Config.audit_scope
-        assert "ftp://ftp.example.com" in Config.audit_scope
-        assert "mailto://user@example.com" in Config.audit_scope
-    ##    assert "user@example.com" in Config.audit_scope
+        for token, flag in (
+            (None, False),
+            ("", False),
+            ("www.example.com", True),
+            ("example.com", True),
+            ("com", False),
+            ("subdomain.example.com", True),
+            ("subdomain.www.example.com", True),
+            ("www.example.org", False),
+            ("wwwexample.com", False),
+            ("www.wrong.com", False),
+            ("127.0.0.1", False),
+            ("::1", False),
+            ("[::1]", False),
+            ("http://www.example.com", True),
+            ("https://example.com", True),
+            ("ftp://ftp.example.com", True),
+            ("mailto://user@example.com", True),
+            ##("user@example.com", True),
+        ):
+            assert ((token in Config.audit_scope) == flag), repr(token)
+
         assert gethostbyname("www.example.com") in Config.audit_scope
         for address in gethostbyname_ex("www.example.com")[2]:
             assert address in Config.audit_scope
@@ -105,20 +110,26 @@ def test_scope_localhost():
     audit_config.targets = ["localhost"]
     audit_config.include_subdomains = True
     with PluginTester(main_config, audit_config) as t:
+        print Config.audit_scope
 
-        assert None not in Config.audit_scope
-        assert "" not in Config.audit_scope
-        assert "www.example.com" not in Config.audit_scope
-        assert "localhost.com" not in Config.audit_scope
-        assert "www.localhost.com" not in Config.audit_scope
-        assert "localhost" in Config.audit_scope
-        assert "subdomain.localhost" in Config.audit_scope
-        assert "127.0.0.1" in Config.audit_scope
-        assert "::1" in Config.audit_scope
-        assert "[::1]" in Config.audit_scope
-        assert "http://localhost" in Config.audit_scope
-        assert "mailto://user@localhost" in Config.audit_scope
-    ##    assert "user@localhost" in Config.audit_scope
+        for token, flag in (
+            (None, False),
+            ("", False),
+            ("www.example.com", False),
+            ("localhost.com", False),
+            ("www.localhost.com", False),
+            ("subdomain.localhost", True),
+            ("127.0.0.1", True),
+            ("::1", True),
+            ("[::1]", True),
+            ("http://localhost", True),
+            ("https://localhost", True),
+            ("ftp://ftp.localhost", True),
+            ("mailto://user@localhost", True),
+            ##("user@localhost", True),
+        ):
+            assert ((token in Config.audit_scope) == flag), repr(token)
+
         assert gethostbyname("localhost") in Config.audit_scope
         for address in gethostbyname_ex("localhost")[2]:
             assert address in Config.audit_scope

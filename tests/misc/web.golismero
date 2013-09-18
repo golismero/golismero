@@ -3,7 +3,7 @@ Name   = Web interface
 Module = web/web.py
 
 [Documentation]
-Description = GoLismero web user interface
+Description = Web user interface.
 Author      = GoLismero Project
 Version     = 0.1
 Website     = https://github.com/golismero

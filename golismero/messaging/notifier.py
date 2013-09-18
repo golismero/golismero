@@ -33,11 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = ["AuditNotifier", "OrchestratorNotifier"]
 
 from ..api.config import Config
-from ..api.data import Data
 ##from ..api.logger import Logger
 from ..api.plugin import Plugin
 from .message import Message
-from .codes import MessageType, MessageCode
+from .codes import MessageType, MessageCode, MessagePriority
 
 from collections import defaultdict
 ##from traceback import format_exc
@@ -70,9 +69,9 @@ class AbstractNotifier (object):
         # list(Plugin)
         self._notification_msg_list = []
 
-        # Map of plugin names to plugin instances.
+        # Map of plugin IDs to plugin instances.
         # dict(str -> Plugin)
-        self._map_name_to_plugin = {}
+        self._map_id_to_plugin = {}
 
 
     #----------------------------------------------------------------------
@@ -83,7 +82,7 @@ class AbstractNotifier (object):
         self._notification_info_all = None
         self._notification_info_map = None
         self._notification_msg_list = None
-        self._map_name_to_plugin    = None
+        self._map_id_to_plugin      = None
 
 
     #----------------------------------------------------------------------
@@ -91,7 +90,7 @@ class AbstractNotifier (object):
         """
         Add multiple plugins.
 
-        :param plugins: Map of plugin names to plugin instances.
+        :param plugins: Map of plugin IDs to plugin instances.
         :type plugins: dict(str -> Plugin)
         """
         for name, plugin in plugins.iteritems():
@@ -99,21 +98,21 @@ class AbstractNotifier (object):
 
 
     #----------------------------------------------------------------------
-    def add_plugin(self, name, plugin):
+    def add_plugin(self, plugin_id, plugin):
         """
         Add a plugin.
 
-        :param name: The plugin name.
-        :type name: str
+        :param plugin_id: The plugin ID.
+        :type plugin_id: str
 
         :param plugin: The plugin instance.
         :type plugin: Plugin
         """
         if not isinstance(plugin, Plugin):
-            raise TypeError("Expected Plugin, got %s instead" % type(plugin))
+            raise TypeError("Expected Plugin, got %r instead" % type(plugin))
 
         # Add the plugin to the names map.
-        self._map_name_to_plugin[name] = plugin
+        self._map_id_to_plugin[plugin_id] = plugin
 
         # Get the info types accepted by this plugin.
         m_message_types = plugin.get_accepted_info()
@@ -121,14 +120,14 @@ class AbstractNotifier (object):
 
         # Special value 'None' means all information types.
         if m_message_types is None:
-            self._notification_info_all.append(name)
+            self._notification_info_all.append(plugin_id)
 
         # Otherwise, it's a set of data subtype constants.
         else:
 
             # Register the plugin for each accepted type.
             for l_type in m_message_types:
-                self._notification_info_map[l_type].append(name)
+                self._notification_info_map[l_type].append(plugin_id)
 
         # UI and Global plugins can receive control messages.
         if plugin.PLUGIN_TYPE in (Plugin.PLUGIN_TYPE_UI, Plugin.PLUGIN_TYPE_UI):
@@ -153,12 +152,7 @@ class AbstractNotifier (object):
                     filtered_info = None
                     break
                 if type(item) not in (int, long):
-                    if item.data_type == Data.TYPE_INFORMATION:
-                        item = item.information_type
-                    elif item.data_type == Data.TYPE_RESOURCE:
-                        item = item.resource_type
-                    elif item.data_type == Data.TYPE_VULNERABILITY:
-                        item = item.vulnerability_type
+                    item = item.data_subtype
                 filtered_info.add(item)
             return filtered_info
         return None
@@ -173,7 +167,7 @@ class AbstractNotifier (object):
         :type message: Message
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
 
         # Keep count of how many messages are sent.
         count = 0
@@ -189,8 +183,8 @@ class AbstractNotifier (object):
                     m_plugins_to_notify = self.get_plugins_to_notify(data)
 
                     # Dispatch message info to each plugin.
-                    for plugin_name in m_plugins_to_notify:
-                        plugin = self._map_name_to_plugin[plugin_name]
+                    for plugin_id in m_plugins_to_notify:
+                        plugin = self._map_id_to_plugin[plugin_id]
                         self.dispatch_info(plugin, audit_name, data)
                         count += 1
 
@@ -217,7 +211,7 @@ class AbstractNotifier (object):
         :param data: Data object.
         :type data: Data
 
-        :returns: set(str) -- Set of plugin names.
+        :returns: set(str) -- Set of plugin IDs.
         """
 
         m_plugins_to_notify = set()
@@ -226,21 +220,9 @@ class AbstractNotifier (object):
         m_plugins_to_notify.update(self._notification_info_all)
 
         # Plugins that expect this type of info.
-        m_type = None
-        data_type = data.data_type
-        if data_type == Data.TYPE_INFORMATION:
-            m_type = data.information_type
-        elif data_type == Data.TYPE_RESOURCE:
-            m_type = data.resource_type
-        elif data_type == Data.TYPE_VULNERABILITY:
-            m_type = data.vulnerability_type
-        else:
-            warn("Data type not handled by notifier: %r" % data_type)
+        m_type = data.data_subtype
         if m_type in self._notification_info_map:
             m_plugins_to_notify.update(self._notification_info_map[m_type])
-        ##else:  # XXX DEBUG
-        ##    warn("Data type not handled by any plugins: %r" % data_type)
-
         return m_plugins_to_notify
 
 
@@ -345,34 +327,39 @@ class AuditNotifier(AbstractNotifier):
         :type message: Message
         """
 
-        # Get the identity and the plugin name.
-        identity = message.message_info
-        plugin_name = message.plugin_name
+        # Get the identity and the plugin ID.
+        identity  = message.ack_identity
+        plugin_id = message.plugin_id
 
         # Only ACKs for data messages carry the identity.
         if identity:
 
             try:
 
-                # Only ACKs for plugin messages carry the plugin name.
-                if plugin_name:
+                # Only ACKs for plugin messages carry the plugin ID.
+                if plugin_id:
 
                     # Add the plugin to the already processed set.
-                    self.database.mark_plugin_finished(identity, plugin_name)
+                    self.database.mark_plugin_finished(identity, plugin_id)
 
                     # Remove the plugin from the currently processing data map.
                     try:
-                        self.__processing[identity].remove(plugin_name)
+                        self.__processing[identity].remove(plugin_id)
                     except KeyError:
                         msg = "Got an unexpected ACK for data ID %s from plugin %s"
-                        warn(msg % (identity, plugin_name))
+                        warn(msg % (identity, plugin_id))
 
                     # Notify the Orchestrator that the plugin has finished running.
-                    self.orchestrator.notify_plugin_status(
-                        self.audit.name, plugin_name,
-                        MessageCode.MSG_STATUS_PLUGIN_END,
-                        identity,
-                    )
+                    if message.message_info: # 'do_notify_end' flag
+                        msg = Message(
+                            message_type = MessageType.MSG_TYPE_STATUS,
+                            message_code = MessageCode.MSG_STATUS_PLUGIN_END,
+                               plugin_id = plugin_id,
+                              audit_name = self.audit.name,
+                            ack_identity = identity,
+                                priority = MessagePriority.MSG_PRIORITY_MEDIUM,
+                        )
+                        self.orchestrator.dispatch_msg(msg)
 
             finally:
 
@@ -401,7 +388,7 @@ class AuditNotifier(AbstractNotifier):
     #----------------------------------------------------------------------
     def get_candidate_plugins(self, data):
         """
-        Get the set of names of plugins that may handle this data object
+        Get the set of IDs of plugins that may handle this data object
         at the current execution stage.
 
         This ignores the plugin-to-plugin dependencies.
@@ -409,7 +396,7 @@ class AuditNotifier(AbstractNotifier):
         :param data: Data object to find candidate plugins for.
         :type data: Data
 
-        :returns: Set of candidate plugin names.
+        :returns: Set of candidate plugin IDs.
         :rtype: set(str)
         """
 
@@ -448,7 +435,7 @@ class AuditNotifier(AbstractNotifier):
         if not datalist:
             return False
 
-        # Make a copy of the set of plugin names for this stage.
+        # Make a copy of the set of plugin IDs for this stage.
         available = set( self.pluginManager.stages[stage] )
 
         # Early exit if the stage is empty.
@@ -477,7 +464,7 @@ class AuditNotifier(AbstractNotifier):
         :param data: Data to be handled.
         :type data: Data
 
-        :returns: Set of plugin names.
+        :returns: Set of plugin IDs.
         :rtype: set(str)
         """
 
@@ -534,15 +521,7 @@ class AuditNotifier(AbstractNotifier):
             )
 
             # Add the plugin to the currently processing data map.
-            self.__processing[ack_identity].add(context.plugin_name)
-
-            # Notify the Orchestrator of the plugin execution start.
-            orchestrator.notify_plugin_status(
-                audit.name,
-                context.plugin_name,
-                MessageCode.MSG_STATUS_PLUGIN_BEGIN,
-                ack_identity,
-            )
+            self.__processing[ack_identity].add(context.plugin_id)
 
         # If it's any other message type...
         else:

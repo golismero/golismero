@@ -34,17 +34,16 @@ from golismero.api.config import Config
 from golismero.api.logger import Logger
 from golismero.api.data import discard_data
 from golismero.api.net.http import HTTP
-from golismero.api.net.scraper import extract_from_html
 from golismero.api.net.scraper import extract_from_html, extract_from_text
 from golismero.api.plugin import TestingPlugin
 from golismero.api.net.web_utils import ParsedURL, download
 from golismero.api.text.wordlist import WordListLoader
+from traceback import format_exc
 
 from golismero.api.text.matching_analyzer import get_diff_ratio
 
 # Resources
 from golismero.api.data.resource.ip import IP
-from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.url import BaseUrl
 
 # Informations
@@ -108,7 +107,6 @@ class OSFingerprinting(TestingPlugin):
         m_host    = None
 
         is_windows     = None
-        OS_AND_VERSION = []
 
         if isinstance(info, IP):
             m_host = info.address
@@ -212,15 +210,20 @@ class OSFingerprinting(TestingPlugin):
 
         # Get the main web page
         m_r = download(main_url, callback=self.check_download)
-        if not m_r:
+        if not m_r or not m_r.raw_data:
             return None
         discard_data(m_r)
 
         # Get the first link
-        if m_r.information_type == Information.INFORMATION_HTML:
-            m_links = extract_from_html(m_r.raw_data, main_url)
-        else:
-            m_links = extract_from_text(m_r.raw_data, main_url)
+        m_links = None
+        try:
+            if m_r.information_type == Information.INFORMATION_HTML:
+                m_links = extract_from_html(m_r.raw_data, main_url)
+            else:
+                m_links = extract_from_text(m_r.raw_data, main_url)
+        except TypeError,e:
+            Logger.log_error_more_verbose("Plugin error: %s" % format_exc())
+            return None
 
         if not m_links:
             return None
@@ -277,7 +280,7 @@ class OSFingerprinting(TestingPlugin):
             m_ttl               = do_ping_and_receive_ttl(ParsedURL(main_url).hostname, 2)
 
             # Load words for the wordlist
-            l_wordlist_instance = WordListLoader.get_advanced_wordlist_as_dict(Config.plugin_extra_config["Wordlist_ttl"]["ttl"])
+            l_wordlist_instance = WordListLoader.get_advanced_wordlist_as_dict(Config.plugin_config["wordlist_ttl"])
             # Looking for matches
             l_matches           = l_wordlist_instance.matches_by_value(m_ttl)
 

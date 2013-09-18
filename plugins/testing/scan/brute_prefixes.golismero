@@ -1,17 +1,16 @@
-[Core]
-Name = Bruteforce prefixes discovery
-Module = url_bruteforcer.py
-Class = PrefixesDisclosureBruteforcer
-
 [Documentation]
+Name        = Bruteforce prefixes discovery
 Description = Tries to discover hidden files by bruteforcing prefixes:
- www.site.com/index.php -> www.site.com/~index.php
-Author = GoLismero project team
-Version = 0.1
-Website = https://github.com/golismero
-Copyright = Copyright (C) 2011-2013 GoLismero Project
-License = GNU Public License
+              www.site.com/index.php -> www.site.com/~index.php
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
 
+[Core]
+Module = url_bruteforcer.py
+Class  = PrefixesDisclosureBruteforcer
 
 #
 # Prefixes

@@ -1,10 +1,8 @@
-[Core]
-Name = Console UI
-
 [Documentation]
-Description = Console user interface.
-Author = GoLismero project team
-Version = 0.1
-Website = https://github.com/golismero
-Copyright = Copyright (C) 2011-2013 GoLismero Project
-License = GNU Public License
+Name        = Console UI
+Description = Console user interface. This is the default.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License

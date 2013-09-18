@@ -61,9 +61,9 @@ def get_diff_ratio(text1, text2):
 
     # Check for type errors we can't fix.
     if not isinstance(text1, basestring):
-        raise TypeError("Expected string, got %s instead" % type(text1))
+        raise TypeError("Expected string, got %r instead" % type(text1))
     if not isinstance(text2, basestring):
-        raise TypeError("Expected string, got %s instead" % type(text2))
+        raise TypeError("Expected string, got %r instead" % type(text2))
 
     # Trivial case, the two texts are identical.
     if text1 == text2:
@@ -135,11 +135,11 @@ class MatchingAnalyzer(object):
         if not base_text:
             raise ValueError("Base text cannot be empty")
         if not isinstance(base_text, basestring):
-            raise TypeError("Expected string , got %s instead" % type(base_text))
+            raise TypeError("Expected string , got %r instead" % type(base_text))
         if not isinstance(min_ratio, float):
-            raise TypeError("Expected float, got %s instead" % type(min_ratio))
+            raise TypeError("Expected float, got %r instead" % type(min_ratio))
         if not isinstance(min_deviation, float):
-            raise TypeError("Expected float, got %s instead" % type(min_deviation))
+            raise TypeError("Expected float, got %r instead" % type(min_deviation))
 
         self.__base_text      = base_text
         self.__min_ratio      = min_ratio

@@ -61,10 +61,10 @@ class UIManager (object):
         mode = orchestrator.config.ui_mode
         name = "ui/%s" % mode
         try:
-            orchestrator.pluginManager.get_plugin_by_name(name)
+            orchestrator.pluginManager.get_plugin_by_id(name)
         except KeyError:
             raise ValueError("No plugin found for UI mode: %r" % mode)
-        self.__ui_plugin = orchestrator.pluginManager.load_plugin_by_name(name)
+        self.__ui_plugin = orchestrator.pluginManager.load_plugin_by_id(name)
 
         # Add the plugin to the notifier.
         self.__notifier.add_plugin(name, self.__ui_plugin)
@@ -148,12 +148,10 @@ class UIManager (object):
         :type message: Message
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
 
         # Filter out ACKs but send all other messages.
-        if (message.message_type != MessageType.MSG_TYPE_CONTROL or
-            message.message_code != MessageCode.MSG_CONTROL_ACK
-        ):
+        if not message.is_ack:
             self.__notifier.notify(message)
 
 

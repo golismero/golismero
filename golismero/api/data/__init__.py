@@ -30,10 +30,34 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-__all__ = ["Data", "identity", "merge", "overwrite", "LocalDataCache"]
+__all__ = [
+
+    # Base class for all data objects.
+    "Data",
+
+    # Identity properties.
+    # This is used by the Data subclasses.
+    "identity",
+
+    # Property merge strategies.
+    # This is used by the Data subclasses.
+    "merge",                        # Default strategy.
+    "custom",                       # Custom strategy.
+    "keep_older",   "keep_newer",   # Time strategies.
+    "keep_greater", "keep_lesser",  # Order strategies.
+    "keep_true",    "keep_false",   # Truth strategies.
+
+    # Auxiliary functions.
+    "discard_data",
+
+    # This class handles some of the magic behind the scenes.
+    # Plugins don't need to use it!
+    "LocalDataCache",
+]
 
 from .db import Database
 from ..config import Config
+from ..text.text_utils import uncamelcase
 from ...common import pickle, Singleton
 
 from collections import defaultdict
@@ -41,6 +65,9 @@ from functools import partial
 from hashlib import md5
 from uuid import uuid4
 from warnings import warn
+
+# Lazy imports.
+Vulnerability = None
 
 
 #------------------------------------------------------------------------------
@@ -51,15 +78,23 @@ class identity(property):
     It may not be combined with any other decorator, and may not be subclassed.
     """
 
+
+    #--------------------------------------------------------------------------
     def __init__(self, fget = None, doc = None):
         property.__init__(self, fget, doc = doc)
 
+
+    #--------------------------------------------------------------------------
     def setter(self):
         raise AttributeError("can't set attribute")
 
+
+    #--------------------------------------------------------------------------
     def deleter(self):
         raise AttributeError("can't delete attribute")
 
+
+    #--------------------------------------------------------------------------
     @staticmethod
     def is_identity_property(other):
         """
@@ -89,10 +124,14 @@ class identity(property):
 class merge(property):
     """
     Decorator that marks properties that can be merged safely.
+    Implements the default merge strategy: for containers, combine the contents
+    of both versions; for scalars, keep the newer version.
 
-    It may not be combined with any other decorator, and may not be subclassed.
+    .. warning: Do not combine with any other decorator!
     """
 
+
+    #--------------------------------------------------------------------------
     @staticmethod
     def is_mergeable_property(other):
         """
@@ -106,45 +145,328 @@ class merge(property):
         """
 
         # TODO: benchmark!!!
-        ##return isinstance(other, merge) and other.fset is not None
+        ##return isinstance(other, merge)
 
         try:
             other.__get__
             other.is_mergeable_property
-            return other.fset is not None
+            return True
         except AttributeError:
             return False
+
+
+    #--------------------------------------------------------------------------
+    def validate(self, cls, name):
+
+        # Check all mergeable properties have setters.
+        if self.fset is None:
+            msg = (
+                "Error in %s.%s.%s:"
+                " Properties tagged with @%s MUST have a setter!"
+                % (cls.__module__, cls.__name__, name, self.__class__.__name__)
+            )
+            raise TypeError(msg)
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+        """
+        Merge a single property.
+
+        .. warning: This is an internally used method. Do not call!
+
+        :param old_data: Old data object.
+        :type old_data: Data
+
+        :param new_data: New data object.
+        :type new_data: Data
+
+        :param key: Property name.
+        :type key: str
+        """
+
+        # Get the original value.
+        my_value = getattr(old_data, key, None)
+
+        # Get the new value.
+        their_value = getattr(new_data, key, None)
+
+        # None to us means "not set".
+        if their_value is not None:
+
+            # If the original value is not set, overwrite it.
+            if my_value is None:
+                my_value = their_value
+
+            # Combine sets, dictionaries, lists and tuples.
+            elif isinstance(their_value, (set, dict)):
+                my_value = my_value.copy()
+                my_value.update(their_value)
+            elif isinstance(their_value, list):
+                my_value = my_value + their_value
+            elif isinstance(their_value, tuple):
+                my_value = my_value + their_value
+
+            # Overwrite all other types.
+            else:
+                my_value = their_value
+
+        # Return the merged value.
+        return my_value
 
 
 #------------------------------------------------------------------------------
-class overwrite(property):
+class keep_newer(merge):
     """
-    Decorator that marks properties that can be overwritten safely.
+    Decorator that marks properties that can be merged safely.
+    This merge strategy always overwrites the value with the newer version.
 
-    It may not be combined with any other decorator, and may not be subclassed.
+    .. warning: Do not combine with any other decorator!
     """
 
+
+    #--------------------------------------------------------------------------
     @staticmethod
-    def is_overwriteable_property(other):
-        """
-        Determine if a class property is marked with the @overwrite decorator.
+    def do_merge(old_data, new_data, key):
 
-        :param other: Class property.
-        :type other: property
+        # Prefer the new value to the old value.
+        my_value = getattr(old_data, key, None)
+        my_value = getattr(new_data, key, my_value)
+        return my_value
 
-        :returns: True if the property is marked, False otherwise.
-        :rtype: bool
-        """
 
-        # TODO: benchmark!!!
-        ##return isinstance(other, overwrite) and other.fset is not None
+#------------------------------------------------------------------------------
+class keep_older(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy always overwrites the value with the older version.
 
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+
+        # Prefer the old value to the new value.
+        my_value = getattr(new_data, key, None)
+        my_value = getattr(old_data, key, my_value)
+        return my_value
+
+
+#------------------------------------------------------------------------------
+class keep_greater(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy is only for numeric values. During a merge, the version
+    with the greater numeric value is preserved.
+
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+
+        # Get the values.
+        old_value = getattr(old_data, key, None)
+        new_value = getattr(new_data, key, None)
+
+        # Keep the greater value, regardless of version.
+        return max(old_value, new_value)
+
+
+#------------------------------------------------------------------------------
+class keep_lesser(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy is only for numeric values. During a merge, the version
+    with the lesser numeric value is preserved.
+
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+
+        # Get the values.
+        old_value = getattr(old_data, key, None)
+        new_value = getattr(new_data, key, None)
+
+        # Keep the lesser value, regardless of version.
+        return min(old_value, new_value)
+
+
+#------------------------------------------------------------------------------
+class keep_true(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy prefers values that evaluate to True,
+    but otherwise behaves like the 'keep_newer' strategy.
+
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+
+        # Get the values.
+        old_value = getattr(old_data, key, None)
+        new_value = getattr(new_data, key, None)
+
+        # Evaluate the old value as a trinary (boolean + None).
         try:
-            other.__get__
-            other.is_overwriteable_property
-            return other.fset is not None
-        except AttributeError:
-            return False
+            if old_value is None:
+                old_bool = None
+            else:
+                old_bool = bool(old_value)
+        except Exception:
+            old_bool = True
+            msg = "Failed to evaluate old property %s.%s as boolean!"
+            msg %= (old_data.__class__.__name__, key)
+            warn(msg, stacklevel=5)
+
+        # Evaluate the new value as a trinary (boolean + None).
+        try:
+            if new_value is None:
+                new_bool = None
+            else:
+                new_bool = bool(new_value)
+        except Exception:
+            new_bool = True
+            msg = "Failed to evaluate new property %s.%s as boolean!"
+            msg %= (new_data.__class__.__name__, key)
+            warn(msg, stacklevel=5)
+
+        # Always prefer True or False over None.
+        # If they are equal, choose the new value.
+        # If not, choose the one that evaluates to True.
+        # (It could be written as an expression, but this is more readable).
+        if new_bool is old_bool:
+            return new_value
+        if old_bool is None:
+            return new_value
+        if new_bool is None:
+            return old_value
+        if new_bool:
+            return new_value
+        return old_value
+
+
+#------------------------------------------------------------------------------
+class keep_false(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy prefers values that evaluate to False,
+    but otherwise behaves like the 'keep_newer' strategy.
+
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def do_merge(old_data, new_data, key):
+
+        # Get the values.
+        old_value = getattr(old_data, key, None)
+        new_value = getattr(new_data, key, None)
+
+        # Evaluate the old value as a trinary (boolean + None).
+        try:
+            if old_value is None:
+                old_bool = None
+            else:
+                old_bool = bool(old_value)
+        except Exception:
+            old_bool = True
+            msg = "Failed to evaluate old property %s.%s as boolean!"
+            msg %= (old_data.__class__.__name__, key)
+            warn(msg, stacklevel=5)
+
+        # Evaluate the new value as a trinary (boolean + None).
+        try:
+            if new_value is None:
+                new_bool = None
+            else:
+                new_bool = bool(new_value)
+        except Exception:
+            new_bool = True
+            msg = "Failed to evaluate new property %s.%s as boolean!"
+            msg %= (new_data.__class__.__name__, key)
+            warn(msg, stacklevel=5)
+
+        # Always prefer True or False over None.
+        # If they are equal, choose the new value.
+        # If not, choose the one that evaluates to False.
+        # (It could be written as an expression, but this is more readable).
+        if new_bool is old_bool:
+            return new_value
+        if old_bool is None:
+            return new_value
+        if new_bool is None:
+            return old_value
+        if old_bool:
+            return new_value
+        return old_value
+
+
+#------------------------------------------------------------------------------
+class custom(merge):
+    """
+    Decorator that marks properties that can be merged safely.
+    This merge strategy calls a user-defined callback function.
+
+    The callback has the same signature as the do_merge() method.
+
+    .. warning: Do not combine with any other decorator!
+    """
+
+
+    #--------------------------------------------------------------------------
+    def __init__(self,
+                 fget=None, fset=None, fdel=None, doc=None,
+                 callback=None):
+        super(custom, self).__init__(
+            fget=fget, fset=fset, fdel=fdel, doc=doc)
+        self.callback = callback
+
+
+    #--------------------------------------------------------------------------
+    def validate(self, cls, name):
+        if self.callback is None:
+            msg = (
+                "Error in %s.%s.%s:"
+                " Properties tagged with @%s MUST have a callback!"
+                % (cls.__module__, cls.__name__, name, self.__class__.__name__)
+            )
+            raise TypeError(msg)
+        if not callable(self.callback):
+            msg = (
+                "Error in %s.%s.%s:"
+                " Properties tagged with @%s need a callback function,"
+                " got %r instead!"
+                % (cls.__module__, cls.__name__, name,
+                   self.__class__.__name__, type(self.callback))
+            )
+            raise TypeError(msg)
+
+        # Do the rest of the checks.
+        super(custom, self).validate(cls, name)
+
+
+    #--------------------------------------------------------------------------
+    def do_merge(self, old_data, new_data, key):
+
+        # Return whatever the callback function returns.
+        return self.callback(old_data, new_data, key)
 
 
 #------------------------------------------------------------------------------
@@ -169,7 +491,7 @@ def discard_data(data):
     if hasattr(data, "identity"):
         data = data.identity
     if type(data) is not str:
-        raise TypeError("Expected Data, got %s instead" % type(data))
+        raise TypeError("Expected Data, got %r instead" % type(data))
     LocalDataCache.discard(data)
 
 
@@ -178,40 +500,51 @@ class _data_metaclass(type):
     """
     Metaclass to validate the definitions of Data subclasses.
 
-    .. warning: Do not use! If you want to define your own Data subclasses,
-                just derive from Information, Resource or Vulnerability.
+    .. warning: Used internally by GoLismero. Do not use!
     """
 
     def __init__(cls, name, bases, namespace):
         super(_data_metaclass, cls).__init__(name, bases, namespace)
 
-        # Skip checks for the base classes.
-        if cls.__module__ in (
+        # Validate all mergeable properties.
+        for propname, prop in cls.__dict__.iteritems():
+            if merge.is_mergeable_property(prop):
+                prop.validate(cls, propname)
+
+        # The Data class itself has to be processed differently.
+        if cls.__module__ == "golismero.api.data" and name == "Data":
+            cls.data_subtype = None
+            return
+
+        # Skip some checks for the base classes.
+        is_child_class = cls.__module__ not in (
             "golismero.api.data",
             "golismero.api.data.information",
             "golismero.api.data.resource",
             "golismero.api.data.vulnerability",
-        ):
-            return
+        )
 
         # Check the data_type is not TYPE_UNKNOWN.
-        if not cls.data_type:
+        if is_child_class and not cls.data_type:
             msg = "Error in %s.%s: Subclasses of Data MUST define their data_type!"
             raise TypeError(msg % (cls.__module__, cls.__name__))
 
         # Check the information_type is not INFORMATION_UNKNOWN.
         if cls.data_type == Data.TYPE_INFORMATION:
-            if not cls.information_type:
+            if is_child_class and not cls.information_type:
                 msg = "Error in %s.%s: Subclasses of Information MUST define their information_type!"
                 raise TypeError(msg % (cls.__module__, cls.__name__))
+            cls.data_subtype = cls.information_type
 
         # Check the resource_type is not RESOURCE_UNKNOWN.
         elif cls.data_type == Data.TYPE_RESOURCE:
-            if not cls.resource_type:
+            if is_child_class and not cls.resource_type:
                 msg = "Error in %s.%s: Subclasses of Resource MUST define their resource_type!"
                 raise TypeError(msg % (cls.__module__, cls.__name__))
+            cls.data_subtype = cls.resource_type
 
         # Automatically calculate the vulnerability type from the module name.
+        # If we can't, at least make sure it's defined manually.
         elif cls.data_type == Data.TYPE_VULNERABILITY:
             is_vuln_type_missing = "vulnerability_type" not in cls.__dict__
             if cls.__module__.startswith("golismero.api.data.vulnerability."):
@@ -219,32 +552,17 @@ class _data_metaclass(type):
                     vuln_type = cls.__module__[33:]
                     vuln_type = vuln_type.replace(".", "/")
                     cls.vulnerability_type = vuln_type
-
-            # If we can't, at least make sure it's defined manually.
-            elif is_vuln_type_missing:
-                msg = "Error in %s.%s: Subclasses of Vulnerability MUST define their vulnerability_type!"
+            elif is_child_class and is_vuln_type_missing:
+                msg = "Error in %s.%s: Missing vulnerability_type!"
                 raise TypeError(msg % (cls.__module__, cls.__name__))
-
-        # Check all @merge and @overwrite properties have setters.
-        for name, prop in cls.__dict__.iteritems():
-            if merge.is_mergeable_property(prop):
-                if prop.fset is None:
-                    msg = "Error in %s.%s.%s: Properties tagged with @merge MUST have a setter!"
-                    raise TypeError(msg % (cls.__module__, cls.__name__, name))
-            elif overwrite.is_overwriteable_property(prop):
-                if prop.fset is None:
-                    msg = "Error in %s.%s.%s: Properties tagged with @overwrite MUST have a setter!"
-                    raise TypeError(msg % (cls.__module__, cls.__name__, name))
+            cls.data_subtype = cls.vulnerability_type
 
 
 #------------------------------------------------------------------------------
 class Data(object):
     """
     Base class for all data elements.
-
-    .. warning: Do not subclass directly!
-                If you want to define your own Data subclasses,
-                derive from Information, Resource or Vulnerability.
+    This is the common interface for Information, Resource and Vulnerability.
     """
 
     __metaclass__ = _data_metaclass
@@ -265,7 +583,7 @@ class Data(object):
     data_type = TYPE_UNKNOWN
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     # Minimum number of linked objects per data type.
     # Use None to enforce no limits.
 
@@ -275,7 +593,7 @@ class Data(object):
     min_vulnerabilities = None   # Minimum linked vulnerabilities.
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     # Maximum number of linked objects per data type.
     # Use None to enforce no limits.
 
@@ -285,7 +603,7 @@ class Data(object):
     max_vulnerabilities = None   # Maximum linked vulnerabilities.
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
 
         # Linked Data objects.
@@ -297,16 +615,152 @@ class Data(object):
         # Identity hash cache.
         self.__identity = None
 
+        # Analysis depth is preserved as-is for all objects, except for a few.
+        # For example the Url type increments the depth by one, and the
+        # BaseUrl, IP and Domain types force the depth to zero.
+        self.__depth = Config.depth
+
         # Tell the temporary storage about this instance.
         LocalDataCache.on_create(self)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __repr__(self):
         return "<%s identity=%s>" % (self.__class__.__name__, self.identity)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        """
+        Plugins may call this method to get a
+        user-friendly name for this Data type.
+
+        .. note:: This is mostly useful for Report plugins.
+
+        :returns: A user-friendly display name for this data type.
+        :rtype: str
+        """
+        return uncamelcase(self.__class__.__name__)
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def display_properties(self):
+        """
+        Plugins may call this method to retrieve the properties of a Data
+        object in order to display it to the user.
+
+        .. note:: This is mostly useful for Report plugins.
+
+        The return value is a dictionary of dictionaries. In the outer one,
+        the keys are the names of property groups. The inner dictionaries are
+        the property groups, where the keys are the user-friendly property
+        names (not the _real_ property names!) and the values are the values
+        of the properties.
+
+        Usually you'll want to convert the property values to strings, but
+        this method won't do it for you, in case you need some other kind of
+        processing in your Report plugin - for example, to use the 'pprint'
+        module instead.
+
+        :returns: Grouped properties ready for display.
+        :rtype: dict(str -> dict(str -> *))
+        """
+
+        # TODO: Some of this logic could be delegated to subclasses.
+        # It's hard to figure out how, though. So for now we'll have
+        # a lot of hardcoded hacks in here.
+
+        # Lazy import of the Vulnerability class.
+        global Vulnerability
+        if Vulnerability is None:
+            from .vulnerability import Vulnerability
+
+        # This is the dictionary we'll build and return.
+        display = defaultdict(dict)
+
+        # Enumerate properties and filter them using different criteria.
+        for propname in dir(self):
+
+            # Ignore private and protected symbols.
+            if propname.startswith("_"):
+                continue
+
+            # Handle the 'identity' and 'plugin_id' properties.
+            if propname in ("identity", "plugin_id"):
+                continue
+
+            # Handle the vulnerability type.
+            if propname == "vulnerability_type":
+                display[""]["Category"] = self.vulnerability_type
+                continue
+
+            # Handle the vulnerability taxonomy types.
+            if propname in Vulnerability.TAXONOMY_NAMES:
+                key = Vulnerability.TAXONOMY_NAMES[propname]
+                display["Taxonomy"][key] = getattr(self, propname)
+                continue
+
+            # Ignore the rest of the properties defined in Data.
+            if hasattr(Data, propname):
+                continue
+
+            # Get the class definition of the property.
+            propdef = getattr(self.__class__, propname)
+
+            # Ignore if it's not an identity or mergeable property.
+            if not identity.is_identity_property(propdef) and \
+               not merge.is_mergeable_property(propdef):
+                continue
+
+            # Convert the property name into a user-friendly string.
+            key = " ".join(x.title() for x in propname.split("_"))
+
+            # Some hardcoded hacks :P
+            # TODO: could maybe be done generically using regex.
+            if key == "Url":
+                key = "URL"
+            elif key.endswith(" Url"):
+                key = key[:-2] + "RL"
+            elif key.endswith(" Id"):
+                key = key[:-1] + "D"
+            elif key.startswith("Cvss "):
+                key = "CVSS" + key[4:]
+
+            # Get the property value.
+            # Values are preserved as-is, because we don't know how to parse
+            # them. Subclasses should override this method and change the
+            # values in the dictionary when needed.
+            value = getattr(self, propname)
+
+            # Get the group.
+            # More hardcoded hacks here... :(
+            if self.data_type == Data.TYPE_VULNERABILITY:
+                if propname in ("impact", "severity", "risk"):
+                    group = "Risk"
+                    value = Vulnerability.VULN_LEVELS[value].title()
+                elif propname.startswith("cvss"):
+                    group = "Risk"
+                elif propname in ("title", "description", "solution", "references"):
+                    group = "Description"
+                elif hasattr(Vulnerability, propname):
+                    group = ""
+                else:
+                    group = "Details"
+            elif self.data_type == Data.TYPE_RESOURCE:
+                group = ""
+            elif self.data_type == Data.TYPE_INFORMATION:
+                group = ""
+
+            # Add the key and value to the dictionary.
+            display[group][key] = value
+
+        # Return the dictionary.
+        return display
+
+
+    #--------------------------------------------------------------------------
     @property
     def identity(self):
         """
@@ -372,18 +826,20 @@ class Data(object):
             if not key.startswith("_") and key != "identity":
                 prop = getattr(clazz, key, None)
                 if prop is not None and is_identity_property(prop):
-                    # ASCII or UTF-8 is assumed for all strings!
+                    # Ignore properties if the value is None.
                     value = prop.__get__(self)
-                    if isinstance(value, unicode):
-                        try:
-                            value = value.encode("UTF-8")
-                        except UnicodeError:
-                            pass
-                    collection[key] = value
+                    if value is not None:
+                        # ASCII or UTF-8 is assumed for all strings!
+                        if isinstance(value, unicode):
+                            try:
+                                value = value.encode("UTF-8")
+                            except UnicodeError:
+                                pass
+                        collection[key] = value
         return collection
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def merge(self, other):
         """
         Merge another data object with this one.
@@ -460,67 +916,34 @@ class Data(object):
         :type reverse: bool
         """
 
-        # Determine if the property is mergeable or overwriteable, ignore otherwise.
+        # Get the property definition from the class.
         prop = getattr(new_data.__class__, key, None)
 
-        # Merge strategy.
-        if prop is None or merge.is_mergeable_property(prop):
+        # If the property isn't defined by the class,
+        # use the default strategy.
+        if prop is None:
+            do_merge = merge.do_merge
 
-            # Get the original value.
-            my_value = getattr(old_data, key, None)
+        # If it's defined and mergeable, use the defined strategy.
+        elif merge.is_mergeable_property(prop):
+            do_merge = prop.do_merge
 
-            # Get the new value.
-            their_value = getattr(new_data, key, None)
+        # Otherwise, just ignore it.
+        else:
+            return
 
-            # None to us means "not set".
-            if their_value is not None:
+        # Get the merged value.
+        value = do_merge(old_data, new_data, key)
 
-                # If the original value is not set, overwrite it always.
-                if my_value is None:
-                    my_value = their_value
-
-                # Combine sets, dictionaries, lists and tuples.
-                elif isinstance(their_value, (set, dict)):
-                    if reverse:
-                        my_value = my_value.copy()
-                    my_value.update(their_value)
-                elif isinstance(their_value, list):
-                    if reverse:
-                        my_value = my_value + their_value
-                    else:
-                        my_value.extend(their_value)
-                elif isinstance(their_value, tuple):
-                    my_value = my_value + their_value
-
-                # Overwrite all other types.
-                else:
-                    my_value = their_value
-
-                # Set the new value.
-                target_data = new_data if reverse else old_data
-                try:
-                    setattr(target_data, key, my_value)
-                except AttributeError:
-                    if prop is not None:
-                        msg = "Mergeable read-only properties make no sense! Ignoring: %s.%s"
-                        msg %= (cls.__name__, key)
-                        warn(msg, stacklevel=4)
-
-        # Overwrite strategy.
-        elif overwrite.is_overwriteable_property(prop):
-
-            # Get the resulting value.
-            my_value = getattr(old_data, key, None)
-            my_value = getattr(new_data, key, my_value)
-
-            # Set the resulting value.
-            target_data = new_data if reverse else old_data
-            try:
-                setattr(target_data, key, my_value)
-            except AttributeError:
-                msg = "Overwriteable read-only properties make no sense! Ignoring: %s.%s"
-                msg %= (cls.__name__, key)
-                warn(msg, stacklevel=4)
+        # Save the merged value.
+        target_data = new_data if reverse else old_data
+        try:
+            setattr(target_data, key, value)
+        except AttributeError:
+            if prop is not None:
+                msg = ("Mergeable read-only properties make no sense!"
+                       " Ignoring: %s.%s" % (cls.__name__, key) )
+                warn(msg, stacklevel=5)
 
 
     @classmethod
@@ -552,7 +975,30 @@ class Data(object):
                     my_subdict[data_subtype].update(identity_set)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @keep_lesser
+    def depth(self):
+        """
+        :returns: Shortest path in the data graph from here to one of the
+            root nodes (audit targets).
+        :rtype: int
+        """
+        return self.__depth
+
+    @depth.setter
+    def depth(self, depth):
+        """
+        .. warning: Normally you don't need to set this value yourself!
+                    The framework keeps track of it automatically.
+
+        :param depth: Shortest path in the data graph from here to one of the
+            root nodes (audit targets).
+        :type depth: int
+        """
+        self.__depth = int(depth)
+
+
+    #--------------------------------------------------------------------------
     @property
     def links(self):
         """
@@ -562,17 +1008,17 @@ class Data(object):
         return self.__linked[None][None]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def linked_data(self):
         """
         :returns: Set of linked Data elements.
         :rtype: set(Data)
         """
-        return self._convert_links_to_data( self.__linked[None][None] )
+        return self.resolve_links( self.__linked[None][None] )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_links(self, data_type = None, data_subtype = None):
         """
         Get the linked Data identities of the given data type.
@@ -595,8 +1041,8 @@ class Data(object):
         return self.__linked[data_type][data_subtype]
 
 
-    #----------------------------------------------------------------------
-    def get_linked_data(self, data_type = None, data_subtype = None):
+    #--------------------------------------------------------------------------
+    def find_linked_data(self, data_type = None, data_subtype = None):
         """
         Get the linked Data elements of the given data type.
 
@@ -612,17 +1058,38 @@ class Data(object):
         :raises ValueError: Invalid data_type argument.
         """
         links = self.get_links(data_type, data_subtype)
-        return self._convert_links_to_data(links)
+        return self.resolve_links(links)
 
 
+    #--------------------------------------------------------------------------
     @staticmethod
-    def _convert_links_to_data(links):
+    def resolve(identity):
+        """
+        Get the Data object from an identity.
+        This will include both new objects created by this plugins,
+        and old objects already stored in the database.
+
+        :param link: Identity hash of the object to fetch.
+        :type link: str
+
+        :returns: Data object.
+        :rtype: Data
+        """
+        if not LocalDataCache._enabled:
+            return Database.get(identity)
+        data = LocalDataCache.get(identity)
+        if data is not None:
+            return data
+        return Database.get(identity)
+
+
+    #--------------------------------------------------------------------------
+    @staticmethod
+    def resolve_links(links):
         """
         Get the Data objects from a given set of identities.
         This will include both new objects created by this plugins,
         and old objects already stored in the database.
-
-        .. warning: This is an internally used method. Do not call!
 
         :param links: Set of identities to fetch.
         :type links: set(str)
@@ -645,7 +1112,7 @@ class Data(object):
         return instances
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_link(self, other):
         """
         Link two Data instances together.
@@ -654,7 +1121,7 @@ class Data(object):
         :type other: Data
         """
         if not isinstance(other, Data):
-            raise TypeError("Expected Data, got %s instead" % type(other))
+            raise TypeError("Expected Data, got %r instead" % type(other))
         if self._can_link(other) and other._can_link(self):
             other._add_link(self)
             self._add_link(other)
@@ -702,17 +1169,10 @@ class Data(object):
         data_type = other.data_type
         self.__linked[None][None].add(data_id)
         self.__linked[data_type][None].add(data_id)
-        if data_type == self.TYPE_INFORMATION:
-            self.__linked[data_type][other.information_type].add(data_id)
-        elif data_type == self.TYPE_RESOURCE:
-            self.__linked[data_type][other.resource_type].add(data_id)
-        elif data_type == self.TYPE_VULNERABILITY:
-            self.__linked[data_type][other.vulnerability_type].add(data_id)
-        else:
-            raise ValueError("Internal error! Unknown data_type: %r" % data_type)
+        self.__linked[data_type][other.data_subtype].add(data_id)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def validate_link_minimums(self):
         """
         Validates the link minimum constraints. Raises an exception if not met.
@@ -746,7 +1206,7 @@ class Data(object):
                     raise ValueError(msg % (s_type, min_data, found_data))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def associated_resources(self):
         """
@@ -755,10 +1215,10 @@ class Data(object):
         :return: Resources.
         :rtype: set(Resource)
         """
-        return self.get_linked_data(Data.TYPE_RESOURCE)
+        return self.find_linked_data(Data.TYPE_RESOURCE)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def associated_informations(self):
         """
@@ -767,10 +1227,10 @@ class Data(object):
         :return: Informations.
         :rtype: set(Information)
         """
-        return self.get_linked_data(Data.TYPE_INFORMATION)
+        return self.find_linked_data(Data.TYPE_INFORMATION)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def associated_vulnerabilities(self):
         """
@@ -779,10 +1239,10 @@ class Data(object):
         :return: Vulnerabilities.
         :rtype: set(Vulnerability)
         """
-        return self.get_linked_data(Data.TYPE_VULNERABILITY)
+        return self.find_linked_data(Data.TYPE_VULNERABILITY)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_associated_vulnerabilities_by_category(self, cat_name = None):
         """
         Get associated vulnerabilites by category.
@@ -793,10 +1253,10 @@ class Data(object):
         :return: Associated vulnerabilites. Returns an empty set if the category doesn't exist.
         :rtype: set(Vulnerability)
         """
-        return self.get_linked_data(self.TYPE_VULNERABILITY, cat_name)
+        return self.find_linked_data(self.TYPE_VULNERABILITY, cat_name)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_associated_informations_by_category(self, information_type = None):
         """
         Get associated informations by type.
@@ -813,10 +1273,10 @@ class Data(object):
             raise TypeError("Expected int, got %r instead" % type(information_type))
 ##        if not Information.INFORMATION_FIRST >= information_type >= Information.INFORMATION_LAST:
 ##            raise ValueError("Invalid information_type: %r" % information_type)
-        return self.get_linked_data(self.TYPE_INFORMATION, information_type)
+        return self.find_linked_data(self.TYPE_INFORMATION, information_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_associated_resources_by_category(self, resource_type = None):
         """
         Get associated informations by type.
@@ -833,10 +1293,10 @@ class Data(object):
             raise TypeError("Expected int, got %r instead" % type(resource_type))
 ##        if not Resource.RESOURCE_FIRST >= resource_type >= Resource.RESOURCE_LAST:
 ##            raise ValueError("Invalid resource_type: %r" % resource_type)
-        return self.get_linked_data(self.TYPE_RESOURCE, resource_type)
+        return self.find_linked_data(self.TYPE_RESOURCE, resource_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_resource(self, res):
         """
         Associate a resource.
@@ -845,11 +1305,11 @@ class Data(object):
         :type res: Resource
         """
         if not hasattr(res, "data_type") or res.data_type != self.TYPE_RESOURCE:
-            raise TypeError("Expected Resource, got %s instead" % type(res))
+            raise TypeError("Expected Resource, got %r instead" % type(res))
         self.add_link(res)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_information(self, info):
         """
         Associate an information.
@@ -858,11 +1318,11 @@ class Data(object):
         :type info: Information
         """
         if not hasattr(info, "data_type") or info.data_type != self.TYPE_INFORMATION:
-            raise TypeError("Expected Information, got %s instead" % type(info))
+            raise TypeError("Expected Information, got %r instead" % type(info))
         self.add_link(info)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_vulnerability(self, vuln):
         """
         Associate a vulnerability.
@@ -871,11 +1331,11 @@ class Data(object):
         :type info: Vulnerability
         """
         if not hasattr(vuln, "data_type") or vuln.data_type != self.TYPE_VULNERABILITY:
-            raise TypeError("Expected Vulnerability, got %s instead" % type(vuln))
+            raise TypeError("Expected Vulnerability, got %r instead" % type(vuln))
         self.add_link(vuln)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         """
@@ -890,7 +1350,7 @@ class Data(object):
         return []
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def is_in_scope(self):
         """
         Determines if this Data object is within the scope of the current audit.
@@ -904,7 +1364,7 @@ class Data(object):
         return True
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __eq__(self, obj):
         """
         Determines equality of Data objects by comparing its identity property.
@@ -919,7 +1379,7 @@ class Data(object):
         return self.identity == obj.identity
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class _LocalDataCache(Singleton):
     """
     Temporary storage for newly created objects.
@@ -928,12 +1388,12 @@ class _LocalDataCache(Singleton):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
         self.__cleanup()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __cleanup(self):
         """
         Reset the internal state.
@@ -946,19 +1406,19 @@ class _LocalDataCache(Singleton):
             self._enabled = False   # plugin environment not initialized
 
         # Map of identities to newly created instances.
-        self.__new_data  = {}
+        self.__new_data   = {}
 
         # List of fresh instances, not yet fully initialized.
-        self.__fresh     = []
+        self.__fresh      = []
 
         # Set of ignored data ids.
-        self.__discarded = set()
+        self.__discarded  = set()
 
         # Set of autogenerated data ids.
-        self.__autogen   = set()
+        self.__autogen    = set()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def on_run(self):
         """
         Called by the plugin bootstrap when a plugin is run.
@@ -966,7 +1426,7 @@ class _LocalDataCache(Singleton):
         self.__cleanup()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def on_create(self, data):
         """
         Called by instances when being created.
@@ -982,7 +1442,7 @@ class _LocalDataCache(Singleton):
             self.__fresh.append(data)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def update(self):
         """
         Process the fresh instances.
@@ -1017,7 +1477,7 @@ class _LocalDataCache(Singleton):
         self.__discarded.difference_update(new_ids)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get(self, data_id):
         """
         Fetch an unsent instance given its identity.
@@ -1041,7 +1501,7 @@ class _LocalDataCache(Singleton):
         return self.__new_data.get(data_id, None)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def discard(self, data_id):
         """
         Explicitly disables consistency checks for the given data identity,
@@ -1072,7 +1532,7 @@ class _LocalDataCache(Singleton):
             ##    self.__autogen.remove(data_id)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def on_autogeneration(self, data):
         """
         Called by the GoLismero API for autogenerated instances.
@@ -1091,8 +1551,8 @@ class _LocalDataCache(Singleton):
             self.__autogen.add(data.identity)
 
 
-    #----------------------------------------------------------------------
-    def on_finish(self, result):
+    #--------------------------------------------------------------------------
+    def on_finish(self, result, input_data):
         """
         Called by the plugin bootstrap when a plugin finishes running.
         """
@@ -1102,7 +1562,7 @@ class _LocalDataCache(Singleton):
             self.update()
 
             # No results.
-            if result is None:
+            if not result:
                 result = []
 
             # Single result.
@@ -1117,7 +1577,15 @@ class _LocalDataCache(Singleton):
                         msg = "recv_info() returned an invalid data type: %r"
                         raise TypeError(msg % type(data))
 
-            # If the cache is disabled, do no further processing.
+            # Always send back the input data as a result,
+            # unless discarded by the plugin.
+            if (
+                input_data not in result and
+                input_data.identity not in self.__discarded
+            ):
+                result.insert(0, input_data)
+
+            # If the cache is disabled do no further processing.
             if not self._enabled:
                 return result
 

@@ -39,20 +39,20 @@ import zlib
 
 #------------------------------------------------------------------------------
 @decorator
-def transactional(fn, self, *args, **kwargs):
-    """
-    Transactional method.
-    """
-    return self._transaction(fn, args, kwargs)
-
-
-#------------------------------------------------------------------------------
-@decorator
 def atomic(fn, self, *args, **kwargs):
     """
     Atomic method.
     """
     return self._atom(fn, args, kwargs)
+
+
+#------------------------------------------------------------------------------
+@decorator
+def transactional(fn, self, *args, **kwargs):
+    """
+    Transactional method.
+    """
+    return self._transaction(fn, args, kwargs)
 
 
 #------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ class BaseDB (object):
     def __enter__(self):
         return self
 
-    def __exit__(self, type, value, tb):
+    def __exit__(self, etype, value, tb):
         self.close()
 
 

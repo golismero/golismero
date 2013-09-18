@@ -88,7 +88,7 @@ def test():
 
         print "Validating the audit database..."
         print
-        validate(audit.audit_name)
+        validate(audit)
 
     finally:
         print "Cleaning up..."
@@ -102,11 +102,6 @@ def test():
 
 # Validate the audit database.
 def validate(audit):
-    audit = AuditConfig()
-    audit.from_dictionary({
-        "audit_name": audit,
-        "audit_db": "sqlite://%s.db" % audit,
-    })
     disk = AuditDB(audit)
     try:
 

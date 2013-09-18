@@ -9,6 +9,17 @@ Bruteforce directories discovery (*brute_directories*)
 Tries to discover hidden folders by brute force:
 www.site.com/folder/ -> www.site.com/folder2 www.site.com/folder3 ...
 
+DNS Bruteforcer (*brute_dns*)
+=============================
+
+Tries to find hidden subdomains by brute force.
+
+================= =================
+**Argument name** **Default value**
+----------------- -----------------
+wordlist          dns/dnsrecon.txt 
+================= =================
+
 Bruteforce file extensions discovery (*brute_extensions*)
 =========================================================
 
@@ -48,9 +59,21 @@ Run the Nikto scanner and import the results.
 **Argument name** **Default value**
 ----------------- -----------------
 pause             0                
-config            nikto.conf       
+config                             
 tuning            x6               
 timeout           10               
+exec                               
+================= =================
+
+Nmap (*nmap*)
+=============
+
+Run nmap and import the results.
+
+================= =================
+**Argument name** **Default value**
+----------------- -----------------
+args              -v -P0 -sT       
 ================= =================
 
 OpenVAS (*openvas*)
@@ -68,4 +91,9 @@ timeout           30
 password          \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 port              9390                            
 ================= ================================
+
+DNS Zone Transfer (*zone_transfer*)
+===================================
+
+Detects and exploits DNS zone transfer vulnerabilities.
 

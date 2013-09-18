@@ -29,3 +29,4 @@ Subpackages
     golismero.main
     golismero.managers
     golismero.messaging
+    golismero.patches

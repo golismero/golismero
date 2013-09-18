@@ -1,13 +1,13 @@
-[Core]
-Name = Bruteforce directories discovery
-Module = url_bruteforcer.py
-Class = DirectoriesDisclosureBruteforcer
-
 [Documentation]
+Name        = Bruteforce directories discovery
 Description = Tries to discover hidden folders by brute force:
- www.site.com/folder/ -> www.site.com/folder2 www.site.com/folder3 ...
-Author = GoLismero project team
-Version = 0.1
-Website = https://github.com/golismero
-Copyright = Copyright (C) 2011-2013 GoLismero Project
-License = GNU Public License
+              www.site.com/folder/ -> www.site.com/folder2 www.site.com/folder3 ...
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
+[Core]
+Module = url_bruteforcer.py
+Class  = DirectoriesDisclosureBruteforcer

@@ -1,0 +1,15 @@
+[Documentation]
+Name        = reStructured Text Report
+Description = Writes reports in reStructured Text format.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
+[Configuration]
+
+# Command to launch after generating the report.
+# The string "$1" will be replaced by the report filename.
+# This allows you to invoke a document generator to parse the RST file.
+command =

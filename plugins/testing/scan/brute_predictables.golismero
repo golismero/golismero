@@ -1,17 +1,16 @@
+[Documentation]
+Name        = Bruteforce predictables discovery
+Description = Tries to discover hidden files at predictable locations.
+              For example: (Apache) www.site.com/error_log
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2013 GoLismero Project
+License     = GNU Public License
+
 [Core]
-Name = Bruteforce predictables discovery
 Module = url_bruteforcer.py
 Class = PredictablesDisclosureBruteforcer
-
-[Documentation]
-Description = Tries to discover hidden files at predictable locations.
- For example: (Apache) www.site.com/error_log
-Author = GoLismero project team
-Version = 0.1
-Website = https://github.com/golismero
-Copyright = Copyright (C) 2011-2013 GoLismero Project
-License = GNU Public License
-
 
 [common]
 w1 = fuzzdb/Discovery/PredictableRes/CGI_XPlatform.fuzz.txt

@@ -39,51 +39,89 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = [
     "UIPlugin", "ImportPlugin", "TestingPlugin", "ReportPlugin",
-    "get_plugin_info", "get_plugin_names", "PluginState",
+    "get_plugin_info", "get_plugin_ids", "get_plugin_name",
+    "PluginState",
 ]
 
 from .config import Config
-from .shared import check_value
+from .progress import Progress
+from .shared import SharedMap
 from ..messaging.codes import MessageCode
 
-# Sentinel value.
-_sentinel = object()
-
 
 #------------------------------------------------------------------------------
-def get_plugin_names():
+def get_plugin_ids():
     """
-    Get the plugin names.
+    Get the plugin IDs.
 
-    :returns: Plugin names.
+    :returns: Plugin IDs.
     :rtype: set(str)
     """
-    return Config._context.remote_call(MessageCode.MSG_RPC_PLUGIN_GET_NAMES)
+    return Config._context.remote_call(MessageCode.MSG_RPC_PLUGIN_GET_IDS)
 
 
 #------------------------------------------------------------------------------
-def get_plugin_info(plugin_name = None):
+def get_plugin_info(plugin_id = None):
     """
     Get the plugin information for the requested plugin.
 
-    :param plugin_name: Full plugin name.
+    :param plugin_id: Full plugin ID.
         Example: "testing/recon/spider".
-        Defaults to the calling plugin name.
-    :type plugin_name: str
+        Defaults to the calling plugin ID.
+    :type plugin_id: str
 
     :returns: Plugin information.
     :rtype: PluginInfo
 
     :raises KeyError: The plugin was not found.
     """
-    if not plugin_name or (Config.plugin_info and plugin_name == Config.plugin_name):
+    if not plugin_id or (Config.plugin_info and plugin_id == Config.plugin_id):
         return Config.plugin_info
     return Config._context.remote_call(
-        MessageCode.MSG_RPC_PLUGIN_GET_INFO, plugin_name)
+        MessageCode.MSG_RPC_PLUGIN_GET_INFO, plugin_id)
 
 
 #------------------------------------------------------------------------------
-class PluginState (object):
+def get_plugin_name(plugin_id = None):
+    """
+    Get the plugin display name given its ID.
+
+    :param plugin_id: Full plugin ID.
+        Example: "testing/recon/spider".
+        Defaults to the calling plugin ID.
+    :type plugin_id: str
+
+    :returns: Plugin display name.
+    :rtype: str
+
+    :raises KeyError: The plugin was not found.
+    """
+    if not plugin_id:
+        return Config.plugin_info.display_name
+    if plugin_id == "GoLismero":
+        return "GoLismero"
+    return get_plugin_info(plugin_id).display_name
+
+
+#------------------------------------------------------------------------------
+class _PluginProgress (Progress):
+    """
+    Progress monitor for plugins.
+
+    .. warning: Do not instance this class!
+                Use self.progress in your plugin instead.
+    """
+
+
+    #--------------------------------------------------------------------------
+    def _notify(self):
+        percent = self.percent
+        if percent:
+            Config._context.send_status(percent)
+
+
+#------------------------------------------------------------------------------
+class PluginState (SharedMap):
     """
     Container of plugin state variables.
 
@@ -92,180 +130,31 @@ class PluginState (object):
     (or machine!) is running them at any given point in time.
     """
 
+    # Compatibility, remove once nobody is using this method.
+    set = SharedMap.async_put
+
 
     #--------------------------------------------------------------------------
-    def __init__(self, plugin_name = None):
+    def __init__(self, plugin_id = None):
         """
-        :param plugin_name: Plugin name.
+        :param plugin_id: Plugin ID.
             If ommitted, the calling plugin state variables are accessed.
-        :type plugin_name: str
+        :type plugin_id: str
         """
-        if not plugin_name:
-            plugin_name = Config.plugin_name
-        self.__plugin_name = plugin_name
+        if not plugin_id:
+            plugin_id = Config.plugin_id
+        self._shared_id = plugin_id
+        # We intentionally don't call the superclass constructor here.
 
 
     #--------------------------------------------------------------------------
     @property
-    def plugin_name(self):
+    def plugin_id(self):
         """
-        :returns: Name of the plugin these state variables belong to.
+        :returns: ID of the plugin these state variables belong to.
         :rtype: str
         """
-        return self.__plugin_name
-
-
-    #--------------------------------------------------------------------------
-    def get(self, name, default = _sentinel):
-        """
-        Get the value of a state variable.
-
-        :param name: Name of the variable.
-        :type name: str
-
-        :param default: Optional default value. If set, when the name
-                        is not found the default is returned instead
-                        of raising KeyError.
-        :type default: \\*
-
-        :returns: Value of the variable.
-        :rtype: \\*
-
-        :raises KeyError: The variable was not defined.
-        """
-        if not type(name) in (str, unicode):
-            raise TypeError("Expected str or unicode, got %s instead" % type(name))
-        try:
-            return Config._context.remote_call(
-                MessageCode.MSG_RPC_STATE_GET, self.plugin_name, name)
-        except KeyError:
-            if default is not _sentinel:
-                return default
-            raise
-
-
-    #--------------------------------------------------------------------------
-    def check(self, name):
-        """
-        Check if a state variable has been defined.
-
-        .. warning: Due to the asynchronous nature of GoLismero plugins, it's
-            possible that another instance of the plugin may remove or add new
-            variables right after you call this method.
-
-            Therefore this pattern is NOT recommended:
-                myvar = None
-                if "myvar" in self.state:
-                    myvar = self.state["myvar"]
-
-            You should do this instead:
-                try:
-                    myvar = self.state["myvar"]
-                except KeyError:
-                    myvar = None
-
-        :param name: Name of the variable to test.
-        :type name: str
-
-        :returns: True if the variable was defined, False otherwise.
-        :rtype: bool
-        """
-        if not type(name) in (str, unicode):
-            raise TypeError("Expected str or unicode, got %s instead" % type(name))
-        return Config._context.remote_call(
-            MessageCode.MSG_RPC_STATE_CHECK, self.plugin_name, name)
-
-
-    #--------------------------------------------------------------------------
-    def set(self, name, value):
-        """
-        Set the value of a state variable.
-
-        :param name: Name of the variable.
-        :type name: str
-
-        :param value: Value of the variable.
-        :type value: \\*
-        """
-        if not type(name) in (str, unicode):
-            raise TypeError("Expected str or unicode, got %s instead" % type(name))
-        check_value(value)
-        Config._context.async_remote_call(
-            MessageCode.MSG_RPC_STATE_ADD, self.plugin_name, name, value)
-
-
-    #--------------------------------------------------------------------------
-    def remove(self, name):
-        """
-        Remove a state variable.
-
-        :param name: Name of the variable.
-        :type name: str
-
-        :raises KeyError: The variable was not defined.
-        """
-        if not type(name) in (str, unicode):
-            raise TypeError("Expected str or unicode, got %s instead" % type(name))
-        Config._context.async_remote_call(
-            MessageCode.MSG_RPC_STATE_REMOVE, self.plugin_name, name)
-
-
-    #--------------------------------------------------------------------------
-    def get_names(self):
-        """
-        Get the names of the defined state variables.
-
-        .. warning: Due to the asynchronous nature of GoLismero plugins, it's
-            possible the list of variables is not accurate - another instance
-            of the plugin may remove or add new variables right after you call
-            this method.
-
-            Therefore this pattern is NOT recommended::
-                myvar = None
-                if "myvar" in self.state.get_names():
-                    myvar = self.state["myvar"]      # wrong!
-
-            You should do this instead::
-                try:
-                    myvar = self.state["myvar"]
-                except KeyError:                     # right!
-                    myvar = None
-
-            This pattern is also WRONG: it would fail if a key is removed,
-            and would miss newly created keys::
-                data = {}
-                for key in self.state.get_names():
-                    data[key] = self.state.get(key)  # wrong!
-
-        :returns: Names of the defined state variables.
-        :rtype: set(str)
-        """
-        Config._context.async_remote_call(
-            MessageCode.MSG_RPC_STATE_KEYS, self.plugin_name)
-
-
-    #--------------------------------------------------------------------------
-    # Overloaded operators.
-
-    def __getitem__(self, name):
-        'x.__getitem__(y) <==> x[y]'
-        return self.get(name)
-
-    def __setitem__(self, name, value):
-        'x.__setitem__(i, y) <==> x[i]=y'
-        return self.set(name, value)
-
-    def __delitem__(self, name):
-        'x.__delitem__(y) <==> del x[y]'
-        return self.remove(name)
-
-    def __contains__(self, name):
-        'D.__contains__(k) -> True if D has a key k, else False'
-        return self.check(name)
-
-    def keys(self):
-        "D.keys() -> list of D's keys"
-        return list( self.get_names() )
+        return self._shared_id
 
 
 #------------------------------------------------------------------------------
@@ -287,13 +176,42 @@ class Plugin (object):
 
 
     #--------------------------------------------------------------------------
+    def __new__(cls, *args, **kwargs):
+        """
+        Initializes the plugin instance.
+
+        .. warning::
+            Do not override this method!
+        """
+        self = super(Plugin, cls).__new__(cls, *args, **kwargs)
+        self.__progress = _PluginProgress()
+        return self
+
+
+    #--------------------------------------------------------------------------
     @property
     def state(self):
         """
+        .. warning::
+            Do not override this method!
+
         :returns: Shared plugin state variables.
         :rtype: PluginState
         """
         return PluginState()
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def progress(self):
+        """
+        .. warning::
+            Do not override this method!
+
+        :returns: Plugin progress notifier.
+        :rtype: Progress
+        """
+        return self.__progress
 
 
     #--------------------------------------------------------------------------
@@ -312,7 +230,9 @@ class Plugin (object):
                          or None to indicate progress can't be measured.
         :type progress: float | None
         """
-        Config._context.send_status(progress)
+        ##Config._context.send_status(progress)
+        if progress:
+            self.progress.set_percent(progress)
 
 
 #------------------------------------------------------------------------------

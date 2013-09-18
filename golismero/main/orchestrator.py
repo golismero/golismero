@@ -40,6 +40,7 @@ from .scope import DummyScope
 from ..api.config import Config
 from ..api.logger import Logger
 from ..database.cachedb import PersistentNetworkCache, VolatileNetworkCache
+from ..database.cpedb import CPEDB
 from ..managers.auditmanager import AuditManager
 from ..managers.pluginmanager import PluginManager
 from ..managers.uimanager import UIManager
@@ -79,7 +80,7 @@ class Orchestrator (object):
         self.__config = config
 
         # Incoming message queue.
-        if getattr(config, "max_process", 0) <= 0:
+        if getattr(config, "max_concurrent", 0) <= 0:
             from Queue import Queue
             self.__queue = Queue(maxsize = 0)
         else:
@@ -98,7 +99,7 @@ class Orchestrator (object):
 
         # Set the console configuration.
         Console.level = config.verbose
-        Console.use_colors = config.colorize
+        Console.use_colors = config.color
 
         # Search for plugins.
         self.__pluginManager = PluginManager()
@@ -106,17 +107,17 @@ class Orchestrator (object):
         if not success:
             raise RuntimeError("Failed to find any plugins!")
 
-        # Set the user-defined arguments for the plugins.
-        for plugin_name, plugin_args in self.__config.plugin_args.iteritems():
-            self.pluginManager.set_plugin_args(plugin_name, plugin_args)
-
         # Load the UI plugin.
-        ui_plugin_name = "ui/%s" % self.__config.ui_mode
+        ui_plugin_id = "ui/%s" % self.__config.ui_mode
         try:
-            self.pluginManager.get_plugin_by_name(ui_plugin_name)
+            self.pluginManager.get_plugin_by_id(ui_plugin_id)
         except KeyError:
             raise ValueError("No plugin found for UI mode: %r" % self.__config.ui_mode)
-        self.pluginManager.load_plugin_by_name(ui_plugin_name)
+        self.pluginManager.load_plugin_by_id(ui_plugin_id)
+
+        # Set the user-defined arguments for the plugins.
+        for plugin_id, plugin_args in self.__config.plugin_args.iteritems():
+            self.pluginManager.set_plugin_args(plugin_id, plugin_args)
 
         # Network connection manager.
         self.__netManager = NetworkManager(self.__config)
@@ -149,16 +150,11 @@ class Orchestrator (object):
         Logger.log_more_verbose("Loaded %d plugins" % len(success))
         if failure:
             Logger.log_error("Failed to load %d plugins" % len(failure))
-            for plugin_name in failure:
-                Logger.log_error_verbose("\t%s" % plugin_name)
+            for plugin_id in failure:
+                Logger.log_error_verbose("\t%s" % plugin_id)
 
-    @property
-    def config(self):
-        """
-        :returns: Orchestrator config.
-        :rtype: Orchestratorconfig
-        """
-        return self.__config
+        # This is where the NIST CPE database will be loaded on demand.
+        self.__cpedb = None
 
 
     #----------------------------------------------------------------------
@@ -171,7 +167,15 @@ class Orchestrator (object):
 
 
     #----------------------------------------------------------------------
-    # Manager getters (mostly used by RPC implementors).
+    # Getters (mostly used by RPC implementors).
+
+    @property
+    def config(self):
+        """
+        :returns: Orchestrator config.
+        :rtype: Orchestratorconfig
+        """
+        return self.__config
 
     @property
     def pluginManager(self):
@@ -228,6 +232,16 @@ class Orchestrator (object):
         :rtype: UIManager
         """
         return self.__ui
+
+    @property
+    def cpedb(self):
+        """
+        :returns: NIST CPE database.
+        :rtype: CPEDB
+        """
+        if self.__cpedb is None:
+            self.__cpedb = CPEDB()
+        return self.__cpedb
 
 
     #----------------------------------------------------------------------
@@ -304,7 +318,7 @@ class Orchestrator (object):
         :rtype: bool
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
 
         try:
 
@@ -365,7 +379,7 @@ class Orchestrator (object):
         :type message: Message
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %s instead" % type(message))
+            raise TypeError("Expected Message, got %r instead" % type(message))
         try:
             self.__queue.put_nowait(message)
         except Exception:
@@ -416,34 +430,6 @@ class Orchestrator (object):
 
 
     #----------------------------------------------------------------------
-    def notify_plugin_status(self, audit_name, plugin_name, status_code, status_data):
-        """
-        Notify the Orchestrator of a change in a plugin execution state.
-
-        :param audit_name: Name of the audit.
-        :type audit_name: str
-
-        :param plugin_name: Name of the plugin.
-        :type plugin_name: str
-
-        :param status_code: Status code. Must be one of the MessageCode.MSG_STATUS_* constants.
-        :type status_code: int
-
-        :param status_data: Status data.
-        :type status_data: \\*
-        """
-        msg = Message(
-            message_type = MessageType.MSG_TYPE_STATUS,
-            message_code = status_code,
-            message_info = status_data,
-             plugin_name = plugin_name,
-              audit_name = audit_name,
-                priority = MessagePriority.MSG_PRIORITY_MEDIUM,
-        )
-        self.dispatch_msg(msg)
-
-
-    #----------------------------------------------------------------------
     def run(self, *audits):
         """
         Message loop.
@@ -452,6 +438,9 @@ class Orchestrator (object):
         """
 
         try:
+
+            # Open the NIST CPE database.
+            ##self.cpedb   # disabled until we actually use it...
 
             # Start the UI.
             self.uiManager.start()

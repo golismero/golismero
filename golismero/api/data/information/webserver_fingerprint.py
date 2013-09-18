@@ -73,29 +73,29 @@ class WebServerFingerprint(Information):
 
         # Check the data types.
         if not isinstance(name, str):
-            raise TypeError("Expected str, got %s instead" % type(name))
+            raise TypeError("Expected str, got %r instead" % type(name))
         if not isinstance(version, str):
-            raise TypeError("Expected str, got %s instead" % type(version))
+            raise TypeError("Expected str, got %r instead" % type(version))
         if not isinstance(banner, str):
-            raise TypeError("Expected str, got %s instead" % type(banner))
+            raise TypeError("Expected str, got %r instead" % type(banner))
         if not isinstance(canonical_name, str):
-            raise TypeError("Expected str, got %s instead" % type(canonical_name))
+            raise TypeError("Expected str, got %r instead" % type(canonical_name))
 
         if related is not None:
             if not isinstance(others, dict):
-                raise TypeError("Expected dict, got %s instead" % type(others))
+                raise TypeError("Expected dict, got %r instead" % type(others))
             for v in related:
                 if not isinstance(v, str):
-                    raise TypeError("Expected str, got %s instead" % type(v))
+                    raise TypeError("Expected str, got %r instead" % type(v))
 
         if others is not None:
             if not isinstance(others, dict):
-                raise TypeError("Expected dict, got %s instead" % type(others))
+                raise TypeError("Expected dict, got %r instead" % type(others))
             for k, v in others.iteritems():
                 if not isinstance(k, str):
-                    raise TypeError("Expected str, got %s instead" % type(k))
+                    raise TypeError("Expected str, got %r instead" % type(k))
                 if not isinstance(v, float):
-                    raise TypeError("Expected float, got %s instead" % type(v))
+                    raise TypeError("Expected float, got %r instead" % type(v))
 
         # Web server name.
         self.__name           = name

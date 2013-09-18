@@ -45,7 +45,7 @@ class NetworkException(Exception):
 
 
 #------------------------------------------------------------------------------
-class NetworkOutOfScope(Exception):
+class NetworkOutOfScope(NetworkException):
     """
     Resource is out of audit scope.
     """

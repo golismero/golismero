@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # - Vulnerability types:
 # from golismero.api.data.vulnerability.information_disclosure.url_disclosure import UrlDisclosure
-# from golismero.api.data.vulnerability.information_disclosure.url_suspicious import SuspiciousURL
+# from golismero.api.data.vulnerability.suspicious.url import SuspiciousURL
 #
 # OTHER API FUNCTIONS:
 #

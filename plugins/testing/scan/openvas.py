@@ -30,7 +30,7 @@ from golismero.api.config import Config
 from golismero.api.data.db import Database
 from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.ip import IP
-from golismero.api.data.vulnerability import Vulnerability
+from golismero.api.data.vulnerability import UncategorizedVulnerability
 from golismero.api.logger import Logger
 from golismero.api.plugin import TestingPlugin, ImportPlugin
 
@@ -43,11 +43,6 @@ try:
 except ImportError:
     from xml.etree import ElementTree as etree
 
-# Import the OpenVAS libraries from the plugin data folder.
-import os, sys
-_lib_path = os.path.abspath(os.path.split(__file__)[0])
-if _lib_path not in sys.path:
-    sys.path.insert(0, _lib_path)
 from openvas_lib import VulnscanManager, VulnscanException
 
 
@@ -67,86 +62,96 @@ class OpenVASProgress(object):
 class OpenVASPlugin(TestingPlugin):
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [IP]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
 
-        # Synchronization object to wait for completion.
-        m_event = Event()
 
-        # Get the config.
-        m_user      = Config.plugin_args["user"]
-        m_password  = Config.plugin_args["password"]
-        m_host      = Config.plugin_args["host"]
-        m_port      = Config.plugin_args["port"]
-        m_timeout   = Config.plugin_args["timeout"]
-        m_profile   = Config.plugin_args["profile"]
 
-        # Sanitize the port and timeout.
-        try:
-            m_port = int(m_port)
-        except Exception:
-            m_port = 9390
-        if m_timeout.lower().strip() in ("inf", "infinite", "none"):
-            m_timeout = None
-        else:
+        # Checks if connection was not setted as down
+        if not self.state.check("connection_down"):
+
+            # Synchronization object to wait for completion.
+            m_event = Event()
+
+            # Get the config.
+            m_user      = Config.plugin_args["user"]
+            m_password  = Config.plugin_args["password"]
+            m_host      = Config.plugin_args["host"]
+            m_port      = Config.plugin_args["port"]
+            m_timeout   = Config.plugin_args["timeout"]
+            m_profile   = Config.plugin_args["profile"]
+
+            # Sanitize the port and timeout.
             try:
-                m_timeout = int(m_timeout)
+                m_port = int(m_port)
             except Exception:
+                m_port = 9390
+            if m_timeout.lower().strip() in ("inf", "infinite", "none"):
                 m_timeout = None
+            else:
+                try:
+                    m_timeout = int(m_timeout)
+                except Exception:
+                    m_timeout = None
 
-        # Connect to the scanner.
-        try:
-            m_scanner = VulnscanManager(m_host, m_user, m_password, m_port, m_timeout)
-        except VulnscanException, e:
-            t = format_exc()
-            Logger.log_error("Error connecting to OpenVAS, aborting scan!")
-            #Logger.log_error_verbose(str(e))
-            Logger.log_error_more_verbose(t)
-            return
-
-        # Launch the scanner.
-        m_scan_id, m_target_id = m_scanner.launch_scan(
-            target = info.address,
-            profile = m_profile,
-            callback_end = partial(lambda x: x.set(), m_event),
-            callback_progress = OpenVASProgress(self.update_status)
-        )
-        Logger.log_more_verbose("OpenVAS task ID: %s" % m_scan_id)
-
-        # Wait for completion.
-        m_event.wait()
-
-        try:
-
-            # Get the scan results.
-            m_openvas_results = m_scanner.get_results(m_scan_id)
-
-            # Clear the info
-
-            m_scanner.delete_scan(m_scan_id)
-            m_scanner.delete_target(m_target_id)
-
-            # Convert the scan results to the GoLismero data model.
-            return self.parse_results(m_openvas_results, info)
-        except Exception,e:
-            t = format_exc()
-            Logger.log_error_verbose("Error parsing OpenVAS results: %s" % str(e))
-            Logger.log_error_more_verbose(t)
-        finally:
-
-            # Clean up.
+            # Connect to the scanner.
             try:
+                Logger.log_more_verbose(
+                    "Connecting to OpenVAS server at %s:%d" % (m_host, m_port))
+                m_scanner = VulnscanManager(
+                    m_host, m_user, m_password, m_port, m_timeout)
+            except VulnscanException, e:
+                t = format_exc()
+                Logger.log_error("Error connecting to OpenVAS, aborting scan!")
+                #Logger.log_error_verbose(str(e))
+                Logger.log_error_more_verbose(t)
+
+                # Set the openvas connection down and remember it.
+                self.state.put("connection_down", True)
+                return
+
+            try:
+                # Launch the scanner.
+                m_scan_id, m_target_id = m_scanner.launch_scan(
+                    target = info.address,
+                    profile = m_profile,
+                    callback_end = partial(lambda x: x.set(), m_event),
+                    callback_progress = OpenVASProgress(self.update_status)
+                )
+                Logger.log_more_verbose("OpenVAS task ID: %s" % m_scan_id)
+
+                # Wait for completion.
+                m_event.wait()
+
+                # Get the scan results.
+                m_openvas_results = m_scanner.get_results(m_scan_id)
+
+                # Clear the info
+
                 m_scanner.delete_scan(m_scan_id)
-            except Exception:
-                pass   # XXX FIXME #135
+                m_scanner.delete_target(m_target_id)
 
+                # Convert the scan results to the GoLismero data model.
+                return self.parse_results(m_openvas_results, info)
+            except Exception,e:
+                t = format_exc()
+                Logger.log_error_verbose(
+                    "Error parsing OpenVAS results: %s" % str(e))
+                Logger.log_error_more_verbose(t)
+            finally:
 
-    #----------------------------------------------------------------------
+                # Clean up.
+                try:
+                    m_scanner.delete_scan(m_scan_id)
+                except Exception:
+                    Logger.log_error_more_verbose("Error while deleting scan Id: %s" % str(m_scan_id if m_scan_id else "(No scan id)"))
+
+    #--------------------------------------------------------------------------
     @staticmethod
     def parse_results(openvas_results, ip = None):
         """
@@ -168,8 +173,9 @@ class OpenVASPlugin(TestingPlugin):
         # Remember the hosts we've seen so we don't create them twice.
         hosts_seen = {}
 
-        LEVELS_CORRESPONDENCES = {
-            'debug' : 'low',
+        # Map of OpenVAS levels to GoLismero levels.
+        OPV_LEVELS_TO_GLM_LEVELS = {
+            'debug' : 'informational',
             'log'   : 'informational',
             'low'   : "low",
             'medium': 'middle',
@@ -215,21 +221,24 @@ class OpenVASPlugin(TestingPlugin):
                     if not description:
                         description = nvt.summary
                         if not description:
-                            description = "A vulnerability has been found."
+                            description = None
                 if opv.notes:
                     description += "\n" + "\n".join(
                         " - " + note.text
                         for note in opv.notes
                     )
 
+                # Prepare the vulnerability properties.
+                kwargs = {
+                    "level": OPV_LEVELS_TO_GLM_LEVELS[level.lower()],
+                    "description": description,
+                    ##"cvss": cvss,
+                    ##"cve": cve,
+                    ##"references": references.split("\n"),
+                }
+
                 # Create the vulnerability instance.
-                vuln = Vulnerability(
-                    level       = LEVELS_CORRESPONDENCES[level.lower()],
-                    description = description,
-                    ##cvss        = cvss,
-                    ##cve         = cve,
-                    ##references  = references.split("\n"),
-                )
+                vuln = UncategorizedVulnerability(**kwargs)
                 ##vuln.vulnerability_type = vulnerability_type
 
                 # Link the vulnerability to the resource.
@@ -239,7 +248,8 @@ class OpenVASPlugin(TestingPlugin):
             # Skip on error.
             except Exception, e:
                 t = format_exc()
-                Logger.log_error_verbose("Error parsing OpenVAS results: %s" % str(e))
+                Logger.log_error_verbose(
+                    "Error parsing OpenVAS results: %s" % str(e))
                 Logger.log_error_more_verbose(t)
                 continue
 
@@ -272,10 +282,11 @@ class OpenVASImportPlugin(ImportPlugin):
             if golismero_results:
                 Database.async_add_many(golismero_results)
         except Exception, e:
+            fmt = format_exc()
             Logger.log_error(
                 "Could not load OpenVAS results from file: %s" % input_file)
             Logger.log_error_verbose(str(e))
-            Logger.log_error_more_verbose(format_exc())
+            Logger.log_error_more_verbose(fmt)
         else:
             if golismero_results:
                 Logger.log(

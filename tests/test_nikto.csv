@@ -2,4 +2,7 @@
 "example.com","93.184.216.119","80","","","","ECS (iad/1984)"
 "example.com","93.184.216.119","80","OSVDB-0","GET","/","Server leaks inodes via ETags, header found with file /, fields: 0x3012602696 "
 "example.com","93.184.216.119","80","OSVDB-0","GET","/","The anti-clickjacking X-Frame-Options header is not present."
+"example.com","93.184.216.119","80","OSVDB-0","GET","/","Uncommon header 'x-ec-custom-error' found, with contents: 1"
 "example.com","93.184.216.119","80","OSVDB-0","GET","/","Uncommon header 'x-cache' found, with contents: HIT"
+"example.com","93.184.216.119","80","OSVDB-0","GET","/crossdomain.xml","/crossdomain.xml contains 0 line which should be manually viewed for improper domains or wildcards."
+"example.com","93.184.216.119","80","OSVDB-0","OPTIONS","/","Allowed HTTP Methods: OPTIONS, GET, HEAD, POST "

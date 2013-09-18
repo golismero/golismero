@@ -128,9 +128,9 @@ class ImportManager (object):
         # For each input file, run its corresponding import plugin.
         # Import plugins are run in the same process as the Orchestrator.
         count = 0
-        for input_file, plugin_name in self.__importers.iteritems():
+        for input_file, plugin_id in self.__importers.iteritems():
             try:
-                plugin_instance = self.__plugins[plugin_name]
+                plugin_instance = self.__plugins[plugin_id]
                 context = self.orchestrator.build_plugin_context(
                     self.config.audit_name, plugin_instance, None
                 )

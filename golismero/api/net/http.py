@@ -183,14 +183,14 @@ class _HTTP(Singleton):
 
         # Check the arguments.
         if not isinstance(request, HTTP_Request):
-            raise TypeError("Expected HTTP_Request, got %s instead" % type(request))
+            raise TypeError("Expected HTTP_Request, got %r instead" % type(request))
         if callback is not None and not callable(callback):
             raise TypeError(
                 "Expected callable (function, class, instance with __call__),"
-                " got %s instead" % type(callback)
+                " got %r instead" % type(callback)
             )
         if use_cache not in (True, False, None):
-            raise TypeError("Expected bool or None, got %s instead" % type(use_cache))
+            raise TypeError("Expected bool or None, got %r instead" % type(use_cache))
 
         # Check the request scope.
         if not request.is_in_scope():
@@ -357,7 +357,7 @@ class _HTTP(Singleton):
         """
         Send a raw HTTP request to the server and get the response back.
 
-        .. note: This method does not support the use of the cache.
+        .. note: This method does not support the use of the cache or a proxy.
 
         .. warning::
            This method only returns the HTTP response headers, **NOT THE CONTENT**.
@@ -395,20 +395,20 @@ class _HTTP(Singleton):
         :raises NetworkException: A network error occurred.
         """
 
-        # Check initialization.
-        if self.__session is None:
-            self._initialize()
+        # Abort if a proxy is configured, because we don't support this yet.
+        if Config.audit_config.proxy_addr:
+            raise NotImplementedError("Proxy not yet supported")
 
         # Check the arguments.
         if type(raw_request) is str:
             raw_request = HTTP_Raw_Request(raw_request)
             LocalDataCache.on_autogeneration(raw_request)
         elif not isinstance(raw_request, HTTP_Raw_Request):
-            raise TypeError("Expected HTTP_Raw_Request, got %s instead" % type(raw_request))
+            raise TypeError("Expected HTTP_Raw_Request, got %r instead" % type(raw_request))
         if type(host) == unicode:
             raise NotImplementedError("Unicode hostnames not yet supported")
         if type(host) != str:
-            raise TypeError("Expected str, got %s instead" % type(host))
+            raise TypeError("Expected str, got %r instead" % type(host))
         if proto not in ("http", "https"):
             raise ValueError("Protocol must be 'http' or 'https', not %r" % proto)
         if port is None:
@@ -419,13 +419,13 @@ class _HTTP(Singleton):
             else:
                 assert False, "internal error!"
         elif type(port) not in (int, long):
-            raise TypeError("Expected int, got %s instead" % type(port))
+            raise TypeError("Expected int, got %r instead" % type(port))
         if port < 1 or port > 32767:
             raise ValueError("Invalid port number: %d" % port)
         if callback is not None and not callable(callback):
             raise TypeError(
                 "Expected callable (function, class, instance with __call__),"
-                " got %s instead" % type(callback)
+                " got %r instead" % type(callback)
             )
 
         # Check the request scope.

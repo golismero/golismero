@@ -48,68 +48,80 @@ except NameError:
 # Imports
 from golismero.api.net.dns import *
 from golismero.api.data.information.dns import *
+from golismero.main.testing import PluginTester
 
-HOSTS = ["ns1.google.com", "twitter.com", "bing.com", "tuenti.es", "facebook.com", "google.com", "terra.es"]
 
+#----------------------------------------------------------------------
 def test_all_registers():
+    with PluginTester():
 
-    print
+        print
 
-    for l_host in HOSTS:
+        HOSTS = ["ns1.google.com", "twitter.com", "bing.com", "tuenti.es", "facebook.com", "google.com", "terra.es"]
 
-        print "Host: %s" % l_host
-        print "^" * (len(l_host) + 7)
+        for l_host in HOSTS:
 
-        for l_dns_type in DnsRegister.DNS_TYPES:
+            print "Host: %s" % l_host
+            print "^" * (len(l_host) + 7)
 
-            r = DNS.resolve(l_host, l_dns_type)
-            if r:
-                print "   Type: " + l_dns_type
-                print "   " + ("=" * (len(l_dns_type ) + 6))
+            for l_dns_type in DnsRegister.DNS_TYPES:
 
-                for i, c in enumerate(r):
-                    l_properties = [x for x in c.__dict__ if "__" in x]
+                r = DNS.resolve(l_host, l_dns_type)
+                if r:
+                    print "   Type: " + l_dns_type
+                    print "   " + ("=" * (len(l_dns_type ) + 6))
 
-                    for l_prop in l_properties:
-                        l_p = l_prop.find("__") + 2
-                        print "     - %s: %s" % (l_prop[l_p:], getattr(c, l_prop))
+                    for i, c in enumerate(r):
+                        l_properties = [x for x in c.__dict__ if "__" in x]
 
-                print "   " + ("-" * 30)
+                        for l_prop in l_properties:
+                            l_p = l_prop.find("__") + 2
+                            print "     - %s: %s" % (l_prop[l_p:], getattr(c, l_prop))
+
+                    print "   " + ("-" * 30)
+
 
 #----------------------------------------------------------------------
 def test_zone_transfer():
-    print DNS.zone_transfer("173.194.34.224")
-    print DNS.zone_transfer("zonetransfer.me", ["ns12.zoneedit.com"])
+    with PluginTester():
+        print DNS.zone_transfer("173.194.34.224")
+        print DNS.zone_transfer("zonetransfer.me", ["ns12.zoneedit.com"])
+
 
 #----------------------------------------------------------------------
 def test_a_aaaa():
+    with PluginTester():
 
-    HOSTS = ["aaaa.terra.es"]
+        HOSTS = ["aaaa.terra.es"]
 
-    for h in HOSTS:
-        r = DNS.get_a(h, also_CNAME=True)
+        for h in HOSTS:
+            r = DNS.get_a(h, also_CNAME=True)
 
-        for kk in r:
+            for kk in r:
 
-            if kk.type == "CNAME":
-                print kk.target
-            if kk.type == "A":
-                print kk.address
+                if kk.type == "CNAME":
+                    print kk.target
+                if kk.type == "A":
+                    print kk.address
 
-        print ""
+            print ""
+
 
 #----------------------------------------------------------------------
 def test_ptr():
     """
-    Try to make a inverse resolution
+    Try to make an inverse resolution
     """
-    ips = ["173.194.34.197"] # google.com
+    with PluginTester():
 
-    for ip in ips:
-        for t in DNS.get_ptr(ip):
-            print t.target
+        ips = ["173.194.34.197"] # google.com
+
+        for ip in ips:
+            for t in DNS.get_ptr(ip):
+                print t.target
 
 
+#----------------------------------------------------------------------
 if __name__ == "__main__":
     print
     print "-" * 79

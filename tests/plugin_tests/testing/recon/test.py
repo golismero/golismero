@@ -40,7 +40,7 @@ class TestPlugin(TestingPlugin):
     #----------------------------------------------------------------------
     def recv_info(self, info):
         if not isinstance(info, Data):
-            raise TypeError("Expected Data, got %s instead" % type(info))
+            raise TypeError("Expected Data, got %r instead" % type(info))
 
         # TO DO
 

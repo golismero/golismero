@@ -50,7 +50,7 @@ def test_newlines_and_tabs():
         if (path.sep + "thirdparty_libs" + path.sep) in root:
             continue
         for filename in files:
-            if not filename.endswith(".py"):
+            if not filename.endswith(".py") and not filename.endswith(".golismero"):
                 continue
             filename = path.join(root, filename)
             filename = path.abspath(filename)

@@ -46,8 +46,11 @@ except NameError:
 
 
 from golismero.api.parallel import setInterval
+from golismero.main.testing import PluginTester
+
 from threading import Event
 from time import gmtime, strftime, time
+
 
 #----------------------------------------------------------------------
 num     = 10
@@ -56,17 +59,19 @@ sem     = Event()
 times   = []
 
 def test_interval():
-    global handler
+    with PluginTester():
 
-    print "Testing setInterval..."
-    sem.clear()
-    handler = helper_test_interval()
-    sem.wait()
+        global handler
 
-    assert all(
-        int( times[index + 1] - times[index] ) == 2
-        for index in xrange(len(times) - 1)
-    )
+        print "Testing setInterval..."
+        sem.clear()
+        handler = helper_test_interval()
+        sem.wait()
+
+        assert all(
+            int( times[index + 1] - times[index] ) == 2
+            for index in xrange(len(times) - 1)
+        )
 
 @setInterval(2)
 def helper_test_interval():

@@ -33,14 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = [
 
     # Dynamically loaded modules, picks the fastest one available.
-    "pickle", "random",
+    "pickle", "random", "json_encode", "json_decode",
 
     # Helper functions.
     "get_user_settings_folder", "get_default_config_file",
     "get_profiles_folder", "get_profile", "get_available_profiles",
+    "get_default_plugins_folder",
 
     # Helper classes and decorators.
-    "Singleton", "decorator",
+    "Singleton", "decorator", "export_methods_as_functions",
 
     # Configuration objects.
     "OrchestratorConfig", "AuditConfig"
@@ -53,8 +54,6 @@ try:
 except ImportError:
     import pickle
 
-# Lazy import of the JSON codec.
-json_decode = None
 json_encode = None
 
 # Import @decorator from the decorator module, if available.
@@ -75,6 +74,20 @@ except ImportError:
             return x
         return d
 
+try:
+    # The fastest JSON parser available for Python.
+    from cjson import decode as json_decode
+    from cjson import encode as json_encode
+except ImportError:
+    try:
+        # Faster than the built-in module, usually found.
+        from simplejson import loads as json_decode
+        from simplejson import dumps as json_encode
+    except ImportError:
+        # Built-in module since Python 2.6, very very slow!
+        from json import loads as json_decode
+        from json import dumps as json_encode
+
 # Other imports.
 from ConfigParser import RawConfigParser
 from keyword import iskeyword
@@ -82,6 +95,7 @@ from os import path
 
 import os
 import random
+import sys
 import urlparse
 
 
@@ -235,10 +249,21 @@ def get_available_profiles():
     if not profiles_folder or not path.isdir(profiles_folder):
         return set()
     return {
-        name[:-4]
+        path.splitext(name)[0]
         for name in os.listdir(profiles_folder)
         if name.endswith(".profile")
     }
+
+
+#------------------------------------------------------------------------------
+def get_default_plugins_folder():
+    """
+    :returns: Default location for the plugins folder.
+    :rtype: str
+    """
+    plugins_folder = path.join(path.split(__file__)[0], "..", "plugins")
+    plugins_folder = path.abspath(plugins_folder)
+    return plugins_folder
 
 
 #------------------------------------------------------------------------------
@@ -268,6 +293,38 @@ class Singleton (object):
 
         # Return the instance.
         return cls._instance
+
+
+#------------------------------------------------------------------------------
+def export_methods_as_functions(singleton, module):
+    """
+    Export all methods from a Singleton instance as bare functions of a module.
+
+    :param singleton: Singleton instance to export.
+    :type singleton: Singleton
+
+    :param module: Target module name.
+        This would tipically be \\_\\_name\\_\\_.
+    :type module: str
+
+    :raises KeyError: No module with that name is loaded.
+    """
+    # TODO: maybe take the module name as input instead,
+    # and pull everything else from sys.modules.
+    clazz = singleton.__class__
+    module_obj = sys.modules[module]
+    try:
+        exports = module_obj.__all__
+    except AttributeError:
+        exports = module_obj.__all__ = []
+    for name in dir(clazz):
+        if name[0] != "_":
+            unbound = getattr(clazz, name)
+            if callable(unbound) and not isinstance(unbound, property):
+                bound = getattr(singleton, name)
+                setattr(module_obj, name, bound)
+                if name not in exports:
+                    exports.append(name)
 
 
 #------------------------------------------------------------------------------
@@ -488,20 +545,6 @@ class Configuration (object):
         :type json_raw_data: str
         """
 
-        # Lazy import of the JSON decoder function.
-        global json_decode
-        if json_decode is None:
-            try:
-                # The fastest JSON parser available for Python.
-                from cjson import decode as json_decode
-            except ImportError:
-                try:
-                    # Faster than the built-in module, usually found.
-                    from simplejson import loads as json_decode
-                except ImportError:
-                    # Built-in module since Python 2.6, very very slow!
-                    from json import loads as json_decode
-
         # Converts the JSON data into a dictionary.
         args = json_decode(json_raw_data)
         if not isinstance(args, dict):
@@ -563,20 +606,6 @@ class Configuration (object):
         :rtype: str
         """
 
-        # Lazy import of the JSON encoder function.
-        global json_encode
-        if json_encode is None:
-            try:
-                # The fastest JSON parser available for Python.
-                from cjson import encode as json_encode
-            except ImportError:
-                try:
-                    # Faster than the built-in module, usually found.
-                    from simplejson import dumps as json_encode
-                except ImportError:
-                    # Built-in module since Python 2.6, very very slow!
-                    from json import dumps as json_encode
-
         # Extract the settings to a dictionary and encode it with JSON.
         return json_encode( self.to_dictionary() )
 
@@ -594,39 +623,39 @@ class OrchestratorConfig (Configuration):
     _settings_ = {
 
         #
-        # Main options
+        # Main options.
         #
 
-        # UI mode
+        # UI mode.
         "ui_mode": (str, "console"),
 
-        # Verbosity level
-        "verbose": (Configuration.integer, 2),
+        # Verbosity level.
+        "verbose": (Configuration.integer, 3),
 
         # Colorize console?
-        "colorize": (Configuration.boolean, True),
+        "color": (Configuration.boolean, False),
 
         #
-        # Plugin options
+        # Plugin options.
         #
 
-        # Enabled plugins
+        # Enabled plugins.
         "enable_plugins": (Configuration.comma_separated_list, ["all"]),
 
-        # Disabled plugins
+        # Disabled plugins.
         "disable_plugins": (Configuration.comma_separated_list, []),
 
-        # Plugins folder
+        # Plugins folder.
         "plugins_folder": Configuration.string,
 
-        # Maximum number of processes to execute plugins
-        "max_process": (Configuration.integer, 4 if path.sep == "\\" else 20),
+        # Maximum number plugins to execute concurrently.
+        "max_concurrent": (Configuration.integer, 4 if path.sep == "\\" else 20),
 
         #
-        # Network options
+        # Network options.
         #
 
-        # Maximum number of connections per host
+        # Maximum number of connections per host.
         "max_connections": (Configuration.integer, 20),
 
         # Use persistent cache?
@@ -643,7 +672,7 @@ class OrchestratorConfig (Configuration):
     profile_file = None
 
     # Plugin arguments.
-    plugin_args  = dict()   # plugin_name -> key -> value
+    plugin_args  = dict()   # plugin_id -> key -> value
 
 
     #--------------------------------------------------------------------------
@@ -654,8 +683,8 @@ class OrchestratorConfig (Configuration):
             raise ValueError("Number of connections must be greater than 0, got %i." % self.max_connections)
 
         # Validate the number of concurrent processes.
-        if self.max_process < 0:
-            raise ValueError("Number of processes cannot be a negative number, got %i." % self.max_process)
+        if self.max_concurrent < 0:
+            raise ValueError("Number of processes cannot be a negative number, got %i." % self.max_concurrent)
 
         # Validate the list of plugins.
         if not self.enable_plugins:
@@ -690,8 +719,8 @@ class AuditConfig (Configuration):
         # Output files
         "reports": (Configuration.comma_separated_list, []),
 
-        # Only display resources with associated vulnerabilities
-        "only_vulns": (Configuration.boolean, False),
+        # Only display vulnerabilities
+        "only_vulns": (Configuration.trinary, None),
 
         #
         # Audit options
@@ -750,18 +779,16 @@ class AuditConfig (Configuration):
     #--------------------------------------------------------------------------
     # Options that are only set in runtime, not loaded from the config file.
 
-    # Start and stop time for the audit.
-    # These values are filled on runtime.
-    start_time   = None
-    stop_time    = None
-
     # Configuration files.
     config_file  = get_default_config_file()
     profile      = None
     profile_file = None
 
     # Plugin arguments.
-    plugin_args  = None   # list of (plugin_name, key, value)
+    plugin_args  = None   # list of (plugin_id, key, value)
+
+    # Command to run.
+    command = "SCAN"
 
 
     #--------------------------------------------------------------------------
@@ -776,10 +803,12 @@ class AuditConfig (Configuration):
         # Fix target URLs if the scheme part is missing.
         self._targets = getattr(self, "_targets", [])
         if targets:
-            self._targets.extend(
-                (x if (x.startswith("http://") or x.startswith("https://"))
-                   else "http://" + x)
-                for x in targets)
+            targets = [
+                x.strip()
+                for x in targets
+                if x not in self._targets
+            ]
+            self._targets.extend(targets)
 
 
     #--------------------------------------------------------------------------
@@ -855,10 +884,6 @@ class AuditConfig (Configuration):
     #--------------------------------------------------------------------------
     def check_params(self):
 
-        # Validate the list of targets.
-        if not self.targets:
-            raise ValueError("No targets selected for execution.")
-
         # Validate the list of plugins.
         if not self.enable_plugins:
             raise ValueError("No plugins selected for execution.")
@@ -877,3 +902,31 @@ class AuditConfig (Configuration):
         # Validate the recursion depth.
         if self.depth is not None and self.depth < 0:
             raise ValueError("Spidering depth can't be negative: %r" % self.depth)
+
+
+    #--------------------------------------------------------------------------
+    def is_new_audit(self):
+        """
+        Determine if this is a brand new audit.
+
+        :returns: True if this is a new audit, False if it's an old audit.
+        :rtype: bool
+        """
+
+        # Memory databases are always new audits.
+        if not self.audit_db or self.audit_db.lower().startswith("memory://"):
+            return True
+
+        # SQLite databases are new audits if the file doesn't exist.
+        # If we have no filename, use the audit name.
+        # If we don't have that either it's a new audit.
+        if self.audit_db.lower().startswith("sqlite://"):
+            filename = self.audit_db[9:]
+            if not filename:
+                filename = self.audit_name
+                if not filename:
+                    return True
+            return not path.exists(filename)
+
+        # We don't know how to parse this database connection string.
+        raise ValueError("Unsupported connection string: %s" % self.audit_db)

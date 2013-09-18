@@ -1,22 +1,47 @@
 Data types following the Resource interface
 ===========================================
 
-.. automodule:: golismero.api.data.resource.url
-   :members:
-   :show-inheritance:
-   :special-members:
+:mod:`resource` Package
+-----------------------
+
+.. automodule:: golismero.api.data.resource
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:
+
+:mod:`domain` Module
+--------------------
 
 .. automodule:: golismero.api.data.resource.domain
-   :members:
-   :show-inheritance:
-   :special-members:
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:
 
-.. automodule:: golismero.api.data.resource.ip
-   :members:
-   :show-inheritance:
-   :special-members:
+:mod:`email` Module
+-------------------
 
 .. automodule:: golismero.api.data.resource.email
-   :members:
-   :show-inheritance:
-   :special-members:
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:
+
+:mod:`ip` Module
+----------------
+
+.. automodule:: golismero.api.data.resource.ip
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:
+
+:mod:`url` Module
+-----------------
+
+.. automodule:: golismero.api.data.resource.url
+    :members:
+    :undoc-members:
+    :special-members:
+    :show-inheritance:

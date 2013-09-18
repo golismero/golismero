@@ -1,0 +1,56 @@
+{
+  "home": {
+    "myaccount": "My account <b class='caret'>"
+  },
+  "form":{
+	"save":"Save"
+  },
+  "login":{
+	"title":"Login",
+	"username":"Username",
+	"password": "Password",
+	"accept":"Accept"
+  },
+  "menu":{
+	"home":"Home",
+	"users":"Users",
+	"profiles":"Profiles",
+	"scans":"Scans",
+	"contactus":"Contact us"
+  },
+  "user": {
+	"new":"New",
+	"title":"Users",
+	"table":{
+		"id":"Identifier",
+		"username":"Username",
+		"nameandsurname":"Name and surname",
+		"rol":"Rol"
+	},
+	"form":{
+		"createUser":"Create user",
+		"editUser":"Edit user",
+		"username":"Username",
+		"password":"Password",
+		"repeatpassword":"Repeat password",
+		"rol":"Rol",
+		"email": "Email",
+		"nameandsurname":"Name and surname",
+		
+		"roles":{
+			"administrator":"Administrator"
+		}
+	}
+  },
+  "scans": {
+	"title":"Scans",
+	"new":"New",
+	"table":{
+		"id":"Identifier",
+		"name":"Name",
+		"progress":"Progress",
+		"target":"Target",
+		"status":"Status"
+	}
+  }
+}

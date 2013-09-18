@@ -43,7 +43,7 @@ class TestPlugin(TestingPlugin):
     #----------------------------------------------------------------------
     def recv_info(self, info):
         if not isinstance(info, FolderUrl):
-            raise TypeError("Expected FolderUrl, got %s instead" % type(info))
+            raise TypeError("Expected FolderUrl, got %r instead" % type(info))
 
         # Intentionally cause a warning to be shown.
         Logger.log("This is a log message.")

@@ -109,6 +109,7 @@ class HarvesterPlugin(TestingPlugin):
         results = []
 
         # Email addresses.
+        emails_found = set()
         for address in all_emails:
             if "..." in address:                          # known bug in theHarvester
                 continue
@@ -118,6 +119,11 @@ class HarvesterPlugin(TestingPlugin):
                 address = address[:-1]
             if not address:
                 continue
+            if not "@" in address:
+                continue
+            if address in emails_found:
+                continue
+            emails_found.add(address)
             try:
                 data = Email(address)
             except Exception, e:

@@ -26,6 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+from golismero.api.audit import get_audit_times
 from golismero.api.config import Config
 from golismero.api.data import Data
 from golismero.api.data.db import Database
@@ -34,7 +35,7 @@ from golismero.api.logger import Logger
 from golismero.api.plugin import ReportPlugin
 
 from os.path import join, dirname
-from collections import Counter
+from collections import Counter, defaultdict
 import datetime
 
 
@@ -57,26 +58,27 @@ class HTMLReport(ReportPlugin):
     # This properties/methods are the common info for the vulnerability types.
     PRIVATE_INFO_VULN = ['DEFAULTS', 'TYPE', 'add_information', 'RESOURCE',
                          'add_link', 'add_resource', 'add_vulnerability', 'associated_informations',
-                         'associated_resources', 'associated_vulnerabilities', 'cve', 'cwe',
-                         'data_type', 'discovered', 'get_associated_informations_by_category',
+                         'associated_resources', 'associated_vulnerabilities',
+                         'data_type', 'discovered', 'false_positive', 'get_associated_informations_by_category',
                          'get_associated_resources_by_category', 'get_associated_vulnerabilities_by_category',
                          'get_linked_data', 'get_links', 'identity', 'impact', 'is_in_scope', 'linked_data',
                          'links', 'max_data', 'max_informations', 'max_resources', 'max_vulnerabilities',
                          'merge', 'min_data', 'min_informations', 'min_resources', 'min_vulnerabilities',
                          'references', 'reverse_merge', 'risk', 'severity', 'validate_link_minimums', 'vulnerability_type',
-                         'resource_type']
+                         'resource_type', 'resolve', 'resolve_links', 'find_linked_data', 'depth', 'taxonomies', 'data_subtype',
+                         'title']
 
     # This properties/methods are the common info for the vulnerability types.
     PRIVATE_INFO_RESOURCES = ['DEFAULTS', 'TYPE', 'add_information', 'RESOURCE',
                               'add_link', 'add_resource', 'add_vulnerability', 'associated_informations',
-                              'associated_resources', 'associated_vulnerabilities', 'cve', 'cwe',
+                              'associated_resources', 'associated_vulnerabilities',
                               'data_type', 'discovered', 'get_associated_informations_by_category',
                               'get_associated_resources_by_category', 'get_associated_vulnerabilities_by_category',
                               'get_linked_data', 'get_links', 'identity', 'impact', 'is_in_scope', 'linked_data',
                               'links', 'max_data', 'max_informations', 'max_resources', 'max_vulnerabilities',
                               'merge', 'min_data', 'min_informations', 'min_resources', 'min_vulnerabilities',
                               'references', 'reverse_merge', 'risk', 'severity', 'validate_link_minimums', 'vulnerability_type',
-                              'resource_type']
+                              'resource_type', 'resolve', 'resolve_links', 'find_linked_data', 'depth', 'taxonomies', 'data_subtype']
 
 
 
@@ -138,17 +140,33 @@ class HTMLReport(ReportPlugin):
         #
 
         # Audit name
-        c['audit_name']        = Config.audit_name
+        c['audit_name'] = Config.audit_name
 
         # Start date
-        c['start_date']        = datetime.datetime.fromtimestamp(Config.audit_config.start_time)
-        c['end_date']          = datetime.datetime.fromtimestamp(Config.audit_config.stop_time)
+        start_time, stop_time = get_audit_times()
+        c['start_date']       = datetime.datetime.fromtimestamp(start_time) if start_time else "Unknown"
+        c['end_date']         = datetime.datetime.fromtimestamp(stop_time)  if stop_time  else "Interrupted"
 
         # Execution time
-        c['execution_time']    = '{:.3f}'.format(Config.audit_config.stop_time - Config.audit_config.start_time)
+        if start_time and stop_time and start_time < stop_time:
+            td      = datetime.datetime.fromtimestamp(stop_time) - datetime.datetime.fromtimestamp(start_time)
+            days    = td.days
+            hours   = td.seconds // 3600
+            minutes = (td.seconds // 60) % 60
+            seconds = td.seconds
+            c['execution_time'] = "%d days %d hours %d minutes %d seconds" % (days, hours, minutes, seconds)
+        else:
+            c['execution_time'] = "Unknown"
 
         # Targets
-        c['targets']           = Config.audit_config.targets
+        # XXX FIXME: the HTML template only knows how to show URL targets! :(
+        targets = Config.audit_scope.get_targets()
+        targets = [
+            x.url for x in targets
+                  if   x.data_type == x.TYPE_RESOURCE and
+                   x.resource_type == x.RESOURCE_URL
+        ]
+        c['targets'] = targets
 
         # Fill the vulnerabilities summary
         self.fill_summary_vulns(c)
@@ -182,7 +200,7 @@ class HTMLReport(ReportPlugin):
         m_results          = {}
 
         # Total vulns
-        m_results['total'] = len(m_all_vulns)
+        m_results['total'] = 0
 
         # Count each type of vuln
         m_counter = Counter()
@@ -193,15 +211,15 @@ class HTMLReport(ReportPlugin):
         m_counter['middle']         = 0
         m_counter['low']            = 0
         m_counter['informational']  = 0
-        m_counter['no_vulns']       = 0
 
         # Vulnerabilities by type
-        if m_results['total'] > 0:
+        for l_v in m_all_vulns:
+            if l_v.false_positive:
+                continue
+            m_counter['total']   += 1
+            m_counter[l_v.level] += 1
 
-            for l_v in m_all_vulns:
-                m_counter[l_v.level] +=1
-        else:
-            m_counter['no_vulns'] = m_results['total'] if m_results['total'] > 0 else 1
+        m_counter['no_vulns'] = int(bool(m_results['total'] == 0))
 
         for k,v in m_counter.iteritems():
             m_results[k] = v
@@ -298,6 +316,7 @@ class HTMLReport(ReportPlugin):
 
                 # Resource to display
                 l_concrete_res['main_info'] = getattr(r, self.MAIN_RESOURCES_PROPERTIES[l_resource.replace("RESOURCE_", "")])
+                l_concrete_res['res_id']    = r.identity
 
                 # Summary vulns
                 l_concrete_res['vulns']    = self.__get_vulns_counter(r.associated_vulnerabilities)
@@ -315,8 +334,12 @@ class HTMLReport(ReportPlugin):
                     l_assoc        = []
                     l_assoc_append = l_assoc.append
                     for l_res_vuln in r.associated_vulnerabilities:
+                        if l_res_vuln.false_positive:
+                            continue
                         l_assoc_res = {}
-                        l_assoc_res['vuln_name']       = l_res_vuln.__class__.__name__
+                        l_assoc_res['vuln_name']       = l_res_vuln.vulnerability_type
+                        l_assoc_res['vuln_title']      = l_res_vuln.title
+                        l_assoc_res['vuln_id']         = l_res_vuln.identity
                         l_assoc_res['vuln_properties'] = self.__get_object_properties(l_res_vuln, self.PRIVATE_INFO_VULN)
 
                         l_assoc_append(l_assoc_res)
@@ -367,14 +390,12 @@ class HTMLReport(ReportPlugin):
         :type context: Context
         """
 
-        m_results        = []
-        m_results_append = m_results.append
+        m_results        = defaultdict(list)
 
         # Get all type of resources
         m_all_resources = set([x for x in dir(Resource) if x.startswith("RESOURCE")])
 
         for l_resource in m_all_resources:
-            l_res_result = {}
 
             # Get resources URL resources
             resource = self.common_get_resources(Data.TYPE_RESOURCE, getattr(Resource, l_resource))
@@ -385,8 +406,12 @@ class HTMLReport(ReportPlugin):
             # Get the vulns of each resource
             for l_each_res in resource:
                 for l_vuln in l_each_res.associated_vulnerabilities:
+                    if l_vuln.false_positive:
+                        continue
+                    l_res_result = {}
+
                     # Get the vuln name using the class name
-                    l_res_result['vuln_name']           = l_vuln.__class__.__name__
+                    l_res_result['vuln_name']           = "%s : %s" % (l_vuln.vulnerability_type, l_vuln.title)
 
                     # Get the properties
                     l_res_result['properties']          = self.__get_object_properties(l_vuln, self.PRIVATE_INFO_VULN)
@@ -404,9 +429,10 @@ class HTMLReport(ReportPlugin):
                     l_res_result['affected_resources']  = l_res_affected
 
 
-                    m_results_append(l_res_result)
+                    m_results[l_vuln.display_name].append(l_res_result)
 
-        context['info_by_vuln'] = m_results
+        context['info_by_vuln'] = dict(m_results)
+
 
 
 
@@ -426,30 +452,25 @@ class HTMLReport(ReportPlugin):
         :return: a list as format: [{'low' : 1}, {'middle' : 2}]
         :rtype: list(dict())
         """
+
         m_counter                   = Counter()
-
-        m_total                     = len(vuln)
-
-        # Init
         m_counter['critical']       = 0
         m_counter['high']           = 0
         m_counter['middle']         = 0
         m_counter['low']            = 0
         m_counter['informational']  = 0
+        m_total                     = 0
 
-        # Vulnerabilities by type
-        if m_total > 0:
-
-            for l_v in vuln:
+        for l_v in vuln:
+            if not l_v.false_positive:
+                m_total += 1
                 m_counter[l_v.level] +=1
 
-        m_results                   = []
-        m_results_append            = m_results.append
-        for k,v in m_counter.iteritems():
-            if v > 0:
-                m_results_append({'level' : k, 'number' : v})
-
-        return m_results
+        return [
+            {'level' : k, 'number' : v}
+            for k, v in m_counter.iteritems()
+            if v > 0
+        ]
 
 
     #----------------------------------------------------------------------

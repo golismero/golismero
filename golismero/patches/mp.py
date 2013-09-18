@@ -57,7 +57,7 @@ signal(SIGINT, __suicide)
 # Mimics a file object well enough to supress print messages.
 # Also faster than opening a file descriptor for /dev/null.
 class __FakeFile(object):
-    def write(self, str):
+    def write(self, s):
         pass
     def flush(self):
         pass

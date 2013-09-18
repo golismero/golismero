@@ -117,7 +117,7 @@ def is_link(url, base_url):
 
 
 #----------------------------------------------------------------------
-def extract_from_text(text, base_url, only_links = True):
+def extract_from_text(text, base_url = None, only_links = True):
     """
     Extract URLs from text.
 
@@ -129,6 +129,7 @@ def extract_from_text(text, base_url, only_links = True):
     :type text: str
 
     :param base_url: Base URL for the current document.
+        If not specified, relative URLs are ignored.
     :type base_url: str
 
     :param only_links: If True, only extract links to other resources. If False, extract all URLs.
@@ -144,7 +145,7 @@ def extract_from_text(text, base_url, only_links = True):
 
     # Check the type.
     if not isinstance(text, basestring):
-        raise TypeError("Expected string, got %s instead" % type(text))
+        raise TypeError("Expected string, got %r instead" % type(text))
 
     # Make sure the text is really ASCII text.
     # We don't support Unicode yet.
@@ -155,24 +156,42 @@ def extract_from_text(text, base_url, only_links = True):
     add_result = result.add
 
     # Remove the fragment from the base URL.
-    base_url = urldefrag(base_url)[0]
+    if base_url:
+        base_url = urldefrag(base_url)[0]
 
     # Look for URLs using regular expressions.
     for regex in (_re_url_rfc, _re_url_readable):
         for url in regex.findall(text):
             url = url[0]
 
-            # Canonicalize the URL.
-            try:
-                url = urljoin(base_url, url.strip())
-            except Exception:
-                continue
+            # If a base URL was given...
+            if base_url:
 
-            # Discard URLs that are not links to other pages or resources.
-            if not only_links or is_link(url, base_url = base_url):
+                # Canonicalize the URL.
+                # Discard it on parse error.
+                try:
+                    url = urljoin(base_url, url.strip())
+                except Exception:
+                    continue
 
-                # Add the URL to the set.
-                add_result(url)
+                # Discard URLs that are not links to other pages or resources.
+                if only_links and not is_link(url, base_url = base_url):
+                    continue
+
+            # If a base URL was NOT given...
+            else:
+
+                # Discard relative URLs.
+                # Also discard it on parse error.
+                try:
+                    parsed = parse_url(url)
+                    if not parsed.scheme or not parsed.netloc:
+                        continue
+                except Exception:
+                    continue
+
+            # Add the URL to the set.
+            add_result(url)
 
     # Return the set of collected URLs.
     return result

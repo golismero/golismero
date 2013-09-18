@@ -78,13 +78,14 @@ class Logger (object):
         :param message: Message to write.
         :type message: str
         """
-        if message:
-            Config._context.send_msg(
-                message_type = MessageType.MSG_TYPE_CONTROL,
-                message_code = MessageCode.MSG_CONTROL_LOG,
-                message_info = (message, level, is_error),
-                    priority = MessagePriority.MSG_PRIORITY_HIGH
-            )
+        if not isinstance(message, basestring):
+            message = str(message)
+        Config._context.send_msg(
+            message_type = MessageType.MSG_TYPE_CONTROL,
+            message_code = MessageCode.MSG_CONTROL_LOG,
+            message_info = (message, level, is_error),
+                priority = MessagePriority.MSG_PRIORITY_HIGH
+        )
 
 
     #----------------------------------------------------------------------
