@@ -97,13 +97,12 @@ class Spider(TestingPlugin):
             Logger.log_more_verbose("Skipped forbidden URLs:\n    %s" % "\n    ".join(sorted(m_urls_not_allowed)))
 
         # Do not follow URLs out of scope
-        m_out_of_scope_count = len(m_urls_allowed)
-        m_urls_allowed = []
+        m_urls_in_scope = []
         m_broken = []
         for url in m_urls_allowed:
             try:
                 if url in Config.audit_scope:
-                    m_urls_allowed.append(url)
+                    m_urls_in_scope.append(url)
             except Exception:
                 m_broken.append(url)
         if m_broken:
@@ -111,17 +110,17 @@ class Spider(TestingPlugin):
                 Logger.log_more_verbose("Skipped uncrawlable URL: %s" % m_broken[0])
             else:
                 Logger.log_more_verbose("Skipped uncrawlable URLs:\n    %s" % "\n    ".join(sorted(m_broken)))
-        m_out_of_scope_count = m_out_of_scope_count - len(m_urls_allowed) - len(m_broken)
+        m_out_of_scope_count = len(m_urls_allowed) - len(m_urls_in_scope) - len(m_broken)
         if m_out_of_scope_count:
             Logger.log_more_verbose("Skipped %d links out of scope." % m_out_of_scope_count)
 
-        if m_urls_allowed:
-            Logger.log_verbose("Found %d links in URL: %s" % (len(m_urls_allowed), m_url))
+        if m_urls_in_scope:
+            Logger.log_verbose("Found %d links in URL: %s" % (len(m_urls_in_scope), m_url))
         else:
             Logger.log_verbose("No links found in URL: %s" % m_url)
 
         # Convert to Url data type
-        for u in m_urls_allowed:
+        for u in m_urls_in_scope:
             try:
                 p = parse_url(u)
                 if p.scheme == "mailto":
