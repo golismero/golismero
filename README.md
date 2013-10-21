@@ -170,3 +170,5 @@ Some gotchas we already know about:
 * Control-C on Python generally doesn't work very well - it may show bogus errors on screen, but you can ignore them. If stopping GoLismero takes too long, try hitting Control-C twice for force shutdown. Even then, sometimes you just have to be a patient!
 * GoLismero seems to run slower on Windows than on Linux or Mac. It appears to be related to the Python standard multiprocessing module and the lack of fork() support on Windows.
 * This is not a bug, just a reminder: GoLismero by default creates a new database file on each run! You can disable the database creation with the -nd switch.
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/a78aa0ae860762d0fcfd63bcd3211d09 "githalytics.com")](http://githalytics.com/golismero/golismero)
