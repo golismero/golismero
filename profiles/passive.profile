@@ -6,4 +6,4 @@ max_links = 0
 follow_redirects = yes
 follow_first_redirect = no
 disable_plugins = all
-enable_plugins = import, dns_analyzer, theharvester, suspicious_url, report
+enable_plugins = import, dns, theharvester, suspicious_url, report
