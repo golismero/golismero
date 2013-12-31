@@ -454,6 +454,8 @@ def detect_auth_method(url):
 
     s = Session()
     r = s.send(p)
+    scheme = ""
+    realm = ""
 
     if 'www-authenticate' in r.headers:
         authline = r.headers['www-authenticate']
