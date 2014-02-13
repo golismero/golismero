@@ -68,7 +68,7 @@ class BaseDB (object):
         self.close()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def _atom(self, fn, args, kwargs):
         """
         Execute an atomic operation.
@@ -90,7 +90,7 @@ class BaseDB (object):
         raise NotImplementedError("Atomic operations not supported")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def _transaction(self, fn, args, kwargs):
         """
         Execute a transactional operation.
@@ -112,7 +112,7 @@ class BaseDB (object):
         raise NotImplementedError("Transactions not supported")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def encode(data):
         """
@@ -127,7 +127,7 @@ class BaseDB (object):
         return data
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def decode(data):
         """
@@ -143,7 +143,7 @@ class BaseDB (object):
         return data
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def compact(self):
         """
         Free unused disk space.
@@ -154,7 +154,7 @@ class BaseDB (object):
         return
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dump(self, filename):
         """
         Dump the database contents to a file.
@@ -167,7 +167,7 @@ class BaseDB (object):
         raise NotImplementedError("Operation not supported")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Free all resources associated with this database.

@@ -40,7 +40,8 @@ if "%1" == "help" (
 
 if "%1" == "clean" (
 	for /d %%i in (%BUILDDIR%\*) do rmdir /q /s %%i
-	del /q /s %BUILDDIR%\*
+	del /q /s %BUILDDIR%\* >nul 2>nul
+	del /q /s *.rst >nul 2>nul
 	goto end
 )
 

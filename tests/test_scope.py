@@ -31,18 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import sys
 import os
 from os import path
-try:
-    _FIXED_PATH_
-except NameError:
-    here = path.split(path.abspath(__file__))[0]
-    if not here:  # if it fails use cwd instead
-        here = path.abspath(os.getcwd())
-    golismero = path.join(here, "..")
-    thirdparty_libs = path.join(golismero, "thirdparty_libs")
-    if path.exists(thirdparty_libs):
-        sys.path.insert(0, thirdparty_libs)
-        sys.path.insert(0, golismero)
-    _FIXED_PATH_ = True
+here = path.split(path.abspath(__file__))[0]
+if not here:  # if it fails use cwd instead
+    here = path.abspath(os.getcwd())
+golismero = path.join(here, "..")
+thirdparty_libs = path.join(golismero, "thirdparty_libs")
+if path.exists(thirdparty_libs):
+    sys.path.insert(0, thirdparty_libs)
+    sys.path.insert(0, golismero)
 
 
 from golismero.api.config import Config
@@ -59,7 +55,7 @@ def test_scope_example():
     main_config.ui_mode = "disabled"
     main_config.use_colors = False
     audit_config = AuditConfig()
-    audit_config.targets = ["www.example.com"]
+    audit_config.targets = ["http://www.example.com"]
     audit_config.include_subdomains = True
     with PluginTester(main_config, audit_config) as t:
         print Config.audit_scope
@@ -107,8 +103,9 @@ def test_scope_localhost():
     main_config.ui_mode = "disabled"
     main_config.use_colors = False
     audit_config = AuditConfig()
-    audit_config.targets = ["localhost"]
+    audit_config.targets = ["http://localhost/"]
     audit_config.include_subdomains = True
+    audit_config.allow_parent = True
     with PluginTester(main_config, audit_config) as t:
         print Config.audit_scope
 

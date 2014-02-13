@@ -9,9 +9,9 @@ description = Default user profile for GoLismero.
 #audit_name = MyAudit
 
 # Audit database.
-# Use "memory://" for in-memory database,
-# or "sqlite://file.db" for a SQLite database file.
-#audit_db = sqlite://
+# Use ":memory:" for in-memory database, or a filename for a database file.
+# Use ":auto:" to create a new database file based on the audit name.
+audit_db = :memory:
 
 #------------------------------------------------------------------------------
 # Report options
@@ -28,11 +28,11 @@ only_vulns = default
 # Include subdomains in the target scope.
 include_subdomains = yes
 
-# Filter subdomains using a regular expression.
-#subdomain_regex = ^.*\.example\.com$
+# Include parent folders in the target scope.
+allow_parent = yes
 
-# Maximum spidering depth.
-depth = 0
+# Maximum spidering depth. Defaults to 1.
+depth = 1
 
 # Maximum number of links to analyze (0 => infinite).
 max_links = 0
@@ -59,9 +59,9 @@ follow_first_redirect = yes
 enable_plugins = all
 
 # Plugin blacklist, comma separated. Use "all" to disable all plugins.
-# By default it's best to disable plugins that require special configuration,
-# like a dedicated server or an API key.
-disable_plugins = openvas
+# For example you could disable plugins that require special configuration,
+# like a dedicated server or an API key, if you don't have them.
+#disable_plugins = shodan, openvas, spiderfoot
 
 # Plugin settings overrides follow.
 # The format is the same as in the main config file.

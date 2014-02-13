@@ -26,25 +26,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-import re
-import os.path
+__all__ = ["RSTReport"]
+
+from golismero.api.audit import get_audit_times, parse_audit_times
+from golismero.api.config import Config
+from golismero.api.data import Data
+from golismero.api.data.db import Database
+from golismero.api.logger import Logger
+from golismero.api.net.web_utils import parse_url
+from golismero.api.plugin import ReportPlugin
+from golismero.api.text.text_utils import hexdump, to_utf8
 
 from collections import defaultdict
 from datetime import datetime
 from pprint import pformat
 from textwrap import wrap
-from shlex import split
 
-from golismero.api.audit import get_audit_times, parse_audit_times
-from golismero.api.config import Config
-from golismero.api.data.db import Database
-from golismero.api.external import run_external_tool
-from golismero.api.logger import Logger
-from golismero.api.plugin import ReportPlugin
-from golismero.api.text.text_utils import hexdump
-
-# Data types
-from golismero.api.data import Data
+import re
 
 
 #------------------------------------------------------------------------------
@@ -53,129 +51,129 @@ class RSTReport(ReportPlugin):
     Creates reports in reStructured Text format.
     """
 
-
-    #--------------------------------------------------------------------------
-    def is_supported(self, output_file):
-        return output_file and output_file.lower().endswith(".rst")
+    EXTENSION = ".rst"
 
 
     #--------------------------------------------------------------------------
     def generate_report(self, output_file):
-        Logger.log_verbose("Writing reStructured text report to file: %s" % output_file)
+        Logger.log_verbose(
+            "Writing reStructured text report to file: %s" % output_file)
 
         # Open the output file.
         with open(output_file, "w") as f:
 
-            # Print the main header.
-            print >>f, "GoLismero Report"
-            print >>f, "================"
-            print >>f, ""
-            print >>f, ".. title:: %s - GoLismero" % self.__format_rst(Config.audit_name)
-            print >>f, ""
-            print >>f, ".. footer:: Report generation date: %s" % datetime.now()
-            print >>f, ""
-            print >>f, ".. contents:: Table of Contents"
-            print >>f, "   :depth: 3"
-            print >>f, "   :backlinks: top"
-            print >>f, ""
+            # Write the report.
+            self.write_report_to_open_file(f)
 
-            # Print the summary.
-            start_time, stop_time, run_time = parse_audit_times( *get_audit_times() )
-            print >>f, "Summary"
-            print >>f, "-------"
+        # Launch the build command, if any.
+        self.launch_command(output_file)
+
+
+    #--------------------------------------------------------------------------
+    def write_report_to_open_file(self, f):
+        """
+        Write the report into the given open file.
+
+        :param f: Open file.
+        :type f: file
+        """
+
+        # Determine the report type.
+        self.__full_report = not Config.audit_config.only_vulns
+
+        # Print the main header.
+        print >>f, "GoLismero Report"
+        print >>f, "================"
+        print >>f, ""
+        print >>f, ".. title:: %s - GoLismero" % self.__format_rst(Config.audit_name)
+        print >>f, ""
+        print >>f, ".. footer:: Report generation date: %s UTC" % datetime.utcnow()
+        print >>f, ""
+        print >>f, ".. contents:: Table of Contents"
+        print >>f, "   :depth: 3"
+        print >>f, "   :backlinks: top"
+        print >>f, ""
+
+        # Print the summary.
+        start_time, stop_time, run_time = parse_audit_times( *get_audit_times() )
+        print >>f, "Summary"
+        print >>f, "-------"
+        print >>f, ""
+        print >>f, "- Audit name: " + self.__format_rst(Config.audit_name)
+        print >>f, "- Start date: " + start_time
+        print >>f, "- End date: " + stop_time
+        print >>f, "- Execution time: " + run_time
+        print >>f, "- Report type: " + (
+            "Full" if self.__full_report else "Brief")
+        print >>f, ""
+
+        # Print the audit scope.
+        print >>f, "Audit Scope"
+        print >>f, "-----------"
+        print >>f, ""
+        print >>f, "- IP Addresses: "
+        for address in Config.audit_scope.addresses:
+            print >>f, "  + " + self.__format_rst(address)
+        print >>f, "- Domains:"
+        scope_domains = ["*." + r for r in Config.audit_scope.roots]
+        scope_domains.extend(Config.audit_scope.domains)
+        for domain in scope_domains:
+            print >>f, "  + " + self.__format_rst(domain)
+        print >>f, "- Web Pages:"
+        for url in Config.audit_scope.web_pages:
+            print >>f, "  + " + self.__format_rst(url)
+        print >>f, ""
+
+        # Collect the vulnerabilities that are not false positives.
+        datas = self.__collect_vulns(False)
+
+        # If it's a brief report and we have no vulnerabilities,
+        # write a message and stop.
+        if not datas and not self.__full_report:
+            print >>f, "No vulnerabilities found."
             print >>f, ""
-            print >>f, "- Audit name: " + self.__format_rst(Config.audit_name)
-            print >>f, "- Start date: " + start_time
-            print >>f, "- End date: " + stop_time
-            print >>f, "- Execution time: " + run_time
-            print >>f, ""
+            return
 
-            # Print the audit scope.
-            print >>f, "Audit Scope"
-            print >>f, "-----------"
-            print >>f, ""
-            print >>f, "- IP Addresses: "
-            for address in Config.audit_scope.addresses:
-                print >>f, "  + " + self.__format_rst(address)
-            print >>f, "- Domains:"
-            scope_domains = ["*." + r for r in Config.audit_scope.roots]
-            scope_domains.extend(Config.audit_scope.domains)
-            for domain in scope_domains:
-                print >>f, "  + " + self.__format_rst(domain)
-            print >>f, "- Web Pages:"
-            for url in Config.audit_scope.web_pages:
-                print >>f, "  + " + self.__format_rst(url)
-            print >>f, ""
+        # Collect the false positives.
+        # In brief mode, this is used to eliminate the references to them.
+        fp = self.__collect_vulns(True)
+        self.__fp = set()
+        for ids in fp.itervalues():
+            self.__fp.update(ids)
 
-            # Determine the report type.
-            self.__full_report = not Config.audit_config.only_vulns
+        try:
 
-            # Collect the vulnerabilities that are not false positives.
-            datas = self.__collect_vulns(False)
+            # This dictionary tracks which data to show
+            # and which not to in brief report mode.
+            self.__vulnerable = set()
 
-            # If it's a brief report and we have no vulnerabilities,
-            # write a message and stop.
-            if not datas and not self.__full_report:
-                print >>f, "No vulnerabilities found."
-                print >>f, ""
-                return
-
-            # Collect the false positives.
-            # In brief mode, this is used to eliminate the references to them.
-            fp = self.__collect_vulns(True)
-            self.__fp = set()
-            for ids in fp.itervalues():
-                self.__fp.update(ids)
+            # Report the vulnerabilities.
+            if datas:
+                self.__write_rst(f, datas, Data.TYPE_VULNERABILITY, "Vulnerabilities")
 
             try:
 
-                # Report the vulnerabilities.
-                self.__write_rst(f, datas, Data.TYPE_VULNERABILITY, "Vulnerabilities")
+                # Show the resources in the report.
+                datas = self.__collect_data(Data.TYPE_RESOURCE)
+                if datas:
+                    self.__write_rst(f, datas, Data.TYPE_RESOURCE,
+                            "Resources" if self.__full_report else "Assets")
 
-                # This dictionary tracks which data to show
-                # and which not to in brief report mode.
-                self.__vulnerable = set()
-
-                try:
-
-                    # Show the resources in the report.
-                    datas = self.__collect_data(Data.TYPE_RESOURCE)
-                    if datas:
-                        self.__write_rst(f, datas, Data.TYPE_RESOURCE,
-                                "Resources" if self.__full_report else "Assets")
-
-                    # Show the informations in the report.
-                    datas = self.__collect_data(Data.TYPE_INFORMATION)
-                    if datas:
-                        self.__write_rst(f, datas, Data.TYPE_INFORMATION,
-                                "Informations" if self.__full_report else "Evidences")
-
-                finally:
-                    self.__vulnerable.clear()
+                # Show the informations in the report.
+                datas = self.__collect_data(Data.TYPE_INFORMATION)
+                if datas:
+                    self.__write_rst(f, datas, Data.TYPE_INFORMATION,
+                            "Informations" if self.__full_report else "Evidences")
 
             finally:
-                self.__fp.clear()
+                self.__vulnerable.clear()
 
-            # Show the false positives in the full report.
-            if self.__full_report and fp:
-                self.__write_rst(f, fp, Data.TYPE_VULNERABILITY, "False Positives")
+        finally:
+            self.__fp.clear()
 
-        # Launch the build command, if any.
-        command = Config.plugin_config.get("command", "")
-        if command:
-            Logger.log_verbose("Launching command: %s" % command)
-            args = split(command)
-            for i in xrange(len(args)):
-                token = args[i]
-                p = token.find("$1")
-                while p >= 0:
-                    if p == 0 or (p > 0 and token[p-1] != "$"):
-                        token = token[:p] + output_file + token[p+2:]
-                    p = token.find("$1", p + len(output_file))
-                args[i] = token
-            cwd = os.path.split(output_file)[0]
-            log = lambda x: Logger.log_verbose(x[:-1] if x.endswith("\n") else x)
-            run_external_tool(args[0], args[1:], cwd=cwd, callback=log)
+        # Show the false positives in the full report.
+        if self.__full_report and fp:
+            self.__write_rst(f, fp, Data.TYPE_VULNERABILITY, "False Positives")
 
 
     #--------------------------------------------------------------------------
@@ -197,8 +195,15 @@ class RSTReport(ReportPlugin):
         s = s.replace("\t", " " * 8)
         s = s.replace("\r\n", "\n")
         s = s.replace("\r", "\n")
-        s = self.__re_escape_rst.sub(r"\\\1", s)
         s = self.__re_unindent.sub("", s)
+        try:
+            u = parse_url(s)
+        except Exception:
+            u = None
+        if u is not None and u.scheme in ("http", "https", "ftp", "mailto"):
+            s = "`%s <%s>`_" % (self.__re_escape_rst.sub(r"\\\1", s), u.url)
+        else:
+            s = self.__re_escape_rst.sub(r"\\\1", s)
         return s
 
 
@@ -218,7 +223,9 @@ class RSTReport(ReportPlugin):
             (isinstance(obj, list) or isinstance(obj, tuple)) and
             all(isinstance(x, basestring) for x in obj)
         ):
-            return "\n".join("- " + self.__escape_rst(pformat(x)) for x in obj)
+            return "\n".join("- " + self.__escape_rst(
+                to_utf8(x) if isinstance(x, basestring) else pformat(x)
+            ) for x in obj)
         if isinstance(obj, dict):
             return "\n".join(
                 self.__escape_rst("%s: %s" % (k,v))
@@ -249,7 +256,7 @@ class RSTReport(ReportPlugin):
     def __collect_vulns(self, fp_filter):
         vulns = defaultdict(list)
         for vuln in self.__iterate_data(data_type=Data.TYPE_VULNERABILITY):
-            if vuln.false_positive == fp_filter:
+            if bool(vuln.false_positive) == fp_filter:
                 vulns[vuln.display_name].append(vuln.identity)
         for x in vulns.itervalues():
             x.sort()
@@ -257,7 +264,7 @@ class RSTReport(ReportPlugin):
 
 
     #--------------------------------------------------------------------------
-    def __write_rst(self, f, datas, data_type, header, fp_filter_mode = None):
+    def __write_rst(self, f, datas, data_type, header):
 
         # Get the titles.
         titles = datas.keys()
@@ -298,7 +305,8 @@ class RSTReport(ReportPlugin):
                 print >>f, ""
 
                 # Collect the properties.
-                property_groups = data.display_properties
+                property_groups = defaultdict(dict)
+                property_groups.update(data.display_properties)
 
                 # Add the graph links.
                 linked_info = data.get_links(Data.TYPE_INFORMATION)
@@ -333,6 +341,9 @@ class RSTReport(ReportPlugin):
                 # Get the groups.
                 groups = property_groups.keys()
                 groups.sort()
+                if "[DEFAULT]" in groups:
+                    groups.remove("[DEFAULT]")
+                    groups.insert(0, "[DEFAULT]")
 
                 # Dump the data per group.
                 for group in groups:
@@ -348,6 +359,12 @@ class RSTReport(ReportPlugin):
                         for key, value in properties.iteritems()
                         if value
                     }
+
+                    # Remove ID properties.
+                    for key, value in properties.items():
+                        if key.endswith(" ID") and len(value) == 1 and \
+                                len(value[0]) == 32 and value[0].isalnum():
+                            del properties[key]
 
                     # Skip this group if we have no properties left to show.
                     if not properties:
@@ -365,7 +382,7 @@ class RSTReport(ReportPlugin):
                         if "Title" in names:
                             names.remove("Title")
                             names.insert(0, "Title")
-                    elif group == "":
+                    elif group == "[DEFAULT]":
                         if "Category" in names:
                             names.remove("Category")
                             names.insert(0, "Category")
@@ -389,7 +406,7 @@ class RSTReport(ReportPlugin):
                             w_values = max(w_values, len(x))
 
                     # Print the group header.
-                    if group:
+                    if group != "[DEFAULT]":
                         print >>f, group
                         print >>f, "*" * len(group)
                         print >>f, ""

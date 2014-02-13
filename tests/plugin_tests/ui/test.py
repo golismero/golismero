@@ -39,14 +39,14 @@ import time
 import warnings
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class TestUIPlugin(UIPlugin):
     """
     Test UI plugin.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
         if not isinstance(info, Data):
             raise TypeError("Expected Data, got %r instead" % type(info))
@@ -61,7 +61,7 @@ class TestUIPlugin(UIPlugin):
         print
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_msg(self, message):
         if not isinstance(message, Message):
             raise TypeError("Expected Message, got %r instead" % type(message))
@@ -106,6 +106,6 @@ class TestUIPlugin(UIPlugin):
                     print colorize(formatted, "yellow")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         pass

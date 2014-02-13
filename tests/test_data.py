@@ -31,18 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import sys
 import os
 from os import path
-try:
-    _FIXED_PATH_
-except NameError:
-    here = path.split(path.abspath(__file__))[0]
-    if not here:  # if it fails use cwd instead
-        here = path.abspath(os.getcwd())
-    golismero = path.join(here, "..")
-    thirdparty_libs = path.join(golismero, "thirdparty_libs")
-    if path.exists(thirdparty_libs):
-        sys.path.insert(0, thirdparty_libs)
-        sys.path.insert(0, golismero)
-    _FIXED_PATH_ = True
+here = path.split(path.abspath(__file__))[0]
+if not here:  # if it fails use cwd instead
+    here = path.abspath(os.getcwd())
+golismero = path.join(here, "..")
+thirdparty_libs = path.join(golismero, "thirdparty_libs")
+if path.exists(thirdparty_libs):
+    sys.path.insert(0, thirdparty_libs)
+    sys.path.insert(0, golismero)
 
 
 # Import the base data types first.
@@ -76,13 +72,13 @@ def helper_test_dupes(clazz, prefix, numbers):
     print "Testing %s" % clazz.__name__
     n_unknown = prefix + "UNKNOWN"
     unknown = getattr(clazz, n_unknown)
-    assert unknown is 0
+    assert unknown is 0, unknown
     for name in dir(clazz):
         if not name.startswith(prefix) or name == n_unknown:
             continue
         value = getattr(clazz, name)
-        assert type(value) is int
-        assert value not in numbers
+        assert type(value) is int, type(value)
+        assert value not in numbers, (value, numbers)
         numbers.add(value)
 
 

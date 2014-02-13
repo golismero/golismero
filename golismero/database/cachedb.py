@@ -46,7 +46,7 @@ from os.path import join
 sqlite3 = None
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Cache API implementors
 
 @implementor(MessageCode.MSG_RPC_CACHE_GET)
@@ -73,7 +73,7 @@ class BaseNetworkCache(BaseDB):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def _sanitize_protocol(protocol):
         protocol = protocol.lower()
@@ -82,7 +82,7 @@ class BaseNetworkCache(BaseDB):
         return protocol
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get(self, audit, key, protocol="http"):
         """
         Get a network resource from the cache.
@@ -98,7 +98,7 @@ class BaseNetworkCache(BaseDB):
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def set(self, audit, key, data, protocol="http", timestamp=None, lifespan=None):
         """
         Store a network resource in the cache.
@@ -121,7 +121,7 @@ class BaseNetworkCache(BaseDB):
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def remove(self, audit, key, protocol="http"):
         """
         Remove a network resource from the cache.
@@ -135,7 +135,7 @@ class BaseNetworkCache(BaseDB):
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def exists(self, audit, key, protocol="http"):
         """
         Verify if the given key exists in the cache.
@@ -148,7 +148,7 @@ class BaseNetworkCache(BaseDB):
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def clean(self, audit):
         """
         Delete all cache entries for the given audit.
@@ -166,19 +166,19 @@ class VolatileNetworkCache(BaseNetworkCache):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
         # audit -> protocol -> key -> data
         self.__cache = defaultdict( partial(defaultdict, dict) )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
         return self.__cache[audit][protocol].get(key, None)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def set(self, audit, key, data, protocol="http", timestamp=None, lifespan=None):
         protocol = self._sanitize_protocol(protocol)
 
@@ -186,7 +186,7 @@ class VolatileNetworkCache(BaseNetworkCache):
         self.__cache[audit][protocol][key] = data
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def remove(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
         try:
@@ -195,23 +195,23 @@ class VolatileNetworkCache(BaseNetworkCache):
             pass
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def exists(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
         return key in self.__cache[audit][protocol]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def clean(self, audit):
         self.__cache[audit] = defaultdict(dict)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         self.__cache = defaultdict( partial(defaultdict, dict) )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dump(self, filename):
         pass
 
@@ -223,7 +223,7 @@ class PersistentNetworkCache(BaseNetworkCache):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
         filename = join(get_user_settings_folder(), "cache.db")
         global sqlite3
@@ -235,7 +235,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         self.__create()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def _atom(self, fn, args, kwargs):
         # this will fail for multithreaded accesses,
         # but sqlite is not multithreaded either
@@ -248,7 +248,7 @@ class PersistentNetworkCache(BaseNetworkCache):
             self.__busy = False
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def _transaction(self, fn, args, kwargs):
         # this will fail for multithreaded accesses,
         # but sqlite is not multithreaded either
@@ -269,7 +269,7 @@ class PersistentNetworkCache(BaseNetworkCache):
             self.__busy = False
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def __create(self):
         """
@@ -292,7 +292,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         """)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def get(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
@@ -309,7 +309,7 @@ class PersistentNetworkCache(BaseNetworkCache):
             return self.decode(row[0])
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def set(self, audit, key, data, protocol="http", timestamp=None, lifespan=None):
         protocol = self._sanitize_protocol(protocol)
@@ -329,7 +329,7 @@ class PersistentNetworkCache(BaseNetworkCache):
             """,                  (audit, key, protocol, data, timestamp, lifespan))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def remove(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
@@ -339,7 +339,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         """,     (audit,        key,        protocol) )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def exists(self, audit, key, protocol="http"):
         protocol = self._sanitize_protocol(protocol)
@@ -354,7 +354,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         return bool(self.__cursor.fetchone()[0])
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @transactional
     def clean(self, audit):
         self.__cursor.execute("""
@@ -363,7 +363,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         """, (audit,))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def compact(self):
         try:
             self.__clear_old_entries()
@@ -384,7 +384,7 @@ class PersistentNetworkCache(BaseNetworkCache):
         self.__cursor.execute("VACUUM;")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @atomic
     def dump(self, filename):
         with open(filename, 'w') as f:
@@ -392,7 +392,7 @@ class PersistentNetworkCache(BaseNetworkCache):
                 f.write(line + "\n")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @atomic
     def close(self):
         try:

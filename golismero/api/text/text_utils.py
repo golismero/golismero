@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = [
     "char_count", "line_count", "word_count", "generate_random_string",
-    "uncamelcase", "split_first", "hexdump",
+    "uncamelcase", "hexdump", "to_utf8", "split_first",
 ]
 
 import re
@@ -91,7 +91,7 @@ def generate_random_string(length = 30):
     - ASCII letters (both lowercase and uppercase).
     - Digits (0-9).
 
-    >>> from golismero.text.text_utils import generate_random_string
+    >>> from golismero.api.text.text_utils import generate_random_string
     >>> generate_random_string(10)
     Asi91Ujsn5
     >>> generate_random_string(30)
@@ -172,6 +172,27 @@ def hexdump(s):
         d = "".join(c if c in printable else "." for c in s[i:i+16])
         a.append("%-32s-%-32s %s\n" % (h1, h2, d))
     return "".join(a)
+
+
+#------------------------------------------------------------------------------
+def to_utf8(s):
+    """
+    Convert the given Unicode string into an UTF-8 encoded string.
+
+    If the argument is already a normal Python string, nothing is done.
+    So this function can be used as a filter to normalize string arguments.
+
+    :param s: Unicode string to convert.
+    :type s: basestring
+
+    :returns: Converted string.
+    :rtype: str
+    """
+    if isinstance(s, unicode):
+        return s.encode("UTF-8")
+    if type(s) is not str and isinstance(s, str):
+        return str(s)
+    return s
 
 
 #------------------------------------------------------------------------------

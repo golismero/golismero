@@ -58,16 +58,43 @@ __all__ = [
 from .db import Database
 from ..config import Config
 from ..text.text_utils import uncamelcase
-from ...common import pickle, Singleton
+from ...common import pickle, Singleton, EmptyNewStyleClass
 
 from collections import defaultdict
 from functools import partial
 from hashlib import md5
+from inspect import getmro
 from uuid import uuid4
 from warnings import warn
 
 # Lazy imports.
 Vulnerability = None
+TAXONOMY_NAMES = None
+
+
+#------------------------------------------------------------------------------
+# Warnings thrown by this module.
+
+class MergeWarning(RuntimeWarning):
+    pass
+
+class PluginResultsWarning(RuntimeWarning):
+    pass
+
+class DuplicateResultsWarning(PluginResultsWarning):
+    pass
+
+class DiscardedResultsWarning(PluginResultsWarning):
+    pass
+
+class MissingReferencedResultsWarning(PluginResultsWarning):
+    pass
+
+class DiscardedReferencedResultsWarning(PluginResultsWarning):
+    pass
+
+class OrphanedResultsWarning(PluginResultsWarning):
+    pass
 
 
 #------------------------------------------------------------------------------
@@ -331,7 +358,7 @@ class keep_true(merge):
             old_bool = True
             msg = "Failed to evaluate old property %s.%s as boolean!"
             msg %= (old_data.__class__.__name__, key)
-            warn(msg, stacklevel=5)
+            warn(msg, MergeWarning, stacklevel=5)
 
         # Evaluate the new value as a trinary (boolean + None).
         try:
@@ -343,7 +370,7 @@ class keep_true(merge):
             new_bool = True
             msg = "Failed to evaluate new property %s.%s as boolean!"
             msg %= (new_data.__class__.__name__, key)
-            warn(msg, stacklevel=5)
+            warn(msg, MergeWarning, stacklevel=5)
 
         # Always prefer True or False over None.
         # If they are equal, choose the new value.
@@ -389,7 +416,7 @@ class keep_false(merge):
             old_bool = True
             msg = "Failed to evaluate old property %s.%s as boolean!"
             msg %= (old_data.__class__.__name__, key)
-            warn(msg, stacklevel=5)
+            warn(msg, MergeWarning, stacklevel=5)
 
         # Evaluate the new value as a trinary (boolean + None).
         try:
@@ -401,7 +428,7 @@ class keep_false(merge):
             new_bool = True
             msg = "Failed to evaluate new property %s.%s as boolean!"
             msg %= (new_data.__class__.__name__, key)
-            warn(msg, stacklevel=5)
+            warn(msg, MergeWarning, stacklevel=5)
 
         # Always prefer True or False over None.
         # If they are equal, choose the new value.
@@ -665,17 +692,20 @@ class Data(object):
         module instead.
 
         :returns: Grouped properties ready for display.
-        :rtype: dict(str -> dict(str -> *))
+        :rtype: dict(str -> dict(str -> \\*))
         """
 
         # TODO: Some of this logic could be delegated to subclasses.
         # It's hard to figure out how, though. So for now we'll have
         # a lot of hardcoded hacks in here.
 
-        # Lazy import of the Vulnerability class.
+        # Lazy import of the vulnerability submodule.
         global Vulnerability
         if Vulnerability is None:
             from .vulnerability import Vulnerability
+        global TAXONOMY_NAMES
+        if TAXONOMY_NAMES is None:
+            from .vulnerability.vuln_utils import TAXONOMY_NAMES
 
         # This is the dictionary we'll build and return.
         display = defaultdict(dict)
@@ -693,13 +723,15 @@ class Data(object):
 
             # Handle the vulnerability type.
             if propname == "vulnerability_type":
-                display[""]["Category"] = self.vulnerability_type
+                display["[DEFAULT]"]["Category"] = self.vulnerability_type
                 continue
 
             # Handle the vulnerability taxonomy types.
-            if propname in Vulnerability.TAXONOMY_NAMES:
-                key = Vulnerability.TAXONOMY_NAMES[propname]
-                display["Taxonomy"][key] = getattr(self, propname)
+            if propname in TAXONOMY_NAMES:
+                key   = TAXONOMY_NAMES[propname]
+                value = getattr(self, propname)
+                if value:
+                    display["Taxonomy"][key] = ", ".join(value)
                 continue
 
             # Ignore the rest of the properties defined in Data.
@@ -729,35 +761,188 @@ class Data(object):
                 key = "CVSS" + key[4:]
 
             # Get the property value.
-            # Values are preserved as-is, because we don't know how to parse
-            # them. Subclasses should override this method and change the
-            # values in the dictionary when needed.
             value = getattr(self, propname)
+
+            # Convert the value types that aren't safe to serialize.
+            # We don't need to be too careful here, because the purpose
+            # of this method isn't preserving all the information but
+            # merely showing it to the user.
+            if hasattr(value, "to_dict"):
+                value = value.to_dict()
+            elif isinstance(value, set):
+                value = list(value)
+            elif isinstance(value, frozenset):
+                value = list(value)
+            elif isinstance(value, dict):
+                value = dict(value)
+            elif isinstance(value, list):
+                value = list(value)
+            elif isinstance(value, tuple):
+                value = list(value)
+            elif isinstance(value, int):
+                value = int(value)
+            elif isinstance(value, long):
+                try:
+                    value = int(value)
+                except Exception:
+                    value = long(value)
+            elif isinstance(value, float):
+                value = float(value)
+            elif isinstance(value, unicode):
+                value = value.encode("utf-8", "replace")
+            elif value is None:
+                value = ""
+            else:
+                value = str(value)
 
             # Get the group.
             # More hardcoded hacks here... :(
+            group = "[DEFAULT]"
             if self.data_type == Data.TYPE_VULNERABILITY:
                 if propname in ("impact", "severity", "risk"):
                     group = "Risk"
                     value = Vulnerability.VULN_LEVELS[value].title()
                 elif propname.startswith("cvss"):
                     group = "Risk"
-                elif propname in ("title", "description", "solution", "references"):
+                elif propname in ("title", "description",
+                                  "solution", "references"):
                     group = "Description"
-                elif hasattr(Vulnerability, propname):
-                    group = ""
-                else:
+                elif not hasattr(Vulnerability, propname):
                     group = "Details"
-            elif self.data_type == Data.TYPE_RESOURCE:
-                group = ""
-            elif self.data_type == Data.TYPE_INFORMATION:
-                group = ""
 
             # Add the key and value to the dictionary.
             display[group][key] = value
 
         # Return the dictionary.
-        return display
+        return dict(display)
+
+
+    #--------------------------------------------------------------------------
+    def to_dict(self):
+        """
+        Plugins may call this method to convert the Data object into a Python
+        dictionary. This dictionary may in turn, for example, be converted to
+        a JSON string.
+
+        The return value is a dictionary mapping the property names to their
+        values. The property names are always strings, but the values may be
+        anything. There is no guarantee that the values will be serializable.
+
+        :returns: Dictionary mapping property names to values.
+        :rtype: dict(str -> \\*)
+        """
+
+        # This is the dictionary we'll build and return.
+        # Always has the current class name.
+        properties = {
+            "class": self.__class__.__name__,
+        }
+
+        # Enumerate properties and filter them using different criteria.
+        for name in dir(self):
+
+            # Ignore private and protected symbols.
+            if name.startswith("_"):
+                continue
+
+            # Whitelisted property names.
+            if name not in (
+                "identity", "plugin_id", "depth", "links",
+                "data_type", "data_subtype", "display_name",
+                "information_category",
+            ):
+
+                # Ignore most of the properties defined in Data.
+                if hasattr(Data, name):
+                    continue
+
+                # For properties defined in subclasses of Data,
+                # ignore if it's not an identity or mergeable property.
+                propdef = getattr(self.__class__, name)
+                if not identity.is_identity_property(propdef) and \
+                   not merge.is_mergeable_property(propdef):
+                    continue
+
+            # Get the property value.
+            value = getattr(self, name)
+
+            # Convert the value types that aren't safe to serialize.
+            if hasattr(value, "to_dict"):
+                value = value.to_dict()
+            elif isinstance(value, set):
+                value = list(value)
+            elif isinstance(value, frozenset):
+                value = list(value)
+            elif isinstance(value, dict):
+                value = dict(value)
+            elif isinstance(value, list):
+                value = list(value)
+            elif isinstance(value, tuple):
+                value = list(value)
+            elif isinstance(value, int):
+                value = int(value)
+            elif isinstance(value, long):
+                try:
+                    value = int(value)
+                except Exception:
+                    value = long(value)
+            elif isinstance(value, float):
+                value = float(value)
+            elif isinstance(value, str):
+                value = str(value)
+            elif isinstance(value, unicode):
+                value = value.encode("utf-8", "replace")
+
+            # Add the property name and value to the dictionary.
+            properties[name] = value
+
+        # Return the dictionary.
+        return properties
+
+
+    #--------------------------------------------------------------------------
+    @classmethod
+    def from_dict(cls, properties):
+        """
+        This is the reverse operation of the to_dict() method.
+
+        :param properties: Dictionary mapping property names to values.
+        :type properties: dict(str -> \\*)
+
+        :returns: Data object.
+        :rtype: Data
+        """
+
+        # Make sure the user is trying to deserialize the correct class.
+        if properties.get("class") != cls.__name__:
+            raise TypeError("Expected %s, got %s instead" %
+                        (cls.__name__, properties.get("class", "<unknown>")))
+
+        # No generic implementation for now. Some changes have to be done to
+        # the data model for that to work.
+        raise NotImplementedError()
+
+        # # The default implementation assumes all properties have a private
+        # # method named after them. Classes that don't follow this interface
+        # # must override this method and implement their own deserializer.
+        # # Note that no validation of any kind is done on the data: that alone
+        # # could be another reason why you may want to override this method.
+        # # Also note that methods that were not found in this class or any of
+        # # its subclasses will be set as ordinary properties. This facilitates
+        # # the job of subclasses overriding this method.
+        # instance = EmptyNewStyleClass()
+        # instance.__class__ = cls
+        # inheritance = getmro(cls)
+        # for name, value in properties.iteritems():
+        #     if name not in (
+        #         "class", "links", "data_type", "data_subtype", "display_name",
+        #     ):
+        #         for parent in inheritance:
+        #             if hasattr(parent, name):
+        #                 name = "_%s__%s" % (parent.__name__, name)
+        #                 break
+        #         setattr(instance, name, value)
+        # return instance
 
 
     #--------------------------------------------------------------------------
@@ -817,7 +1002,7 @@ class Data(object):
         .. warning: This is an internally used method. Do not call!
 
         :returns: Collected property names and values.
-        :rtype: dict(str -> *)
+        :rtype: dict(str -> \\*)
         """
         is_identity_property = identity.is_identity_property
         clazz = self.__class__
@@ -943,7 +1128,7 @@ class Data(object):
             if prop is not None:
                 msg = ("Mergeable read-only properties make no sense!"
                        " Ignoring: %s.%s" % (cls.__name__, key) )
-                warn(msg, stacklevel=5)
+                warn(msg, MergeWarning, stacklevel=5)
 
 
     @classmethod
@@ -1351,12 +1536,16 @@ class Data(object):
 
 
     #--------------------------------------------------------------------------
-    def is_in_scope(self):
+    def is_in_scope(self, scope = None):
         """
         Determines if this Data object is within the scope of the current audit.
 
         .. warning: This method is used by GoLismero itself.
                     Plugins do not need to call it.
+
+        :param scope: (Optional) Scope to test again. Defaults to the current
+            audit scope.
+        :type scope: Scope
 
         :return: True if within scope, False otherwise.
         :rtype: bool
@@ -1377,6 +1566,27 @@ class Data(object):
         """
         # TODO: maybe we should compare all properties, not just identity.
         return self.identity == obj.identity
+
+
+    #--------------------------------------------------------------------------
+    def is_instance(self, clazz):
+        """
+        Checks if this Data object belongs to the given Data class.
+
+        :param clazz: Subclass to check.
+        :type clazz: type
+
+        :returns: True if the data object belongs to the class,
+            False otherwise.
+        :rtype: bool
+        """
+        try:
+            data_type    = clazz.data_type
+            data_subtype = clazz.data_subtype
+        except AttributeError:
+            return False
+        return self.data_type    == data_type    and \
+               self.data_subtype == data_subtype
 
 
 #------------------------------------------------------------------------------
@@ -1467,7 +1677,8 @@ class _LocalDataCache(Singleton):
             # Keep (and overwrite) the data. Order is important!
             # XXX FIXME review, some data may be lost... (merge instead?)
             ##if data_id in self.__new_data:
-            ##    warn("Data already existed! %r" % self.__new_data[data_id])
+            ##    warn("Data already existed! %r" % self.__new_data[data_id],
+            ##         MergeWarning)
             self.__new_data[data_id] = data
 
             # Remember the identity.
@@ -1601,7 +1812,7 @@ class _LocalDataCache(Singleton):
             if discarded_returned:
                 msg = "recv_info() returned discarded data: "
                 msg += ", ".join(discarded_returned)
-                warn(msg, RuntimeWarning)
+                warn(msg, DiscardedResultsWarning)
 
             # Merge duplicates.
             graph = {}
@@ -1622,7 +1833,7 @@ class _LocalDataCache(Singleton):
                     msg += ":\n\t" + "\n\t".join(repr(data) for data in merged)
                 except Exception:
                     pass
-                warn(msg, RuntimeWarning)
+                warn(msg, DuplicateResultsWarning)
 
             # Grab missing results.
             #
@@ -1671,16 +1882,16 @@ class _LocalDataCache(Singleton):
                             )
                         except Exception:
                             msg += ": " + ", ".join(missing_ids)
-                        warn(msg, RuntimeWarning)
+                        warn(msg, MissingReferencedResultsWarning)
                 except Exception:
-                    warn(msg, RuntimeWarning)
+                    warn(msg, MissingReferencedResultsWarning)
 
             # Warn about discarded data being referenced.
             if discarded_ref:
                 msg = ("Data created and referenced by plugin,"
                        " but marked as discarded: ")
                 msg += ", ".join(discarded_ref)
-                warn(msg, RuntimeWarning)
+                warn(msg, DiscardedReferencedResultsWarning)
 
             # Warn for data being instanced but not returned nor referenced.
             # Do not warn for discarded nor autogenerated in this case.
@@ -1696,7 +1907,7 @@ class _LocalDataCache(Singleton):
                         repr(self.__new_data[data_id]) for data_id in orphan)
                 except Exception:
                     pass
-                warn(msg, Warning)
+                warn(msg, OrphanedResultsWarning)
 
             # Remove discarded elements.
             discarded = self.__discarded.intersection(graph.iterkeys())
@@ -1765,6 +1976,6 @@ class _LocalDataCache(Singleton):
             self.__cleanup()
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Temporary storage for newly created objects.
 LocalDataCache = _LocalDataCache()

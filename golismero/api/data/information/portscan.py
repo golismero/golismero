@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = ["Portscan"]
 
-from . import Information
+from . import Fingerprint
 from .. import identity
 from ..resource.ip import IP
 
@@ -40,12 +40,12 @@ from time import time
 
 
 #------------------------------------------------------------------------------
-class Portscan(Information):
+class Portscan(Fingerprint):
     """
     Portscan results.
     """
 
-    information_type = Information.INFORMATION_PORTSCAN
+    information_type = Fingerprint.INFORMATION_PORTSCAN
 
 
     #--------------------------------------------------------------------------
@@ -75,8 +75,8 @@ class Portscan(Information):
             sane    = set()
             visited = set()
             for state, protocol, port in ports:
-                state    = state.upper()
-                protocol = protocol.upper()
+                state    = str( state.upper() )
+                protocol = str( protocol.upper() )
                 port     = int(port)
                 assert state in ("OPEN", "CLOSED", "FILTERED"), state
                 assert protocol in ("TCP", "UDP"), state
@@ -97,7 +97,7 @@ class Portscan(Information):
         self.add_resource(ip)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -107,7 +107,7 @@ class Portscan(Information):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def ports(self):
         """
@@ -122,7 +122,7 @@ class Portscan(Information):
         return self.__ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def timestamp(self):
         """
@@ -132,12 +132,18 @@ class Portscan(Information):
         return self.__timestamp
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __str__(self):
         return "\n".join("%-8s %-3s %d" % p for p in sorted(self.ports))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "Port Scan Results"
+
+
+    #--------------------------------------------------------------------------
     @property
     def open_tcp_ports(self):
         """
@@ -152,7 +158,7 @@ class Portscan(Information):
         return ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def closed_tcp_ports(self):
         """
@@ -167,7 +173,7 @@ class Portscan(Information):
         return ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def filtered_tcp_ports(self):
         """
@@ -182,7 +188,7 @@ class Portscan(Information):
         return ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def open_udp_ports(self):
         """
@@ -197,7 +203,7 @@ class Portscan(Information):
         return ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def closed_udp_ports(self):
         """
@@ -212,7 +218,7 @@ class Portscan(Information):
         return ports
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def filtered_udp_ports(self):
         """

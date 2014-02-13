@@ -1,0 +1,17 @@
+[
+	{"email":"prueba1@hotmail.com", "id":1, "username":"admin", "name":"Admin Prueba", "rol":"2"},
+	{"email":"prueba2@hotmail.com", "id":2, "username":"user", "name":"Usuario Usaurio", "rol":"2"},
+	{"email":"prueba3@hotmail.com", "id":3, "username":"rareq", "name":"Ra Req", "rol":"2"},
+	{"email":"prueba4@hotmail.com", "id":4, "username":"pepe", "name":"Pepe García", "rol":"2"},
+	{"email":"prueba5@hotmail.com", "id":5, "username":"gonzalo", "name":"Gonzalo Prueba", "rol":"2"},
+	{"email":"prueba5@hotmail.com", "id":6, "username":"guest", "name":"Guest Prueba", "rol":"2"},
+	{"email":"prueba6@hotmail.com", "id":7, "username":"admin", "name":"Admin Prueba", "rol":"2"},
+	{"email":"prueba7@hotmail.com", "id":8, "username":"user", "name":"Usuario Usaurio", "rol":"2"},
+	{"email":"prueba8@hotmail.com", "id":9, "username":"rareq", "name":"Ra Req", "rol":"2"},
+	{"email":"prueba9@hotmail.com", "id":10, "username":"pepe", "name":"Pepe García", "rol":"2"},
+	{"email":"prueba0@hotmail.com", "id":11, "username":"gonzalo", "name":"Gonzalo Prueba", "rol":"2"},
+	{"email":"prueb@hotmail.com", "id":12, "username":"guest", "name":"Guest Prueba", "rol":"2"},
+	{"email":"admin@hotmail.com", "id":13, "username":"admin", "name":"Admin Prueba", "rol":"2"},
+	{"email":"user@hotmail.com", "id":14, "username":"user", "name":"Usuario Usaurio", "rol":"2"},
+	{"email":"ra@hotmail.com", "id":15, "username":"rareq", "name":"Ra Req", "rol":"2"}
+]

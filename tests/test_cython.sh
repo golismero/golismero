@@ -3,8 +3,10 @@ cd ../golismero
 find `pwd` -name "*.py" > ../_tmp.txt
 cd ../plugins
 find `pwd` -name "*.py" >> ../_tmp.txt
-cd ../tests/plugin_tests
-find `pwd` -name "*.py" >> ../_tmp.txt
+cd ../thirdparty_libs/openvas_lib
+find `pwd` -name "*.py" >> ../../_tmp.txt
+cd ../../tests/plugin_tests
+find `pwd` -name "*.py" >> ../../_tmp.txt
 cd ../..
 
 find . -name "*.c" -delete > /dev/null 2> /dev/null

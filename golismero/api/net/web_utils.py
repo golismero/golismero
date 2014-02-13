@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#-----------------------------------------------------------------------
-# Web utilities API
-#-----------------------------------------------------------------------
+"""
+Web utilities API.
+"""
 
 __license__ = """
 GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
@@ -33,14 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = [
     "download", "data_from_http_response", "generate_user_agent",
     "fix_url", "check_auth", "get_auth_obj", "detect_auth_method",
-    "split_hostname", "generate_error_page_url", "ParsedURL",
-    "parse_url", "json_decode", "json_encode",
+    "split_hostname", "generate_error_page_url", "get_error_page",
+    "ParsedURL", "parse_url", "urlparse", "urldefrag", "urljoin",
+    "json_decode", "json_encode",
 ]
 
 
 from . import NetworkOutOfScope
-from ..data import LocalDataCache
-from ..text.text_utils import generate_random_string, split_first
+from ..data import LocalDataCache, discard_data
+from ..text.text_utils import generate_random_string, split_first, to_utf8
 from ...common import json_decode, json_encode
 
 from BeautifulSoup import BeautifulSoup
@@ -52,13 +53,13 @@ from requests.auth import HTTPBasicAuth, HTTPDigestAuth
 from requests_ntlm import HttpNtlmAuth
 from tldextract import TLDExtract
 from urllib import quote, quote_plus, unquote, unquote_plus
-from urlparse import urldefrag, urljoin
+from urlparse import urljoin as original_urljoin
 from warnings import warn
 
 import re
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Url class from urllib3 renamed as Urllib3_Url to avoid confusion.
 
 try:
@@ -67,7 +68,7 @@ except ImportError:
     from urllib3.util import Url as Urllib3_Url
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 __user_agents = (
     "Opera/9.80 (Windows NT 6.1; U; zh-tw) Presto/2.5.22 Version/10.50",
     "Mozilla/6.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:2.0.0.0) Gecko/20061028 Firefox/3.0",
@@ -95,6 +96,17 @@ __user_agents = (
     "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us) AppleWebKit/534.16+ (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4",
     "Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25"
 )
+
+# This var contains names of vars uses by most commont web servers. This will be used by
+# all of injection tools, that can skip these vars.
+WEB_SERVERS_VARS = ["__utma",
+                    "__utmb",
+                    "__utmc",
+                    "__utmz",
+                    "JSESSIONID",
+                    "PHPSESSID",
+                    "ASPSESSIONID"]
+
 def generate_user_agent():
     """
     :returns: A valid user agent string, randomly chosen from a predefined list.
@@ -103,8 +115,73 @@ def generate_user_agent():
     return __user_agents[randint(0, len(__user_agents) - 1)]
 
 
-#----------------------------------------------------------------------
-def download(url, callback = None, timeout = 10.0, allow_redirects = True):
+#------------------------------------------------------------------------------
+def data_from_http_response(response):
+    """
+    Extracts data from an HTTP response.
+
+    :param response: HTTP response.
+    :type response: HTTP_Response
+
+    :returns: Extracted data, or None if no data was found.
+    :rtype: Data | None
+    """
+
+    # If we have no data, return None.
+    if not response.data:
+        return None
+
+    # Get the MIME content type.
+    content_type = response.content_type
+
+    # Strip the content type modifiers.
+    if ";" in content_type:
+        content_type = content_type[:content_type.find(";")]
+
+    # Sanitize the content type.
+    content_type = content_type.strip().lower()
+    if "/" not in content_type:
+        return None
+
+    # Parse the data.
+    data = None
+    try:
+
+        # HTML pages.
+        if content_type == "text/html":
+            from ..data.information.html import HTML
+            data = HTML(response.data)
+
+        # Plain text data.
+        elif content_type.startswith("text/"):
+            from ..data.information.text import Text
+            data = Text(response.data, response.content_type)
+
+        # Image files.
+        elif content_type.startswith("image/"):
+            from ..data.information.image import Image
+            data = Image(response.data, response.content_type)
+
+    # Catch errors and throw warnings instead.
+    except Exception, e:
+        ##raise # XXX DEBUG
+        warn(str(e), RuntimeWarning)
+
+    # Anything we don't know how to parse we treat as binary.
+    if data is None:
+        from ..data.information.binary import Binary
+        data = Binary(response.data, response.content_type)
+
+    # Associate the data to the response.
+    data.add_information(response)
+
+    # Return the data.
+    return data
+
+
+#------------------------------------------------------------------------------
+def download(url, callback = None, timeout = 10.0, allow_redirects = True,
+             allow_out_of_scope = False):
     """
     Download the file pointed to by the given URL.
 
@@ -171,9 +248,13 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True):
     :param allow_redirects: True to follow redirections, False otherwise.
     :type allow_redirects: bool
 
+    :param allow_out_of_scope: True to allow download of URLs out of scope,
+                               False otherwise.
+    :type allow_out_of_scope: bool
+
     :returns: Downloaded data as an object of the GoLismero data model,
               or None if cancelled.
-    :rtype: Data | None
+    :rtype: File | None
 
     :raises NetworkOutOfScope: The resource is out of the audit scope.
     :raises NetworkException: A network error occurred during download.
@@ -203,15 +284,17 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True):
         raise NotImplementedError("Protocol not supported: %s" % scheme)
 
     # Validate the scope.
-    if not url.is_in_scope():
+    if not url.is_in_scope() and allow_out_of_scope is False:
         raise NetworkOutOfScope("URL out of scope: %s" % url.url)
 
     # Autogenerate the HTTP request object.
+    from ..config import Config
     from ..data.information.http import HTTP_Request
-    request = HTTP_Request(      url = url.url,
-                              method = url.method,
-                           post_data = url.post_params,
-                             referer = url.referer )
+    request = HTTP_Request( url         = url.url,
+                            method      = url.method,
+                            post_data   = url.post_params,
+                            referer     = url.referer,
+                            user_agent  = Config.audit_config.user_agent)
     LocalDataCache.on_autogeneration(request)
 
     # Prepare the callback.
@@ -241,7 +324,8 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True):
     response = HTTP.make_request(request,
                                  callback = temp_callback,
                                  timeout = timeout,
-                                 allow_redirects = allow_redirects)
+                                 allow_redirects = allow_redirects,
+                                 allow_out_of_scope = allow_out_of_scope)
 
     # If not aborted...
     if response:
@@ -263,55 +347,7 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True):
         return data
 
 
-#----------------------------------------------------------------------
-def data_from_http_response(response):
-    """
-    Extracts data from an HTTP response.
-
-    :param response: HTTP response.
-    :type response: HTTP_Response
-
-    :returns: Extracted data, or None if no data was found.
-    :rtype: Data | None
-    """
-
-    # If we have no data, return None.
-    if not response.data:
-        return None
-
-    # Get the MIME content type.
-    content_type = response.content_type
-
-    # Strip the content type modifiers.
-    if ";" in content_type:
-        content_type = content_type[:content_type.find(";")]
-
-    # Sanitize the content type.
-    content_type = content_type.lower().strip()
-
-    # HTML pages.
-    if content_type == "text/html":
-        from ..data.information.html import HTML
-        data = HTML(response.data)
-
-    # Plain text data.
-    elif content_type.startswith("text/"):
-        from ..data.information.text import Text
-        data = Text(response.data)
-
-    # Anything we don't know how to parse we treat as binary.
-    else:
-        from ..data.information.binary import Binary
-        data = Binary(response.data)
-
-    # Associate the data to the response.
-    data.add_information(response)
-
-    # Return the data.
-    return data
-
-
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def fix_url(url, base_url=None):
     """
     Parse a URL input from a user and convert it to a canonical URL.
@@ -323,7 +359,7 @@ def fix_url(url, base_url=None):
 
     Example:
 
-    >>> from golismero.net.web_utils import fix_url
+    >>> from golismero.api.net.web_utils import fix_url
     >>> fix_url("www.site.com")
     http://www.site.com
     >>> fix_url(url="/contact", base_url="www.site.com")
@@ -338,6 +374,10 @@ def fix_url(url, base_url=None):
     :return: Canonical URL.
     :rtype: str
     """
+
+    url      = to_utf8(url)
+    base_url = to_utf8(base_url)
+
     parsed = ParsedURL(url)
     if not parsed.scheme:
         parsed.scheme = 'http://'
@@ -351,7 +391,7 @@ def fix_url(url, base_url=None):
         return parsed.url
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def check_auth(url, user, password):
     """
     Check the auth for and specified url.
@@ -372,33 +412,36 @@ def check_auth(url, user, password):
     :rtype: bool
     """
 
-    # Check trivial case
+    # Check trivial case.
     if not url:
         return False
 
-    # Get authentication method
+    # Sanitize URL string.
+    url = to_utf8(url)
+
+    # Get authentication method.
     auth, _ = detect_auth_method(url)
 
     # Is authentication required?
     if auth:
 
-        # Get authentication object
+        # Get authentication object.
         m_auth_obj = get_auth_obj(auth, user, password)
 
-        # Try the request
+        # Try the request.
         req = Request(url = url, auth = m_auth_obj)
         p = req.prepare()
         s = Session()
         r = s.send(p)
 
-        # Check if authentication was successful
+        # Check if authentication was successful.
         return r.status_code == codes.ok
 
-    # No authentication is required
+    # No authentication is required.
     return True
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def get_auth_obj(method, user, password):
     """
     Generates an authentication code object depending of method as parameter:
@@ -449,34 +492,37 @@ def detect_auth_method(url):
 
     :return: (scheme, realm) if auth required. None otherwise.
     """
-    req = Request(url=url)
-    p = req.prepare()
 
+    url = to_utf8(url)
+    req = Request(url=url)
+
+    p = req.prepare()
     s = Session()
     r = s.send(p)
-    scheme = ""
-    realm = ""
 
     if 'www-authenticate' in r.headers:
         authline = r.headers['www-authenticate']
-        authobj = re.compile(r'''(?:\s*www-authenticate\s*:)?\s*(\w*)\s+realm=['"]([^'"]+)['"]''',re.IGNORECASE)
+        authobj  = re.compile(
+            r'''(?:\s*www-authenticate\s*:)?\s*(\w*)\s+realm=['"]([^'"]+)['"]''',
+            re.IGNORECASE)
         matchobj = authobj.match(authline)
-        if not matchobj:
-            return None, None
-        scheme = matchobj.group(1)
-        realm = matchobj.group(2)
 
-    return scheme, realm
+        if matchobj:
+            scheme = matchobj.group(1)
+            realm  = matchobj.group(2)
+            return scheme, realm
+
+    return None, None
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def split_hostname(hostname):
     """
     Splits a hostname into its subdomain, domain and TLD parts.
 
     For example:
 
-    >>> from golismero.api.web_utils import ParsedURL
+    >>> from golismero.api.net.web_utils import ParsedURL
     >>> d = ParsedURL("http://www.example.com/")
     >>> d.split_hostname()
     ('www', 'example', 'com')
@@ -493,11 +539,11 @@ def split_hostname(hostname):
     :rtype: tuple(str, str, str)
     """
     extract = TLDExtract(fetch = False)
-    result  = extract(hostname)
+    result  = extract( to_utf8(hostname) )
     return result.subdomain, result.domain, result.suffix
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def generate_error_page_url(url):
     """
     Takes an URL to an existing document and generates a random URL
@@ -505,7 +551,7 @@ def generate_error_page_url(url):
 
     Example:
 
-    >>> from golismero.api.web_utils import generate_error_page_url
+    >>> from golismero.api.net.web_utils import generate_error_page_url
     >>> generate_error_page_url("http://www.site.com/index.php")
     'http://www.site.com/index.php.19ds_8vjX'
 
@@ -520,7 +566,42 @@ def generate_error_page_url(url):
     return m_parsed_url.url
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
+def get_error_page(url):
+    """
+    Takes an URL to an existing document and generates a random URL
+    to a nonexisting document, then uses it to trigger a server error.
+    Returns the error page as a File object (typically this would be
+    an HTML object, but it may be something else).
+
+    :param url: Original URL. It must point to an existing document.
+    :type  url: str
+
+    :returns: Downloaded data as an object of the GoLismero data model,
+              or None on error.
+    :rtype: File | None
+
+    :raises: ValueError
+    """
+
+    # Make the URL.
+    m_error_url = generate_error_page_url(url)
+
+    # Get the error page.
+    try:
+        m_error_response = download(m_error_url)
+    except Exception:
+        raise ValueError("Can't get error page.")
+
+    # Mark the error page as discarded. Most likely the plugin won't need to
+    # send this back as a result.
+    discard_data(m_error_response)
+
+    # Return the error page.
+    return m_error_response
+
+
+#------------------------------------------------------------------------------
 def parse_url(url, base_url = None):
     """
     Parse an URL and return a mutable object with all its parts.
@@ -539,7 +620,26 @@ def parse_url(url, base_url = None):
     return ParsedURL(url, base_url)
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
+# Emulate the standard URL parser with our own.
+
+def urlparse(url):
+    return parse_url(url)
+
+def urldefrag(url):
+    p = parse_url(url)
+    f = p.fragment
+    p.fragment = ""
+    return p.url, f
+
+def urljoin(base_url, url, allow_fragments = True):
+    if not allow_fragments:
+        url = urldefrag(url)
+        base_url = urldefrag(base_url)
+    return parse_url(url, base_url).url
+
+
+#------------------------------------------------------------------------------
 class ParsedURL (object):
     """
     Parse an URL and return a mutable object with all its parts.
@@ -551,6 +651,7 @@ class ParsedURL (object):
     Is broken down to the following properties:
 
     + url          = 'http://user:pass@www.site.com/folder/index.php?param1=val1&b#anchor'
+    + base_url     = 'http://user:pass@www.site.com'
     + request_uri  = '/folder/index.php?b=&param1=val1
     + scheme       = 'http'
     + host         = 'www.site.com'
@@ -590,7 +691,7 @@ class ParsedURL (object):
 
     Example:
 
-    >>> from golismero.api.web_utils import ParsedURL
+    >>> from golismero.api.net.web_utils import ParsedURL
     >>> url="http://user:pass@www.site.com/folder/index.php?param1=val1&b#anchor"
     >>> r = ParsedURL(url)
     >>> r.scheme
@@ -607,6 +708,7 @@ class ParsedURL (object):
     .. warning::
        Unicode is currently *NOT* supported.
     """
+
 
     #--------------------------------------------------------------------------
     # TODO: for the time being we're using the buggy quote and unquote
@@ -663,20 +765,28 @@ class ParsedURL (object):
         :type base_url: str
         """
 
+        url      = to_utf8(url)
+        base_url = to_utf8(base_url)
+
+        if not isinstance(url, str):
+            raise TypeError("Expected string, got %r instead" % type(url))
+        if base_url is not None and not isinstance(base_url, str):
+            raise TypeError("Expected string, got %r instead" % type(base_url))
+
         original_url = url
 
         self.__query_char = '?'
 
-        scheme = ''
-        auth = ''
-        host = ''
-        port = None
-        path = ''
-        query = ''
+        scheme   = ''
+        auth     = ''
+        host     = ''
+        port     = None
+        path     = ''
+        query    = ''
         fragment = ''
 
         if base_url:
-            url = urljoin(base_url, url, allow_fragments=True)
+            url = original_urljoin(base_url, url, allow_fragments=True)
 
         # Scheme
         if ':' in url:
@@ -786,22 +896,35 @@ class ParsedURL (object):
 
     #--------------------------------------------------------------------------
     def to_urlsplit(self):
-        # Do not document the return type below!
         "Convert to a tuple that can be passed to urlparse.urlunstrip()."
-        return (self.__scheme, self.netloc, self.__path, self.query, self.__fragment)
+        # Do not document the return type!
+        return (
+            self.__scheme,
+            self.netloc,
+            self.__path,
+            self.query,
+            self.__fragment
+        )
 
 
     #--------------------------------------------------------------------------
     def to_urlparse(self):
-        # Do not document the return type below!
         "Convert to a tuple that can be passed to urlparse.urlunparse()."
-        return (self.__scheme, self.netloc, self.__path, None, self.query, self.__fragment)
+        # Do not document the return type!
+        return (
+            self.__scheme,
+            self.netloc,
+            self.__path,
+            None,
+            self.query,
+            self.__fragment
+        )
 
 
     #--------------------------------------------------------------------------
     def to_urllib3(self):
-        # Do not document the return type below!
         "Convert to a named tuple as returned by urllib3.parse_url()."
+        # Do not document the return type!
         return Urllib3_Url(self.__scheme, self.auth, self.__host, self.port,
                            self.__path, self.query, self.__fragment)
 
@@ -816,7 +939,7 @@ class ParsedURL (object):
 
         By default every component of the path is tested:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/download.php/filename/file.pdf")
         >>> d.match_extension(".php")
         True
@@ -827,7 +950,7 @@ class ParsedURL (object):
 
         However you can set the 'directory_allowed' to False to check only the last component:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/download.php/filename/file.pdf")
         >>> d.match_extension(".php", directory_allowed = True)
         True
@@ -836,7 +959,7 @@ class ParsedURL (object):
 
         Double extension is supported, as it can come in handy when analyzing malware URLs:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/malicious.pdf.exe")
         >>> d.filebase
         'malicious.pdf'
@@ -849,7 +972,7 @@ class ParsedURL (object):
 
         The double extension support can be disabled by setting the 'double_allowed' argument to False:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/malicious.pdf.exe")
         >>> d.match_extension(".pdf", double_allowed = True)
         True
@@ -858,7 +981,7 @@ class ParsedURL (object):
 
         String comparisons are case insensitive by default:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/index.html")
         >>> d.match_extension(".html")
         True
@@ -867,7 +990,7 @@ class ParsedURL (object):
 
         This too can be configured, just set 'case_insensitive' to False:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/index.html")
         >>> d.match_extension(".HTML", case_insensitive = True)
         True
@@ -923,14 +1046,14 @@ class ParsedURL (object):
 
         By default every component of the path is parsed:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/download.php/filename/file.pdf")
         >>> d.get_all_extensions()
         ['.php', '.pdf']
 
         However you can set the 'directory_allowed' to False to parse only the last component:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/download.php/filename/file.pdf")
         >>> d.get_all_extensions(directory_allowed = False)
         ['.pdf']
@@ -939,7 +1062,7 @@ class ParsedURL (object):
 
         Double extension is supported, as it can come in handy when analyzing malware URLs:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/malicious.pdf.exe")
         >>> d.filebase
         'malicious.pdf'
@@ -950,7 +1073,7 @@ class ParsedURL (object):
 
         The double extension support can be disabled by setting the 'double_allowed' argument to False:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/malicious.pdf.exe")
         >>> d.get_all_extensions(double_allowed = False)
         ['.exe']
@@ -991,7 +1114,7 @@ class ParsedURL (object):
 
         For example:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/")
         >>> d.split_hostname()
         ('www', 'example', 'com')
@@ -1016,10 +1139,20 @@ class ParsedURL (object):
         fragment = self.__fragment
         request_uri = self.request_uri
         if scheme:
-            scheme = scheme + "://"
+            scheme += "://"
         if fragment:
             request_uri = "%s#%s" % (request_uri, quote(fragment, safe=''))
         return "%s%s%s" % (scheme, self.netloc, request_uri)
+
+    @property
+    def base_url(self):
+        scheme = self.__scheme
+        if scheme:
+            scheme += "://"
+        base_url = scheme + self.netloc
+        if scheme != "mailto":
+            base_url += "/"
+        return base_url
 
     @property
     def request_uri(self):
@@ -1044,7 +1177,7 @@ class ParsedURL (object):
     @scheme.setter
     def scheme(self, scheme):
         if scheme:
-            scheme = scheme.strip().lower()
+            scheme = to_utf8( scheme.strip().lower() )
             if scheme.endswith('://'):
                 scheme = scheme[:-3].strip()
             if scheme and scheme not in self.default_ports:
@@ -1061,6 +1194,8 @@ class ParsedURL (object):
     def username(self, username):
         if not username:
             username = ''
+        else:
+            username = to_utf8(username)
         self.__username = username
 
     @property
@@ -1071,6 +1206,8 @@ class ParsedURL (object):
     def password(self, password):
         if not password:
             password = ''
+        else:
+            password = to_utf8(password)
         self.__password = password
 
     @property
@@ -1081,10 +1218,12 @@ class ParsedURL (object):
     def host(self, host):
         if not host:
             host = ''
-        elif host.startswith('[') and host.endswith(']'):
-            host = host.upper()
         else:
-            host = host.strip().lower()
+            host = to_utf8(host)
+            if host.startswith('[') and host.endswith(']'):
+                host = host.upper()
+            else:
+                host = host.strip().lower()
         self.__host = host
 
     @property
@@ -1110,6 +1249,8 @@ class ParsedURL (object):
     def path(self, path):
         if not path:
             path = '/'
+        else:
+            path = to_utf8(path)
         if not path.startswith('/'):
             path = '/' + path
         if path == '/' and self.__scheme == 'mailto':
@@ -1124,9 +1265,11 @@ class ParsedURL (object):
     def fragment(self, fragment):
         if not fragment:
             fragment = ''
-        elif fragment.startswith('#'):
-            warn("You don't need to use a leading '#' when setting the"
-                 " fragment, this may be an error!", stacklevel=3)
+        else:
+            fragment = to_utf8(fragment)
+            if fragment.startswith('#'):
+                warn("You don't need to use a leading '#' when setting the"
+                     " fragment, this may be an error!", stacklevel=3)
         self.__fragment = fragment
 
     @property
@@ -1137,8 +1280,11 @@ class ParsedURL (object):
     def query_char(self, query_char):
         if not query_char:
             query_char = '?'
-        elif query_char not in ('?', '/'):
-            raise ValueError("Invalid query separator character: %r" % query_char)
+        else:
+            query_char = to_utf8(query_char)
+            if query_char not in ('?', '/'):
+                raise ValueError(
+                    "Invalid query separator character: %r" % query_char)
         self.__query_char = query_char
 
     @property
@@ -1164,7 +1310,7 @@ class ParsedURL (object):
         else:
             try:
                 # much faster than parse_qsl()
-                query_params = dict(( map(unquote_plus, (token + '=').split('=', 2)[:2])
+                query_params = dict(( map(unquote_plus, (to_utf8(token) + '=').split('=', 2)[:2])
                                       for token in query.split('&') ))
                 if len(query_params) == 1 and not query_params.values()[0]:
                     query_params = {}
@@ -1203,7 +1349,7 @@ class ParsedURL (object):
 
         Example:
 
-        >>> from golismero.api.web_utils import ParsedURL
+        >>> from golismero.api.net.web_utils import ParsedURL
         >>> d = ParsedURL("http://www.example.com/malicious.pdf.exe")
         >>> d.filename
         'malicious.pdf.exe'
@@ -1401,9 +1547,12 @@ class HTMLElement (object):
         :param content: Raw HTML.
         :type content: str
         """
-        self.__tag_name = tag_name
-        self.__attrs = attrs
-        self.__content = content
+        self.__tag_name = to_utf8(tag_name)
+        self.__content  = to_utf8(content)
+        self.__attrs = {
+            to_utf8(k): to_utf8(v)
+            for k,v in attrs.iteritems()
+        }
 
 
     #--------------------------------------------------------------------------
@@ -1492,10 +1641,10 @@ class HTMLParser(object):
         """
 
         # Raw HTML content
-        self.__raw_data = data
+        self.__raw_data = to_utf8(data)
 
         # Init parser
-        self.__html_parser = BeautifulSoup(data)
+        self.__html_parser = BeautifulSoup(self.__raw_data)
 
         #
         # Parsed HTML elementes
@@ -1602,7 +1751,7 @@ class HTMLParser(object):
 
     #--------------------------------------------------------------------------
     @property
-    def links(self):
+    def url_links(self):
         """
         :return: Get links from HTML as a list of HTMLElement objects
         :rtype: HTMLElement

@@ -54,7 +54,7 @@ def __suicide(signum, frame):
     exit(1)
 signal(SIGINT, __suicide)
 
-# Mimics a file object well enough to supress print messages.
+# Mimics a file object well enough to suppress print messages.
 # Also faster than opening a file descriptor for /dev/null.
 class __FakeFile(object):
     def write(self, s):

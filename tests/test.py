@@ -51,6 +51,7 @@ except NameError:
 
 # GoLismero imports.
 from golismero.api.data import Data
+from golismero.api.plugin import STAGES
 from golismero.api.text.text_utils import generate_random_string
 from golismero.common import OrchestratorConfig, AuditConfig
 from golismero.database.auditdb import AuditDB
@@ -71,7 +72,7 @@ def test():
     audit.from_dictionary({
         "targets": ["http://www.example.com/folder/subfolder/index.html",],
         "reports": ["-",],
-        "audit_db": "sqlite://",
+        "audit_db": "",
     })
     ##audit.plugin_load_overrides = [(True, "recon/test")]  # XXX DEBUG shorter run
 
@@ -106,7 +107,7 @@ def validate(audit):
     try:
 
         # Make sure all objects completed all stages.
-        for stage in sorted(PluginManager.STAGES.values()):
+        for stage in sorted(STAGES.values()):
             assert disk.get_pending_data(stage) == set()
 
 

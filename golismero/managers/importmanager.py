@@ -45,7 +45,7 @@ class ImportManager (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, orchestrator, audit):
         """
         :param orchestrator: Orchestrator instance.
@@ -75,14 +75,22 @@ class ImportManager (object):
                 raise ValueError(
                     "Input file format not supported: %r" % input_file)
             if len(found) > 1:
-                msg = "Input file format supported by multiple plugins!\nFile: %r\nPlugins:\n\t"
+                msg = "Input file format supported by multiple plugins!\n"\
+                      "File: %r\nPlugins:\n\t"
                 msg %= input_file
                 msg += "\n\t".join(found)
                 raise ValueError(msg)
             self.__importers[input_file] = found[0]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def is_enabled(self):
+        """
+        :returns: True if there are active importers, False otherwise.
+        :rtype: bool
+        """
+        return bool(self.__importers)
 
     @property
     def config(self):
@@ -109,7 +117,7 @@ class ImportManager (object):
         return len(self.__importers)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def import_results(self):
         """
         Import all the requested results before running an audit.
@@ -141,13 +149,15 @@ class ImportManager (object):
                 finally:
                     Config._context = old_context
             except Exception, e:
-                Logger.log_error("Failed to import results from file %r: %s" % (input_file, str(e)))
+                Logger.log_error(
+                    "Failed to import results from file %r: %s" %
+                    (input_file, str(e)))
                 Logger.log_error_more_verbose(format_exc())
             count += 1
         return count
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this manager.

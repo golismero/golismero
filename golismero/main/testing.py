@@ -222,15 +222,16 @@ class PluginTester(object):
                 audit_scope = DummyScope()
             audit._Audit__audit_scope = audit_scope
 
-            # Create the audit plugin manager.
-            plugin_manager = orchestrator.pluginManager.get_plugin_manager_for_audit(audit)
-            audit._Audit__plugin_manager = plugin_manager
-
             # Get the audit name.
             audit_name = self.audit_config.audit_name
 
             # Register the Audit with the AuditManager.
             orchestrator.auditManager._AuditManager__audits[audit_name] = audit
+
+            # Create the audit plugin manager.
+            plugin_manager = orchestrator.pluginManager.get_plugin_manager_for_audit(audit)
+            audit._Audit__plugin_manager = plugin_manager
+            plugin_manager.initialize(audit.config)
 
         # Setup a local plugin execution context.
         Config._context  = PluginContext(
@@ -277,7 +278,7 @@ class PluginTester(object):
         """
         Run the requested plugin. You can test both data and messages.
 
-        It's the caller's resposibility to check the input message queue of
+        It's the caller's responsibility to check the input message queue of
         the Orchestrator instance if the plugin sends any messages.
 
         :param plugin_id: ID of the plugin to test.
@@ -316,6 +317,7 @@ class PluginTester(object):
 
                 # If the data is out of scope, don't run the plugin.
                 if not data.is_in_scope():
+                    print "Out of scope: skipped"
                     return []
 
                 # Make sure the plugin can actually process this type of data.
@@ -404,9 +406,9 @@ class PluginTester(object):
         self.__orchestrator = None
 
         if self.__autodelete:
-            if filename:
+            if filename and filename not in (":memory:", ":auto:"):
                 try:
                     unlink(filename)
-                except IOError:
+                except Exception:
                     pass
             # TODO: delete the report files too

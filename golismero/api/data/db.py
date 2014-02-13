@@ -44,7 +44,7 @@ class Database(Singleton):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def add(data):
         """
@@ -60,7 +60,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_ADD, data)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def async_add(data):
         """
@@ -73,7 +73,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_ADD, data)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def async_add_many(dataset):
         """
@@ -86,7 +86,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_ADD_MANY, dataset)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def remove(identity, data_type = None):
         """
@@ -108,7 +108,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_REMOVE, identity, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def async_remove(identity, data_type = None):
         """
@@ -127,7 +127,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_REMOVE, identity, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def async_remove_many(identities, data_type = None):
         """
@@ -146,7 +146,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_REMOVE_MANY, identities, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def has_key(identity, data_type = None):
         """
@@ -166,7 +166,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_CHECK, identity, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def get(identity, data_type = None):
         """
@@ -188,7 +188,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_GET, identity, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def get_many(identities, data_type = None):
         """
@@ -207,7 +207,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_GET_MANY, identities, data_type)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def keys(data_type = None, data_subtype = None):
         """
@@ -231,7 +231,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_KEYS, data_type, data_subtype)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def count(data_type = None, data_subtype = None):
         """
@@ -255,7 +255,7 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_COUNT, data_type, data_subtype)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def iterate(self, data_type = None, data_subtype = None):
         """
@@ -275,7 +275,7 @@ class Database(Singleton):
             yield self.get(identity)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def get_plugin_history(identity):
         """
@@ -291,13 +291,13 @@ class Database(Singleton):
             MessageCode.MSG_RPC_DATA_PLUGINS, identity)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def __len__(self):
         return self.count()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def __contains__(self, data):
         try:
@@ -307,7 +307,7 @@ class Database(Singleton):
         return self.has_key(identity)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def __iter__(self):
         """

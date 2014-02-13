@@ -1,0 +1,11 @@
+[Documentation]
+Name        = XSSer
+Description = Integration with XSSer: http://xsser.sourceforge.net/
+Author      = Jekkay Hu
+Version     = 0.1
+Website     = http://blog.csdn.net/hujkay
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+args = --auto --user-agent "GoLismero" --timeout "20"

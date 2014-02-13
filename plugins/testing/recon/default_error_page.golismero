@@ -1,10 +1,10 @@
 [Documentation]
-Name        = Default error page finder
+Name        = Default Error Page Finder
 Description = Identifies default error pages for most commonly used web servers.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
 [Core]

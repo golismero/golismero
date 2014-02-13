@@ -1,12 +1,3 @@
-BeautifulSoup < 4.0.0
-colorizer
-decorator
-django >= 1.5
-dnspython
-netaddr
-nltk
-python_cjson
-requests
-requests_ntlm
-texttable
-tldextract
+docutils
+pymongo
+simplejson

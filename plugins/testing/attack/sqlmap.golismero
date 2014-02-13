@@ -1,0 +1,12 @@
+[Documentation]
+Name        = SQLMap
+Description = SQL Injection plugin, using SQLMap.
+  Only retrieves the DB banner, does not exploit any vulnerabilities.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+args = -b

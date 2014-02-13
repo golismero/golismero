@@ -36,6 +36,7 @@ from golismero.api.data import discard_data
 from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.email import Email
 from golismero.api.data.resource.ip import IP
+from golismero.api.external import get_tools_folder
 from golismero.api.logger import Logger
 from golismero.api.plugin import TestingPlugin
 
@@ -47,12 +48,12 @@ import traceback
 import warnings
 
 # Import theHarvester as a library.
-cwd = os.path.abspath(os.path.split(__file__)[0])
+cwd = os.path.abspath(get_tools_folder())
 cwd = os.path.join(cwd, "theHarvester")
 sys.path.insert(0, cwd)
 try:
     import discovery
-    from discovery import *
+    from discovery import * #noqa
 finally:
     sys.path.remove(cwd)
 del cwd
@@ -67,7 +68,7 @@ class HarvesterPlugin(TestingPlugin):
 
     # Supported theHarvester modules.
     SUPPORTED = (
-        "google", "bing", "pgp", "exalead", # "yandex",
+        "google", "bing", "pgp", #"exalead", # "yandex",
     )
 
 
@@ -97,8 +98,8 @@ class HarvesterPlugin(TestingPlugin):
                 emails, hosts = self.search(engine, word, limit)
             except Exception, e:
                 t = traceback.format_exc()
-                m = "theHarvester raised an exception: %s\n%s"
-                warnings.warn(m % (e, t))
+                Logger.log_error(str(e))
+                Logger.log_error_more_verbose(t)
                 continue
             all_emails.update(address.lower() for address in emails if address)
             all_hosts.update(name.lower() for name in hosts if name)
@@ -111,10 +112,10 @@ class HarvesterPlugin(TestingPlugin):
         # Email addresses.
         emails_found = set()
         for address in all_emails:
-            if "..." in address:                          # known bug in theHarvester
+            if "..." in address:                    # known bug in theHarvester
                 continue
-            while address and not address[0].isalnum():   # known bug in theHarvester
-                address = address[1:]
+            while address and not address[0].isalnum():
+                address = address[1:]               # known bug in theHarvester
             while address and not address[-1].isalnum():
                 address = address[:-1]
             if not address:
@@ -137,7 +138,8 @@ class HarvesterPlugin(TestingPlugin):
                 results.append(data)
                 all_hosts.add(data.hostname)
             else:
-                Logger.log_more_verbose("Email address out of scope: %s" % address)
+                Logger.log_more_verbose(
+                    "Email address out of scope: %s" % address)
                 discard_data(data)
 
         # Hostnames.
@@ -160,7 +162,8 @@ class HarvesterPlugin(TestingPlugin):
             try:
                 self.update_status(progress=(float(step * 20) / total) + 80.0)
                 Logger.log_more_verbose("Checking hostname: %s" % name)
-                real_name, aliaslist, addresslist = socket.gethostbyname_ex(name)
+                real_name, aliaslist, addresslist = \
+                    socket.gethostbyname_ex(name)
             except socket.error:
                 continue
             all_names = set()
@@ -174,7 +177,8 @@ class HarvesterPlugin(TestingPlugin):
                         warnings.filterwarnings("ignore")
                         in_scope = name in Config.audit_scope
                     if not in_scope:
-                        Logger.log_more_verbose("Hostname out of scope: %s" % name)
+                        Logger.log_more_verbose(
+                            "Hostname out of scope: %s" % name)
                         continue
                     data = Domain(name)
                     data.add_resource(info)
@@ -184,7 +188,8 @@ class HarvesterPlugin(TestingPlugin):
                             warnings.filterwarnings("ignore")
                             in_scope = ip in Config.audit_scope
                         if not in_scope:
-                            Logger.log_more_verbose("IP address out of scope: %s" % ip)
+                            Logger.log_more_verbose(
+                                "IP address out of scope: %s" % ip)
                             continue
                         d = IP(ip)
                         data.add_resource(d)
@@ -251,17 +256,17 @@ class HarvesterPlugin(TestingPlugin):
                 emails = search.get_emails()
             except Exception, e:
                 t = traceback.format_exc()
-                m = "theHarvester (%s, get_emails) raised an exception: %s\n%s"
-                warnings.warn(m % (engine, e, t))
+                Logger.log_error(str(e))
+                Logger.log_error_more_verbose(t)
         if hasattr(search, "get_hostnames"):
             try:
                 hosts = search.get_hostnames()
             except Exception, e:
                 t = traceback.format_exc()
-                m = "theHarvester (%s, get_hostnames) raised an exception: %s\n%s"
-                warnings.warn(m % (engine, e, t))
+                Logger.log_error(str(e))
+                Logger.log_error_more_verbose(t)
 
-        Logger.log_more_verbose(
+        Logger.log_verbose(
             "Found %d emails and %d hostnames on %s for domain %s" %
             (len(emails), len(hosts), engine, word)
         )

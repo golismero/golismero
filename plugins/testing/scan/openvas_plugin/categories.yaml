@@ -1,0 +1,20 @@
+'Mandriva Local Security Checks'         : OutdatedPlatformMandrivaLocal
+'Windows : Microsoft Bulletins'          : OutdatedPlatformWindowsMicrosoftBulletins
+'Debian Local Security Checks'           : OutdatedPlatformDebianLocal
+'MacOS X Local Security Checks'          : OutdatedPlatformMacOSXLocal
+'VMware ESX Local Security Checks'       : OutdatedPlatformVMwareESXLocal
+'Ubuntu Local Security Checks'           : OutdatedPlatformUbuntuLocal
+'HP-UX Local Security Checks'            : OutdatedPlatformHPUXLocal
+'SuSE Local Security Checks'             : OutdatedPlatformSuSELocal
+'FreeBSD Local Security Checks'          : OutdatedPlatformFreeBSDLocal
+'Junos Local Security Checks'            : OutdatedPlatformJunosLocal
+'Scientific Linux Local Security Checks' : OutdatedPlatformScientificLinuxLocal
+'Slackware Local Security Checks'        : OutdatedPlatformSlackwareLocal
+'Solaris Local Security Checks'          : OutdatedPlatformSolarisLocal
+'Red Hat Local Security Checks'          : OutdatedPlatformRedHatLocal
+'Amazon Linux Local Security Checks'     : OutdatedPlatformAmazonLinuxLocal
+'AIX Local Security Checks'              : OutdatedPlatformAIXLocal
+'Gentoo Local Security Checks'           : OutdatedPlatformGentooLocal
+'CentOS Local Security Checks'           : OutdatedPlatformCentOSLocal
+'Oracle Linux Local Security Checks'     : OutdatedPlatformOracleLinuxLocal
+'Fedora Local Security Checks'           : OutdatedPlatformFedoraLocal

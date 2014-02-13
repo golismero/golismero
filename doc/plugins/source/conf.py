@@ -11,13 +11,32 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os, os.path
+import sys, os, os.path, warnings
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..', '..')))
 sys.path.append(os.path.abspath(os.path.join('..', '..', '..', 'thirdparty_libs')))
+
+# Workaround for docutils bug, see:
+# http://sourceforge.net/p/docutils/bugs/228/
+try:
+    import standalone
+except ImportError:
+    standalone = None
+if standalone is not None:
+    sentinel = object()
+    old_standalone = sys.modules.get("standalone", sentinel)
+    with warnings.catch_warnings(record=True):
+        from docutils.readers import standalone
+        sys.modules["standalone"] = standalone
+
+# Autogenerate the rst files on the first run.
+if not os.path.exists("index.rst"):
+    sys.path.append(os.path.abspath("."))
+    from gen import gen
+    gen()
 
 # -- General configuration -----------------------------------------------------
 

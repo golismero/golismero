@@ -37,11 +37,14 @@ __all__ = [
 
     # Helper functions.
     "get_user_settings_folder", "get_default_config_file",
+    "get_default_user_config_file", "get_default_plugins_folder",
+    "get_data_folder", "get_wordlists_folder",
+    "get_install_folder", "get_tools_folder",
     "get_profiles_folder", "get_profile", "get_available_profiles",
-    "get_default_plugins_folder",
 
     # Helper classes and decorators.
     "Singleton", "decorator", "export_methods_as_functions",
+    "EmptyNewStyleClass",
 
     # Configuration objects.
     "OrchestratorConfig", "AuditConfig"
@@ -53,8 +56,6 @@ try:
     import cPickle as pickle
 except ImportError:
     import pickle
-
-json_encode = None
 
 # Import @decorator from the decorator module, if available.
 # Otherwise define a simple but crude replacement.
@@ -89,14 +90,34 @@ except ImportError:
         from json import dumps as json_encode
 
 # Other imports.
+from netaddr import IPNetwork
 from ConfigParser import RawConfigParser
 from keyword import iskeyword
 from os import path
 
 import os
-import random
+import random  #noqa
 import sys
-import urlparse
+
+# Remove the docstrings. This prevents errors when generating the API docs.
+try:
+    json_encode.__doc__ = ""
+except Exception:
+    _orig_json_encode = json_encode
+    def json_encode(*args, **kwargs):
+        return _orig_json_encode(*args, **kwargs)
+try:
+    json_decode.__doc__ = ""
+except Exception:
+    _orig_json_decode = json_decode
+    def json_decode(*args, **kwargs):
+        return _orig_json_decode(*args, **kwargs)
+
+
+#------------------------------------------------------------------------------
+# Helper class for instance creation without calling __init__().
+class EmptyNewStyleClass (object):
+    pass
 
 
 #------------------------------------------------------------------------------
@@ -151,58 +172,99 @@ def get_user_settings_folder():
 #------------------------------------------------------------------------------
 def get_default_config_file():
     """
-    :returns: Pathname of the default configuration file, or None if it doesn't exist.
+    :returns:
+        Pathname of the default configuration file,
+        or None if it doesn't exist.
     :rtype: str | None
     """
-    config_file = path.join(get_user_settings_folder(), "golismero.conf")
+    config_file = path.split(path.abspath(__file__))[0]
+    config_file = path.join(config_file, "..", "golismero.conf")
+    config_file = path.abspath(config_file)
     if not path.isfile(config_file):
-        config_file = path.split(path.abspath(__file__))[0]
-        config_file = path.join(config_file, "..", "golismero.conf")
-        config_file = path.abspath(config_file)
-        if not path.isfile(config_file):
-            if path.sep != "\\" and path.isfile("/etc/golismero.conf"):
-                config_file = "/etc/golismero.conf"
-            else:
-                config_file = None
+        if path.sep == "/" and path.isfile("/etc/golismero.conf"):
+            config_file = "/etc/golismero.conf"
+        else:
+            config_file = None
     return config_file
 
 
 #------------------------------------------------------------------------------
-_wordlists_folder = None
+def get_default_user_config_file():
+    """
+    :returns:
+        Pathname of the default per-user configuration file,
+        or None if it doesn't exist.
+    :rtype: str | None
+    """
+    config_file = path.join(get_user_settings_folder(), "user.conf")
+    if not path.isfile(config_file):
+        config_file = path.split(path.abspath(__file__))[0]
+        config_file = path.join(config_file, "..", "user.conf")
+        config_file = path.abspath(config_file)
+        if not path.isfile(config_file):
+            config_file = None
+    return config_file
+
+
+#------------------------------------------------------------------------------
+_install_folder = None
+def get_install_folder():
+    """
+    :returns: Pathname of the install folder.
+    :rtype: str
+    """
+    global _install_folder
+    if not _install_folder:
+        pathname = path.split(path.abspath(__file__))[0]
+        pathname = path.join(pathname, "..")
+        pathname = path.abspath(pathname)
+        _install_folder = pathname
+    return _install_folder
+
+
+#------------------------------------------------------------------------------
+def get_tools_folder():
+    """
+    :returns: Pathname of the bundled tools folder.
+    :rtype: str
+    """
+    return path.join(get_install_folder(), "tools")
+
+
+#------------------------------------------------------------------------------
 def get_wordlists_folder():
     """
     :returns: Pathname of the wordlists folder.
     :rtype: str
     """
-    global _wordlists_folder
-    if not _wordlists_folder:
-        pathname = path.split(path.abspath(__file__))[0]
-        if pathname:
-            pathname = path.join(pathname, "..")
-        else:
-            pathname = get_user_settings_folder()
-        pathname = path.abspath(pathname)
-        _wordlists_folder = path.join(pathname, "wordlist")
-    return _wordlists_folder
+    return path.join(get_install_folder(), "wordlist")
 
 
 #------------------------------------------------------------------------------
-_profiles_folder = None
+def get_data_folder():
+    """
+    :returns: Pathname of the data folder.
+    :rtype: str
+    """
+    return path.join(get_install_folder(), "data")
+
+
+#------------------------------------------------------------------------------
+def get_default_plugins_folder():
+    """
+    :returns: Default location for the plugins folder.
+    :rtype: str
+    """
+    return path.join(get_install_folder(), "plugins")
+
+
+#------------------------------------------------------------------------------
 def get_profiles_folder():
     """
     :returns: Pathname of the profiles folder.
     :rtype: str
     """
-    global _profiles_folder
-    if not _profiles_folder:
-        pathname = path.split(path.abspath(__file__))[0]
-        if pathname:
-            pathname = path.join(pathname, "..")
-        else:
-            pathname = get_user_settings_folder()
-        pathname = path.abspath(pathname)
-        _profiles_folder = path.join(pathname, "profiles")
-    return _profiles_folder
+    return path.join(get_install_folder(), "profiles")
 
 
 #------------------------------------------------------------------------------
@@ -256,17 +318,6 @@ def get_available_profiles():
 
 
 #------------------------------------------------------------------------------
-def get_default_plugins_folder():
-    """
-    :returns: Default location for the plugins folder.
-    :rtype: str
-    """
-    plugins_folder = path.join(path.split(__file__)[0], "..", "plugins")
-    plugins_folder = path.abspath(plugins_folder)
-    return plugins_folder
-
-
-#------------------------------------------------------------------------------
 class Singleton (object):
     """
     Implementation of the Singleton pattern.
@@ -304,7 +355,7 @@ def export_methods_as_functions(singleton, module):
     :type singleton: Singleton
 
     :param module: Target module name.
-        This would tipically be \\_\\_name\\_\\_.
+        This would typically be \\_\\_name\\_\\_.
     :type module: str
 
     :raises KeyError: No module with that name is loaded.
@@ -333,6 +384,7 @@ class Configuration (object):
     Generic configuration class.
     """
 
+
     #--------------------------------------------------------------------------
     # The logic in configuration classes is always:
     # - Checking options without fixing them is done in check_params().
@@ -340,6 +392,7 @@ class Configuration (object):
     # - For each source, there's a "from_*" method. They add to the
     #   current options rather than overwriting them completely.
     #   This allows options to be read from multiple sources.
+
 
     #--------------------------------------------------------------------------
     # Here's where subclasses define the options.
@@ -356,13 +409,17 @@ class Configuration (object):
     #
     # Example:
     #    class MySettings(Configuration):
-    #        _settings_  = {
-    #            "verbose": (int, 0), # A complete definition.
-    #            "output_file": str,  # Omitting the default value (None is used).
-    #            "data": None,        # Omitting the parser too.
-    #        }
+    #      _settings_  = {
+    #         "verbose": (int, 0), # A complete definition.
+    #         "output_file": str,  # Omitting the default value (None is used).
+    #         "data": None,        # Omitting the parser too.
+    #      }
     #
-    _settings_ = {}
+    _settings_ = dict()
+
+    # This is a set of properties that may not be loaded from a config file.
+    # They will still be loaded from objects, dictionaries, JSON, etc.
+    _forbidden_ = set()
 
 
     #--------------------------------------------------------------------------
@@ -370,7 +427,11 @@ class Configuration (object):
 
     @staticmethod
     def string(x):
-        return str(x) if x is not None else None
+        if x is None:
+            return None
+        if isinstance(x, unicode):
+            return x.encode("UTF-8")
+        return str(x)
 
     @staticmethod
     def integer(x):
@@ -380,9 +441,14 @@ class Configuration (object):
 
     @staticmethod
     def integer_or_none(x):
-        if x is None or (hasattr(x, "lower") and x in ("", "none", "inf", "infinite")):
+        if x is None or (hasattr(x, "lower") and
+                                 x.lower() in ("", "none", "inf", "infinite")):
             return None
         return Configuration.integer(x)
+
+    @staticmethod
+    def float(x):
+        return float(x) if x else 0.0
 
     @staticmethod
     def comma_separated_list(x):
@@ -391,7 +457,7 @@ class Configuration (object):
         if isinstance(x, str):
             return [t.strip() for t in x.split(",")]
         if isinstance(x, unicode):
-            return [t.strip() for t in x.split(u",")]
+            return [t.strip().encode("UTF-8") for t in x.split(u",")]
         return list(x)
 
     @staticmethod
@@ -422,7 +488,8 @@ class Configuration (object):
         if x in (None, True, False):
             return x
         if not hasattr(x, "lower"):
-            raise ValueError("Trinary values only accept True, False and None")
+            raise ValueError(
+                "Trinary values only accept True, False and None")
         try:
             return {
                 "enabled": True,        # True
@@ -497,7 +564,8 @@ class Configuration (object):
         """
         Check if parameters are valid. Raises an exception otherwise.
 
-        This method only checks the validity of the arguments, it won't modify them.
+        This method only checks the validity of the arguments,
+        it won't modify them.
 
         :raises ValueError: The parameters are incorrect.
         """
@@ -522,18 +590,24 @@ class Configuration (object):
         """
         Get the settings from the attributes of a Python object.
 
-        :param args: Python object, for example the command line arguments parsed by argparse.
+        :param args:
+            Python object,
+            for example the command line arguments parsed by argparse.
         :type args: object
         """
 
         # Builds a dictionary with the object's public attributes.
-        args = { k : getattr(args, k) for k in dir(args) if not k.startswith("_") }
+        args = {
+            k : getattr(args, k)
+            for k in dir(args) if not k.startswith("_")
+        }
 
         # Remove all attributes whose values are None.
         args = { k:v for k,v in args.iteritems() if v is not None }
 
         # Extract the settings from the dictionary.
-        self.from_dictionary(args)
+        if args:
+            self.from_dictionary(args)
 
 
     #--------------------------------------------------------------------------
@@ -551,7 +625,8 @@ class Configuration (object):
             raise TypeError("Invalid JSON data")
 
         # Extract the settings from the dictionary.
-        self.from_dictionary(args)
+        if args:
+            self.from_dictionary(args)
 
 
     #--------------------------------------------------------------------------
@@ -569,14 +644,19 @@ class Configuration (object):
         """
         parser = RawConfigParser()
         parser.read(config_file)
-        options = { k:v for k,v in parser.items("golismero") if v }
-        if "profile" in options:
-            if allow_profile:
-                self.profile = options["profile"]
-                self.profile_file = get_profile(self.profile)
-            else:
-                del options["profile"]
-        self.from_dictionary(options)
+        if parser.has_section("golismero"):
+            options = { k:v for k,v in parser.items("golismero") if v }
+            if "profile" in options:
+                if allow_profile:
+                    self.profile = options["profile"]
+                    self.profile_file = get_profile(self.profile)
+                else:
+                    del options["profile"]
+            for k in self._forbidden_:
+                if k in options:
+                    del options[k]
+            if options:
+                self.from_dictionary(options)
 
 
     #--------------------------------------------------------------------------
@@ -602,7 +682,7 @@ class Configuration (object):
         """
         Copy the settings to a JSON encoded dictionary.
 
-        :retruns: Settings as a JSON encoded dictionary.
+        :returns: Settings as a JSON encoded dictionary.
         :rtype: str
         """
 
@@ -613,13 +693,17 @@ class Configuration (object):
 #------------------------------------------------------------------------------
 class OrchestratorConfig (Configuration):
     """
-    Orchestator configuration object.
+    Orchestrator configuration object.
     """
 
 
     #--------------------------------------------------------------------------
     # The options definitions, they will be read from the config file:
     #
+    _forbidden_ = set((  # except for these:
+        "config_file", "user_config_file",
+        "profile_file", "plugin_args", "ui_mode",
+    ))
     _settings_ = {
 
         #
@@ -649,7 +733,8 @@ class OrchestratorConfig (Configuration):
         "plugins_folder": Configuration.string,
 
         # Maximum number plugins to execute concurrently.
-        "max_concurrent": (Configuration.integer, 4 if path.sep == "\\" else 20),
+        "max_concurrent": (Configuration.integer,
+                           4 if path.sep == "\\" else 20),
 
         #
         # Network options.
@@ -660,6 +745,11 @@ class OrchestratorConfig (Configuration):
 
         # Use persistent cache?
         "use_cache_db": (Configuration.boolean, True),
+
+        # When run as a service.
+        "listen_address": Configuration.string,
+        "listen_port": Configuration.integer,
+        "server_push": Configuration.string,
     }
 
 
@@ -667,7 +757,10 @@ class OrchestratorConfig (Configuration):
     # Options that are only set in runtime, not loaded from the config file.
 
     # Configuration files.
-    config_file  = get_default_config_file()
+    config_file      = get_default_config_file()
+    user_config_file = get_default_user_config_file()
+
+    # Profile.
     profile      = None
     profile_file = None
 
@@ -676,21 +769,70 @@ class OrchestratorConfig (Configuration):
 
 
     #--------------------------------------------------------------------------
+
+    @staticmethod
+    def _load_profile(self, args):
+        if "profile" in args:
+            self.profile = args["profile"]
+            if isinstance(self.profile, unicode):
+                self.profile = self.profile.encode("UTF-8")
+            self.profile_file = get_profile(self.profile)
+
+    @staticmethod
+    def _load_plugin_args(self, args):
+        if "plugin_args" in args:
+            plugin_args = {}
+            for (plugin_id, target_args) in args["plugin_args"].iteritems():
+                if isinstance(plugin_id, unicode):
+                    plugin_id = plugin_id.encode("UTF-8")
+                if not plugin_id in plugin_args:
+                    plugin_args[plugin_id] = {}
+                for (key, value) in target_args.iteritems():
+                    if isinstance(key, unicode):
+                        key = key.encode("UTF-8")
+                    if isinstance(value, unicode):
+                        value = value.encode("UTF-8")
+                    plugin_args[plugin_id][key] = value
+            self.plugin_args = plugin_args
+
+    def from_dictionary(self, args):
+        # Security note: do not copy config filenames!
+        # See the _forbidden_ property.
+        super(OrchestratorConfig, self).from_dictionary(args)
+        self._load_profile(self, args)      # "self" is twice on purpose!
+        self._load_plugin_args(self, args)  # don't change it or it breaks
+
+    def to_dictionary(self):
+        result = super(OrchestratorConfig, self).to_dictionary()
+        result["config_file"]      = self.config_file
+        result["user_config_file"] = self.user_config_file
+        result["profile"]          = self.profile
+        result["profile_file"]     = self.profile_file
+        result["plugin_args"]      = self.plugin_args
+        return result
+
+
+    #--------------------------------------------------------------------------
     def check_params(self):
 
         # Validate the network connections limit.
         if self.max_connections < 1:
-            raise ValueError("Number of connections must be greater than 0, got %i." % self.max_connections)
+            raise ValueError(
+                "Number of connections must be greater than 0,"
+                " got %i." % self.max_connections)
 
         # Validate the number of concurrent processes.
         if self.max_concurrent < 0:
-            raise ValueError("Number of processes cannot be a negative number, got %i." % self.max_concurrent)
+            raise ValueError(
+                "Number of processes cannot be a negative number,"
+                " got %i." % self.max_concurrent)
 
         # Validate the list of plugins.
         if not self.enable_plugins:
             raise ValueError("No plugins selected for execution.")
         if set(self.enable_plugins).intersection(self.disable_plugins):
-            raise ValueError("Conflicting plugins selection, aborting execution.")
+            raise ValueError(
+                "Conflicting plugins selection, aborting execution.")
 
 
 #------------------------------------------------------------------------------
@@ -703,6 +845,10 @@ class AuditConfig (Configuration):
     #--------------------------------------------------------------------------
     # The options definitions, they will be read from the config file:
     #
+    _forbidden = set(( # except for these:
+        "config_file", "user_config_file", "profile_file", "plugin_args",
+        "plugin_load_overrides", "command",
+    ))
     _settings_ = {
 
         #
@@ -730,13 +876,13 @@ class AuditConfig (Configuration):
         "audit_name": Configuration.string,
 
         # Audit database
-        "audit_db": (None, "memory://"),
+        "audit_db": (None, ":memory:"),
 
         # Input files
         "imports": (Configuration.comma_separated_list, []),
 
         #
-        # Plugins options
+        # Plugin options
         #
 
         # Enabled plugins
@@ -745,34 +891,43 @@ class AuditConfig (Configuration):
         # Disabled plugins
         "disable_plugins": (Configuration.comma_separated_list, []),
 
+        # Plugin execution timeout
+        "plugin_timeout": (Configuration.float, 3600.0),
+
         #
-        # Networks options
+        # Network options
         #
 
         # Include subdomains?
         "include_subdomains": (Configuration.boolean, True),
 
-        # Subdomains as regular expression
-        "subdomain_regex": Configuration.string,
+        # Include parent folders?
+        "allow_parent": (Configuration.boolean, True),
 
         # Depth level for spider
-        "depth": (Configuration.integer_or_none, 0),
+        "depth": (Configuration.integer_or_none, 1),
+
         # Limits
         "max_links" : (Configuration.integer, 0), # 0 -> infinite
 
         # Follow redirects
         "follow_redirects": (Configuration.boolean, True),
 
-        # Follow a redirection on the target URL itself, regardless of "follow_redirects"
+        # Follow a redirection on the target URL itself,
+        # regardless of "follow_redirects"
         "follow_first_redirect": (Configuration.boolean, True),
 
         # Proxy options
         "proxy_addr": Configuration.string,
+        "proxy_port": Configuration.integer,
         "proxy_user": Configuration.string,
         "proxy_pass": Configuration.string,
 
         # Cookie
         "cookie": Configuration.string,
+
+        # User Agent
+        "user_agent": Configuration.string,
     }
 
 
@@ -780,15 +935,57 @@ class AuditConfig (Configuration):
     # Options that are only set in runtime, not loaded from the config file.
 
     # Configuration files.
-    config_file  = get_default_config_file()
+    config_file      = get_default_config_file()
+    user_config_file = get_default_user_config_file()
+
+    # Profiles.
     profile      = None
     profile_file = None
 
     # Plugin arguments.
-    plugin_args  = None   # list of (plugin_id, key, value)
+    plugin_args = None   # list of (plugin_id, key, value)
+
+    # Plugin load overrides.
+    plugin_load_overrides = None
 
     # Command to run.
     command = "SCAN"
+
+
+    #--------------------------------------------------------------------------
+    def from_dictionary(self, args):
+
+        # Security note: do not copy config filenames!
+        # See the _forbidden_ property.
+        super(AuditConfig, self).from_dictionary(args)
+        OrchestratorConfig._load_profile(self, args) # not a filename
+        OrchestratorConfig._load_plugin_args(self, args)
+
+        # Load the "command" property.
+        if "command" in args:
+            self.command = args["command"]
+            if isinstance(self.command, unicode):
+                self.command = self.command.encode("UTF-8")
+
+        # Load the "plugin_load_overrides" property.
+        if "plugin_load_overrides" in args:
+            if not self.plugin_load_overrides:
+                self.plugin_load_overrides = []
+            for (val, plugin_id) in args["plugin_load_overrides"]:
+                self.plugin_load_overrides.append((bool(val), str(plugin_id)))
+
+
+    #--------------------------------------------------------------------------
+    def to_dictionary(self):
+        result = super(AuditConfig, self).to_dictionary()
+        result["config_file"]           = self.config_file
+        result["user_config_file"]      = self.user_config_file
+        result["profile"]               = self.profile
+        result["profile_file"]          = self.profile_file
+        result["plugin_args"]           = self.plugin_args
+        result["command"]               = self.command
+        result["plugin_load_overrides"] = self.plugin_load_overrides
+        return result
 
 
     #--------------------------------------------------------------------------
@@ -801,14 +998,61 @@ class AuditConfig (Configuration):
     def targets(self, targets):
         # Always append, never overwrite.
         # Fix target URLs if the scheme part is missing.
+
+        # Make sure self._targets contains a list.
         self._targets = getattr(self, "_targets", [])
-        if targets:
-            targets = [
-                x.strip()
-                for x in targets
-                if x not in self._targets
-            ]
-            self._targets.extend(targets)
+
+        # Ignore the trivial case.
+        if not targets:
+            return
+
+        # Strip whitespace.
+        targets = [
+            x.strip()
+            for x in targets
+            if x not in self._targets
+        ]
+
+        # Remove duplicates.
+        targets = [
+            x
+            for x in set(targets)
+            if x not in self._targets
+        ]
+
+        # Encode all Unicode strings as UTF-8.
+        targets = [
+            x.encode("UTF-8") if isinstance(x, unicode) else str(x)
+            for x in targets
+            if x not in self._targets
+        ]
+
+        # Detect network ranges, like 30.30.30.0/24, and get all IPs on it.
+        parsed_targets = []
+        for host in targets:
+
+            # Try to parse the address as a network range.
+            try:
+                tmp_target = IPNetwork(host)
+            except:
+                parsed_targets.append(host)
+                continue
+
+            # If it's a range, iterate it and get all IP addresses.
+            # If it's a single IP address, just add it.
+            if tmp_target.size != 1:
+                parsed_targets.extend(
+                    str(x) for x in tmp_target.iter_hosts()
+                )
+            else:
+                parsed_targets.append( str(tmp_target.ip) )
+
+        # Add the new targets.
+        self._targets.extend(parsed_targets)
+
+    @targets.deleter
+    def targets(self):
+        self._targets = []
 
 
     #--------------------------------------------------------------------------
@@ -847,12 +1091,30 @@ class AuditConfig (Configuration):
 
     @audit_db.setter
     def audit_db(self, audit_db):
-        if not audit_db:
-            audit_db = "memory://"
-        elif not "://" in audit_db:
-            audit_db = "sqlite://" + audit_db
-        urlparse.urlparse(audit_db)  # check validity of URL syntax
+        if (
+            not audit_db or not audit_db.strip() or
+            audit_db.strip().lower() == ":auto:"
+        ):
+            audit_db = ":auto:"
+        elif audit_db.strip().lower() == ":memory:":
+            audit_db = ":memory:"
         self._audit_db = audit_db
+
+
+    #--------------------------------------------------------------------------
+
+    @property
+    def user_agent(self):
+        return self._user_agent
+
+    @user_agent.setter
+    def user_agent(self, user_agent):
+        if user_agent:
+            if isinstance(user_agent, unicode):
+                user_agent = user_agent.encode("UTF-8")
+            self._user_agent = user_agent
+        else:
+            self._user_agent = None
 
 
     #--------------------------------------------------------------------------
@@ -866,19 +1128,63 @@ class AuditConfig (Configuration):
         if cookie:
             # Parse the cookies argument.
             try:
+                if isinstance(cookie, unicode):
+                    cookie = cookie.encode("UTF-8")
                 # Prepare cookie.
-                m_cookie = cookie.replace(" ", "").replace("=", ":")
+                cookie = cookie.replace(" ", "").replace("=", ":")
                 # Remove 'Cookie:' start, if exits.
-                m_cookie = m_cookie[len("Cookie:"):] if m_cookie.startswith("Cookie:") else m_cookie
+                if cookie.startswith("Cookie:"):
+                    cookie = cookie[len("Cookie:"):]
                 # Split.
-                m_cookie = m_cookie.split(";")
+                cookie = cookie.split(";")
                 # Parse.
-                self.cookie = { c.split(":")[0]:c.split(":")[1] for c in m_cookie}
+                cookie = { c.split(":")[0]:c.split(":")[1] for c in cookie}
             except ValueError:
-                raise ValueError("Invalid cookie format specified. Use this format: 'Key=value; key=value'.")
+                raise ValueError(
+                    "Invalid cookie format specified."
+                    " Use this format: 'Key=value; key=value'.")
         else:
             cookie = None
         self._cookie = cookie
+
+
+    #--------------------------------------------------------------------------
+
+    @property
+    def proxy_addr(self):
+        return self._proxy_addr
+
+    @proxy_addr.setter
+    def proxy_addr(self, proxy_addr):
+        if proxy_addr:
+            proxy_addr = proxy_addr.strip()
+            if isinstance(proxy_addr, unicode):
+                proxy_addr = proxy_addr.encode("UTF-8")
+            if ":" in proxy_addr:
+                proxy_addr, proxy_port = proxy_addr.split(":", 1)
+                proxy_addr = proxy_addr.strip()
+                proxy_port = proxy_port.strip()
+                self.proxy_port = proxy_port
+            self._proxy_addr = proxy_addr
+        else:
+            self._proxy_addr = None
+
+
+    #--------------------------------------------------------------------------
+
+    @property
+    def proxy_port(self):
+        return self._proxy_port
+
+    @proxy_port.setter
+    def proxy_port(self, proxy_port):
+        if proxy_port:
+            self._proxy_port = int(proxy_port)
+            if self._proxy_port < 1 or self._proxy_port > 65534:
+                raise ValueError(
+                    "Invalid proxy port number: %d" % self._proxy_port)
+        else:
+            self._proxy_port = None
 
 
     #--------------------------------------------------------------------------
@@ -886,22 +1192,19 @@ class AuditConfig (Configuration):
 
         # Validate the list of plugins.
         if not self.enable_plugins:
-            raise ValueError("No plugins selected for execution.")
+            raise ValueError(
+                "No plugins selected for execution.")
         if set(self.enable_plugins).intersection(self.disable_plugins):
-            raise ValueError("Conflicting plugins selection, aborting execution.")
-
-        # Validate the regular expresion.
-        if self.subdomain_regex:
-            import re
-
-            try:
-                re.compile(self.subdomain_regex)
-            except re.error, e:
-                raise ValueError("Regular expression not valid: %s." % str(e))
+            raise ValueError(
+                "Conflicting plugins selection, aborting execution.")
 
         # Validate the recursion depth.
         if self.depth is not None and self.depth < 0:
-            raise ValueError("Spidering depth can't be negative: %r" % self.depth)
+            raise ValueError(
+                "Spidering depth can't be negative: %r" % self.depth)
+        if self.depth is not None and self.depth == 0:
+            raise ValueError(
+                "Spidering depth can't be zero (nothing would be done!)")
 
 
     #--------------------------------------------------------------------------
@@ -914,19 +1217,19 @@ class AuditConfig (Configuration):
         """
 
         # Memory databases are always new audits.
-        if not self.audit_db or self.audit_db.lower().startswith("memory://"):
+        if (
+            not self.audit_db or not self.audit_db.strip() or
+            self.audit_db.strip().lower() == ":memory:"
+        ):
+            self.audit_db = ":memory:"
             return True
 
         # SQLite databases are new audits if the file doesn't exist.
         # If we have no filename, use the audit name.
         # If we don't have that either it's a new audit.
-        if self.audit_db.lower().startswith("sqlite://"):
-            filename = self.audit_db[9:]
+        filename = self.audit_db
+        if not filename:
+            filename = self.audit_name + ".db"
             if not filename:
-                filename = self.audit_name
-                if not filename:
-                    return True
-            return not path.exists(filename)
-
-        # We don't know how to parse this database connection string.
-        raise ValueError("Unsupported connection string: %s" % self.audit_db)
+                return True
+        return not path.exists(filename)

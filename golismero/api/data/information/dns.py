@@ -35,7 +35,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-from . import Information
+from . import Capture
 from .text import Text
 from .. import identity
 from ..resource.domain import Domain
@@ -94,7 +94,7 @@ class DnsSEC(object):
     }
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def algorithm_to_text(alg):
         """
@@ -110,7 +110,7 @@ class DnsSEC(object):
         return DnsSEC.ALGORITHM_BY_NUM[alg]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def text_to_algorithm(alg):
         """
@@ -127,12 +127,12 @@ class DnsSEC(object):
 
 
 #------------------------------------------------------------------------------
-class DnsRegister(Information):
+class DnsRegister(Capture):
     """
     Base class for DNS Registers.
     """
 
-    information_type = Information.INFORMATION_DNS_REGISTER
+    information_type = Capture.INFORMATION_DNS_REGISTER
 
 
     # Types of registers
@@ -291,7 +291,7 @@ class DnsRegister(Information):
     }
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, **kwargs):
         """
         :param type: Type of DNS register. Valid types are in the DNS_TYPES dictionary.
@@ -308,7 +308,16 @@ class DnsRegister(Information):
         super(DnsRegister, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        name = super(DnsRegister, self).display_name
+        if name.startswith("Dns "):
+            name = "DNS " + name[4:]
+        return name
+
+
+    #--------------------------------------------------------------------------
     @identity
     def type(self):
         """
@@ -318,7 +327,7 @@ class DnsRegister(Information):
         return self._type
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def type_int(self):
         """
@@ -328,7 +337,7 @@ class DnsRegister(Information):
         return self._by_text[self.type]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def name2id(id):
         """
@@ -343,7 +352,7 @@ class DnsRegister(Information):
         return DnsRegister._by_text[id]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def id2name(name):
         """
@@ -364,7 +373,7 @@ class DnsRegister(Information):
 class DNSRegisterAlgorithm(DnsRegister):
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, **kwargs):
         """
         :param algorithm: The DNSSEC algorithm for the certificate. Allowed values are in the DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -386,7 +395,7 @@ class DNSRegisterAlgorithm(DnsRegister):
         super(DNSRegisterAlgorithm, self).__init__(**kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def algorithm_name(self):
         """
@@ -396,7 +405,7 @@ class DNSRegisterAlgorithm(DnsRegister):
         return self.__algorithm_name
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def algorithm_value(self):
         """
@@ -413,7 +422,7 @@ class DnsRegisterA(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, **kwargs):
         """
         :param address: The IPv4 address.
@@ -428,7 +437,7 @@ class DnsRegisterA(DnsRegister):
         super(DnsRegisterA, self).__init__(type="A", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -438,7 +447,7 @@ class DnsRegisterA(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -446,9 +455,11 @@ class DnsRegisterA(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope
 
 
 #------------------------------------------------------------------------------
@@ -458,7 +469,7 @@ class DnsRegisterAAAA(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, **kwargs):
         """
         :param address: The IPv6 address.
@@ -473,7 +484,7 @@ class DnsRegisterAAAA(DnsRegister):
         super(DnsRegisterAAAA, self).__init__(type="AAAA", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -483,7 +494,7 @@ class DnsRegisterAAAA(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -491,9 +502,11 @@ class DnsRegisterAAAA(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope
 
 
 #------------------------------------------------------------------------------
@@ -503,7 +516,7 @@ class DnsRegisterAFSDB(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, subtype, hostname, **kwargs):
         """
         :param subtype: the subtype value
@@ -524,7 +537,7 @@ class DnsRegisterAFSDB(DnsRegister):
         super(DnsRegisterAFSDB, self).__init__(type="AFSDB", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def subtype(self):
         """
@@ -534,7 +547,7 @@ class DnsRegisterAFSDB(DnsRegister):
         return self.__subtype
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def hostname(self):
         """
@@ -544,7 +557,7 @@ class DnsRegisterAFSDB(DnsRegister):
         return self.__hostname
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -552,9 +565,11 @@ class DnsRegisterAFSDB(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.hostname in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.hostname in scope
 
 
 #------------------------------------------------------------------------------
@@ -580,7 +595,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
     }
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, certificate, certificate_type, key_tag, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -619,7 +634,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         super(DnsRegisterCERT, self).__init__(algorithm, type="CERT", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def certificate(self):
         """
@@ -629,7 +644,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         return self.__certificate
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def certificate_type_name(self):
         """
@@ -639,7 +654,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         return self.__cert_type_name
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def certificate_type_value(self):
         """
@@ -649,7 +664,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         return self.__cert_type_value
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def key_tag(self):
         """
@@ -659,7 +674,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         return self.__key_tag
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def cert_to_text(cert):
         """
@@ -675,7 +690,7 @@ class DnsRegisterCERT(DNSRegisterAlgorithm):
         return DnsRegisterCERT.CERT_TYPE_BY_VAL[cert]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @staticmethod
     def text_to_cert(cert):
         """
@@ -698,7 +713,7 @@ class DnsRegisterCNAME(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, target, **kwargs):
         """
         :param target: name of the pointer host.
@@ -713,7 +728,7 @@ class DnsRegisterCNAME(DnsRegister):
         super(DnsRegisterCNAME, self).__init__(type="CNAME", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def target(self):
         """
@@ -723,7 +738,7 @@ class DnsRegisterCNAME(DnsRegister):
         return self.__target
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -731,9 +746,11 @@ class DnsRegisterCNAME(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.target in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.target in scope
 
 
 #------------------------------------------------------------------------------
@@ -743,7 +760,7 @@ class DnsRegisterDNSKEY(DNSRegisterAlgorithm):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, flags, key, protocol, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -773,7 +790,7 @@ class DnsRegisterDNSKEY(DNSRegisterAlgorithm):
         super(DnsRegisterDNSKEY, self).__init__(algorithm, type="DNSKEY", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def flags(self):
         """
@@ -783,7 +800,7 @@ class DnsRegisterDNSKEY(DNSRegisterAlgorithm):
         return self.__flags
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def key(self):
         """
@@ -793,7 +810,7 @@ class DnsRegisterDNSKEY(DNSRegisterAlgorithm):
         return self.__key
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def protocol(self):
         """
@@ -810,7 +827,7 @@ class DnsRegisterDS(DNSRegisterAlgorithm):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, digest, digest_type, key_tag, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -840,7 +857,7 @@ class DnsRegisterDS(DNSRegisterAlgorithm):
         super(DnsRegisterDS, self).__init__(algorithm, type="DS", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def key_tag(self):
         """
@@ -850,7 +867,7 @@ class DnsRegisterDS(DNSRegisterAlgorithm):
         return self.__key_tag
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def digest(self):
         """
@@ -860,7 +877,7 @@ class DnsRegisterDS(DNSRegisterAlgorithm):
         return self.__digest
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def digest_type(self):
         """
@@ -877,7 +894,7 @@ class DnsRegisterHINFO(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, cpu, os, **kwargs):
         """
         :param cpu: the CPU type.
@@ -898,7 +915,7 @@ class DnsRegisterHINFO(DnsRegister):
         super(DnsRegisterHINFO, self).__init__(type="HINFO", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def cpu(self):
         """
@@ -908,7 +925,7 @@ class DnsRegisterHINFO(DnsRegister):
         return self.__cpu
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def os(self):
         """
@@ -929,7 +946,7 @@ class DnsRegisterIPSECKEY(DNSRegisterAlgorithm):
     # TODO: discover the gateway address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, gateway, gateway_type, key, precedence, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -966,7 +983,7 @@ class DnsRegisterIPSECKEY(DNSRegisterAlgorithm):
         super(DnsRegisterIPSECKEY, self).__init__(algorithm, type="IPSECKEY", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def gateway(self):
         """
@@ -976,7 +993,7 @@ class DnsRegisterIPSECKEY(DNSRegisterAlgorithm):
         return self.__gateway
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def gateway_type(self):
         """
@@ -986,7 +1003,7 @@ class DnsRegisterIPSECKEY(DNSRegisterAlgorithm):
         return self.__gateway_type
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def key(self):
         """
@@ -996,7 +1013,7 @@ class DnsRegisterIPSECKEY(DNSRegisterAlgorithm):
         return self.__key
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def precedence(self):
         """
@@ -1013,7 +1030,7 @@ class DnsRegisterISDN(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, subaddress = "", **kwargs):
         """
         :param address: the ISDN address.
@@ -1034,7 +1051,7 @@ class DnsRegisterISDN(DnsRegister):
         super(DnsRegisterISDN, self).__init__(type="ISDN", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -1044,7 +1061,7 @@ class DnsRegisterISDN(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def subaddress(self):
         """
@@ -1063,7 +1080,7 @@ class DnsRegisterLOC(DnsRegister):
     # TODO: discover a geolocation information type here
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, latitude, longitude, altitude, coordinates, **kwargs):
         """
         :param latitude: tuple specifying the degrees, minutes, seconds, and milliseconds of the coordinate.
@@ -1105,7 +1122,7 @@ class DnsRegisterLOC(DnsRegister):
         super(DnsRegisterLOC, self).__init__(type="LOC", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def coordinates(self):
         """
@@ -1115,7 +1132,7 @@ class DnsRegisterLOC(DnsRegister):
         return self.__coordinates
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def latitude(self):
         """
@@ -1125,7 +1142,7 @@ class DnsRegisterLOC(DnsRegister):
         return self.__latitude
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def longitude(self):
         """
@@ -1135,7 +1152,7 @@ class DnsRegisterLOC(DnsRegister):
         return self.__longitude
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def altitude(self):
         """
@@ -1152,7 +1169,7 @@ class DnsRegisterMX(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, exchange, preference, **kwargs):
         """
         :param exchange: string with then name of exchange server
@@ -1174,7 +1191,7 @@ class DnsRegisterMX(DnsRegister):
         super(DnsRegisterMX, self).__init__(type="MX", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def exchange(self):
         """
@@ -1184,7 +1201,7 @@ class DnsRegisterMX(DnsRegister):
         return self.__exchange
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def preference(self):
         """
@@ -1194,7 +1211,7 @@ class DnsRegisterMX(DnsRegister):
         return self.__preference
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1202,9 +1219,11 @@ class DnsRegisterMX(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.exchange in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.exchange in scope
 
 
 #------------------------------------------------------------------------------
@@ -1214,7 +1233,7 @@ class DnsRegisterNAPTR(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, order, preference, regex, replacement, service, **kwargs):
         """
         :param order: the order
@@ -1252,7 +1271,7 @@ class DnsRegisterNAPTR(DnsRegister):
         super(DnsRegisterNAPTR, self).__init__(type="NAPTR", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def order(self):
         """
@@ -1262,7 +1281,7 @@ class DnsRegisterNAPTR(DnsRegister):
         return self.__order
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def preference(self):
         """
@@ -1272,7 +1291,7 @@ class DnsRegisterNAPTR(DnsRegister):
         return self.__preference
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def regex(self):
         """
@@ -1282,7 +1301,7 @@ class DnsRegisterNAPTR(DnsRegister):
         return self.__regex
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def replacement(self):
         """
@@ -1292,7 +1311,7 @@ class DnsRegisterNAPTR(DnsRegister):
         return self.__replacement
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def service(self):
         """
@@ -1302,7 +1321,7 @@ class DnsRegisterNAPTR(DnsRegister):
         return self.__service
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1310,9 +1329,11 @@ class DnsRegisterNAPTR(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.replacement in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.replacement in scope
 
 
 #------------------------------------------------------------------------------
@@ -1322,7 +1343,7 @@ class DnsRegisterNS(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, target, **kwargs):
         """
         :param target: server target
@@ -1337,7 +1358,7 @@ class DnsRegisterNS(DnsRegister):
         super(DnsRegisterNS, self).__init__(type="NS", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def target(self):
         """
@@ -1347,7 +1368,7 @@ class DnsRegisterNS(DnsRegister):
         return self.__target
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1355,9 +1376,11 @@ class DnsRegisterNS(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.target in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.target in scope
 
 
 #------------------------------------------------------------------------------
@@ -1367,7 +1390,7 @@ class DnsRegisterNSAP(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, **kwargs):
         """
         :param address: a NASP address
@@ -1383,7 +1406,7 @@ class DnsRegisterNSAP(DnsRegister):
         super(DnsRegisterNSAP, self).__init__(type="NSAP", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -1393,7 +1416,7 @@ class DnsRegisterNSAP(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1401,9 +1424,11 @@ class DnsRegisterNSAP(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope
 
 
 #------------------------------------------------------------------------------
@@ -1413,7 +1438,7 @@ class DnsRegisterNSEC(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, next, **kwargs):
         """
         :param next: the next server name
@@ -1428,7 +1453,7 @@ class DnsRegisterNSEC(DnsRegister):
         super(DnsRegisterNSEC, self).__init__(type="NSEC", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def next(self):
         """
@@ -1438,7 +1463,7 @@ class DnsRegisterNSEC(DnsRegister):
         return self.__next
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1446,9 +1471,11 @@ class DnsRegisterNSEC(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.next in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.next in scope
 
 
 #------------------------------------------------------------------------------
@@ -1458,7 +1485,7 @@ class DnsRegisterNSEC3(DNSRegisterAlgorithm):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, flags, iterations, salt, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -1488,7 +1515,7 @@ class DnsRegisterNSEC3(DNSRegisterAlgorithm):
         super(DnsRegisterNSEC3, self).__init__(algorithm, type="NSEC3", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def salt(self):
         """
@@ -1498,7 +1525,7 @@ class DnsRegisterNSEC3(DNSRegisterAlgorithm):
         return self.__salt
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def iterations(self):
         """
@@ -1508,7 +1535,7 @@ class DnsRegisterNSEC3(DNSRegisterAlgorithm):
         return self.__iterations
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def flags(self):
         """
@@ -1525,7 +1552,7 @@ class DnsRegisterNSEC3PARAM(DNSRegisterAlgorithm):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, flags, iterations, salt, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -1555,7 +1582,7 @@ class DnsRegisterNSEC3PARAM(DNSRegisterAlgorithm):
         super(DnsRegisterNSEC3PARAM, self).__init__(algorithm, type="NSEC3PARAM", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def salt(self):
         """
@@ -1565,7 +1592,7 @@ class DnsRegisterNSEC3PARAM(DNSRegisterAlgorithm):
         return self.__salt
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def iterations(self):
         """
@@ -1575,7 +1602,7 @@ class DnsRegisterNSEC3PARAM(DNSRegisterAlgorithm):
         return self.__iterations
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def flags(self):
         """
@@ -1592,7 +1619,7 @@ class DnsRegisterPTR(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, target, **kwargs):
         """
         :param target: server target
@@ -1607,7 +1634,7 @@ class DnsRegisterPTR(DnsRegister):
         super(DnsRegisterPTR, self).__init__(type="PTR", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def target(self):
         """
@@ -1617,7 +1644,7 @@ class DnsRegisterPTR(DnsRegister):
         return self.__target
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -1625,9 +1652,11 @@ class DnsRegisterPTR(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.target in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.target in scope
 
 
 #------------------------------------------------------------------------------
@@ -1637,7 +1666,7 @@ class DnsRegisterRP(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, mbox, txt, **kwargs):
         """
         :param mbox: The responsible person's mailbox as string format
@@ -1659,7 +1688,7 @@ class DnsRegisterRP(DnsRegister):
         super(DnsRegisterRP, self).__init__(type="RP", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def txt(self):
         """
@@ -1669,7 +1698,7 @@ class DnsRegisterRP(DnsRegister):
         return self.__txt
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def mbox(self):
         """
@@ -1679,7 +1708,7 @@ class DnsRegisterRP(DnsRegister):
         return self.__mbox
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         result = []
@@ -1698,9 +1727,11 @@ class DnsRegisterRP(DnsRegister):
         return result
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.mbox in Config.audit_scope or self.txt in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.mbox in scope or self.txt in scope
 
 
 #------------------------------------------------------------------------------
@@ -1710,7 +1741,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, algorithm, expiration, interception, key_tag, labels, original_ttl, signer, type_covered, **kwargs):
         """
         :param algorithm: the DNSSEC algorithm for the certificate. Allowed values are in DnsSEC.ALGORITHM_BY_TEXT dict.
@@ -1762,7 +1793,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         super(DnsRegisterRRSIG, self).__init__(algorithm, type="RRSIG", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def type_covered(self):
         """
@@ -1772,7 +1803,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         return self.__type_covered
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def labels(self):
         """
@@ -1782,7 +1813,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         return self.__labels
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def original_ttl(self):
         """
@@ -1792,7 +1823,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         return self.__original_ttl
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def expiration(self):
         """
@@ -1802,7 +1833,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         return self.__expiration
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def interception(self):
         """
@@ -1812,7 +1843,7 @@ class DnsRegisterRRSIG(DNSRegisterAlgorithm):
         return self.__interception
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def key_tag(self):
         """
@@ -1837,7 +1868,7 @@ class DnsRegisterSOA(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, mname, rname, refresh, expire, **kwargs):
         """
         :param mname: the SOA MNAME (master name) field
@@ -1870,7 +1901,7 @@ class DnsRegisterSOA(DnsRegister):
         super(DnsRegisterSOA, self).__init__(type="SOA", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def mname(self):
         """
@@ -1880,7 +1911,7 @@ class DnsRegisterSOA(DnsRegister):
         return self.__mname
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def rname(self):
         """
@@ -1890,7 +1921,7 @@ class DnsRegisterSOA(DnsRegister):
         return self.__rname
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def refresh(self):
         """
@@ -1900,7 +1931,7 @@ class DnsRegisterSOA(DnsRegister):
         return self.__refresh
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def expire(self):
         """
@@ -1910,7 +1941,7 @@ class DnsRegisterSOA(DnsRegister):
         return self.__expire
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         result = []
@@ -1921,9 +1952,11 @@ class DnsRegisterSOA(DnsRegister):
         return result
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.mname in Config.audit_scope or self.rname in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.mname in scope or self.rname in scope
 
 
 #------------------------------------------------------------------------------
@@ -1933,7 +1966,7 @@ class DnsRegisterTXT(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, strings, **kwargs):
         """
         :param strings: list of the string text
@@ -1953,7 +1986,7 @@ class DnsRegisterTXT(DnsRegister):
         super(DnsRegisterTXT, self).__init__(type="TXT", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def strings(self):
         """
@@ -1963,7 +1996,7 @@ class DnsRegisterTXT(DnsRegister):
         return self.__strings
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         return [Text("\n".join(self.strings))]
@@ -1976,7 +2009,7 @@ class DnsRegisterSPF(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, strings, **kwargs):
         """
         :param strings: list of the string text
@@ -1996,7 +2029,7 @@ class DnsRegisterSPF(DnsRegister):
         super(DnsRegisterSPF, self).__init__(type="SPF", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def strings(self):
         """
@@ -2006,7 +2039,7 @@ class DnsRegisterSPF(DnsRegister):
         return self.__strings
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         return [Text("\n".join(self.strings))]
@@ -2019,7 +2052,7 @@ class DnsRegisterSRV(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, target, priority, weight, port, **kwargs):
         """
         :param target: the target host name
@@ -2053,7 +2086,7 @@ class DnsRegisterSRV(DnsRegister):
         super(DnsRegisterSRV, self).__init__(type="SRV", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def target(self):
         """
@@ -2063,7 +2096,7 @@ class DnsRegisterSRV(DnsRegister):
         return self.__target
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def priority(self):
         """
@@ -2073,7 +2106,7 @@ class DnsRegisterSRV(DnsRegister):
         return self.__priority
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def weight(self):
         """
@@ -2083,7 +2116,7 @@ class DnsRegisterSRV(DnsRegister):
         return self.__weight
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def port(self):
         """
@@ -2093,7 +2126,7 @@ class DnsRegisterSRV(DnsRegister):
         return self.__port
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         # TODO discover the port
@@ -2102,9 +2135,11 @@ class DnsRegisterSRV(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.target in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.target in scope
 
 
 #------------------------------------------------------------------------------
@@ -2114,7 +2149,7 @@ class DnsRegisterWKS(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, protocol, bitmap, **kwargs):
         """
         :param address: the address
@@ -2142,7 +2177,7 @@ class DnsRegisterWKS(DnsRegister):
         super(DnsRegisterWKS, self).__init__(type="WKS", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -2152,7 +2187,7 @@ class DnsRegisterWKS(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def protocol(self):
         """
@@ -2162,7 +2197,7 @@ class DnsRegisterWKS(DnsRegister):
         return self.__protocol
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def bitmap(self):
         """
@@ -2172,7 +2207,7 @@ class DnsRegisterWKS(DnsRegister):
         return self.__bitmap
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -2180,9 +2215,11 @@ class DnsRegisterWKS(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope
 
 
 #------------------------------------------------------------------------------
@@ -2192,7 +2229,7 @@ class DnsRegisterX25(DnsRegister):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address, **kwargs):
         """
         :param address: the PSDN address
@@ -2208,7 +2245,7 @@ class DnsRegisterX25(DnsRegister):
         super(DnsRegisterX25, self).__init__(type="X25", **kwargs)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -2218,7 +2255,7 @@ class DnsRegisterX25(DnsRegister):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         if self.is_in_scope():
@@ -2226,6 +2263,8 @@ class DnsRegisterX25(DnsRegister):
         return []
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope

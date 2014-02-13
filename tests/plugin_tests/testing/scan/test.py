@@ -33,14 +33,14 @@ from golismero.api.logger import Logger
 from golismero.api.plugin import TestingPlugin
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class TestPlugin(TestingPlugin):
     """
     Test plugin.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
         if not isinstance(info, FolderUrl):
             raise TypeError("Expected FolderUrl, got %r instead" % type(info))
@@ -50,6 +50,6 @@ class TestPlugin(TestingPlugin):
         return UrlDisclosure(info)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [FolderUrl]

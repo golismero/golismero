@@ -4,5 +4,11 @@ Description = Writes plain text reports to a file or on screen.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
+
+[Arguments]
+
+# Set the width in characters for all tables.
+# Use 0 to disable this feature (each table's width may be different).
+width = 160

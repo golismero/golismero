@@ -37,6 +37,7 @@ from ..api.data.resource.ip import IP
 from ..api.data.resource.url import Url
 from ..api.net.dns import DNS
 from ..api.net.web_utils import ParsedURL, split_hostname
+from ..api.text.text_utils import to_utf8
 
 from netaddr import IPAddress, IPNetwork
 from warnings import warn
@@ -54,6 +55,12 @@ class AbstractScope (object):
         :param audit_config: (Optional) Audit configuration.
         :type audit_config: AuditConfig | None
         """
+        raise NotImplementedError()
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def has_scope(self):
         raise NotImplementedError()
 
 
@@ -174,6 +181,12 @@ class AuditScope (AbstractScope):
 
     #--------------------------------------------------------------------------
     @property
+    def has_scope(self):
+        return True
+
+
+    #--------------------------------------------------------------------------
+    @property
     def addresses(self):
         return sorted(self.__addresses)
 
@@ -202,7 +215,8 @@ class AuditScope (AbstractScope):
         # Validate the arguments.
         if dns_resolution not in (0, 1, 2):
             raise ValueError(
-                "Argument 'dns_resolution' can only be 0, 1 or 2, got %r instead" % dns_resolution)
+                "Argument 'dns_resolution' can only be 0, 1 or 2,"
+                " got %r instead" % dns_resolution)
 
         # Remember if subdomains are allowed.
         include_subdomains = audit_config.include_subdomains
@@ -212,16 +226,20 @@ class AuditScope (AbstractScope):
 
         # For each user-supplied target string...
         for target in audit_config.targets:
+            target = to_utf8(target)
 
             # If it's an IP address...
             try:
+                # For IPv6 address
                 if target.startswith("[") and target.endswith("]"):
                     IPAddress(target[1:-1], version=6)
                     address = target[1:-1]
                 else:
+                    # IPv4
                     IPAddress(target)
                     address = target
             except Exception:
+                ##raise  # XXX DEBUG
                 address = None
             if address is not None:
 
@@ -233,6 +251,7 @@ class AuditScope (AbstractScope):
                 try:
                     network = IPNetwork(target)
                 except Exception:
+                    ##raise  # XXX DEBUG
                     network = None
                 if network is not None:
 
@@ -262,11 +281,18 @@ class AuditScope (AbstractScope):
                         parsed_url = ParsedURL(target)
                         url = parsed_url.url
                     except Exception:
+                        ##raise  # XXX DEBUG
                         url = None
                     if url is not None:
 
                         # Keep the URL.
                         self.__web_pages.add(url)
+
+                        # If we allow parent folders...
+                        if audit_config.allow_parent:
+
+                            # Add the base URL too.
+                            self.__web_pages.add(parsed_url.base_url)
 
                         # Extract the domain or IP address.
                         host = parsed_url.host
@@ -278,6 +304,7 @@ class AuditScope (AbstractScope):
                                 IPAddress(host)
                             self.__addresses.add(host)
                         except Exception:
+                            ##raise  # XXX DEBUG
                             host = host.lower()
                             if host not in self.__domains:
                                 self.__domains.add(host)
@@ -361,7 +388,7 @@ class AuditScope (AbstractScope):
         if not isinstance(target, str):
             if not isinstance(target, unicode):
                 raise TypeError("Expected str, got %r instead" % type(target))
-            target = str(target)
+            target = to_utf8(target)
 
         # Keep the original string for error reporting.
         original = target
@@ -372,9 +399,13 @@ class AuditScope (AbstractScope):
         except Exception:
             parsed_url = None
         if parsed_url is not None:
+            if not parsed_url.scheme:
+                parsed_url = None
+            else:
 
-            # Extract the host and use it as target.
-            target = parsed_url.host
+                # Extract the host and use it as target.
+                # We'll be doing some extra checks later on, though.
+                target = parsed_url.host
 
         # If it's an IP address...
         try:
@@ -389,17 +420,17 @@ class AuditScope (AbstractScope):
         if address is not None:
 
             # Test if it's one of the target IP addresses.
-            return address in self.__addresses
+            in_scope = address in self.__addresses
 
         # If it's a domain name...
-        if self._re_is_domain.match(target):
+        elif self._re_is_domain.match(target):
 
             # Convert the target to lowercase.
             target = target.lower()
 
             # Test if the domain is one of the targets. If subdomains are
             # allowed, check if it's a subdomain of a target domain.
-            return (
+            in_scope = (
                 target in self.__domains or
                 any(
                     target.endswith("." + domain)
@@ -408,10 +439,36 @@ class AuditScope (AbstractScope):
             )
 
         # We don't know what this is, so we'll consider it out of scope.
-        warn(
-            "Can't determine if this is out of scope or not: %r" % original,
-            stacklevel=2
-        )
+        else:
+            ##raise ValueError(
+            ##    "Can't determine if this is out of scope or not: %r"
+            ##    % original)
+            warn(
+                "Can't determine if this is out of scope or not: %r"
+                    % original,
+                stacklevel=2
+            )
+            return False
+
+        # If it's in scope...
+        if in_scope:
+
+            # If it's an URL, check the path as well.
+            # If not within the allowed paths, it's out of scope.
+            if parsed_url is not None and \
+                            parsed_url.scheme in ("http", "https", "ftp"):
+                path = parsed_url.path
+                for base_url in self.__web_pages:
+                    parsed_url = ParsedURL(base_url)
+                    if path.startswith(parsed_url.path) and \
+                                parsed_url.scheme in ("http", "https", "ftp"):
+                        return True
+                return False
+
+            # Return True if in scope.
+            return True
+
+        # Return False if out of scope.
         return False
 
 
@@ -423,6 +480,10 @@ class DummyScope (AbstractScope):
 
     def __init__(self):
         pass
+
+    @property
+    def has_scope(self):
+        return False
 
     @property
     def addresses(self):

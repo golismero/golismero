@@ -30,7 +30,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-__all__ = ["Console", "colorize", "colorize_substring", "get_terminal_size"]
+__all__ = ["Console",
+           "colorize", "colorize_traceback", "colorize_substring",
+           "get_terminal_size"]
 
 from ..api.logger import Logger
 
@@ -41,6 +43,7 @@ import atexit
 import os.path
 
 from colorizer import colored
+from warnings import warn
 
 
 #------------------------------------------------------------------------------
@@ -63,8 +66,8 @@ m_colors = {
     'informational' : 'blue',
     'low'           : 'cyan',
     'middle'        : None,
-    'high'          : 'red',
-    'critical'      : 'yellow',
+    'high'          : 'magenta',
+    'critical'      : 'red',
 
     # Integer log levels to color names.
     0 : 'blue',
@@ -81,12 +84,7 @@ m_make_brighter = ['blue', 'grey', 'red']
 #------------------------------------------------------------------------------
 def colorize_substring(text, substring, level_or_color):
     """
-    Colorize a substring in a text depending of the type of alert:
-    - Informational
-    - Low
-    - Middle
-    - Hight
-    - Critical
+    Colorize a substring within a text to be displayed on the console.
 
     :param text: Full text.
     :type text: str
@@ -94,8 +92,10 @@ def colorize_substring(text, substring, level_or_color):
     :param substring: Text to find and colorize.
     :type substring: str
 
-    :param level_or_color: May be an integer with level (0-4) or string with values: info, low, middle, high, critical.
-    :type level_or_color: int | str
+    :param level_or_color:
+        Color name or risk level name.
+        See the documentation for colorize() for more details.
+    :type level_or_color: str
 
     :returns: Colorized text.
     :rtype: str
@@ -133,7 +133,7 @@ def colorize_substring(text, substring, level_or_color):
             m_suffix  = text[m_pos + len(substring):]
 
             # Patch the text to colorize the substring.
-            m_content = colorize(m_content, color)
+            m_content = colorize(m_content, level_or_color)
             text = "%s%s%s" % (m_prefix, m_content, m_suffix)
 
             # Update the current position and keep searching.
@@ -146,20 +146,35 @@ def colorize_substring(text, substring, level_or_color):
 #------------------------------------------------------------------------------
 def colorize(text, level_or_color):
     """
-    Colorize a text depends of type of alert:
-    - Informational
-    - Low
-    - Middle
-    - High
-    - Critical
+    Colorize a text to be displayed on the console.
 
-    :param text: text to colorize.
-    :type text: int with level (0-4) or string with values: info, low, middle, high, critical.
+    The following color names may be used:
 
-    :param level_or_color: color name or integer with level selected.
-    :type level_or_color: str or integer (0-4).
+     - Blue
+     - Cyan
+     - Green
+     - Grey (or gray)
+     - Magenta
+     - Red
+     - Yellow
+     - White
 
-    :returns: str -- string with information to print.
+    The following risk levels may be used in lieu of colors:
+
+     - Informational (0)
+     - Low (1)
+     - Middle (2)
+     - High (3)
+     - Critical (4)
+
+    :param text: Text to colorize.
+    :type text: str
+
+    :param level_or_color: Color name or risk level name.
+    :type level_or_color: str
+
+    :returns: Colorized text.
+    :rtype: str
     """
 
     # Check if colors are enabled.
@@ -182,6 +197,58 @@ def colorize(text, level_or_color):
 
     # Return the text.
     return text
+
+
+#------------------------------------------------------------------------------
+def colorize_traceback(traceback):
+    """
+    Colorize a Python traceback to be displayed on the console.
+
+    :param traceback: Traceback to colorize.
+    :type traceback: str
+
+    :returns: Colorized traceback.
+    :rtype: str
+    """
+    if not traceback or not traceback.startswith(
+            "Traceback (most recent call last):"):
+        return traceback
+    try:
+        lines = traceback.split("\n")
+        assert lines[-1] == ""
+        exc_line = lines[-2]
+        p = exc_line.find(":")
+        if p > 0:
+            lines[-2] = "%s: %s" % (
+                colorize(exc_line[:p], "red"), exc_line[p+2:])
+        else:
+            lines[-2] = colorize(exc_line, "red")
+        for i in xrange(1, len(lines) - 2, 2):
+            file_line = lines[i]
+            assert file_line.startswith("  File \""), repr(file_line)
+            p = 8
+            q = file_line.find('"', p)
+            assert q > p, (p, q)
+            filename = file_line[p:q]
+            r = q + 8
+            assert file_line[q:r] == "\", line ", (q, r, file_line[q:r])
+            s = file_line.find(",", r)
+            line_num = int(file_line[r:s])
+            t = s + 5
+            assert file_line[s:t] == ", in ", (s, t, file_line[s:t])
+            function = file_line[t:]
+            filename = os.path.join(
+                os.path.dirname(filename),
+                colorize(os.path.basename(filename), "cyan"))
+            line_num = colorize(str(line_num), "cyan")
+            function = colorize(function, "cyan")
+            lines[i] = "  File \"%s\", line %s, in %s" % \
+                       (filename, line_num, function)
+            lines[i + 1] = colorize(lines[i + 1], "yellow")
+        return "\n".join(lines)
+    except Exception, e:
+        warn(str(e), RuntimeWarning)
+        return traceback
 
 
 #------------------------------------------------------------------------------
@@ -271,19 +338,19 @@ def _get_terminal_size_linux():
 #------------------------------------------------------------------------------
 class Console (object):
     """
-    Console I/O wrapper.
+    Console output wrapper.
     """
 
 
     #--------------------------------------------------------------------------
-    # Verbose levels
+    # Verbose levels.
 
     DISABLED     = Logger.DISABLED
     STANDARD     = Logger.STANDARD
     VERBOSE      = Logger.VERBOSE
     MORE_VERBOSE = Logger.MORE_VERBOSE
 
-    # Current verbose level
+    # Current verbose level.
     level = STANDARD
 
     # Use colors?
@@ -294,23 +361,26 @@ class Console (object):
     @classmethod
     def _display(cls, message):
         """
-        Write a message into output
+        Write a message to standard output.
 
         :param message: message to write
         :type message: str
         """
         try:
+            ##if sys.platform in ("win32", "cygwin"):
+            ##    message = message.decode("utf-8").encode("latin-1")
             sys.stdout.write("%s\n" % (message,))
             sys.stdout.flush()
         except Exception,e:
-            print "[!] Error while writing to output onsole: %s" % str(e)
+            print "[!] Error while writing to output console: %s" % str(e)
 
 
     #--------------------------------------------------------------------------
     @classmethod
     def display(cls, message):
         """
-        Write a message into output
+        Write a message to standard output, as long as the current log level
+        is at least STANDARD.
 
         :param message: message to write
         :type message: str
@@ -323,7 +393,8 @@ class Console (object):
     @classmethod
     def display_verbose(cls, message):
         """
-        Write a message into output with more verbosity
+        Write a message to standard output, as long as the current log level
+        is at least VERBOSE.
 
         :param message: message to write
         :type message: str
@@ -336,7 +407,8 @@ class Console (object):
     @classmethod
     def display_more_verbose(cls, message):
         """
-        Write a message into output with even more verbosity
+        Write a message to standard output, as long as the current log level
+        is at least MORE_VERBOSE.
 
         :param message: message to write
         :type message: str
@@ -349,7 +421,7 @@ class Console (object):
     @classmethod
     def _display_error(cls, message):
         """
-        Write a error message into output
+        Write a message to standard error.
 
         :param message: message to write
         :type message: str
@@ -366,7 +438,8 @@ class Console (object):
     @classmethod
     def display_error(cls, message):
         """
-        Write a error message into output
+        Write a message to standard error, as long as the current log level
+        is at least STANDARD.
 
         :param message: message to write
         :type message: str
@@ -379,7 +452,8 @@ class Console (object):
     @classmethod
     def display_error_verbose(cls, message):
         """
-        Write a error message into output with more verbosity
+        Write a message to standard error, as long as the current log level
+        is at least VERBOSE.
 
         :param message: message to write
         :type message: str
@@ -392,7 +466,8 @@ class Console (object):
     @classmethod
     def display_error_more_verbose(cls, message):
         """
-        Write a error message into output with more verbosity
+        Write a message to standard error, as long as the current log level
+        is at least MORE_VERBOSE.
 
         :param message: message to write
         :type message: str

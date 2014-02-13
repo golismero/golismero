@@ -152,6 +152,8 @@ def setInterval(interval, times = -1):
     if isinstance(interval, int):
         interval = float(interval)
     elif not isinstance(interval, float):
+        if callable(interval):
+            raise SyntaxError("Missing interval value")
         raise TypeError("Expected int or float, got %r instead" % type(interval))
     if not isinstance(times, int):
         raise TypeError("Expected int, got %r instead" % type(times))
@@ -159,35 +161,49 @@ def setInterval(interval, times = -1):
     # Code adapted from: http://stackoverflow.com/q/5179467
 
     # This will be the actual decorator,
-    # with fixed interval and times parameter
+    # with fixed interval and times parameter.
     def outer_wrap(function):
         if not callable(function):
-            raise TypeError("Expected function, got %r instead" % type(function))
+            raise TypeError(
+                "Expected function, got %r instead" % type(function))
 
-        # This will be the function to be
-        # called
+        # This will be the function to be called.
         def wrap(*args, **kwargs):
 
+            # This event is used to stop the timer.
             stop = Event()
+
+            # Keep a copy of the plugin execution context,
+            # to be used in the background thread.
             current_context = Config._context
 
             # This is another function to be executed
-            # in a different thread to simulate setInterval
+            # in a different thread to simulate setInterval.
             def inner_wrap():
+
+                # Set the plugin execution context.
                 try:
                     Config._context
                 except SyntaxError:
                     Config._context = current_context
+
+                # Implement the interval functionality.
                 i = 0
                 while i != times and not stop.isSet():
                     stop.wait(interval)
+                    if stop.isSet():
+                        break
                     function(*args, **kwargs)
                     i += 1
 
+            # The timer gets an interval of 0,
+            # so it gets executed immediately.
             t = Timer(0, inner_wrap)
             t.daemon = True
             t.start()
 
+            # Return the stop event.
+            # To stop the timer, call stop.set()
             return stop
 
         return wrap

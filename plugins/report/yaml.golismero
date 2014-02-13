@@ -1,0 +1,18 @@
+[Documentation]
+Name        = YAML Report
+Description = YAML output for programmatic access.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+
+# Output mode ("dump" or "nice"). Default mode is "dump".
+# See the description of both modes at json.golismero
+mode = dump
+
+# Command to launch after generating the output file.
+# The string "$1" will be replaced by the output filename.
+command =

@@ -1,0 +1,14 @@
+[Documentation]
+Name        = Suspicious URL Finder
+Description = Flags suspicious words in URLs.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Configuration]
+middle             = golismero/warning_url.txt
+extensions         = fuzzdb/Discovery/FilenameBruteforce/Extensions.Backup.fuzz.txt
+malware_sites      = malware/joxean/normal.txt
+wordlist_no_spider = golismero/no_spiderable_urls.txt

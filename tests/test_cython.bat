@@ -4,8 +4,10 @@ cd ..\golismero
 dir /b /s *.py > ..\_tmp.txt
 cd ..\plugins
 dir /b /s *.py >> ..\_tmp.txt
-cd ..\tests\plugin_tests
-dir /b /s *.py >> ..\_tmp.txt
+cd ..\thirdparty_libs\openvas_lib
+dir /b /s *.py >> ..\..\_tmp.txt
+cd ..\..\tests\plugin_tests
+dir /b /s *.py >> ..\..\_tmp.txt
 cd ..\..
 del /s *.c > nul 2> nul
 del /s *.pyc > nul 2> nul

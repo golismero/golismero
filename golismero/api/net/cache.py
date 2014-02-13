@@ -47,12 +47,12 @@ class _NetworkCache(Singleton):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
         self._clear_local_cache()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def _clear_local_cache(self):
         """
         .. warning: Do not call!
@@ -69,7 +69,7 @@ class _NetworkCache(Singleton):
         self.__cache = defaultdict( partial(defaultdict, dict) )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get(self, key, protocol):
         """
         Get a network resource from the cache.
@@ -100,7 +100,7 @@ class _NetworkCache(Singleton):
         return data
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def set(self, key, data, protocol, timestamp=None, lifespan=None):
         """
         Store a network resource in the cache.
@@ -129,7 +129,7 @@ class _NetworkCache(Singleton):
                             MessageCode.MSG_RPC_CACHE_SET, key, protocol, data)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def remove(self, key, protocol):
         """
         Remove a network resource from the cache.
@@ -152,7 +152,7 @@ class _NetworkCache(Singleton):
                             MessageCode.MSG_RPC_CACHE_REMOVE, key, protocol)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def exists(self, key, protocol):
         """
         Verify if the given key exists in the cache.

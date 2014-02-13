@@ -1,576 +1,143 @@
-golismero/api/audit.py:57: Warning (W, get_audit_count): Access to a protected member _context of a client class
-golismero/api/audit.py:66: Warning (W, get_audit_names): Access to a protected member _context of a client class
-golismero/api/audit.py:81: Warning (W, get_audit_config): Access to a protected member _context of a client class
-golismero/api/audit.py:97: Warning (W, get_audit_times): Access to a protected member _context of a client class
-golismero/api/audit.py:156: Warning (W, start_audit): Access to a protected member _context of a client class
-golismero/api/audit.py:183: Warning (W, stop_audit): Access to a protected member _context of a client class
-golismero/api/config.py:47: Warning (W, get_orchestrator_config): Access to a protected member _context of a client class
-golismero/api/config.py:69: Warning (W, _Config.__init__): Statement seems to have no effect
-golismero/api/config.py:216: Warning (W, _Config.depth): Access to a protected member _depth of a client class
-golismero/api/config.py:253: Warning (W, _Config._has_context): Statement seems to have no effect
-golismero/api/data/__init__.py:118: Warning (W, identity.is_identity_property): Statement seems to have no effect
-golismero/api/data/__init__.py:118: Warning (W, identity.is_identity_property): Statement seems to have no effect
-golismero/api/data/__init__.py:153: Warning (W, merge.is_mergeable_property): Statement seems to have no effect
-golismero/api/data/__init__.py:153: Warning (W, merge.is_mergeable_property): Statement seems to have no effect
-golismero/api/data/__init__.py:330: Warning (W, keep_true.do_merge): Catching too general exception Exception
-golismero/api/data/__init__.py:330: Warning (W, keep_true.do_merge): Catching too general exception Exception
-golismero/api/data/__init__.py:388: Warning (W, keep_false.do_merge): Catching too general exception Exception
-golismero/api/data/__init__.py:388: Warning (W, keep_false.do_merge): Catching too general exception Exception
-golismero/api/data/__init__.py:466: Warning (W, custom.do_merge): Arguments number differs from overridden method
-golismero/api/data/__init__.py:676: Warning (W, Data.display_properties): Using global for 'Vulnerability' but no assignment is done
-golismero/api/data/__init__.py:678: Warning (W, Data.display_properties): Redefining name 'Vulnerability' from outer scope (line 70)
-golismero/api/data/__init__.py:696: Error (E, Data.display_properties): Instance of 'Data' has no 'vulnerability_type' member
-golismero/api/data/__init__.py:964: Warning (W, Data._merge_links): Access to a protected member __linked of a client class
-golismero/api/data/__init__.py:964: Warning (W, Data._merge_links): Access to a protected member __linked of a client class
-golismero/api/data/__init__.py:964: Warning (W, Data._merge_links): Access to a protected member __linked of a client class
-golismero/api/data/__init__.py:964: Warning (W, Data._merge_links): Access to a protected member __linked of a client class
-golismero/api/data/__init__.py:964: Warning (W, Data._merge_links): Access to a protected member __linked of a client class
-golismero/api/data/__init__.py:1064: Warning (W, Data.resolve): Redefining name 'identity' from outer scope (line 74)
-golismero/api/data/__init__.py:1076: Warning (W, Data.resolve): Access to a protected member _enabled of a client class
-golismero/api/data/__init__.py:1098: Warning (W, Data.resolve_links): Access to a protected member _enabled of a client class
-golismero/api/data/__init__.py:1123: Warning (W, Data.add_link): Access to a protected member _can_link of a client class
-golismero/api/data/__init__.py:1124: Warning (W, Data.add_link): Access to a protected member _add_link of a client class
-golismero/api/data/__init__.py:1402: Warning (W, _LocalDataCache.__cleanup): Access to a protected member _context of a client class
-golismero/api/data/__init__.py:1404: Warning (W, _LocalDataCache.__cleanup): Attribute '_enabled' defined outside __init__
-golismero/api/data/__init__.py:1407: Warning (W, _LocalDataCache.__cleanup): Attribute '__new_data' defined outside __init__
-golismero/api/data/__init__.py:1413: Warning (W, _LocalDataCache.__cleanup): Attribute '__discarded' defined outside __init__
-golismero/api/data/__init__.py:1416: Warning (W, _LocalDataCache.__cleanup): Attribute '__autogen' defined outside __init__
-golismero/api/data/__init__.py:1454: Warning (W, _LocalDataCache.update): Attribute '__fresh' defined outside __init__
-golismero/api/data/__init__.py:1618: Warning (W, _LocalDataCache.on_finish): Catching too general exception Exception
-golismero/api/data/__init__.py:1618: Warning (W, _LocalDataCache.on_finish): Catching too general exception Exception
-golismero/api/data/__init__.py:1618: Warning (W, _LocalDataCache.on_finish): Catching too general exception Exception
-golismero/api/data/__init__.py:1618: Warning (W, _LocalDataCache.on_finish): Catching too general exception Exception
-golismero/api/data/__init__.py:1618: Warning (W, _LocalDataCache.on_finish): Catching too general exception Exception
-golismero/api/data/__init__.py:1729: Warning (W, _LocalDataCache.on_finish): Redefining name 'identity' from outer scope (line 74)
-golismero/api/data/db.py:59: Warning (W, Database.add): Access to a protected member _context of a client class
-golismero/api/data/db.py:72: Warning (W, Database.async_add): Access to a protected member _context of a client class
-golismero/api/data/db.py:85: Warning (W, Database.async_add_many): Access to a protected member _context of a client class
-golismero/api/data/db.py:107: Warning (W, Database.remove): Access to a protected member _context of a client class
-golismero/api/data/db.py:116: Warning (W, Database.async_remove): Access to a protected member _context of a client class
-golismero/api/data/db.py:145: Warning (W, Database.async_remove_many): Access to a protected member _context of a client class
-golismero/api/data/db.py:165: Warning (W, Database.has_key): Access to a protected member _context of a client class
-golismero/api/data/db.py:187: Warning (W, Database.get): Access to a protected member _context of a client class
-golismero/api/data/db.py:206: Warning (W, Database.get_many): Access to a protected member _context of a client class
-golismero/api/data/db.py:230: Warning (W, Database.keys): Access to a protected member _context of a client class
-golismero/api/data/db.py:254: Warning (W, Database.count): Access to a protected member _context of a client class
-golismero/api/data/db.py:290: Warning (W, Database.get_plugin_history): Access to a protected member _context of a client class
-golismero/api/data/information/dns.py:333: Warning (W, DnsRegister.name2id): Redefining built-in 'id'
-golismero/api/data/information/dns.py:1417: Warning (W, DnsRegisterNSEC.__init__): Redefining built-in 'next'
-golismero/api/data/information/http.py:471: Warning (W, HTTP_Request.__init__): Catching too general exception Exception
-golismero/api/data/information/http.py:484: Error (E, HTTP_Request.__init__): Instance of 'str' has no 'items' member (but some types could not be inferred)
-golismero/api/data/information/http.py:655: Warning (W, HTTP_Request.content_length): Catching too general exception Exception
-golismero/api/data/information/http.py:758: Warning (W, HTTP_Response.__init__): Catching too general exception Exception
-golismero/api/data/information/http.py:818: Error (E, HTTP_Response.elapsed): An attribute affected in golismero.api.data.information.http line 792 hide this method
-golismero/api/data/information/http.py:913: Warning (W, HTTP_Response.content_length): Catching too general exception Exception
-golismero/api/data/information/http.py:985: Warning (W, HTTP_Response.__parse_raw_response): Catching too general exception Exception
-golismero/api/data/information/http.py:985: Warning (W, HTTP_Response.__parse_raw_response): Catching too general exception Exception
-golismero/api/data/resource/domain.py:71: Warning (W, Domain.__init__): Catching too general exception Exception
-golismero/api/data/vulnerability/__init__.py:255: Warning (W, Vulnerability.__get_default_text): Catching too general exception Exception
-golismero/api/data/vulnerability/__init__.py:357: Warning (W, Vulnerability.plugin_id): Catching too general exception Exception
-golismero/api/data/vulnerability/__init__.py:359: Warning (W, Vulnerability.plugin_id): Attribute '__plugin_id' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:374: Error (E, Vulnerability.plugin_id): An attribute affected in golismero.api.data.vulnerability line 198 hide this method
-golismero/api/data/vulnerability/__init__.py:384: Warning (W, Vulnerability.level): Attribute '__level' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:408: Warning (W, Vulnerability.impact): Attribute '__impact' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:428: Warning (W, Vulnerability.bid): Attribute '__bid' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:428: Warning (W, Vulnerability.tool_id): Attribute '__tool_id' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:448: Warning (W, Vulnerability.ca): Attribute '__ca' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:468: Warning (W, Vulnerability.capec): Attribute '__capec' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:488: Warning (W, Vulnerability.cve): Attribute '__cve' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:508: Warning (W, Vulnerability.cwe): Attribute '__cwe' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:528: Warning (W, Vulnerability.osvdb): Attribute '__osvdb' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:548: Warning (W, Vulnerability.sa): Attribute '__sa' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:568: Warning (W, Vulnerability.sectrack): Attribute '__sectrack' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:588: Warning (W, Vulnerability.vu): Attribute '__vu' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:608: Warning (W, Vulnerability.xf): Attribute '__xf' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:632: Warning (W, Vulnerability.severity): Attribute '__severity' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:656: Warning (W, Vulnerability.risk): Attribute '__risk' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:679: Warning (W, Vulnerability.cvss_base): Attribute '__cvss_base' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:702: Warning (W, Vulnerability.cvss_base_vector): Attribute '__cvss_base_vector' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:725: Warning (W, Vulnerability.title): Attribute '__title' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:748: Warning (W, Vulnerability.description): Attribute '__description' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:771: Warning (W, Vulnerability.solution): Attribute '__solution' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:794: Warning (W, Vulnerability.references): Attribute '__references' defined outside __init__
-golismero/api/data/vulnerability/__init__.py:845: Error (E, Vulnerability.references): An attribute affected in golismero.api.data.vulnerability line 226 hide this method
-golismero/api/data/vulnerability/__init__.py:862: Warning (W, UrlVulnerability.__init__): Catching too general exception Exception
-golismero/api/data/vulnerability/__init__.py:883: Error (E, UrlVulnerability): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/authentication/weak_credentials.py:93: Error (E, WeakCredentials): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/cookie/__init__.py:79: Error (E, CookieVulnerability): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/default_error_page.py:65: Error (E, DefaultErrorPage): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/directory_listing.py:63: Error (E, DirectoryListing): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/dns_zone_transfer.py:71: Error (E, DNSZoneTransfer): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/insecure_method.py:77: Error (E, InsecureMethod): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/unhandled_errors.py:63: Error (E, UnhandledErrors): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/infrastructure/outdated_software.py:78: Error (E, OutdatedSoftware): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/infrastructure/vulnerable_service.py:88: Error (E, VulnerableService): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/malware/__init__.py:144: Error (E, Malware): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/ssl/__init__.py:66: Error (E, SSLVulnerability): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/ssl/insecure_algorithm.py:64: Error (E, InsecureAlgorithm): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/ssl/obsolete_protocol.py:64: Error (E, ObsoleteProtocol): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/cookie.py:80: Error (E, SuspiciousCookie): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/html.py:76: Error (E, SuspiciousHTML): Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/url.py:68: Error (E, SuspiciousURL): Method '__init__' has no '__doc__' member
-golismero/api/external.py:64: Warning (W, WindowsError): Redefining built-in 'WindowsError'
-golismero/api/logger.py:82: Warning (W, Logger._log): Access to a protected member _context of a client class
-golismero/api/net/__init__.py:89: Warning (W, ConnectionSlot.__enter__): Access to a protected member _context of a client class
-golismero/api/net/__init__.py:89: Warning (W, ConnectionSlot.__enter__): Attribute '__token' defined outside __init__
-golismero/api/net/__init__.py:97: Warning (W, ConnectionSlot.__exit__): Redefining built-in 'type'
-golismero/api/net/__init__.py:98: Warning (W, ConnectionSlot.__exit__): Access to a protected member _context of a client class
-golismero/api/net/cache.py:69: Warning (W, _NetworkCache._clear_local_cache): Attribute '__cache' defined outside __init__
-golismero/api/net/cache.py:92: Warning (W, _NetworkCache.get): Access to a protected member _context of a client class
-golismero/api/net/cache.py:104: Warning (W, _NetworkCache.set): Unused argument 'lifespan'
-golismero/api/net/cache.py:104: Warning (W, _NetworkCache.set): Unused argument 'timestamp'
-golismero/api/net/cache.py:128: Warning (W, _NetworkCache.set): Access to a protected member _context of a client class
-golismero/api/net/cache.py:151: Warning (W, _NetworkCache.remove): Access to a protected member _context of a client class
-golismero/api/net/cache.py:172: Warning (W, _NetworkCache.exists): Access to a protected member _context of a client class
-golismero/api/net/dns.py:35: Warning (W): Wildcard import data.information.dns
-golismero/api/net/dns.py:44: Warning (W): Unused import BadZone from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import NoNS from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import NoSOA from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import UnknownOrigin from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import from_file from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import from_text from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import from_xfr from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import generators from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import re from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Unused import sys from wildcard import
-golismero/api/net/dns.py:44: Warning (W): Wildcard import dns.zone
-golismero/api/net/dns.py:154: Warning (W, _DNS.check_tcp_dns): Catching too general exception Exception
-golismero/api/net/dns.py:163: Warning (W, _DNS.resolve): Redefining built-in 'type'
-golismero/api/net/dns.py:205: Error (E, _DNS.get_a): Undefined variable 'DnsRegisterA'
-golismero/api/net/dns.py:244: Error (E, _DNS.get_aaaa): Undefined variable 'DnsRegisterAAAA'
-golismero/api/net/dns.py:478: Warning (W, _DNS.zone_transfer): Used builtin function 'map'
-golismero/api/net/dns.py:519: Warning (W, _DNS.zone_transfer): Unused variable 'name'
-golismero/api/net/dns.py:634: Warning (W, _DNS.zone_transfer): No exception type(s) specified
-golismero/api/net/dns.py:708: Error (E, _DNS.get_ips): Undefined variable 'DnsRegister'
-golismero/api/net/dns.py:747: Warning (W, _DNS._dnslib2register): Redefining built-in 'type'
-golismero/api/net/dns.py:772: Error (E, _DNS._dnslib2register): Undefined variable 'DnsRegister'
-golismero/api/net/dns.py:772: Error (E, _DNS._dnslib2register): Undefined variable 'DnsRegister'
-golismero/api/net/dns.py:804: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterA'
-golismero/api/net/dns.py:807: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterAAAA'
-golismero/api/net/dns.py:810: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterAFSDB'
-golismero/api/net/dns.py:813: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterCERT'
-golismero/api/net/dns.py:817: Warning (W, _DNS.__dnsregister2golismeroregister): Access to a protected member _hexify of a client class
-golismero/api/net/dns.py:817: Warning (W, _DNS.__dnsregister2golismeroregister): Access to a protected member _hexify of a client class
-golismero/api/net/dns.py:817: Warning (W, _DNS.__dnsregister2golismeroregister): Access to a protected member _hexify of a client class
-golismero/api/net/dns.py:817: Warning (W, _DNS.__dnsregister2golismeroregister): Access to a protected member _hexify of a client class
-golismero/api/net/dns.py:819: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterCNAME'
-golismero/api/net/dns.py:822: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterDNSKEY'
-golismero/api/net/dns.py:828: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterDS'
-golismero/api/net/dns.py:834: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterHINFO'
-golismero/api/net/dns.py:838: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterIPSECKEY'
-golismero/api/net/dns.py:845: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterISDN'
-golismero/api/net/dns.py:849: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterLOC'
-golismero/api/net/dns.py:855: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterMX'
-golismero/api/net/dns.py:859: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNAPTR'
-golismero/api/net/dns.py:866: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNS'
-golismero/api/net/dns.py:869: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNSAP'
-golismero/api/net/dns.py:872: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNSEC'
-golismero/api/net/dns.py:875: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNSEC3'
-golismero/api/net/dns.py:881: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterNSEC3PARAM'
-golismero/api/net/dns.py:887: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterPTR'
-golismero/api/net/dns.py:890: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterRP'
-golismero/api/net/dns.py:894: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterRRSIG'
-golismero/api/net/dns.py:904: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterSIG'
-golismero/api/net/dns.py:914: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterSOA'
-golismero/api/net/dns.py:920: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterSPF'
-golismero/api/net/dns.py:923: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterSRV'
-golismero/api/net/dns.py:929: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterTXT'
-golismero/api/net/dns.py:932: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterWKS'
-golismero/api/net/dns.py:937: Error (E, _DNS.__dnsregister2golismeroregister): Undefined variable 'DnsRegisterX25'
-golismero/api/net/dns.py:995: Warning (W, _DNS._make_request): Catching too general exception Exception
-golismero/api/net/http.py:276: Warning (W, _HTTP.make_request): Catching too general exception Exception
-golismero/api/net/http.py:448: Warning (W, _HTTP.make_raw_request): Unused variable 'canonname'
-golismero/api/net/http.py:530: Warning (W, _HTTP.make_raw_request): Catching too general exception Exception
-golismero/api/net/http.py:530: Warning (W, _HTTP.make_raw_request): Catching too general exception Exception
-golismero/api/net/scraper.py:115: Warning (W, is_link): Catching too general exception Exception
-golismero/api/net/scraper.py:165: Warning (W, extract_from_text): Catching too general exception Exception
-golismero/api/net/scraper.py:165: Warning (W, extract_from_text): Catching too general exception Exception
-golismero/api/net/scraper.py:277: Warning (W, extract_from_html): Catching too general exception Exception
-golismero/api/net/scraper.py:277: Warning (W, extract_from_html): Catching too general exception Exception
-golismero/api/net/scraper.py:277: Warning (W, extract_from_html): Catching too general exception Exception
-golismero/api/net/scraper.py:277: Warning (W, extract_from_html): Catching too general exception Exception
-golismero/api/net/web_utils.py:391: Error (E, check_auth): Instance of 'LookupDict' has no 'ok' member
-golismero/api/net/web_utils.py:1084: Warning (W, ParsedURL.host): Attribute '__host' defined outside __init__
-golismero/api/net/web_utils.py:1099: Warning (W, ParsedURL.port): Attribute '__port' defined outside __init__
-golismero/api/net/web_utils.py:1113: Warning (W, ParsedURL.path): Attribute '__path' defined outside __init__
-golismero/api/net/web_utils.py:1126: Warning (W, ParsedURL.fragment): Attribute '__fragment' defined outside __init__
-golismero/api/net/web_utils.py:1163: Warning (W, ParsedURL.query): Used builtin function 'map'
-golismero/api/net/web_utils.py:1169: Warning (W, ParsedURL.query): Catching too general exception Exception
-golismero/api/net/web_utils.py:1186: Warning (W, ParsedURL.query_params): Attribute '__query_params' defined outside __init__
-golismero/api/net/web_utils.py:1187: Warning (W, ParsedURL.query_params): Attribute '__query' defined outside __init__
-golismero/api/net/web_utils.py:1350: Warning (W, ParsedURL.auth): Attribute '__username' defined outside __init__
-golismero/api/net/web_utils.py:1351: Warning (W, ParsedURL.auth): Attribute '__password' defined outside __init__
-golismero/api/net/web_utils.py:1686: Error (E, HTMLParser.title): Instance of 'ResultSet' has no 'name' member (but some types could not be inferred)
-golismero/api/parallel.py:168: Warning (W, setInterval.outer_wrap.wrap): Access to a protected member _context of a client class
-golismero/api/parallel.py:174: Warning (W, setInterval.outer_wrap.wrap.inner_wrap): Access to a protected member _context of a client class
-golismero/api/parallel.py:174: Warning (W, setInterval.outer_wrap.wrap.inner_wrap): Access to a protected member _context of a client class
-golismero/api/parallel.py:184: Warning (W, setInterval.outer_wrap.wrap.inner_wrap): Used * or ** magic
-golismero/api/parallel.py:273: Warning (W, pmap): Used builtin function 'map'
-golismero/api/parallel.py:273: Warning (W, pmap): Used builtin function 'map'
-golismero/api/parallel.py:287: Warning (W, pmap): Used * or ** magic
-golismero/api/parallel.py:396: Warning (W, Task.run): No exception type(s) specified
-golismero/api/parallel.py:522: Warning (W, WorkerThread.start): Access to a protected member _context of a client class
-golismero/api/parallel.py:551: Warning (W, WorkerThread.run): Access to a protected member _context of a client class
-golismero/api/parallel.py:704: Warning (W, WorkerPool.__init__): Access to a protected member _callback of a client class
-golismero/api/parallel.py:837: Warning (W, WorkerPool.stop): Used builtin function 'map'
-golismero/api/parallel.py:864: Warning (W, WorkerPool.terminate): No exception type(s) specified
-golismero/api/plugin.py:61: Warning (W, get_plugin_ids): Access to a protected member _context of a client class
-golismero/api/plugin.py:81: Warning (W, get_plugin_info): Access to a protected member _context of a client class
-golismero/api/plugin.py:120: Warning (W, _PluginProgress._notify): Access to a protected member _context of a client class
-golismero/api/plugin.py:138: Warning (W, PluginState.__init__): __init__ method from base class 'SharedMap' is not called
-golismero/api/plugin.py:187: Warning (W, Plugin.__new__): Access to a protected member __progress of a client class
-golismero/api/plugin.py:369: Warning (W, TestingPlugin): Method 'get_accepted_info' is abstract in class '_InformationPlugin' but is not overridden
-golismero/api/plugin.py:369: Warning (W, TestingPlugin): Method 'recv_info' is abstract in class '_InformationPlugin' but is not overridden
-golismero/api/progress.py:270: Error (E, Progress): Method 'begin_subtask' has no '__doc__' member
-golismero/api/progress.py:325: Warning (W, TaskProgress.__init__): Access to a protected member _lock of a client class
-golismero/api/progress.py:332: Error (E, TaskProgress): Method '__init__' has no '__doc__' member
-golismero/api/shared.py:297: Warning (W, SharedMap.get_many): Access to a protected member _context of a client class
-golismero/api/shared.py:346: Warning (W, SharedMap.check_all): Access to a protected member _context of a client class
-golismero/api/shared.py:366: Warning (W, SharedMap.check_any): Access to a protected member _context of a client class
-golismero/api/shared.py:387: Warning (W, SharedMap.check_each): Access to a protected member _context of a client class
-golismero/api/shared.py:431: Warning (W, SharedMap.pop_many): Access to a protected member _context of a client class
-golismero/api/shared.py:485: Warning (W, SharedMap.put_many): Access to a protected member _context of a client class
-golismero/api/shared.py:501: Warning (W, SharedMap.async_put_many): Access to a protected member _context of a client class
-golismero/api/shared.py:529: Warning (W, SharedMap.delete_many): Access to a protected member _context of a client class
-golismero/api/shared.py:546: Warning (W, SharedMap.keys): Access to a protected member _context of a client class
-golismero/api/shared.py:602: Warning (W, SharedHeap.check_all): Access to a protected member _context of a client class
-golismero/api/shared.py:622: Warning (W, SharedHeap.check_any): Access to a protected member _context of a client class
-golismero/api/shared.py:643: Warning (W, SharedHeap.check_each): Access to a protected member _context of a client class
-golismero/api/shared.py:679: Warning (W, SharedHeap.pop_many): Access to a protected member _context of a client class
-golismero/api/shared.py:704: Warning (W, SharedHeap.add_many): Access to a protected member _context of a client class
-golismero/api/shared.py:732: Warning (W, SharedHeap.remove_many): Access to a protected member _context of a client class
-golismero/api/text/text_utils.py:41: Warning (W): Uses of a deprecated module 'string'
-golismero/api/text/text_utils.py:370: Error (E): Function 'convert_references_to_vuln_ids' has no '__doc__' member
-golismero/api/text/wordlist.py:317: Warning (W, AdvancedListWordlist): Method 'search_mutations' is abstract in class 'AbstractWordlist' but is not overridden
-golismero/api/text/wordlist.py:427: Warning (W, AdvancedListWordlist.clone): Access to a protected member __wordlist of a client class
-golismero/api/text/wordlist.py:695: Warning (W, AdvancedDicWordlist.clone): Access to a protected member __wordlist of a client class
-golismero/common.py:117: Warning (W, get_user_settings_folder): Using the global statement
-golismero/common.py:140: Warning (W, get_user_settings_folder): Catching too general exception Exception
-golismero/common.py:176: Warning (W, get_wordlists_folder): Using the global statement
-golismero/common.py:195: Warning (W, get_profiles_folder): Using the global statement
-golismero/common.py:447: Warning (W, Configuration.__init__): Used * or ** magic
-golismero/common.py:562: Warning (W, Configuration.from_config_file): Attribute 'profile' defined outside __init__
-golismero/common.py:563: Warning (W, Configuration.from_config_file): Attribute 'profile_file' defined outside __init__
-golismero/common.py:669: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'max_connections' member
-golismero/common.py:669: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'max_connections' member
-golismero/common.py:673: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'max_concurrent' member
-golismero/common.py:673: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'max_concurrent' member
-golismero/common.py:677: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'enable_plugins' member
-golismero/common.py:677: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'enable_plugins' member
-golismero/common.py:679: Error (E, OrchestratorConfig.check_params): Instance of 'OrchestratorConfig' has no 'disable_plugins' member
-golismero/common.py:788: Warning (W, AuditConfig.targets): Attribute '_targets' defined outside __init__
-golismero/common.py:808: Warning (W, AuditConfig.imports): Attribute '_imports' defined outside __init__
-golismero/common.py:822: Warning (W, AuditConfig.reports): Attribute '_reports' defined outside __init__
-golismero/common.py:840: Warning (W, AuditConfig.audit_db): Attribute '_audit_db' defined outside __init__
-golismero/common.py:866: Warning (W, AuditConfig.cookie): Attribute '_cookie' defined outside __init__
-golismero/common.py:877: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'enable_plugins' member
-golismero/common.py:877: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'enable_plugins' member
-golismero/common.py:879: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'disable_plugins' member
-golismero/common.py:887: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'subdomain_regex' member
-golismero/common.py:887: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'subdomain_regex' member
-golismero/common.py:892: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'depth' member
-golismero/common.py:892: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'depth' member
-golismero/common.py:892: Error (E, AuditConfig.check_params): Instance of 'AuditConfig' has no 'depth' member
-golismero/database/auditdb.py:827: Warning (W, AuditMemoryDB): Method '_atom' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:827: Warning (W, AuditMemoryDB): Method '_transaction' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:827: Warning (W, AuditMemoryDB): Method 'dump' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:827: Warning (W, AuditMemoryDB): Method 'get_config_from_closed_database' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:867: Warning (W, AuditMemoryDB.encode): Arguments number differs from overridden method
-golismero/database/auditdb.py:872: Warning (W, AuditMemoryDB.decode): Arguments number differs from overridden method
-golismero/database/auditdb.py:1182: Warning (W, AuditSQLiteDB.__init__): Using global for 'sqlite3' but no assignment is done
-golismero/database/auditdb.py:1188: Warning (W, AuditSQLiteDB.__init__): Redefining name 'sqlite3' from outer scope (line 58)
-golismero/database/auditdb.py:1301: Warning (W, AuditSQLiteDB.get_config_from_closed_database): Using global for 'sqlite3' but no assignment is done
-golismero/database/auditdb.py:1307: Warning (W, AuditSQLiteDB.get_config_from_closed_database): Redefining name 'sqlite3' from outer scope (line 58)
-golismero/database/auditdb.py:1379: Warning (W, AuditSQLiteDB.encode): Arguments number differs from overridden method
-golismero/database/auditdb.py:1411: Warning (W, AuditSQLiteDB._atom): Used * or ** magic
-golismero/database/auditdb.py:1429: Warning (W, AuditSQLiteDB._transaction): Used * or ** magic
-golismero/database/auditdb.py:1581: Warning (W, AuditSQLiteDB.__get_audit_name_from_database): Catching too general exception Exception
-golismero/database/auditdb.py:2323: Warning (W, AuditSQLiteDB.close): Catching too general exception Exception
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method '_atom' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method '_transaction' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'add_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'add_many_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'add_shared_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'clear_all_stage_marks' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'clear_stage_mark' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'close' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'connection_url' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'delete_mapped_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'dump' is abstract in class 'BaseDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_audit_config' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_audit_scope' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_audit_times' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_data_count' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_data_keys' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_data_types' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_many_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_mapped_keys' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_mapped_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_past_plugins' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'get_pending_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_all_mapped_keys' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_all_shared_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_any_mapped_key' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_any_shared_value' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_data_key' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_each_mapped_key' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'has_each_shared_value' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'mark_plugin_finished' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'mark_stage_finished' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'pop_mapped_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'pop_shared_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'put_mapped_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'remove_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'remove_many_data' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'remove_shared_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'save_audit_config' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'save_audit_scope' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'set_audit_start_time' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'set_audit_stop_time' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'set_audit_times' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/auditdb.py:2328: Warning (W, AuditDB): Method 'swap_mapped_values' is abstract in class 'BaseAuditDB' but is not overridden
-golismero/database/cachedb.py:163: Warning (W, VolatileNetworkCache): Method '_atom' is abstract in class 'BaseDB' but is not overridden
-golismero/database/cachedb.py:163: Warning (W, VolatileNetworkCache): Method '_transaction' is abstract in class 'BaseDB' but is not overridden
-golismero/database/cachedb.py:229: Warning (W, PersistentNetworkCache.__init__): Using global for 'sqlite3' but no assignment is done
-golismero/database/cachedb.py:231: Warning (W, PersistentNetworkCache.__init__): Redefining name 'sqlite3' from outer scope (line 46)
-golismero/database/cachedb.py:246: Warning (W, PersistentNetworkCache._atom): Used * or ** magic
-golismero/database/cachedb.py:261: Warning (W, PersistentNetworkCache._transaction): Used * or ** magic
-golismero/database/cachedb.py:390: Warning (W, PersistentNetworkCache.close): Catching too general exception Exception
-golismero/database/common.py:46: Warning (W, transactional): Access to a protected member _transaction of a client class
-golismero/database/common.py:55: Warning (W, atomic): Access to a protected member _atom of a client class
-golismero/main/console.py:231: Warning (W, _get_terminal_size_windows): No exception type(s) specified
-golismero/main/console.py:235: Warning (W, _get_terminal_size_windows): Unused variable 'bufx'
-golismero/main/console.py:235: Warning (W, _get_terminal_size_windows): Unused variable 'bufy'
-golismero/main/console.py:235: Warning (W, _get_terminal_size_windows): Unused variable 'curx'
-golismero/main/console.py:235: Warning (W, _get_terminal_size_windows): Unused variable 'cury'
-golismero/main/console.py:235: Warning (W, _get_terminal_size_windows): Unused variable 'wattr'
-golismero/main/console.py:236: Warning (W, _get_terminal_size_windows): Unused variable 'maxx'
-golismero/main/console.py:236: Warning (W, _get_terminal_size_windows): Unused variable 'maxy'
-golismero/main/console.py:255: Warning (W, _get_terminal_size_tput): No exception type(s) specified
-golismero/main/console.py:263: Warning (W, _get_terminal_size_linux.ioctl_GWINSZ): No exception type(s) specified
-golismero/main/console.py:264: [F, _get_terminal_size_linux.ioctl_GWINSZ] Unable to import 'fcntl'
-golismero/main/console.py:264: [F, _get_terminal_size_linux.ioctl_GWINSZ] Unable to import 'termios'
-golismero/main/console.py:269: Warning (W, _get_terminal_size_linux): Redefining name 'os' from outer scope (line 41)
-golismero/main/console.py:273: Error (E, _get_terminal_size_linux): Module 'os' has no 'ctermid' member
-golismero/main/console.py:273: Warning (W, _get_terminal_size_linux): No exception type(s) specified
-golismero/main/console.py:273: Warning (W, _get_terminal_size_linux): No exception type(s) specified
-golismero/main/console.py:320: Warning (W, Console._display): Catching too general exception Exception
-golismero/main/console.py:376: Warning (W, Console._display_error): Catching too general exception Exception
-golismero/main/console.py:432: Warning (W): Access to a protected member _atexit_restore_console of a client class
-golismero/main/launcher.py:70: Error (E, run): Instance of 'OrchestratorConfig' has no 'verbose' member (but some types could not be inferred)
-golismero/main/launcher.py:76: Error (E, run): Instance of 'OrchestratorConfig' has no 'color' member (but some types could not be inferred)
-golismero/main/launcher.py:119: Warning (W, _run): Catching too general exception Exception
-golismero/main/launcher.py:119: Warning (W, _run): Catching too general exception Exception
-golismero/main/launcher.py:181: Error (E, _sanitize_config): Instance of 'OrchestratorConfig' has no 'targets' member (but some types could not be inferred)
-golismero/main/orchestrator.py:85: Error (E, Orchestrator.__init__): Instance of 'SyncManager' has no 'Queue' member
-golismero/main/orchestrator.py:91: Warning (W, Orchestrator.__init__): Access to a protected member _context of a client class
-golismero/main/orchestrator.py:97: Warning (W, Orchestrator.__init__): Access to a protected member _orchestrator of a client class
-golismero/main/orchestrator.py:169: Warning (W, Orchestrator.__exit__): Redefining built-in 'type'
-golismero/main/orchestrator.py:227: Warning (W, Orchestrator.__control_c_handler): Unused argument 'frame'
-golismero/main/orchestrator.py:227: Warning (W, Orchestrator.__control_c_handler): Unused argument 'signum'
-golismero/main/orchestrator.py:251: Warning (W, Orchestrator.__control_c_handler): No exception type(s) specified
-golismero/main/orchestrator.py:254: Warning (W, Orchestrator.__panic_control_c_handler): Unused argument 'frame'
-golismero/main/orchestrator.py:254: Warning (W, Orchestrator.__panic_control_c_handler): Unused argument 'signum'
-golismero/main/orchestrator.py:263: Warning (W, Orchestrator.__panic_control_c_handler): Catching too general exception Exception
-golismero/main/orchestrator.py:371: Warning (W, Orchestrator.enqueue_msg): Catching too general exception Exception
-golismero/main/orchestrator.py:401: Warning (W, Orchestrator.build_plugin_context): Access to a protected member _orchestrator_pid of a client class
-golismero/main/orchestrator.py:402: Warning (W, Orchestrator.build_plugin_context): Access to a protected member _orchestrator_tid of a client class
-golismero/main/orchestrator.py:442: Warning (W, Orchestrator.run): Catching too general exception Exception
-golismero/main/orchestrator.py:442: Warning (W, Orchestrator.run): Catching too general exception Exception
-golismero/main/orchestrator.py:510: Warning (W, Orchestrator.close): Access to a protected member _context of a client class
-golismero/main/scope.py:149: Warning (W, AuditScope.add_targets): Catching too general exception Exception
-golismero/main/scope.py:149: Warning (W, AuditScope.add_targets): Catching too general exception Exception
-golismero/main/scope.py:149: Warning (W, AuditScope.add_targets): Catching too general exception Exception
-golismero/main/scope.py:149: Warning (W, AuditScope.add_targets): Catching too general exception Exception
-golismero/main/scope.py:316: Warning (W, AuditScope.__contains__): Catching too general exception Exception
-golismero/main/scope.py:316: Warning (W, AuditScope.__contains__): Catching too general exception Exception
-golismero/main/testing.py:131: Warning (W, PluginTester.__exit__): Redefining built-in 'type'
-golismero/main/testing.py:167: Warning (W, PluginTester.init_environment): Access to a protected member _Audit__database of a client class
-golismero/main/testing.py:167: Warning (W, PluginTester.init_environment): Attribute '_Audit__database' defined outside __init__
-golismero/main/testing.py:174: Warning (W, PluginTester.init_environment): Access to a protected member _Audit__audit_scope of a client class
-golismero/main/testing.py:174: Warning (W, PluginTester.init_environment): Attribute '_Audit__audit_scope' defined outside __init__
-golismero/main/testing.py:178: Warning (W, PluginTester.init_environment): Access to a protected member _Audit__plugin_manager of a client class
-golismero/main/testing.py:178: Warning (W, PluginTester.init_environment): Attribute '_Audit__plugin_manager' defined outside __init__
-golismero/main/testing.py:189: Error (E, PluginTester.init_environment): Instance of 'AuditManager' has no '_AuditManager__audits' member
-golismero/main/testing.py:189: Warning (W, PluginTester.init_environment): Access to a protected member _AuditManager__audits of a client class
-golismero/main/testing.py:192: Warning (W, PluginTester.init_environment): Access to a protected member _context of a client class
-golismero/main/testing.py:195: Error (E, PluginTester.init_environment): Instance of 'Orchestrator' has no '_Orchestrator__queue' member
-golismero/main/testing.py:195: Warning (W, PluginTester.init_environment): Access to a protected member _Orchestrator__queue of a client class
-golismero/main/testing.py:202: Warning (W, PluginTester.init_environment): Access to a protected member _initialize of a client class
-golismero/main/testing.py:203: Warning (W, PluginTester.init_environment): Access to a protected member _clear_local_cache of a client class
-golismero/main/testing.py:204: Warning (W, PluginTester.init_environment): Access to a protected member _update_plugin_path of a client class
-golismero/main/testing.py:205: Warning (W, PluginTester.init_environment): Access to a protected member _enabled of a client class
-golismero/main/testing.py:205: Warning (W, PluginTester.init_environment): Access to a protected member _enabled of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__plugin_info of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__plugin_info of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:258: Warning (W, PluginTester.run_plugin): Access to a protected member _context of a client class
-golismero/main/testing.py:259: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__ack_identity of a client class
-golismero/main/testing.py:259: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__ack_identity of a client class
-golismero/main/testing.py:259: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__ack_identity of a client class
-golismero/main/testing.py:259: Warning (W, PluginTester.run_plugin): Access to a protected member _PluginContext__ack_identity of a client class
-golismero/main/testing.py:263: Warning (W, PluginTester.run_plugin): Access to a protected member _initialize of a client class
-golismero/main/testing.py:264: Warning (W, PluginTester.run_plugin): Access to a protected member _clear_local_cache of a client class
-golismero/main/testing.py:265: Warning (W, PluginTester.run_plugin): Access to a protected member _update_plugin_path of a client class
-golismero/main/testing.py:340: Warning (W, PluginTester.run_plugin): Attribute '_PluginContext__plugin_info' defined outside __init__
-golismero/main/testing.py:341: Warning (W, PluginTester.run_plugin): Attribute '_PluginContext__ack_identity' defined outside __init__
-golismero/main/testing.py:359: Warning (W, PluginTester.cleanup): Access to a protected member _update_plugin_path of a client class
-golismero/main/testing.py:360: Warning (W, PluginTester.cleanup): Access to a protected member _clear_local_cache of a client class
-golismero/main/testing.py:362: Warning (W, PluginTester.cleanup): Access to a protected member _finalize of a client class
-golismero/main/testing.py:365: Error (E, PluginTester.cleanup): Instance of 'AuditDB' has no 'filename' member
-golismero/managers/auditmanager.py:59: Warning (W, rpc_audit_get_count): Unused argument 'audit_name'
-golismero/managers/auditmanager.py:63: Warning (W, rpc_audit_get_names): Unused argument 'audit_name'
-golismero/managers/auditmanager.py:144: Warning (W, AuditManager.new_audit): Catching too general exception Exception
-golismero/managers/auditmanager.py:271: Warning (W, AuditManager.close): No exception type(s) specified
-golismero/managers/auditmanager.py:324: Error (E, Audit.__init__): Instance of 'AuditDB' has no 'filename' member
-golismero/managers/auditmanager.py:445: Warning (W, Audit.run): Access to a protected member _orchestrator_pid of a client class
-golismero/managers/auditmanager.py:445: Warning (W, Audit.run): Access to a protected member _orchestrator_pid of a client class
-golismero/managers/auditmanager.py:446: Warning (W, Audit.run): Access to a protected member _orchestrator_tid of a client class
-golismero/managers/auditmanager.py:446: Warning (W, Audit.run): Access to a protected member _orchestrator_tid of a client class
-golismero/managers/auditmanager.py:447: Warning (W, Audit.run): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:447: Warning (W, Audit.run): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:447: Warning (W, Audit.run): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:447: Warning (W, Audit.run): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:747: Warning (W, Audit.dispatch_msg): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:747: Warning (W, Audit.dispatch_msg): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:747: Warning (W, Audit.dispatch_msg): Access to a protected member _context of a client class
-golismero/managers/auditmanager.py:762: Warning (W, Audit.dispatch_msg): Access to a protected member _orchestrator_pid of a client class
-golismero/managers/auditmanager.py:763: Warning (W, Audit.dispatch_msg): Access to a protected member _orchestrator_tid of a client class
-golismero/managers/auditmanager.py:867: Warning (W, Audit.__dispatch_msg): Access to a protected member _update_data of a client class
-golismero/managers/auditmanager.py:957: Warning (W, Audit.close): Attribute '__audit_scope' defined outside __init__
-golismero/managers/importmanager.py:134: Warning (W, ImportManager.import_results): Access to a protected member _context of a client class
-golismero/managers/importmanager.py:134: Warning (W, ImportManager.import_results): Access to a protected member _context of a client class
-golismero/managers/importmanager.py:134: Warning (W, ImportManager.import_results): Access to a protected member _context of a client class
-golismero/managers/importmanager.py:140: Warning (W, ImportManager.import_results): Catching too general exception Exception
-golismero/managers/networkmanager.py:133: Warning (W, NetworkManager.request_slot): Statement seems to have no effect
-golismero/managers/networkmanager.py:179: Warning (W, NetworkManager.release_slot): Catching too general exception Exception
-golismero/managers/networkmanager.py:203: Warning (W, NetworkManager.release_all_slots): No exception type(s) specified
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:282: Warning (W, PluginInfo.__init__): Catching too general exception Exception
-golismero/managers/pluginmanager.py:433: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_id of a client class
-golismero/managers/pluginmanager.py:433: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_id' defined outside __init__
-golismero/managers/pluginmanager.py:434: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __descriptor_file of a client class
-golismero/managers/pluginmanager.py:434: Warning (W, PluginInfo.__deepcopy__): Attribute '__descriptor_file' defined outside __init__
-golismero/managers/pluginmanager.py:435: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __display_name of a client class
-golismero/managers/pluginmanager.py:435: Warning (W, PluginInfo.__deepcopy__): Attribute '__display_name' defined outside __init__
-golismero/managers/pluginmanager.py:436: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __stage_number of a client class
-golismero/managers/pluginmanager.py:436: Warning (W, PluginInfo.__deepcopy__): Attribute '__stage_number' defined outside __init__
-golismero/managers/pluginmanager.py:437: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __recursive of a client class
-golismero/managers/pluginmanager.py:437: Warning (W, PluginInfo.__deepcopy__): Attribute '__recursive' defined outside __init__
-golismero/managers/pluginmanager.py:438: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_module of a client class
-golismero/managers/pluginmanager.py:438: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_module' defined outside __init__
-golismero/managers/pluginmanager.py:439: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_class of a client class
-golismero/managers/pluginmanager.py:439: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_class' defined outside __init__
-golismero/managers/pluginmanager.py:440: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __dependencies of a client class
-golismero/managers/pluginmanager.py:440: Warning (W, PluginInfo.__deepcopy__): Attribute '__dependencies' defined outside __init__
-golismero/managers/pluginmanager.py:441: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __description of a client class
-golismero/managers/pluginmanager.py:441: Warning (W, PluginInfo.__deepcopy__): Attribute '__description' defined outside __init__
-golismero/managers/pluginmanager.py:442: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __version of a client class
-golismero/managers/pluginmanager.py:442: Warning (W, PluginInfo.__deepcopy__): Attribute '__version' defined outside __init__
-golismero/managers/pluginmanager.py:443: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __author of a client class
-golismero/managers/pluginmanager.py:443: Warning (W, PluginInfo.__deepcopy__): Attribute '__author' defined outside __init__
-golismero/managers/pluginmanager.py:444: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __copyright of a client class
-golismero/managers/pluginmanager.py:444: Warning (W, PluginInfo.__deepcopy__): Attribute '__copyright' defined outside __init__
-golismero/managers/pluginmanager.py:445: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __license of a client class
-golismero/managers/pluginmanager.py:445: Warning (W, PluginInfo.__deepcopy__): Attribute '__license' defined outside __init__
-golismero/managers/pluginmanager.py:446: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __website of a client class
-golismero/managers/pluginmanager.py:446: Warning (W, PluginInfo.__deepcopy__): Attribute '__website' defined outside __init__
-golismero/managers/pluginmanager.py:447: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_args of a client class
-golismero/managers/pluginmanager.py:447: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_args' defined outside __init__
-golismero/managers/pluginmanager.py:448: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_config of a client class
-golismero/managers/pluginmanager.py:448: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_config' defined outside __init__
-golismero/managers/pluginmanager.py:449: Warning (W, PluginInfo.__deepcopy__): Access to a protected member __plugin_extra_config of a client class
-golismero/managers/pluginmanager.py:449: Warning (W, PluginInfo.__deepcopy__): Attribute '__plugin_extra_config' defined outside __init__
-golismero/managers/pluginmanager.py:477: Error (E, PluginInfo.customize_for_audit): Instance of '_EmptyNewStyleClass' has no '__read_config_file' member
-golismero/managers/pluginmanager.py:477: Error (E, PluginInfo.customize_for_audit): Instance of '_EmptyNewStyleClass' has no '__read_config_file' member
-golismero/managers/pluginmanager.py:477: Warning (W, PluginInfo.customize_for_audit): Access to a protected member __read_config_file of a client class
-golismero/managers/pluginmanager.py:477: Warning (W, PluginInfo.customize_for_audit): Access to a protected member __read_config_file of a client class
-golismero/managers/pluginmanager.py:597: Warning (W, PluginManager): Used * or ** magic
-golismero/managers/pluginmanager.py:597: Warning (W, PluginManager): Used * or ** magic
-golismero/managers/pluginmanager.py:729: Warning (W, PluginManager.find_plugins): Catching too general exception Exception
-golismero/managers/pluginmanager.py:1007: Warning (W, PluginManager.load_plugin_by_id): Access to a protected member _fix_classname of a client class
-golismero/managers/pluginmanager.py:1035: Warning (W, PluginManager.get_plugin_info_from_instance): Catching too general exception Exception
-golismero/managers/pluginmanager.py:1137: Warning (W, AuditPluginManager.__init__): Unused argument 'orchestratorConfig'
-golismero/managers/pluginmanager.py:1503: Warning (W, AuditPluginManager.load_plugin_by_id): Access to a protected member _fix_classname of a client class
-golismero/managers/processmanager.py:60: Warning (W): Unused import mp
-golismero/managers/processmanager.py:73: Warning (W, Process.daemon): Arguments number differs from overridden method
-golismero/managers/processmanager.py:73: Warning (W, Process.daemon): Arguments number differs from overridden method
-golismero/managers/processmanager.py:82: Warning (W, Pool): Method '__reduce__' is abstract in class 'Pool' but is not overridden
-golismero/managers/processmanager.py:99: Warning (W, do_nothing): Unused argument 'args'
-golismero/managers/processmanager.py:99: Warning (W, do_nothing): Unused argument 'kwargs'
-golismero/managers/processmanager.py:122: Warning (W, _launcher): No exception type(s) specified
-golismero/managers/processmanager.py:122: Warning (W, _launcher): No exception type(s) specified
-golismero/managers/processmanager.py:133: Warning (W, _launcher): Used * or ** magic
-golismero/managers/processmanager.py:161: Warning (W, _bootstrap): Access to a protected member _context of a client class
-golismero/managers/processmanager.py:185: Warning (W, _bootstrap): Access to a protected member _depth of a client class
-golismero/managers/processmanager.py:185: Warning (W, _bootstrap): Access to a protected member _depth of a client class
-golismero/managers/processmanager.py:185: Warning (W, _bootstrap): Access to a protected member _depth of a client class
-golismero/managers/processmanager.py:188: Warning (W, _bootstrap): Access to a protected member _update_plugin_path of a client class
-golismero/managers/processmanager.py:198: Warning (W, _bootstrap): Access to a protected member _initialize of a client class
-golismero/managers/processmanager.py:201: Warning (W, _bootstrap): Access to a protected member _clear_local_cache of a client class
-golismero/managers/processmanager.py:240: Warning (W, _bootstrap): Used * or ** magic
-golismero/managers/processmanager.py:255: Warning (W, _bootstrap): Catching too general exception Exception
-golismero/managers/processmanager.py:255: Warning (W, _bootstrap): Catching too general exception Exception
-golismero/managers/processmanager.py:255: Warning (W, _bootstrap): Catching too general exception Exception
-golismero/managers/processmanager.py:303: Warning (W, _bootstrap): No exception type(s) specified
-golismero/managers/processmanager.py:303: Warning (W, _bootstrap): No exception type(s) specified
-golismero/managers/processmanager.py:576: Warning (W, PluginContext.send_msg): Used * or ** magic
-golismero/managers/processmanager.py:613: Warning (W, PluginContext.send_raw_msg): No exception type(s) specified
-golismero/managers/processmanager.py:631: Error (E, PluginContext.remote_call): Instance of 'SyncManager' has no 'Queue' member
-golismero/managers/processmanager.py:634: Warning (W, PluginContext.remote_call): No exception type(s) specified
-golismero/managers/processmanager.py:634: Warning (W, PluginContext.remote_call): No exception type(s) specified
-golismero/managers/processmanager.py:658: Warning (W, PluginContext.remote_call): Catching too general exception Exception
-golismero/managers/processmanager.py:771: Warning (W, PluginPoolManager.run_plugin): Access to a protected member _context of a client class
-golismero/managers/processmanager.py:771: Warning (W, PluginPoolManager.run_plugin): Access to a protected member _context of a client class
-golismero/managers/processmanager.py:851: Error (E, PluginLauncher.__init__): Instance of 'SyncManager' has no 'Queue' member
-golismero/managers/processmanager.py:854: Warning (W, PluginLauncher.__init__): No exception type(s) specified
-golismero/managers/processmanager.py:891: Warning (W, PluginLauncher.run_plugin): No exception type(s) specified
-golismero/managers/processmanager.py:891: Warning (W, PluginLauncher.run_plugin): No exception type(s) specified
-golismero/managers/processmanager.py:938: Warning (W, PluginLauncher.stop): Catching too general exception Exception
-golismero/managers/processmanager.py:942: Warning (W, PluginLauncher.stop): No exception type(s) specified
-golismero/managers/processmanager.py:1000: Warning (W, ProcessManager.run_plugin): Access to a protected member _context of a client class
-golismero/managers/processmanager.py:1000: Warning (W, ProcessManager.run_plugin): Access to a protected member _context of a client class
-golismero/managers/reportmanager.py:132: Warning (W, ReportManager.generate_reports): Catching too general exception Exception
-golismero/managers/reportmanager.py:178: Warning (W, ReportManager.generate_screen_report): Using possibly undefined loop variable 'output_file'
-golismero/managers/reportmanager.py:178: Warning (W, ReportManager.generate_screen_report): Using possibly undefined loop variable 'plugin_id'
-golismero/managers/reportmanager.py:179: Warning (W, ReportManager.generate_screen_report): Catching too general exception Exception
-golismero/managers/rpcmanager.py:65: Warning (W, _add_implementor): Catching too general exception Exception
-golismero/managers/rpcmanager.py:109: Warning (W, rpc_bulk): Used builtin function 'map'
-golismero/managers/rpcmanager.py:199: Warning (W, RPCManager.execute_rpc): Catching too general exception Exception
-golismero/managers/rpcmanager.py:204: Warning (W, RPCManager.execute_rpc): No exception type(s) specified
-golismero/managers/rpcmanager.py:229: Warning (W, RPCManager.execute_rpc_implementor): Used * or ** magic
-golismero/managers/rpcmanager.py:232: Warning (W, RPCManager.execute_rpc_implementor): Catching too general exception Exception
-golismero/managers/rpcmanager.py:244: Warning (W, RPCManager.execute_rpc_implementor): No exception type(s) specified
-golismero/managers/rpcmanager.py:263: Warning (W, RPCManager.prepare_exception): Catching too general exception Exception
-golismero/managers/rpcmanager.py:263: Warning (W, RPCManager.prepare_exception): Catching too general exception Exception
-golismero/messaging/message.py:39: Warning (W): Unused import MSG_CODES from wildcard import
-golismero/messaging/message.py:39: Warning (W): Wildcard import codes
-golismero/messaging/notifier.py:729: Warning (W, OrchestratorNotifier.__run_plugin): Access to a protected member _context of a client class
-golismero/messaging/notifier.py:729: Warning (W, OrchestratorNotifier.__run_plugin): Access to a protected member _context of a client class
-golismero/messaging/notifier.py:729: Warning (W, OrchestratorNotifier.__run_plugin): Access to a protected member _context of a client class
-golismero/patches/mp.py:53: Warning (W, __suicide): Unused argument 'frame'
-golismero/patches/mp.py:53: Warning (W, __suicide): Unused argument 'signum'
-golismero/patches/mp.py:132: Warning (W, main): Redefining name 'Process' from outer scope (line 145)
-golismero/patches/mp.py:133: Warning (W, main): Access to a protected member _bootstrap of a client class
-golismero/patches/mp.py:133: Warning (W, main): Access to a protected member _bootstrap of a client class
-golismero/patches/mp.py:133: Warning (W, main): Redefining name '__original_bootstrap' from outer scope (line 146)
-golismero/patches/mp.py:146: Warning (W): Access to a protected member _bootstrap of a client class
-golismero/patches/mp.py:146: Warning (W): Access to a protected member _bootstrap of a client class
+golismero/api/data/__init__.py:738: [E1101(no-member), Data.display_properties] Instance of 'Data' has no 'vulnerability_type' member
+golismero/api/data/__init__.py:1601: [E1101(no-member), Data.is_instance] Instance of 'Data' has no 'data_subtype' member
+golismero/api/data/information/fingerprint.py:215: [E0202(method-hidden), OSFingerprint.name] An attribute affected in golismero.api.data.information.fingerprint line 160 hide this method
+golismero/api/data/information/fingerprint.py:240: [E0202(method-hidden), OSFingerprint.vendor] An attribute affected in golismero.api.data.information.fingerprint line 161 hide this method
+golismero/api/data/information/fingerprint.py:265: [E0202(method-hidden), OSFingerprint.type] An attribute affected in golismero.api.data.information.fingerprint line 162 hide this method
+golismero/api/data/information/fingerprint.py:290: [E0202(method-hidden), OSFingerprint.generation] An attribute affected in golismero.api.data.information.fingerprint line 163 hide this method
+golismero/api/data/information/fingerprint.py:314: [E0202(method-hidden), OSFingerprint.family] An attribute affected in golismero.api.data.information.fingerprint line 164 hide this method
+golismero/api/data/information/fingerprint.py:566: [E0202(method-hidden), WebServerFingerprint.others] An attribute affected in golismero.api.data.information.fingerprint line 480 hide this method
+golismero/api/data/information/fingerprint.py:600: [E0202(method-hidden), WebServerFingerprint.related] An attribute affected in golismero.api.data.information.fingerprint line 479 hide this method
+golismero/api/data/information/http.py:524: [E1103(maybe-no-member), HTTP_Request.__init__] Instance of 'str' has no 'items' member (but some types could not be inferred)
+golismero/api/data/information/http.py:882: [E0202(method-hidden), HTTP_Response.elapsed] An attribute affected in golismero.api.data.information.http line 856 hide this method
+golismero/api/data/resource/bssid.py:93: [E0202(method-hidden), BSSID.essid] An attribute affected in golismero.api.data.resource.bssid line 64 hide this method
+golismero/api/data/vulnerability/__init__.py:518: [E0202(method-hidden), Vulnerability.plugin_id] An attribute affected in golismero.api.data.vulnerability line 282 hide this method
+golismero/api/data/vulnerability/__init__.py:715: [E1101(no-member), Vulnerability.title] Instance of 'Vulnerability' has no '__title' member
+golismero/api/data/vulnerability/__init__.py:736: [E1101(no-member), Vulnerability.description] Instance of 'Vulnerability' has no '__description' member
+golismero/api/data/vulnerability/__init__.py:738: [E0202(method-hidden), Vulnerability.references] An attribute affected in golismero.api.data.vulnerability line 335 hide this method
+golismero/api/data/vulnerability/__init__.py:758: [E1101(no-member), Vulnerability.solution] Instance of 'Vulnerability' has no '__solution' member
+golismero/api/data/vulnerability/__init__.py:1381: [E1101(no-member), UrlVulnerability] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/__init__.py:1471: [E1101(no-member), DomainVulnerability] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/__init__.py:1526: [E1101(no-member), IPVulnerability] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/authentication/weak_credentials.py:97: [E1101(no-member), WeakCredentials] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/cookie/__init__.py:70: [E1101(no-member), CookieVulnerability] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/default_error_page.py:75: [E1101(no-member), DefaultErrorPage] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/directory_listing.py:72: [E1101(no-member), DirectoryListing] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/dns_zone_transfer.py:93: [E1101(no-member), DNSZoneTransfer] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/domain_disclosure.py:88: [E1101(no-member), DomainDisclosure] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/insecure_method.py:73: [E1101(no-member), InsecureMethod] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/unhandled_errors.py:73: [E1101(no-member), UnhandledErrors] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/infrastructure/outdated_software.py:82: [E1101(no-member), OutdatedSoftware] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/infrastructure/vulnerable_service.py:88: [E1101(no-member), VulnerableService] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/injection/__init__.py:98: [E1101(no-member), Injection] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/malware/__init__.py:147: [E1101(no-member), Malware] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/malware/backdoor.py:88: [E1101(no-member), Backdoor] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/malware/malicious.py:117: [E1101(no-member), MaliciousASN] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/ssl/insecure_algorithm.py:79: [E1101(no-member), InsecureAlgorithm] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/ssl/invalid_common_name.py:70: [E1101(no-member), InvalidCommonName] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/ssl/obsolete_protocol.py:69: [E1101(no-member), ObsoleteProtocol] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/ssl/weak_key.py:76: [E1101(no-member), WeakKey] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/cookie.py:82: [E1101(no-member), SuspiciousCookie] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/header.py:77: [E1101(no-member), SuspiciousHeader] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/html.py:74: [E1101(no-member), SuspiciousHTML] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/url.py:63: [E1101(no-member), SuspiciousURL] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/url.py:85: [E1101(no-member), SuspiciousURLPath] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/vuln_utils.py:443: [E1101(no-member), ] Function 'extract_vuln_ids' has no '__doc__' member
+golismero/api/data/vulnerability/vuln_utils.py:489: [E1101(no-member), ] Function 'convert_references_to_vuln_ids' has no '__doc__' member
+golismero/api/data/vulnerability/vuln_utils.py:527: [E1101(no-member), ] Function 'convert_vuln_ids_to_references' has no '__doc__' member
+golismero/api/data/vulnerability/vuln_utils.py:762: [E1101(no-member), CVSS_Base.base_exploitability] Instance of 'CVSS_Base' has no 'AC' member
+golismero/api/data/vulnerability/vuln_utils.py:762: [E1101(no-member), CVSS_Base.base_exploitability] Instance of 'CVSS_Base' has no 'AV' member
+golismero/api/data/vulnerability/vuln_utils.py:762: [E1101(no-member), CVSS_Base.base_exploitability] Instance of 'CVSS_Base' has no 'Au' member
+golismero/api/data/vulnerability/vuln_utils.py:766: [E1101(no-member), CVSS_Base.impact] Instance of 'CVSS_Base' has no 'A' member
+golismero/api/data/vulnerability/vuln_utils.py:766: [E1101(no-member), CVSS_Base.impact] Instance of 'CVSS_Base' has no 'C' member
+golismero/api/data/vulnerability/vuln_utils.py:766: [E1101(no-member), CVSS_Base.impact] Instance of 'CVSS_Base' has no 'I' member
+golismero/api/data/vulnerability/vuln_utils.py:808: [E1101(no-member), ] Class 'CVSS_Base' has no 'AV' member
+golismero/api/data/vulnerability/vuln_utils.py:809: [E1101(no-member), ] Class 'CVSS_Base' has no 'AC' member
+golismero/api/data/vulnerability/vuln_utils.py:810: [E1101(no-member), ] Class 'CVSS_Base' has no 'Au' member
+golismero/api/data/vulnerability/vuln_utils.py:811: [E1101(no-member), ] Class 'CVSS_Base' has no 'C' member
+golismero/api/data/vulnerability/vuln_utils.py:812: [E1101(no-member), ] Class 'CVSS_Base' has no 'I' member
+golismero/api/data/vulnerability/vuln_utils.py:813: [E1101(no-member), ] Class 'CVSS_Base' has no 'A' member
+golismero/api/data/vulnerability/vuln_utils.py:900: [E1101(no-member), CVSS.temporal_score] Instance of 'CVSS' has no 'E' member
+golismero/api/data/vulnerability/vuln_utils.py:900: [E1101(no-member), CVSS.temporal_score] Instance of 'CVSS' has no 'RC' member
+golismero/api/data/vulnerability/vuln_utils.py:900: [E1101(no-member), CVSS.temporal_score] Instance of 'CVSS' has no 'RL' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'A' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'AR' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'C' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'CR' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'I' member
+golismero/api/data/vulnerability/vuln_utils.py:906: [E1101(no-member), CVSS.adjusted_impact] Instance of 'CVSS' has no 'IR' member
+golismero/api/data/vulnerability/vuln_utils.py:922: [E1101(no-member), CVSS.adjusted_temporal_score] Instance of 'CVSS' has no 'E' member
+golismero/api/data/vulnerability/vuln_utils.py:922: [E1101(no-member), CVSS.adjusted_temporal_score] Instance of 'CVSS' has no 'RC' member
+golismero/api/data/vulnerability/vuln_utils.py:922: [E1101(no-member), CVSS.adjusted_temporal_score] Instance of 'CVSS' has no 'RL' member
+golismero/api/data/vulnerability/vuln_utils.py:929: [E1101(no-member), CVSS.environmental_score] Instance of 'CVSS' has no 'CDP' member
+golismero/api/data/vulnerability/vuln_utils.py:929: [E1101(no-member), CVSS.environmental_score] Instance of 'CVSS' has no 'TD' member
+golismero/api/data/vulnerability/vuln_utils.py:938: [E1101(no-member), ] Class 'CVSS' has no 'E' member
+golismero/api/data/vulnerability/vuln_utils.py:939: [E1101(no-member), ] Class 'CVSS' has no 'RL' member
+golismero/api/data/vulnerability/vuln_utils.py:940: [E1101(no-member), ] Class 'CVSS' has no 'RC' member
+golismero/api/data/vulnerability/vuln_utils.py:941: [E1101(no-member), ] Class 'CVSS' has no 'CDP' member
+golismero/api/data/vulnerability/vuln_utils.py:942: [E1101(no-member), ] Class 'CVSS' has no 'TD' member
+golismero/api/data/vulnerability/vuln_utils.py:943: [E1101(no-member), ] Class 'CVSS' has no 'CR' member
+golismero/api/data/vulnerability/vuln_utils.py:944: [E1101(no-member), ] Class 'CVSS' has no 'IR' member
+golismero/api/data/vulnerability/vuln_utils.py:945: [E1101(no-member), ] Class 'CVSS' has no 'AR' member
+golismero/api/net/dns.py:199: [E0602(undefined-variable), _DNS.get_a] Undefined variable 'DnsRegisterA'
+golismero/api/net/dns.py:238: [E0602(undefined-variable), _DNS.get_aaaa] Undefined variable 'DnsRegisterAAAA'
+golismero/api/net/dns.py:702: [E0602(undefined-variable), _DNS.get_ips] Undefined variable 'DnsRegister'
+golismero/api/net/dns.py:766: [E0602(undefined-variable), _DNS._dnslib2register] Undefined variable 'DnsRegister'
+golismero/api/net/dns.py:798: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterA'
+golismero/api/net/dns.py:801: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterAAAA'
+golismero/api/net/dns.py:804: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterAFSDB'
+golismero/api/net/dns.py:807: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterCERT'
+golismero/api/net/dns.py:813: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterCNAME'
+golismero/api/net/dns.py:816: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterDNSKEY'
+golismero/api/net/dns.py:822: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterDS'
+golismero/api/net/dns.py:828: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterHINFO'
+golismero/api/net/dns.py:832: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterIPSECKEY'
+golismero/api/net/dns.py:839: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterISDN'
+golismero/api/net/dns.py:843: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterLOC'
+golismero/api/net/dns.py:849: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterMX'
+golismero/api/net/dns.py:853: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNAPTR'
+golismero/api/net/dns.py:860: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNS'
+golismero/api/net/dns.py:863: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNSAP'
+golismero/api/net/dns.py:866: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNSEC'
+golismero/api/net/dns.py:869: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNSEC3'
+golismero/api/net/dns.py:875: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterNSEC3PARAM'
+golismero/api/net/dns.py:881: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterPTR'
+golismero/api/net/dns.py:884: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterRP'
+golismero/api/net/dns.py:888: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterRRSIG'
+golismero/api/net/dns.py:898: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterSIG'
+golismero/api/net/dns.py:908: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterSOA'
+golismero/api/net/dns.py:914: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterSPF'
+golismero/api/net/dns.py:917: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterSRV'
+golismero/api/net/dns.py:923: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterTXT'
+golismero/api/net/dns.py:926: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterWKS'
+golismero/api/net/dns.py:931: [E0602(undefined-variable), _DNS.__dnsregister2golismeroregister] Undefined variable 'DnsRegisterX25'
+golismero/api/net/web_utils.py:438: [E1101(no-member), check_auth] Instance of 'LookupDict' has no 'ok' member
+golismero/api/net/web_utils.py:1839: [E1103(maybe-no-member), HTMLParser.title] Instance of 'ResultSet' has no 'name' member (but some types could not be inferred)
+golismero/api/plugin.py:165: [E1101(no-member), ] Function 'get_stage_display_name' has no '__doc__' member
+golismero/api/plugin.py:196: [E1101(no-member), ] Function 'get_plugin_type_display_name' has no '__doc__' member
+golismero/api/plugin.py:239: [E1101(no-member), ] Function 'get_plugin_type_description' has no '__doc__' member
+golismero/api/plugin.py:594: [E1101(no-member), ReportPlugin.is_supported] Instance of 'ReportPlugin' has no 'EXTENSION' member
+golismero/api/progress.py:270: [E1101(no-member), Progress] Method 'begin_subtask' has no '__doc__' member
+golismero/api/progress.py:332: [E1101(no-member), TaskProgress] Method '__init__' has no '__doc__' member
+golismero/common.py:107: [E0102(function-redefined), json_encode] function already defined line 81
+golismero/common.py:113: [E0102(function-redefined), json_decode] function already defined line 80
+golismero/common.py:815: [E1101(no-member), OrchestratorConfig.check_params] Instance of 'OrchestratorConfig' has no 'max_connections' member
+golismero/common.py:821: [E1101(no-member), OrchestratorConfig.check_params] Instance of 'OrchestratorConfig' has no 'max_concurrent' member
+golismero/common.py:827: [E1101(no-member), OrchestratorConfig.check_params] Instance of 'OrchestratorConfig' has no 'enable_plugins' member
+golismero/common.py:829: [E1101(no-member), OrchestratorConfig.check_params] Instance of 'OrchestratorConfig' has no 'disable_plugins' member
+golismero/common.py:1190: [E1101(no-member), AuditConfig.check_params] Instance of 'AuditConfig' has no 'enable_plugins' member
+golismero/common.py:1193: [E1101(no-member), AuditConfig.check_params] Instance of 'AuditConfig' has no 'disable_plugins' member
+golismero/common.py:1198: [E1101(no-member), AuditConfig.check_params] Instance of 'AuditConfig' has no 'depth' member
+golismero/common.py:1228: [E1101(no-member), AuditConfig.is_new_audit] Instance of 'AuditConfig' has no 'audit_name' member
+golismero/database/auditdb.py:2677: [E1102(not-callable), AuditMongoDB.mark_plugin_finished] Error is not callable
+golismero/main/console.py:323: [E1101(no-member), _get_terminal_size_linux] Module 'os' has no 'ctermid' member
+golismero/main/launcher.py:74: [E1103(maybe-no-member), run] Instance of 'OrchestratorConfig' has no 'verbose' member (but some types could not be inferred)
+golismero/main/launcher.py:77: [E1103(maybe-no-member), run] Instance of 'OrchestratorConfig' has no 'color' member (but some types could not be inferred)
+golismero/main/launcher.py:237: [E1103(maybe-no-member), _sanitize_config] Instance of 'OrchestratorConfig' has no 'targets' member (but some types could not be inferred)
+golismero/main/orchestrator.py:88: [E1101(no-member), Orchestrator.__init__] Instance of 'SyncManager' has no 'Queue' member
+golismero/main/testing.py:230: [E1101(no-member), PluginTester.init_environment] Instance of 'AuditManager' has no '_AuditManager__audits' member
+golismero/main/testing.py:241: [E1101(no-member), PluginTester.init_environment] Instance of 'Orchestrator' has no '_Orchestrator__queue' member
+golismero/main/testing.py:398: [E1101(no-member), PluginTester.cleanup] Instance of 'AuditDB' has no 'filename' member
+golismero/managers/auditmanager.py:159: [E1101(no-member), AuditManager.new_audit] Instance of 'AuditDB' has no 'filename' member
+golismero/managers/pluginmanager.py:560: [E1101(no-member), PluginInfo.customize_for_audit] Instance of 'EmptyNewStyleClass' has no '__read_config_file' member
+golismero/managers/processmanager.py:744: [E1101(no-member), PluginContext.remote_call] Instance of 'SyncManager' has no 'Queue' member
+golismero/managers/processmanager.py:976: [E1101(no-member), PluginLauncher.__init__] Instance of 'SyncManager' has no 'Queue' member

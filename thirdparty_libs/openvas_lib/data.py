@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"OpenVas Data Structures."
+"""OpenVas Data Structures."""
 
 __license__ = """
-OpenVAS connector for OMPv4.
+OpenVAS connector for OMP protocol.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,13 +21,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+__all__ = ["OpenVASPort", "OpenVASNVT", "OpenVASOverride", "OpenVASNotes", "OpenVASResult"]
+
 
 #------------------------------------------------------------------------------
 class OpenVASPort(object):
     """
     Port definition.
     """
-
 
     #----------------------------------------------------------------------
     def __init__(self, port_name, number, proto):
@@ -44,18 +45,19 @@ class OpenVASPort(object):
         if not isinstance(port_name, basestring):
             raise TypeError("Expected string, got %r instead" % type(port_name))
 
-        if isinstance(number, int):
-            if not (0 < number < 65535):
-                raise ValueError("port must be between ranges: [0-65535]")
-        else:
-            raise TypeError("Expected int, got %r instead" % type(number))
+        if number:
+            if isinstance(number, int):
+                if not (0 < number < 65535):
+                    raise ValueError("port must be between ranges: [0-65535]")
+            else:
+                raise TypeError("Expected int, got %r instead" % type(number))
 
         if not isinstance(proto, basestring):
             raise TypeError("Expected string, got %r instead" % type(proto))
 
-        self.__port_name             = port_name
-        self.__number                = number
-        self.__proto                 = proto
+        self.__port_name = port_name
+        self.__number = number
+        self.__proto = proto
 
     #----------------------------------------------------------------------
     @property
@@ -70,8 +72,8 @@ class OpenVASPort(object):
     @property
     def number(self):
         """
-        :return: port number
-        :rtype: int
+        :return: port number. None if not available.
+        :rtype: int|None
         """
         return self.__number
 
@@ -91,35 +93,34 @@ class OpenVASNVT(object):
     OpenVas NVT structure.
     """
 
-
     #----------------------------------------------------------------------
     def __init__(self):
-        self.__oid             = None
-        self.__name            = None
-        self.__cvss_base       = None
-        self.__risk_factor     = None
-        self.__category        = None
-        self.__summary         = None
-        self.__description     = None
-        self.__family          = None
+        self.__oid              = None
+        self.__name             = None
+        self.__cvss_base        = None
+        self.__cvss_base_vector = None
+        self.__risk_factor      = None
+        self.__category         = None
+        self.__summary          = None
+        self.__description      = None
+        self.__family           = None
 
-        self.__cve             = None
-        self.__bid             = None
-        self.__bugtraq         = None
-        self.__xrefs           = None
-        self.__fingerprints    = None
-        self.__tags            = None
-
+        self.__cve              = None
+        self.__bid              = None
+        self.__bugtraq          = None
+        self.__xrefs            = None
+        self.__fingerprints     = None
+        self.__tags             = None
 
     #----------------------------------------------------------------------
     @classmethod
     def make_object(cls, oid, name, cvss_base, risk_factor,
                     summary, description, family=None, category=None,
-                    cve=None, bid=None, bugtraq=None, xrefs=None, fingerprints=None, tags=None):
+                    cve=None, bid=None, bugtraq=None, xrefs=None, fingerprints=None, tags=None, cvss_base_vector=None):
         """
         :type oid: str
         :type name: str
-        :type cvss_base: int
+        :type cvss_base: str
         :type risk_factor: int
         :type summary: str
         :type description: str
@@ -131,20 +132,25 @@ class OpenVASNVT(object):
         :type xrefs: str
         :type fingerprints: str
         :type tags: str
+        :type cvss_base_vector: str
         """
 
         if not isinstance(oid, basestring):
             raise TypeError("Expected string, got %r instead" % type(oid))
         if not isinstance(name, basestring):
             raise TypeError("Expected string, got %r instead" % type(name))
-        if not isinstance(cvss_base, int):
-            raise TypeError("Expected int, got %r instead" % type(cvss_base))
+        if not isinstance(cvss_base, str):
+            raise TypeError("Expected string, got %r instead" % type(cvss_base))
         if not isinstance(risk_factor, int):
             raise TypeError("Expected int, got %r instead" % type(risk_factor))
         if not isinstance(summary, basestring):
             raise TypeError("Expected string, got %r instead" % type(summary))
         if not isinstance(description, basestring):
             raise TypeError("Expected string, got %r instead" % type(description))
+
+        if cvss_base_vector:
+            if not isinstance(cvss_base_vector, str):
+                raise TypeError("Expected string, got %r instead" % type(cvss_base_vector))
 
         if family:
             if not isinstance(family, basestring):
@@ -177,22 +183,23 @@ class OpenVASNVT(object):
             if not isinstance(tags, basestring):
                 raise TypeError("Expected string, got %r instead" % type(tags))
 
-        cls                   = OpenVASNVT()
-        cls.__oid             = oid
-        cls.__name            = name
-        cls.__cvss_base       = cvss_base
-        cls.__risk_factor     = risk_factor
-        cls.__category        = category
-        cls.__summary         = summary
-        cls.__description     = description
-        cls.__family          = family
+        cls                    = OpenVASNVT()
+        cls.__oid              = oid
+        cls.__name             = name
+        cls.__cvss_base        = cvss_base
+        cls.__cvss_base_vector = cvss_base_vector
+        cls.__risk_factor      = risk_factor
+        cls.__category         = category
+        cls.__summary          = summary
+        cls.__description      = description
+        cls.__family           = family
 
-        cls.__cve             = cve
-        cls.__bid             = bid
-        cls.__bugtraq         = bugtraq
-        cls.__xrefs           = xrefs
-        cls.__fingerprints    = fingerprints
-        cls.__tags            = tags
+        cls.__cve              = cve
+        cls.__bid              = bid
+        cls.__bugtraq          = bugtraq
+        cls.__xrefs            = xrefs
+        cls.__fingerprints     = fingerprints
+        cls.__tags             = tags
 
         return cls
 
@@ -253,10 +260,33 @@ class OpenVASNVT(object):
 
     #----------------------------------------------------------------------
     @property
+    def cvss_base_vector(self):
+        """
+        :return: CVSS Base calculated
+        :rtype: str
+        """
+        return self.__cvss_base_vector
+
+
+    #----------------------------------------------------------------------
+    @cvss_base_vector.setter
+    def cvss_base_vector(self, val):
+        """
+        :param val: CVSS Base calculated
+        :type val: str
+        """
+        if not isinstance(val, basestring):
+            raise TypeError("Expected string, got %r instead" % type(val))
+
+        self.__cvss_base_vector = val
+
+
+    #----------------------------------------------------------------------
+    @property
     def cvss_base(self):
         """
         :return: CVSS Base calculated
-        :rtype: int
+        :rtype: str
         """
         return self.__cvss_base
 
@@ -266,10 +296,10 @@ class OpenVASNVT(object):
     def cvss_base(self, val):
         """
         :param val: CVSS Base calculated
-        :type val: int
+        :type val: str
         """
-        if not isinstance(val, int):
-            raise TypeError("Expected int, got %r instead" % type(val))
+        if not isinstance(val, basestring):
+            raise TypeError("Expected string, got %r instead" % type(val))
 
         self.__cvss_base = val
 
@@ -291,7 +321,7 @@ class OpenVASNVT(object):
         :param val: the risk factor
         :type val: int
         """
-        if not isinstance(val, int):
+        if not isinstance(val, basestring):
             raise TypeError("Expected int, got %r instead" % type(val))
 
         self.__risk_factor = val
@@ -337,7 +367,9 @@ class OpenVASNVT(object):
         :param val: The description of NVT
         :type val: basestring
         """
-        if not isinstance(val, basestring):
+        if not val:
+            val = ""
+        elif not isinstance(val, basestring):
             raise TypeError("Expected string, got %r instead" % type(val))
 
         self.__description = val
@@ -1031,7 +1063,9 @@ class OpenVASResult(object):
         """
         :type val: basestring
         """
-        if not isinstance(val, basestring):
+        if not val:
+            val = ""
+        elif not isinstance(val, basestring):
             raise TypeError("Expected string, got %r instead" % type(val))
 
         self.__description = val

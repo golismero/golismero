@@ -44,7 +44,7 @@ class ReportManager (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, orchestrator, audit):
         """
         :param orchestrator: Orchestrator instance.
@@ -77,14 +77,16 @@ class ReportManager (object):
                 raise ValueError(
                     "Output file format not supported: %r" % output_file)
             if len(found) > 1:
-                msg = "Output file format supported by multiple plugins!\nFile: %r\nPlugins:\n\t"
-                msg %= output_file
+                msg = (
+                    "Output file format supported by multiple plugins!\n"
+                    "File: %r\nPlugins:\n\t"
+                ) % output_file
                 msg += "\n\t".join(found)
                 raise ValueError(msg)
             self.__reporters[output_file] = found[0]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @property
     def config(self):
@@ -111,7 +113,7 @@ class ReportManager (object):
         return len(self.__reporters)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def generate_reports(self, notifier):
         """
         Generate all the requested reports for the audit.
@@ -131,18 +133,23 @@ class ReportManager (object):
         # Skip the magic plugin for screen reports.
         count = 0
         for output_file, plugin_id in self.__reporters.iteritems():
-            if plugin_id == "report/text" and (not output_file or output_file == "-"):
+            if (
+                plugin_id == "report/text" and
+                (not output_file or output_file == "-")
+            ):
                 continue
             try:
                 notifier.start_report(self.__plugins[plugin_id], output_file)
             except Exception, e:
-                Logger.log_error("Failed to generate report for file %r: %s" % (output_file, str(e)))
+                Logger.log_error(
+                    "Failed to generate report for file %r: %s" %
+                    (output_file, str(e)))
                 Logger.log_error_more_verbose(format_exc())
             count += 1
         return count
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def generate_screen_report(self, notifier):
         """
         Generate the screen report for the audit, if enabled.
@@ -167,7 +174,10 @@ class ReportManager (object):
         # filename used to indicate we want console output.
         found = False
         for output_file, plugin_id in self.__reporters.iteritems():
-            if plugin_id == "report/text" and (not output_file or output_file == "-"):
+            if (
+                plugin_id == "report/text" and
+                (not output_file or output_file == "-")
+            ):
                 found = True
                 break
         if not found:
@@ -175,14 +185,15 @@ class ReportManager (object):
 
         # Run the text report plugin.
         try:
-            notifier.start_report(self.__plugins[plugin_id], self.__audit_name, output_file)
+            notifier.start_report(
+                self.__plugins[plugin_id], self.__audit_name, output_file)
         except Exception, e:
             Logger.log_error("Failed to run screen report: %s" % str(e))
             Logger.log_error_more_verbose(format_exc())
         return 1
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this manager.

@@ -4,12 +4,16 @@ Description = Writes reports in reStructured Text format.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
-[Configuration]
+[Arguments]
 
 # Command to launch after generating the report.
 # The string "$1" will be replaced by the report filename.
+# On Windows, use \\ instead of a single \ for paths!
 # This allows you to invoke a document generator to parse the RST file.
+# For example, to generate .html files:
+# command = rst2html.py $1 $1.html
+
 command =

@@ -1,0 +1,16 @@
+[Documentation]
+Name        = Shodan
+Description = Integration with Shodan (http://www.shodanhq.com/)
+ This plugin requires a working Internet connection to work.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+
+# This plugin can take the API key from configuration (either golismero.conf
+# or user.conf), or from command line. If specified over the command line,
+# it overrides the one in the configuration files.
+apikey =

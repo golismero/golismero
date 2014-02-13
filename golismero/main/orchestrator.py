@@ -40,7 +40,6 @@ from .scope import DummyScope
 from ..api.config import Config
 from ..api.logger import Logger
 from ..database.cachedb import PersistentNetworkCache, VolatileNetworkCache
-from ..database.cpedb import CPEDB
 from ..managers.auditmanager import AuditManager
 from ..managers.pluginmanager import PluginManager
 from ..managers.uimanager import UIManager
@@ -57,17 +56,18 @@ from signal import signal, SIGINT, SIG_DFL
 from multiprocessing import Manager
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class Orchestrator (object):
     """
     Orchestrator, the manager of everything, core of GoLismero.
 
-    All messages go through here before being dispatched to their destinations.
-    Most other tasks are delegated from here to other managers.
+    All messages go through here before being dispatched to
+    their destinations. Most other tasks are delegated from
+    here to other managers.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, config):
         """
         Start the Orchestrator.
@@ -76,10 +76,10 @@ class Orchestrator (object):
         :type config: OrchestratorConfig
         """
 
-        # Configuration.
+        # Save the configuration.
         self.__config = config
 
-        # Incoming message queue.
+        # Create the incoming message queue.
         if getattr(config, "max_concurrent", 0) <= 0:
             from Queue import Queue
             self.__queue = Queue(maxsize = 0)
@@ -94,30 +94,37 @@ class Orchestrator (object):
                                             audit_config = self.__config )
         Config._context = self.__context
 
-        # Withing the main process, keep a static reference to the Orchestrator.
+        # Withing the main process, keep a
+        # static reference to the Orchestrator.
         PluginContext._orchestrator = self
 
+        # Load the plugin manager.
+        self.__pluginManager = PluginManager(self)
+
         # Set the console configuration.
-        Console.level = config.verbose
-        Console.use_colors = config.color
+        Console.level = self.config.verbose
+        Console.use_colors = self.config.color
 
         # Search for plugins.
-        self.__pluginManager = PluginManager()
-        success, failure = self.pluginManager.find_plugins(self.__config)
+        success, failure = self.pluginManager.find_plugins(self.config)
         if not success:
             raise RuntimeError("Failed to find any plugins!")
 
         # Load the UI plugin.
-        ui_plugin_id = "ui/%s" % self.__config.ui_mode
+        ui_plugin_id = "ui/%s" % self.config.ui_mode
         try:
             self.pluginManager.get_plugin_by_id(ui_plugin_id)
         except KeyError:
-            raise ValueError("No plugin found for UI mode: %r" % self.__config.ui_mode)
+            raise ValueError(
+                "No plugin found for UI mode: %r" % self.config.ui_mode)
         self.pluginManager.load_plugin_by_id(ui_plugin_id)
 
         # Set the user-defined arguments for the plugins.
-        for plugin_id, plugin_args in self.__config.plugin_args.iteritems():
+        for plugin_id, plugin_args in self.config.plugin_args.iteritems():
             self.pluginManager.set_plugin_args(plugin_id, plugin_args)
+
+        # Create the UI manager.
+        self.__ui = UIManager(self)
 
         # Network connection manager.
         self.__netManager = NetworkManager(self.__config)
@@ -130,34 +137,26 @@ class Orchestrator (object):
         else:
             self.__cache = VolatileNetworkCache()
 
-        # RPC manager.
+        # Create the RPC manager.
         self.__rpcManager = RPCManager(self)
 
-        # Process manager.
+        # Create the process manager.
         self.__processManager = ProcessManager(self)
         self.__processManager.start()
 
-        # Audit manager.
+        # Create the audit manager.
         self.__auditManager = AuditManager(self)
 
-        # UI manager.
-        self.__ui = UIManager(self)
-
-        # Signal handler to catch Ctrl-C.
-        self.__old_signal_action = signal(SIGINT, self.__control_c_handler)
-
         # Log the plugins that failed to load.
-        Logger.log_more_verbose("Loaded %d plugins" % len(success))
-        if failure:
-            Logger.log_error("Failed to load %d plugins" % len(failure))
-            for plugin_id in failure:
-                Logger.log_error_verbose("\t%s" % plugin_id)
-
-        # This is where the NIST CPE database will be loaded on demand.
-        self.__cpedb = None
+        # XXX FIXME: this won't work until the UI was started!
+        ##Logger.log_more_verbose("Loaded %d plugins" % len(success))
+        ##if failure:
+        ##    Logger.log_error("Failed to load %d plugins" % len(failure))
+        ##    for plugin_id in failure:
+        ##        Logger.log_error_verbose("\t%s" % plugin_id)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     # Context support.
 
     def __enter__(self):
@@ -166,7 +165,7 @@ class Orchestrator (object):
         self.close()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     # Getters (mostly used by RPC implementors).
 
     @property
@@ -233,18 +232,8 @@ class Orchestrator (object):
         """
         return self.__ui
 
-    @property
-    def cpedb(self):
-        """
-        :returns: NIST CPE database.
-        :rtype: CPEDB
-        """
-        if self.__cpedb is None:
-            self.__cpedb = CPEDB()
-        return self.__cpedb
 
-
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __control_c_handler(self, signum, frame):
         """
         Signal handler to catch Control-C interrupts.
@@ -271,7 +260,7 @@ class Orchestrator (object):
             signal(SIGINT, self.__panic_control_c_handler)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __panic_control_c_handler(self, signum, frame):
         """
         Emergency signal handler to catch Control-C interrupts.
@@ -288,24 +277,14 @@ class Orchestrator (object):
 
             # Only do this once, the next time raise KeyboardInterrupt.
             try:
-                action, self.__old_signal_action = self.__old_signal_action, SIG_DFL
+                action, self.__old_signal_action = \
+                    self.__old_signal_action, SIG_DFL
             except AttributeError:
                 action = SIG_DFL
             signal(SIGINT, action)
 
 
-    #----------------------------------------------------------------------
-    def add_audit(self, params):
-        """
-        Start a new audit.
-
-        :param params: Audit settings
-        :type params: AuditConfig
-        """
-        self.auditManager.new_audit(params)
-
-
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_msg(self, message):
         """
         Process messages from audits or from the message queue, and send them
@@ -313,14 +292,22 @@ class Orchestrator (object):
 
         :param message: Incoming message.
         :type message: Message
-
-        :returns: True if the message was sent, False if it was dropped.
-        :rtype: bool
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %r instead" % type(message))
+            raise TypeError(
+                "Expected Message, got %r instead" % type(message))
 
         try:
+
+            # Check the audit exists, drop the message otherwise.
+            if (
+                message.audit_name and
+                not self.auditManager.has_audit(message.audit_name)
+            ):
+                print (
+                    "Internal error: dropped message for audit %r: %r"
+                    % (message.audit_name, message))
+                return
 
             # If it's an RPC message...
             if message.message_type == MessageType.MSG_TYPE_RPC:
@@ -330,32 +317,24 @@ class Orchestrator (object):
                                               message.message_code,
                                               * message.message_info)
 
-                # The method now must return True because the message was sent.
-                return True
-
             # If it's a stop audit message, dispatch it first to the UI,
             # then to the audit manager (the opposite to the normal order).
-            if (message.message_type == MessageType.MSG_TYPE_CONTROL and \
+            elif (
+                message.message_type == MessageType.MSG_TYPE_CONTROL and
                 message.message_code == MessageCode.MSG_CONTROL_STOP_AUDIT
             ):
                 self.uiManager.dispatch_msg(message)
                 self.auditManager.dispatch_msg(message)
                 Logger.log_verbose("Audit finished: %s" % message.audit_name)
 
-                # The method now must return True because the message was sent.
-                return True
+            # For all other messages...
+            else:
 
-            # If it's a control or info message, dispatch it to the audits.
-            if self.auditManager.dispatch_msg(message):
+                # Dispatch it to the audits.
+                self.auditManager.dispatch_msg(message)
 
-                # If it wasn't dropped, send it to the UI plugins.
+                # Dispatch it to the UI plugins.
                 self.uiManager.dispatch_msg(message)
-
-                # The method now must return True because the message was sent.
-                return True
-
-            # The method now must return False because the message was dropped.
-            return False
 
         finally:
 
@@ -363,14 +342,14 @@ class Orchestrator (object):
             if  message.message_type == MessageType.MSG_TYPE_CONTROL and \
                 message.message_code == MessageCode.MSG_CONTROL_STOP:
 
-                # Stop the program execution
+                # Stop the program execution.
                 if message.message_info:
-                    exit(0)                   # Planned shutdown
+                    exit(0)                   # Planned shutdown.
                 else:
-                    raise KeyboardInterrupt() # User cancel
+                    raise KeyboardInterrupt() # User cancel.
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def enqueue_msg(self, message):
         """
         Put messages into the message queue.
@@ -379,14 +358,21 @@ class Orchestrator (object):
         :type message: Message
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %r instead" % type(message))
-        try:
-            self.__queue.put_nowait(message)
-        except Exception:
-            exit(1)
+            raise TypeError(
+                "Expected Message, got %r instead" % type(message))
+        if (
+            message.priority == MessagePriority.MSG_PRIORITY_HIGH and
+            Config._has_context and getpid() == Config._context._orchestrator_pid
+        ):
+            self.dispatch_msg(message)
+        else:
+            try:
+                self.__queue.put_nowait(message)
+            except Exception:
+                exit(1)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def build_plugin_context(self, audit_name, plugin, ack_identity):
         """
         Prepare a PluginContext object to pass to the plugins.
@@ -419,17 +405,19 @@ class Orchestrator (object):
         info = pluginManager.get_plugin_info_from_instance(plugin)[1]
 
         # Return the context instance.
-        return PluginContext(orchestrator_pid = self.__context._orchestrator_pid,
-                             orchestrator_tid = self.__context._orchestrator_tid,
-                                    msg_queue = self.__queue,
-                                 ack_identity = ack_identity,
-                                  plugin_info = info,
-                                   audit_name = audit_name,
-                                 audit_config = audit_config,
-                                  audit_scope = audit_scope)
+        return PluginContext(
+            orchestrator_pid = self.__context._orchestrator_pid,
+            orchestrator_tid = self.__context._orchestrator_tid,
+                   msg_queue = self.__queue,
+                ack_identity = ack_identity,
+                 plugin_info = info,
+                  audit_name = audit_name,
+                audit_config = audit_config,
+                 audit_scope = audit_scope,
+        )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def run(self, *audits):
         """
         Message loop.
@@ -439,15 +427,22 @@ class Orchestrator (object):
 
         try:
 
-            # Open the NIST CPE database.
-            ##self.cpedb   # disabled until we actually use it...
-
             # Start the UI.
             self.uiManager.start()
 
             # If we have initial audits, start them.
             for audit_config in audits:
-                self.add_audit(audit_config)
+                message = Message(
+                    message_type = MessageType.MSG_TYPE_CONTROL,
+                    message_code = MessageCode.MSG_CONTROL_START_AUDIT,
+                    message_info = audit_config,
+                        priority = MessagePriority.MSG_PRIORITY_HIGH,
+                )
+                self.enqueue_msg(message)
+
+            # Signal handler to catch Ctrl-C.
+            self.__old_signal_action = signal(
+                SIGINT, self.__control_c_handler)
 
             # Message loop.
             while True:
@@ -467,8 +462,9 @@ class Orchestrator (object):
                 # If an exception is raised during message processing,
                 # just log the exception and continue.
                 except Exception:
-                    Logger.log_error("Error processing message!\n%s" % format_exc())
-                    raise   # XXX FIXME
+                    Logger.log_error(
+                        "Error processing message!\n%s" % format_exc())
+                    ##raise   # XXX FIXME
 
         finally:
 
@@ -479,7 +475,7 @@ class Orchestrator (object):
                 print_exc()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by the Orchestrator.

@@ -38,11 +38,11 @@ __all__ = [
     # Query functions.
     "get_audit_count", "get_audit_names",
     "get_audit_config", "get_audit_times",
-    "parse_audit_times",
+    "parse_audit_times", "get_audit_stats",
+    "get_audit_log_lines",
 
     # Control functions.
-    "start_audit", "stop_audit",
-    ##pause_audit, resume_audit,
+    "start_audit", "stop_audit", "cancel_audit",
 ]
 
 from .config import Config
@@ -88,7 +88,7 @@ def get_audit_config(audit_name = None):
 
 
 #------------------------------------------------------------------------------
-def get_audit_times():
+def get_audit_times(audit_name = None):
     """
     Get the audit start and stop times.
 
@@ -97,7 +97,8 @@ def get_audit_times():
         Times are returned as POSIX timestamps.
     :rtype: tuple(float|None, float|None)
     """
-    return Config._context.remote_call(MessageCode.MSG_RPC_AUDIT_TIMES)
+    return Config._context.remote_call(
+        MessageCode.MSG_RPC_AUDIT_TIMES, audit_name)
 
 
 #------------------------------------------------------------------------------
@@ -108,8 +109,8 @@ def parse_audit_times(start_time, stop_time):
     :param start_time: Audit start time, as returned by get_audit_times().
     :type start_time: float | None
 
-    :param start_time: Audit stop time, as returned by get_audit_times().
-    :type start_time: float | None
+    :param stop_time: Audit stop time, as returned by get_audit_times().
+    :type stop_time: float | None
 
     :returns: Audit start and stop times, total execution time.
     :rtype: tuple(str, str, str)
@@ -122,27 +123,122 @@ def parse_audit_times(start_time, stop_time):
             days     = td.days
             hours    = td.seconds // 3600
             minutes  = (td.seconds // 60) % 60
-            seconds  = td.seconds
+            seconds  = td.seconds % 60
             run_time = "%d days, %d hours, %d minutes and %d seconds" % \
                 (days, hours, minutes, seconds)
         else:
             run_time = "Interrupted"
-        start_time = str(start_time)
-        stop_time  = str(stop_time)
+        start_time = "%s UTC" % start_time
+        stop_time  = "%s UTC" % stop_time
     else:
         if start_time:
+            start_time = "%s UTC" % start_time
             run_time   = "Interrupted"
         else:
-            run_time   = "Unknown"
-        if start_time:
-            start_time = str(start_time)
-        else:
             start_time = "Unknown"
+            run_time   = "Unknown"
         if stop_time:
-            stop_time  = str(stop_time)
+            stop_time  = "%s UTC" % stop_time
         else:
             stop_time  = "Interrupted"
-    return (start_time, stop_time, run_time)
+    return start_time, stop_time, run_time
+
+
+#------------------------------------------------------------------------------
+def get_audit_stats(audit_name = None):
+    """
+    Get the audit runtime statistics.
+
+    :param audit_name:
+        Name of the audit to query.
+        Use None for the current audit.
+    :type audit_name: str | None
+
+    :returns:
+        Dictionary with runtime statistics
+        with at least the following keys:
+
+         - "current_stage": [int] Current stage number.
+         - "total_count": [int]
+           Total number of data objects to process in this stage.
+         - "processed_count": [int]
+           Number of data objects already processed in this stage.
+         - "stage_cycles": [dict(int -> int)]
+           Map of stage numbers and times each stage ran.
+         - "stages_enabled": [tuple(int)]
+           Stages enabled for this audit.
+
+        Future versions of GoLismero may include more keys.
+    :rtype: dict(str -> \\*)
+    """
+    return Config._context.remote_call(
+        MessageCode.MSG_RPC_AUDIT_STATS, audit_name)
+
+
+#------------------------------------------------------------------------------
+def get_audit_log_lines(audit_name = None,
+                        from_timestamp = None, to_timestamp = None,
+                        filter_by_plugin = None, filter_by_data = None,
+                        page_num = None, per_page = None):
+    """
+    Retrieve past log lines.
+
+    :param audit_name: Name of the audit to query.
+        Use None for the current audit.
+    :type audit_name: str | None
+
+    :param from_timestamp: (Optional) Start timestamp.
+    :type from_timestamp: float | None
+
+    :param to_timestamp: (Optional) End timestamp.
+    :type to_timestamp: float | None
+
+    :param filter_by_plugin: (Optional) Filter log lines by plugin ID.
+    :type filter_by_plugin: str
+
+    :param filter_by_data: (Optional) Filter log lines by data ID.
+    :type filter_by_data: str
+
+    :param page_num: (Optional) Page number.
+        Ignored unless per_page is used too.
+    :type page_num: int
+
+    :param per_page: (Optional) Amount of results per page.
+        Ignored unless page_num is used too.
+    :type per_page: int
+
+    :returns:
+        List of tuples.
+        Each tuple contains the following elements:
+
+         - Plugin ID.
+         - Data object ID (plugin instance).
+         - Log line text. May contain newline characters.
+         - Log level.
+         - True if the message is an error, False otherwise.
+         - Timestamp.
+
+    :rtype: list( tuple(str, str, str, int, bool, float) )
+    """
+    return Config._context.remote_call(MessageCode.MSG_RPC_AUDIT_LOG,
+        audit_name, from_timestamp, to_timestamp, filter_by_plugin,
+        filter_by_data, page_num, per_page)
+
+
+#------------------------------------------------------------------------------
+def get_audit_scope(audit_name):
+    """
+    :param audit_name: Name of the audit to query.
+        Use None for the current audit.
+    :type audit_name: str | None
+
+    :returns: Audit scope.
+    :rtype: AuditScope
+    """
+    if not audit_name:
+        return Config.audit_scope
+    return Config._context.remote_call(
+        MessageCode.MSG_RPC_AUDIT_SCOPE, audit_name)
 
 
 #------------------------------------------------------------------------------
@@ -179,51 +275,29 @@ def stop_audit(audit_name = None):
     msg = Message(
         message_type = MessageType.MSG_TYPE_CONTROL,
         message_code = MessageCode.MSG_CONTROL_STOP_AUDIT,
-        message_info = False,        # True for finished, False for user cancel
+        message_info = True,        # True for finished, False for user cancel
           audit_name = audit_name,
-         plugin_id = Config.plugin_id,
             priority = MessagePriority.MSG_PRIORITY_HIGH,
     )
     Config._context.send_raw_msg(msg)
 
 
 #------------------------------------------------------------------------------
-##def pause_audit(audit_name = None):
-##    """
-##    Pause an audit.
-##
-##    :param audit_name: Name of the audit to pause.
-##        Use None for the current audit.
-##    :type audit_name: str | None
-##    """
-##    if not audit_name:
-##        audit_name = Config.audit_name
-##    msg = Message(
-##        message_type = MessageType.MSG_TYPE_CONTROL,
-##        message_code = MessageCode.MSG_CONTROL_PAUSE_AUDIT,
-##          audit_name = audit_name,
-##           plugin_id = Config.plugin_id,
-##            priority = MessagePriority.MSG_PRIORITY_HIGH,
-##    )
-##    Config._context.send_raw_msg(msg)
+def cancel_audit(audit_name = None):
+    """
+    Cancels an audit.
 
-
-#------------------------------------------------------------------------------
-##def resume_audit(audit_name = None):
-##    """
-##    Resume an audit.
-##
-##    :param audit_name: Name of the audit to resume.
-##        Use None for the current audit.
-##    :type audit_name: str | None
-##    """
-##    if not audit_name:
-##        audit_name = Config.audit_name
-##    msg = Message(
-##        message_type = MessageType.MSG_TYPE_CONTROL,
-##        message_code = MessageCode.MSG_CONTROL_RESUME_AUDIT,
-##          audit_name = audit_name,
-##           plugin_id = Config.plugin_id,
-##            priority = MessagePriority.MSG_PRIORITY_HIGH,
-##    )
-##    Config._context.send_raw_msg(msg)
+    :param audit_name: Name of the audit to cancel.
+        Use None for the current audit.
+    :type audit_name: str | None
+    """
+    if not audit_name:
+        audit_name = Config.audit_name
+    msg = Message(
+        message_type = MessageType.MSG_TYPE_CONTROL,
+        message_code = MessageCode.MSG_CONTROL_STOP_AUDIT,
+        message_info = False,        # True for finished, False for user cancel
+          audit_name = audit_name,
+            priority = MessagePriority.MSG_PRIORITY_HIGH,
+    )
+    Config._context.send_raw_msg(msg)

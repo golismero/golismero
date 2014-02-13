@@ -30,14 +30,14 @@ from golismero.api.data import Data
 from golismero.api.plugin import TestingPlugin
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class TestPlugin(TestingPlugin):
     """
     Test plugin.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
         if not isinstance(info, Data):
             raise TypeError("Expected Data, got %r instead" % type(info))
@@ -45,6 +45,6 @@ class TestPlugin(TestingPlugin):
         # TO DO
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         pass

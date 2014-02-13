@@ -1,0 +1,23 @@
+body {
+  background: #d6d0d0;
+}
+.login-panel {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  float: right;
+  width: 600px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -125px;
+}
+.login-panel img {
+  float: left;
+  margin-top: 45px;
+}

@@ -36,8 +36,11 @@ from . import Resource
 from .. import identity
 from ...config import Config
 from ...net.web_utils import split_hostname
+from ...text.text_utils import to_utf8
 
 from netaddr import IPAddress
+
+import re
 
 
 #------------------------------------------------------------------------------
@@ -50,17 +53,22 @@ class Domain(Resource):
 
     resource_type = Resource.RESOURCE_DOMAIN
 
+    _re_is_domain = re.compile(r"^[A-Za-z0-9][A-Za-z0-9\_\-\.]*[A-Za-z0-9]$")
 
-    #----------------------------------------------------------------------
+
+    #--------------------------------------------------------------------------
     def __init__(self, hostname):
         """
         :param hostname: Domain name.
         :type hostname: str
         """
 
-        if not isinstance(hostname, basestring):
-            raise TypeError("Expected string, got %r instead" % type(hostname))
-        hostname = str(hostname)
+        hostname = to_utf8(hostname)
+        if not isinstance(hostname, str):
+            raise TypeError(
+                "Expected string, got %r instead" % type(hostname))
+        if not hostname:
+            raise ValueError("Missing hostname")
 
         # Check we've not confused an IP address for a hostname.
         try:
@@ -71,7 +79,12 @@ class Domain(Resource):
         except Exception:
             pass
         else:
-            raise ValueError("This is an IP address (%s) not a domain!" % hostname)
+            raise ValueError(
+                "This is an IP address (%s) not a domain!" % hostname)
+
+        # Make sure the hostname is valid.
+        if not self._re_is_domain.match(hostname):
+            raise ValueError("Invalid domain name: %r" % hostname)
 
         # Domain name.
         self.__hostname = hostname
@@ -83,22 +96,30 @@ class Domain(Resource):
         self.depth = 0
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __str__(self):
         return self.hostname
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __repr__(self):
         return "<Domain name=%r>" % self.hostname
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.hostname in Config.audit_scope
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "Domain Name"
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.hostname in scope
+
+
+    #--------------------------------------------------------------------------
     @identity
     def hostname(self):
         """
@@ -108,7 +129,7 @@ class Domain(Resource):
         return self.__hostname
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def root(self):
         """
@@ -121,8 +142,7 @@ class Domain(Resource):
         return domain
 
 
-    #----------------------------------------------------------------------
-
+    #--------------------------------------------------------------------------
     @property
     def discovered(self):
         domain = self.hostname

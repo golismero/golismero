@@ -65,11 +65,11 @@ class DNSZoneTransferPlugin(TestingPlugin):
             return
 
         # Attempt a DNS zone transfer.
-        ns_servers, results = DNS.zone_transfer(
+        ns_servers, resolv = DNS.zone_transfer(
             root, ns_allowed_zone_transfer = True)
 
         # On failure, skip.
-        if not results:
+        if not resolv:
             Logger.log_verbose(
                 "DNS zone transfer failed, server %r not vulnerable"
                 % root)
@@ -79,9 +79,11 @@ class DNSZoneTransferPlugin(TestingPlugin):
         domain = Domain(root)
 
         # Associate all the results with the root domain.
-        map(domain.add_information, results)
+        for r in resolv:
+            map(domain.add_information, r)
 
         # Add the root domain to the results.
+        results = []
         results.append(domain)
 
         # We have a vulnerability on each of the nameservers involved.

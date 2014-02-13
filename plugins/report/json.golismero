@@ -1,0 +1,35 @@
+[Documentation]
+Name        = JSON Report
+Description = JSON output for programmatic access.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License
+
+[Arguments]
+
+# Output mode ("dump" or "nice"). Default mode is "dump".
+#
+# Dump mode is suitable for programmatic access to the data. The format and
+# layout will change very little, if any, across GoLismero versions. Also the
+# current version is embedded within the data, so any program that wishes to
+# consume it can anticipate any changes. All keys are kept in lowercase and
+# without spaces or extraneous characters. Most importantly, the format mimics
+# the actual data model of GoLismero as close as possible, so if you're
+# familiar with one you should be able to use the other one more or less
+# intuitively. However, in order to show the data to the user, some processing
+# and understanding of the data would be required.
+#
+# Nice mode on the other hand is more suitable for blindly transforming the
+# output into a printable form (think XSLT from the XML world). Keys may
+# change frequently and contain spaces, since they're meant to be strings to
+# be shown to the user rather than actual keys, so you don't want to hardcode
+# them. Some data elements may be rendered as text instead of data, so parsing
+# them may be difficult, but showing them to user verbatim is appropriate.
+#
+mode = dump
+
+# Command to launch after generating the output file.
+# The string "$1" will be replaced by the output filename.
+command =

@@ -5,9 +5,9 @@ Description = Tries to discover hidden folders by brute force:
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
 [Core]
-Module = url_bruteforcer.py
+Module = brute_url.py
 Class  = DirectoriesDisclosureBruteforcer

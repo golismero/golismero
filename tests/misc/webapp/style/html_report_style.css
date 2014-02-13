@@ -1,0 +1,15 @@
+body{background:#d6d0d0}
+h1,h2,h3,h4,h5,h6{color:#404040}
+a{color:#e2a014 !important}a:hover{color:#f5cd2f !important}
+.navbar{margin:0 !important;padding:0 !important;background:#404040;height:80px}.navbar img{height:70px}
+.navbar *{font-size:13px !important;font-weight:normal !important;text-shadow:none !important;font-weight:600 !important}
+.navbar ul{margin:0;padding:0}.navbar ul li{list-style-type:none;padding:0;margin:0}
+.navbar .container>a:hover{color:#f5cd2f !important;background:transparent !important}
+.navbar .nav{margin-top:5px}
+.navbar .nav>li>a{padding:12px 15px 12px;color:#e2a014 !important;background:transparent !important;line-height:50px;font-size:18px !important}.navbar .nav>li>a:hover{color:#f5cd2f !important;background:transparent !important}
+.first-bs-docs-section{margin-top:6em}
+.page-header{border:none}
+.list-group{-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;padding:1px}.list-group .list-group-item{border:1px solid #d6d0d0}
+.tab-content{background:#fff;-webkit-border-radius:0 5px 5px 5px;-moz-border-radius:0 5px 5px 5px;-ms-border-radius:0 5px 5px 5px;-o-border-radius:0 5px 5px 5px;border-radius:0 5px 5px 5px}
+.jqplot-target{background:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;padding:10px}
+table.jqplot-table-legend,table.jqplot-cursor-legend{border:0}

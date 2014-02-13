@@ -4,7 +4,7 @@ Description = Integration with Nikto: https://www.cirt.net/nikto2
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
 [Core]
@@ -17,3 +17,19 @@ config  =
 Pause   = 0
 timeout = 10
 Tuning  = x6
+
+# A list of plugins prepared by the GoLismero team.
+plugins = nikto_apacheusers, nikto_apache_expect_xss, nikto_auth, nikto_cgi,
+ nikto_clientaccesspolicy, nikto_content_search, nikto_cookies, nikto_core,
+ nikto_embedded, nikto_favicon, nikto_fileops, nikto_headers,
+ nikto_httpoptions, nikto_msgs, nikto_multiple_index, nikto_outdated,
+ nikto_parked, nikto_report_csv, nikto_siebel, nikto_ssl, nikto_tests
+
+# A more conservative list of plugins.
+#plugins = nikto_auth, nikto_cgi, nikto_clientaccesspolicy,
+# nikto_content_search, nikto_cookies, nikto_core, nikto_favicon,
+# nikto_fileops, nikto_msgs, nikto_outdated, nikto_parked, nikto_report_csv,
+# nikto_siebel, nikto_tests
+
+# All plugins. This may produce a lot of false positives!
+#plugins = ALL

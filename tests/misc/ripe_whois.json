@@ -1,0 +1,125 @@
+{
+    "cached": false, 
+    "data": {
+        "authorities": [
+            "ripe"
+        ], 
+        "irr_records": [
+            [
+                {
+                    "details_link": "https://stat.ripe.net/80.174.0.0/17", 
+                    "key": "route", 
+                    "value": "80.174.0.0/17"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "descr", 
+                    "value": "ADSL-Auna"
+                }, 
+                {
+                    "details_link": "https://stat.ripe.net/AS6739", 
+                    "key": "origin", 
+                    "value": "6739"
+                }, 
+                {
+                    "details_link": "https://rest.db.ripe.net/ripe/mntner/ONO-MNT", 
+                    "key": "mnt-by", 
+                    "value": "ONO-MNT"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "source", 
+                    "value": "RIPE"
+                }
+            ], 
+            [
+                {
+                    "details_link": "https://stat.ripe.net/80.174.0.0/17", 
+                    "key": "route", 
+                    "value": "80.174.0.0/17"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "descr", 
+                    "value": "ADSL-Auna"
+                }, 
+                {
+                    "details_link": "https://stat.ripe.net/AS16338", 
+                    "key": "origin", 
+                    "value": "16338"
+                }, 
+                {
+                    "details_link": "https://rest.db.ripe.net/ripe/mntner/ONO-MNT", 
+                    "key": "mnt-by", 
+                    "value": "ONO-MNT"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "source", 
+                    "value": "RIPE"
+                }
+            ]
+        ], 
+        "query_time": "2014-01-11T19:24:00", 
+        "records": [
+            [
+                {
+                    "details_link": "https://stat.ripe.net/80.174.0.0/17", 
+                    "key": "inetnum", 
+                    "value": "80.174.0.0/17"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "netname", 
+                    "value": "ONO"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "descr", 
+                    "value": "Cableuropa S.A.U."
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "country", 
+                    "value": "ES"
+                }, 
+                {
+                    "details_link": "https://rest.db.ripe.net/ripe/person-role/OIM1-RIPE", 
+                    "key": "admin-c", 
+                    "value": "OIM1-RIPE"
+                }, 
+                {
+                    "details_link": "https://rest.db.ripe.net/ripe/person-role/OIM1-RIPE", 
+                    "key": "tech-c", 
+                    "value": "OIM1-RIPE"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "status", 
+                    "value": "ASSIGNED PA"
+                }, 
+                {
+                    "details_link": "https://rest.db.ripe.net/ripe/mntner/ONO-MNT", 
+                    "key": "mnt-by", 
+                    "value": "ONO-MNT"
+                }, 
+                {
+                    "details_link": null, 
+                    "key": "source", 
+                    "value": "RIPE"
+                }
+            ]
+        ], 
+        "resource": "80.174.63.26"
+    }, 
+    "data_call_status": "supported", 
+    "messages": [], 
+    "process_time": 590, 
+    "query_id": "03ca34f2-7af6-11e3-b3a2-782bcb346712", 
+    "see_also": [], 
+    "server_id": "stat-app2", 
+    "status": "ok", 
+    "status_code": 200, 
+    "time": "2014-01-11T19:24:40.128244", 
+    "version": "4.0"
+}

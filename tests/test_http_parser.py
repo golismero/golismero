@@ -331,7 +331,7 @@ def test_http_request():
         assert request.content_length == len("hola=manola")
 
         print "Testing a custom GET request (1)..."
-        t_headers = (("Cookie", "lala=pepe"), ("Referer", "http://www.example.com/"))
+        t_headers = (("Cookie", "lala=pepe"), ("Referer", "http://www.example.com/"), ("User-Agent", "Test User Agent"))
         request = HTTP_Request("http://www.example.com/index.html", headers=t_headers, version="1.0")
         assert request.method == "GET"
         assert request.url == "http://www.example.com/index.html"
@@ -342,7 +342,7 @@ def test_http_request():
         assert request.post_data == None
         assert request.request_uri == "/index.html"
         assert request.hostname == None
-        assert request.user_agent == None
+        assert request.user_agent == "Test User Agent"
         assert request.accept_language == None
         assert request.accept == None
         assert request.referer == "http://www.example.com/"
@@ -351,7 +351,7 @@ def test_http_request():
         assert request.content_length == None
 
         print "Testing a custom GET request (2)..."
-        d_headers = {"Cookie": "lala=pepe", "Referer": "http://www.example.com/"}
+        d_headers = {"Cookie": "lala=pepe", "Referer": "http://www.example.com/", "User-Agent": "Test User Agent"}
         request = HTTP_Request("http://www.example.com/index.html", headers=d_headers, version="1.0")
         assert request.method == "GET"
         assert request.url == "http://www.example.com/index.html"
@@ -362,7 +362,7 @@ def test_http_request():
         assert request.post_data == None
         assert request.request_uri == "/index.html"
         assert request.hostname == None
-        assert request.user_agent == None
+        assert request.user_agent == "Test User Agent"
         assert request.accept_language == None
         assert request.accept == None
         assert request.referer == "http://www.example.com/"
@@ -382,7 +382,7 @@ def test_http_request():
         assert request.post_data == None
         assert request.request_uri == "/form.php?hola=manola"
         assert request.hostname == None
-        assert request.user_agent == None
+        assert request.user_agent == "Test User Agent"
         assert request.accept_language == None
         assert request.accept == None
         assert request.referer == "http://www.example.com/"
@@ -401,7 +401,7 @@ def test_http_request():
         assert request.post_data == "hola=manola"
         assert request.request_uri == "/form.php"
         assert request.hostname == None
-        assert request.user_agent == None
+        assert request.user_agent == "Test User Agent"
         assert request.accept_language == None
         assert request.accept == None
         assert request.referer == "http://www.example.com/"

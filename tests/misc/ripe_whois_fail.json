@@ -1,0 +1,25 @@
+{
+    "cached": false, 
+    "data": {
+        "authorities": [], 
+        "irr_records": [], 
+        "query_time": "2014-01-11T19:28:00", 
+        "records": [], 
+        "resource": "127.0.0.1"
+    }, 
+    "data_call_status": "supported", 
+    "messages": [
+        [
+            "info", 
+            "This is not a global resource, so there is noauthoritative whois server. However there may be related route objects."
+        ]
+    ], 
+    "process_time": 14, 
+    "query_id": "92685996-7af6-11e3-980d-782bcb346712", 
+    "see_also": [], 
+    "server_id": "stat-app2", 
+    "status": "ok", 
+    "status_code": 200, 
+    "time": "2014-01-11T19:28:38.824664", 
+    "version": "4.0"
+}

@@ -30,7 +30,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-__all__ = ["AuditManager", "Audit"]
+__all__ = ["AuditManager", "Audit", "AuditException"]
 
 from .importmanager import ImportManager
 from .processmanager import PluginContext
@@ -40,6 +40,7 @@ from ..api.data import Data
 from ..api.data.resource import Resource
 from ..api.config import Config
 from ..api.logger import Logger
+from ..api.plugin import STAGES
 from ..common import AuditConfig
 from ..database.auditdb import AuditDB
 from ..main.scope import AuditScope, DummyScope
@@ -47,38 +48,59 @@ from ..messaging.codes import MessageType, MessageCode, MessagePriority
 from ..messaging.message import Message
 from ..messaging.notifier import AuditNotifier
 
+from collections import defaultdict
 from warnings import catch_warnings, warn
 from time import time
 from traceback import format_exc
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # RPC implementors for the audit manager API.
 
 @implementor(MessageCode.MSG_RPC_AUDIT_COUNT)
-def rpc_audit_get_count(orchestrator, audit_name):
+def rpc_audit_get_count(orchestrator, current_audit_name):
     return orchestrator.auditManager.get_audit_count()
 
 @implementor(MessageCode.MSG_RPC_AUDIT_NAMES)
-def rpc_audit_get_names(orchestrator, audit_name):
+def rpc_audit_get_names(orchestrator, current_audit_name):
     return orchestrator.auditManager.get_audit_names()
 
 @implementor(MessageCode.MSG_RPC_AUDIT_CONFIG)
-def rpc_audit_get_config(orchestrator, audit_name):
+def rpc_audit_get_config(orchestrator, current_audit_name, audit_name = None):
     if audit_name:
         return orchestrator.auditManager.get_audit(audit_name).config
     return orchestrator.config
 
 @implementor(MessageCode.MSG_RPC_AUDIT_TIMES)
-def rpc_audit_get_times(orchestrator, audit_name):
+def rpc_audit_get_times(orchestrator, current_audit_name, audit_name = None):
+    if not audit_name:
+        audit_name = current_audit_name
     return orchestrator.auditManager.get_audit(audit_name).database.get_audit_times()
 
+@implementor(MessageCode.MSG_RPC_AUDIT_STATS)
+def rpc_audit_get_stats(orchestrator, current_audit_name, audit_name = None):
+    if not audit_name:
+        audit_name = current_audit_name
+    return orchestrator.auditManager.get_audit(audit_name).get_runtime_stats()
 
-#--------------------------------------------------------------------------
+@implementor(MessageCode.MSG_RPC_AUDIT_SCOPE)
+def rpc_audit_get_scope(orchestrator, current_audit_name, audit_name = None):
+    if audit_name:
+        return orchestrator.auditManager.get_audit(audit_name).scope
+    return DummyScope()
+
+
+#------------------------------------------------------------------------------
+class AuditException(Exception):
+    """Exception for audits"""
+
+
+#------------------------------------------------------------------------------
 class AuditManager (object):
     """
     Manage and control audits.
     """
+
 
     #--------------------------------------------------------------------------
     def __init__(self, orchestrator):
@@ -116,34 +138,45 @@ class AuditManager (object):
         :rtype: Audit
         """
         if not isinstance(audit_config, AuditConfig):
-            raise TypeError("Expected AuditConfig, got %r instead" % type(audit_config))
+            raise TypeError(
+                "Expected AuditConfig, got %r instead" % type(audit_config))
 
-        # Check the audit config.
+        # Check the audit config against the UI plugin.
         self.orchestrator.uiManager.check_params(audit_config)
 
         # Create the audit.
-        m_audit = Audit(audit_config, self.orchestrator)
+        audit = Audit(audit_config, self.orchestrator)
 
         # Store it.
-        self.__audits[m_audit.name] = m_audit
+        self.__audits[audit.name] = audit
+
+        # Log the event.
+        if audit.is_new:
+            Logger.log("Audit name: %s" % audit.name)
+        else:
+            Logger.log_verbose("Audit name: %s" % audit.name)
+        if (hasattr(audit.database, "filename") and
+            audit.database.filename != ":memory:"
+        ):
+            Logger.log_verbose("Audit database: %s" % audit.database.filename)
 
         # Run!
         try:
-            m_audit.run()
+            audit.run()
 
             # Return it.
-            return m_audit
+            return audit
 
         # On error, abort.
         except Exception, e:
-            trace = format_exc()
-            Logger.log_error("Failed to add new audit, reason: %s" % e)
-            Logger.log_error_more_verbose(trace)
+            tb = format_exc()
             try:
-                self.remove_audit(m_audit.name)
+                self.remove_audit(audit.name)
             except Exception:
                 pass
-            raise RuntimeError("Failed to add new audit, reason: %s" % e)
+            Logger.log_error(str(e))
+            Logger.log_error_more_verbose(tb)
+            raise AuditException("Failed to add new audit, reason: %s" % e)
 
 
     #--------------------------------------------------------------------------
@@ -177,6 +210,20 @@ class AuditManager (object):
         :rtype: dict(str -> Audit)
         """
         return self.__audits
+
+
+    #--------------------------------------------------------------------------
+    def has_audit(self, name):
+        """
+        Check if there's an audit with the given name.
+
+        :param name: Audit name.
+        :type name: str
+
+        :returns: True if the audit exists, False otherwise.
+        :rtype: bool
+        """
+        return name in self.__audits
 
 
     #--------------------------------------------------------------------------
@@ -225,38 +272,54 @@ class AuditManager (object):
 
         :param message: Incoming message.
         :type message: Message
-
-        :returns: True if the message was sent, False if it was dropped.
-        :rtype: bool
         """
-        if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %r instead" % type(message))
 
-        # Send info messages to their target audit
+        # Type check.
+        if not isinstance(message, Message):
+            raise TypeError(
+                "Expected Message, got %r instead" % type(message))
+
+        # Send data messages to their target audit.
         if message.message_type == MessageType.MSG_TYPE_DATA:
             if not message.audit_name:
-                raise ValueError("Info message with no target audit!")
-            return self.get_audit(message.audit_name).dispatch_msg(message)
+                raise ValueError("Data message with no target audit!")
+            self.get_audit(message.audit_name).dispatch_msg(message)
 
-        # Process control messages
+        # Process control messages.
         elif message.message_type == MessageType.MSG_TYPE_CONTROL:
 
-            # Send ACKs to their target audit
+            # Send ACKs to their target audit.
             if message.message_code == MessageCode.MSG_CONTROL_ACK:
                 if message.audit_name:
-                    audit = self.get_audit(message.audit_name)
-                    audit.acknowledge(message)
+                    self.get_audit(message.audit_name).acknowledge(message)
 
-            # Stop an audit if requested
+            # Start an audit if requested.
+            elif message.message_code == MessageCode.MSG_CONTROL_START_AUDIT:
+                try:
+                    self.new_audit(message.message_info)
+                except AuditException, e:
+                    tb = format_exc()
+                    message = Message(
+                        message_type = MessageType.MSG_TYPE_STATUS,
+                        message_code = MessageCode.MSG_STATUS_AUDIT_ABORTED,
+                        message_info = (message.message_info.audit_name,
+                                        str(e), tb),
+                            priority = MessagePriority.MSG_PRIORITY_HIGH,
+                          audit_name = None,
+                    )
+                    self.orchestrator.enqueue_msg(message)
+
+            # Stop an audit if requested.
             elif message.message_code == MessageCode.MSG_CONTROL_STOP_AUDIT:
                 if not message.audit_name:
                     raise ValueError("I don't know which audit to stop...")
                 self.get_audit(message.audit_name).close()
                 self.remove_audit(message.audit_name)
 
-            # TODO: pause and resume audits, start new audits
-
-        return True
+            # Send log messages to their target audit.
+            elif message.message_code == MessageCode.MSG_CONTROL_LOG:
+                if message.audit_name:
+                    self.get_audit(message.audit_name).dispatch_msg(message)
 
 
     #--------------------------------------------------------------------------
@@ -272,10 +335,11 @@ class AuditManager (object):
                 pass
 
 
-#--------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class Audit (object):
     """
-    Instance of an audit, with its custom parameters, scope, target, plugins, etc.
+    Instance of an audit, with its custom parameters,
+    scope, target, plugins, etc.
     """
 
 
@@ -285,12 +349,14 @@ class Audit (object):
         :param audit_config: Audit configuration.
         :type audit_config: AuditConfig
 
-        :param orchestrator: Orchestrator instance that will receive messages sent by this audit.
+        :param orchestrator: Orchestrator instance that will receive messages
+            sent by this audit.
         :type orchestrator: Orchestrator
         """
 
         if not isinstance(audit_config, AuditConfig):
-            raise TypeError("Expected AuditConfig, got %r instead" % type(audit_config))
+            raise TypeError(
+                "Expected AuditConfig, got %r instead" % type(audit_config))
 
         # Keep the audit settings.
         self.__audit_config = audit_config
@@ -314,6 +380,12 @@ class Audit (object):
         # Number of unacknowledged messages.
         self.__expecting_ack = 0
 
+        # Counters used to collect runtime statistics.
+        self.__stage_cycles = defaultdict(int) # stage -> counter
+        self.__processed_count = 0
+        self.__total_count = 0
+        self.__stages_enabled = tuple()
+
         # Initialize the managers to None.
         self.__notifier = None
         self.__plugin_manager = None
@@ -321,17 +393,11 @@ class Audit (object):
         self.__report_manager = None
 
         # Create or open the database.
-        force_print_name = not audit_config.audit_name
+        self.__is_new = not audit_config.audit_name or audit_config.audit_db == ":auto:"
         self.__database = AuditDB(audit_config)
 
         # Set the audit name.
         self.__name = self.__database.audit_name
-        if force_print_name:
-            Logger.log("Audit name: %s" % self.__name)
-        else:
-            Logger.log_verbose("Audit name: %s" % self.__name)
-        if hasattr(self.__database, "filename"):
-            Logger.log_verbose("Audit database: %s" % self.database.filename)
 
 
     #--------------------------------------------------------------------------
@@ -345,9 +411,18 @@ class Audit (object):
         return self.__name
 
     @property
+    def is_new(self):
+        """
+        :returns: True if the audit is new, False if it's a reopened audit.
+        :rtype: bool
+        """
+        return self.__is_new
+
+    @property
     def orchestrator(self):
         """
-        :returns: Orchestrator instance that will receive messages sent by this audit.
+        :returns: Orchestrator instance that will receive messages
+            sent by this audit.
         :rtype: Orchestrator
         """
         return self.__orchestrator
@@ -415,7 +490,7 @@ class Audit (object):
     def current_stage(self):
         """
         :returns: Current execution stage.
-        :rtype: str
+        :rtype: int
         """
         return self.__current_stage
 
@@ -426,6 +501,37 @@ class Audit (object):
         :rtype: bool
         """
         return self.__is_report_started
+
+
+    #--------------------------------------------------------------------------
+    def get_runtime_stats(self):
+        """
+        Returns a dictionary with runtime statistics with at least the
+        following keys:
+
+         - "current_stage": [int]
+           Current stage number.
+         - "total_count": [int]
+           Total number of data objects to process in this stage.
+         - "processed_count": [int]
+           Number of data objects already processed in this stage.
+         - "stage_cycles": [dict(int -> int)]
+           Map of stage numbers and times each stage ran.
+         - "stages_enabled": [tuple(int)]
+           Stages enabled for this audit.
+
+        Future versions of GoLismero may include more keys.
+
+        :returns: Runtime statistics.
+        :rtype: dict(str -> \\*)
+        """
+        return {
+            "current_stage":     self.__current_stage,
+            "total_count":       self.__total_count,
+            "processed_count":   self.__processed_count,
+            "stage_cycles":      dict(self.__stage_cycles),
+            "stages_enabled":    self.__stages_enabled,
+        }
 
 
     #--------------------------------------------------------------------------
@@ -449,15 +555,19 @@ class Audit (object):
             self.__audit_scope = DummyScope()
 
             # Update the execution context for this audit.
-            Config._context = PluginContext(       msg_queue = old_context.msg_queue,
-                                                  audit_name = self.name,
-                                                audit_config = self.config,
-                                                 audit_scope = self.scope,
-                                            orchestrator_pid = old_context._orchestrator_pid,
-                                            orchestrator_tid = old_context._orchestrator_tid)
+            Config._context = PluginContext(
+                       msg_queue = old_context.msg_queue,
+                      audit_name = self.name,
+                    audit_config = self.config,
+                     audit_scope = self.scope,
+                orchestrator_pid = old_context._orchestrator_pid,
+                orchestrator_tid = old_context._orchestrator_tid)
 
             # Create the plugin manager for this audit.
-            self.__plugin_manager = self.orchestrator.pluginManager.get_plugin_manager_for_audit(self)
+            self.__plugin_manager = \
+                self.orchestrator.pluginManager.get_plugin_manager_for_audit(
+                    self)
+            self.__plugin_manager.initialize(self.config)
 
             # Load the testing plugins.
             testing_plugins = self.pluginManager.load_plugins("testing")
@@ -467,6 +577,13 @@ class Audit (object):
 
             # Register the testing plugins with the notifier.
             self.__notifier.add_multiple_plugins(testing_plugins)
+
+            # Determine which stages are enabled for this run.
+            self.__stages_enabled = sorted(
+                stage_num
+                for stage, stage_num in STAGES.iteritems()
+                if self.pluginManager.get_plugins(stage)
+            )
 
             # Create the import manager.
             self.__import_manager = ImportManager(self.orchestrator, self)
@@ -506,12 +623,14 @@ class Audit (object):
             target_data = self.scope.get_targets()
             targets_added_count = 0
             for data in target_data:
-                if not self.database.has_data_key(data.identity, data.data_type):
+                if not self.database.has_data_key(data.identity,
+                                                  data.data_type):
                     self.database.add_data(data)
                     targets_added_count += 1
             if targets_added_count:
                 Logger.log_verbose(
-                    "Added %d new targets to the database." % targets_added_count)
+                    "Added %d new targets to the database." %
+                    targets_added_count)
 
             # Mark all data as having completed no stages.
             # This is needed because the plugin list may have changed.
@@ -519,54 +638,68 @@ class Audit (object):
             # cause the same data to be processed again by the same plugin.
             self.database.clear_all_stage_marks()
 
-            # Tell the UI we're about to run the import plugins.
-            self.send_msg(
-                message_type = MessageType.MSG_TYPE_STATUS,
-                message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
-                message_info = "import",
-                    priority = MessagePriority.MSG_PRIORITY_HIGH,
-            )
+            # Do we have any active importers?
+            imported_count = 0
+            if self.importManager.is_enabled:
 
-            # Import external results.
-            # This is done after storing the targets, so the importers
-            # can overwrite the targets with new information if available.
-            # If we had no scope, build one based on the imported data.
-            if not target_data:
-                target_types = (
-                    Resource.RESOURCE_BASE_URL,
-                    Resource.RESOURCE_FOLDER_URL,
-                    Resource.RESOURCE_URL,
-                    Resource.RESOURCE_IP,
-                    Resource.RESOURCE_DOMAIN,
+                # Tell the UI we're about to run the import plugins.
+                self.send_msg(
+                    message_type = MessageType.MSG_TYPE_STATUS,
+                    message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
+                    message_info = "import",
+                        priority = MessagePriority.MSG_PRIORITY_HIGH,
                 )
-                old_data = set()
-                for data_subtype in target_types:
-                    old_data.update(
-                        self.database.get_data_keys(
-                            Data.TYPE_RESOURCE, data_subtype) )
-            imported_count = self.importManager.import_results()
-            if not target_data:
-                new_data = set()
-                for data_subtype in target_types:
-                    new_data.update(
-                        self.database.get_data_keys(
-                            Data.TYPE_RESOURCE, data_subtype) )
-                new_data.difference_update(old_data)
-                old_data.clear()
-                self.config.targets = [
-                    str( self.database.get_data(identity) )
-                    for identity in new_data
-                ]
-                new_data.clear()
-                self.__audit_scope = AuditScope(self.config) # does DNS queries
-                self.database.save_audit_scope(self.scope)
-                Config._context = PluginContext(
+
+                # Import external results.
+                # This is done after storing the targets, so the importers
+                # can overwrite the targets with new information if available.
+                # If we had no scope, build one based on the imported data.
+                if not target_data:
+                    target_types = (
+                        Resource.RESOURCE_BASE_URL,
+                        Resource.RESOURCE_FOLDER_URL,
+                        Resource.RESOURCE_URL,
+                        Resource.RESOURCE_IP,
+                        Resource.RESOURCE_DOMAIN,
+                    )
+                    old_data = set()
+                    for data_subtype in target_types:
+                        old_data.update(
+                            self.database.get_data_keys(
+                                Data.TYPE_RESOURCE, data_subtype) )
+                imported_count = self.importManager.import_results()
+                if not target_data:
+                    new_data = set()
+                    for data_subtype in target_types:
+                        new_data.update(
+                            self.database.get_data_keys(
+                                Data.TYPE_RESOURCE, data_subtype) )
+                    new_data.difference_update(old_data)
+                    old_data.clear()
+                    self.config.targets = [
+                        str( self.database.get_data(identity) )
+                        for identity in new_data
+                    ]
+                    new_data.clear()
+                    self.__audit_scope = AuditScope(self.config) # uses DNS
+                    self.database.save_audit_scope(self.scope)
+                    Config._context = PluginContext(
                                     msg_queue = old_context.msg_queue,
                                    audit_name = self.name,
                                  audit_config = self.config,
                                   audit_scope = self.scope,
                              orchestrator_pid = old_context._orchestrator_pid,
                              orchestrator_tid = old_context._orchestrator_tid)
+                    target_data = self.scope.get_targets()
+                    targets_added_count = 0
+                    for data in target_data:
+                        if not self.database.has_data_key(data.identity):
+                            self.database.add_data(data)
+                            targets_added_count += 1
+                    if targets_added_count:
+                        Logger.log_verbose(
+                            "Added %d new targets to the database." %
+                            targets_added_count)
 
             # Show the scope. Abort if the scope is wrong.
             Logger.log_more_verbose(str(self.scope))
@@ -581,17 +714,21 @@ class Audit (object):
             # XXX FIXME what about links?
             existing = self.database.get_data_keys()
             stack = list(existing)
+            visited = set()
             while stack:
                 identity = stack.pop()
-                data = self.database.get_data(identity)
-                if data.is_in_scope(): # just in case...
-                    for data in data.discovered:
-                        identity = data.identity
-                        if identity not in existing and data.is_in_scope():
-                            self.database.add_data(data)
-                            existing.add(identity)
-                            stack.append(identity)
+                if identity not in visited:
+                    visited.add(identity)
+                    data = self.database.get_data(identity)
+                    if data.is_in_scope(): # just in case...
+                        for data in data.discovered:
+                            identity = data.identity
+                            if identity not in existing and data.is_in_scope():
+                                self.database.add_data(data)
+                                existing.add(identity)
+                                stack.append(identity)
             del existing
+            del visited
 
         finally:
 
@@ -615,35 +752,27 @@ class Audit (object):
 
 
     #--------------------------------------------------------------------------
-    def send_info(self, data):
-        """
-        Send data to the Orchestrator.
-
-        :param data: Data to send.
-        :type data: Data
-        """
-        return self.send_msg(message_type = MessageType.MSG_TYPE_DATA,
-                             message_info = [data])
-
-
-    #--------------------------------------------------------------------------
     def send_msg(self, message_type = MessageType.MSG_TYPE_DATA,
-                       message_code = MessageCode.MSG_DATA,
+                       message_code = MessageCode.MSG_DATA_REQUEST,
                        message_info = None,
                        priority = MessagePriority.MSG_PRIORITY_MEDIUM):
         """
         Send messages to the Orchestrator.
 
-        :param message_type: Message type. Must be one of the constants from MessageType.
+        :param message_type: Message type.
+            Must be one of the constants from MessageType.
         :type mesage_type: int
 
-        :param message_code: Message code. Must be one of the constants from MessageCode.
+        :param message_code: Message code.
+            Must be one of the constants from MessageCode.
         :type message_code: int
 
-        :param message_info: The payload of the message. Its type depends on the message type and code.
+        :param message_info: The payload of the message.
+            Its type depends on the message type and code.
         :type message_info: *
 
-        :param priority: Priority level. Must be one of the constants from MessagePriority.
+        :param priority: Priority level.
+            Must be one of the constants from MessagePriority.
         :type priority: int
         """
         m = Message(message_type = message_type,
@@ -662,6 +791,7 @@ class Audit (object):
         :param message: The message with the ACK.
         :type message: Message
         """
+
         try:
 
             # Decrease the expected ACK count.
@@ -711,68 +841,107 @@ class Audit (object):
             # Note that for output text files the text report plugin is
             # run again normally.
             #
-            self.__report_manager.generate_screen_report(self.orchestrator.uiManager.notifier)
+            self.__report_manager.generate_screen_report(
+                self.orchestrator.uiManager.notifier)
 
             # Send the audit end message.
             self.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
                           message_code = MessageCode.MSG_CONTROL_STOP_AUDIT,
-                          message_info = True)   # True for finished, False for user cancel
+                          message_info = True)   # True for finished,
+                                                 # False for user cancel
 
         # If the reports are not yet launched...
         else:
 
             # Look for the earliest stage with pending data.
-            for stage in xrange(pluginManager.min_stage, pluginManager.max_stage + 1):
+            for stage in xrange(pluginManager.min_stage,
+                                pluginManager.max_stage + 1):
                 self.__current_stage = stage
                 pending = database.get_pending_data(stage)
-                if pending:
+                if not pending:
+                    continue
 
-                    # If the stage is empty...
-                    if not pluginManager.stages[stage]:
+                # If the stage is empty...
+                if not pluginManager.stages[stage]:
 
-                        # Mark all data as having finished this stage.
-                        for identity in pending:
-                            database.mark_stage_finished(identity, stage)
+                    # Mark all data as having finished this stage.
+                    database.mark_stage_finished_many(pending, stage)
 
-                        # Skip to the next stage.
+                    # Skip to the next stage.
+                    continue
+
+                # Process the pending data in batches.
+                # This reduces the memory footprint for large databases.
+                candidates = list(pending)
+                pending.clear()
+                for i in xrange(0, len(candidates), 10):
+
+                    # Get this batch.
+                    batch_ids = set(candidates[i:i+10])
+                    batch = database.get_many_data(batch_ids)
+                    if not batch:
+                        database.mark_stage_finished_many(batch_ids, stage)
                         continue
 
-                    # Get the pending data.
-                    # XXX FIXME possible performance problem here!
-                    # Maybe we should fetch the types only...
-                    datalist = database.get_many_data(pending)
-
-                    # If we don't have any suitable plugins...
-                    if not self.__notifier.is_runnable_stage(datalist, stage):
-
-                        # Mark all data as having finished this stage.
-                        for identity in pending:
-                            database.mark_stage_finished(identity, stage)
-
-                        # Skip to the next stage.
+                    # Filter out data out of scope.
+                    data_ok = []
+                    ids_ok = set()
+                    ids_not_ok = set()
+                    for data in batch:
+                        if data.is_in_scope(self.scope):
+                            ids_ok.add(data.identity)
+                            data_ok.append(data)
+                        else:
+                            ids_not_ok.add(data.identity)
+                    if ids_not_ok:
+                        database.mark_stage_finished_many(ids_not_ok, stage)
+                    batch_ids = ids_ok
+                    batch = data_ok
+                    if not batch:
                         continue
 
-                    # We're going to run testing plugins,
-                    # so we need to update the audit stop time.
-                    self.__must_update_stop_time = True
+                    # Filter out data that won't be processed in this stage.
+                    if not self.__notifier.is_runnable_stage(batch, stage):
+                        database.mark_stage_finished_many(batch_ids, stage)
+                        continue
 
-                    # Tell the Orchestrator we just moved to another stage.
-                    stage_name = pluginManager.get_stage_name_from_value(stage)
-                    self.send_msg(
-                        message_type = MessageType.MSG_TYPE_STATUS,
-                        message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
-                        message_info = stage_name,
-                    )
+                    # Keep the filtered IDs.
+                    pending.update(batch_ids)
+                    batch = []
 
-                    # Send the pending data to the Orchestrator.
+                # If no data survived the filter, skip to the next stage.
+                if not pending:
+                    continue
+
+                # Update the stage statistics.
+                self.__stage_cycles[self.__current_stage] += 1
+                self.__processed_count = 0
+                self.__total_count = len(pending)
+
+                # We're going to run testing plugins,
+                # so we need to update the audit stop time.
+                self.__must_update_stop_time = True
+
+                # Tell the Orchestrator we just moved to another stage.
+                stage_name = pluginManager.get_stage_name_from_value(stage)
+                self.send_msg(
+                    message_type = MessageType.MSG_TYPE_STATUS,
+                    message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
+                    message_info = stage_name,
+                )
+
+                # Send the pending data to the Orchestrator.
+                to_send = list(pending)
+                for i in xrange(0, len(to_send), 10):
+                    datalist = database.get_many_data(to_send[i:i+10])
                     self.send_msg(
                         message_type = MessageType.MSG_TYPE_DATA,
-                        message_code = MessageCode.MSG_DATA,
+                        message_code = MessageCode.MSG_DATA_REQUEST,
                         message_info = datalist,
                     )
 
-                    # We're done, return.
-                    return
+                # We're done, return.
+                return
 
             # If we reached this point, we finished the last stage.
             # Launch the report generation.
@@ -787,9 +956,6 @@ class Audit (object):
 
         :param message: The message to send.
         :type message: Message
-
-        :returns: True if the message was sent, False if it was dropped.
-        :rtype: bool
         """
         if not isinstance(message, Message):
             raise TypeError("Expected Message, got %r instead" % type(message))
@@ -800,16 +966,17 @@ class Audit (object):
         try:
 
             # Update the execution context for this audit.
-            Config._context = PluginContext(       msg_queue = old_context.msg_queue,
-                                                  audit_name = self.name,
-                                                audit_config = self.config,
-                                                 audit_scope = self.scope,
-                                                ack_identity = message.ack_identity,
-                                            orchestrator_pid = old_context._orchestrator_pid,
-                                            orchestrator_tid = old_context._orchestrator_tid)
+            Config._context = PluginContext(
+                       msg_queue = old_context.msg_queue,
+                      audit_name = self.name,
+                    audit_config = self.config,
+                     audit_scope = self.scope,
+                    ack_identity = message.ack_identity,
+                orchestrator_pid = old_context._orchestrator_pid,
+                orchestrator_tid = old_context._orchestrator_tid)
 
             # Dispatch the message.
-            return self.__dispatch_msg(message)
+            self.__dispatch_msg(message)
 
         finally:
 
@@ -822,95 +989,36 @@ class Audit (object):
         database = self.database
         pluginManager = self.pluginManager
 
+        # Is it a log message?
+        if message.message_type == MessageType.MSG_TYPE_CONTROL and \
+           message.message_code == MessageCode.MSG_CONTROL_LOG:
+
+            # Get the log line.
+            (text, level, is_error) = message.message_info
+
+            # Get the plugin instance.
+            plugin_id = message.plugin_id
+            ack_id    = message.ack_identity
+
+            # Get the timestamp.
+            timestamp = message.timestamp
+
+            # Append the log line.
+            database.append_log_line(
+                text, level, is_error, plugin_id, ack_id, timestamp)
+
+            # We're done.
+            return
+
         # Is it data?
         if message.message_type == MessageType.MSG_TYPE_DATA:
 
-            # Here we'll store the data to be resent to the plugins.
-            data_for_plugins = []
-
-            # For each data object sent...
+            # Sanitize the message, the info should always be a list.
             if isinstance(message.message_info, Data):
                 message.message_info = [message.message_info]
-            for data in message.message_info:
 
-                # Check the type.
-                if not isinstance(data, Data):
-                    warn(
-                        "TypeError: Expected Data, got %r instead"
-                        % type(data), RuntimeWarning, stacklevel=3)
-                    continue
-
-                # Is the data new?
-                if not database.has_data_key(data.identity):
-
-                    # Increase the number of links followed.
-                    if data.data_type == Data.TYPE_RESOURCE and data.resource_type == Resource.RESOURCE_URL:
-                        self.__followed_links += 1
-
-                        # Maximum number of links reached?
-                        if self.config.max_links > 0 and self.__followed_links >= self.config.max_links:
-
-                            # Show a warning, but only once.
-                            if self.__show_max_links_warning:
-                                self.__show_max_links_warning = False
-                                w = "Maximum number of links (%d) reached! Audit: %s"
-                                w = w % (self.config.max_links, self.name)
-                                with catch_warnings(record=True) as wlist:
-                                    warn(w, RuntimeWarning)
-                                self.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                              message_code = MessageCode.MSG_CONTROL_WARNING,
-                                              message_info = wlist,
-                                              priority = MessagePriority.MSG_PRIORITY_HIGH)
-
-                            # Skip this data object.
-                            continue
-
-                # Add the data to the database.
-                # This automatically merges the data if it already exists.
-                database.add_data(data)
-
-                # If the data is in scope...
-                if data.is_in_scope():
-
-                    # If the plugin is not recursive, mark the data as already processed by it.
-                    plugin_id = message.plugin_id
-                    if plugin_id:
-                        plugin_info = pluginManager.get_plugin_by_id(plugin_id)
-                        if not plugin_info.recursive:
-                            database.mark_plugin_finished(data.identity, plugin_id)
-
-                    # The data will be sent to the plugins.
-                    data_for_plugins.append(data)
-
-                # If the data is NOT in scope...
-                else:
-
-                    # Mark the data as having completed all stages.
-                    database.mark_stage_finished(data.identity, pluginManager.max_stage)
-
-            # Recursively process newly discovered data, if any.
-            # Discovered data already in the database is ignored.
-            visited = {data.identity for data in data_for_plugins}  # Skip original data.
-            for data in list(data_for_plugins):  # Can't iterate and modify!
-                queue = list(data.discovered)    # Make sure it's a copy.
-                while queue:
-                    data = queue.pop(0)
-                    if (data.identity not in visited and
-                        not database.has_data_key(data.identity)
-                    ):
-                        database.add_data(data)       # No merging because it's new.
-                        visited.add(data.identity)    # Prevents infinite loop.
-                        queue.extend(data.discovered) # Recursive.
-                        if data.is_in_scope():        # If in scope, send it to plugins.
-                            data_for_plugins.append(data)
-                        else:                         # If not, mark as completed.
-                            database.mark_stage_finished(data.identity, pluginManager.max_stage)
-
-            # If we have data to be sent...
-            if data_for_plugins:
-
-                # Modify the message in-place with the filtered list of data objects.
-                message._update_data(data_for_plugins)
+            # Is it data meant to be sent to the plugins?
+            if message.message_code == MessageCode.MSG_DATA_REQUEST:
 
                 # Send the message to the plugins, and track the expected ACKs.
                 launched = self.__notifier.notify(message)
@@ -918,15 +1026,129 @@ class Audit (object):
                     self.__expecting_ack += launched
                 else:
                     self.__expecting_ack += 1
-                    self.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
-                                  message_code = MessageCode.MSG_CONTROL_ACK,
-                                      priority = MessagePriority.MSG_PRIORITY_LOW)
+                    self.send_msg(
+                        message_type = MessageType.MSG_TYPE_CONTROL,
+                        message_code = MessageCode.MSG_CONTROL_ACK,
+                            priority = MessagePriority.MSG_PRIORITY_LOW)
 
-                # Tell the Orchestrator we sent the message.
-                return True
+                # Increment the count of processed objects.
+                self.__processed_count += len(message.message_info)
 
-        # Tell the Orchestrator we dropped the message.
-        return False
+                # We're done.
+                return
+
+            # Is it data received from the plugins?
+            elif message.message_code == MessageCode.MSG_DATA_RESPONSE:
+
+                # Here we'll store the data to be resent to the plugins.
+                data_for_plugins = []
+
+                # For each data object sent...
+                for data in message.message_info:
+
+                    # Check the type.
+                    if not isinstance(data, Data):
+                        warn(
+                            "TypeError: Expected Data, got %r instead"
+                            % type(data), RuntimeWarning, stacklevel=3)
+                        continue
+
+                    # Is the data new?
+                    if not database.has_data_key(data.identity):
+
+                        # Increase the number of links followed.
+                        if (
+                            data.data_type == Data.TYPE_RESOURCE and
+                            data.resource_type == Resource.RESOURCE_URL
+                        ):
+                            self.__followed_links += 1
+
+                            # Maximum number of links reached?
+                            if (
+                                self.config.max_links > 0 and
+                                self.__followed_links >= self.config.max_links
+                            ):
+
+                                # Show a warning, but only once.
+                                if self.__show_max_links_warning:
+                                    self.__show_max_links_warning = False
+                                    w = "Maximum number of links (%d) reached! Audit: %s"
+                                    w = w % (self.config.max_links, self.name)
+                                    with catch_warnings(record=True) as wlist:
+                                        warn(w, RuntimeWarning)
+                                    self.send_msg(
+                                        message_type = MessageType.MSG_TYPE_CONTROL,
+                                        message_code = MessageCode.MSG_CONTROL_WARNING,
+                                        message_info = wlist,
+                                        priority = MessagePriority.MSG_PRIORITY_HIGH)
+
+                                # Skip this data object.
+                                continue
+
+                    # Add the data to the database.
+                    # This automatically merges the data if it already exists.
+                    database.add_data(data)
+
+                    # If the data is in scope...
+                    if data.is_in_scope():
+
+                        # If the plugin is not recursive,
+                        # mark the data as already processed by it.
+                        plugin_id = message.plugin_id
+                        if plugin_id:
+                            plugin_info = pluginManager.get_plugin_by_id(
+                                                                    plugin_id)
+                            if not plugin_info.recursive:
+                                database.mark_plugin_finished(data.identity,
+                                                              plugin_id)
+
+                        # The data will be sent to the plugins.
+                        data_for_plugins.append(data)
+
+                    # If the data is NOT in scope...
+                    else:
+
+                        # Mark the data as having completed all stages.
+                        database.mark_stage_finished(data.identity,
+                                                     pluginManager.max_stage)
+
+                # Recursively process newly discovered data, if any.
+                # Discovered data already in the database is ignored.
+                visited = {data.identity for data in data_for_plugins}  # Skip original data.
+                for data in list(data_for_plugins):       # Can't iterate and modify!
+                    links = set(data.links)               # Get the original links.
+                    queue = list(data.discovered)         # Make sure it's a copy.
+                    links = set(data.links).difference(links) # Get the new links.
+                    while queue:
+                        data = queue.pop(0)
+                        if (data.identity not in visited and
+                            not database.has_data_key(data.identity)
+                        ):
+                            database.add_data(data)       # No merging because it's new.
+                            visited.add(data.identity)    # Prevents infinite loop.
+                            queue.extend(data.discovered) # Recursive.
+                            if data.is_in_scope():        # If in scope, send it to plugins.
+                                data_for_plugins.append(data)
+                            else:                         # If not, mark as completed.
+                                database.mark_stage_finished(data.identity,
+                                                    pluginManager.max_stage)
+                    if links:                             # If we have new links...
+                        database.add_data(data)           # Refresh the data object.
+
+                # If we have data to be sent and we're in the first stage...
+                if (
+                    data_for_plugins and
+                    self.current_stage == self.pluginManager.min_stage
+                ):
+
+                    # Increment the total data count for this stage.
+                    self.__total_count += len(data_for_plugins)
+
+                    # Send a data request message to the Orchestrator.
+                    # This optimization saves on database accesses.
+                    self.send_msg(message_type = MessageType.MSG_TYPE_DATA,
+                                  message_code = MessageCode.MSG_DATA_REQUEST,
+                                  message_info = data_for_plugins)
 
 
     #--------------------------------------------------------------------------
@@ -951,19 +1173,22 @@ class Audit (object):
             if self.__must_update_stop_time:
                 self.database.set_audit_stop_time( time() )
 
-            # Show a log message.
+            # Are any report plugins active?
+            launched = 0
             if self.__report_manager.plugin_count > 0:
-                Logger.log_verbose("Generating reports...")
 
-            # Tell the UI we've started generating the reports.
-            self.send_msg(
-                message_type = MessageType.MSG_TYPE_STATUS,
-                message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
-                message_info = "report",
-            )
+                # Tell the UI we've started generating the reports.
+                self.send_msg(
+                    message_type = MessageType.MSG_TYPE_STATUS,
+                    message_code = MessageCode.MSG_STATUS_STAGE_UPDATE,
+                    message_info = "report",
+                )
 
-            # Start the report generation.
-            launched = self.__report_manager.generate_reports(self.__notifier)
+                # Start the report generation.
+                launched = self.__report_manager.generate_reports(
+                    self.__notifier)
+
+            # Handle the ACK messages.
             if launched:
                 self.__expecting_ack += launched
             else:
@@ -996,13 +1221,17 @@ class Audit (object):
                                 finally:
                                     self.database.close()
                         finally:
-                            if self.__notifier is not None: self.__notifier.close()
+                            if self.__notifier is not None:
+                                self.__notifier.close()
                     finally:
-                        if self.__plugin_manager is not None: self.__plugin_manager.close()
+                        if self.__plugin_manager is not None:
+                            self.__plugin_manager.close()
                 finally:
-                    if self.__import_manager is not None: self.__import_manager.close()
+                    if self.__import_manager is not None:
+                        self.__import_manager.close()
             finally:
-                if self.__report_manager is not None: self.__report_manager.close()
+                if self.__report_manager is not None:
+                    self.__report_manager.close()
         finally:
             self.__database       = None
             self.__orchestrator   = None

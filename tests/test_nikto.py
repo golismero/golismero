@@ -47,30 +47,39 @@ except NameError:
 
 from golismero.api.config import Config
 from golismero.api.data.resource.url import BaseUrl
-from golismero.common import AuditConfig
+from golismero.common import AuditConfig, OrchestratorConfig
 from golismero.main.testing import PluginTester
 
 from collections import defaultdict
 
 
 def test_nikto():
+    DEBUG = False
+    ##DEBUG = True
+
     plugin_id = "testing/scan/nikto"
     csv_file = "test_nikto.csv"
     print "Testing plugin: %s" % plugin_id
+    orchestrator_config = OrchestratorConfig()
+    orchestrator_config.ui_mode = "console"
     audit_config = AuditConfig()
-    audit_config.targets = ["www.example.com", "localhost"]
+    audit_config.targets = ["http://www.example.com", "http://localhost"]
     audit_config.include_subdomains = False
-    with PluginTester(audit_config = audit_config) as t:
+    audit_config.enable_plugins = ["nikto"]
+    audit_config.disable_plugins = ["all"]
+    with PluginTester(orchestrator_config = orchestrator_config,
+                      audit_config = audit_config) as t:
 
         print "Testing Nikto plugin parser..."
         plugin, plugin_info = t.get_plugin(plugin_id)
         Config._context._PluginContext__plugin_info = plugin_info
         try:
-            r, c = plugin.parse_nikto_results(BaseUrl("http://www.example.com/"),
-                                           path.join(here, csv_file))
-            #for d in r:
-                #print "-" * 10
-                #print repr(d)
+            r, c = plugin.parse_nikto_results(
+                BaseUrl("http://www.example.com/"), path.join(here, csv_file))
+            if DEBUG:
+                for d in r:
+                    print "-" * 10
+                    print repr(d)
             assert c == 6, c
             assert len(r) == 10, len(r)
             c = defaultdict(int)

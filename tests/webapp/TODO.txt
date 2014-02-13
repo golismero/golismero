@@ -1,8 +1,0 @@
--Todas los widget (pantallas) seran singletons.
-- Todas la tablas paginadas y con algún filtro
-	https://github.com/linkedin/Backbone.TableView
-	http://onelayerdown.blogspot.com.es/2013/01/simple-pagination-with-backbone-and.html
-	https://github.com/backbone-paginator/backbone.paginator
-	http://stackoverflow.com/questions/11217073/using-backbone-collection-for-a-paginated-list
-- En usuarios poner un boton actualizar
-- En escaneos la actualización sera por websockets (Eliminacion, nuevos, porcentaje)

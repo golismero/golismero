@@ -190,7 +190,7 @@ class _Config (Singleton):
         Author = Daniel Garcia Garcia (cr0hn)
         Version = 0.1
         Website = https://github.com/golismero
-        Copyright = Copyright (C) 2011-2013 GoLismero Project
+        Copyright = Copyright (C) 2011-2014 GoLismero Project
         License = GNU Public License
         [Wordlist_middle]
         wordlist = golismero/warning_url.txt

@@ -1,0 +1,23 @@
+{
+    "cached": false, 
+    "data": {
+        "authoritative_nameservers": [], 
+        "forward_nodes": {}, 
+        "nameservers": [], 
+        "query_time": "2014-01-11T19:30:00", 
+        "resource": "127.0.0.1", 
+        "reverse_nodes": {
+            "127.0.0.1": []
+        }
+    }, 
+    "data_call_status": "supported", 
+    "messages": [], 
+    "process_time": 11, 
+    "query_id": "e2e9a53c-7af6-11e3-b44f-782bcb34677e", 
+    "see_also": [], 
+    "server_id": "stat-app1", 
+    "status": "ok", 
+    "status_code": 200, 
+    "time": "2014-01-11T19:30:53.886819", 
+    "version": "1.0"
+}

@@ -32,20 +32,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = ["Username", "Password"]
 
-from . import Information
+from . import Asset
 from .. import identity
+from ...text.text_utils import to_utf8
 
 
 #------------------------------------------------------------------------------
-class Username(Information):
+class Username(Asset):
     """
     Username.
     """
 
-    information_type = Information.INFORMATION_USERNAME
+    information_type = Asset.INFORMATION_USERNAME
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, name):
         """
         :param name: Username.
@@ -53,11 +54,11 @@ class Username(Information):
         """
         if not isinstance(name, basestring):
             raise TypeError("Expected string, got %r instead" % type(name))
-        self.__name = name
+        self.__name = to_utf8(name)
         super(Username, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def name(self):
         """
@@ -68,27 +69,27 @@ class Username(Information):
 
 
 #------------------------------------------------------------------------------
-class Password(Information):
+class Password(Asset):
     """
     Password.
     """
 
-    information_type = Information.INFORMATION_PASSWORD
+    information_type = Asset.INFORMATION_PASSWORD
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, password):
         """
         :param password: Password.
         :type password: str
         """
         if not isinstance(password, basestring):
-            raise TypeError("Expected string, got %r instead" % type(password))
-        self.__password = password
+            raise TypeError("Expected str, got %r instead" % type(password))
+        self.__password = to_utf8(password)
         super(Password, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def password(self):
         """

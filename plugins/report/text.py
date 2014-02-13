@@ -26,10 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+__all__ = ["TextReport"]
+
 import sys
 
 from collections import defaultdict
-from texttable import Texttable
 
 from golismero.api.audit import get_audit_times, parse_audit_times
 from golismero.api.config import Config
@@ -48,6 +49,18 @@ from golismero.main.console import Console, colorize, colorize_substring, get_te
 
 
 #------------------------------------------------------------------------------
+from texttable import Texttable as orig_Texttable
+
+class Texttable(orig_Texttable):
+    def _str(self, i, x):
+        if x is None:
+            return ""
+        if isinstance(x, unicode):
+            return x.encode("UTF-8")
+        return str(x)
+
+
+#------------------------------------------------------------------------------
 class TextReport(ReportPlugin):
     """
     Plugin to display reports on screen or to a plain text file.
@@ -56,6 +69,9 @@ class TextReport(ReportPlugin):
 
     #--------------------------------------------------------------------------
     def is_supported(self, output_file):
+
+        # We need some custom logic here, because the same plugin is used for
+        # both text output to a file and text output to the console.
         return (
             not output_file
             or output_file == "-"
@@ -68,16 +84,17 @@ class TextReport(ReportPlugin):
         self.__show_data = not Config.audit_config.only_vulns
         if output_file and output_file.lower().endswith(".txt"):
             Logger.log_verbose("Writing text report to file: %s" % output_file)
-            self.__color = False
-            self.__width = 0
+            self.__console = False
+            self.__color   = False
+            self.__width   = int( Config.plugin_args.get("width", "0") )
             self.__console = False
             with open(output_file, mode='w') as self.__fd:
                 self.__write_report()
         else:
             self.__console = True
-            self.__color = Console.use_colors
-            self.__width = max(0, get_terminal_size()[0])
-            self.__fd = sys.stdout
+            self.__color   = Console.use_colors
+            self.__width   = max(0, get_terminal_size()[0])
+            self.__fd      = sys.stdout
             self.__write_report()
 
 
@@ -110,16 +127,17 @@ class TextReport(ReportPlugin):
 
     #--------------------------------------------------------------------------
     def __fix_table_width(self, table):
-        if hasattr(table, "_hline_string"):
-            table._hline_string = "" # workaround for bug in texttable
-        assert all(len(x) == 2 for x in table._rows), table._rows
-        w = max( len(x[0]) for x in table._rows )
-        if table._header:
-            assert len(table._header) == 2, len(table._header)
-            w = max( w, len(table._header[0]) )
-        m = w + 8
-        if self.__width > m:
-            table.set_cols_width((w, self.__width - m))
+        if self.__width > 0:
+            if hasattr(table, "_hline_string"):
+                table._hline_string = "" # workaround for bug in texttable
+            assert all(len(x) == 2 for x in table._rows), table._rows
+            w = max( len(x[0]) for x in table._rows )
+            if table._header:
+                assert len(table._header) == 2, len(table._header)
+                w = max( w, len(table._header[0]) )
+            m = w + 8
+            if self.__width > m:
+                table.set_cols_width((w, self.__width - m))
 
 
     #--------------------------------------------------------------------------
@@ -187,9 +205,12 @@ class TextReport(ReportPlugin):
             for ip in self.__iterate(Data.TYPE_RESOURCE, Resource.RESOURCE_IP):
                 table = Texttable()
                 self.__add_related(table, ip, Data.TYPE_RESOURCE, Resource.RESOURCE_DOMAIN, "Domain Name")
+                self.__add_related(table, ip, Data.TYPE_RESOURCE, Resource.RESOURCE_MAC, "MAC Address")
+                self.__add_related(table, ip, Data.TYPE_RESOURCE, Resource.RESOURCE_BSSID, "WiFi 802.11 BSSID")
                 self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_GEOLOCATION, "Location")
                 self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_WEB_SERVER_FINGERPRINT, "Web Server")
                 self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_OS_FINGERPRINT, "OS Fingerprint")
+                self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_SERVICE_FINGERPRINT, "Service")
                 self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_PORTSCAN, "Port Scan")
                 self.__add_related(table, ip, Data.TYPE_INFORMATION, Information.INFORMATION_TRACEROUTE, "Network Route")
                 if table._rows:
@@ -275,9 +296,7 @@ class TextReport(ReportPlugin):
                     table.header(("Occurrence ID", vuln.identity))
                     w = len(table.draw())
                     table.add_row(("Title", vuln.title))
-                    targets = [str(x) for x in vuln.associated_resources]
-                    for info in vuln.associated_informations:
-                        targets.extend(str(x) for x in info.associated_resources)
+                    targets = self.__gather_vulnerable_resources(vuln)
                     table.add_row(("Found By", get_plugin_name(vuln.plugin_id)))
                     p = len(table.draw())
                     table.add_row(("Level", vuln.level))
@@ -286,13 +305,15 @@ class TextReport(ReportPlugin):
                     table.add_row(("Risk", vuln.risk))
                     q = len(table.draw())
                     if vuln.cvss_base:
-                        table.add_row(("CVSS Base", "%1.1f" % vuln.cvss_base))
-                    if vuln.cvss_base_vector:
-                        table.add_row(("CVSS Base Vector", vuln.cvss_base_vector))
+                        table.add_row(("CVSS Base", vuln.cvss_base))
+                    if vuln.cvss_score:
+                        table.add_row(("CVSS Score", vuln.cvss_score))
+                    if vuln.cvss_vector:
+                        table.add_row(("CVSS Vector", vuln.cvss_vector))
                     if len(targets) > 1:
                         targets.sort()
                         table.add_row(("Locations", "\n".join(targets)))
-                    else:
+                    elif targets:
                         table.add_row(("Location", targets[0]))
                     table.add_row(("Description", vuln.description))
                     table.add_row(("Solution", vuln.solution))
@@ -315,7 +336,7 @@ class TextReport(ReportPlugin):
                         table.add_row(("Taxonomy", "\n".join(taxonomy)))
                     if vuln.references:
                         table.add_row(("References", "\n".join(sorted(vuln.references))))
-                    details = vuln.display_properties["Details"]
+                    details = vuln.display_properties.get("Details")
                     if details:
                         props = details.keys()
                         props.sort()
@@ -335,3 +356,21 @@ class TextReport(ReportPlugin):
         else:
             print >>self.__fd, self.__colorize("No vulnerabilities found.", "green")
             print >>self.__fd, ""
+
+
+    #--------------------------------------------------------------------------
+    def __gather_vulnerable_resources(self, vuln):
+        vulnerable = []
+        visited = set()
+        queue = [vuln]
+        while queue:
+            data = queue.pop()
+            identity = data.identity
+            if identity not in visited:
+                visited.add(identity)
+                if data.data_type == Data.TYPE_RESOURCE:
+                    vulnerable.append(str(data))
+                else:
+                    queue.extend(data.linked_data)
+        visited.clear()
+        return vulnerable

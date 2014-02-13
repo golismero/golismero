@@ -36,7 +36,7 @@ from .config import Config
 from ..messaging.codes import MessageType, MessageCode, MessagePriority
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class Logger (object):
     """
     Logging API for plugins.
@@ -44,15 +44,14 @@ class Logger (object):
     Plugins should use this class instead of a simple `print`,
     otherwise messages will not be logged by GoLismero.
 
-    Example::
-
+    Example:
        >>> Logger.log("My log message with information")
        >>> Logger.log_error("My log with error information")
        >>> Logger.log_verbose("Log message to display only when verbose mode is enabled")
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     # Verbose levels
 
     DISABLED     = 0
@@ -61,7 +60,7 @@ class Logger (object):
     MORE_VERBOSE = 3
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __new__(cls, *args, **kwargs):
         """
         .. warning: This is a static class, do not try to instance it!
@@ -69,7 +68,7 @@ class Logger (object):
         raise NotImplementedError("This is a static class!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def _log(cls, message, level, is_error = False):
         """
@@ -88,7 +87,7 @@ class Logger (object):
         )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log(cls, message):
         """
@@ -100,7 +99,7 @@ class Logger (object):
         cls._log(message, cls.STANDARD, is_error = False)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log_verbose(cls, message):
         """
@@ -112,7 +111,7 @@ class Logger (object):
         cls._log(message, cls.VERBOSE, is_error = False)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log_more_verbose(cls, message):
         """
@@ -124,7 +123,7 @@ class Logger (object):
         cls._log(message, cls.MORE_VERBOSE, is_error = False)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log_error(cls, message):
         """
@@ -136,7 +135,7 @@ class Logger (object):
         cls._log(message, cls.STANDARD, is_error = True)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log_error_verbose(cls, message):
         """
@@ -148,7 +147,7 @@ class Logger (object):
         cls._log(message, cls.VERBOSE, is_error = True)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @classmethod
     def log_error_more_verbose(cls, message):
         """

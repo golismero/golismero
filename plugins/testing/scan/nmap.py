@@ -28,19 +28,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 from golismero.api.config import Config
 from golismero.api.data.db import Database
+from golismero.api.data.information.fingerprint import OSFingerprint, ServiceFingerprint
 from golismero.api.data.information.portscan import Portscan
 from golismero.api.data.information.traceroute import Traceroute, Hop
 from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.ip import IP
-from golismero.api.external import run_external_tool, tempfile
+from golismero.api.data.resource.mac import MAC
+from golismero.api.external import run_external_tool, tempfile, find_binary_in_path
 from golismero.api.logger import Logger
+from golismero.api.net import ConnectionSlot
 from golismero.api.plugin import ImportPlugin, TestingPlugin
 
 import shlex
 
 from socket import getservbyname
-from traceback import format_exc
 from time import time
+from traceback import format_exc
 from warnings import warn
 
 try:
@@ -77,6 +80,13 @@ class NmapScanPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
+    def check_params(self):
+        if not find_binary_in_path("nmap"):
+            raise RuntimeError(
+                "Nmap not found! You can download it from: http://nmap.org/")
+
+
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [IP]
 
@@ -98,17 +108,20 @@ class NmapScanPlugin(TestingPlugin):
             # Run Nmap and capture the text output.
             Logger.log("Launching Nmap against: %s" % info.address)
             Logger.log_more_verbose("Nmap arguments: %s" % " ".join(args))
-            t1 = time()
-            code = run_external_tool("nmap", args, callback=Logger.log_verbose)
-            t2 = time()
+            with ConnectionSlot(info.address):
+                t1 = time()
+                code = run_external_tool("nmap", args,
+                                         callback=Logger.log_verbose)
+                t2 = time()
 
             # Log the output in extra verbose mode.
             if code:
                 Logger.log_error(
                     "Nmap execution failed, status code: %d" % code)
             else:
-                Logger.log("Nmap scan finished in %s seconds for target: %s"
-                           % (t2 - t1, info.address))
+                Logger.log(
+                    "Nmap scan finished in %s seconds for target: %s"
+                    % (t2 - t1, info.address))
 
             # Parse and return the results.
             return self.parse_nmap_results(info, output)
@@ -192,6 +205,9 @@ class NmapScanPlugin(TestingPlugin):
         :rtype: list(Data)
         """
 
+        # File format details can be found here:
+        # https://svn.nmap.org/nmap/docs/nmap.dtd
+
         # Get the timestamp.
         timestamp = host.get("endtime")
         if timestamp:
@@ -224,6 +240,19 @@ class NmapScanPlugin(TestingPlugin):
                         ip_1.add_resource(ip_2)
         ips_visited.clear()
 
+        # Get all the MAC addresses.
+        mac_addresses = []
+        seen_macs = set()
+        for node in host.findall(".//address"):
+            if node.get("addrtype", "") != "mac":
+                continue
+            address = node.get("addr")
+            if not address:
+                continue
+            if address not in seen_macs:
+                seen_macs.add(address)
+            mac_addresses.append( MAC(address) )
+
         # Get all the hostnames.
         domain_names = []
         for node in host.findall(".//hostname"):
@@ -239,12 +268,18 @@ class NmapScanPlugin(TestingPlugin):
             for ip in ip_addresses:
                 name.add_resource(ip)
 
+        # Link all MAC addresses to all IP addresses.
+        for mac in mac_addresses:
+            for ip in ip_addresses:
+                mac.add_resource(ip)
+
         # Abort if no resources were found.
-        if not ip_addresses and not domain_names:
+        if not ip_addresses and not domain_names and not mac_addresses:
             return []
 
-        # Get the portscan results.
+        # Get the port scan results.
         ports = set()
+        services = set()
         for node in host.findall(".//port"):
             try:
                 portid   = node.get("portid")
@@ -259,14 +294,32 @@ class NmapScanPlugin(TestingPlugin):
                 if state not in ("open", "closed", "filtered"):
                     continue
                 ports.add( (state, protocol, port) )
+                if state == "open":
+                    serv_node = node.find("service")
+                    if serv_node is not None:
+                        service = serv_node.get("name")
+                        if service:
+                            if service == "https":
+                                service  = "http"
+                                protocol = "SSL"
+                            elif serv_node.get("tunnel") == "ssl":
+                                protocol = "SSL"
+                            else:
+                                protocol = protocol.upper()
+                            services.add( (service, port, protocol) )
             except Exception:
-                warn("Error parsing portscan results: %s" % format_exc(),
+                warn("Error parsing port scan results: %s" % format_exc(),
                      RuntimeWarning)
 
         # Get the traceroute results.
         traces = []
         for node in host.findall(".//trace"):
             try:
+                if node.get("port") is None or node.get("proto") is None:
+                    # This happens for trivial cases like empty traceroute
+                    # result tags. Example: trying to traceroute a host that's
+                    # only one hop away from you, like your home router.
+                    continue
                 port   = int( node.get("port") )
                 proto  = node.get("proto")
                 hops   = {}
@@ -297,20 +350,70 @@ class NmapScanPlugin(TestingPlugin):
                 warn("Error parsing traceroute results: %s" %
                      format_exc(), RuntimeWarning)
 
-        # This is where we'll gather all the results.
-        results = ip_addresses + domain_names
+        # Get the fingerprint results.
+        fingerprints = set()
+        for node in host.findall(".//osmatch"):
+            try:
+                name = node.get("name", None)
+                for node in node.findall(".//osclass"):
+                    accuracy = float( node.get("accuracy") )
+                    os_type = node.get("type", None)
+                    vendor = node.get("vendor", None)
+                    family = node.get("osfamily", None)
+                    generation = node.get("osgen", None)
+                    cpe = node.find("cpe").text
+                    fingerprints.add( (
+                        cpe, accuracy,
+                        name, vendor, os_type, generation, family
+                    ) )
+            except Exception:
+                warn("Error parsing OS fingerprint results: %s" % format_exc(),
+                     RuntimeWarning)
 
-        # Link the portscan results to the IP addresses.
+        # This is where we'll gather all the results.
+        results = ip_addresses + domain_names + mac_addresses
+
+        # Link the port scan results to the IP addresses.
         for ip in ip_addresses:
-            portscan = Portscan(ip, ports, timestamp)
+            try:
+                portscan = Portscan(ip, ports, timestamp)
+            except Exception:
+                warn(format_exc(), RuntimeWarning)
+                continue
             results.append(portscan)
+
+        # Link the service identification results to the IP addresses.
+        for service, port, protocol in services:
+            try:
+                sfp = ServiceFingerprint(service, port, protocol)
+            except Exception:
+                warn(format_exc(), RuntimeWarning)
+                continue
+            for ip in ip_addresses:
+                ip.add_information(sfp)
+            results.append(sfp)
 
         # Link the traceroute results to the IP addresses.
         for ip in ip_addresses:
             if ip.version == 4:
                 for trace in traces:
-                    traceroute = Traceroute(ip, *trace)
+                    try:
+                        traceroute = Traceroute(ip, *trace)
+                    except Exception:
+                        warn(format_exc(), RuntimeWarning)
+                        continue
                     results.append(traceroute)
+
+        # Link the fingerprint results to the IP addresses.
+        for ip in ip_addresses:
+            for args in fingerprints:
+                try:
+                    fingerprint = OSFingerprint(*args)
+                except Exception:
+                    warn(format_exc(), RuntimeWarning)
+                    continue
+                ip.add_information(fingerprint)
+                results.append(fingerprint)
 
         # Return the results.
         return results

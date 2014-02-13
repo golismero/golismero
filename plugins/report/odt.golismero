@@ -1,0 +1,8 @@
+[Documentation]
+Name        = OpenOffice Document Report
+Description = Writes reports in OpenOffice document format (.odt).
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License

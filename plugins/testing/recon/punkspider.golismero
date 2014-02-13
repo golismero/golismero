@@ -1,0 +1,9 @@
+[Documentation]
+Name        = PunkSPIDER
+Description = Integration with PunkSPIDER (http://punkspider.hyperiongray.com/)
+ This plugin requires a working Internet connection to work.
+Author      = GoLismero project team
+Version     = 0.1
+Website     = https://github.com/golismero
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
+License     = GNU Public License

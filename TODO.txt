@@ -1,0 +1,18 @@
+Roadmap
+=======
+
+Plugins
+-------
+
+- LFI/RFI: https://github.com/cr0hn/golismero/issues/215
+- Password bruteforcer: https://github.com/cr0hn/golismero/issues/211
+- SSI scan: https://github.com/cr0hn/golismero/issues/207
+- Wapiti: https://github.com/cr0hn/golismero/issues/187
+- Inguma: https://github.com/cr0hn/golismero/issues/180
+- Nimbostratus: https://github.com/cr0hn/golismero/issues/174
+- Wordpress: https://github.com/cr0hn/golismero/issues/130
+- GWT: https://github.com/cr0hn/golismero/issues/109
+- Metasploit: https://github.com/cr0hn/golismero/issues/91
+- ZAP Proxy: https://github.com/cr0hn/golismero/issues/81
+- Directory listing: https://github.com/cr0hn/golismero/issues/36
+- SQLMap (improvements): https://github.com/cr0hn/golismero/issues/10

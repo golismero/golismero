@@ -1,0 +1,74 @@
+{
+  "home": {
+    "myaccount": "My account <b class='caret'>"
+  },
+  "form":{
+	"save":"Save"
+  },
+  "login":{
+	"title":"Login",
+	"username":"Username",
+	"password": "Password",
+	"accept":"Accept"
+  },
+  "menu":{
+	"home":"Home",
+	"users":"Users",
+	"profiles":"Profiles",
+	"scans":"Scans",
+	"contactus":"Contact us"
+  },
+  "user": {
+	"new":"New",
+	"edit":"Edit",
+	"remove":"Delete",
+	"title":"Users",
+	"table":{
+		"id":"Identifier",
+		"username":"Username",
+		"nameandsurname":"Name and surname",
+		"rol":"Rol",
+		"email":"Email"
+	},
+	"form":{
+		"createUser":"Create user",
+		"editUser":"Edit user",
+		"username":"Username",
+		"password":"Password",
+		"repeatpassword":"Repeat password",
+		"rol":"Rol",
+		"email": "Email",
+		"nameandsurname":"Name and surname",
+		
+		"roles":{
+			"administrator":"Administrator"
+		}
+	}
+  },
+  "profile": {
+	"new":"New",
+	"edit":"Edit",
+	"remove":"Delete",
+	"title":"Profiles",
+	"table":{
+		"id":"Identifier",
+		"name":"Name"
+	},
+	"form":{
+		"createProfile":"Create profile",
+		"editProfile":"Edit profile",
+		"name":"Name"
+	}
+  },
+  "scans": {
+	"title":"Scans",
+	"new":"New",
+	"table":{
+		"id":"Identifier",
+		"name":"Name",
+		"progress":"Progress",
+		"target":"Target",
+		"status":"Status"
+	}
+  }
+}

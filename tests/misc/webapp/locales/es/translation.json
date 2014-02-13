@@ -1,0 +1,73 @@
+{
+  "home": {
+    "myaccount": "Mi cuenta <b class='caret'>"
+  },
+  "form":{
+	"save":"Guardar"
+  },
+  "login":{
+	"title":"Login",
+	"username":"Nombre de usuario",
+	"password": "Contraseña",
+	"accept":"Aceptar"
+  },
+  "menu":{
+	"home":"Home",
+	"users":"Usuarios",
+	"profiles":"Perfiles",
+	"scans":"Escaneos",
+	"contactus":"Contactanos"
+  },
+  "user": {
+	"title":"Usuarios",
+	"new":"Nuevo",
+	"remove":"Eliminar",
+	"edit":"Editar",
+	"table":{
+		"id":"Identificador",
+		"username":"Nombre de usuario",
+		"nameandsurname":"Nombre y apellidos",
+		"rol":"Rol",
+		"email":"Email"
+	},
+	"form":{
+		"createUser":"Crear usuario",
+		"editUser":"Editar usuario",
+		"username":"Nombre de usuario",
+		"password":"Contraseña",
+		"repeatpassword":"Repita contraseña",
+		"rol":"Rol",
+		"email": "Email",
+		"nameandsurname":"Nombre y apellidos",		
+		"roles":{
+			"administrator":"Administrador"
+		}
+	}
+  },
+  "profile": {
+	"new":"Nuevo",
+	"edit":"Editar",
+	"remove":"Eliminar",
+	"title":"Perfiles",
+	"table":{
+		"id":"Identificador",
+		"name":"Nombre"
+	},
+	"form":{
+		"createProfile":"Crear perfil",
+		"editProfile":"Editar perfil",
+		"name":"Nombre"
+	}
+  },
+  "scans": {
+	"title":"Escaneos",
+	"new":"Nuevo",
+	"table":{
+		"id":"Identificador",
+		"name":"Nombre",
+		"progress":"Progreso",
+		"target":"Target",
+		"status":"Estado"
+	}
+  }
+}

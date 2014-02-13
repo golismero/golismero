@@ -52,7 +52,7 @@ from threading import Event
 from time import gmtime, strftime, time
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 num     = 10
 handler = None
 sem     = Event()

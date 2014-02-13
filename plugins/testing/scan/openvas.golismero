@@ -4,7 +4,7 @@ Description = Integration with OpenVAS: http://www.openvas.org/
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
 [Core]
@@ -15,6 +15,6 @@ Class  = OpenVASPlugin
 profile   = Full and fast
 user      = admin
 *password = admin
-host      = 127.0.0.1
+host      =
 port      = 9390
 timeout   = 30

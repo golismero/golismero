@@ -1,6 +1,23 @@
 Changelog
 =========
 
+2.0 beta 3
+------------
+
+- Integration with SSLScan, SQLMap, XSSer, Shodan and PunkSPIDER.
+- Completely rewritten HTML report.
+- New report formats: OpenOffice, LaTeX, JSON, BSON, XML, YAML, MsgPack.
+- Many improvements to the reports and the vulnerability descriptions.
+- Fixes and improvements to the OpenVAS plugin.
+- Added vulnerability standards:
+  * Exploit-DB ID
+  * Microsoft Bulletin ID
+  * Microsoft Knowledge Base ID
+  * Nessus Plugin ID
+- And bugfixes and usual ;)
+
+Also, say hello to our new team members @rrequero and @jekkay! :)
+
 2.0 beta 2
 ------------
 
@@ -18,7 +35,6 @@ Changelog
   * Security Tracker ID
   * CERT Vulnerability Note
   * ISS X-Force ID
-- Added NIST CPE database.
 - Added reStructured Text output format.
 - Improvements to the command line UI and text reports, including Bash autocompletion support.
 - Many improvements and internal refactoring that won't show :)

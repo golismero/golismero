@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-IP address type.
+IP address.
 """
 
 __license__ = """
@@ -35,6 +35,7 @@ __all__ = ["IP"]
 from . import Resource
 from .. import identity
 from .. import Config
+from ...text.text_utils import to_utf8
 
 from netaddr import IPAddress
 
@@ -48,13 +49,14 @@ class IP(Resource):
     resource_type = Resource.RESOURCE_IP
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, address):
         """
         :param address: IP address.
         :type address: str
         """
 
+        address = to_utf8(address)
         if not isinstance(address, str):
             raise TypeError("Expected str, got %r instead" % type(address))
 
@@ -79,17 +81,23 @@ class IP(Resource):
         self.depth = 0
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __str__(self):
         return self.address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __repr__(self):
         return "<IPv%s address=%r>" % (self.version, self.address)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "IP Address"
+
+
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -99,7 +107,7 @@ class IP(Resource):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def version(self):
         """
@@ -109,6 +117,8 @@ class IP(Resource):
         return self.__version
 
 
-    #----------------------------------------------------------------------
-    def is_in_scope(self):
-        return self.address in Config.audit_scope
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        if scope is None:
+            scope = Config.audit_scope
+        return self.address in scope

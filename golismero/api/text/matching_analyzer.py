@@ -97,7 +97,7 @@ class MatchingAnalyzerElement(object):
         :type ratio: float
 
         :param attrs: Custom attributes dictionary.
-        :type attrs: dict(str -> *)
+        :type attrs: dict(str -> \\*)
         """
         self.text    = text
         self.ratio   = ratio
@@ -194,7 +194,6 @@ class MatchingAnalyzer(object):
         :returns: True if the text is accepted as equal, False otherwise.
         :rtype: bool
         """
-
         # Ignore empty text.
         if text:
 
@@ -202,7 +201,7 @@ class MatchingAnalyzer(object):
             ratio = get_diff_ratio(self.__base_text, text)
 
             # If it's lower than our boundary...
-            if ratio < self.__min_ratio:
+            if ratio > self.__min_ratio:
 
                 # Invalidate the caches.
                 self.__clear_caches()
@@ -270,8 +269,8 @@ class MatchingAnalyzer(object):
         # Get the average deviation.
         average = self.average_ratio
 
-        # Skip if the ratio is 0.
-        if not average:
+        # Skip if the ratio is 0.)
+        if average:
 
             # Optimization.
             append    = self.__unique_strings.append

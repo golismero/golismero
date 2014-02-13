@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document title="SSLScan Results" version="1.8.2" web="http://www.titania.co.uk">
+ <ssltest host="live.vodafone.es" port="443">
+  <cipher status="accepted" sslversion="SSLv3" bits="256" cipher="AES256-SHA" />
+  <cipher status="accepted" sslversion="SSLv3" bits="168" cipher="DES-CBC3-SHA" />
+  <cipher status="accepted" sslversion="SSLv3" bits="128" cipher="AES128-SHA" />
+  <cipher status="accepted" sslversion="SSLv3" bits="128" cipher="RC4-SHA" />
+  <cipher status="accepted" sslversion="TLSv1" bits="256" cipher="AES256-SHA" />
+  <cipher status="accepted" sslversion="TLSv1" bits="168" cipher="DES-CBC3-SHA" />
+  <cipher status="accepted" sslversion="TLSv1" bits="128" cipher="AES128-SHA" />
+  <cipher status="accepted" sslversion="TLSv1" bits="128" cipher="RC4-SHA" />
+  <defaultcipher sslversion="SSLv3" bits="128" cipher="RC4-SHA" />
+  <certificate>
+   <version>2</version>
+   <serial>-18446744073709551615</serial>
+   <signature-algorithm>sha1WithRSAEncryption</signature-algorithm>
+   <issuer>/C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=Terms of use at https://www.verisign.com/rpa (c)10/CN=VeriSign Class 3 International Server CA - G3</issuer>
+   <not-valid-before>Jan 14 00:00:00 2011 GMT</not-valid-before>
+   <not-valid-after>Mar 22 23:59:59 2012 GMT</not-valid-after>
+   <subject>/C=ES/ST=Spain/L=Madrid/O=Vodafone/OU=VFLIVE/OU=Terms of use at www.verisign.es/rpa (c)05/OU=Authenticated by VeriSign/OU=Member, VeriSign Trust Network/CN=360.vodafone.es</subject>
+   <pk-algorithm>rsaEncryption</pk-algorithm>
+   <pk error="false" type="RSA" bits="1024">
+    Public-Key: (1024 bit)
+    Modulus:
+        00:bd:1d:df:21:0a:44:28:98:ab:52:e6:48:6d:26:
+        e0:a3:c8:95:5e:0a:49:00:a8:25:e7:b3:b5:9d:5a:
+        44:c3:8b:92:68:bc:1e:7b:3e:98:8a:72:a0:60:69:
+        4d:7d:2d:89:f2:9f:18:2f:7d:cc:5a:90:30:c8:5d:
+        da:a9:7b:90:fe:31:d4:74:d6:c3:b8:b4:11:fa:83:
+        2b:02:6b:dd:bc:09:d1:bd:bf:2d:28:2e:c1:03:03:
+        0d:50:ae:d7:71:cf:fe:e2:a0:88:10:47:75:a5:09:
+        a5:9c:a4:50:1e:1d:b5:07:50:67:9c:38:a0:10:30:
+        ee:58:dd:ad:95:24:87:a5:cd
+    Exponent: 65537 (0x10001)
+   </pk>
+   <X509v3-Extensions>
+    <extension name="X509v3 Subject Alternative Name">DNS:www.360.vodafone.es, DNS:360.vodafone.es</extension>
+    <extension name="X509v3 Basic Constraints">CA:FALSE</extension>
+    <extension name="X509v3 Key Usage">Digital Signature, Key Encipherment</extension>
+    <extension name="X509v3 Certificate Policies">Policy: 2.16.840.1.113733.1.7.23.3
+  CPS: https://www.verisign.es/rpa
+</extension>
+    <extension name="X509v3 CRL Distribution Points">
+Full Name:
+  URI:http://SVRIntl-G3-crl.verisign.com/SVRIntlG3.crl
+</extension>
+    <extension name="X509v3 Extended Key Usage">TLS Web Server Authentication, TLS Web Client Authentication, Netscape Server Gated Crypto</extension>
+    <extension name="Authority Information Access">OCSP - URI:http://ocsp.verisign.com
+CA Issuers - URI:http://SVRIntl-G3-aia.verisign.com/SVRIntlG3.cer
+</extension>
+    <extension name="1.3.6.1.5.5.7.1.12">0`.^.\0Z0X0V..image/gif0!0.0...+......Kk.(.....R8.).K..!..0&.$http://logo.verisign.com/vslogo1.gif</extension>
+   </X509v3-Extensions>
+  </certificate>
+ </ssltest>
+</document>

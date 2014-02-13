@@ -1,0 +1,19 @@
+{
+    "cached": true, 
+    "data": {
+        "asns": [
+            "6739"
+        ], 
+        "prefix": "80.174.0.0/17"
+    }, 
+    "data_call_status": "supported", 
+    "messages": [], 
+    "process_time": 6, 
+    "query_id": "0aa0537e-7af6-11e3-bcc5-d4ae52a9c1b6", 
+    "see_also": [], 
+    "server_id": "stat-app3", 
+    "status": "ok", 
+    "status_code": 200, 
+    "time": "2014-01-11T19:24:51.013355", 
+    "version": "1.0"
+}

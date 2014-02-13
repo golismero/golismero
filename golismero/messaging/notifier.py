@@ -33,24 +33,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = ["AuditNotifier", "OrchestratorNotifier"]
 
 from ..api.config import Config
-##from ..api.logger import Logger
+from ..api.data import Data
 from ..api.plugin import Plugin
 from .message import Message
 from .codes import MessageType, MessageCode, MessagePriority
 
 from collections import defaultdict
-##from traceback import format_exc
+from traceback import format_exc
 from warnings import warn
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class AbstractNotifier (object):
     """
     Abstract class for message dispatchers.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
 
         # Call the superclass constructor.
@@ -74,7 +74,7 @@ class AbstractNotifier (object):
         self._map_id_to_plugin = {}
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this notifier.
@@ -85,7 +85,7 @@ class AbstractNotifier (object):
         self._map_id_to_plugin      = None
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_multiple_plugins(self, plugins):
         """
         Add multiple plugins.
@@ -97,7 +97,7 @@ class AbstractNotifier (object):
             self.add_plugin(name, plugin)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def add_plugin(self, plugin_id, plugin):
         """
         Add a plugin.
@@ -134,7 +134,7 @@ class AbstractNotifier (object):
             self._notification_msg_list.append(plugin)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __filter_accepted_info(self, accepted_info):
         """
         Process the return value from Plugin.get_accepted_info().
@@ -158,7 +158,7 @@ class AbstractNotifier (object):
         return None
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def notify(self, message):
         """
         Dispatch messages to the plugins.
@@ -174,8 +174,11 @@ class AbstractNotifier (object):
 
         try:
 
-            # Info messages are sent to the send_info() method.
-            if message.message_type == MessageType.MSG_TYPE_DATA:
+            # Data request messages are sent to the recv_info() plugin method.
+            if (
+                message.message_type == MessageType.MSG_TYPE_DATA and
+                message.message_code == MessageCode.MSG_DATA_REQUEST
+            ):
                 audit_name = message.audit_name
                 for data in message.message_info:
 
@@ -188,7 +191,7 @@ class AbstractNotifier (object):
                         self.dispatch_info(plugin, audit_name, data)
                         count += 1
 
-            # Control messages are sent to the send_msg() method.
+            # All other messages are sent to the recv_msg() plugin method.
             else:
                 for plugin in self._notification_msg_list:
                     self.dispatch_msg(plugin, message)
@@ -203,7 +206,7 @@ class AbstractNotifier (object):
         return count
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_plugins_to_notify(self, data):
         """
         Determine which plugins should receive this data object.
@@ -214,19 +217,32 @@ class AbstractNotifier (object):
         :returns: set(str) -- Set of plugin IDs.
         """
 
-        m_plugins_to_notify = set()
+        plugins_to_notify = set()
 
         # Plugins that expect all types of info.
-        m_plugins_to_notify.update(self._notification_info_all)
+        plugins_to_notify.update(self._notification_info_all)
 
         # Plugins that expect this type of info.
-        m_type = data.data_subtype
-        if m_type in self._notification_info_map:
-            m_plugins_to_notify.update(self._notification_info_map[m_type])
-        return m_plugins_to_notify
+        subtype = data.data_subtype
+        if data.data_type == Data.TYPE_VULNERABILITY:
+            for requested, plugin_ids \
+             in self._notification_info_map.iteritems():
+                if type(requested) is not str:
+                    continue
+                if (
+                    subtype == "abstract" or
+                    subtype == requested or
+                    subtype.startswith(requested + "/")
+                ):
+                    plugins_to_notify.update(plugin_ids)
+        else:
+            if subtype in self._notification_info_map:
+                plugins_to_notify.update(self._notification_info_map[subtype])
+
+        return plugins_to_notify
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_info(self, plugin, audit_name, message_info):
         """
         Send information to the plugins.
@@ -243,7 +259,7 @@ class AbstractNotifier (object):
         raise NotImplementedError("Subclasses MUST implement this method!")
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_msg(self, plugin, message):
         """
         Send messages to the plugins.
@@ -264,7 +280,7 @@ class AuditNotifier(AbstractNotifier):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, audit):
         """
         :param audit: Audit instance.
@@ -275,7 +291,7 @@ class AuditNotifier(AbstractNotifier):
         self.__processing = defaultdict(set)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
 
     @property
     def audit(self):
@@ -318,7 +334,7 @@ class AuditNotifier(AbstractNotifier):
         return self.__audit.database
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def acknowledge(self, message):
         """
         Got an ACK for a message sent from this audit to the plugins.
@@ -346,10 +362,11 @@ class AuditNotifier(AbstractNotifier):
                     try:
                         self.__processing[identity].remove(plugin_id)
                     except KeyError:
-                        msg = "Got an unexpected ACK for data ID %s from plugin %s"
+                        msg = "Got an unexpected ACK" \
+                              " for data ID %s from plugin %s"
                         warn(msg % (identity, plugin_id))
 
-                    # Notify the Orchestrator that the plugin has finished running.
+                    # Notify the Orchestrator that the plugin has finished.
                     if message.message_info: # 'do_notify_end' flag
                         msg = Message(
                             message_type = MessageType.MSG_TYPE_STATUS,
@@ -365,10 +382,26 @@ class AuditNotifier(AbstractNotifier):
 
                 # If the stage was finished, mark it so.
                 if self.__has_finished_stage(identity):
-                    self.database.mark_stage_finished(identity, self.current_stage)
+                    self.database.mark_stage_finished(identity,
+                                                      self.current_stage)
+
+        # Send the plugin end notification for report and import plugins.
+        elif (
+            plugin_id and
+            plugin_id.split("/", 1)[0] in ("import", "report")
+        ):
+            if message.message_info: # 'do_notify_end' flag
+                msg = Message(
+                    message_type = MessageType.MSG_TYPE_STATUS,
+                    message_code = MessageCode.MSG_STATUS_PLUGIN_END,
+                       plugin_id = plugin_id,
+                      audit_name = self.audit.name,
+                        priority = MessagePriority.MSG_PRIORITY_MEDIUM,
+                )
+                self.orchestrator.dispatch_msg(msg)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __has_finished_stage(self, identity):
 
         # XXX FIXME this is very inefficient!
@@ -385,7 +418,7 @@ class AuditNotifier(AbstractNotifier):
         return not pending_plugins
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_candidate_plugins(self, data):
         """
         Get the set of IDs of plugins that may handle this data object
@@ -415,7 +448,7 @@ class AuditNotifier(AbstractNotifier):
         return next_plugins
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def is_runnable_stage(self, datalist, stage):
         """
         Determine if the given stage has any plugins that can handle the
@@ -427,7 +460,9 @@ class AuditNotifier(AbstractNotifier):
         :param stage: Current stage.
         :type stage: int
 
-        :returns: True if the stage has plugins that can handle the data, False otherwise.
+        :returns:
+            True if the stage has plugins that can handle the data,
+            False otherwise.
         :rtype: bool
         """
 
@@ -456,7 +491,7 @@ class AuditNotifier(AbstractNotifier):
         return False
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_plugins_to_notify(self, data):
         """
         Get the plugins that are ready to handle the given data.
@@ -483,7 +518,7 @@ class AuditNotifier(AbstractNotifier):
         return next_plugins
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __run_plugin(self, plugin, method, payload):
         """
         Send messages or information to the plugins.
@@ -514,6 +549,34 @@ class AuditNotifier(AbstractNotifier):
 
             # Get the payload identity hash.
             ack_identity = payload.identity
+
+            # Check the maximum recursion depth.
+            # We don't want to spider the leaf nodes, so we need a special
+            # case for the Spider plugin.
+            depth = audit.config.depth
+            if depth is not None and payload.depth >= depth:
+                skip_run = True
+                plugin_id = audit.pluginManager.\
+                                get_plugin_info_from_instance(plugin)[0]
+                if payload.depth == depth and plugin_id != "testing/recon/spider":
+                    skip_run = False
+                if skip_run:
+
+                    # If we reached the limit, send a fake ACK message.
+                    # This keeps the Orchestrator and the Audit happy.
+                    self.__processing[ack_identity].add(plugin_id)
+                    orchestrator.enqueue_msg(Message(
+                        message_type = MessageType.MSG_TYPE_CONTROL,
+                        message_code = MessageCode.MSG_CONTROL_ACK,
+                        message_info = False, # do not notify end of execution
+                          audit_name = audit.name,
+                           plugin_id = plugin_id,
+                        ack_identity = ack_identity,
+                            priority = MessagePriority.MSG_PRIORITY_LOW,
+                    ))
+
+                    # Skip execution of this plugin.
+                    return
 
             # Prepare the context for the OOP observer.
             context = orchestrator.build_plugin_context(
@@ -549,7 +612,7 @@ class AuditNotifier(AbstractNotifier):
             context, method, (payload,), {})
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_info(self, plugin, audit_name, message_info):
         """
         Send information to the plugins.
@@ -572,7 +635,7 @@ class AuditNotifier(AbstractNotifier):
         self.__run_plugin(plugin, "recv_info", message_info)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_msg(self, plugin, message):
         """
         Send messages to the plugins.
@@ -586,7 +649,7 @@ class AuditNotifier(AbstractNotifier):
         self.__run_plugin(plugin, "recv_msg", message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start_report(self, plugin, output_file):
         """
         Start an audit report.
@@ -600,7 +663,7 @@ class AuditNotifier(AbstractNotifier):
         self.__run_plugin(plugin, "generate_report", output_file)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this notifier.
@@ -618,7 +681,7 @@ class OrchestratorNotifier(AbstractNotifier):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, orchestrator):
         """
         :param orchestrator: Orchestrator instance.
@@ -628,7 +691,7 @@ class OrchestratorNotifier(AbstractNotifier):
         self.__orchestrator = orchestrator
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def orchestrator(self):
         """
@@ -638,7 +701,7 @@ class OrchestratorNotifier(AbstractNotifier):
         return self.__orchestrator
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_info(self, plugin, audit_name, message_info):
         """
         Send information to the plugins.
@@ -655,7 +718,7 @@ class OrchestratorNotifier(AbstractNotifier):
         self.__run_plugin(plugin, audit_name, "recv_info", message_info)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_msg(self, plugin, message):
         """
         Send messages to the plugins.
@@ -669,7 +732,7 @@ class OrchestratorNotifier(AbstractNotifier):
         self.__run_plugin(plugin, message.audit_name, "recv_msg", message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start_report(self, plugin, audit_name, output_file):
         """
         Start an audit report.
@@ -686,7 +749,7 @@ class OrchestratorNotifier(AbstractNotifier):
         self.__run_plugin(plugin, audit_name, "generate_report", output_file)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __run_plugin(self, plugin, audit_name, method, payload):
         """
         Send messages or information to the plugins.
@@ -713,7 +776,8 @@ class OrchestratorNotifier(AbstractNotifier):
             except KeyError:
                 audit = None
             if not audit:
-                warn("Received a message from a finished audit! %s" % audit_name,
+                warn("Tried to run a plugin from a finished audit! %s"
+                     % audit_name,
                      RuntimeWarning)
                 return
 
@@ -724,7 +788,6 @@ class OrchestratorNotifier(AbstractNotifier):
         )
 
         # Run the callback directly in our process.
-        # XXX this allows UI plugins to have state, do we really want this?
         try:
             old_context = Config._context
             try:
@@ -735,13 +798,14 @@ class OrchestratorNotifier(AbstractNotifier):
 
         # Log exceptions thrown by the plugins.
         except Exception:
-            raise   # XXX FIXME
-            ##msg = "Plugin %s raised an exception:\n%s"
-            ##msg = msg % (plugin.__class__.__name__, format_exc())
+            ##raise                                                 # XXX DEBUG
+            msg = "Plugin %s raised an exception:\n%s"
+            msg = msg % (plugin.__class__.__name__, format_exc())
             ##Logger.log_error(msg)
+            print msg   # it's safer to print, avoids possible infinite loops
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this notifier.

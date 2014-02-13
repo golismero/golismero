@@ -39,10 +39,13 @@ from ..config import Config
 from ..data import LocalDataCache, discard_data
 from ..data.information.http import HTTP_Request, HTTP_Response, HTTP_Raw_Request
 from ..data.resource.url import Url
-from ...common import Singleton
+from ...common import Singleton, get_data_folder
 
 from hashlib import md5
+from os import environ
+from os.path import join
 from requests import Session
+from requests.cookies import cookiejar_from_dict
 from requests.exceptions import RequestException
 from socket import socket, error, getaddrinfo, SOCK_STREAM
 from ssl import wrap_socket
@@ -68,12 +71,19 @@ class _HTTP(Singleton):
         .. warning: Called automatically by GoLismero. Do not call!
         """
 
+        # Initialize the CA bundle.
+        if not environ.get("CURL_CA_BUNDLE"):
+            environ["CURL_CA_BUNDLE"] = join(get_data_folder(), "cacert.pem")
+
         # Start a new session.
         self.__session = Session()
 
         # Load the proxy settings.
         proxy_addr = Config.audit_config.proxy_addr
         if proxy_addr:
+            proxy_port = Config.audit_config.proxy_port
+            if proxy_port:
+                proxy_addr = "%s:%s" % (proxy_addr, proxy_port)
             auth_user = Config.audit_config.proxy_user
             auth_pass = Config.audit_config.proxy_pass
             auth, _ = detect_auth_method(proxy_addr)
@@ -84,10 +94,13 @@ class _HTTP(Singleton):
                 "ftp":   proxy_addr,
             }
 
-        # Load the cookie.
+        # Load the cookies.
         cookie = Config.audit_config.cookie
         if cookie:
-            self.__session.cookies.set_cookie(cookie)
+            self.__session.cookies = cookiejar_from_dict(cookie)
+
+        # Set User Agent
+        self.__user_agent = Config.audit_config.user_agent
 
 
     #--------------------------------------------------------------------------
@@ -100,7 +113,8 @@ class _HTTP(Singleton):
 
     #--------------------------------------------------------------------------
     def get_url(self, url, method = "GET", callback = None,
-                     timeout = 10.0, use_cache = None, allow_redirects = True):
+                     timeout = 10.0, use_cache = None, allow_redirects = True,
+                     allow_out_of_scope = False):
         """
         Send a simple HTTP request to the server and get the response back.
 
@@ -127,6 +141,9 @@ class _HTTP(Singleton):
         :param allow_redirects: True to follow redirections, False otherwise.
         :type allow_redirects: bool
 
+        :param allow_out_of_scope: True to allow requests out of scope, False otherwise.
+        :type allow_out_of_scope: bool
+
         :returns: HTTP response, or None if the request was cancelled.
         :rtype: HTTP_Response | None
 
@@ -136,17 +153,19 @@ class _HTTP(Singleton):
             redirection against another URL that's out of scope.
         :raises NetworkException: A network error occurred.
         """
-        request = HTTP_Request(url, method = method)
+        request = HTTP_Request(url, method = method, user_agent=self.__user_agent)
         LocalDataCache.on_autogeneration(request)
         return self.make_request(request, callback = callback,
                                  timeout = timeout, use_cache = use_cache,
-                                 allow_redirects = allow_redirects)
+                                 allow_redirects = allow_redirects,
+                                 allow_out_of_scope = allow_out_of_scope)
 
 
     #--------------------------------------------------------------------------
     def make_request(self, request, callback = None,
                      timeout = 10.0, use_cache = None,
-                     allow_redirects = True):
+                     allow_redirects = True,
+                     allow_out_of_scope = False):
         """
         Send an HTTP request to the server and get the response back.
 
@@ -169,6 +188,9 @@ class _HTTP(Singleton):
 
         :param allow_redirects: True to follow redirections, False otherwise.
         :type allow_redirects: bool
+
+        :param allow_out_of_scope: True to allow requests out of scope, False otherwise.
+        :type allow_out_of_scope: bool
 
         :returns: HTTP response, or None if the request was cancelled.
         :rtype: HTTP_Response | None
@@ -193,7 +215,7 @@ class _HTTP(Singleton):
             raise TypeError("Expected bool or None, got %r instead" % type(use_cache))
 
         # Check the request scope.
-        if not request.is_in_scope():
+        if not request.is_in_scope() and allow_out_of_scope is False:
             raise NetworkOutOfScope("URL out of scope: %s" % request.url)
 
         # Sanitize the timeout value.

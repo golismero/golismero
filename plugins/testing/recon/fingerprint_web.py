@@ -29,18 +29,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 from golismero.api.config import Config
 from golismero.api.data import discard_data
 from golismero.api.data.information.http import HTTP_Raw_Request
-from golismero.api.data.information.webserver_fingerprint import WebServerFingerprint
+from golismero.api.data.information.fingerprint import WebServerFingerprint
 from golismero.api.data.resource.url import BaseUrl
 from golismero.api.logger import Logger
 from golismero.api.net import NetworkException
 from golismero.api.net.http import HTTP
-from golismero.api.net.web_utils import ParsedURL
+from golismero.api.net.web_utils import ParsedURL, urljoin
 from golismero.api.plugin import TestingPlugin
 from golismero.api.text.wordlist import WordListLoader
 
 from collections import Counter, OrderedDict, defaultdict
 from re import compile
-from urlparse import urljoin
 
 
 SERVER_PATTERN = compile(r"([\w\W\s\d]+)[\s\/]+([\d\w\.]+)")
@@ -196,18 +195,19 @@ For an Apache 1.3.26 we will have these results for a normal GET:
 """
 
 
+#------------------------------------------------------------------------------
 class ServerFingerprinting(TestingPlugin):
     """
     Plugin to fingerprint web servers.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [BaseUrl]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
         """
         Main function for server fingerprint. Get an URL and return the fingerprint results.
@@ -218,7 +218,6 @@ class ServerFingerprinting(TestingPlugin):
         :return: Fingerprint.
         :rtype: WebServerFingerprint
         """
-
         m_main_url = info.url
 
         Logger.log_more_verbose("Starting webserver fingerprinting plugin for site: %s" % m_main_url)
@@ -226,7 +225,12 @@ class ServerFingerprinting(TestingPlugin):
         #
         # Analyze HTTP protocol
         #
-        m_server_name, m_server_version, m_canonical_name, m_webserver_complete_desc, m_related_webservers, m_others = http_analyzers(m_main_url, self.update_status, 100)
+        m_server_name, \
+        m_server_version, \
+        m_canonical_name, \
+        m_webserver_complete_desc, \
+        m_related_webservers, \
+        m_others                       = http_simple_analyzer(m_main_url, self.update_status, 5) # http_analyzers(m_main_url, self.update_status, 100)
 
         Logger.log_more_verbose("Fingerprint - Server: %s | Version: %s" % (m_server_name, m_server_version))
 
@@ -239,11 +243,125 @@ class ServerFingerprinting(TestingPlugin):
         return m_return
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 #
 # Web server detection
 #
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
+def http_simple_analyzer(main_url, update_status_func, number_of_entries=4):
+    """Simple method to get fingerprint server info
+
+    :param main_url: Base url to test.
+    :type main_url: str
+
+    :param update_status_func: function used to update the status of the process
+    :type update_status_func: function
+
+    :param number_of_entries: number of resutls tu return for most probable web servers detected.
+    :type number_of_entries: int
+
+    :return: a typle as format: Web server family, Web server version, Web server complete description, related web servers (as a dict('SERVER_RELATED' : set(RELATED_NAMES))), others web server with their probabilities as a dict(CONCRETE_WEB_SERVER, PROBABILITY)
+    """
+
+    m_actions = {
+        'GET'        : { 'wordlist' : 'Wordlist_get'            , 'weight' : 1 , 'protocol' : 'HTTP/1.1', 'method' : 'GET'      , 'payload': '/' },
+        'LONG_GET'   : { 'wordlist' : 'Wordlist_get_long'       , 'weight' : 1 , 'protocol' : 'HTTP/1.1', 'method' : 'GET'      , 'payload': '/%s' % ('a' * 200) },
+        'NOT_FOUND'  : { 'wordlist' : 'Wordlist_get_notfound'   , 'weight' : 2 , 'protocol' : 'HTTP/1.1', 'method' : 'GET'      , 'payload': '/404_NOFOUND__X02KAS' },
+        'HEAD'       : { 'wordlist' : 'Wordlist_head'           , 'weight' : 3 , 'protocol' : 'HTTP/1.1', 'method' : 'HEAD'     , 'payload': '/' },
+        'OPTIONS'    : { 'wordlist' : 'Wordlist_options'        , 'weight' : 2 , 'protocol' : 'HTTP/1.1', 'method' : 'OPTIONS'  , 'payload': '/' },
+        'DELETE'     : { 'wordlist' : 'Wordlist_delete'         , 'weight' : 5 , 'protocol' : 'HTTP/1.1', 'method' : 'DELETE'   , 'payload': '/' },
+        'TEST'       : { 'wordlist' : 'Wordlist_attack'         , 'weight' : 5 , 'protocol' : 'HTTP/1.1', 'method' : 'TEST'     , 'payload': '/' },
+        'INVALID'    : { 'wordlist' : 'Wordlist_wrong_method'   , 'weight' : 5 , 'protocol' : 'HTTP/9.8', 'method' : 'GET'      , 'payload': '/' },
+        'ATTACK'     : { 'wordlist' : 'Wordlist_wrong_version'  , 'weight' : 2 , 'protocol' : 'HTTP/1.1', 'method' : 'GET'      , 'payload': "/etc/passwd?format=%%%%&xss=\x22><script>alert('xss');</script>&traversal=../../&sql='%20OR%201;"}
+    }
+
+    m_d                   = ParsedURL(main_url)
+    m_hostname            = m_d.hostname
+    m_port                = m_d.port
+    m_debug               = False # Only for develop
+    i                     = 0
+    m_counters            = HTTPAnalyzer()
+    m_data_len            = len(m_actions) # Var used to update the status
+    m_banners_counter     = Counter()
+
+    for l_action, v in m_actions.iteritems():
+        if m_debug:
+            print "###########"
+        l_method      = v["method"]
+        l_payload     = v["payload"]
+        l_proto       = v["protocol"]
+        #l_wordlist    = v["wordlist"]
+
+        # Each type of probe hast different weight.
+        #
+        # Weights go from 0 - 5
+        #
+        l_weight      = v["weight"]
+
+        # Make the raw request
+        l_raw_request = "%(method)s %(payload)s %(protocol)s\r\nHost: %(host)s\r\n\r\n" % (
+            {
+                "method"     : l_method,
+                "payload"    : l_payload,
+                "protocol"   : l_proto,
+                "host"       : m_hostname,
+                "port"       : m_port
+            }
+        )
+        if m_debug:
+            print "REQUEST"
+            print l_raw_request
+
+        # Do the connection
+        l_response = None
+        try:
+            m_raw_request = HTTP_Raw_Request(l_raw_request)
+            discard_data(m_raw_request)
+            l_response = HTTP.make_raw_request(
+                host        = m_hostname,
+                port        = m_port,
+                raw_request = m_raw_request,
+                callback    = check_raw_response)
+            if l_response:
+                discard_data(l_response)
+        except NetworkException,e:
+            Logger.log_error_more_verbose("Server-Fingerprint plugin: No response for URL (%s) with method '%s'. Message: %s" % (m_hostname, l_method, str(e)))
+            continue
+
+        if not l_response:
+            Logger.log_error_more_verbose("No response for host '%s' with method '%s'." % (m_hostname, l_method))
+            continue
+
+        if m_debug:
+            print "RESPONSE"
+            print l_response.raw_headers
+
+
+        # Update the status
+        update_status_func((float(i) * 100.0) / float(m_data_len))
+        Logger.log_more_verbose("Making '%s' test." % l_method)
+        i += 1
+
+        # Analyze for each wordlist
+        #
+        # Store the server banner
+        try:
+            m_banners_counter[l_response.headers["Server"]] += l_weight
+        except KeyError:
+            pass
+
+        l_server_name = None
+        try:
+            l_server_name = l_response.headers["Server"]
+        except KeyError:
+            continue
+
+        m_counters.simple_inc(l_server_name, l_method, l_weight)
+
+    return parse_analyzer_results(m_counters, m_banners_counter, number_of_entries)
+
+
+
 
 def http_analyzers(main_url, update_status_func, number_of_entries=4):
     """
@@ -302,6 +420,7 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
     # Var used to update the status
     m_data_len = len(m_actions)
     i          = 1 # element in process
+
 
     for l_action, v in m_actions.iteritems():
         if m_debug:
@@ -365,16 +484,13 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
         Logger.log_more_verbose("Making '%s' test." % (l_wordlist))
         i += 1
 
-
         # Analyze for each wordlist
         #
-
         # Store the server banner
         try:
             m_banners_counter[l_response.headers["Server"]] += l_weight
         except KeyError:
             pass
-
 
         #
         # =====================
@@ -697,6 +813,25 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
                 print "   %s (%s  [ %s ] )" % (l, ','.join(v), str(len(v)))
 
 
+    return parse_analyzer_results(m_counters, m_banners_counter, number_of_entries)
+
+
+#------------------------------------------------------------------------------
+def parse_analyzer_results(analyzer, banner_counter, number_of_entries=4):
+    """
+    Parse analyzer results and gets the values:
+
+    :param analyzer: a HTTPAnalyzer instance.
+    :type analyzer: HTTPAnalyzer
+
+    :param banner_counter: simple Counter with a number of banner for each server
+    :type banner_counter: Counter
+
+    :return: a tuple as format (server_family, server_version, canonical_name, complete_server_name, related_servers, other_probability_servers)
+    :rtype: tupple
+    """
+
+
     #
     # Filter the results
     #
@@ -708,6 +843,8 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
     m_server_related        = None
     m_server_complete       = None
     m_server_canonical_name = None
+    m_counters              = analyzer
+    m_banners_counter       = banner_counter
 
     # If fingerprint found
     if m_counters.results_score.most_common():
@@ -761,7 +898,6 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
             m_server_complete       = "Unknown web server"
             m_other_servers_prob    = dict()
 
-
     return m_server_family, m_server_version, m_server_canonical_name, m_server_complete, m_server_related, m_other_servers_prob
 
 
@@ -769,7 +905,7 @@ def http_analyzers(main_url, update_status_func, number_of_entries=4):
 class HTTPAnalyzer(object):
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, debug = False):
 
         self.__HTTP_fields_weight = {
@@ -850,7 +986,7 @@ class HTTPAnalyzer(object):
         self.__determinator_complete = defaultdict(lambda: defaultdict(set))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def inc(self, test_lists, method, method_weight, types, message = ""):
         """
         Increment values associated with the fields as parameters.
@@ -908,59 +1044,98 @@ class HTTPAnalyzer(object):
                 self.__determinator_complete[l_full_server_name][l_types].add(method)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    def simple_inc(self, server_name, method, method_weight, message = ""):
+        """
+        Increment values associated with the fields as parameters.
+
+        :param server_name: String with the server name
+        :type server_name: str
+
+        :param method: HTTP method used to make the request.
+        :type method: str
+
+        :param method_weight: The weight associated to the HTTP method.
+        :type method_weight: int
+
+        :param message: Message to debug the method call
+        :type message: str
+
+        :return: Don't return anything
+        """
+        if server_name:
+
+            # Debug info
+            if self.__debug:
+                print "%s: %s" % (method, message)
+
+            # Get parsed web server
+            l_server_splited                   = calculate_server_track(server_name)
+            l_server                           = "%s-%s" % (l_server_splited[0], l_server_splited[1]) # (Server name, Server version)
+
+            # Counting
+            self.__results_count[l_server]     += 1 * method_weight
+
+            # Stores the canonical name
+            self.__results_canonical[l_server] = l_server_splited[2]
+
+            # Stores the related servers to this web server
+            self.__results_related[l_server].update(l_server_splited[3])
+
+
+    #--------------------------------------------------------------------------
     @property
     def results_score(self):
         return self.__results_score
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def results_score_complete(self):
         return self.__results_score_complete
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def results_count(self):
         return self.__results_count
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def results_count_complete(self):
         return self.__results_count_complete
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def results_determinator(self):
         return self.__determinator
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def related_webservers(self):
         return self.__results_related
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def canonical_webserver_name(self):
         return self.__results_canonical
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def results_determinator_complete(self):
         return self.__determinator_complete
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 #
 # Aux functions
 #
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def check_raw_response(request, response):
 
     # Returns True to continue, False to cancel.
@@ -1062,7 +1237,7 @@ def calculate_server_track(server_name):
     return (m_server_name, m_server_version, m_server_canonical_name, m_servers_related)
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def nindex(str_in, substr, nth):
     """
     From and string get nth ocurrence of substr
@@ -1086,7 +1261,7 @@ def nindex(str_in, substr, nth):
     return m_return
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def get_fingerprinting_wordlist(wordlist):
     """
     Load the wordlist of fingerprints and prepare the info in a dict.
@@ -1112,7 +1287,7 @@ def get_fingerprinting_wordlist(wordlist):
     return (m_webservers_keys, related)
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def extend_items(all_items, already_parsed, related, ref = None):
     """
     Recursive function to walk the tree of fingerprinting keywords.

@@ -1,0 +1,29 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h5 data-i18n="[html]profile.title">Perfiles</h5>
+		<div class="hero-unit hide" id="form-profile">
+			<button class="close">&times;</button>
+			<fieldset>
+				<legend data-i18n="[html]profile.form.createProfile">Crear perfil</legend>
+				<form class="form-horizontal">
+					<div class="row-fluid">
+						<div class="span12">
+							<label data-i18n="[html]profile.form.name"></label>
+							<input id="name" type="text" data-i18n="[placeholder]profile.form.name" placeholder="">							
+						</div>
+					</div>
+				</form>
+				<button type="button" id="btnSaveProfile" class="btn pull-right" data-i18n="[html]form.save"></button>
+			</fieldset>
+		</div>
+		
+		<div class="header-table">			
+			<button class="btn icon-user pull-right" id="profiles-new" type="button" data-i18n="[html]profile.new">Nuevo</button>
+			<button class="btn icon-user pull-right" id="profiles-edit" type="button" data-i18n="[html]profile.edit">Editar</button>
+			<button class="btn icon-user pull-right" id="profiles-remove" type="button" data-i18n="[html]profile.remove">Eliminar</button>
+		</div>
+		<div id="profilesTable">
+		</div>		
+	</div>
+  </div>
+</div>

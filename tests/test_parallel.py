@@ -61,7 +61,7 @@ def test_pmap():
     with PluginTester(autoinit=False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.ui_mode = "disabled"
-        t.audit_config.audit_db = "memory://"
+        t.audit_config.audit_db = ":memory:"
         t.init_environment()
         t_list = thread_list()
         func = lambda x: x
@@ -80,7 +80,7 @@ def test_pmap_multi():
     with PluginTester(autoinit=False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.ui_mode = "disabled"
-        t.audit_config.audit_db = "memory://"
+        t.audit_config.audit_db = ":memory:"
         t.init_environment()
         t_list = thread_list()
         def func(*args):
@@ -102,7 +102,7 @@ def test_pmap_errors():
     with PluginTester(autoinit=False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.ui_mode = "disabled"
-        t.audit_config.audit_db = "memory://"
+        t.audit_config.audit_db = ":memory:"
         t.init_environment()
         t_list = thread_list()
         def func(x):
@@ -125,7 +125,7 @@ def test_pmap_delays():
     with PluginTester(autoinit=False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.ui_mode = "disabled"
-        t.audit_config.audit_db = "memory://"
+        t.audit_config.audit_db = ":memory:"
         t.init_environment()
         t_list = thread_list()
         def func(x):
@@ -146,7 +146,7 @@ def test_pmap_large_input():
     with PluginTester(autoinit=False) as t:
         t.orchestrator_config.use_colors = False
         t.orchestrator_config.ui_mode = "disabled"
-        t.audit_config.audit_db = "memory://"
+        t.audit_config.audit_db = ":memory:"
         t.init_environment()
         pmap(lambda x: x, range(1000))
 

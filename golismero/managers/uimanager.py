@@ -44,7 +44,7 @@ class UIManager (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, orchestrator):
         """
         :param orchestrator: Orchestrator instance.
@@ -70,7 +70,7 @@ class UIManager (object):
         self.__notifier.add_plugin(name, self.__ui_plugin)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def orchestrator(self):
         """
@@ -80,7 +80,7 @@ class UIManager (object):
         return self.__orchestrator
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def notifier(self):
         """
@@ -90,7 +90,7 @@ class UIManager (object):
         return self.__notifier
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def ui_plugin(self):
         """
@@ -100,7 +100,7 @@ class UIManager (object):
         return self.__ui_plugin
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def check_params(self, *audits):
         """
         Call the UI plugin to verify the Orchestrator and initial Audit
@@ -119,7 +119,7 @@ class UIManager (object):
         self.ui_plugin.check_params(self.orchestrator.config, *audits)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start(self):
         """
         Send the UI start message.
@@ -129,7 +129,7 @@ class UIManager (object):
         self.orchestrator.dispatch_msg(message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def stop(self):
         """
         Send the UI stop message.
@@ -139,7 +139,7 @@ class UIManager (object):
         self.orchestrator.dispatch_msg(message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def dispatch_msg(self, message):
         """
         Dispatch incoming messages to all UI plugins.
@@ -148,14 +148,15 @@ class UIManager (object):
         :type message: Message
         """
         if not isinstance(message, Message):
-            raise TypeError("Expected Message, got %r instead" % type(message))
+            raise TypeError(
+                "Expected Message, got %r instead" % type(message))
 
         # Filter out ACKs but send all other messages.
         if not message.is_ack:
             self.__notifier.notify(message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def close(self):
         """
         Release all resources held by this manager.

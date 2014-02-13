@@ -52,7 +52,7 @@ class Message (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, message_type = 0,
                        message_code = 0,
                        message_info = None,
@@ -126,7 +126,7 @@ class Message (object):
         self.__timestamp    = time()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def message_type(self):
         """
@@ -192,7 +192,7 @@ class Message (object):
         return self.__timestamp
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def is_ack(self):
         """
@@ -203,19 +203,20 @@ class Message (object):
                 self.message_code == MessageCode.MSG_CONTROL_ACK)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __repr__(self):
-        s  = "<Message timestamp=%r, type=%r, code=%r, audit=%r, plugin=%r, info=%r>"
-        s %= (self.timestamp, self.message_type, self.message_code,
-              self.audit_name, self.plugin_id, self.message_info)
+        s  = (
+            "<Message timestamp=%r, type=%s, code=%s, audit=%r, plugin=%r, "
+            "ack=%r, info=%r>"
+        )
+        s %= (
+            self.timestamp,
+            MessageType.get_name_from_value(self.message_type),
+            MessageCode.get_name_from_value_and_type(self.message_code,
+                                                     self.message_type),
+            self.audit_name,
+            self.plugin_id,
+            self.ack_identity,
+            self.message_info,
+        )
         return s
-
-
-    #----------------------------------------------------------------------
-    def _update_data(self, datalist):
-        """
-        .. warning: Called internally during message processing. Do not use!
-        """
-        if not self.message_type == MessageType.MSG_TYPE_DATA:
-            raise TypeError("Cannot update data of non-data message!")
-        self.__message_info = datalist

@@ -43,6 +43,7 @@ import copy
 from ..logger import Logger
 from ...common import Singleton, get_wordlists_folder
 
+
 #------------------------------------------------------------------------------
 class WordlistNotFound(Exception):
     "Class when wordlist not found"
@@ -55,7 +56,7 @@ class _WordListLoader(Singleton):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self):
 
         # Store
@@ -65,7 +66,7 @@ class _WordListLoader(Singleton):
         self.__load_wordlists( get_wordlists_folder() )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __resolve_wordlist_name(self, wordlist):
         """
         Looking for the world list in this order:
@@ -89,6 +90,11 @@ class _WordListLoader(Singleton):
             raise TypeError("Expected 'str' got '%s'." % type(wordlist))
 
         m_return = None
+
+        # For avoid user errors, library accept also, wordlists starting as:
+        # wordlist/....
+        if "wordlist" in wordlist:
+            wordlist = "/".join(wordlist.split("/")[1:])
 
         try:
             m_return = open(self.__store[wordlist], "rU")
@@ -117,7 +123,7 @@ class _WordListLoader(Singleton):
         return m_return
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __load_wordlists(self, currentDir):
         """
         Find and load wordlists from the specified directory.
@@ -152,7 +158,7 @@ class _WordListLoader(Singleton):
                     self.__store[key] = target
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def all_wordlists(self):
         """
@@ -162,7 +168,7 @@ class _WordListLoader(Singleton):
         return self.__store.keys()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_wordlist(self, wordlist_name):
         """
         :param wordlist_name: Name of the requested wordlist.
@@ -175,7 +181,7 @@ class _WordListLoader(Singleton):
         return SimpleWordList(self.__resolve_wordlist_name(wordlist_name))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_advanced_wordlist_as_dict(self, wordlist, separator=";", smart_load=False):
         """
         Get an AdvancedDicWordlist.
@@ -197,7 +203,7 @@ class _WordListLoader(Singleton):
         return AdvancedDicWordlist(self.__resolve_wordlist_name(wordlist), smart_load, separator)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_advanced_wordlist_as_list(self, wordlist_name):
         """
         Get an AdvancedListWordlist.
@@ -238,7 +244,7 @@ class AbstractWordlist(object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def binary_search(self, word, low_pos=0, high_pos=None):
         """
         Makes a binary search in the list and return the position of the word.
@@ -264,7 +270,7 @@ class AbstractWordlist(object):
         raise NotImplementedError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_first(self, word, init=0):
         """
         Get first coincidence, starting at begining. Raises a ValueError exception
@@ -281,7 +287,7 @@ class AbstractWordlist(object):
         raise NotImplementedError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_rfirst(self, word, init=0):
         """
         Get first coincidence, starting from the end. Raises a ValueError exception
@@ -298,12 +304,12 @@ class AbstractWordlist(object):
         raise NotImplementedError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def search_mutations(self, word, rules):
         raise NotImplementedError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def clone(self):
         """
         This method makes a clone of the object.
@@ -344,7 +350,7 @@ class AdvancedListWordlist(AbstractWordlist):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, wordlist):
         """
         :param wordlist: a file descriptor of the wordlist.
@@ -360,32 +366,32 @@ class AdvancedListWordlist(AbstractWordlist):
             raise IOError("Error when trying to open wordlist: %s" + str(e))
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __getitem__(self, i):
         return self.__wordlist[i]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __setitem__(self, i, v):
         self.__wordlist[i] = v
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __contains__(self, i):
         return i in self.__wordlist
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __iter__(self):
         return self.__wordlist.__iter__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __len__(self):
         return len(self.__wordlist)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def binary_search(self, word, low_pos=0, high_pos=None):
         i = bisect.bisect_left(self.__wordlist, word, lo=low_pos, hi=high_pos if high_pos else len(high_pos))
 
@@ -395,7 +401,7 @@ class AdvancedListWordlist(AbstractWordlist):
         raise ValueError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_first(self, word, init=0):
         """
         Get first coincidence, starting at begining.
@@ -408,7 +414,7 @@ class AdvancedListWordlist(AbstractWordlist):
         raise ValueError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_rfirst(self, word, init=0):
         """
         Get first coincidence, starting at begining.
@@ -421,7 +427,7 @@ class AdvancedListWordlist(AbstractWordlist):
         raise ValueError()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def clone(self):
         m_temp = copy.copy(self)
         m_temp.__wordlist = copy.copy(self.__wordlist)
@@ -429,7 +435,7 @@ class AdvancedListWordlist(AbstractWordlist):
         return m_temp
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def pop(self):
         return self.__wordlist.pop()
 
@@ -445,7 +451,7 @@ class AdvancedDicWordlist(object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, wordlist, smart_load=False, separator = ";"):
         """
         Load a word list and conver it in a dict. The method used for the conversion
@@ -526,7 +532,7 @@ class AdvancedDicWordlist(object):
                     self.__wordlist[v[0]].append(v[1])
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def matches_by_keys(self, word):
         """
         Search a word passed as parameter in the keys's wordlist and return a list of lists with
@@ -547,7 +553,7 @@ class AdvancedDicWordlist(object):
         return { i:v for i, v in self.__wordlist.iteritems() if word == i}
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def matches_by_key_with_level(self, word):
         """
         Search a word passed as parameter in keys's wordlist and return a list of dicts with
@@ -578,7 +584,7 @@ class AdvancedDicWordlist(object):
         return m_return
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def matches_by_value(self, word):
         """
         Search a word passed as parameter in the values of wordlist and return a list of lists with
@@ -613,7 +619,7 @@ class AdvancedDicWordlist(object):
         return m_return
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def matches_by_value_with_level(self, word):
         """
         Search a word passed as parameter in values of wordlist and return a list of dicts with
@@ -646,12 +652,12 @@ class AdvancedDicWordlist(object):
         return m_return
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __getitem__(self, i):
         return self.__wordlist[i]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __setitem__(self, i, v):
         if not isinstance(v, list):
             raise ValueError("Excepted list type. Got '%s'" % type(v))
@@ -659,37 +665,37 @@ class AdvancedDicWordlist(object):
         self.__wordlist[i] = v
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __contains__(self, i):
         return i in self.__wordlist
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def iteritems(self):
         return self.__wordlist.iteritems()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __iter__(self):
         return self.__wordlist.__iter__
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __len__(self):
         return len(self.__wordlist)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def itervalues(self):
         return self.__wordlist.itervalues()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def iterkeys(self):
         return self.__wordlist.iterkeys()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def clone(self):
         m_temp = copy.copy(self)
         m_temp.__wordlist = copy.copy(self.__wordlist)
@@ -697,6 +703,6 @@ class AdvancedDicWordlist(object):
         return m_temp
 
 
-#--------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Singleton.
 WordListLoader = _WordListLoader()

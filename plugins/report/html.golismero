@@ -1,8 +1,8 @@
 [Documentation]
 Name        = HTML Report
-Description = Writes HTML reports.
+Description = Writes reports as offline web pages.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License

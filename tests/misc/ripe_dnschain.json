@@ -1,0 +1,37 @@
+{
+    "cached": false, 
+    "data": {
+        "authoritative_nameservers": [
+            "dns03.ono.com", 
+            "dns01.ono.com", 
+            "dns02.ono.com"
+        ], 
+        "forward_nodes": {
+            "80.174.63.26.dyn.user.ono.com": [
+                "80.174.63.26"
+            ]
+        }, 
+        "nameservers": [
+            "193.0.19.101", 
+            "193.0.19.102", 
+            "193.0.19.6"
+        ], 
+        "query_time": "2014-01-11T19:31:00", 
+        "resource": "80.174.63.26", 
+        "reverse_nodes": {
+            "80.174.63.26": [
+                "80.174.63.26.dyn.user.ono.com"
+            ]
+        }
+    }, 
+    "data_call_status": "supported", 
+    "messages": [], 
+    "process_time": 447, 
+    "query_id": "e76b3c24-7af6-11e3-81c9-d4ae52a9c1b6", 
+    "see_also": [], 
+    "server_id": "stat-app3", 
+    "status": "ok", 
+    "status_code": 200, 
+    "time": "2014-01-11T19:31:01.882957", 
+    "version": "1.0"
+}

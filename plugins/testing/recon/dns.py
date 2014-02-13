@@ -34,16 +34,16 @@ from golismero.api.net.dns import DNS
 from golismero.api.plugin import TestingPlugin
 
 
-#--------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class DNSPlugin(TestingPlugin):
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [Domain]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
 
         # Skip localhost.
@@ -52,6 +52,7 @@ class DNSPlugin(TestingPlugin):
 
         # Get the domain name.
         domain = info.hostname
+        Logger.log_more_verbose("Querying domain: %s" % domain)
 
         # We have as many steps as DNS register types there are.
         self.progress.set_total( len(DnsRegister.DNS_TYPES) )
@@ -62,11 +63,9 @@ class DNSPlugin(TestingPlugin):
         # Try to get a DNS record of each type.
         results = []
         for step, rtype in enumerate(DnsRegister.DNS_TYPES):
-            Logger.log_more_verbose(
-                "Querying %r register for domain: %s" % (rtype, domain))
             results.extend( DNS.resolve(domain, rtype) )
             self.progress.add_completed()
-        Logger.log_verbose(
+        Logger.log_more_verbose(
             "Found %d DNS registers for domain: %s"
             % (len(results), domain))
 

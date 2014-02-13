@@ -40,7 +40,7 @@ from collections import defaultdict
 from threading import BoundedSemaphore, RLock
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # RPC implementors for the network connection manager API.
 
 @implementor(MessageCode.MSG_RPC_REQUEST_SLOT, blocking=True)
@@ -52,14 +52,14 @@ def rpc_netdb_release_slot(orchestrator, audit_name, *args, **kwargs):
     return orchestrator.netManager.release_slot(audit_name, *args, **kwargs)
 
 
-#--------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class NetworkManager (object):
     """
     Manager for network connections.
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, config):
         """
         :param config: Global configuration object.
@@ -82,7 +82,7 @@ class NetworkManager (object):
         self.__tokens = defaultdict(dict) # audit -> token -> (host, number)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def max_connections(self):
         """
@@ -92,12 +92,12 @@ class NetworkManager (object):
         return self.__config.max_connections
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __create_semaphore(self):
         return BoundedSemaphore(self.max_connections)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def request_slot(self, audit_name, host, number = 1):
         """
         Request the given number of connection slots for a host.
@@ -150,7 +150,7 @@ class NetworkManager (object):
             raise
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def release_slot(self, audit_name, token):
         """
         Release a previously requested number of connection slots for a host.
@@ -178,7 +178,7 @@ class NetworkManager (object):
             pass
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def release_all_slots(self, audit_name):
         """
         Release all connection slots for the given audit.

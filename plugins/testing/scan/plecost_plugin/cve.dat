@@ -1,0 +1,1786 @@
+(dp1
+VCVE-2008-3233
+p2
+VCross-site scripting (XSS) vulnerability in WordPress before 2.6, SVN development versions only, allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p3
+sVCVE-2013-2702
+p4
+VCross-site request forgery (CSRF) vulnerability in the Easy AdSense Lite plugin before 6.10 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that modify this plugin's settings.
+p5
+sVCVE-2013-7187
+p6
+VSQL injection vulnerability in form.php in the FormCraft plugin 1.3.7 and earlier for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p7
+sVCVE-2013-2703
+p8
+VCross-site request forgery (CSRF) vulnerability in the Facebook Members plugin before 5.0.5 for WordPress allows remote attackers to hijack the authentication of administrators for requests that modify this plugin's settings.
+p9
+sVCVE-2005-3330
+p10
+VThe _httpsrequest function in Snoopy 1.2, as used in products such as (1) MagpieRSS, (2) WordPress, (3) Ampache, and (4) Jinzora, allows remote attackers to execute arbitrary commands via shell metacharacters in an HTTPS URL to an SSL protected web page, which is not properly handled by the fetch function.
+p11
+sVCVE-2013-0236
+p12
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress before 3.5.1 allow remote attackers to inject arbitrary web script or HTML via vectors involving (1) gallery shortcodes or (2) the content of a post.
+p13
+sVCVE-2013-0237
+p14
+VCross-site scripting (XSS) vulnerability in Plupload.as in Moxiecode plupload before 1.5.5, as used in WordPress before 3.5.1 and other products, allows remote attackers to inject arbitrary web script or HTML via the id parameter.
+p15
+sVCVE-2013-0235
+p16
+VThe XMLRPC API in WordPress before 3.5.1 allows remote attackers to send HTTP requests to intranet servers, and conduct port-scanning attacks, by specifying a crafted source URL for a pingback, related to a Server-Side Request Forgery (SSRF) issue.
+p17
+sVCVE-2012-2399
+p18
+VCross-site scripting (XSS) vulnerability in swfupload.swf in SWFupload 2.2.0.1 and earlier, as used in WordPress before 3.5.2, TinyMCE Image Manager 1.1 and earlier, and other products allows remote attackers to inject arbitrary web script or HTML via the buttonText parameter, a different vulnerability than CVE-2012-3414.
+p19
+sVCVE-2006-6863
+p20
+V** DISPUTED **  PHP remote file inclusion vulnerability in the Enigma2 plugin (Enigma2.php) in Enigma WordPress Bridge allows remote attackers to execute arbitrary PHP code via a URL in the boarddir parameter.  NOTE: CVE disputes this issue, since $boarddir is set to a fixed value.
+p21
+sVCVE-2012-5350
+p22
+VSQL injection vulnerability in the Pay With Tweet plugin before 1.2 for WordPress allows remote authenticated users with certain permissions to execute arbitrary SQL commands via the id parameter in a paywithtweet shortcode.
+p23
+sVCVE-2008-1059
+p24
+VPHP remote file inclusion vulnerability in modules/syntax_highlight.php in the Sniplets 1.1.2 and 1.2.2 plugin for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the libpath parameter.
+p25
+sVCVE-2008-2034
+p26
+VSQL injection vulnerability in wp-download_monitor/download.php in the Download Monitor 2.0.6 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p27
+sVCVE-2013-0736
+p28
+VMultiple cross-site request forgery (CSRF) vulnerabilities in the Mingle Forum plugin 1.0.34 and possibly earlier for WordPress allow remote attackers to hijack the authentication of administrators for requests that (1) modify user privileges or (2) conduct cross-site scripting (XSS) attacks via unspecified vectors.
+p29
+sVCVE-2013-0731
+p30
+Vajax.functions.php in the MailUp plugin before 1.3.3 for WordPress does not properly restrict access to unspecified Ajax functions, which allows remote attackers to modify plugin settings and conduct cross-site scripting (XSS) attacks by setting the wordpress_logged_in cookie.  NOTE: this is due to an incomplete fix for a similar issue that was fixed in 1.3.2.
+p31
+sVCVE-2006-2702
+p32
+Vvars.php in WordPress 2.0.2, possibly when running on Mac OS X, allows remote attackers to spoof their IP address via a PC_REMOTE_ADDR HTTP header, which vars.php uses to redefine $_SERVER['REMOTE_ADDR'].
+p33
+sVCVE-2011-3853
+p34
+VCross-site scripting (XSS) vulnerability in the Hybrid theme before 0.10 for WordPress allows remote attackers to inject arbitrary web script or HTML via the cpage parameter.
+p35
+sVCVE-2012-5177
+p36
+VCross-site scripting (XSS) vulnerability in the Welcart plugin before 1.2.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p37
+sVCVE-2013-2501
+p38
+VCross-site scripting (XSS) vulnerability in the Terillion Reviews plugin before 1.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the ProfileId field.
+p39
+sVCVE-2012-5178
+p40
+VCross-site request forgery (CSRF) vulnerability in the Welcart plugin before 1.2.2 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that complete a purchase.
+p41
+sVCVE-2009-4424
+p42
+VSQL injection vulnerability in results.php in the Pyrmont plugin 2 for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p43
+sVCVE-2012-2633
+p44
+VCross-site scripting (XSS) vulnerability in wassup.php in the WassUp plugin before 1.8.3.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the User-Agent HTTP header.
+p45
+sVCVE-2012-1068
+p46
+VCross-site scripting (XSS) vulnerability in the rc_ajax function in core.php in the WP-RecentComments plugin before 2.0.7 for WordPress allows remote attackers to inject arbitrary web script or HTML via the page parameter, related to AJAX paging.
+p47
+sVCVE-2013-5673
+p48
+VSQL injection vulnerability in testimonial.php in the IndiaNIC Testimonial plugin 2.2 for WordPress allows remote attackers to execute arbitrary SQL commands via the custom_query parameter in a testimonial_add action to wp-admin/admin-ajax.php.
+p49
+sVCVE-2013-5672
+p50
+VMultiple cross-site request forgery (CSRF) vulnerabilities in the IndiaNIC Testimonial plugin 2.2 for WordPress allow remote attackers to hijack the authentication of administrators for requests that (1) add a testimonial via an iNIC_testimonial_save action; (2) add a listing template via an iNIC_testimonial_save_listing_template action; (3) add a widget template via an iNIC_testimonial_save_widget action; insert cross-site scripting (XSS) sequences via the (4) project_name, (5) project_url, (6) client_name, (7) client_city, (8) client_state, (9) description, (10) tags, (11) video_url, or (12) is_featured, (13) title, (14) widget_title, (15) no_of_testimonials, (16) filter_by_country, (17) filter_by_tags, or (18) widget_template parameter to wp-admin/admin-ajax.php.
+p51
+sVCVE-2012-1067
+p52
+VSQL injection vulnerability in the WP-RecentComments plugin 2.0.7 for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter in an rc-content action to index.php.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p53
+sVCVE-2013-4117
+p54
+VCross-site scripting (XSS) vulnerability in includes/CatGridPost.php in the Category Grid View Gallery plugin 2.3.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the ID parameter.
+p55
+sVCVE-2011-3865
+p56
+VCross-site scripting (XSS) vulnerability in the Black-LetterHead theme before 1.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO to index.php.
+p57
+sVCVE-2008-4625
+p58
+VSQL injection vulnerability in stnl_iframe.php in the ShiftThis Newsletter (st_newsletter) plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the newsletter parameter, a different vector than CVE-2008-0683.
+p59
+sVCVE-2013-4954
+p60
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-login.php in the Genetech Solutions Pie-Register plugin before 1.31 for WordPress, when "Allow New Registrations to set their own Password" is enabled, allow remote attackers to inject arbitrary web script or HTML via the (1) pass1 or (2) pass2 parameter in a register action.  NOTE: some of these details are obtained from third party information.
+p61
+sVCVE-2005-1102
+p62
+VMultiple cross-site scripting (XSS) vulnerabilities in template-functions-post.php in WordPress 1.5 and earlier allow remote attackers to execute arbitrary commands via the (1) content or (2) title of the post.
+p63
+sVCVE-2011-4646
+p64
+VSQL injection vulnerability in wp-postratings.php in the WP-PostRatings plugin 1.50, 1.61, and probably other versions before 1.62 for WordPress allows remote authenticated users with the Author role to execute arbitrary SQL commands via the id attribute of the ratings shortcode when creating a post.  NOTE: some of these details are obtained from third party information.
+p65
+sVCVE-2006-1796
+p66
+VCross-site scripting (XSS) vulnerability in the paging links functionality in template-functions-links.php in Wordpress 1.5.2, and possibly other versions before 2.0.1, allows remote attackers to inject arbitrary web script or HTML to Internet Explorer users via the request URI ($_SERVER['REQUEST_URI']).
+p67
+sVCVE-2005-2110
+p68
+VWordPress 1.5.1.2 and earlier allows remote attackers to obtain sensitive information via (1) a direct request to menu-header.php or a "1" value in the feed parameter to (2) wp-atom.php, (3) wp-rss.php, or (4) wp-rss2.php, which reveal the path in an error message.  NOTE: vector [1] was later reported to also affect WordPress 2.0.1.
+p69
+sVCVE-2009-2396
+p70
+VPHP remote file inclusion vulnerability in template/album.php in DM Albums 1.9.2, as used standalone or as a WordPress plugin, allows remote attackers to execute arbitrary PHP code via a URL in the SECURITY_FILE parameter.
+p71
+sVCVE-2012-6506
+p72
+VMultiple cross-site scripting (XSS) vulnerabilities in he Zingiri Web Shop plugin 2.4.0 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) page parameter in zing.inc.php or (2) notes parameter in fws/pages-front/onecheckout.php.
+p73
+sVCVE-2010-4277
+p74
+VCross-site scripting (XSS) vulnerability in lembedded-video.php in the Embedded Video plugin 4.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the content parameter to wp-admin/post.php.
+p75
+sVCVE-2007-1277
+p76
+VWordPress 2.1.1, as downloaded from some official distribution sites during February and March 2007, contains an externally introduced backdoor that allows remote attackers to execute arbitrary commands via (1) an eval injection vulnerability in the ix parameter to wp-includes/feed.php, and (2) an untrusted passthru call in the iz parameter to wp-includes/theme.php.
+p77
+sVCVE-2013-6243
+p78
+VSQL injection vulnerability in the Landing Pages plugin 1.2.3, before 20131009, and earlier for WordPress allows remote attackers to execute arbitrary SQL commands via the "post" parameter to index.php.
+p79
+sVCVE-2011-4898
+p80
+V** DISPUTED ** wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier generates different error messages for requests lacking a dbname parameter depending on whether the MySQL credentials are valid, which makes it easier for remote attackers to conduct brute-force attacks via a series of requests with different uname and pwd parameters.  NOTE: the vendor disputes the significance of this issue; also, it is unclear whether providing intentionally vague error messages during installation would be reasonable from a usability perspective.
+p81
+sVCVE-2011-4899
+p82
+V** DISPUTED ** wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier does not ensure that the specified MySQL database service is appropriate, which allows remote attackers to configure an arbitrary database via the dbhost and dbname parameters, and subsequently conduct static code injection and cross-site scripting (XSS) attacks via (1) an HTTP request or (2) a MySQL query.  NOTE: the vendor disputes the significance of this issue; however, remote code execution makes the issue important in many realistic environments.
+p83
+sVCVE-2008-5113
+p84
+VWordPress 2.6.3 relies on the REQUEST superglobal array in certain dangerous situations, which makes it easier for remote attackers to conduct delayed and persistent cross-site request forgery (CSRF) attacks via crafted cookies, as demonstrated by attacks that (1) delete user accounts or (2) cause a denial of service (loss of application access).  NOTE: this issue relies on the presence of an independent vulnerability that allows cookie injection.
+p85
+sVCVE-2010-4875
+p86
+VCross-site scripting (XSS) vulnerability in vodpod-video-gallery/vodpod_gallery_thumbs.php in the Vodpod Video Gallery Plugin 3.1.5 for WordPress allows remote attackers to inject arbitrary web script or HTML via the gid parameter.
+p87
+sVCVE-2013-2640
+p88
+Vajax.functions.php in the MailUp plugin before 1.3.2 for WordPress does not properly restrict access to unspecified Ajax functions, which allows remote attackers to modify plugin settings and conduct cross-site scripting (XSS) attacks via unspecified vectors related to "formData=save" requests, a different version than CVE-2013-0731.
+p89
+sVCVE-2010-1186
+p90
+VCross-site scripting (XSS) vulnerability in xml/media-rss.php in the NextGEN Gallery plugin before 1.5.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the mode parameter.
+p91
+sVCVE-2012-3384
+p92
+VCross-site request forgery (CSRF) vulnerability in the customizer in WordPress before 3.4.1 allows remote attackers to hijack the authentication of unspecified victims via unknown vectors.
+p93
+sVCVE-2012-3385
+p94
+VWordPress before 3.4.1 does not properly restrict access to post contents such as private or draft posts, which allows remote authors or contributors to obtain sensitive information via unknown vectors.
+p95
+sVCVE-2012-3383
+p96
+VThe map_meta_cap function in wp-includes/capabilities.php in WordPress 3.4.x before 3.4.2, when the multisite feature is enabled, does not properly assign the unfiltered_html capability, which allows remote authenticated users to bypass intended access restrictions and conduct cross-site scripting (XSS) attacks by leveraging the Administrator or Editor role and composing crafted text.
+p97
+sVCVE-2006-1012
+p98
+VSQL injection vulnerability in WordPress 1.5.2, and possibly other versions before 2.0, allows remote attackers to execute arbitrary SQL commands via the User-Agent field in an HTTP header for a comment.
+p99
+sVCVE-2011-3841
+p100
+VCross-site scripting (XSS) vulnerability in uploadify/get_profile_avatar.php in the WP Symposium plugin before 11.12.08 for WordPress allows remote attackers to inject arbitrary web script or HTML via the uid parameter.
+p101
+sVCVE-2008-4125
+p102
+VThe search function in phpBB 2.x provides a search_id value that leaks the state of PHP's PRNG, which allows remote attackers to obtain potentially sensitive information, as demonstrated by a cross-application attack against WordPress, a different vulnerability than CVE-2006-0632.
+p103
+sVCVE-2008-5752
+p104
+VDirectory traversal vulnerability in getConfig.php in the Page Flip Image Gallery plugin 0.2.2 and earlier for WordPress, when magic_quotes_gpc is disabled, allows remote attackers to read arbitrary files via a .. (dot dot) in the book_id parameter.  NOTE: some of these details are obtained from third party information.
+p105
+sVCVE-2011-5181
+p106
+VCross-site scripting (XSS) vulnerability in clickdesk.php in ClickDesk Live Support - Live Chat plugin 2.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via the cdwidgetid parameter.  NOTE: some of these details are obtained from third party information.
+p107
+sVCVE-2011-5180
+p108
+VCross-site scripting (XSS) vulnerability in wp-1pluginjquery.php in the ZooEffect plugin 1.01 for WordPress allows remote attackers to inject arbitrary web script or HTML via the page parameter.  NOTE: some of these details are obtained from third party information. NOTE: this has been disputed by a third party.
+p109
+sVCVE-2011-5182
+p110
+V** DISPUTED **  Cross-site scripting (XSS) vulnerability in lanoba-social-plugin/index.php in the Lanoba Social plugin 1.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via the action parameter.  NOTE: the vendor disputes this issue, stating "Lanoba's plug in does sanitize user input, and because that input is never sent to the browser, an attacker has no way of executing script or code on a user's behalf."
+p111
+sVCVE-2004-1559
+p112
+VMultiple cross-site scripting (XSS) vulnerabilities in Wordpress 1.2 allow remote attackers to inject arbitrary web script or HTML via the (1) redirect_to, text, popupurl, or popuptitle parameters to wp-login.php, (2) redirect_url parameter to admin-header.php, (3) popuptitle, popupurl, content, or post_title parameters to bookmarklet.php, (4) cat_ID parameter to categories.php, (5) s parameter to edit.php, or (6) s or mode parameter to edit-comments.php.
+p113
+sVCVE-2008-0205
+p114
+VMultiple cross-site request forgery (CSRF) vulnerabilities in math-comment-spam-protection.php in the Math Comment Spam Protection 2.1 and earlier plugin for WordPress allow remote attackers to perform actions as administrators via the (1) mcsp_opt_msg_no_answer or (2) mcsp_opt_msg_wrong_answer parameter to wp-admin/options-general.php.
+p115
+sVCVE-2009-4672
+p116
+VDirectory traversal vulnerability in main.php in the WP-Lytebox plugin 1.3 for WordPress allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the pg parameter.
+p117
+sVCVE-2012-4327
+p118
+VUnspecified vulnerability in the Image News slider plugin before 3.3 for WordPress has unspecified impact and remote attack vectors.
+p119
+sVCVE-2012-1786
+p120
+VThe Media Upload form in the Video Embed &amp; Thumbnail Generator plugin before 2.0 for WordPress allows remote attackers to obtain the installation path via unknown vectors.
+p121
+sVCVE-2012-1785
+p122
+Vkg_callffmpeg.php in the Video Embed &amp; Thumbnail Generator plugin before 2.0 for WordPress allows remote attackers to execute arbitrary commands via unspecified vectors.
+p123
+sVCVE-2008-4671
+p124
+VCross-site scripting (XSS) vulnerability in wp-admin/wp-blogs.php in Wordpress MU (WPMU) before 2.6 allows remote attackers to inject arbitrary web script or HTML via the (1) s and (2) ip_address parameters.
+p125
+sVCVE-2012-3434
+p126
+VMultiple cross-site scripting (XSS) vulnerabilities in userperspan.php in the Count Per Day module before 3.2 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) page, (2) datemin, or (3) datemax parameter.
+p127
+sVCVE-2005-1810
+p128
+VSQL injection vulnerability in template-functions-category.php in WordPress 1.5.1 allows remote attackers to execute arbitrary SQL commands via the $cat_ID variable, as demonstrated using the cat parameter to index.php.
+p129
+sVCVE-2005-4463
+p130
+VWordPress before 1.5.2 allows remote attackers to obtain sensitive information via a direct request to (1) wp-includes/vars.php, (2) wp-content/plugins/hello.php, (3) wp-admin/upgrade-functions.php, (4) wp-admin/edit-form.php, (5) wp-settings.php, and (6) wp-admin/edit-form-comment.php, which leaks the path in an error message related to undefined functions or failed includes.  NOTE: the wp-admin/menu-header.php vector is already covered by CVE-2005-2110. NOTE: the vars.php, edit-form.php, wp-settings.php, and edit-form-comment.php vectors were also reported to affect WordPress 2.0.1.
+p131
+sVCVE-2008-4732
+p132
+VSQL injection vulnerability in ajax_comments.php in the WP Comment Remix plugin before 1.4.4 for WordPress allows remote attackers to execute arbitrary SQL commands via the p parameter.
+p133
+sVCVE-2008-5278
+p134
+VCross-site scripting (XSS) vulnerability in the self_link function in in the RSS Feed Generator (wp-includes/feed.php) for WordPress before 2.6.5 allows remote attackers to inject arbitrary web script or HTML via the Host header (HTTP_HOST variable).
+p135
+sVCVE-2007-0262
+p136
+VWordPress 2.0.6, and 2.1Alpha 3 (SVN:4662), does not properly verify that the m parameter value has the string data type, which allows remote attackers to obtain sensitive information via an invalid m[] parameter, as demonstrated by obtaining the path, and obtaining certain SQL information such as the table prefix.
+p137
+sVCVE-2007-4480
+p138
+VCross-site scripting (XSS) vulnerability in index.php in the Sirius 1.0 theme for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO (PHP_SELF).
+p139
+sVCVE-2007-4481
+p140
+VCross-site scripting (XSS) vulnerability in index.php in the (1) Blix 0.9.1 and (2) Blix 0.9.1 Rus themes for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO (PHP_SELF).
+p141
+sVCVE-2007-4482
+p142
+VCross-site scripting (XSS) vulnerability in index.php in the Pool 1.0.7 theme for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO (PHP_SELF).
+p143
+sVCVE-2007-4483
+p144
+VCross-site scripting (XSS) vulnerability in index.php in the WordPress Classic 1.5 theme in WordPress before 2.1.3 allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO (PHP_SELF).
+p145
+sVCVE-2013-4340
+p146
+Vwp-admin/includes/post.php in WordPress before 3.6.1 allows remote authenticated users to spoof the authorship of a post by leveraging the Author role and providing a modified user_ID parameter.
+p147
+sVCVE-2007-2627
+p148
+VCross-site scripting (XSS) vulnerability in sidebar.php in WordPress, when custom 404 pages that call get_sidebar are used, allows remote attackers to inject arbitrary web script or HTML via the query string (PHP_SELF), a different vulnerability than CVE-2007-1622.
+p149
+sVCVE-2010-2924
+p150
+VSQL injection vulnerability in myLDlinker.php in the myLinksDump Plugin 1.2 for WordPress allows remote attackers to execute arbitrary SQL commands via the url parameter.  NOTE: some of these details are obtained from third party information.
+p151
+sVCVE-2013-1949
+p152
+VSocial Media Widget (social-media-widget) plugin 4.0 for WordPress contains an externally introduced modification (Trojan Horse), which allows remote attackers to force the upload of arbitrary files.
+p153
+sVCVE-2013-7240
+p154
+VDirectory traversal vulnerability in download-file.php in the Advanced Dewplayer plugin 1.2 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the dew_file parameter.
+p155
+sVCVE-2010-4839
+p156
+VSQL injection vulnerability in the Event Registration plugin 5.32 and earlier for WordPress allows remote attackers to execute arbitrary SQL commands via the event_id parameter in a register action.
+p157
+sVCVE-2013-5963
+p158
+VUnrestricted file upload vulnerability in multi.php in Simple Dropbox Upload plugin before 1.8.8.1 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in wp-content/uploads/wpdb/.
+p159
+sVCVE-2013-5962
+p160
+VUnrestricted file upload vulnerability in frames/upload-images.php in the Complete Gallery Manager plugin before 3.3.4 rev40279 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in wp-content/[year]/[month]/.
+p161
+sVCVE-2011-0740
+p162
+VCross-site scripting (XSS) vulnerability in magpie/scripts/magpie_slashbox.php in RSS Feed Reader 0.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the rss_url parameter.
+p163
+sVCVE-2008-0691
+p164
+VMultiple cross-site scripting (XSS) vulnerabilities in admin_panel.php in the Simon Elvery WP-Footnotes 2.2 plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) wp_footnotes_current_settings[priority], (2) wp_footnotes_current_settings[style_rules], (3) wp_footnotes_current_settings[pre_footnotes], and (4) wp_footnotes_current_settings[post_footnotes] parameters.
+p165
+sVCVE-2011-0701
+p166
+Vwp-admin/async-upload.php in the media uploader in WordPress before 3.0.5 allows remote authenticated users to read (1) draft posts or (2) private posts via a modified attachment_id parameter.
+p167
+sVCVE-2007-6369
+p168
+VMultiple directory traversal vulnerabilities in resize.php in the PictPress 0.91 and earlier plugin for WordPress allow remote attackers to read arbitrary files via a .. (dot dot) in the (1) size or (2) path parameter.
+p169
+sVCVE-2005-1688
+p170
+VWordpress 1.5 and earlier allows remote attackers to obtain sensitive information via a direct request to files in (1) wp-content/themes/, (2) wp-includes/, or (3) wp-admin/, which reveal the path in an error message.
+p171
+sVCVE-2011-4342
+p172
+VPHP remote file inclusion vulnerability in wp_xml_export.php in the BackWPup plugin before 1.7.2 for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the wpabs parameter.
+p173
+sVCVE-2005-1687
+p174
+VSQL injection vulnerability in wp-trackback.php in Wordpress 1.5 and earlier allows remote attackers to execute arbitrary SQL commands via the tb_id parameter.
+p175
+sVCVE-2009-2122
+p176
+VSQL injection vulnerability in viewimg.php in the Paolo Palmonari Photoracer plugin 1.0 for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p177
+sVCVE-2011-4618
+p178
+VCross-site scripting (XSS) vulnerability in advancedtext.php in Advanced Text Widget plugin before 2.0.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the page parameter.
+p179
+sVCVE-2011-1669
+p180
+VDirectory traversal vulnerability in wp-download.php in the WP Custom Pages module 0.5.0.1 for WordPress allows remote attackers to read arbitrary files via ..%2F (encoded dot dot) sequences in the url parameter.
+p181
+sVCVE-2005-1921
+p182
+VEval injection vulnerability in PEAR XML_RPC 1.3.0 and earlier (aka XML-RPC or xmlrpc) and PHPXMLRPC (aka XML-RPC For PHP or php-xmlrpc) 1.1 and earlier, as used in products such as (1) WordPress, (2) Serendipity, (3) Drupal, (4) egroupware, (5) MailWatch, (6) TikiWiki, (7) phpWebSite, (8) Ampache, and others, allows remote attackers to execute arbitrary PHP code via an XML file, which is not properly sanitized before being used in an eval statement.
+p183
+sVCVE-2012-2759
+p184
+VCross-site scripting (XSS) vulnerability in login-with-ajax.php in the Login With Ajax (aka login-with-ajax) plugin before 3.0.4.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the callback parameter in a lostpassword action to wp-login.php.
+p185
+sVCVE-2011-3981
+p186
+VPHP remote file inclusion vulnerability in actions.php in the Allwebmenus plugin 1.1.3 for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the abspath parameter.
+p187
+sVCVE-2006-4743
+p188
+VWordPress 2.0.2 through 2.0.5 allows remote attackers to obtain sensitive information via a direct request for (1) 404.php, (2) akismet.php, (3) archive.php, (4) archives.php, (5) attachment.php, (6) blogger.php, (7) comments.php, (8) comments-popup.php, (9) dotclear.php, (10) footer.php, (11) functions.php, (12) header.php, (13) hello.php, (14) wp-content/themes/default/index.php, (15) links.php, (16) livejournal.php, (17) mt.php, (18) page.php, (19) rss.php, (20) searchform.php, (21) search.php, (22) sidebar.php, (23) single.php, (24) textpattern.php, (25) upgrade-functions.php, (26) upgrade-schema.php, or (27) wp-db-backup.php, which reveal the path in various error messages.  NOTE: another researcher has disputed the details of this report, stating that version 2.0.5 does not exist. NOTE: the admin-footer.php, admin-functions.php, default-filters.php, edit-form-advanced.php, edit-link-form.php, edit-page-form.php, kses.php, locale.php, rss-functions.php, template-loader.php, and wp-db.php vectors are already covered by CVE-2006-0986. The edit-form-comment.php, vars.php, and wp-settings.php vectors are already covered by CVE-2005-4463. The menu-header.php vector is already covered by CVE-2005-2110.
+p189
+sVCVE-2008-0198
+p190
+VMultiple cross-site request forgery (CSRF) vulnerabilities in wp-contact-form/options-contactform.php in the WP-ContactForm 1.5 alpha and earlier plugin for WordPress allow remote attackers to perform actions as administrators via the (1) wpcf_question, (2) wpcf_success_msg, or (3) wpcf_error_msg parameter to wp-admin/admin.php.
+p191
+sVCVE-2008-0193
+p192
+VCross-site scripting (XSS) vulnerability in wp-db-backup.php in WordPress 2.0.11 and earlier, and possibly 2.1.x through 2.3.x, allows remote attackers to inject arbitrary web script or HTML via the backup parameter in a wp-db-backup.php action to wp-admin/edit.php.
+p193
+sVCVE-2008-0192
+p194
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress 2.0.9 and earlier allow remote attackers to inject arbitrary web script or HTML via the popuptitle parameter to (1) wp-admin/post.php or (2) wp-admin/page-new.php.
+p195
+sVCVE-2008-0191
+p196
+VWordPress 2.2.x and 2.3.x allows remote attackers to obtain sensitive information via an invalid p parameter in an rss2 action to the default URI, which reveals the full path and the SQL database structure.
+p197
+sVCVE-2008-0197
+p198
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-contact-form/options-contactform.php in the WP-ContactForm 1.5 alpha and earlier plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) wpcf_email, (2) wpcf_subject, (3) wpcf_question, (4) wpcf_answer, (5) wpcf_success_msg, (6) wpcf_error_msg, or (7) wpcf_msg parameter to wp-admin/admin.php, or (8) the SRC attribute of an IFRAME element.
+p199
+sVCVE-2008-0196
+p200
+VMultiple directory traversal vulnerabilities in WordPress 2.0.11 and earlier allow remote attackers to read arbitrary files via a .. (dot dot) in (1) the page parameter to certain PHP scripts under wp-admin/ or (2) the import parameter to wp-admin/admin.php, as demonstrated by discovering the full path via a request for the \u005c..\u005c..\u005cwp-config pathname; and allow remote attackers to modify arbitrary files via a .. (dot dot) in the file parameter to wp-admin/templates.php.
+p201
+sVCVE-2008-0195
+p202
+VWordPress 2.0.11 and earlier allows remote attackers to obtain sensitive information via an empty value of the page parameter to certain PHP scripts under wp-admin/, which reveals the path in various error messages.
+p203
+sVCVE-2012-5868
+p204
+VWordPress 3.4.2 does not invalidate a wordpress_sec session cookie upon an administrator's logout action, which makes it easier for remote attackers to discover valid session identifiers via a brute-force attack, or modify data via a replay attack.
+p205
+sVCVE-2008-1930
+p206
+VThe cookie authentication method in WordPress 2.5 relies on a hash of a concatenated string containing USERNAME and EXPIRY_TIME, which allows remote attackers to forge cookies by registering a username that results in the same concatenated string, as demonstrated by registering usernames beginning with "admin" to obtain administrator privileges, aka a "cryptographic splicing" issue.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2007-6013.
+p207
+sVCVE-2013-6281
+p208
+VCross-site scripting (XSS) vulnerability in codebase/spreadsheet.php in the Spreadsheet (dhtmlxSpreadsheet) plugin 2.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via the "page" parameter.
+p209
+sVCVE-2013-6280
+p210
+VCross-site scripting (XSS) vulnerability in Social Sharing Toolkit plugin before 2.1.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p211
+sVCVE-2007-1409
+p212
+VWordPress allows remote attackers to obtain sensitive information via a direct request for wp-admin/admin-functions.php, which reveals the path in an error message.
+p213
+sVCVE-2007-6013
+p214
+VWordpress 1.5 through 2.3.1 uses cookie values based on the MD5 hash of a password MD5 hash, which allows attackers to bypass authentication by obtaining the MD5 hash from the user database, then generating the authentication cookie from that hash.
+p215
+sVCVE-2009-1030
+p216
+VCross-site scripting (XSS) vulnerability in the choose_primary_blog function in wp-includes/wpmu-functions.php in WordPress MU (WPMU) before 2.7 allows remote attackers to inject arbitrary web script or HTML via the HTTP Host header.
+p217
+sVCVE-2012-3578
+p218
+VUnrestricted file upload vulnerability in html/Upload.php in the FCChat Widget plugin 2.2.13.1 and earlier for WordPress allows remote attackers to execute arbitrary code by uploading a file with a file with an executable extension followed by a safe extension, then accessing it via a direct request to the file in html/images.
+p219
+sVCVE-2013-3529
+p220
+VMultiple cross-site scripting (XSS) vulnerabilities in user/obits.php in the WP FuneralPress plugin before 1.1.7 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) message, (2) photo-message, or (3) youtube-message parameter.
+p221
+sVCVE-2013-3526
+p222
+VCross-site scripting (XSS) vulnerability in js/ta_loaded.js.php in the Traffic Analyzer plugin, possibly 3.3.2 and earlier, for WordPress allows remote attackers to inject arbitrary web script or HTML via the aoid parameter.
+p223
+sVCVE-2013-7102
+p224
+VMultiple unrestricted file upload vulnerabilities in (1) media-upload.php, (2) media-upload-lncthumb.php, and (3) media-upload-sq_button.php in lib/admin/ in the OptimizePress theme before 1.61 for WordPress allow remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in images_comingsoon, images_lncthumbs, or images_optbuttons in wp-content/uploads/optpress/, as exploited in the wild in November 2013.
+p225
+sVCVE-2012-5346
+p226
+VCross-site scripting (XSS) vulnerability in wp-live.php in the WP Live.php module 1.2.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.  NOTE: some of these details are obtained from third party information.
+p227
+sVCVE-2012-3576
+p228
+VUnrestricted file upload vulnerability in php/upload.php in the wpStoreCart plugin before 2.5.30 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in uploads/wpstorecart.
+p229
+sVCVE-2012-3575
+p230
+VUnrestricted file upload vulnerability in uploader.php in the RBX Gallery plugin 2.1 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in uploads/rbxslider.
+p231
+sVCVE-2012-3574
+p232
+VUnrestricted file upload vulnerability in includes/doajaxfileupload.php in the MM Forms Community plugin 2.2.5 and 2.2.6 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in upload/temp.
+p233
+sVCVE-2005-2107
+p234
+VMultiple cross-site scripting (XSS) vulnerabilities in post.php in WordPress 1.5.1.2 and earlier allow remote attackers to inject arbitrary web script or HTML via the (1) p or (2) comment parameter.
+p235
+sVCVE-2009-4748
+p236
+VSQL injection vulnerability in mycategoryorder.php in the My Category Order plugin 2.8 and earlier for WordPress allows remote attackers to execute arbitrary SQL commands via the parentID parameter in an act_OrderCategories action to wp-admin/post-new.php.
+p237
+sVCVE-2012-4448
+p238
+VCross-site request forgery (CSRF) vulnerability in wp-admin/index.php in WordPress 3.4.2 allows remote attackers to hijack the authentication of administrators for requests that modify an RSS URL via a dashboard_incoming_links edit action.
+p239
+sVCVE-2013-0721
+p240
+Vwp-php-widget.php in the WP PHP widget plugin 1.0.2 for WordPress allows remote attackers to obtain sensitive information via a direct request, which reveals the full path in an error message.
+p241
+sVCVE-2012-5469
+p242
+VThe Portable phpMyAdmin plugin before 1.3.1 for WordPress allows remote attackers to bypass authentication and obtain phpMyAdmin console access via a direct request to wp-content/plugins/portable-phpmyadmin/wp-pma-mod.
+p243
+sVCVE-2013-5961
+p244
+VUnrestricted file upload vulnerability in lazyseo.php in the Lazy SEO plugin 1.1.9 for WordPress allows remote attackers to execute arbitrary PHP code by uploading a PHP file, then accessing it via a direct request to the file in lazy-seo/.
+p245
+sVCVE-2007-0107
+p246
+VWordPress before 2.0.6, when mbstring is enabled for PHP, decodes alternate character sets after escaping the SQL query, which allows remote attackers to bypass SQL injection protection schemes and execute arbitrary SQL commands via multibyte charsets, as demonstrated using UTF-7.
+p247
+sVCVE-2007-0106
+p248
+VCross-site scripting (XSS) vulnerability in the CSRF protection scheme in WordPress before 2.0.6 allows remote attackers to inject arbitrary web script or HTML via a CSRF attack with an invalid token and quote characters or HTML tags in URL variable names, which are not properly handled when WordPress generates a new link to verify the request.
+p249
+sVCVE-2007-1599
+p250
+Vwp-login.php in WordPress allows remote attackers to redirect authenticated users to other websites and potentially obtain sensitive information via the redirect_to parameter.
+p251
+sVCVE-2007-1049
+p252
+VCross-site scripting (XSS) vulnerability in the wp_explain_nonce function in the nonce AYS functionality (wp-includes/functions.php) for WordPress 2.0 before 2.0.9 and 2.1 before 2.1.1 allows remote attackers to inject arbitrary web script or HTML via the file parameter to wp-admin/templates.php, and possibly other vectors involving the action variable.
+p253
+sVCVE-2009-2853
+p254
+VWordpress before 2.8.3 allows remote attackers to gain privileges via a direct request to (1) admin-footer.php, (2) edit-category-form.php, (3) edit-form-advanced.php, (4) edit-form-comment.php, (5) edit-link-category-form.php, (6) edit-link-form.php, (7) edit-page-form.php, and (8) edit-tag-form.php in wp-admin/.
+p255
+sVCVE-2009-2852
+p256
+VWP-Syntax plugin 0.9.1 and earlier for Wordpress, with register_globals enabled, allows remote attackers to execute arbitrary PHP code via the test_filter[wp_head] array parameter to test/index.php, which is used in a call to the call_user_func_array function.
+p257
+sVCVE-2009-2851
+p258
+VCross-site scripting (XSS) vulnerability in the administrator interface in WordPress before 2.8.2 allows remote attackers to inject arbitrary web script or HTML via a comment author URL.
+p259
+sVCVE-2009-2854
+p260
+VWordpress before 2.8.3 does not check capabilities for certain actions, which allows remote attackers to make unauthorized edits or additions via a direct request to (1) edit-comments.php, (2) edit-pages.php, (3) edit.php, (4) edit-category-form.php, (5) edit-link-category-form.php, (6) edit-tag-form.php, (7) export.php, (8) import.php, or (9) link-add.php in wp-admin/.
+p261
+sVCVE-2013-5098
+p262
+VCross-site scripting (XSS) vulnerability in admin/admin.php in the Download Monitor plugin before 3.3.6.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the sort parameter, a different vulnerability than CVE-2013-3262.
+p263
+sVCVE-2007-5161
+p264
+VCross-zone scripting vulnerability in the internal browser in i-Systems Feedreader 3.10 allows remote attackers to inject arbitrary web script or HTML via an item in a feed, as demonstrated by a WordPress blog update.  NOTE: this was originally reported as XSS.
+p265
+sVCVE-2010-4747
+p266
+VCross-site scripting (XSS) vulnerability in wordpress-processing-embed/data/popup.php in the Processing Embed plugin 0.5 for WordPress allows remote attackers to inject arbitrary web script or HTML via the pluginurl parameter.
+p267
+sVCVE-2007-5229
+p268
+VCross-site request forgery (CSRF) vulnerability in the FeedBurner FeedSmith 2.2 plugin for WordPress allows remote attackers to change settings and hijack blog feeds via a request to wp-admin/options-general.php that submits parameter values to FeedBurner_FeedSmith_Plugin.php, as demonstrated by the (1) feedburner_url and (2) feedburner_comments_url parameters.
+p269
+sVCVE-2012-2912
+p270
+VMultiple cross-site scripting (XSS) vulnerabilities in the LeagueManager plugin 3.7 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) group parameter in the show-league page or (2) season parameter in the team page to wp-admin/admin.php.
+p271
+sVCVE-2012-2913
+p272
+VMultiple cross-site scripting (XSS) vulnerabilities in the Leaflet plugin 0.0.1 for WordPress allow remote attackers to inject arbitrary web script or HTML via the id parameter to (1) leaflet_layer.php or (2) leaflet_marker.php, as reachable through wp-admin/admin.php.
+p273
+sVCVE-2012-2916
+p274
+VCross-site scripting (XSS) vulnerability in sabre_class_admin.php in the SABRE plugin before 2.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the active_option parameter to wp-admin/tools.php.
+p275
+sVCVE-2012-2917
+p276
+VCross-site scripting (XSS) vulnerability in the Share and Follow plugin 1.80.3 for WordPress allows remote attackers to inject arbitrary web script or HTML via the CDN API Key (cnd-key) in a share-and-follow-menu page to wp-admin/admin.php.
+p277
+sVCVE-2007-3238
+p278
+VCross-site scripting (XSS) vulnerability in functions.php in the default theme in WordPress 2.2 allows remote authenticated administrators to inject arbitrary web script or HTML via the PATH_INFO (REQUEST_URI) to wp-admin/themes.php, a different vulnerability than CVE-2007-1622.  NOTE: this might not cross privilege boundaries in some configurations, since the Administrator role has the unfiltered_html capability.
+p279
+sVCVE-2007-3239
+p280
+VCross-site scripting (XSS) vulnerability in searchform.php in the AndyBlue theme before 20070607 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PHP_SELF portion of a URI to index.php.  NOTE: this can be leveraged for PHP code execution in an administrative session.
+p281
+sVCVE-2007-3543
+p282
+VUnrestricted file upload vulnerability in WordPress before 2.2.1 and WordPress MU before 1.2.3 allows remote authenticated users to upload and execute arbitrary PHP code by making a post that specifies a .php filename in the _wp_attached_file metadata field; and then sending this file's content, along with its post_ID value, to (1) wp-app.php or (2) app.php.
+p283
+sVCVE-2007-3544
+p284
+VUnrestricted file upload vulnerability in (1) wp-app.php and (2) app.php in WordPress 2.2.1 and WordPress MU 1.2.3 allows remote authenticated users to upload and execute arbitrary PHP code via unspecified vectors, possibly related to the wp_postmeta table and the use of custom fields in normal (non-attachment) posts.  NOTE: this issue reportedly exists because of an incomplete fix for CVE-2007-3543.
+p285
+sVCVE-2008-3362
+p286
+VUnrestricted file upload vulnerability in upload.php in the Giulio Ganci Wp Downloads Manager module 0.2 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension via the upfile parameter, then accessing it via a direct request to the file in wp-content/plugins/downloads-manager/upload/.
+p287
+sVCVE-2012-6512
+p288
+VThe Organizer plugin 1.2.1 for WordPress allows remote attackers to obtain the installation path via unspecified vectors to (1) plugin_hook.php, (2) page/index.php, (3) page/dir.php (4) page/options.php, (5) page/resize.php, (6) page/upload.php, (7) page/users.php, or (8) page/view.php.
+p289
+sVCVE-2012-6511
+p290
+VMultiple cross-site scripting (XSS) vulnerabilities in organizer/page/users.php in the Organizer plugin 1.2.1 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) delete_id parameter or (2) extension parameter in an "Update Setting" action to wp-admin/admin.php.
+p291
+sVCVE-2007-2714
+p292
+VUnspecified vulnerability in akismet.php in Matt Mullenweg Akismet before 2.0.2, a WordPress plugin, has unknown impact and attack vectors.
+p293
+sVCVE-2013-4625
+p294
+VCross-site scripting (XSS) vulnerability in files/installer.cleanup.php in the Duplicator plugin before 0.4.5 for WordPress allows remote attackers to inject arbitrary web script or HTML via the package parameter.
+p295
+sVCVE-2013-4626
+p296
+VCross-site scripting (XSS) vulnerability in the BackWPup plugin before 3.0.13 for WordPress allows remote attackers to inject arbitrary web script or HTML via the tab parameter to wp-admin/admin.php.
+p297
+sVCVE-2013-5714
+p298
+VMultiple cross-site scripting (XSS) vulnerabilities in ls/htmlchat.php in the VideoWhisper Live Streaming Integration plugin 4.25.3 and possibly earlier for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) name or (2) message parameter.  NOTE: some of these details are obtained from third party information.
+p299
+sVCVE-2013-5711
+p300
+VCross-site scripting (XSS) vulnerability in admin/walkthrough/walkthrough.php in the Design Approval System plugin before 3.7 for WordPress allows remote attackers to inject arbitrary web script or HTML via the step parameter.
+p301
+sVCVE-2007-2484
+p302
+VPHP remote file inclusion vulnerability in js/wptable-button.php in the wp-Table 1.43 and earlier plugin for WordPress, when register_globals is enabled, allows remote attackers to execute arbitrary PHP code via a URL in the wpPATH parameter.
+p303
+sVCVE-2012-3588
+p304
+VDirectory traversal vulnerability in preview.php in the Plugin Newsletter plugin 1.5 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the data parameter.
+p305
+sVCVE-2008-0491
+p306
+VSQL injection vulnerability in fim_rss.php in the fGallery 2.4.1 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the album parameter.
+p307
+sVCVE-2008-5695
+p308
+Vwp-admin/options.php in WordPress MU before 1.3.2, and WordPress 2.3.2 and earlier, does not properly validate requests to update an option, which allows remote authenticated users with manage_options and upload_files capabilities to execute arbitrary code by uploading a PHP script and adding this script's pathname to active_plugins.
+p309
+sVCVE-2010-4518
+p310
+VCross-site scripting (XSS) vulnerability in wp-safe-search/wp-safe-search-jx.php in the Safe Search plugin 0.7 for WordPress allows remote attackers to inject arbitrary web script or HTML via the v1 parameter.
+p311
+sVCVE-2013-3491
+p312
+VMultiple cross-site request forgery (CSRF) vulnerabilities in the Sharebar plugin 1.2.5 for WordPress allow remote attackers to hijack the authentication of administrators for requests that (1) add or (2) modify buttons, or (3) insert cross-site scripting (XSS) sequences.
+p313
+sVCVE-2005-2109
+p314
+Vwp-login.php in WordPress 1.5.1.2 and earlier allows remote attackers to change the content of the forgotten password e-mail message via the message variable, which is not initialized before use.
+p315
+sVCVE-2005-2108
+p316
+VSQL injection vulnerability in XMLRPC server in WordPress 1.5.1.2 and earlier allows remote attackers to execute arbitrary SQL commands via input that is not filtered in the HTTP_RAW_POST_DATA variable, which stores the data in an XML file.
+p317
+sVCVE-2008-0490
+p318
+VSQL injection vulnerability in functions/editevent.php in the WP-Cal 0.3 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p319
+sVCVE-2012-0287
+p320
+VCross-site scripting (XSS) vulnerability in wp-comments-post.php in WordPress 3.3.x before 3.3.1, when Internet Explorer is used, allows remote attackers to inject arbitrary web script or HTML via the query string in a POST operation that is not properly handled by the "Duplicate comment detected" feature.
+p321
+sVCVE-2012-2404
+p322
+Vwp-comments-post.php in WordPress before 3.3.2 supports offsite redirects, which makes it easier for remote attackers to conduct cross-site scripting (XSS) attacks via unspecified vectors.
+p323
+sVCVE-2012-2400
+p324
+VUnspecified vulnerability in wp-includes/js/swfobject.js in WordPress before 3.3.2 has unknown impact and attack vectors.
+p325
+sVCVE-2012-2401
+p326
+VPlupload before 1.5.4, as used in wp-includes/js/plupload/ in WordPress before 3.3.2 and other products, enables scripting regardless of the domain from which the SWF content was loaded, which allows remote attackers to bypass the Same Origin Policy via crafted content.
+p327
+sVCVE-2012-2402
+p328
+Vwp-admin/plugins.php in WordPress before 3.3.2 allows remote authenticated site administrators to bypass intended access restrictions and deactivate network-wide plugins via unspecified vectors.
+p329
+sVCVE-2012-2403
+p330
+Vwp-includes/formatting.php in WordPress before 3.3.2 attempts to enable clickable links inside attributes, which makes it easier for remote attackers to conduct cross-site scripting (XSS) attacks via unspecified vectors.
+p331
+sVCVE-2013-4944
+p332
+VCross-site scripting (XSS) vulnerability in the BuddyPress Extended Friendship Request plugin before 1.0.2 for WordPress, when the "Friend Connections" component is enabled, allows remote attackers to inject arbitrary web script or HTML via the friendship_request_message parameter to wp-admin/admin-ajax.php.  NOTE: some of these details are obtained from third party information.
+p333
+sVCVE-2008-1061
+p334
+VMultiple cross-site scripting (XSS) vulnerabilities in the Sniplets 1.1.2 and 1.2.2 plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) text parameter to (a) warning.php, (b) notice.php, and (c) inset.php in view/sniplets/, and possibly (d) modules/execute.php; the (2) url parameter to (e) view/admin/submenu.php; and the (3) page parameter to (f) view/admin/pager.php.
+p335
+sVCVE-2009-4169
+p336
+VCross-site scripting (XSS) vulnerability in wp-cumulus.php in the WP-Cumulus Plug-in before 1.22 for WordPress allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p337
+sVCVE-2009-4168
+p338
+VCross-site scripting (XSS) vulnerability in Roy Tanck tagcloud.swf, as used in the WP-Cumulus plugin before 1.23 for WordPress and the Joomulus module 2.0 and earlier for Joomla!, allows remote attackers to inject arbitrary web script or HTML via the tagcloud parameter in a tags action. Cross-site scripting (XSS) vulnerability in tagcloud.swf in the WP-Cumulus Plug-in before 1.23 for WordPress allows remote attackers to inject arbitrary web script or HTML via the tagcloud parameter.
+p339
+sVCVE-2012-5310
+p340
+VSQL injection vulnerability in the WP e-Commerce plugin before 3.8.7.6 for WordPress allows remote attackers to execute arbitrary SQL commands via unspecified vectors.
+p341
+sVCVE-2008-4106
+p342
+VWordPress before 2.6.2 does not properly handle MySQL warnings about insertion of username strings that exceed the maximum column width of the user_login column, and does not properly handle space characters when comparing usernames, which allows remote attackers to change an arbitrary user's password to a random value by registering a similar username and then requesting a password reset, related to a "SQL column truncation vulnerability." NOTE: the attacker can discover the random password by also exploiting CVE-2008-4107.
+p343
+sVCVE-2010-4630
+p344
+VCross-site scripting (XSS) vulnerability in pages/admin/surveys/create.php in the WP Survey And Quiz Tool plugin 1.2.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the action parameter.
+p345
+sVCVE-2010-4637
+p346
+VCross-site scripting (XSS) vulnerability in feedlist/handler_image.php in the FeedList plugin 2.61.01 for WordPress allows remote attackers to inject arbitrary web script or HTML via the i parameter.
+p347
+sVCVE-2011-0700
+p348
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress before 3.0.5 allow remote authenticated users to inject arbitrary web script or HTML via vectors related to (1) the Quick/Bulk Edit title (aka post title or post_title), (2) post_status, (3) comment_status, (4) ping_status, and (5) escaping of tags within the tags meta box.
+p349
+sVCVE-2011-5194
+p350
+VCross-site scripting (XSS) vulnerability in vendors/samswhois/samswhois.inc.php in the Whois Search plugin before 1.4.2.3 for WordPress allows remote attackers to inject arbitrary web script or HTML via the domain parameter, a different vulnerability than CVE-2011-5193.
+p351
+sVCVE-2011-5192
+p352
+VCross-site scripting (XSS) vulnerability in pretty-bar.php in Pretty Link Lite plugin before 1.5.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the slug parameter, a different vulnerability than CVE-2011-5191.
+p353
+sVCVE-2011-5193
+p354
+VCross-site scripting (XSS) vulnerability in vendors/samswhois/samswhois.inc.php in the Whois Search plugin 1.4.2.3 for WordPress, when the WHOIS widget is enabled, allows remote attackers to inject arbitrary web script or HTML via the domain parameter to index.php, a different vulnerability than CVE-2011-5194.
+p355
+sVCVE-2011-5191
+p356
+VCross-site scripting (XSS) vulnerability in pretty-bar.php in Pretty Link Lite plugin before 1.5.4 for WordPress allows remote attackers to inject arbitrary web script or HTML via the slug parameter, a different vulnerability than CVE-2011-5192.
+p357
+sVCVE-2010-4779
+p358
+VCross-site scripting (XSS) vulnerability in lib/includes/auth.inc.php in the WPtouch plugin 1.9.19.4 and 1.9.20 for WordPress allows remote attackers to inject arbitrary web script or HTML via the wptouch_settings parameter to include/adsense-new.php.  NOTE: some of these details are obtained from third party information.
+p359
+sVCVE-2011-5051
+p360
+VMultiple unrestricted file upload vulnerabilities in the WP Symposium plugin before 11.12.24 for WordPress allow remote attackers to execute arbitrary code by uploading a file with an executable extension using (1) uploadify/upload_admin_avatar.php or (2) uploadify/upload_profile_avatar.php, then accessing it via a direct request to the file in an unspecified directory inside the webroot.
+p361
+sVCVE-2007-4153
+p362
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress 2.2.1 allow remote authenticated administrators to inject arbitrary web script or HTML via (1) the Options Database Table in the Admin Panel, accessed through options.php; or (2) the opml_url parameter to link-import.php.  NOTE: this might not cross privilege boundaries in some configurations, since the Administrator role has the unfiltered_html capability.
+p363
+sVCVE-2007-4154
+p364
+VSQL injection vulnerability in options.php in WordPress 2.2.1 allows remote authenticated administrators to execute arbitrary SQL commands via the page_options parameter to (1) options-general.php, (2) options-writing.php, (3) options-reading.php, (4) options-discussion.php, (5) options-privacy.php, (6) options-permalink.php, (7) options-misc.php, and possibly other unspecified components.
+p365
+sVCVE-2007-4014
+p366
+VCross-site scripting (XSS) vulnerability in a certain index.php installation script related to the (1) Blix 0.9.1, (2) Blixed 1.0, and (3) BlixKrieg (Blix Krieg) 2.2 themes for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter, possibly a related issue to CVE-2007-2757.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p367
+sVCVE-2013-3261
+p368
+VCross-site scripting (XSS) vulnerability in wp-admin/admin.php in the GRAND FlAGallery plugin before 2.72 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter in a flag-manage-gallery action.
+p369
+sVCVE-2008-0388
+p370
+VSQL injection vulnerability in the WP-Forum 1.7.4 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the user parameter in a showprofile action to the default URI.
+p371
+sVCVE-2013-3263
+p372
+VMultiple cross-site scripting (XSS) vulnerabilities in the WP Ultimate Email Marketer plugin 1.1.0 and possibly earlier for Wordpress allow remote attackers to inject arbitrary web script or HTML via the (1) siteurl parameter to campaign/campaignone.php; the (2) action, (3) campaignname, (4) campaignformat, or (5) emailtemplate parameter to campaign/campaigntwo.php; the (6) listid parameter to list/edit.php; the (7) campaignid or (8) siteurl parameter to campaign/editcampaign.php; the (9) campaignid parameter to campaign/selectlistb4send.php; the (10) campaignid, (11) campaignname, (12) campaignsubject, or (13) selectedcampaigns parameter to campaign/sendCampaign.php; or the (14) campaignid, (15) campaignname, (16) campaignformat, or (17) action parameter to campaign/updatecampaign.php.
+p373
+sVCVE-2007-1622
+p374
+VCross-site scripting (XSS) vulnerability in wp-admin/vars.php in WordPress before 2.0.10 RC2, and before 2.1.3 RC2 in the 2.1 series, allows remote authenticated users with theme privileges to inject arbitrary web script or HTML via the PATH_INFO in the administration interface, related to loose regular expression processing of PHP_SELF.
+p375
+sVCVE-2012-4332
+p376
+VThe ShareYourCart plugin 1.7.1 for WordPress allows remote attackers to obtain the installation path via unspecified vectors related to the SDK.
+p377
+sVCVE-2012-2109
+p378
+VSQL injection vulnerability in wp-load.php in the BuddyPress plugin 1.5.x before 1.5.5 of WordPress allows remote attackers to execute arbitrary SQL commands via the page parameter in an activity_widget_filter action.
+p379
+sVCVE-2007-4104
+p380
+VMultiple cross-site scripting (XSS) vulnerabilities in the WP-FeedStats before 2.4 plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via unspecified vectors, one of which involves an rss2 feed with an invalid or missing blog with an XSS sequence in the query string.
+p381
+sVCVE-2010-0673
+p382
+VSQL injection vulnerability in cplphoto.php in the Copperleaf Photolog plugin 0.16, and possibly earlier, for WordPress allows remote attackers to execute arbitrary SQL commands via the postid parameter.
+p383
+sVCVE-2011-5128
+p384
+VMultiple cross-site scripting (XSS) vulnerabilities in the Adminimize plugin before 1.7.22 for WordPress allow remote attackers to inject arbitrary web script or HTML via the page parameter to (1) inc-options/deinstall_options.php, (2) inc-options/theme_options.php, or (3) inc-options/im_export_options.php, or the (4) post or (5) post_ID parameters to adminimize.php, different vectors than CVE-2011-4926.
+p385
+sVCVE-2009-2762
+p386
+Vwp-login.php in WordPress 2.8.3 and earlier allows remote attackers to force a password reset for the first user in the database, possibly the administrator, via a key[] array variable in a resetpass (aka rp) action, which bypasses a check that assumes that $key is not an array.
+p387
+sVCVE-2013-3479
+p388
+VCross-site request forgery (CSRF) vulnerability in the ShareThis plugin before 7.0.6 for WordPress allows remote attackers to hijack the authentication of administrators for requests that modify this plugin's settings.
+p389
+sVCVE-2012-4242
+p390
+VCross-site scripting (XSS) vulnerability in the MF Gig Calendar plugin 0.9.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the query string to the calendar page.
+p391
+sVCVE-2012-3814
+p392
+VUnrestricted file upload vulnerability in font-upload.php in the Font Uploader plugin 1.2.4 for WordPress allows remote attackers to execute arbitrary PHP code by uploading a PHP file with a .php.ttf extension, then accessing it via a direct request to the file in font-uploader/fonts.
+p393
+sVCVE-2007-5710
+p394
+VCross-site scripting (XSS) vulnerability in wp-admin/edit-post-rows.php in WordPress 2.3 allows remote attackers to inject arbitrary web script or HTML via the posts_columns array parameter.
+p395
+sVCVE-2011-3129
+p396
+VThe file upload functionality WordPress 3.1 before 3.1.3 and 3.2 before Beta 2, when running "on hosts with dangerous security settings," has unknown impact and attack vectors, possibly related to dangerous filenames.
+p397
+sVCVE-2011-3128
+p398
+VWordPress 3.1 before 3.1.3 and 3.2 before Beta 2 treats unattached attachments as published, which might allow remote attackers to obtain sensitive data via vectors related to wp-includes/post.php.
+p399
+sVCVE-2011-3125
+p400
+VUnspecified vulnerability in WordPress 3.1 before 3.1.3 and 3.2 before Beta 2 has unknown impact and attack vectors related to "Various security hardening."
+p401
+sVCVE-2011-3127
+p402
+VWordPress 3.1 before 3.1.3 and 3.2 before Beta 2 does not prevent rendering for (1) admin or (2) login pages inside a frame in a third-party HTML document, which makes it easier for remote attackers to conduct clickjacking attacks via a crafted web site.
+p403
+sVCVE-2011-3126
+p404
+VWordPress 3.1 before 3.1.3 and 3.2 before Beta 2 allows remote attackers to determine usernames of non-authors via canonical redirects.
+p405
+sVCVE-2011-3122
+p406
+VUnspecified vulnerability in WordPress 3.1 before 3.1.3 and 3.2 before Beta 2 has unknown impact and attack vectors related to "Media security."
+p407
+sVCVE-2008-0837
+p408
+VCross-site scripting (XSS) vulnerability in the log feature in the John Godley Search Unleashed 0.2.10 plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter, which is not properly handled when the administrator views the log file.
+p409
+sVCVE-2008-0939
+p410
+VMultiple SQL injection vulnerabilities in wppa.php in the WP Photo Album (WPPA) before 1.1 plugin for WordPress allow remote attackers to execute arbitrary SQL commands via (1) the photo parameter to index.php, used by the wppa_photo_name function; or (2) the album parameter to index.php, used by the wppa_album_name function.  NOTE: some of these details are obtained from third party information.
+p411
+sVCVE-2006-3389
+p412
+Vindex.php in WordPress 2.0.3 allows remote attackers to obtain sensitive information, such as SQL table prefixes, via an invalid paged parameter, which displays the information in an SQL error message.  NOTE: this issue has been disputed by a third party who states that the issue does not leak any target-specific information.
+p413
+sVCVE-2007-1244
+p414
+VCross-site request forgery (CSRF) vulnerability in the AdminPanel in WordPress 2.1.1 and earlier allows remote attackers to perform privileged actions as administrators, as demonstrated using the delete action in wp-admin/post.php.  NOTE: this issue can be leveraged to perform cross-site scripting (XSS) attacks and steal cookies via the post parameter.
+p415
+sVCVE-2011-4803
+p416
+VSQL injection vulnerability in wptouch/ajax.php in the WPTouch plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p417
+sVCVE-2007-0539
+p418
+VThe wp_remote_fopen function in WordPress before 2.1 allows remote attackers to cause a denial of service (bandwidth or thread consumption) via pingback service calls with a source URI that corresponds to a large file, which triggers a long download session without a timeout constraint.
+p419
+sVCVE-2008-6767
+p420
+Vwp-admin/upgrade.php in WordPress, probably 2.6.x, allows remote attackers to upgrade the application, and possibly cause a denial of service (application outage), via a direct request.
+p421
+sVCVE-2008-6762
+p422
+VOpen redirect vulnerability in wp-admin/upgrade.php in WordPress, probably 2.6.x, allows remote attackers to redirect users to arbitrary web sites and conduct phishing attacks via a URL in the backto parameter.
+p423
+sVCVE-2013-2696
+p424
+VCross-site request forgery (CSRF) vulnerability in the All in One Webmaster plugin before 8.2.4 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that insert XSS sequences.
+p425
+sVCVE-2013-2697
+p426
+VCross-site request forgery (CSRF) vulnerability in the WP-DownloadManager plugin before 1.61 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that insert XSS sequences.
+p427
+sVCVE-2007-1893
+p428
+Vxmlrpc (xmlrpc.php) in WordPress 2.1.2, and probably earlier, allows remote authenticated users with the contributor role to bypass intended access restrictions and invoke the publish_posts functionality, which can be used to "publish a previously saved post."
+p429
+sVCVE-2007-1894
+p430
+VCross-site scripting (XSS) vulnerability in wp-includes/general-template.php in WordPress before 20070309 allows remote attackers to inject arbitrary web script or HTML via the year parameter in the wp_title function.
+p431
+sVCVE-2013-5977
+p432
+VCross-site request forgery (CSRF) vulnerability in Cart66Product.php in the Cart66 Lite plugin before 1.5.1.15 for WordPress allows remote attackers to hijack the authentication of administrators for requests that (1) create or modify products or conduct cross-site scripting (XSS) attacks via the (2) Product name or (3) Price description field in a product save action via a request to wp-admin/admin.php.
+p433
+sVCVE-2007-1897
+p434
+VSQL injection vulnerability in xmlrpc (xmlrpc.php) in WordPress 2.1.2, and probably earlier, allows remote authenticated users to execute arbitrary SQL commands via a string parameter value in an XML RPC mt.setPostCategories method call, related to the post_id variable.
+p435
+sVCVE-2011-5224
+p436
+VSQL injection vulnerability in the Sentinel plugin 1.0.0 for WordPress allows remote attackers to execute arbitrary SQL commands via unspecified vectors.
+p437
+sVCVE-2011-5225
+p438
+VCross-site scripting (XSS) vulnerability in wordpress_sentinel.php in the Sentinel plugin 1.0.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via unknown vectors.
+p439
+sVCVE-2011-5226
+p440
+VCross-site request forgery (CSRF) vulnerability in wordpress_sentinel.php in the Sentinel plugin 1.0.0 for WordPress allows remote attackers to hijack the authentication of an administrator for requests that trigger snapshots.
+p441
+sVCVE-2010-4825
+p442
+VCross-site scripting (XSS) vulnerability in magpie_debug.php in the Twitter Feed plugin (wp-twitter-feed) 0.3.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the url parameter.
+p443
+sVCVE-2012-0898
+p444
+VDirectory traversal vulnerability in meb_download.php in the myEASYbackup plugin 1.0.8.1 for WordPress allows remote attackers to read arbitrary files via a .. (dot dot) in the dwn_file parameter.
+p445
+sVCVE-2012-0895
+p446
+VCross-site scripting (XSS) vulnerability in map/map.php in the Count Per Day module before 3.1.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the map parameter.
+p447
+sVCVE-2012-0896
+p448
+VAbsolute path traversal vulnerability in download.php in the Count Per Day module before 3.1.1 for WordPress allows remote attackers to read arbitrary files via the f parameter.
+p449
+sVCVE-2008-0618
+p450
+VMultiple cross-site scripting (XSS) vulnerabilities in the DMSGuestbook 1.8.0 and 1.7.0 plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) gbname, (2) gbemail, (3) gburl, and (4) gbmsg parameters to unspecified programs.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p451
+sVCVE-2008-0615
+p452
+VDirectory traversal vulnerability in wp-admin/admin.php in the DMSGuestbook 1.8.0 and 1.7.0 plugin for WordPress allows remote authenticated users to read arbitrary files via a .. (dot dot) in the (1) folder and (2) file parameters.
+p453
+sVCVE-2008-0616
+p454
+VSQL injection vulnerability in the administration panel in the DMSGuestbook 1.7.0 plugin for WordPress allows remote authenticated administrators to execute arbitrary SQL commands via unspecified vectors.  NOTE: it is not clear whether this issue crosses privilege boundaries.
+p455
+sVCVE-2008-0617
+p456
+VMultiple cross-site scripting (XSS) vulnerabilities in the DMSGuestbook 1.7.0 plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) file parameter to wp-admin/admin.php, or the (2) messagefield parameter in the guestbook page, and the (3) title parameter in the messagearea.
+p457
+sVCVE-2007-2485
+p458
+VPHP remote file inclusion vulnerability in myflash-button.php in the myflash 1.00 and earlier plugin for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the wpPATH parameter.
+p459
+sVCVE-2008-0206
+p460
+VMultiple cross-site scripting (XSS) vulnerabilities in captcha\u005ccaptcha.php in the Captcha! 2.5d and earlier plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) captcha_ttffolder, (2) captcha_numchars, (3) captcha_ttfrange, or (4) captcha_secret parameter.
+p461
+sVCVE-2010-4257
+p462
+VSQL injection vulnerability in the do_trackbacks function in wp-includes/comment.php in WordPress before 3.0.2 allows remote authenticated users to execute arbitrary SQL commands via the Send Trackbacks field.
+p463
+sVCVE-2008-0204
+p464
+VMultiple cross-site scripting (XSS) vulnerabilities in math-comment-spam-protection.php in the Math Comment Spam Protection 2.1 and earlier plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) mcsp_opt_msg_no_answer or (2) mcsp_opt_msg_wrong_answer parameter to wp-admin/options-general.php.
+p465
+sVCVE-2008-0203
+p466
+VMultiple cross-site scripting (XSS) vulnerabilities in cryptographp/admin.php in the Cryptographp 1.2 and earlier plugin for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) cryptwidth, (2) cryptheight, (3) bgimg, (4) charR, (5) charG, (6) charB, (7) charclear, (8) tfont, (9) charel, (10) charelc, (11) charelv, (12) charnbmin, (13) charnbmax, (14) charspace, (15) charsizemin, (16) charsizemax, (17) charanglemax, (18) noisepxmin, (19) noisepxmax, (20) noiselinemin, (21) noiselinemax, (22) nbcirclemin, (23) nbcirclemax, or (24) brushsize parameter to wp-admin/options-general.php.
+p467
+sVCVE-2008-4733
+p468
+VCross-site scripting (XSS) vulnerability in wpcommentremix.php in WP Comment Remix plugin before 1.4.4 for WordPress allows remote attackers to inject arbitrary web script or HTML via the (1) replytotext, (2) quotetext, (3) originallypostedby, (4) sep, (5) maxtags, (6) tagsep, (7) tagheadersep, (8) taglabel, and (9) tagheaderlabel parameters.
+p469
+sVCVE-2009-0968
+p470
+VSQL injection vulnerability in fmoblog.php in the fMoblog plugin 2.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter to index.php.  NOTE: some of these details are obtained from third party information.
+p471
+sVCVE-2008-4734
+p472
+VCross-site request forgery (CSRF) vulnerability in the wpcr_do_options_page function in WP Comment Remix plugin before 1.4.4 for WordPress allows remote attackers to perform unauthorized actions as administrators via a request that sets the wpcr_hidden_form_input parameter.
+p473
+sVCVE-2011-0641
+p474
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-admin/admin.php in the StatPressCN plugin 1.9.0 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) what1, (2) what2, (3) what3, (4) what4, and (5) what5 parameters. NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p475
+sVCVE-2013-3720
+p476
+VCross-site scripting (XSS) vulnerability in widget_remove.php in the Feedweb plugin before 1.9 for WordPress allows remote authenticated administrators to inject arbitrary web script or HTML via the wp_post_id parameter.
+p477
+sVCVE-2006-2667
+p478
+VDirect static code injection vulnerability in WordPress 2.0.2 and earlier allows remote attackers to execute arbitrary commands by inserting a carriage return and PHP code when updating a profile, which is appended after a special comment sequence into files in (1) wp-content/cache/userlogins/ (2) wp-content/cache/users/ which are later included by cache.php, as demonstrated using the displayname argument.
+p479
+sVCVE-2009-2144
+p480
+VSQL injection vulnerability in the FireStats plugin before 1.6.2-stable for WordPress allows remote attackers to execute arbitrary SQL commands via unspecified vectors.
+p481
+sVCVE-2009-2143
+p482
+VPHP remote file inclusion vulnerability in firestats-wordpress.php in the FireStats plugin before 1.6.2-stable for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the fs_javascript parameter.
+p483
+sVCVE-2008-0508
+p484
+VCross-site request forgery (CSRF) vulnerability in deans_permalinks_migration.php in the Dean's Permalinks Migration 1.0 plugin for WordPress allows remote attackers to modify the oldstructure (aka dean_pm_config[oldstructure]) configuration setting as administrators via the old_struct parameter in a deans_permalinks_migration.php action to wp-admin/options-general.php, as demonstrated by placing an XSS sequence in this setting.
+p485
+sVCVE-2008-0507
+p486
+VSQL injection vulnerability in adclick.php in the AdServe 0.2 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p487
+sVCVE-2012-4271
+p488
+VMultiple cross-site scripting (XSS) vulnerabilities in bad-behavior-wordpress-admin.php in the Bad Behavior plugin before 2.0.47 and 2.2.x before 2.2.5 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) PATH_INFO, (2) httpbl_key, (3) httpbl_maxage, (4) httpbl_threat, (5) reverse_proxy_addresses, or (6) reverse_proxy_header parameter.
+p489
+sVCVE-2012-4273
+p490
+VCross-site scripting (XSS) vulnerability in libs/xing.php in the 2 Click Social Media Buttons plugin before 0.34 for WordPress allows remote attackers to inject arbitrary web script or HTML via the xing-url parameter.
+p491
+sVCVE-2012-4272
+p492
+VMultiple cross-site scripting (XSS) vulnerabilities in the 2 Click Social Media Buttons plugin before 0.34 for WordPress allow remote attackers to inject arbitrary web script or HTML via unspecified vectors related to the "processing of the buttons of Xing and Pinterest".
+p493
+sVCVE-2006-6808
+p494
+VCross-site scripting (XSS) vulnerability in wp-admin/templates.php in WordPress 2.0.5 allows remote attackers to inject arbitrary web script or HTML via the file parameter.  NOTE: some sources have reported this as a vulnerability in the get_file_description function in wp-admin/admin-functions.php.
+p495
+sVCVE-2013-6837
+p496
+VCross-site scripting (XSS) vulnerability in the setTimeout function in js/jquery.prettyPhoto.js in prettyPhoto 3.1.4 and earlier allows remote attackers to inject arbitrary web script or HTML via a crafted PATH_INTO to the default URI.
+p497
+sVCVE-2008-2392
+p498
+VUnrestricted file upload vulnerability in WordPress 2.5.1 and earlier might allow remote authenticated administrators to upload and execute arbitrary PHP files via the Upload section in the Write Tabs area of the dashboard.
+p499
+sVCVE-2013-3530
+p500
+VSQL injection vulnerability in playlist.php in the Spiffy XSPF Player plugin 0.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the playlist_id parameter.
+p501
+sVCVE-2013-3532
+p502
+VSQL injection vulnerability in settings.php in the Web Dorado Spider Video Player plugin 2.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the theme parameter.
+p503
+sVCVE-2012-4283
+p504
+VCross-site scripting (XSS) vulnerability in the Login With Ajax plugin before 3.0.4.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the callback parameter.
+p505
+sVCVE-2008-7040
+p506
+VSQL injection vulnerability in ahah/sf-profile.php in the Yellow Swordfish Simple Forum module for Wordpress allows remote attackers to execute arbitrary SQL commands via the u parameter.  NOTE: this issue was disclosed by an unreliable researcher, so the details might be incorrect.
+p507
+sVCVE-2010-0682
+p508
+VWordPress 2.9 before 2.9.2 allows remote authenticated users to read trash posts from other authors via a direct request with a modified p parameter.
+p509
+sVCVE-2012-0937
+p510
+V** DISPUTED ** wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier does not limit the number of MySQL queries sent to external MySQL database servers, which allows remote attackers to use WordPress as a proxy for brute-force attacks or denial of service attacks via the dbhost parameter, a different vulnerability than CVE-2011-4898.  NOTE: the vendor disputes the significance of this issue because an incomplete WordPress installation might be present on the network for only a short time.
+p511
+sVCVE-2012-0934
+p512
+VPHP remote file inclusion vulnerability in ajax/savetag.php in the Theme Tuner plugin for WordPress before 0.8 allows remote attackers to execute arbitrary PHP code via a URL in the tt-abspath parameter.
+p513
+sVCVE-2008-0194
+p514
+VDirectory traversal vulnerability in wp-db-backup.php in WordPress 2.0.3 and earlier allows remote attackers to read arbitrary files, delete arbitrary files, and cause a denial of service via a .. (dot dot) in the backup parameter in a wp-db-backup.php action to wp-admin/edit.php.  NOTE: this might be the same as CVE-2006-5705.1.
+p515
+sVCVE-2010-5106
+p516
+VThe XML-RPC remote publishing interface in xmlrpc.php in WordPress before 3.0.3 does not properly check capabilities, which allows remote authenticated users to bypass intended access restrictions, and publish, edit, or delete posts, by leveraging the Author or Contributor role.
+p517
+sVCVE-2008-3747
+p518
+VThe (1) get_edit_post_link and (2) get_edit_comment_link functions in wp-includes/link-template.php in WordPress before 2.6.1 do not force SSL communication in the intended situations, which might allow remote attackers to gain administrative access by sniffing the network for a cookie.
+p519
+sVCVE-2004-1584
+p520
+VCRLF injection vulnerability in wp-login.php in WordPress 1.2 allows remote attackers to perform HTTP Response Splitting attacks to modify expected HTML content from the server via the text parameter.
+p521
+sVCVE-2013-4339
+p522
+VWordPress before 3.6.1 does not properly validate URLs before use in an HTTP redirect, which allows remote attackers to bypass intended redirection restrictions via a crafted string.
+p523
+sVCVE-2013-4338
+p524
+Vwp-includes/functions.php in WordPress before 3.6.1 does not properly determine whether data has been serialized, which allows remote attackers to execute arbitrary code by triggering erroneous PHP unserialize operations.
+p525
+sVCVE-2009-2431
+p526
+VWordPress 2.7.1 places the username of a post's author in an HTML comment, which allows remote attackers to obtain sensitive information by reading the HTML source.
+p527
+sVCVE-2009-2432
+p528
+VWordPress and WordPress MU before 2.8.1 allow remote attackers to obtain sensitive information via a direct request to wp-settings.php, which reveals the installation path in an error message.
+p529
+sVCVE-2013-7233
+p530
+VCross-site request forgery (CSRF) vulnerability in the retrospam component in wp-admin/options-discussion.php in WordPress 2.0.11 and earlier allows remote attackers to hijack the authentication of administrators for requests that move comments to the moderation list.
+p531
+sVCVE-2007-0574
+p532
+VSQL injection vulnerability in rss/show_webfeed.php in SpoonLabs Vivvo Article Management CMS (aka phpWordPress) 3.40 allows remote attackers to execute arbitrary SQL commands via the wcHeadlines parameter, a different vector than CVE-2006-4715.  NOTE: The provenance of this information is unknown; the details are obtained solely from third party information.
+p533
+sVCVE-2006-0733
+p534
+V** DISPUTED ** Cross-site scripting (XSS) vulnerability in WordPress 2.0.0 allows remote attackers to inject arbitrary web script or HTML via scriptable attributes such as (1) onfocus and (2) onblur in the "author's website" field.  NOTE: followup comments to the researcher's web log suggest that this issue is only exploitable by the same user who injects the XSS, so this might not be a vulnerability.
+p535
+sVCVE-2008-1304
+p536
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress 2.3.2 allow remote attackers to inject arbitrary web script or HTML via the (1) inviteemail parameter in an invite action to wp-admin/users.php and the (2) to parameter in a sent action to wp-admin/invites.php.
+p537
+sVCVE-2007-1732
+p538
+V** DISPUTED **  Cross-site scripting (XSS) vulnerability in an mt import in wp-admin/admin.php in WordPress 2.1.2 allows remote authenticated administrators to inject arbitrary web script or HTML via the demo parameter.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information. NOTE: another researcher disputes this issue, stating that this is legitimate functionality for administrators.  However, it has been patched by at least one vendor.
+p539
+sVCVE-2011-5264
+p540
+VCross-site scripting (XSS) vulnerability in lazyest-backup.php in the Lazyest Backup plugin before 0.2.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the xml_or_all parameter.
+p541
+sVCVE-2011-5265
+p542
+VCross-site scripting (XSS) vulnerability in cached_image.php in the Featurific For WordPress plugin 1.6.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the snum parameter.  NOTE: this has been disputed by a third party.
+p543
+sVCVE-2011-0759
+p544
+VMultiple cross-site request forgery (CSRF) vulnerabilities in the configuration page in the Recaptcha (aka WP-reCAPTCHA) plugin 2.9.8.2 for WordPress allow remote attackers to hijack the authentication of administrators for requests that disable the CAPTCHA requirement or insert cross-site scripting (XSS) sequences via the (1) recaptcha_opt_pubkey, (2) recaptcha_opt_privkey, (3) re_tabindex, (4) error_blank, (5) error_incorrect, (6) mailhide_pub, (7) mailhide_priv, (8) mh_replace_link, or (9) mh_replace_title parameter.
+p545
+sVCVE-2011-4669
+p546
+VSQL injection vulnerability in wp-users.php in WordPress Users plugin 1.3 and possibly earlier for WordPress allows remote attackers to execute arbitrary SQL commands via the uid parameter to index.php.
+p547
+sVCVE-2012-2920
+p548
+VCross-site scripting (XSS) vulnerability in the userphoto_options_page function in user-photo.php in the User Photo plugin before 0.9.5.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO to wp-admin/options-general.php.  NOTE: some of these details are obtained from third party information.
+p549
+sVCVE-2007-4544
+p550
+VCross-site scripting (XSS) vulnerability in wp-newblog.php in WordPress multi-user (MU) 1.0 and earlier allows remote attackers to inject arbitrary web script or HTML via the weblog_id parameter (Username field).
+p551
+sVCVE-2012-6527
+p552
+VCross-site scripting (XSS) vulnerability in the My Calendar plugin before 1.10.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO.
+p553
+sVCVE-2007-4894
+p554
+VMultiple SQL injection vulnerabilities in Wordpress before 2.2.3 and Wordpress multi-user (MU) before 1.2.5a allow remote attackers to execute arbitrary SQL commands via the post_type parameter to the pingback.extensions.getPingbacks method in the XMLRPC interface, and other unspecified parameters related to "early database escaping" and missing validation of "query string like parameters."
+p555
+sVCVE-2007-3639
+p556
+VWordPress before 2.2.2 allows remote attackers to redirect visitors to other websites and potentially obtain sensitive information via (1) the _wp_http_referer parameter to wp-pass.php, related to the wp_get_referer function in wp-includes/functions.php; and possibly other vectors related to (2) wp-includes/pluggable.php and (3) the wp_nonce_ays function in wp-includes/functions.php.
+p557
+sVCVE-2013-1464
+p558
+VCross-site scripting (XSS) vulnerability in ssets/player.swf in the Audio Player plugin before 2.0.4.6 for Wordpress allows remote attackers to inject arbitrary web script or HTML via the playerID parameter.
+p559
+sVCVE-2013-1463
+p560
+VCross-site scripting (XSS) vulnerability in js/tabletools/zeroclipboard.swf in the WP-Table Reloaded module before 1.9.4 for Wordpress allows remote attackers to inject arbitrary web script or HTML via the id parameter.  NOTE: this might be the same vulnerability as CVE-2013-1808.  If so, it is likely that CVE-2013-1463 will be REJECTed.
+p561
+sVCVE-2011-4562
+p562
+VMultiple cross-site scripting (XSS) vulnerabilities in (1) view/admin/log_item.php and (2) view/admin/log_item_details.php in the Redirection plugin 2.2.9 for WordPress allow remote attackers to inject arbitrary web script or HTML via the Referer HTTP header in a request to a post that does not exist.
+p563
+sVCVE-2006-1263
+p564
+VMultiple "unannounced" cross-site scripting (XSS) vulnerabilities in WordPress before 2.0.2 allow remote attackers to inject arbitrary web script or HTML via unknown attack vectors.
+p565
+sVCVE-2011-0760
+p566
+VMultiple cross-site request forgery (CSRF) vulnerabilities in the configuration screen in wp-relatedposts.php in the WP Related Posts plugin 1.0 for WordPress allow remote attackers to hijack the authentication of administrators for requests that insert cross-site scripting (XSS) sequences via the (1) wp_relatedposts_title, (2) wp_relatedposts_num, or (3) wp_relatedposts_type parameter.
+p567
+sVCVE-2013-2704
+p568
+VCross-site request forgery (CSRF) vulnerability in the Dropdown Menu Widget plugin 1.9.1 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that insert cross-site scripting (XSS) sequences.
+p569
+sVCVE-2007-0541
+p570
+VWordPress allows remote attackers to determine the existence of arbitrary files, and possibly read portions of certain files, via pingback service calls with a source URI that corresponds to a local pathname, which triggers different fault codes for existing and non-existing files, and in certain configurations causes a brief file excerpt to be published as a blog comment.
+p571
+sVCVE-2011-5216
+p572
+VSQL injection vulnerability in ajax.php in SCORM Cloud For WordPress plugin before 1.0.7 for WordPress allows remote attackers to execute arbitrary SQL commands via the active parameter.  NOTE: some of these details are obtained from third party information.
+p573
+sVCVE-2013-6991
+p574
+VCross-site scripting (XSS) vulnerability in the WP-Cron Dashboard plugin 1.1.5 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the procname parameter to wp-admin/tools.php.
+p575
+sVCVE-2013-2701
+p576
+VCross-site request forgery (CSRF) vulnerability in the Social Sharing Toolkit plugin 2.1.1 for WordPress allows remote attackers to hijack the authentication of administrators for requests that manipulate plugin settings via unknown vectors.
+p577
+sVCVE-2013-6993
+p578
+VCross-site scripting (XSS) vulnerability in the Ad-minister plugin 0.6 and earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the key parameter in a delete action to wp-admin/tools.php.
+p579
+sVCVE-2013-6992
+p580
+VCross-site request forgery (CSRF) vulnerability in askapache-firefox-adsense.php in the AskApache Firefox Adsense plugin 3.0 and earlier for WordPress allows remote attackers to hijack the authentication of administrators for requests that conduct cross-site scripting (XSS) attacks via the aafireadcode parameter to wp-admin/options-general.php.
+p581
+sVCVE-2013-2709
+p582
+VCross-site request forgery (CSRF) vulnerability in the FourSquare Checkins plugin before 1.3 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that insert XSS sequences.
+p583
+sVCVE-2009-3890
+p584
+VUnrestricted file upload vulnerability in the wp_check_filetype function in wp-includes/functions.php in WordPress before 2.8.6, when a certain configuration of the mod_mime module in the Apache HTTP Server is enabled, allows remote authenticated users to execute arbitrary code by posting an attachment with a multiple-extension filename, and then accessing this attachment via a direct request to a wp-content/uploads/ pathname, as demonstrated by a .php.jpg filename.
+p585
+sVCVE-2009-3891
+p586
+VCross-site scripting (XSS) vulnerability in wp-admin/press-this.php in WordPress before 2.8.6 allows remote authenticated users to inject arbitrary web script or HTML via the s parameter (aka the selection variable).
+p587
+sVCVE-2007-0540
+p588
+VWordPress allows remote attackers to cause a denial of service (bandwidth or thread consumption) via pingback service calls with a source URI that corresponds to a file with a binary content type, which is downloaded even though it cannot contain usable pingback data.
+p589
+sVCVE-2011-3864
+p590
+VCross-site scripting (XSS) vulnerability in the The Erudite theme before 2.7.9 for WordPress allows remote attackers to inject arbitrary web script or HTML via the cpage parameter.
+p591
+sVCVE-2011-4106
+p592
+VTimThumb (timthumb.php) before 2.0 does not validate the entire source with the domain white list, which allows remote attackers to upload and execute arbitrary code via a URL containing a white-listed domain in the src parameter, then accessing it via a direct request to the file in the cache directory, as exploited in the wild in August 2011.
+p593
+sVCVE-2011-3860
+p594
+VCross-site scripting (XSS) vulnerability in the Cover WP theme before 1.6.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p595
+sVCVE-2011-3861
+p596
+VCross-site scripting (XSS) vulnerability in the Web Minimalist 200901 theme before 1.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO to index.php.
+p597
+sVCVE-2011-3862
+p598
+VCross-site scripting (XSS) vulnerability in the Morning Coffee theme before 3.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the PATH_INFO to index.php.
+p599
+sVCVE-2011-3863
+p600
+VCross-site scripting (XSS) vulnerability in the RedLine theme before 1.66 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p601
+sVCVE-2009-4170
+p602
+VWP-Cumulus Plug-in 1.20 for WordPress, and possibly other versions, allows remote attackers to obtain sensitive information via a crafted request to wp-cumulus.php, probably without parameters, which reveals the installation path in an error message.
+p603
+sVCVE-2008-4107
+p604
+VThe (1) rand and (2) mt_rand functions in PHP 5.2.6 do not produce cryptographically strong random numbers, which allows attackers to leverage exposures in products that rely on these functions for security-relevant functionality, as demonstrated by the password-reset functionality in Joomla! 1.5.x and WordPress before 2.6.2, a different vulnerability than CVE-2008-2107, CVE-2008-2108, and CVE-2008-4102.
+p605
+sVCVE-2013-6010
+p606
+VCross-site scripting (XSS) vulnerability in the Comment Attachment plugin 1.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via the "Attachment field title."
+p607
+sVCVE-2007-2426
+p608
+VPHP remote file inclusion vulnerability in myfunctions/mygallerybrowser.php in the myGallery 1.4b4 and earlier plugin for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the myPath parameter.
+p609
+sVCVE-2007-4166
+p610
+VCross-site scripting (XSS) vulnerability in index.php in the Unnamed theme 1.217, and Special Edition (SE) 1.02, before 20070804 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter, possibly a related issue to CVE-2007-2757, CVE-2007-4014, and CVE-2007-4165.  NOTE: some of these details are obtained from third party information.
+p611
+sVCVE-2007-4165
+p612
+VCross-site scripting (XSS) vulnerability in index.php in the Blue Memories theme 1.5 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter, possibly a related issue to CVE-2007-2757 and CVE-2007-4014.  NOTE: the provenance of this information is unknown; the details are obtained solely from third party information.
+p613
+sVCVE-2009-3622
+p614
+VAlgorithmic complexity vulnerability in wp-trackback.php in WordPress before 2.8.5 allows remote attackers to cause a denial of service (CPU consumption and server hang) via a long title parameter in conjunction with a charset parameter composed of many comma-separated "UTF-8" substrings, related to the mb_convert_encoding function in PHP.
+p615
+sVCVE-2007-0233
+p616
+Vwp-trackback.php in WordPress 2.0.6 and earlier does not properly unset variables when the input data includes a numeric parameter with a value matching an alphanumeric parameter's hash value, which allows remote attackers to execute arbitrary SQL commands via the tb_id parameter.  NOTE: it could be argued that this vulnerability is due to a bug in the unset PHP command (CVE-2006-3017) and the proper fix should be in PHP; if so, then this should not be treated as a vulnerability in WordPress.
+p617
+sVCVE-2007-5800
+p618
+VMultiple PHP remote file inclusion vulnerabilities in the BackUpWordPress 0.4.2b and earlier plugin for WordPress allow remote attackers to execute arbitrary PHP code via a URL in the bkpwp_plugin_path parameter to (1) plugins/BackUp/Archive.php; and (2) Predicate.php, (3) Writer.php, (4) Reader.php, and other unspecified scripts under plugins/BackUp/Archive/.
+p619
+sVCVE-2012-6499
+p620
+VOpen redirect vulnerability in age-verification.php in the Age Verification plugin 0.4 and earlier for WordPress allows remote attackers to redirect users to arbitrary web sites and conduct phishing attacks via a URL in the redirect_to parameter.
+p621
+sVCVE-2012-4874
+p622
+VUnspecified vulnerability in the Another WordPress Classifieds Plugin before 2.0 for WordPress has unknown impact and attack vectors related to "image uploads."
+p623
+sVCVE-2012-3414
+p624
+VCross-site scripting (XSS) vulnerability in swfupload.swf in SWFUpload 2.2.0.1 and earlier, as used in WordPress before 3.3.2, TinyMCE Image Manager 1.1, and other products, allows remote attackers to inject arbitrary web script or HTML via the movieName parameter, related to the "ExternalInterface.call" function.
+p625
+sVCVE-2012-5328
+p626
+VMultiple SQL injection vulnerabilities in the Mingle Forum plugin 1.0.32.1 and other versions before 1.0.33 for WordPress might allow remote authenticated users to execute arbitrary SQL commands via the (1) memberid or (2) groupid parameters in a removemember action or (3) id parameter to fs-admin/fs-admin.php, or (4) edit_forum_id parameter in an edit_save_forum action to fs-admin/wpf-edit-forum-group.php.
+p627
+sVCVE-2012-1125
+p628
+VUnrestricted file upload vulnerability in uploadify/scripts/uploadify.php in the Kish Guest Posting plugin before 1.2 for WordPress allows remote attackers to execute arbitrary code by uploading a file with a PHP extension, then accessing it via a direct request to the file in the directory specified by the folder parameter.
+p629
+sVCVE-2012-5325
+p630
+VMultiple cross-site scripting (XSS) vulnerabilities in the scr_do_redirect function in scr.php in the Shortcode Redirect plugin 1.0.01 and earlier for WordPress allow remote authenticated users with certain permissions to inject arbitrary web script or HTML via the (1) url or (2) sec attributes in a redirect tag.
+p631
+sVCVE-2013-3262
+p632
+VCross-site scripting (XSS) vulnerability in admin/admin.php in the Download Monitor plugin before 3.3.6.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the p parameter.
+p633
+sVCVE-2012-5327
+p634
+VMultiple SQL injection vulnerabilities in fs-admin/fs-admin.php in the Mingle Forum plugin 1.0.32.1 and other versions before 1.0.33 for WordPress allow remote authenticated users to execute arbitrary SQL commands via the (1) delete_usrgrp[] parameter in a delete_usergroups action, (2) usergroup parameter in an add_user_togroup action, or (3) add_forum_group_id parameter in an add_forum_submit action.
+p635
+sVCVE-2013-3264
+p636
+VThe WP Ultimate Email Marketer plugin 1.1.0 and possibly earlier for Wordpress does not properly restrict access to (1) list/edit.php and (2) campaign/editCampaign.php, which allows remote attackers to modify list or campaign data.
+p637
+sVCVE-2008-7175
+p638
+VCross-site scripting (XSS) vulnerability in wp-admin/admin.php in NextGEN Gallery 0.96 and earlier plugin for Wordpress allows remote attackers to inject arbitrary web script or HTML via the picture description field in a page edit action.
+p639
+sVCVE-2011-1047
+p640
+VMultiple SQL injection vulnerabilities in VastHTML Forum Server (aka ForumPress) plugin 1.6.1 and 1.6.5 for WordPress allow remote attackers to execute arbitrary SQL commands via the (1) search_max parameter in a search action to index.php, which is not properly handled by wpf.class.php, (2) id parameter in an editpost action to index.php, which is not properly handled by wpf-post.php, or (3) topic parameter to feed.php.
+p641
+sVCVE-2007-3241
+p642
+VCross-site scripting (XSS) vulnerability in blogroll.php in the cordobo-green-park theme for WordPress allows remote attackers to inject arbitrary web script or HTML via the PHP_SELF portion of a URI.
+p643
+sVCVE-2007-3240
+p644
+VCross-site scripting (XSS) vulnerability in 404.php in the Vistered-Little theme for WordPress allows remote attackers to inject arbitrary web script or HTML via the URI (REQUEST_URI) that accesses index.php.  NOTE: this can be leveraged for PHP code execution in an administrative session.
+p645
+sVCVE-2009-2336
+p646
+VThe forgotten mail interface in WordPress and WordPress MU before 2.8.1 exhibits different behavior for a password request depending on whether the user account exists, which allows remote attackers to enumerate valid usernames.  NOTE: the vendor reportedly disputes the significance of this issue, indicating that the behavior exists for "user convenience."
+p647
+sVCVE-2009-2334
+p648
+Vwp-admin/admin.php in WordPress and WordPress MU before 2.8.1 does not require administrative authentication to access the configuration of a plugin, which allows remote attackers to specify a configuration file in the page parameter to obtain sensitive information or modify this file, as demonstrated by the (1) collapsing-archives/options.txt, (2) akismet/readme.txt, (3) related-ways-to-take-action/options.php, (4) wp-security-scan/securityscan.php, and (5) wp-ids/ids-admin.php files. NOTE: this can be leveraged for cross-site scripting (XSS) and denial of service.
+p649
+sVCVE-2009-2335
+p650
+VWordPress and WordPress MU before 2.8.1 exhibit different behavior for a failed login attempt depending on whether the user account exists, which allows remote attackers to enumerate valid usernames.  NOTE: the vendor reportedly disputes the significance of this issue, indicating that the behavior exists for "user convenience."
+p651
+sVCVE-2011-3130
+p652
+Vwp-includes/taxonomy.php in WordPress 3.1 before 3.1.3 and 3.2 before Beta 2 has unknown impact and attack vectors related to "Taxonomy query hardening," possibly involving SQL injection.
+p653
+sVCVE-2013-2199
+p654
+VThe HTTP API in WordPress before 3.5.2 allows remote attackers to send HTTP requests to intranet servers via unspecified vectors, related to a Server-Side Request Forgery (SSRF) issue, a similar vulnerability to CVE-2013-0235.
+p655
+sVCVE-2008-0845
+p656
+VSQL injection vulnerability in wp-people-popup.php in Dean Logan WP-People plugin 1.6.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the person parameter.
+p657
+sVCVE-2006-3390
+p658
+VWordPress 2.0.3 allows remote attackers to obtain the installation path via a direct request to various files, such as those in the (1) wp-admin, (2) wp-content, and (3) wp-includes directories, possibly due to uninitialized variables.
+p659
+sVCVE-2006-4028
+p660
+VMultiple unspecified vulnerabilities in WordPress before 2.0.4 have unknown impact and remote attack vectors.  NOTE: due to lack of details, it is not clear how these issues are different from CVE-2006-3389 and CVE-2006-3390, although it is likely that 2.0.4 addresses an unspecified issue related to "Anyone can register" functionality (user registration for guests).
+p661
+sVCVE-2013-2201
+p662
+VMultiple cross-site scripting (XSS) vulnerabilities in WordPress before 3.5.2 allow remote attackers to inject arbitrary web script or HTML via vectors involving (1) uploads of media files, (2) editing of media files, (3) installation of plugins, (4) updates to plugins, (5) installation of themes, or (6) updates to themes.
+p663
+sVCVE-2013-2200
+p664
+VWordPress before 3.5.2 does not properly check the capabilities of roles, which allows remote authenticated users to bypass intended restrictions on publishing and authorship reassignment via unspecified vectors.
+p665
+sVCVE-2013-2203
+p666
+VWordPress before 3.5.2, when the uploads directory forbids write access, allows remote attackers to obtain sensitive information via an invalid upload request, which reveals the absolute path in an XMLHttpRequest error message.
+p667
+sVCVE-2013-2202
+p668
+VWordPress before 3.5.2 allows remote attackers to read arbitrary files via an oEmbed XML provider response containing an external entity declaration in conjunction with an entity reference, related to an XML External Entity (XXE) issue.
+p669
+sVCVE-2013-2205
+p670
+VThe default configuration of SWFUpload in WordPress before 3.5.2 has an unrestrictive security.allowDomain setting, which allows remote attackers to bypass the Same Origin Policy and conduct cross-site scripting (XSS) attacks via a crafted web site.
+p671
+sVCVE-2013-2204
+p672
+Vmoxieplayer.as in Moxiecode moxieplayer, as used in the TinyMCE Media plugin in WordPress before 3.5.2 and other products, does not consider the presence of a # (pound sign) character during extraction of the QUERY_STRING, which allows remote attackers to pass arbitrary parameters to a Flash application, and conduct content-spoofing attacks, via a crafted string after a ? (question mark) character.
+p673
+sVCVE-2008-1982
+p674
+VSQL injection vulnerability in ss_load.php in the Spreadsheet (wpSS) 0.6 and earlier plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the ss_id parameter.
+p675
+sVCVE-2013-2741
+p676
+Vimportbuddy.php in the BackupBuddy plugin 1.3.4, 2.1.4, 2.2.25, 2.2.28, and 2.2.4 for WordPress does not require that authentication be enabled, which allows remote attackers to obtain sensitive information, or overwrite or delete files, via vectors involving a (1) direct request, (2) step=1 request, (3) step=2 or step=3 request, or (4) step=7 request.
+p677
+sVCVE-2013-2742
+p678
+Vimportbuddy.php in the BackupBuddy plugin 1.3.4, 2.1.4, 2.2.25, 2.2.28, and 2.2.4 for WordPress does not reliably delete itself after completing a restore operation, which makes it easier for remote attackers to obtain access via subsequent requests to this script.
+p679
+sVCVE-2013-2743
+p680
+Vimportbuddy.php in the BackupBuddy plugin 1.3.4, 2.1.4, 2.2.25, 2.2.28, and 2.2.4 for WordPress allows remote attackers to bypass authentication via a crafted integer in the step parameter.
+p681
+sVCVE-2013-2744
+p682
+Vimportbuddy.php in the BackupBuddy plugin 2.2.25 for WordPress allows remote attackers to obtain configuration information via a step 0 phpinfo action, which calls the phpinfo function.
+p683
+sVCVE-2011-5254
+p684
+VUnspecified vulnerability in the Connections plugin before 0.7.1.6 for WordPress has unknown impact and attack vectors.
+p685
+sVCVE-2011-5257
+p686
+VMultiple cross-site scripting (XSS) vulnerabilities in the Classipress theme before 3.1.5 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) twitter_id parameter related to the Twitter widget and (2) facebook_id parameter related to the Facebook widget.
+p687
+sVCVE-2008-7216
+p688
+VPeter's Math Anti-Spam Spinoff plugin for WordPress generates audio CAPTCHA clips by concatenating static audio files without any additional distortion, which allows remote attackers to bypass CAPTCHA protection by reading certain bytes from the generated clip.
+p689
+sVCVE-2009-2383
+p690
+VSQL injection vulnerability in BTE_RW_webajax.php in the Related Sites plugin 2.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the guid parameter.
+p691
+sVCVE-2008-0664
+p692
+VThe XML-RPC implementation (xmlrpc.php) in WordPress before 2.3.3, when registration is enabled, allows remote attackers to edit posts of other blog users via unknown vectors.
+p693
+sVCVE-2012-3577
+p694
+VUnrestricted file upload vulnerability in doupload.php in the Nmedia Member Conversation plugin before 1.4 for WordPress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in wp-content/uploads/user_uploads.
+p695
+sVCVE-2011-5082
+p696
+VCross-site scripting (XSS) vulnerability in the s2Member Pro plugin before 111220 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s2member_pro_authnet_checkout[coupon] parameter (aka Coupon Code field).
+p697
+sVCVE-2007-4893
+p698
+Vwp-admin/admin-functions.php in Wordpress before 2.2.3 and Wordpress multi-user (MU) before 1.2.5a does not properly verify the unfiltered_html privilege, which allows remote attackers to conduct cross-site scripting (XSS) attacks via modified data to (1) post.php or (2) page.php with a no_filter field.
+p699
+sVCVE-2012-6312
+p700
+VCross-site scripting (XSS) vulnerability in the Video Lead Form plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via the errMsg parameter in a video-lead-form action to wp-admin/admin.php.
+p701
+sVCVE-2012-6313
+p702
+Vsimple-gmail-login.php in the Simple Gmail Login plugin before 1.1.4 for WordPress allows remote attackers to obtain sensitive information via a request that lacks a timezone, leading to disclosure of the installation path in a stack trace.
+p703
+sVCVE-2009-3703
+p704
+VMultiple SQL injection vulnerabilities in the WP-Forum plugin before 2.4 for WordPress allow remote attackers to execute arbitrary SQL commands via (1) the search_max parameter in a search action to the default URI, related to wpf.class.php; (2) the forum parameter to an unspecified component, related to wpf.class.php; (3) the topic parameter in a viewforum action to the default URI, related to the remove_topic function in wpf.class.php; or the id parameter in a (4) editpost or (5) viewtopic action to the default URI, related to wpf-post.php.
+p705
+sVCVE-2011-4926
+p706
+VCross-site scripting (XSS) vulnerability in adminimize/adminimize_page.php in the Adminimize plugin before 1.7.22 for WordPress allows remote attackers to inject arbitrary web script or HTML via the page parameter.
+p707
+sVCVE-2012-2371
+p708
+VCross-site scripting (XSS) vulnerability in index.php in the WP-FaceThumb plugin 0.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the pagination_wp_facethumb parameter.
+p709
+sVCVE-2012-1835
+p710
+VMultiple cross-site scripting (XSS) vulnerabilities in the All-in-One Event Calendar plugin 1.4 and 1.5 for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) title parameter to app/view/agenda-widget-form.php; (2) args, (3) title, (4) before_title, or (5) after_title parameter to app/view/agenda-widget.php; (6) button_value parameter to app/view/box_publish_button.php; or (7) msg parameter to /app/view/save_successful.php.
+p711
+sVCVE-2012-1936
+p712
+V** DISPUTED ** The wp_create_nonce function in wp-includes/pluggable.php in WordPress 3.3.1 and earlier associates a nonce with a user account instead of a user session, which might make it easier for remote attackers to conduct cross-site request forgery (CSRF) attacks on specific actions and objects by sniffing the network, as demonstrated by attacks against the wp-admin/admin-ajax.php and wp-admin/user-new.php scripts.  NOTE: the vendor reportedly disputes the significance of this issue because wp_create_nonce operates as intended, even if it is arguably inconsistent with certain CSRF protection details advocated by external organizations.
+p713
+sVCVE-2011-3855
+p714
+VCross-site scripting (XSS) vulnerability in the F8 Lite theme before 4.2.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p715
+sVCVE-2011-3854
+p716
+VCross-site scripting (XSS) vulnerability in the ZenLite theme before 4.4 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p717
+sVCVE-2011-3857
+p718
+VCross-site scripting (XSS) vulnerability in the Antisnews theme before 1.10 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p719
+sVCVE-2011-3856
+p720
+VCross-site scripting (XSS) vulnerability in the Elegant Grunge theme before 1.0.4 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p721
+sVCVE-2011-3851
+p722
+VCross-site scripting (XSS) vulnerability in the News theme before 0.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the cpage parameter.
+p723
+sVCVE-2011-3850
+p724
+VCross-site scripting (XSS) vulnerability in the Atahualpa theme before 3.6.8 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p725
+sVCVE-2010-3977
+p726
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-content/plugins/cforms/lib_ajax.php in cforms WordPress plugin 11.5 allow remote attackers to inject arbitrary web script or HTML via the (1) rs and (2) rsargs[] parameters.
+p727
+sVCVE-2011-3852
+p728
+VCross-site scripting (XSS) vulnerability in the EvoLve theme before 1.2.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p729
+sVCVE-2013-6342
+p730
+VCross-site scripting (XSS) vulnerability in the Tweet Blender plugin before 4.0.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the tb_tab_index parameter to wp-admin/options-general.php.
+p731
+sVCVE-2011-3859
+p732
+VCross-site scripting (XSS) vulnerability in the Trending theme before 0.2 for WordPress allows remote attackers to inject arbitrary web script or HTML via the cpage parameter.
+p733
+sVCVE-2011-3858
+p734
+VCross-site scripting (XSS) vulnerability in the Pixiv Custom theme before 2.1.6 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p735
+sVCVE-2010-4402
+p736
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-login.php in the Register Plus plugin 3.5.1 and earlier for WordPress allow remote attackers to inject arbitrary web script or HTML via the (1) firstname, (2) lastname, (3) website, (4) aim, (5) yahoo, (6) jabber, (7) about, (8) pass1, and (9) pass2 parameters in a register action.
+p737
+sVCVE-2010-4403
+p738
+VThe Register Plus plugin 3.5.1 and earlier for WordPress allows remote attackers to obtain sensitive information via a direct request to (1) dash_widget.php and (2) register-plus.php, which reveals the installation path in an error message.
+p739
+sVCVE-2012-4263
+p740
+VCross-site scripting (XSS) vulnerability in inc/admin/content.php in the Better WP Security (better_wp_security) plugin before 3.2.5 for WordPress allows remote attackers to inject arbitrary web script or HTML via the HTTP_USER_AGENT header.
+p741
+sVCVE-2012-4264
+p742
+VMultiple cross-site scripting (XSS) vulnerabilities in the Better WP Security (better_wp_security) plugin before 3.2.5 for WordPress allow remote attackers to inject arbitrary web script or HTML via unspecified vectors related to "server variables," a different vulnerability than CVE-2012-4263.
+p743
+sVCVE-2012-4268
+p744
+VCross-site scripting (XSS) vulnerability in bulletproof-security/admin/options.php in the BulletProof Security plugin before .47.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the HTTP_ACCEPT_ENCODING header.
+p745
+sVCVE-2007-3140
+p746
+VSQL injection vulnerability in xmlrpc.php in WordPress 2.2 allows remote authenticated users to execute arbitrary SQL commands via a parameter value in an XML RPC wp.suggestCategories methodCall, a different vector than CVE-2007-1897.
+p747
+sVCVE-2008-4616
+p748
+VThe SpamBam plugin for WordPress allows remote attackers to bypass restrictions and add blog comments by using server-supplied values to calculate a shared key.
+p749
+sVCVE-2011-5179
+p750
+VCross-site scripting (XSS) vulnerability in skysa-official/skysa.php in Skysa App Bar Integration plugin, possibly before 1.04, for WordPress allows remote attackers to inject arbitrary web script or HTML via the submit parameter.
+p751
+sVCVE-2006-5705
+p752
+VMultiple directory traversal vulnerabilities in plugins/wp-db-backup.php in WordPress before 2.0.5 allow remote authenticated users to read or overwrite arbitrary files via directory traversal sequences in the (1) backup and (2) fragment parameters in a GET request.
+p753
+sVCVE-2008-2068
+p754
+VCross-site scripting (XSS) vulnerability in WordPress 2.5 allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p755
+sVCVE-2011-4957
+p756
+VThe make_clickable function in wp-includes/formatting.php in WordPress before 3.1.1 does not properly check URLs before passing them to the PCRE library, which allows remote attackers to cause a denial of service (crash) via a comment with a crafted URL that triggers many recursive calls.
+p757
+sVCVE-2011-4956
+p758
+VCross-site scripting (XSS) vulnerability in WordPress before 3.1.1 allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p759
+sVCVE-2007-4139
+p760
+VCross-site scripting (XSS) vulnerability in the Temporary Uploads editing functionality (wp-admin/includes/upload.php) in WordPress 2.2.1, allows remote attackers to inject arbitrary web script or HTML via the style parameter to wp-admin/upload.php.
+p761
+sVCVE-2013-7129
+p762
+VCross-site scripting (XSS) vulnerability in ThemeBeans Blooog theme 1.1 for WordPress allows remote attackers to inject arbitrary web script or HTML via the jQuery parameter to assets/js/jplayer.swf.
+p763
+sVCVE-2008-2146
+p764
+Vwp-includes/vars.php in Wordpress before 2.2.3 does not properly extract the current path from the PATH_INFO ($PHP_SELF), which allows remote attackers to bypass intended access restrictions for certain pages.
+p765
+sVCVE-2006-6016
+p766
+Vwp-admin/user-edit.php in WordPress before 2.0.5 allows remote authenticated users to read the metadata of an arbitrary user via a modified user_id parameter.
+p767
+sVCVE-2012-0901
+p768
+VCross-site scripting (XSS) vulnerability in yousaytoo.php in YouSayToo auto-publishing plugin 1.0 for WordPress allows remote attackers to inject arbitrary web script or HTML via the submit parameter.
+p769
+sVCVE-2006-6017
+p770
+VWordPress before 2.0.5 does not properly store a profile containing a string representation of a serialized object, which allows remote authenticated users to cause a denial of service (application crash) via a string that represents a (1) malformed or (2) large serialized object, because the object triggers automatic unserialization for display.
+p771
+sVCVE-2012-5388
+p772
+VCross-site scripting (XSS) vulnerability in wlcms-plugin.php in the White Label CMS plugin 1.5 for WordPress allows remote authenticated administrators to inject arbitrary web script or HTML via the wlcms_o_developer_name parameter in a save action to wp-admin/admin.php, a related issue to CVE-2012-5387.
+p773
+sVCVE-2012-5229
+p774
+VCross-site scripting (XSS) vulnerability in css/gallery-css.php in the Slideshow Gallery2 plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via the border parameter.
+p775
+sVCVE-2012-5387
+p776
+VCross-site request forgery (CSRF) vulnerability in wlcms-plugin.php in the White Label CMS plugin before 1.5.1 for WordPress allows remote attackers to hijack the authentication of administrators for requests that modify the developer name via the wlcms_o_developer_name parameter in a save action to wp-admin/admin.php, as demonstrated by a developer name containing XSS sequences.
+p777
+sVCVE-2007-3288
+p778
+VCross-site scripting (XSS) vulnerability in the skeltoac stats (Automattic Stats) 1.0 plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via the HTTP Referer field.
+p779
+sVCVE-2005-2612
+p780
+VDirect code injection vulnerability in WordPress 1.5.1.3 and earlier allows remote attackers to execute arbitrary PHP code via the cache_lastpostdate[server] cookie.
+p781
+sVCVE-2012-1010
+p782
+VUnrestricted file upload vulnerability in actions.php in the AllWebMenus plugin before 1.1.8 for WordPress allows remote attackers to execute arbitrary PHP code by uploading a ZIP file containing a PHP file, then accessing it via a direct request to the file in an unspecified directory.
+p783
+sVCVE-2012-1011
+p784
+Vactions.php in the AllWebMenus plugin 1.1.8 for WordPress allows remote attackers to bypass intended access restrictions to upload and execute arbitrary PHP code by setting the HTTP_REFERER to a certain value, then uploading a ZIP file containing a PHP file, then accessing it via a direct request to the file in an unspecified directory.
+p785
+sVCVE-2011-5104
+p786
+VCross-site scripting (XSS) vulnerability in wpsc-admin/display-sales-logs.php in WP e-Commerce plugin 3.8.7.1 and possibly earlier for WordPress allows remote attackers to inject arbitrary web script or HTML via the custom_text parameter.  NOTE: some of these details are obtained from third party information.
+p787
+sVCVE-2011-5107
+p788
+VCross-site scripting (XSS) vulnerability in post_alert.php in Alert Before Your Post plugin, possibly 0.1.1 and earlier, for WordPress allows remote attackers to inject arbitrary web script or HTML via the name parameter.
+p789
+sVCVE-2011-5106
+p790
+VCross-site scripting (XSS) vulnerability in edit-post.php in the Flexible Custom Post Type plugin before 0.1.7 for WordPress allows remote attackers to inject arbitrary web script or HTML via the id parameter.
+p791
+sVCVE-2007-2482
+p792
+VDirectory traversal vulnerability in wordtube-button.php in the wordTube 1.43 and earlier plugin for WordPress, when register_globals is enabled, allows remote attackers to include and execute arbitrary local files via a .. (dot dot) in the wpPATH parameter.
+p793
+sVCVE-2007-2483
+p794
+VDirectory traversal vulnerability in js/wptable-button.php in the wp-Table 1.43 and earlier plugin for WordPress, when register_globals is enabled, allows remote attackers to include and execute arbitrary local files via the wpPATH parameter.
+p795
+sVCVE-2007-2481
+p796
+VPHP remote file inclusion vulnerability in wordtube-button.php in the wordTube 1.43 and earlier plugin for WordPress, when register_globals is enabled, allows remote attackers to execute arbitrary PHP code via a URL in the wpPATH parameter.
+p797
+sVCVE-2013-3250
+p798
+VCross-site request forgery (CSRF) vulnerability in the WP Maintenance Mode plugin before 1.8.8 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that modify this plugin's settings.
+p799
+sVCVE-2013-3253
+p800
+VCross-site request forgery (CSRF) vulnerability in admin/setting.php in the Xhanch - My Twitter plugin before 2.7.7 for WordPress allows remote attackers to hijack the authentication of administrators for requests that change unspecified settings.
+p801
+sVCVE-2013-3254
+p802
+VCross-site scripting (XSS) vulnerability in wp-admin/admin.php in the WP Photo Album Plus plugin before 5.0.3 for WordPress allows remote attackers to inject arbitrary web script or HTML via the commentid parameter in a wppa_manage_comments edit action.
+p803
+sVCVE-2013-3256
+p804
+VCross-site request forgery (CSRF) vulnerability in the Shareaholic SexyBookmarks plugin 6.1.4.0 for WordPress allows remote attackers to hijack the authentication of users for requests that "manipulate plugin settings."
+p805
+sVCVE-2007-5106
+p806
+VCross-site scripting (XSS) vulnerability in wp-register.php in WordPress 2.0 allows remote attackers to inject arbitrary web script or HTML via the user_login parameter.
+p807
+sVCVE-2012-5318
+p808
+VUnrestricted file upload vulnerability in uploadify/scripts/uploadify.php in the Kish Guest Posting plugin 1.2 for WordPress allows remote attackers to execute arbitrary code by uploading a file with a double extension, then accessing it via a direct request to the file in the directory specified by the folder parameter.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2012-1125.
+p809
+sVCVE-2007-5105
+p810
+VCross-site scripting (XSS) vulnerability in wp-register.php in WordPress 2.0 and 2.0.1 allows remote attackers to inject arbitrary web script or HTML via the user_email parameter.
+p811
+sVCVE-2011-4671
+p812
+VSQL injection vulnerability in adrotate/adrotate-out.php in the AdRotate plugin 3.6.6, and other versions before 3.6.8, for WordPress allows remote attackers to execute arbitrary SQL commands via the track parameter (aka redirect URL).
+p813
+sVCVE-2008-1646
+p814
+VSQL injection vulnerability in wp-download.php in the WP-Download 1.2 plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the dl_id parameter.
+p815
+sVCVE-2011-4673
+p816
+VSQL injection vulnerability in modules/sharedaddy.php in the Jetpack plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p817
+sVCVE-2013-2173
+p818
+Vwp-includes/class-phpass.php in WordPress 3.5.1, when a password-protected post exists, allows remote attackers to cause a denial of service (CPU consumption) via a crafted value of a certain wp-postpass cookie.
+p819
+sVCVE-2008-6811
+p820
+VUnrestricted file upload vulnerability in image_processing.php in the e-Commerce Plugin 3.4 and earlier for Wordpress allows remote attackers to execute arbitrary code by uploading a file with an executable extension, then accessing it via a direct request to the file in wp-content/plugins/wp-shopping-cart/.
+p821
+sVCVE-2008-2510
+p822
+VSQL injection vulnerability in wp-uploadfile.php in the Upload File plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the f_id parameter.
+p823
+sVCVE-2008-0560
+p824
+V** DISPUTED **  PHP remote file inclusion vulnerability in cforms-css.php in Oliver Seidel cforms (contactforms), a Wordpress plugin, allows remote attackers to execute arbitrary PHP code via a URL in the tm parameter. NOTE: CVE disputes this issue for 7.3, since there is no tm parameter, and the code exits with a fatal error due to a call to an undefined function.
+p825
+sVCVE-2007-2821
+p826
+VSQL injection vulnerability in wp-admin/admin-ajax.php in WordPress before 2.2 allows remote attackers to execute arbitrary SQL commands via the cookie parameter.
+p827
+sVCVE-2013-5738
+p828
+VThe get_allowed_mime_types function in wp-includes/functions.php in WordPress before 3.6.1 does not require the unfiltered_html capability for uploads of .htm and .html files, which might make it easier for remote authenticated users to conduct cross-site scripting (XSS) attacks via a crafted file.
+p829
+sVCVE-2013-5739
+p830
+VThe default configuration of WordPress before 3.6.1 does not prevent uploads of .swf and .exe files, which might make it easier for remote authenticated users to conduct cross-site scripting (XSS) attacks via a crafted file, related to the get_allowed_mime_types function in wp-includes/functions.php.
+p831
+sVCVE-2007-2828
+p832
+VCross-site request forgery (CSRF) vulnerability in adsense-deluxe.php in the AdSense-Deluxe 0.x plugin for WordPress allows remote attackers to perform unspecified actions as arbitrary users via unspecified vectors.
+p833
+sVCVE-2008-1060
+p834
+VEval injection vulnerability in modules/execute.php in the Sniplets 1.1.2 and 1.2.2 plugin for WordPress allows remote attackers to execute arbitrary PHP code via the text parameter.
+p835
+sVCVE-2013-6797
+p836
+VCross-site request forgery (CSRF) vulnerability in bluewrench-video-widget.php in the Blue Wrench Video Widget plugin before 2.0.0 for WordPress allows remote attackers to hijack the authentication of administrators for requests that embed arbitrary URLs via the bw_url parameter in the bw-videos page to wp-admin/admin.php, as demonstrated by embedding a URL to a JavaScript file.
+p837
+sVCVE-2011-4568
+p838
+VCross-site scripting (XSS) vulnerability in view/frontend-head.php in the Flowplayer plugin before 1.2.12 for WordPress allows remote attackers to inject arbitrary web script or HTML via the URI.
+p839
+sVCVE-2008-0520
+p840
+VMultiple SQL injection vulnerabilities in main.php in the WassUp plugin 1.4 through 1.4.3 for WordPress allow remote attackers to execute arbitrary SQL commands via the (1) from_date or (2) to_date parameter to spy.php.
+p841
+sVCVE-2013-5917
+p842
+VSQL injection vulnerability in wp-comments-post.php in the NOSpam PTI plugin 2.1 for WordPress allows remote attackers to execute arbitrary SQL commands via the comment_post_ID parameter.
+p843
+sVCVE-2008-0683
+p844
+VSQL injection vulnerability in shiftthis-preview.php in the ShiftThis Newsletter (st_newsletter) plugin for WordPress allows remote attackers to execute arbitrary SQL commands via the newsletter parameter.
+p845
+sVCVE-2008-0682
+p846
+VSQL injection vulnerability in wordspew-rss.php in the Wordspew plugin before 3.72 for Wordpress allows remote attackers to execute arbitrary SQL commands via the id parameter.
+p847
+sVCVE-2013-5918
+p848
+VCross-site scripting (XSS) vulnerability in platinum_seo_pack.php in the Platinum SEO plugin before 1.3.8 for WordPress allows remote attackers to inject arbitrary web script or HTML via the s parameter.
+p849
+sVCVE-2011-5207
+p850
+VCross-site scripting (XSS) vulnerability in admin/OptionsPostsList.php in the TheCartPress plugin for WordPress before 1.1.6 before 2011-12-31 allows remote attackers to inject arbitrary web script or HTML via the tcp_name_post_XXXXX parameter.
+p851
+sVCVE-2006-0986
+p852
+VWordPress 2.0.1 and earlier allows remote attackers to obtain sensitive information via a direct request to (1) default-filters.php, (2) template-loader.php, (3) rss-functions.php, (4) locale.php, (5) wp-db.php, and (6) kses.php in the wp-includes/ directory; and (7) edit-form-advanced.php, (8) admin-functions.php, (9) edit-link-form.php, (10) edit-page-form.php, (11) admin-footer.php, and (12) menu.php in the wp-admin directory; and possibly (13) list directory contents of the wp-includes directory.  NOTE: the vars.php, edit-form.php, wp-settings.php, and edit-form-comment.php vectors are already covered by CVE-2005-4463.  The menu-header.php vector is already covered by CVE-2005-2110.  Other vectors might be covered by CVE-2005-1688.  NOTE: if the typical installation of WordPress does not list any site-specific files to wp-includes, then vector [13] is not an exposure.
+p853
+sVCVE-2006-0985
+p854
+VMultiple cross-site scripting (XSS) vulnerabilities in the "post comment" functionality of WordPress 2.0.1 and earlier allow remote attackers to inject arbitrary web script or HTML via the (1) name, (2) website, and (3) comment parameters.
+p855
+sVCVE-2011-5208
+p856
+VMultiple directory traversal vulnerabilities in the BackWPup plugin before 1.4.1 for WordPress allow remote attackers to read arbitrary files via a .. (dot dot) in the wpabs parameter to (1) app/options-view_log-iframe.php or (2) app/options-runnow-iframe.php.
+p857
+sVCVE-2011-3818
+p858
+VWordPress 2.9.2 and 3.0.4 allows remote attackers to obtain sensitive information via a direct request to a .php file, which reveals the installation path in an error message, as demonstrated by wp-admin/includes/user.php and certain other files.
+p859
+sVCVE-2006-4208
+p860
+VDirectory traversal vulnerability in wp-db-backup.php in Skippy WP-DB-Backup plugin for WordPress 1.7 and earlier allows remote authenticated users with administrative privileges to read arbitrary files via a .. (dot dot) in the backup parameter to edit.php.
+p861
+sVCVE-2007-6318
+p862
+VSQL injection vulnerability in wp-includes/query.php in WordPress 2.3.1 and earlier allows remote attackers to execute arbitrary SQL commands via the s parameter, when DB_CHARSET is set to (1) Big5, (2) GBK, or possibly other character set encodings that support a "\u005c" in a multibyte character.
+p863
+sVCVE-2008-0222
+p864
+VUnrestricted file upload vulnerability in ajaxfilemanager.php in the Wp-FileManager 1.2 plugin for WordPress allows remote attackers to upload and execute arbitrary PHP code via unspecified vectors.
+p865
+sVCVE-2007-1230
+p866
+VMultiple cross-site scripting (XSS) vulnerabilities in wp-includes/functions.php in WordPress before 2.1.2-alpha allow remote attackers to inject arbitrary web script or HTML via (1) the Referer HTTP header or (2) the URI, a different vulnerability than CVE-2007-1049.
+p867
+sVCVE-2007-0109
+p868
+Vwp-login.php in WordPress 2.0.5 and earlier displays different error messages if a user exists or not, which allows remote attackers to obtain sensitive information and facilitates brute force attacks.
+p869
+sVCVE-2012-1205
+p870
+VPHP remote file inclusion vulnerability in relocate-upload.php in Relocate Upload plugin before 0.20 for WordPress allows remote attackers to execute arbitrary PHP code via a URL in the abspath parameter.
+p871
+sVCVE-2007-6677
+p872
+VCross-site scripting (XSS) vulnerability in Peter's Random Anti-Spam Image 0.2.4 and earlier plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via the comment field in the comment form.
+p873
+sVCVE-2012-5856
+p874
+VCross-site scripting (XSS) vulnerability in the Uk Cookie (aka uk-cookie) plugin for WordPress allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.
+p875
+sVCVE-2012-5913
+p876
+VCross-site scripting (XSS) vulnerability in wp-integrator.php in the WordPress Integrator module 1.32 for WordPress allows remote attackers to inject arbitrary web script or HTML via the redirect_to parameter to wp-login.php.
+p877
+sVCVE-2012-4421
+p878
+VThe create_post function in wp-includes/class-wp-atom-server.php in WordPress before 3.4.2 does not perform a capability check, which allows remote authenticated users to bypass intended access restrictions and publish new posts by leveraging the Contributor role and using the Atom Publishing Protocol (aka AtomPub) feature.
+p879
+sVCVE-2012-4422
+p880
+Vwp-admin/plugins.php in WordPress before 3.4.2, when the multisite feature is enabled, does not check for network-administrator privileges before performing a network-wide activation of an installed plugin, which might allow remote authenticated users to make unintended plugin changes by leveraging the Administrator role.
+p881
+sVCVE-2012-4033
+p882
+VMultiple unspecified vulnerabilities in the Zingiri Web Shop plugin before 2.4.0 for WordPress have unknown impact and attack vectors.
+p883
+sVCVE-2013-2707
+p884
+VCross-site request forgery (CSRF) vulnerability in the Login With Ajax plugin before 3.1 for WordPress allows remote attackers to hijack the authentication of arbitrary users for requests that modify this plugin's settings.
+p885
+sVCVE-2013-1808
+p886
+VCross-site scripting (XSS) vulnerability in ZeroClipboard.swf and ZeroClipboard10.swf in ZeroClipboard before 1.0.8, as used in em-shorty, RepRapCalculator, Fulcrum, Django, aCMS, and other products, allows remote attackers to inject arbitrary web script or HTML via the id parameter.  NOTE: this is might be the same vulnerability as CVE-2013-1463. If so, it is likely that CVE-2013-1463 will be REJECTed.
+p887
+sVCVE-2008-4769
+p888
+VDirectory traversal vulnerability in the get_category_template function in wp-includes/theme.php in WordPress 2.3.3 and earlier, and 2.5, allows remote attackers to include and possibly execute arbitrary PHP files via the cat parameter in index.php.  NOTE: some of these details are obtained from third party information.
+p889
+sVCVE-2010-4536
+p890
+VMultiple cross-site scripting (XSS) vulnerabilities in KSES, as used in WordPress before 3.0.4, allow remote attackers to inject arbitrary web script or HTML via vectors related to (1) the &amp; (ampersand) character, (2) the case of an attribute name, (3) a padded entity, and (4) an entity that is not in normalized form.
+p891
+sVCVE-2012-0782
+p892
+V** DISPUTED ** Multiple cross-site scripting (XSS) vulnerabilities in wp-admin/setup-config.php in the installation component in WordPress 3.3.1 and earlier allow remote attackers to inject arbitrary web script or HTML via the (1) dbhost, (2) dbname, or (3) uname parameter. NOTE: the vendor disputes the significance of this issue; also, it is unclear whether this specific XSS scenario has security relevance.
+p893
+s.

@@ -38,13 +38,14 @@ __all__ = ["MessageType", "MessageCode", "MessagePriority",
 
 from ..common import Singleton
 
+
 #------------------------------------------------------------------------------
 #
 # The message protocol per type is the following:
 #
 # Data messages:
 #   message_type = MessageType.MSG_TYPE_DATA
-#   message_code = MessageCode.MSG_DATA
+#   message_code = MessageCode.MSG_DATA_*
 #   message_info = List of Data objects returned by a plugin
 #   plugin_id    = ID of the plugin that returned them
 #   priority     = MessagePriority.MSG_PRIORITY_MEDIUM
@@ -158,6 +159,7 @@ class MessageType(MessageConstants):
 class MessageCode(MessageConstants):
 
     __prefix_for_type = {
+        MessageType.MSG_TYPE_DATA:    "MSG_DATA_",
         MessageType.MSG_TYPE_CONTROL: "MSG_CONTROL_",
         MessageType.MSG_TYPE_RPC:     "MSG_RPC_",
         MessageType.MSG_TYPE_STATUS:  "MSG_STATUS_",
@@ -179,8 +181,6 @@ class MessageCode(MessageConstants):
         """
         if type(message_type) != int:
             raise TypeError("Expected int, got %r instead" % type(message_type))
-        if message_type == MessageType.MSG_TYPE_DATA:
-            return "MSG_DATA" if value == MessageCode.MSG_DATA else None
         try:
             prefix = cls.__prefix_for_type[message_type]
         except KeyError:
@@ -193,7 +193,8 @@ class MessageCode(MessageConstants):
     #--------------------------------------------------------------------------
 
     # All data messages use the same code
-    MSG_DATA                       = 0
+    MSG_DATA_REQUEST               = 0  # Orchestrator -> Plugins
+    MSG_DATA_RESPONSE              = 1  # Plugins -> Orchestrator
 
 
     #--------------------------------------------------------------------------
@@ -215,8 +216,6 @@ class MessageCode(MessageConstants):
     # Audit control
     MSG_CONTROL_START_AUDIT        = 10
     MSG_CONTROL_STOP_AUDIT         = 11
-    ##MSG_CONTROL_PAUSE_AUDIT        = 12
-    ##MSG_CONTROL_CONTINUE_AUDIT     = 13
 
     # UI subsystem
     MSG_CONTROL_START_UI           = 20
@@ -259,6 +258,9 @@ class MessageCode(MessageConstants):
     MSG_RPC_AUDIT_NAMES            = 31
     MSG_RPC_AUDIT_CONFIG           = 32
     MSG_RPC_AUDIT_TIMES            = 33
+    MSG_RPC_AUDIT_STATS            = 34
+    MSG_RPC_AUDIT_LOG              = 35
+    MSG_RPC_AUDIT_SCOPE            = 36
 
     # Shared map API
     MSG_RPC_SHARED_MAP_GET         = 40
@@ -279,11 +281,6 @@ class MessageCode(MessageConstants):
     MSG_RPC_SHARED_HEAP_ADD        = 54
     MSG_RPC_SHARED_HEAP_REMOVE     = 55
 
-    # NIST CPE database API
-    MSG_RPC_CPE_GET_TITLE          = 60
-    MSG_RPC_CPE_RESOLVE            = 61
-    MSG_RPC_CPE_SEARCH             = 62
-
 
     #--------------------------------------------------------------------------
     # Status message codes
@@ -293,6 +290,7 @@ class MessageCode(MessageConstants):
     MSG_STATUS_PLUGIN_BEGIN        = 1
     MSG_STATUS_PLUGIN_END          = 2
     MSG_STATUS_PLUGIN_STEP         = 3
+    MSG_STATUS_AUDIT_ABORTED       = 4
 
 
 #------------------------------------------------------------------------------
@@ -305,7 +303,7 @@ MSG_PRIORITIES = MessagePriority.get_values()
 MSG_TYPES = MessageType.get_values()
 MSG_CODES = MessageCode.get_values()
 
-MSG_DATA_CODES    = {MessageCode.MSG_DATA}
+MSG_DATA_CODES    = {getattr(MessageCode, x) for x in MessageCode.get_names() if x.startswith("MSG_DATA_")}
 MSG_CONTROL_CODES = {getattr(MessageCode, x) for x in MessageCode.get_names() if x.startswith("MSG_CONTROL_")}
 MSG_RPC_CODES     = {getattr(MessageCode, x) for x in MessageCode.get_names() if x.startswith("MSG_RPC_")}
 MSG_STATUS_CODES  = {getattr(MessageCode, x) for x in MessageCode.get_names() if x.startswith("MSG_STATUS_")}

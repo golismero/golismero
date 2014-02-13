@@ -4,9 +4,8 @@ Description = Import the results of a Nikto scan in CSV format.
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
-Copyright   = Copyright (C) 2011-2013 GoLismero Project
+Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License
 
 [Core]
 Module = ../testing/scan/nikto.py
-Class  = NiktoImportPlugin

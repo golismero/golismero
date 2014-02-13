@@ -32,13 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = ["HTML"]
 
-from . import Information
+from . import File
 from .. import identity
 from ...net.web_utils import HTMLParser
+from ...text.text_utils import to_utf8
 
 
 #------------------------------------------------------------------------------
-class HTML(Information):
+class HTML(File):
     """
     HTML document.
 
@@ -96,10 +97,10 @@ class HTML(Information):
         ''
     """
 
-    information_type = Information.INFORMATION_HTML
+    information_type = File.INFORMATION_HTML
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, data):
         """
         :param data: Raw HTML content.
@@ -107,13 +108,19 @@ class HTML(Information):
         """
 
         # Raw HTML content
-        self.__raw_data = data
+        self.__raw_data = to_utf8(data)
 
         # Parent constructor
         super(HTML, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "HTML Content"
+
+
+    #--------------------------------------------------------------------------
     @identity
     def raw_data(self):
         """
@@ -123,7 +130,7 @@ class HTML(Information):
         return self.__raw_data
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def elements(self):
         """
@@ -133,7 +140,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).elements
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def forms(self):
         """
@@ -143,7 +150,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).forms
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def images(self):
         """
@@ -153,17 +160,17 @@ class HTML(Information):
         return HTMLParser(self.raw_data).images
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
-    def links(self):
+    def url_links(self):
         """
         :return: Link tags.
         :rtype: list(HTMLElement)
         """
-        return HTMLParser(self.raw_data).links
+        return HTMLParser(self.raw_data).url_links
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def css_links(self):
         """
@@ -173,7 +180,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).css_links
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def javascript_links(self):
         """
@@ -183,7 +190,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).javascript_links
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def css_embedded(self):
         """
@@ -193,7 +200,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).css_embedded
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def javascript_embedded(self):
         """
@@ -203,7 +210,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).javascript_embedded
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def metas(self):
         """
@@ -213,7 +220,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).metas
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def title(self):
         """
@@ -223,7 +230,7 @@ class HTML(Information):
         return HTMLParser(self.raw_data).title
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @property
     def objects(self):
         """

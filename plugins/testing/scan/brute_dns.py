@@ -33,22 +33,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 from golismero.api.config import Config
 from golismero.api.data.resource.domain import Domain
+from golismero.api.text.text_utils import generate_random_string
 from golismero.api.logger import Logger
 from golismero.api.net.dns import DNS
 from golismero.api.plugin import TestingPlugin
 from golismero.api.text.wordlist import WordListLoader, WordlistNotFound
+from golismero.api.data.vulnerability.information_disclosure.domain_disclosure import DomainDisclosure
 
 
-#--------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 class DNSBruteforcer(TestingPlugin):
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def get_accepted_info(self):
         return [Domain]
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def recv_info(self, info):
 
         # Get the root domain only.
@@ -73,12 +75,41 @@ class DNSBruteforcer(TestingPlugin):
             Logger.log_error_verbose("Wordlist '%s' is not a file." % Config.plugin_args["wordlist"])
             return
 
+        # Load the subdomains whitelist.
+        try:
+            whitelist = WordListLoader.get_advanced_wordlist_as_list(Config.plugin_config["wordlist"])
+        except WordlistNotFound:
+            Logger.log_error_verbose("Wordlist '%s' not found.." % Config.plugin_config["wordlist"])
+            return
+        except TypeError:
+            Logger.log_error_verbose("Wordlist '%s' is not a file." % Config.plugin_config["wordlist"])
+            return
+
+
+        #
+        # Set a base line for dinamyc sub-domains
+        #
+        m_virtual_domains = []
+        for v in (generate_random_string(40) for x in xrange(3)):
+            l_subdomain = ".".join((v, root))
+
+            records = DNS.get_a(l_subdomain, also_CNAME=True)
+
+            for rec in records:
+                if rec.type == "CNAME":
+                    m_virtual_domains.append(rec.target)
+
+        # If 3 subdomains are the same, set the base domain
+        m_base_domain = None
+        if len(set(m_virtual_domains)) == 1:
+            m_base_domain = m_virtual_domains[0]
+
         # Configure the progress notifier.
         self.progress.set_total(len(wordlist))
         self.progress.min_delta = 1  # notify every 1%
 
         # For each subdomain in the wordlist...
-        found = 0
+        found   = 0
         results = []
         visited = set()
         for prefix in wordlist:
@@ -103,6 +134,11 @@ class DNSBruteforcer(TestingPlugin):
             if not records:
                 continue
 
+            # If CNAME is the base domain, skip
+            chk = [True for x in records if x.type == "CNAME" and x.target == m_base_domain]
+            if len(chk) > 0 and all(chk):
+                continue
+
             # We found a subdomain!
             found += 1
             Logger.log_more_verbose(
@@ -111,6 +147,20 @@ class DNSBruteforcer(TestingPlugin):
             # Create the Domain object for the subdomain.
             domain = Domain(name)
             results.append(domain)
+
+            #
+            # Check for Domain disclosure
+            #
+            if prefix not in whitelist:
+                d = DomainDisclosure(name,
+                                     risk        = 0,
+                                     level       = "low",
+                                     title       = "Possible subdomain leak",
+                                     description = "A subdomain was discovered which may be an unwanted information disclosure."
+                                     )
+                d.add_resource(domain)
+                results.append(d)
+
 
             # For each DNs record, grab the address or name.
             # Skip duplicated records.

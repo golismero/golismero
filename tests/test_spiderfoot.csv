@@ -1,0 +1,12 @@
+Updated,Type,Module,Source,Data
+2014-01-13 17:04:31,IP_ADDRESS,sfp_dns,www.example.com,93.184.216.119
+2014-01-13 17:04:30,SEARCH_ENGINE_WEB_CONTENT,sfp_bingsearch,example.com,"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd""><html lang=""es"" xml:lang=""es"" xmlns=""http://www.w3.org/1999/xhtml"" xmlns:Web=""http://schemas.live.com/Web/""><head><meta content=""text/html; charset=utf-8"" http-equiv=""content-type"" /><script type=""text/javascript"">//<![CDATA[
+si_ST=new Date
+//]]></script><script type=""text/javascript"">//<![CDATA[
+sb_gh=function(){return location.hash},sb_sh=function(n){location.hash=n};function _ge(n){return _d.getElementById(n)}_w=window,_d=document,sb_de=_d.documentElement,sb_ie=!!_w.ActiveXObject,sb_i6=sb_ie&&!_w.XMLHttpRequest,sb_st=_w.setTimeout,sb_ct=_w.clearTimeout,sb_gt=function(){return+new Date};sj_evt=new function(){function i(n){return t[n]||(t[n]=[])}var t={},n=this;n.fire=function(n){for(var r=i(n),u=r.e=arguments,t=0;t<r.length;t++)r[t].d?sb_st(sj_wf(r[t],u),r[t].d):r[t](u)},n.bind=function(n,t,r,u){var f=i(n);t.d=u,f.push(t),r&&f.e&&t(f.e)},n.unbind=function(n,i){for(var u=0,r=t[n];r&&u<r.le"
+2014-01-13 17:04:27,INITIAL_TARGET,SpiderFoot UI,example.com,example.com
+2014-01-13 17:04:37,CO_HOSTED_SITE,sfp_bingsearch,93.184.216.119,images.sportchalet.com
+2014-01-13 17:04:30,SUBDOMAIN,sfp_dns,"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd""><html lang=""es"" xml:lang=""es"" xmlns=""http://www.w3.org/1999/xhtml"" xmlns:Web=""http://schemas.live.com/Web/""><head><meta content=""text/html; charset=utf-8"" http-equiv=""content-type"" /><script type=""text/javascript"">//<![CDATA[
+si_ST=new Date
+//]]></script><script type=""text/javascript"">//<![CDATA[
+sb_gh=function(){return location.hash},sb_sh=function(n){location.hash=n};function _ge(n){return _d.getElementById(n)}_w=window,_d=document,sb_de=_d.documentElement,sb_ie=!!_w.ActiveXObject,sb_i6=sb_ie&&!_w.XMLHttpRequest,sb_st=_w.setTimeout,sb_ct=_w.clearTimeout,sb_gt=function(){return+new Date};sj_evt=new function(){function i(n){return t[n]||(t[n]=[])}var t={},n=this;n.fire=function(n){for(var r=i(n),u=r.e=arguments,t=0;t<r.length;t++)r[t].d?sb_st(sj_wf(r[t],u),r[t].d):r[t](u)},n.bind=function(n,t,r,u){var f=i(n);t.d=u,f.push(t),r&&f.e&&t(f.e)},n.unbind=function(n,i){for(var u=0,r=t[n];r&&u<r.le",www.example.com

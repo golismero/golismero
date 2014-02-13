@@ -51,7 +51,7 @@ from golismero.api.data.information.dns import *
 from golismero.main.testing import PluginTester
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def test_all_registers():
     with PluginTester():
 
@@ -61,6 +61,7 @@ def test_all_registers():
 
         for l_host in HOSTS:
 
+            print
             print "Host: %s" % l_host
             print "^" * (len(l_host) + 7)
 
@@ -68,27 +69,24 @@ def test_all_registers():
 
                 r = DNS.resolve(l_host, l_dns_type)
                 if r:
+                    print
                     print "   Type: " + l_dns_type
                     print "   " + ("=" * (len(l_dns_type ) + 6))
 
-                    for i, c in enumerate(r):
-                        l_properties = [x for x in c.__dict__ if "__" in x]
-
-                        for l_prop in l_properties:
-                            l_p = l_prop.find("__") + 2
-                            print "     - %s: %s" % (l_prop[l_p:], getattr(c, l_prop))
-
-                    print "   " + ("-" * 30)
+                    for c in r:
+                        for k, v in c.to_dict().iteritems():
+                            print "     - %s: %s" % (k, v)
+                        print "   " + ("-" * 30)
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def test_zone_transfer():
     with PluginTester():
         print DNS.zone_transfer("173.194.34.224")
         print DNS.zone_transfer("zonetransfer.me", ["ns12.zoneedit.com"])
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def test_a_aaaa():
     with PluginTester():
 
@@ -107,7 +105,7 @@ def test_a_aaaa():
             print ""
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def test_ptr():
     """
     Try to make an inverse resolution
@@ -121,7 +119,7 @@ def test_ptr():
                 print t.target
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 if __name__ == "__main__":
     print
     print "-" * 79

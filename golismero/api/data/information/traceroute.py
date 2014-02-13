@@ -32,11 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = ["Traceroute", "Hop"]
 
-from . import Information
+from . import Fingerprint
 from .. import identity
 from ..resource.ip import IP
 from ..resource.domain import Domain
 from ...config import Config
+from ...text.text_utils import to_utf8
 
 from time import time
 
@@ -60,6 +61,8 @@ class Hop (object):
         :param hostname: Hostname for this IP address. Optional.
         :type hostname: str | None
         """
+        address  = to_utf8(address)
+        hostname = to_utf8(hostname)
         if type(address) is not str:
             raise TypeError("Expected string, got %r instead" % type(address))
         if hostname is not None and type(hostname) is not str:
@@ -67,6 +70,21 @@ class Hop (object):
         self.__address  = address
         self.__rtt      = float(rtt)
         self.__hostname = hostname
+
+
+    #--------------------------------------------------------------------------
+    def to_dict(self):
+        return {
+            "address":  self.__address,
+            "rtt":      self.__rtt,
+            "hostname": self.__hostname,
+        }
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "Network Route"
 
 
     #--------------------------------------------------------------------------
@@ -100,12 +118,12 @@ class Hop (object):
 
 
 #------------------------------------------------------------------------------
-class Traceroute(Information):
+class Traceroute(Fingerprint):
     """
     Traceroute results.
     """
 
-    information_type = Information.INFORMATION_TRACEROUTE
+    information_type = Fingerprint.INFORMATION_TRACEROUTE
 
 
     #--------------------------------------------------------------------------
@@ -143,7 +161,7 @@ class Traceroute(Information):
             self.__protocol = protocol
             hops = tuple(hops)
             for hop in hops:
-                assert isinstance(hop, Hop), type(hop)
+                assert hop is None or isinstance(hop, Hop), type(hop)
             self.__hops = hops
         except Exception:
             ##raise # XXX DEBUG
@@ -156,7 +174,26 @@ class Traceroute(Information):
         self.add_resource(ip)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    def to_dict(self):
+        d = super(Traceroute, self).to_dict()
+        d["hops"] = [
+            (h.to_dict() if h is not None else None)
+            for h in self.__hops
+        ]
+        return d
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def display_properties(self):
+        props = super(Traceroute, self).display_properties
+        del props["[DEFAULT]"]["Hops"]
+        props["[DEFAULT]"]["Route"] = str(self)
+        return props
+
+
+    #--------------------------------------------------------------------------
     @identity
     def address(self):
         """
@@ -166,7 +203,7 @@ class Traceroute(Information):
         return self.__address
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def port(self):
         """
@@ -176,7 +213,7 @@ class Traceroute(Information):
         return self.__port
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def protocol(self):
         """
@@ -187,7 +224,7 @@ class Traceroute(Information):
         return self.__protocol
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def hops(self):
         """
@@ -198,7 +235,7 @@ class Traceroute(Information):
         return self.__hops
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     @identity
     def timestamp(self):
         """
@@ -208,7 +245,7 @@ class Traceroute(Information):
         return self.__timestamp
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __str__(self):
         if self.hops:
             s = "Route to %s (%s %s):\n\n"
@@ -216,9 +253,15 @@ class Traceroute(Information):
             s = "No route to %s (%s %s)."
         s %= (self.address, self.protocol, self.port)
         if self.hops:
-            f = "%%%dd %%15s %%4.2f %%s" % len(str(len(self.hops)))
+            w = len(str(len(self.hops)))
+            f = "%%%dd %%15s %%4.2f %%s" % w
+            m = "%%%dd             ***     *** ***" % w
             s += "\n".join(
-                f % (i, h.address, h.rtt, h.hostname)
+                (
+                    f % (i, h.address, h.rtt, h.hostname)
+                    if h is not None
+                    else m % i
+                )
                 for i, h in enumerate(self.hops)
             )
         return s
@@ -229,8 +272,9 @@ class Traceroute(Information):
     def discovered(self):
         result = []
         for hop in self.hops:
-            if hop.address in Config.audit_scope:
-                result.append( IP(hop.address) )
-            if hop.hostname and hop.hostname in Config.audit_scope:
-                result.append( Domain(hop.hostname) )
+            if hop is not None:
+                if hop.address in Config.audit_scope:
+                    result.append( IP(hop.address) )
+                if hop.hostname and hop.hostname in Config.audit_scope:
+                    result.append( Domain(hop.hostname) )
         return result

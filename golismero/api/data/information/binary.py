@@ -32,36 +32,57 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 __all__ = ["Binary"]
 
-from . import Information
+from . import File
 from .. import identity
 
 
 #------------------------------------------------------------------------------
-class Binary(Information):
+class Binary(File):
     """
     Binary data.
     """
 
-    information_type = Information.INFORMATION_BINARY
+    information_type = File.INFORMATION_BINARY
 
 
-    #----------------------------------------------------------------------
-    def __init__(self, data):
+    #--------------------------------------------------------------------------
+    def __init__(self, data, content_type = "application/octet-stream"):
         """
         :param data: Raw bytes.
         :type data: str
-        """
-        if type(data) is not str:
-            raise TypeError("Expected string, got %r instead" % type(data))
 
-        # Raw bytes.
-        self.__raw_data = data
+        :param content_type: MIME type.
+        :type content_type: str
+        """
+
+        # Check the argument types.
+        if type(data) is not str:
+            raise TypeError(
+                "Expected string, got %r instead" % type(data))
+        if type(content_type) is not str:
+            raise TypeError(
+                "Expected string, got %r instead" % type(content_type))
+        if "/" not in content_type:
+            raise ValueError("Invalid MIME type: %r" % content_type)
+        if ";" in content_type and content_type.find(";") < content_type.find("/"):
+            raise ValueError("Invalid MIME type: %r" % content_type)
+        # TODO: canonicalize the MIME type
+
+        # Save the properties.
+        self.__raw_data     = data
+        self.__content_type = content_type
 
         # Parent constructor.
         super(Binary, self).__init__()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
+    @property
+    def display_name(self):
+        return "Binary Data"
+
+
+    #--------------------------------------------------------------------------
     @identity
     def raw_data(self):
         """
@@ -69,3 +90,41 @@ class Binary(Information):
         :rtype: str
         """
         return self.__raw_data
+
+
+    #--------------------------------------------------------------------------
+    @identity
+    def content_type(self):
+        """
+        :returns: MIME type.
+        :rtype: str
+        """
+        return self.__content_type
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def mime_type(self):
+        """
+        :returns: First component of the MIME type.
+        :rtype: str
+        """
+        content_type = self.content_type
+        content_type = content_type[ : content_type.find("/") ]
+        content_type = content_type.lower()
+        return content_type
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def mime_subtype(self):
+        """
+        :returns: Second component of the MIME type.
+        :rtype: str
+        """
+        content_type = self.content_type
+        content_type = content_type[ content_type.find("/") + 1 : ]
+        if ";" in content_type:
+            content_type = content_type[ : content_type.find(";") ]
+        content_type = content_type.lower()
+        return content_type

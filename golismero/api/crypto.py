@@ -35,7 +35,7 @@ __all__ = ["guess_hash", "validate_hash", "calculate_shannon_entropy"]
 from math import log
 
 
-#----------------------------------------------------------------------
+#------------------------------------------------------------------------------
 def calculate_shannon_entropy(string):
     """
     Calculates the Shannon entropy for the given string.

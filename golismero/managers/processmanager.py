@@ -40,6 +40,7 @@ __all__ = ["ProcessManager", "PluginContext"]
 from ..api.config import Config
 from ..api.data import LocalDataCache
 from ..api.localfile import LocalFile
+from ..api.logger import Logger
 from ..api.net.cache import NetworkCache
 from ..api.net.http import HTTP
 from ..messaging.codes import MessageType, MessageCode, MessagePriority
@@ -49,9 +50,11 @@ from imp import load_source
 from multiprocessing import Manager
 from os import getpid
 from thread import get_ident
+from threading import Timer
 from traceback import format_exc, print_exc, format_exception_only, format_list
 from warnings import catch_warnings, simplefilter
 
+import socket
 import sys
 
 # Make some runtime patches to the multiprocessing module.
@@ -109,7 +112,11 @@ def do_nothing(*args, **kwargs):
 # See: http://docs.python.org/2/library/multiprocessing.html#windows
 def launcher(queue, max_concurrent, refresh_after_tasks):
     return _launcher(queue, max_concurrent, refresh_after_tasks)
+
 def _launcher(queue, max_concurrent, refresh_after_tasks):
+
+    # Initialize this worker process.
+    _init_worker()
 
     # Instance the pool manager.
     pool = PluginPoolManager(max_concurrent, refresh_after_tasks)
@@ -126,7 +133,8 @@ def _launcher(queue, max_concurrent, refresh_after_tasks):
             try:
                 item = queue.get()
             except:
-                # If we reached this point we can assume the parent process is dead.
+                # If we reached this point we can assume
+                # the parent process is dead.
                 wait = False
                 exit(1)
 
@@ -144,7 +152,8 @@ def _launcher(queue, max_concurrent, refresh_after_tasks):
         try:
             pool.stop(wait)
         except:
-            # If we reached this point we can assume the parent process is dead.
+            # If we reached this point we can assume
+            # the parent process is dead.
             exit(1)
 
 # Serializable bootstrap function to run plugins in subprocesses.
@@ -152,115 +161,45 @@ def _launcher(queue, max_concurrent, refresh_after_tasks):
 # See: http://docs.python.org/2/library/multiprocessing.html#windows
 def bootstrap(context, func, args, kwargs):
     return _bootstrap(context, func, args, kwargs)
+
+_do_notify_end = False
+
 def _bootstrap(context, func, args, kwargs):
+    global _do_notify_end
     try:
-        do_notify_end = False
+        _do_notify_end = False
         try:
             try:
                 plugin_warnings = []
                 try:
 
                     # Catch all warnings.
+                    # TODO: hook stdout and stderr to catch prints.
                     with catch_warnings(record=True) as plugin_warnings:
                         simplefilter("always")
 
                         # Configure the plugin.
                         Config._context = context
 
-                        # If the plugin receives a Data object...
-                        if func == "recv_info":
+                        # Set the plugin execution timeout, if any.
+                        kill_timer = None
+                        if Config.audit_config.plugin_timeout:
+                            kill_timer = Timer(
+                                Config.audit_config.plugin_timeout,
+                                _plugin_killer, (context,)
+                            )
+                            kill_timer.start()
 
-                            # Get the data sent to the plugin.
-                            try:
-                                input_data = kwargs["info"]
-                            except KeyError:
-                                input_data = args[0]
-
-                            # Abort if the data is out of scope for the current audit.
-                            if not input_data.is_in_scope():
-                                return
-
-                            # Save the current crawling depth.
-                            if hasattr(input_data, "depth"):
-                                context._depth = input_data.depth
-
-                                # Check we didn't exceed the maximum depth.
-                                max_depth = context.audit_config.depth
-                                if max_depth is not None and context._depth > max_depth:
-                                    return
-
-                        # TODO: hook stdout and stderr to catch print statements
-
-                        # Initialize the private file API.
-                        LocalFile._update_plugin_path()
-
-                        # Clear the HTTP connection pool.
-                        HTTP._initialize()
-
-                        # Clear the local network cache for this process.
-                        NetworkCache._clear_local_cache()
-
-                        # Initialize the local data cache for this run.
-                        LocalDataCache.on_run()
-                        if func == "recv_info":
-                            LocalDataCache.on_create(input_data)
-
-                        # Try to get the plugin from the cache.
-                        cache_key = (context.plugin_module, context.plugin_class)
                         try:
-                            cls = plugin_class_cache[cache_key]
 
-                        # If not in the cache, load the class.
-                        except KeyError:
+                            # Run the plugin.
+                            _bootstrap_inner(context, func, args, kwargs)
 
-                            # Load the plugin module.
-                            mod = load_source(
-                                "_plugin_tmp_" + context.plugin_class.replace(".", "_"),
-                                context.plugin_module)
-
-                            # Get the plugin class.
-                            cls = getattr(mod, context.plugin_class)
-
-                            # Cache the plugin class.
-                            plugin_class_cache[cache_key] = cls
-
-                        # Instance the plugin.
-                        instance = cls()
-
-                        # Notify the Orchestrator of the plugin execution start.
-                        context.send_msg(
-                            message_type = MessageType.MSG_TYPE_STATUS,
-                            message_code = MessageCode.MSG_STATUS_PLUGIN_BEGIN,
-                        )
-                        do_notify_end = True
-
-                        # Call the callback method.
-                        result = None
-                        try:
-                            result = getattr(instance, func)(*args, **kwargs)
                         finally:
 
-                            # Return value is a list of data for recv_info().
-                            if func == "recv_info":
-
-                                # Validate and sanitize the result data.
-                                result = LocalDataCache.on_finish(result, input_data)
-
-                                # Send the result data to the Orchestrator.
-                                if result:
-                                    try:
-                                        context.send_msg(
-                                            message_type = MessageType.MSG_TYPE_DATA,
-                                            message_code = MessageCode.MSG_DATA,
-                                            message_info = result,
-                                        )
-                                    except Exception, e:
-                                        context.send_msg(
-                                            message_type = MessageType.MSG_TYPE_CONTROL,
-                                            message_code = MessageCode.MSG_CONTROL_ERROR,
-                                            message_info = (str(e), format_exc()),
-                                                priority = MessagePriority.MSG_PRIORITY_HIGH,
-                                        )
+                            # Cancel the plugin execution timeout, if any.
+                            if kill_timer is not None:
+                                kill_timer.cancel()
 
                 finally:
 
@@ -294,12 +233,13 @@ def _bootstrap(context, func, args, kwargs):
         finally:
 
             # Send back an ACK.
-            context.send_ack(do_notify_end)
+            context.send_ack(_do_notify_end)
 
             # Reset the current crawling depth.
             context._depth = -1
 
-    # On keyboard interrupt or fatal error, tell the Orchestrator we need to stop.
+    # On keyboard interrupt or fatal error,
+    # tell the Orchestrator we need to stop.
     except:
 
         # Send a message to the Orchestrator to stop.
@@ -319,6 +259,165 @@ def _bootstrap(context, func, args, kwargs):
 
         # If we reached this point we can assume the parent process is dead.
         exit(1)
+
+def _bootstrap_inner(context, func, args, kwargs):
+    global _do_notify_end
+
+    # If the plugin receives a Data object...
+    if func == "recv_info":
+
+        # Get the data sent to the plugin.
+        try:
+            input_data = kwargs["info"]
+        except KeyError:
+            input_data = args[0]
+
+        # Abort if the data is out of scope
+        # for the current audit.
+        if not input_data.is_in_scope():
+            ##Logger.log_error_more_verbose(
+            ##    "Skipped data out of scope: %s" % input_data.identity)
+            return
+
+        # Save the current crawling depth.
+        if hasattr(input_data, "depth"):
+            context._depth = input_data.depth
+
+            # Check we didn't exceed the maximum depth.
+            max_depth = context.audit_config.depth
+            if max_depth is not None and max_depth < context._depth:
+                Logger.log_error_more_verbose(
+                    "Maximum crawling depth exceeded! Skipped: %s" %
+                    input_data.identity)
+                return
+
+    # Set the default socket timeout.
+    # Note: due to a known bug in Python versions prior to 2.7.5 we can't set
+    # a default timeline because it makes the multiprocessing module
+    # misbehave. See: http://hg.python.org/cpython/rev/4e85e4743757
+    if sys.version_info[:3] >= (2,7,5):
+        socket.setdefaulttimeout(5.0)
+
+    # Initialize the private file API.
+    LocalFile._update_plugin_path()
+
+    # Clear the HTTP connection pool.
+    HTTP._initialize()
+
+    # Clear the local network cache for this process.
+    NetworkCache._clear_local_cache()
+
+    # Initialize the local data cache for this run.
+    LocalDataCache.on_run()
+    if func == "recv_info":
+        LocalDataCache.on_create(input_data)
+
+    # Try to get the plugin from the cache.
+    cache_key = (context.plugin_module, context.plugin_class)
+    try:
+        cls = plugin_class_cache[cache_key]
+
+    # If not in the cache, load the class.
+    except KeyError:
+
+        # Load the plugin module.
+        mod = load_source(
+            "_plugin_tmp_" + context.plugin_class.replace(".", "_"),
+            context.plugin_module)
+
+        # Get the plugin class.
+        cls = getattr(mod, context.plugin_class)
+
+        # Cache the plugin class.
+        plugin_class_cache[cache_key] = cls
+
+    # Instance the plugin.
+    instance = cls()
+
+    # Notify the Orchestrator of the plugin start.
+    context.send_msg(
+        message_type = MessageType.MSG_TYPE_STATUS,
+        message_code = MessageCode.MSG_STATUS_PLUGIN_BEGIN,
+    )
+    _do_notify_end = True
+
+    # Call the callback method.
+    result = None
+    try:
+        result = getattr(instance, func)(*args, **kwargs)
+    finally:
+
+        # Return value is a list of data for recv_info().
+        if func == "recv_info":
+
+            # Validate and sanitize the result data.
+            result = LocalDataCache.on_finish(result, input_data)
+
+            # Send the result data to the Orchestrator.
+            if result:
+                try:
+                    context.send_msg(
+                        message_type = MessageType.MSG_TYPE_DATA,
+                        message_code = MessageCode.MSG_DATA_RESPONSE,
+                        message_info = result,
+                    )
+                except Exception, e:
+                    context.send_msg(
+                        message_type = MessageType.MSG_TYPE_CONTROL,
+                        message_code = MessageCode.MSG_CONTROL_ERROR,
+                        message_info = (str(e), format_exc()),
+                            priority = MessagePriority.MSG_PRIORITY_HIGH,
+                    )
+
+
+#------------------------------------------------------------------------------
+def _plugin_killer(context):
+    """
+    Internally used function that kills a plugin
+    when the execution timeout has been reached.
+
+    :param context: Plugin execution context.
+    :type context: PluginContext
+    """
+
+    try:
+
+        try:
+
+            # Tell the Orchestrator there's been an error.
+            context.send_msg(
+                message_type = MessageType.MSG_TYPE_CONTROL,
+                message_code = MessageCode.MSG_CONTROL_ERROR,
+                message_info = ("Execution timeout reached.", ""),
+                    priority = MessagePriority.MSG_PRIORITY_HIGH,
+            )
+
+        finally:
+
+            # Send back an ACK.
+            context.send_ack(_do_notify_end)
+
+            # Reset the current crawling depth.
+            context._depth = -1
+
+    finally:
+
+        # Kill the current process.
+        exit(1)
+
+
+#------------------------------------------------------------------------------
+def _init_worker():
+    """
+    Initializer for pooled processes.
+    """
+
+    # Try to lower the CPU usage priority as much as possible.
+    try:
+        import posix
+        posix.nice(99)
+    except Exception:
+        pass
 
 
 #------------------------------------------------------------------------------
@@ -340,19 +439,24 @@ class PluginContext (object):
             This argument is mandatory.
         :type msg_queue: Queue
 
-        :param ack_identity: Identity hash of the current input data, or None if not running a plugin.
+        :param ack_identity: Identity hash of the current input data,
+            or None if not running a plugin.
         :type ack_identity: str | None
 
-        :param plugin_info: Plugin information, or None if not running a plugin.
+        :param plugin_info: Plugin information,
+            or None if not running a plugin.
         :type plugin_info: PluginInfo | None
 
-        :param audit_name: Name of the audit, or None if not running an audit.
+        :param audit_name: Name of the audit,
+            or None if not running an audit.
         :type audit_name: str | None
 
-        :param audit_config: Parameters of the audit, or None if not running an audit.
+        :param audit_config: Parameters of the audit,
+            or None if not running an audit.
         :type audit_config: AuditConfig | None
 
-        :param audit_scope: Scope of the audit, or None if not running an audit.
+        :param audit_scope: Scope of the audit,
+            or None if not running an audit.
         :type audit_scope: AuditScope | None
 
         :param orchestrator_pid: Process ID of the Orchestrator.
@@ -408,6 +512,8 @@ class PluginContext (object):
         :returns: Identity hash of the current input data, or None if not running a plugin.
         :rtype: str | None
         """
+        # do not break the line in this docstring: due to a bug in Sphinx,
+        # we can't break lines in a :returns: tag.
         return self.__ack_identity
 
     @property
@@ -433,6 +539,8 @@ class PluginContext (object):
         :returns: Module where the plugin is to be loaded from, or None if not running a plugin.
         :rtype: str | None
         """
+        # do not break the line in this docstring: due to a bug in Sphinx,
+        # we can't break lines in a :returns: tag.
         if self.__plugin_info:
             return self.__plugin_info.plugin_module
 
@@ -483,7 +591,7 @@ class PluginContext (object):
         return self.__orchestrator_tid
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def is_local(self):
         """
         :returns: True if we're running inside the Orchestrator's
@@ -496,7 +604,7 @@ class PluginContext (object):
         )
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def send_ack(self, do_notify_end):
         """
         Send ACK messages from the plugins to the Orchestrator.
@@ -511,7 +619,7 @@ class PluginContext (object):
                           priority = MessagePriority.MSG_PRIORITY_LOW)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def send_status(self, progress = None):
         """
         Send status updates from the plugins to the Orchestrator.
@@ -529,7 +637,8 @@ class PluginContext (object):
             if type(progress) in (int, long):
                 progress = float(progress)
             elif type(progress) is not float:
-                raise TypeError("Expected float, got %r instead", type(progress))
+                raise TypeError(
+                    "Expected float, got %r instead", type(progress))
             if progress < 0.0:
                 progress = 0.0
             elif progress > 100.0:
@@ -542,7 +651,7 @@ class PluginContext (object):
                           priority = MessagePriority.MSG_PRIORITY_MEDIUM)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def send_msg(self, message_type = 0,
                        message_code = 0,
                        message_info = None,
@@ -550,16 +659,20 @@ class PluginContext (object):
         """
         Send messages from the plugins to the Orchestrator.
 
-        :param message_type: Message type. Must be one of the constants from MessageType.
+        :param message_type: Message type.
+            Must be one of the constants from MessageType.
         :type mesage_type: int
 
-        :param message_code: Message code. Must be one of the constants from MessageCode.
+        :param message_code: Message code.
+            Must be one of the constants from MessageCode.
         :type message_code: int
 
-        :param message_info: The payload of the message. Its type depends on the message type and code.
+        :param message_info: The payload of the message.
+            Its type depends on the message type and code.
         :type message_info: \\*
 
-        :param priority: Priority level. Must be one of the constants from MessagePriority.
+        :param priority: Priority level.
+            Must be one of the constants from MessagePriority.
         :type priority: int
         """
 
@@ -584,7 +697,7 @@ class PluginContext (object):
         self.send_raw_msg(message)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def send_raw_msg(self, message):
         """
         Send raw messages from the plugins to the Orchestrator.
@@ -592,6 +705,10 @@ class PluginContext (object):
         :param message: Message to send.
         :type message: Message
         """
+
+        ### XXX DEBUG
+        ##with open("message-%d.log" % getpid(), "a") as f:
+        ##    f.write("[%s] Got %r\n\n" % (ctime(), message))
 
         # Hack for urgent messages: if we're in the same process
         # as the Orchestrator, skip the queue and dispatch them now.
@@ -610,7 +727,7 @@ class PluginContext (object):
             exit(1)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def remote_call(self, rpc_code, *args, **kwargs):
         """
         Make synchronous remote procedure calls on the Orchestrator.
@@ -649,15 +766,17 @@ class PluginContext (object):
         if not success:
             exc_type, exc_value, tb_list = response
             try:
-                sys.stderr.writelines( format_exception_only(exc_type, exc_value) )
-                sys.stderr.writelines( format_list(tb_list) )
+                sys.stderr.writelines(
+                    format_exception_only(exc_type, exc_value) )
+                sys.stderr.writelines(
+                    format_list(tb_list) )
             except Exception:
                 pass
             raise response[0], response[1]
         return response
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def async_remote_call(self, rpc_code, *args, **kwargs):
         """
         Make asynchronous remote procedure calls on the Orchestrator.
@@ -674,13 +793,14 @@ class PluginContext (object):
                           priority = MessagePriority.MSG_PRIORITY_HIGH)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def bulk_remote_call(self, rpc_code, *arguments):
         """
         Make synchronous bulk remote procedure calls on the Orchestrator.
 
         The interface and behavior mimics that of the built-in map() function.
-        For more details see: http://docs.python.org/2/library/functions.html#map
+        For more details see:
+        http://docs.python.org/2/library/functions.html#map
 
         :param rpc_code: RPC code.
         :type rpc_code: int
@@ -689,20 +809,22 @@ class PluginContext (object):
         :rtype: list
         """
 
-        # Convert all the iterables to tuples to make sure they're serializable.
+        # Convert all the iterables to tuples
+        # to make sure they're serializable.
         arguments = tuple( tuple(x) for x in arguments )
 
         # Send the MSG_RPC_BULK call and return the response.
         return self.remote_call(MessageCode.MSG_RPC_BULK, rpc_code, *arguments)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def async_bulk_remote_call(self, rpc_code, *arguments):
         """
         Make asynchronous bulk remote procedure calls on the Orchestrator.
 
         The interface and behavior mimics that of the built-in map() function.
-        For more details see: http://docs.python.org/2/library/functions.html#map
+        For more details see:
+        http://docs.python.org/2/library/functions.html#map
 
         There's no return value, since we're not waiting for a response.
 
@@ -710,7 +832,8 @@ class PluginContext (object):
         :type rpc_code: int
         """
 
-        # Convert all the iterables to tuples to make sure they're serializable.
+        # Convert all the iterables to tuples
+        # to make sure they're serializable.
         arguments = tuple( tuple(x) for x in arguments )
 
         # Send the MSG_RPC_BULK call.
@@ -724,13 +847,15 @@ class PluginPoolManager (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, max_process, refresh_after_tasks):
         """
         :param max_process: Maximum number of processes to create.
         :type max_process: int
 
-        :param refresh_after_tasks: Maximum number of function calls to make before refreshing a subprocess.
+        :param refresh_after_tasks:
+            Maximum number of function calls to make
+            before refreshing a subprocess.
         :type refresh_after_tasks: int
         """
         self.__max_processes       = max_process
@@ -739,7 +864,7 @@ class PluginPoolManager (object):
         self.__pool = None
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def run_plugin(self, context, func, args, kwargs):
         """
         Run a plugin in a pooled process.
@@ -771,7 +896,7 @@ class PluginPoolManager (object):
             Config._context = old_context
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start(self):
         """
         Start the process manager.
@@ -785,6 +910,7 @@ class PluginPoolManager (object):
 
                 # Create the process pool.
                 self.__pool = Pool(
+                    initializer = _init_worker,
                     processes = self.__max_processes,
                     maxtasksperchild = self.__refresh_after_tasks)
 
@@ -798,12 +924,13 @@ class PluginPoolManager (object):
                 self.__pool = None
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def stop(self, wait = True):
         """
         Stop the process manager.
 
-        :param wait: True to wait for the subprocesses to finish, False to kill them.
+        :param wait: True to wait for the subprocesses to finish,
+            False to kill them.
         :type wait: bool
         """
 
@@ -831,13 +958,15 @@ class PluginLauncher (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, max_process, refresh_after_tasks):
         """
         :param max_process: Maximum number of processes to create.
         :type max_process: int
 
-        :param refresh_after_tasks: Maximum number of function calls to make before refreshing a subprocess.
+        :param refresh_after_tasks:
+                Maximum number of function calls to make
+                before refreshing a subprocess.
         :type refresh_after_tasks: int
         """
 
@@ -857,7 +986,7 @@ class PluginLauncher (object):
         self.__alive = True
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def run_plugin(self, context, func, args, kwargs):
         """
         Run a plugin in a pooled process.
@@ -892,7 +1021,7 @@ class PluginLauncher (object):
             exit(1)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start(self):
         """
         Start the plugin launcher.
@@ -906,12 +1035,13 @@ class PluginLauncher (object):
         self.__process.start()
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def stop(self, wait = True):
         """
         Stop the plugin launcher.
 
-        :param wait: True to wait for the subprocesses to finish, False to kill them.
+        :param wait: True to wait for the subprocesses to finish,
+            False to kill them.
         :type wait: bool
         """
 
@@ -952,7 +1082,7 @@ class ProcessManager (object):
     """
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def __init__(self, orchestrator):
         """
         :param orchestrator: Orchestrator to send messages to.
@@ -963,14 +1093,16 @@ class ProcessManager (object):
 
         config = orchestrator.config
 
-        # Maximum number of processes to create
-        self.__max_processes       = getattr(config, "max_concurrent",      None)
+        # Maximum number of processes to create.
+        self.__max_processes = getattr(config, "max_concurrent", None)
 
-        # Maximum number of function calls to make before refreshing a subprocess
-        self.__refresh_after_tasks = getattr(config, "refresh_after_tasks", None)
+        # Maximum number of function calls to make
+        # before refreshing a subprocess.
+        self.__refresh_after_tasks = getattr(
+            config, "refresh_after_tasks", None)
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def run_plugin(self, context, func, args, kwargs):
         """
         Run a plugin in a pooled process.
@@ -1000,7 +1132,7 @@ class ProcessManager (object):
             Config._context = old_context
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def start(self):
         """
         Start the process manager.
@@ -1028,12 +1160,13 @@ class ProcessManager (object):
                 self.__launcher = None
 
 
-    #----------------------------------------------------------------------
+    #--------------------------------------------------------------------------
     def stop(self, wait = True):
         """
         Stop the process manager.
 
-        :param wait: True to wait for the subprocesses to finish, False to kill them.
+        :param wait: True to wait for the subprocesses to finish,
+            False to kill them.
         :type wait: bool
         """
 
