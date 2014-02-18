@@ -92,7 +92,7 @@ class SpiderFootPlugin(TestingPlugin):
             q = content.find("</b>", p)
             assert q > p, "Cannot determine SpiderFoot version."
             version = content[p:q]
-            assert map(int, version.split(".")) >= (2, 1, 1), \
+            assert tuple(map(int, version.split("."))) >= (2, 1, 1), \
                 "GoLismero requires SpiderFoot 2.1.1 or newer," \
                 " found version %s instead." % version
         except AssertionError:
