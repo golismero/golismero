@@ -41,9 +41,11 @@ from warnings import warn
 
 try:
     # The fastest JSON parser available for Python.
+    # Too bad it has a different interface!
     from cjson import encode
-    dumps = encode
-    def dump(obj, fp):
+    def dumps(obj, **kwargs):
+        return encode(obj)
+    def dump(obj, fp, **kwargs):
         fp.write( encode(obj) )
 except ImportError:
     try:
