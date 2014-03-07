@@ -123,8 +123,6 @@ class Traceroute(Fingerprint):
     Traceroute results.
     """
 
-    information_type = Fingerprint.INFORMATION_TRACEROUTE
-
 
     #--------------------------------------------------------------------------
     def __init__(self, ip, port, protocol, hops, timestamp = None):

@@ -33,12 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = ["AuditNotifier", "OrchestratorNotifier"]
 
 from ..api.config import Config
-from ..api.data import Data
+from ..api.data import Data, Relationship
 from ..api.plugin import Plugin
+from ..managers.pluginmanager import SwitchToPlugin
 from .message import Message
 from .codes import MessageType, MessageCode, MessagePriority
 
 from collections import defaultdict
+from inspect import isclass
 from traceback import format_exc
 from warnings import warn
 
@@ -62,8 +64,13 @@ class AbstractNotifier (object):
         self._notification_info_all = []
 
         # Info message notification mapping for plugins.
-        # dict(info_type -> list(str))
-        self._notification_info_map = defaultdict(list)
+        # dict(str -> str)
+        self._notification_info_map = defaultdict(set)
+
+        # Relationship notification mappings for plugins.
+        # dict(str -> str)
+        self._notification_rel_map_left  = defaultdict(set)
+        self._notification_rel_map_right = defaultdict(set)
 
         # Control message notification mapping for plugins.
         # list(Plugin)
@@ -79,10 +86,11 @@ class AbstractNotifier (object):
         """
         Release all resources held by this notifier.
         """
-        self._notification_info_all = None
-        self._notification_info_map = None
-        self._notification_msg_list = None
-        self._map_id_to_plugin      = None
+        self._notification_msg_list = []
+        self._notification_info_map.clear()
+        self._notification_rel_map_left.clear()
+        self._notification_rel_map_right.clear()
+        self._map_id_to_plugin.clear()
 
 
     #--------------------------------------------------------------------------
@@ -114,48 +122,56 @@ class AbstractNotifier (object):
         # Add the plugin to the names map.
         self._map_id_to_plugin[plugin_id] = plugin
 
-        # Get the info types accepted by this plugin.
-        m_message_types = plugin.get_accepted_info()
-        m_message_types = self.__filter_accepted_info(m_message_types)
-
-        # Special value 'None' means all information types.
-        if m_message_types is None:
-            self._notification_info_all.append(plugin_id)
-
-        # Otherwise, it's a set of data subtype constants.
-        else:
-
-            # Register the plugin for each accepted type.
-            for l_type in m_message_types:
-                self._notification_info_map[l_type].append(plugin_id)
-
-        # UI and Global plugins can receive control messages.
-        if plugin.PLUGIN_TYPE in (Plugin.PLUGIN_TYPE_UI, Plugin.PLUGIN_TYPE_UI):
+        # UI plugins can receive control messages.
+        if plugin.PLUGIN_TYPE == Plugin.PLUGIN_TYPE_UI:
             self._notification_msg_list.append(plugin)
 
+        # Get the data types accepted by this plugin.
+        if hasattr(plugin, "get_accepted_types"):
+            with SwitchToPlugin(plugin_id):
+                accepted_info = plugin.get_accepted_types()
+        else:
+            accepted_info = []
 
-    #--------------------------------------------------------------------------
-    def __filter_accepted_info(self, accepted_info):
-        """
-        Process the return value from Plugin.get_accepted_info().
+        # Special value 'None' means all data types.
+        if accepted_info is None:
+            self._notification_info_map[""].add(plugin_id)
 
-        :param accepted_info: Return value from Plugin.get_accepted_info().
-        :type accepted_info: list(class | int) | None
+        # Otherwise, it's a list of data subtypes.
+        else:
+            if isclass(accepted_info):
+                accepted_info = [accepted_info]
+            else:
+                accepted_info = list(accepted_info)
 
-        :returns: Set of data subtype constants.
-        :rtype: set(int)
-        """
-        if accepted_info is not None:
-            filtered_info = set()
+            # Register the plugin for each accepted type.
             for item in accepted_info:
-                if item is None:
-                    filtered_info = None
-                    break
-                if type(item) not in (int, long):
-                    item = item.data_subtype
-                filtered_info.add(item)
-            return filtered_info
-        return None
+
+                # If it's a graph node event...
+                if issubclass(item, Data):
+                    targets = ((self._notification_info_map, item),)
+
+                # If it's a graph vertex event...
+                elif issubclass(item, Relationship):
+                    targets = (
+                        (self._notification_rel_map_left,  item.classes[0]),
+                        (self._notification_rel_map_right, item.classes[1])
+                    )
+
+                # Anything else is an error.
+                else:
+                    raise TypeError(
+                        "Expected Data subclass or Relationship type, "
+                        "got %r instead" % type(item))
+
+                # Register in the corresponding maps.
+                for target, item in targets:
+                    subtype = item.data_subtype
+                    if not subtype or subtype == "data/abstract":
+                        subtype = ""
+                    elif subtype.endswith("/abstract"):
+                        subtype = subtype[:-9]
+                    target[subtype].add(plugin_id)
 
 
     #--------------------------------------------------------------------------
@@ -174,7 +190,7 @@ class AbstractNotifier (object):
 
         try:
 
-            # Data request messages are sent to the recv_info() plugin method.
+            # Data request messages are sent to the run() plugin method.
             if (
                 message.message_type == MessageType.MSG_TYPE_DATA and
                 message.message_code == MessageCode.MSG_DATA_REQUEST
@@ -182,14 +198,21 @@ class AbstractNotifier (object):
                 audit_name = message.audit_name
                 for data in message.message_info:
 
-                    # Get the set of plugins to notify.
-                    m_plugins_to_notify = self.get_plugins_to_notify(data)
+                    # If it's a relationship...
+                    if isinstance(data, Relationship):
 
-                    # Dispatch message info to each plugin.
-                    for plugin_id in m_plugins_to_notify:
-                        plugin = self._map_id_to_plugin[plugin_id]
-                        self.dispatch_info(plugin, audit_name, data)
-                        count += 1
+                        # Dispatch to the plugins that expect this order.
+                        count += self.dispatch_plugin_input(audit_name, data)
+
+                        # Dispatch to those that expect the opposite order.
+                        data = data.invert()
+                        count += self.dispatch_plugin_input(audit_name, data)
+
+                    # If it's data...
+                    else:
+
+                        # Dispatch the data to the plugins.
+                        count += self.dispatch_plugin_input(audit_name, data)
 
             # All other messages are sent to the recv_msg() plugin method.
             else:
@@ -197,12 +220,32 @@ class AbstractNotifier (object):
                     self.dispatch_msg(plugin, message)
                     count += 1
 
-        # On error log the traceback.
+        # On error issue a warning.
+        # We can't log the error, because the log messages themselves
+        # may trigger the same error again.
         except Exception:
-            ##Logger.log_error("Error sending message to plugins: %s" % format_exc())
+            warn("Error sending message to plugins: %s" % format_exc(),
+                 RuntimeWarning)
             raise
 
         # Return the count of messages sent.
+        return count
+
+
+    #--------------------------------------------------------------------------
+    def dispatch_plugin_input(self, audit_name, data):
+
+        # Get the set of plugins to notify.
+        m_plugins_to_notify = self.get_plugins_to_notify(data)
+
+        # Dispatch message info to each plugin.
+        count = 0
+        for plugin_id in m_plugins_to_notify:
+            plugin = self._map_id_to_plugin[plugin_id]
+            self.dispatch_data(plugin, audit_name, data)
+            count += 1
+
+        # Return the count of successfully dispatched entities.
         return count
 
 
@@ -219,33 +262,45 @@ class AbstractNotifier (object):
 
         plugins_to_notify = set()
 
-        # Plugins that expect all types of info.
-        plugins_to_notify.update(self._notification_info_all)
+        # Plugins that expect all types of events.
+        plugins_to_notify.update(self._notification_info_map[""])
 
-        # Plugins that expect this type of info.
-        subtype = data.data_subtype
-        if data.data_type == Data.TYPE_VULNERABILITY:
-            for requested, plugin_ids \
-             in self._notification_info_map.iteritems():
-                if type(requested) is not str:
-                    continue
-                if (
-                    subtype == "abstract" or
-                    subtype == requested or
-                    subtype.startswith(requested + "/")
-                ):
-                    plugins_to_notify.update(plugin_ids)
+        # Plugins that expect vertex events. Order is important!
+        if isinstance(data, Relationship):
+            left = set()
+            right = set()
+            self.__collect_plugins(self._notification_rel_map_left,
+                                   data.instances[0].data_subtype, left)
+            self.__collect_plugins(self._notification_rel_map_right,
+                                   data.instances[1].data_subtype, right)
+            plugins_to_notify.update(left.intersection(right))
+
+        # Plugins that expect node events.
         else:
-            if subtype in self._notification_info_map:
-                plugins_to_notify.update(self._notification_info_map[subtype])
+            self.__collect_plugins(self._notification_info_map,
+                                   data.data_subtype, plugins_to_notify)
 
         return plugins_to_notify
 
 
     #--------------------------------------------------------------------------
-    def dispatch_info(self, plugin, audit_name, message_info):
+    def __collect_plugins(self, info_map, subtype, result):
+        if subtype and subtype != "data/abstract":
+            if subtype.endswith("/abstract"):
+                subtype = subtype[:-9]
+            while True:
+                if subtype in info_map:
+                    result.update(info_map[subtype])
+                p = subtype.rfind("/")
+                if p <= 0:
+                    break
+                subtype = subtype[:p]
+
+
+    #--------------------------------------------------------------------------
+    def dispatch_data(self, plugin, audit_name, message_info):
         """
-        Send information to the plugins.
+        Send data to the plugins.
 
         :param plugin: Target plugin.
         :type plugin: Plugin
@@ -483,6 +538,8 @@ class AuditNotifier(AbstractNotifier):
             # If we have plugins in this stage that can handle this data,
             # then we can run this stage.
             candidates = self.get_candidate_plugins(data)
+            if isinstance(data, Relationship):
+                candidates.update(self.get_candidate_plugins(data.invert()))
             if candidates.intersection(available):
                 return True
 
@@ -545,7 +602,7 @@ class AuditNotifier(AbstractNotifier):
         orchestrator = audit.orchestrator
 
         # If it's a data message...
-        if method == "recv_info":
+        if method == "run":
 
             # Get the payload identity hash.
             ack_identity = payload.identity
@@ -558,7 +615,8 @@ class AuditNotifier(AbstractNotifier):
                 skip_run = True
                 plugin_id = audit.pluginManager.\
                                 get_plugin_info_from_instance(plugin)[0]
-                if payload.depth == depth and plugin_id != "testing/recon/spider":
+                if payload.depth == depth and \
+                                plugin_id != "testing/recon/spider":
                     skip_run = False
                 if skip_run:
 
@@ -578,7 +636,7 @@ class AuditNotifier(AbstractNotifier):
                     # Skip execution of this plugin.
                     return
 
-            # Prepare the context for the OOP observer.
+            # Prepare the context for the plugin execution.
             context = orchestrator.build_plugin_context(
                 audit.name, plugin, ack_identity
             )
@@ -589,7 +647,7 @@ class AuditNotifier(AbstractNotifier):
         # If it's any other message type...
         else:
 
-            # Prepare the context for the OOP observer.
+            # Prepare the context for the plugin execution.
             context = orchestrator.build_plugin_context(
                 audit.name, plugin, None
             )
@@ -613,7 +671,7 @@ class AuditNotifier(AbstractNotifier):
 
 
     #--------------------------------------------------------------------------
-    def dispatch_info(self, plugin, audit_name, message_info):
+    def dispatch_data(self, plugin, audit_name, message_info):
         """
         Send information to the plugins.
 
@@ -632,7 +690,7 @@ class AuditNotifier(AbstractNotifier):
             raise ValueError("Wrong audit! %r != %r" % (audit_name, self.__audit.name))
 
         # Run the plugin.
-        self.__run_plugin(plugin, "recv_info", message_info)
+        self.__run_plugin(plugin, "run", message_info)
 
 
     #--------------------------------------------------------------------------
@@ -702,7 +760,7 @@ class OrchestratorNotifier(AbstractNotifier):
 
 
     #--------------------------------------------------------------------------
-    def dispatch_info(self, plugin, audit_name, message_info):
+    def dispatch_data(self, plugin, audit_name, message_info):
         """
         Send information to the plugins.
 
@@ -715,7 +773,7 @@ class OrchestratorNotifier(AbstractNotifier):
         :param message_info: Data to send to plugins.
         :type message_info: Data
         """
-        self.__run_plugin(plugin, audit_name, "recv_info", message_info)
+        self.__run_plugin(plugin, audit_name, "run", message_info)
 
 
     #--------------------------------------------------------------------------
@@ -784,7 +842,7 @@ class OrchestratorNotifier(AbstractNotifier):
         # Prepare the plugin execution context.
         context = self.orchestrator.build_plugin_context(
             audit_name, plugin,
-            payload.identity if method == "recv_info" else None
+            payload.identity if method == "run" else None
         )
 
         # Run the callback directly in our process.

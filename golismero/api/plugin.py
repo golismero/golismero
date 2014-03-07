@@ -400,7 +400,51 @@ class _InformationPlugin (Plugin):
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def get_accepted_types(self):
+        """
+        Returns one or more classes describing which data types are accepted by
+        the run() method.
+
+        By returning Data subclasses, your plugin indicates it wants to be
+        notified of the creation of new objects (that is, the addition of new
+        nodes in the graph). By returning Relationship classes, your plugin
+        indicates it wants to be notified of new relationships between objects
+        rather than the creation of new objects (that is, the addition of new
+        vertices in the graph).
+
+        If there is no return value, or the return value is None, the plugin
+        receives every possible event. If the return value is an empty iterable
+        the plugin receives no events.
+
+        Example:
+
+            # A plugin that is run every time a new URL object is created.
+            def get_accepted_types(self):
+                return URL
+
+            # Run the plugin when new URL or Domain objects are created.
+            def get_accepted_types(self):
+                return URL, Domain
+
+            # Run when a vulnerability is associated to a domain.
+            def get_accepted_types(self):
+                return Relationship(Vulnerability, Domain)
+
+            # Run when a vulnerability is associated to an URL,
+            # a base URL, or a folder URL.
+            def get_accepted_types(self):
+                return Relationship(Vulnerability, URL), \
+                       Relationship(Vulnerability, BaseURL), \
+                       Relationship(Vulnerability, FolderURL)
+
+        :returns: Data types or relationships.
+        :rtype: class | iterable(class) | None
+        """
+        raise NotImplementedError("Plugins must implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def run(self, info):
         """
         Callback method to receive data to be processed.
 
@@ -408,19 +452,7 @@ class _InformationPlugin (Plugin):
         Here's where most of the logic resides.
 
         :param info: Data to be processed.
-        :type info: Data
-        """
-        raise NotImplementedError("Plugins must implement this method!")
-
-
-    #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        """
-        Return a list of constants describing
-        which data types are accepted by the recv_info method.
-
-        :returns: Data type constants.
-        :rtype: list
+        :type info: Data | Relationship
         """
         raise NotImplementedError("Plugins must implement this method!")
 
@@ -428,7 +460,8 @@ class _InformationPlugin (Plugin):
 #------------------------------------------------------------------------------
 class UIPlugin (_InformationPlugin):
     """
-    User Interface plugins control the way in which the user interacts with GoLismero.
+    User Interface plugins control the way in which
+    the user interacts with GoLismero.
 
     This is the base class for all UI plugins.
     """
@@ -462,8 +495,8 @@ class UIPlugin (_InformationPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return None               # Most UI plugins will want all data objects.
+    def get_accepted_types(self):
+        return []                  # UI plugins get no data objects by default.
 
 
     #--------------------------------------------------------------------------

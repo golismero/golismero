@@ -42,6 +42,7 @@ __all__ = [
 from . import NetworkOutOfScope
 from ..data import LocalDataCache, discard_data
 from ..text.text_utils import generate_random_string, split_first, to_utf8
+from ..text.matching_analyzer import get_diff_ratio
 from ...common import json_decode, json_encode
 
 from BeautifulSoup import BeautifulSoup
@@ -60,7 +61,7 @@ import re
 
 
 #------------------------------------------------------------------------------
-# Url class from urllib3 renamed as Urllib3_Url to avoid confusion.
+# URL class from urllib3 renamed as Urllib3_Url to avoid confusion.
 
 try:
     from requests.packages.urllib3.util import Url as Urllib3_Url
@@ -192,7 +193,7 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True,
 
     Example:
 
-        >>> from golismero.api.data.resource.url import Url
+        >>> from golismero.api.data.resource.url import URL
         >>> from golismero.api.net.web_utils import download
         >>> def decide(url, name, size, type):
         ...     # 'url' is the URL for the download
@@ -216,18 +217,18 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True,
         ...     # Continue downloading
         ...     return True
         ...
-        >>> download(Url("http://www.example.com/index.html"), callback=decide)
+        >>> download(URL("http://www.example.com/index.html"), callback=decide)
         URL: http://www.example.com/index.html
         Name: index.html
         Size: 1234
         Type: text/html
         <HTML identity=606489619590839a1c0ad662bcdc0189>
-        >>> download(Url("http://www.example.com/"), callback=decide)
+        >>> download(URL("http://www.example.com/"), callback=decide)
         URL: http://www.example.com/
         Size: 1234
         Type: text/html
         <HTML identity=606489619590839a1c0ad662bcdc0189>
-        >>> print download(Url("http://www.example.com/big_file.iso"), callback=decide)
+        >>> print download(URL("http://www.example.com/big_file.iso"), callback=decide)
         URL: http://www.example.com/big_file.iso
         Name: big_file.iso
         Size: 1234567890
@@ -268,10 +269,10 @@ def download(url, callback = None, timeout = 10.0, allow_redirects = True,
             " got %r instead" % type(callback)
         )
 
-    # Autogenerate an Url object if a string is given (common mistake).
-    from ..data.resource.url import Url
-    if not isinstance(url, Url):
-        url = Url(url)
+    # Autogenerate an URL object if a string is given (common mistake).
+    from ..data.resource.url import URL
+    if not isinstance(url, URL):
+        url = URL(url)
         LocalDataCache.on_autogeneration(url)
         parsed = url.parsed_url
         if not parsed.hostname or not parsed.scheme:
@@ -599,6 +600,53 @@ def get_error_page(url):
 
     # Return the error page.
     return m_error_response
+
+
+#------------------------------------------------------------------------------
+def download_with_page_error_detection(url, error_page=None, similarity=0.65):
+    """
+    Download a web page trying to download a web page only if si different of error page.
+
+    Return None if page is very similar to error page.
+
+    Example:
+
+    >>> from golismero.api.net.web_utils import download_with_page_error_detection
+    >>> error_page = get_error_page("http://www.site.com/")
+    >>> download_with_error_detection("http://www.site.com/shop198202.php", error_page)
+    None
+d
+    :param url: Original URL. It must point to an existing document.
+    :type  url: str
+
+    :param error_page: Error to compare to. If not set, error page will be generated for this request.
+    :type error_page: str
+
+    :param similarity: percent value that express the similarity.
+    :type similarity: float
+
+    :return: page content or None
+    :rtype: str | None
+
+    :raises: ValueError
+    """
+    if not isinstance(error_page, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(error_page))
+
+    if similarity < 0 or similarity > 100.0:
+        raise ValueError("Similarity value must be between 0 - 100")
+
+    if not error_page:
+        error_page = get_error_page(url).raw_data
+
+    url_data = download(url).raw_data
+
+    ratio = get_diff_ratio(url_data, error_page)
+
+    if ratio >= similarity:
+        return url_data
+    else:
+        return None
 
 
 #------------------------------------------------------------------------------

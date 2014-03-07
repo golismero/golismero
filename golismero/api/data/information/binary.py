@@ -42,8 +42,6 @@ class Binary(File):
     Binary data.
     """
 
-    information_type = File.INFORMATION_BINARY
-
 
     #--------------------------------------------------------------------------
     def __init__(self, data, content_type = "application/octet-stream"):

@@ -37,7 +37,9 @@ from .processmanager import PluginContext
 from .reportmanager import ReportManager
 from .rpcmanager import implementor
 from ..api.data import Data
-from ..api.data.resource import Resource
+from ..api.data.resource.domain import Domain
+from ..api.data.resource.ip import IP
+from ..api.data.resource.url import URL, FolderURL, BaseURL
 from ..api.config import Config
 from ..api.logger import Logger
 from ..api.plugin import STAGES
@@ -393,8 +395,10 @@ class Audit (object):
         self.__report_manager = None
 
         # Create or open the database.
-        self.__is_new = not audit_config.audit_name or audit_config.audit_db == ":auto:"
+        self.__is_new = not audit_config.audit_name or \
+                        audit_config.audit_db == ":auto:"
         self.__database = AuditDB(audit_config)
+        self.__database.append_log_line("Audit started.", Logger.MORE_VERBOSE)
 
         # Set the audit name.
         self.__name = self.__database.audit_name
@@ -504,6 +508,38 @@ class Audit (object):
 
 
     #--------------------------------------------------------------------------
+    def inc_expected_ack(self, count = 1):
+        """
+        Increase the number of expected ACK messages.
+
+        :param count: How many new messages to expect.
+        :type count: int
+        """
+        self.__expecting_ack += count
+
+        # XXX DEBUG
+        if self.orchestrator.messageManager.DEBUG:
+            print "EXPECTING ACK %d => %s" % (
+                self.__expecting_ack - count, self.__expecting_ack)
+
+
+    #--------------------------------------------------------------------------
+    def dec_expected_ack(self, count = 1):
+        """
+        Decrease the number of expected ACK messages.
+
+        :param count: How many ACK messages have arrived.
+        :type count: int
+        """
+        self.__expecting_ack -= count
+
+        # XXX DEBUG
+        if self.orchestrator.messageManager.DEBUG:
+            print "EXPECTING ACK %d => %s" % (
+                self.__expecting_ack + count, self.__expecting_ack)
+
+
+    #--------------------------------------------------------------------------
     def get_runtime_stats(self):
         """
         Returns a dictionary with runtime statistics with at least the
@@ -557,6 +593,7 @@ class Audit (object):
             # Update the execution context for this audit.
             Config._context = PluginContext(
                        msg_queue = old_context.msg_queue,
+                         address = old_context.address,
                       audit_name = self.name,
                     audit_config = self.config,
                      audit_scope = self.scope,
@@ -603,6 +640,7 @@ class Audit (object):
                 self.database.save_audit_scope(self.scope)
                 Config._context = PluginContext(
                                     msg_queue = old_context.msg_queue,
+                                      address = old_context.address,
                                    audit_name = self.name,
                                  audit_config = self.config,
                                   audit_scope = self.scope,
@@ -623,8 +661,7 @@ class Audit (object):
             target_data = self.scope.get_targets()
             targets_added_count = 0
             for data in target_data:
-                if not self.database.has_data_key(data.identity,
-                                                  data.data_type):
+                if not self.database.has_data_key(data.identity):
                     self.database.add_data(data)
                     targets_added_count += 1
             if targets_added_count:
@@ -637,6 +674,11 @@ class Audit (object):
             # Note that if a plugin already processed the data, this WON'T
             # cause the same data to be processed again by the same plugin.
             self.database.clear_all_stage_marks()
+
+            # However, if the user requested a rescan, we do need to
+            # reset the plugin history as well.
+            if self.config.redo:
+                self.database.clear_all_plugin_history()
 
             # Do we have any active importers?
             imported_count = 0
@@ -656,11 +698,11 @@ class Audit (object):
                 # If we had no scope, build one based on the imported data.
                 if not target_data:
                     target_types = (
-                        Resource.RESOURCE_BASE_URL,
-                        Resource.RESOURCE_FOLDER_URL,
-                        Resource.RESOURCE_URL,
-                        Resource.RESOURCE_IP,
-                        Resource.RESOURCE_DOMAIN,
+                        BaseURL.data_subtype,
+                        FolderURL.data_subtype,
+                        URL.data_subtype,
+                        IP.data_subtype,
+                        Domain.data_subtype,
                     )
                     old_data = set()
                     for data_subtype in target_types:
@@ -685,6 +727,7 @@ class Audit (object):
                     self.database.save_audit_scope(self.scope)
                     Config._context = PluginContext(
                                     msg_queue = old_context.msg_queue,
+                                      address = old_context.address,
                                    audit_name = self.name,
                                  audit_config = self.config,
                                   audit_scope = self.scope,
@@ -796,7 +839,7 @@ class Audit (object):
 
             # Decrease the expected ACK count.
             # The audit manager will check when this reaches zero.
-            self.__expecting_ack -= 1
+            self.dec_expected_ack()
 
             # Tell the notifier about this ACK.
             self.__notifier.acknowledge(message)
@@ -901,6 +944,7 @@ class Audit (object):
                         continue
 
                     # Filter out data that won't be processed in this stage.
+                    # FIXME: this should sieve the data, not return a bool
                     if not self.__notifier.is_runnable_stage(batch, stage):
                         database.mark_stage_finished_many(batch_ids, stage)
                         continue
@@ -968,6 +1012,7 @@ class Audit (object):
             # Update the execution context for this audit.
             Config._context = PluginContext(
                        msg_queue = old_context.msg_queue,
+                         address = old_context.address,
                       audit_name = self.name,
                     audit_config = self.config,
                      audit_scope = self.scope,
@@ -1023,9 +1068,9 @@ class Audit (object):
                 # Send the message to the plugins, and track the expected ACKs.
                 launched = self.__notifier.notify(message)
                 if launched:
-                    self.__expecting_ack += launched
+                    self.inc_expected_ack(launched)
                 else:
-                    self.__expecting_ack += 1
+                    self.inc_expected_ack()
                     self.send_msg(
                         message_type = MessageType.MSG_TYPE_CONTROL,
                         message_code = MessageCode.MSG_CONTROL_ACK,
@@ -1057,10 +1102,7 @@ class Audit (object):
                     if not database.has_data_key(data.identity):
 
                         # Increase the number of links followed.
-                        if (
-                            data.data_type == Data.TYPE_RESOURCE and
-                            data.resource_type == Resource.RESOURCE_URL
-                        ):
+                        if data.is_instance(URL):
                             self.__followed_links += 1
 
                             # Maximum number of links reached?
@@ -1162,7 +1204,7 @@ class Audit (object):
             raise RuntimeError("Why are you asking for the report twice?")
 
         # An ACK is expected after launching the report plugins.
-        self.__expecting_ack += 1
+        self.inc_expected_ack()
         try:
 
             # Mark the report generation as started for this audit.
@@ -1190,9 +1232,9 @@ class Audit (object):
 
             # Handle the ACK messages.
             if launched:
-                self.__expecting_ack += launched
+                self.inc_expected_ack(launched)
             else:
-                self.__expecting_ack += 1
+                self.inc_expected_ack()
                 self.send_msg(message_type = MessageType.MSG_TYPE_CONTROL,
                               message_code = MessageCode.MSG_CONTROL_ACK,
                                   priority = MessagePriority.MSG_PRIORITY_LOW)
@@ -1217,9 +1259,13 @@ class Audit (object):
                         try:
                             if self.database is not None:
                                 try:
-                                    self.database.compact()
+                                    self.database.append_log_line(
+                                        "Audit started.", Logger.MORE_VERBOSE)
                                 finally:
-                                    self.database.close()
+                                    try:
+                                        self.database.compact()
+                                    finally:
+                                        self.database.close()
                         finally:
                             if self.__notifier is not None:
                                 self.__notifier.close()

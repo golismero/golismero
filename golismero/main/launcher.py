@@ -96,6 +96,7 @@ def run(options, *audits):
     Console.display("GoLismero finished at %s UTC" % datetime.datetime.utcnow())
     return return_code
 
+
 def _run(options, *audits):
     try:
 
@@ -170,9 +171,9 @@ def _run(options, *audits):
 
                     continue
 
+    # Catch exit() calls.
     except SystemExit:
         return 1
-
 
     # On error, show a fatal error message.
     except Exception, e:

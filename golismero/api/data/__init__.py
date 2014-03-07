@@ -35,6 +35,9 @@ __all__ = [
     # Base class for all data objects.
     "Data",
 
+    # Class factory for data object relationships.
+    "Relationship",
+
     # Identity properties.
     # This is used by the Data subclasses.
     "identity",
@@ -57,6 +60,7 @@ __all__ = [
 
 from .db import Database
 from ..config import Config
+from ..logger import Logger
 from ..text.text_utils import uncamelcase
 from ...common import pickle, Singleton, EmptyNewStyleClass
 
@@ -502,11 +506,11 @@ def discard_data(data):
     Plugins may call this function to indicate the given Data object is no
     longer of interest and may be safely discarded.
 
-    When plugins create Data objects but do not return them in their
-    recv_info() method, a warning is issued automatically. This method allows
-    plugins to remove that warning when they do not intend for a Data object
-    to be returned, but just created it temporarily or discarded it for some
-    other reason.
+    When plugins create Data objects but do not return them in their run()
+    method, a warning is issued automatically. This method allows plugins to
+    remove that warning when they do not intend for a Data object to be
+    returned, but just created it temporarily or discarded it for some other
+    reason.
 
     .. warning: Use with care! If you mark an object as discarded but another
         Data object has a reference to it, the audit database may be left in
@@ -530,6 +534,8 @@ class _data_metaclass(type):
     .. warning: Used internally by GoLismero. Do not use!
     """
 
+
+    #--------------------------------------------------------------------------
     def __init__(cls, name, bases, namespace):
         super(_data_metaclass, cls).__init__(name, bases, namespace)
 
@@ -537,11 +543,6 @@ class _data_metaclass(type):
         for propname, prop in cls.__dict__.iteritems():
             if merge.is_mergeable_property(prop):
                 prop.validate(cls, propname)
-
-        # The Data class itself has to be processed differently.
-        if cls.__module__ == "golismero.api.data" and name == "Data":
-            cls.data_subtype = None
-            return
 
         # Skip some checks for the base classes.
         is_child_class = cls.__module__ not in (
@@ -553,61 +554,194 @@ class _data_metaclass(type):
 
         # Check the data_type is not TYPE_UNKNOWN.
         if is_child_class and not cls.data_type:
-            msg = "Error in %s.%s: Subclasses of Data MUST define their data_type!"
+            msg = "Error in %s.%s: Missing data_type!"
             raise TypeError(msg % (cls.__module__, cls.__name__))
 
-        # Check the information_type is not INFORMATION_UNKNOWN.
-        if cls.data_type == Data.TYPE_INFORMATION:
-            if is_child_class and not cls.information_type:
-                msg = "Error in %s.%s: Subclasses of Information MUST define their information_type!"
-                raise TypeError(msg % (cls.__module__, cls.__name__))
-            cls.data_subtype = cls.information_type
+        # Automatically calculate the data subtype from the module name.
+        modulename = cls.__module__[19:]
+        modulename = modulename.replace(".", "/")
+        if not modulename:
+            modulename = "data"
+        while 1:  # just to use "break", not a real loop
+            if "data_subtype" in cls.__dict__:
+                if "/" in cls.data_subtype:
+                    data_subtype = cls.data_subtype
+                    break
+                classname = cls.data_subtype
+            elif cls.data_subtype.endswith("/abstract") and \
+                            cls.data_subtype.count("/") > 1:
+                classname = uncamelcase(cls.__name__)
+                classname = classname.lower().replace(" ", "_")
+            else:
+                classname = ""
+            if classname:
+                data_subtype = "%s/%s" % (modulename, classname)
+            else:
+                data_subtype = modulename
+            break
+        if cls.data_subtype is None:
+            print ("*" * 20) + data_subtype
+        cls.data_subtype = data_subtype
 
-        # Check the resource_type is not RESOURCE_UNKNOWN.
-        elif cls.data_type == Data.TYPE_RESOURCE:
-            if is_child_class and not cls.resource_type:
-                msg = "Error in %s.%s: Subclasses of Resource MUST define their resource_type!"
-                raise TypeError(msg % (cls.__module__, cls.__name__))
-            cls.data_subtype = cls.resource_type
+        # Maintain the aliases for now. Maybe we should deprecate them.
+        if data_subtype.startswith("resource/"):
+            cls.resource_type = data_subtype
+        elif data_subtype.startswith("information/"):
+            cls.information_type = data_subtype
+        elif data_subtype.startswith("vulnerability/"):
+            cls.vulnerability_type = data_subtype
+        elif data_subtype != "data/abstract":
+            assert False, "Internal error! data_subtype: %s" % data_subtype
 
-        # Automatically calculate the vulnerability type from the module name.
-        # If we can't, at least make sure it's defined manually.
-        elif cls.data_type == Data.TYPE_VULNERABILITY:
-            is_vuln_type_missing = "vulnerability_type" not in cls.__dict__
-            if cls.__module__.startswith("golismero.api.data.vulnerability."):
-                if is_vuln_type_missing:
-                    vuln_type = cls.__module__[33:]
-                    vuln_type = vuln_type.replace(".", "/")
-                    cls.vulnerability_type = vuln_type
-            elif is_child_class and is_vuln_type_missing:
-                msg = "Error in %s.%s: Missing vulnerability_type!"
-                raise TypeError(msg % (cls.__module__, cls.__name__))
-            cls.data_subtype = cls.vulnerability_type
+
+    #--------------------------------------------------------------------------
+    def __call__(cls, *args, **kwargs):
+
+        # Reuse old instances when possible.
+        new_obj = super(_data_metaclass, cls).__call__(*args, **kwargs)
+        old_obj = LocalDataCache.get(new_obj.identity)
+        if old_obj is not None:
+            old_obj.merge(new_obj)
+            new_obj = old_obj
+        return new_obj
 
 
 #------------------------------------------------------------------------------
-class Data(object):
+class Entity(object):
     """
-    Base class for all data elements.
+    Any entity that can be stored into the GoLismero graph database belongs to
+    this class.
+    """
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def identity(self):
+        """
+        :returns: Identity hash of this object.
+        :rtype: str
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def is_in_scope(self, scope = None):
+        """
+        Determines if this Entity object is within the scope
+        of the current audit. It can also check against any
+        custom AuditScope object.
+
+        .. warning: This method is used by GoLismero itself.
+                    Plugins do not need to call it.
+
+        :param scope: (Optional) Scope to test against.
+            Defaults to the current audit scope.
+        :type scope: Scope
+
+        :return: True if within scope, False otherwise.
+        :rtype: bool
+        """
+        return True
+
+
+    #--------------------------------------------------------------------------
+    @property
+    def depth(self):
+        """
+        Exact meaning of this depends on whether this is a node or a vertex
+        of the graph.
+
+        :rtype: int
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def merge(self, other):
+        """
+        Merge a newer version of this entity with this one.
+
+        This is the old entity, and the other object is the new entity.
+        After the merge, this entity contains the most up to date information.
+
+        :param other: Entity to merge with this one.
+        :type other: Entity
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def reverse_merge(self, other):
+        """
+        Reverse merge this version of the entity into another one.
+
+        This is the new entity, and the other object is the old entity.
+        After the merge, the other entity contains the most up to date
+        information.
+
+        :param other: Entity to be merged with this one.
+        :type other: Entity
+        """
+        raise NotImplementedError("Subclasses MUST implement this method!")
+
+
+    #--------------------------------------------------------------------------
+    def __eq__(self, obj):
+        """
+        Determines equality of entities by comparing its identity property.
+
+        :param obj: Entity.
+        :type obj: Entity
+
+        :return: True if the two Data objects have the same identity, False otherwise.
+        :rtype: bool
+        """
+        # TODO: maybe we should compare all properties, not just identity.
+        return self.identity == obj.identity
+
+
+    #--------------------------------------------------------------------------
+    def is_instance(self, clazz):
+        """
+        Checks if this instance belongs to the given class.
+
+        :param clazz: Subclass of Entity to check.
+        :type clazz: type
+
+        :returns: True if the instance belongs to the class,
+            False otherwise.
+        :rtype: bool
+        """
+        try:
+            data_type    = clazz.data_type
+            data_subtype = clazz.data_subtype
+        except AttributeError:
+            return False
+        return self.data_type    == data_type    and \
+               self.data_subtype == data_subtype
+
+
+#------------------------------------------------------------------------------
+class Data(Entity):
+    """
+    Base class for all data entities.
     This is the common interface for Information, Resource and Vulnerability.
     """
 
     __metaclass__ = _data_metaclass
 
-    # TODO: Add user-defined tags to Data objects.
-    # TODO: Add user-defined properties to Data objects.
-
 
     #--------------------------------------------------------------------------
     # Data types
 
-    TYPE_UNKNOWN = 0      # not a real type! only used in get_accepted_info()
+    TYPE_UNKNOWN = 0      # not a real type! only used in get_accepted_types()
 
-    TYPE_INFORMATION           = 1
-    TYPE_VULNERABILITY         = 2
-    TYPE_RESOURCE              = 3
+    TYPE_INFORMATION   = 1
+    TYPE_VULNERABILITY = 2
+    TYPE_RESOURCE      = 3
 
     data_type = TYPE_UNKNOWN
+    data_subtype = "data/abstract"
 
 
     #--------------------------------------------------------------------------
@@ -637,14 +771,14 @@ class Data(object):
         # + all links:                  None -> None -> set(identity)
         # + links by type:              type -> None -> set(identity)
         # + links by type and subtype:  type -> subtype -> set(identity)
-        self.__linked = defaultdict(partial(defaultdict, set))
+        self._linked = defaultdict(partial(defaultdict, set))
 
         # Identity hash cache.
         self.__identity = None
 
         # Analysis depth is preserved as-is for all objects, except for a few.
-        # For example the Url type increments the depth by one, and the
-        # BaseUrl, IP and Domain types force the depth to zero.
+        # For example the URL type increments the depth by one, and the
+        # BaseURL, IP and Domain types force the depth to zero.
         self.__depth = Config.depth
 
         # Tell the temporary storage about this instance.
@@ -654,6 +788,58 @@ class Data(object):
     #--------------------------------------------------------------------------
     def __repr__(self):
         return "<%s identity=%s>" % (self.__class__.__name__, self.identity)
+
+
+    #--------------------------------------------------------------------------
+    def _load_links(self, links):
+        """
+        Internally used method. It loads the links from this Data object to
+        other objects, used in auditdb.py.
+
+        :param links: Links to other Data objects as tuples with the
+                      data type, subtype and identity.
+        :type links: set(tuple(int, str, str))
+        """
+
+        # Linked Data objects.
+        # + all links:                  None -> None -> set(identity)
+        # + links by type:              type -> None -> set(identity)
+        # + links by type and subtype:  type -> subtype -> set(identity)
+        self._linked = defaultdict(partial(defaultdict, set))
+
+        # Populate the links dictionary.
+        for data_type, data_subtype, identity in links:
+            assert type(data_type) is int, type(data_type)
+            assert type(data_subtype) is str, type(data_subtype)
+            assert type(identity) is str, type(identity)
+            self._linked[None][None].add(identity)
+            self._linked[data_type][None].add(identity)
+            self._linked[data_type][data_subtype].add(identity)
+
+
+    #--------------------------------------------------------------------------
+    def _save_links(self):
+        """
+        Internally used method. It saves the links from this Data object to
+        other objects, used in auditdb.py.
+
+        :returns: Links to other Data objects as tuples with the
+                  data type, subtype and identity.
+        :rtype: set(tuple(int, str, str))
+        """
+        links = set()
+        for data_type, tmp in self._linked.iteritems():
+            if data_type is None:
+                continue
+            for data_subtype, tmp2 in tmp.iteritems():
+                if data_subtype is None:
+                    continue
+                for identity in tmp2:
+                    # assert type(data_type) is int, type(data_type)
+                    # assert type(data_subtype) is str, type(data_subtype)
+                    # assert type(identity) is str, type(identity)
+                    links.add( (data_type, data_subtype, identity) )
+        return links
 
 
     #--------------------------------------------------------------------------
@@ -849,7 +1035,7 @@ class Data(object):
             if name not in (
                 "identity", "plugin_id", "depth", "links",
                 "data_type", "data_subtype", "display_name",
-                "information_category",
+                "information_category", "target_id",
             ):
 
                 # Ignore most of the properties defined in Data.
@@ -946,12 +1132,19 @@ class Data(object):
 
 
     #--------------------------------------------------------------------------
+    def is_instance(self, clazz):
+        try:
+            data_type    = clazz.data_type
+            data_subtype = clazz.data_subtype
+        except AttributeError:
+            return False
+        return self.data_type    == data_type    and \
+               self.data_subtype == data_subtype
+
+
+    #--------------------------------------------------------------------------
     @property
     def identity(self):
-        """
-        :returns: Identity hash of this object.
-        :rtype: str
-        """
 
         # If the hash is already in the cache, return it.
         if self.__identity is not None:
@@ -1026,26 +1219,10 @@ class Data(object):
 
     #--------------------------------------------------------------------------
     def merge(self, other):
-        """
-        Merge another data object with this one.
-
-        This is the old data, and the other object is the new data.
-
-        :param other: Data object to merge with this one.
-        :type other: Data
-        """
         self._merge_objects(self, other, reverse = False)
 
 
     def reverse_merge(self, other):
-        """
-        Reverse merge another data object with this one.
-
-        This is the new data, and the other object is the old data.
-
-        :param other: Data object to be merged with this one.
-        :type other: Data
-        """
         self._merge_objects(other, self, reverse = True)
 
 
@@ -1148,14 +1325,14 @@ class Data(object):
         :type reverse: bool
         """
         if reverse:
-            for data_type, new_subdict in new_data.__linked.items():
-                target_subdict = old_data.__linked[data_type].copy()
+            for data_type, new_subdict in new_data._linked.items():
+                target_subdict = old_data._linked[data_type].copy()
                 for data_subtype, identity_set in new_subdict.iteritems():
                     target_subdict[data_subtype] = target_subdict[data_subtype].union(identity_set)
-                new_data.__linked[data_type] = target_subdict
+                new_data._linked[data_type] = target_subdict
         else:
-            for data_type, new_subdict in new_data.__linked.iteritems():
-                my_subdict = old_data.__linked[data_type]
+            for data_type, new_subdict in new_data._linked.iteritems():
+                my_subdict = old_data._linked[data_type]
                 for data_subtype, identity_set in new_subdict.iteritems():
                     my_subdict[data_subtype].update(identity_set)
 
@@ -1190,7 +1367,7 @@ class Data(object):
         :returns: Set of linked Data identities.
         :rtype: set(str)
         """
-        return self.__linked[None][None]
+        return self._linked[None][None]
 
 
     #--------------------------------------------------------------------------
@@ -1200,7 +1377,7 @@ class Data(object):
         :returns: Set of linked Data elements.
         :rtype: set(Data)
         """
-        return self.resolve_links( self.__linked[None][None] )
+        return self.resolve_links( self._linked[None][None] )
 
 
     #--------------------------------------------------------------------------
@@ -1209,21 +1386,52 @@ class Data(object):
         Get the linked Data identities of the given data type.
 
         :param data_type: Optional data type. One of the Data.TYPE_* values.
-        :type data_type: int
+        :type data_type: int | None
 
         :param data_subtype: Optional data subtype.
-        :type data_subtype: int | str
+        :type data_subtype: str | None
 
         :returns: Identities.
         :rtype: set(str)
 
         :raises ValueError: Invalid data_type argument.
         """
-        if data_type is None:
-            if data_subtype is not None:
-                raise NotImplementedError(
-                    "Can't filter by subtype for all types")
-        return self.__linked[data_type][data_subtype]
+        if data_type is not None and type(data_type) is not int:
+            raise TypeError(
+                "Expected integer, got %r instead" % type(data_type))
+        if data_subtype is not None:
+            if type(data_subtype) is not str:
+                raise TypeError(
+                    "Expected string, got %r instead" % type(data_subtype))
+            if data_type is None:
+                if data_subtype.startswith("resource/"):
+                    data_type = self.TYPE_RESOURCE
+                elif data_subtype.startswith("information/"):
+                    data_type = self.TYPE_INFORMATION
+                elif data_subtype.startswith("vulnerability/"):
+                    data_type = self.TYPE_VULNERABILITY
+                elif data_subtype == "data/abstract":
+                    data_type = self.TYPE_UNKNOWN
+                    data_subtype = None
+                else:
+                    raise ValueError(
+                        "Invalid data_subtype: %r" % data_subtype)
+            else:
+                if data_type == self.TYPE_RESOURCE:
+                    if not data_subtype.startswith("resource/"):
+                        raise ValueError(
+                            "Invalid data_subtype: %r" % data_subtype)
+                elif data_type == self.TYPE_INFORMATION:
+                    if not data_subtype.startswith("information/"):
+                        raise ValueError(
+                            "Invalid data_subtype: %r" % data_subtype)
+                elif data_type == self.TYPE_VULNERABILITY:
+                    if not data_subtype.startswith("vulnerability/"):
+                        raise ValueError(
+                            "Invalid data_subtype: %r" % data_subtype)
+                else:
+                    raise ValueError("Invalid data_type: %r" % data_type)
+        return self._linked[data_type][data_subtype]
 
 
     #--------------------------------------------------------------------------
@@ -1232,10 +1440,10 @@ class Data(object):
         Get the linked Data elements of the given data type.
 
         :param data_type: Optional data type. One of the Data.TYPE_* values.
-        :type data_type: int
+        :type data_type: int | None
 
         :param data_subtype: Optional data subtype.
-        :type data_subtype: int | str
+        :type data_subtype: str | None
 
         :returns: Data elements.
         :rtype: set(Data)
@@ -1310,6 +1518,9 @@ class Data(object):
         if self._can_link(other) and other._can_link(self):
             other._add_link(self)
             self._add_link(other)
+        else:
+            raise TypeError("Unlinkable types: %s and %s" %
+                 (self.data_subtype, other.data_subtype))
 
 
     def _can_link(self, other):
@@ -1352,9 +1563,9 @@ class Data(object):
         """
         data_id = other.identity
         data_type = other.data_type
-        self.__linked[None][None].add(data_id)
-        self.__linked[data_type][None].add(data_id)
-        self.__linked[data_type][other.data_subtype].add(data_id)
+        self._linked[None][None].add(data_id)
+        self._linked[data_type][None].add(data_id)
+        self._linked[data_type][other.data_subtype].add(data_id)
 
 
     #--------------------------------------------------------------------------
@@ -1428,57 +1639,54 @@ class Data(object):
 
 
     #--------------------------------------------------------------------------
-    def get_associated_vulnerabilities_by_category(self, cat_name = None):
+    def get_associated_vulnerabilities_by_category(self, data_subtype = None):
         """
         Get associated vulnerabilites by category.
 
-        :param cat_name: category name
-        :type cat_name: str
+        :param data_subtype: Value of the data_subtype property of the
+            class you're looking for.
+        :type data_subtype: str
 
-        :return: Associated vulnerabilites. Returns an empty set if the category doesn't exist.
+        :return: Associated vulnerabilites.
         :rtype: set(Vulnerability)
+
+        :raises ValueError: The specified information type is invalid.
         """
-        return self.find_linked_data(self.TYPE_VULNERABILITY, cat_name)
+        return self.find_linked_data(self.TYPE_VULNERABILITY, data_subtype)
 
 
     #--------------------------------------------------------------------------
-    def get_associated_informations_by_category(self, information_type = None):
+    def get_associated_informations_by_category(self, data_subtype = None):
         """
         Get associated informations by type.
 
-        :param information_type: One of the Information.INFORMATION_* constants.
-        :type information_type: int
+        :param data_subtype: Value of the data_subtype property of the
+            class you're looking for.
+        :type data_subtype: str
 
         :return: Associated informations.
         :rtype: set(Information)
 
         :raises ValueError: The specified information type is invalid.
         """
-        if type(information_type) is not int:
-            raise TypeError("Expected int, got %r instead" % type(information_type))
-##        if not Information.INFORMATION_FIRST >= information_type >= Information.INFORMATION_LAST:
-##            raise ValueError("Invalid information_type: %r" % information_type)
-        return self.find_linked_data(self.TYPE_INFORMATION, information_type)
+        return self.find_linked_data(self.TYPE_INFORMATION, data_subtype)
 
 
     #--------------------------------------------------------------------------
-    def get_associated_resources_by_category(self, resource_type = None):
+    def get_associated_resources_by_category(self, data_subtype = None):
         """
         Get associated informations by type.
 
-        :param resource_type: One of the Resource.RESOURCE_* constants.
-        :type resource_type: int
+        :param data_subtype: Value of the data_subtype property of the
+            class you're looking for.
+        :type data_subtype: str
 
         :return: Associated resources.
         :rtype: set(Resource)
 
         :raises ValueError: The specified resource type is invalid.
         """
-        if type(resource_type) is not int:
-            raise TypeError("Expected int, got %r instead" % type(resource_type))
-##        if not Resource.RESOURCE_FIRST >= resource_type >= Resource.RESOURCE_LAST:
-##            raise ValueError("Invalid resource_type: %r" % resource_type)
-        return self.find_linked_data(self.TYPE_RESOURCE, resource_type)
+        return self.find_linked_data(self.TYPE_RESOURCE, data_subtype)
 
 
     #--------------------------------------------------------------------------
@@ -1489,8 +1697,10 @@ class Data(object):
         :param res: Resource element.
         :type res: Resource
         """
-        if not hasattr(res, "data_type") or res.data_type != self.TYPE_RESOURCE:
-            raise TypeError("Expected Resource, got %r instead" % type(res))
+        if not hasattr(res, "data_type") or \
+                        res.data_type != self.TYPE_RESOURCE:
+            raise TypeError(
+                "Expected Resource, got %r instead" % type(res))
         self.add_link(res)
 
 
@@ -1502,8 +1712,10 @@ class Data(object):
         :param info: Information element.
         :type info: Information
         """
-        if not hasattr(info, "data_type") or info.data_type != self.TYPE_INFORMATION:
-            raise TypeError("Expected Information, got %r instead" % type(info))
+        if not hasattr(info, "data_type") or \
+                        info.data_type != self.TYPE_INFORMATION:
+            raise TypeError(
+                "Expected Information, got %r instead" % type(info))
         self.add_link(info)
 
 
@@ -1515,8 +1727,10 @@ class Data(object):
         :param info: Vulnerability element.
         :type info: Vulnerability
         """
-        if not hasattr(vuln, "data_type") or vuln.data_type != self.TYPE_VULNERABILITY:
-            raise TypeError("Expected Vulnerability, got %r instead" % type(vuln))
+        if not hasattr(vuln, "data_type") or \
+                        vuln.data_type != self.TYPE_VULNERABILITY:
+            raise TypeError(
+                "Expected Vulnerability, got %r instead" % type(vuln))
         self.add_link(vuln)
 
 
@@ -1535,58 +1749,188 @@ class Data(object):
         return []
 
 
-    #--------------------------------------------------------------------------
-    def is_in_scope(self, scope = None):
-        """
-        Determines if this Data object is within the scope of the current audit.
+#------------------------------------------------------------------------------
+class Relationship(object):
+    """
+    Represents a relationship between two Data objects.
 
-        .. warning: This method is used by GoLismero itself.
-                    Plugins do not need to call it.
+    This metaclass is used by plugins that want to receive the vertices of the
+    graph rather than the nodes (Data objects). For example:
 
-        :param scope: (Optional) Scope to test again. Defaults to the current
-            audit scope.
-        :type scope: Scope
+        def get_accepted_types(self):
+            return Relationship(Vulnerability, URL)
 
-        :return: True if within scope, False otherwise.
-        :rtype: bool
-        """
-        return True
+    The above would cause a plugin to receive all vulnerabilities associated to
+    URLs, but neither vulnerabilities associated to other object types, nor URLs
+    with no vulnerability associated to them.
+
+    Relationship objects contain two instances of the requested Data types, both
+    of them connected to each other, as the property "instances", belonging to
+    the classes "class1" and "class2" respectively (mapped as the property
+    "classes").
+
+    Aside from this, the order of the classes is not important, since all
+    vertices in the graph are bidirectional.
+
+        >>> from golismero.api.data.resource.url import URL
+        >>> from golismero.api.data.vulnerability.suspicious.url import SuspiciousURL
+        >>> url = URL("http://www.example.com/")
+        >>> vuln = SuspiciousURL(url)
+        >>> rel = Relationship(Vulnerability, URL)(vuln, url)
+        >>> rel.classes[0]
+        <class 'golismero.api.data.vulnerability.suspicious.url.SuspiciousURL'>
+        >>> rel.classes[1]
+        <class 'golismero.api.data.resource.url.URL'>
+        >>> rel.instance1
+        <SuspiciousURL plugin_id='GoLismero' level='informational' title='Suspicious URL'>
+        >>> rel.instance2
+        <URL url='http://www.example.com/', method='GET', params=None, referer=None, depth=0>
+        >>> rel[0]
+        <SuspiciousURL plugin_id='GoLismero' level='informational' title='Suspicious URL'>
+        >>> rel[1]
+        <URL url='http://www.example.com/', method='GET', params=None, referer=None, depth=0>
+    """
+
+    # wow
+    # such object oriented
+    # very class factory
+    # so template
+    # wow
+    def __new__(cls, class1, class2):
+
+        if not issubclass(class1, Data):
+            raise TypeError(
+                "Expected subclass of Data, got %r instead" % (class1,))
+        if not issubclass(class2, Data):
+            raise TypeError(
+                "Expected subclass of Data, got %r instead" % (class2,))
+
+        class _Relationship(Relationship):
+            __doc__ = Relationship.__doc__
+
+            classes = (class1, class2)
+
+            def __new__(cls, *args, **kwargs):
+                return object.__new__(cls, *args, **kwargs)
+
+            def __init__(self, instance1, instance2):
+                if not instance1.is_instance(self.classes[0]):
+                    raise TypeError(
+                        "Expected %s, got %r instead" %
+                        (self.classes[0].__name__, type(instance1)))
+                if not instance2.is_instance(self.classes[1]):
+                    raise TypeError(
+                        "Expected %s, got %r instead" %
+                        (self.classes[1].__name__, type(instance2)))
+                self.instances = (instance1, instance2)
+                self.classes = (instance1.__class__, instance2.__class__)
+
+            def __reduce__(self):
+                return RelationshipDeserializer, self.instances
+
+            @property
+            def types(self):
+                """
+                :returns: The data type constants
+                          of the two related objects.
+                :rtype: tuple(int, int)
+                """
+                return self.instances[0].data_type,\
+                       self.instances[1].data_type
+
+            @property
+            def subtypes(self):
+                """
+                :returns: The data subtype constants
+                          of the two related objects.
+                :rtype: tuple(str, str)
+                """
+                return self.instances[0].data_subtype,\
+                       self.instances[1].data_subtype
+
+            @property
+            def identities(self):
+                """
+                :returns: The identity hashes of the two related objects.
+                :rtype: tuple(str, str)
+                """
+                return self.instances[0].identity,\
+                       self.instances[1].identity
+
+            @property
+            def identity(self):
+
+                # We sort the two identity hashes so we always get the
+                # same result, regardless of the direction of the vertex.
+                return "-".join(sorted(self.identities))
+
+            def is_instance(self, clazz):
+                try:
+                    data_type_l    = clazz.classes[0].data_type
+                    data_subtype_l = clazz.classes[0].data_subtype
+                    data_type_r    = clazz.classes[1].data_type
+                    data_subtype_r = clazz.classes[1].data_subtype
+                except AttributeError, e:
+                    return False
+                except IndexError:
+                    return False
+                return self.classes[0].data_type    == data_type_l    and \
+                       self.classes[0].data_subtype == data_subtype_l and \
+                       self.classes[1].data_type    == data_type_r    and \
+                       self.classes[1].data_subtype == data_subtype_r
+
+            def is_in_scope(self, scope = None):
+                return True
+
+            @property
+            def depth(self):
+                """
+                :returns: Shortest path in the data graph from either node to
+                          one of the root nodes (audit targets).
+                :rtype: int
+                """
+                return min(self.instances[0].depth, self.instances[1].depth)
+
+            def merge(self, other):
+                if self.identity != other.identity:
+                    raise ValueError("Cannot merge different objects!")
+                self.classes   = other.classes
+                self.instances = other.instances
+
+            def reverse_merge(self, other):
+                if self.identity != other.identity:
+                    raise ValueError("Cannot merge different objects!")
+                other.classes   = self.classes
+                other.instances = self.instances
+
+            def __getitem__(self, item):
+                return self.instances[item]
+
+            def __iter__(self):
+                return self.instances.__iter__()
+
+            def invert(self):
+                """
+                Produces an inverted relationship.
+
+                :returns: A new Relationship instance
+                          where the order of the nodes is inverted.
+                :rtype: Relationship
+                """
+                return RelationshipDeserializer(
+                    self.instances[1], self.instances[0])
+
+        _Relationship.__name__ = "Relationship_%s_%s" % \
+                                 (class1.__name__, class2.__name__)
+
+        return _Relationship
 
 
-    #--------------------------------------------------------------------------
-    def __eq__(self, obj):
-        """
-        Determines equality of Data objects by comparing its identity property.
-
-        :param obj: Data object.
-        :type obj: Data
-
-        :return: True if the two Data objects have the same identity, False otherwise.
-        :rtype: bool
-        """
-        # TODO: maybe we should compare all properties, not just identity.
-        return self.identity == obj.identity
-
-
-    #--------------------------------------------------------------------------
-    def is_instance(self, clazz):
-        """
-        Checks if this Data object belongs to the given Data class.
-
-        :param clazz: Subclass to check.
-        :type clazz: type
-
-        :returns: True if the data object belongs to the class,
-            False otherwise.
-        :rtype: bool
-        """
-        try:
-            data_type    = clazz.data_type
-            data_subtype = clazz.data_subtype
-        except AttributeError:
-            return False
-        return self.data_type    == data_type    and \
-               self.data_subtype == data_subtype
+#------------------------------------------------------------------------------
+class RelationshipDeserializer(object):
+    def __new__(cls, instance1, instance2):
+        Rel = Relationship(instance1.__class__, instance2.__class__)
+        return Rel(instance1, instance2)
 
 
 #------------------------------------------------------------------------------
@@ -1649,7 +1993,10 @@ class _LocalDataCache(Singleton):
         if self._enabled:
 
             # The list is ordered so newer instances appear last.
-            self.__fresh.append(data)
+            if isinstance(data, Relationship):
+                self.__fresh.extend(data.instances)
+            else:
+                self.__fresh.append(data)
 
 
     #--------------------------------------------------------------------------
@@ -1673,6 +2020,10 @@ class _LocalDataCache(Singleton):
 
             # Get the identity.
             data_id = data.identity
+
+            # Ignore Relationship objects.
+            if "-" in data_id:
+                continue
 
             # Keep (and overwrite) the data. Order is important!
             # XXX FIXME review, some data may be lost... (merge instead?)
@@ -1777,20 +2128,46 @@ class _LocalDataCache(Singleton):
                 result = []
 
             # Single result.
-            if isinstance(result, Data):
+            elif isinstance(result, Data):
                 result = [result]
+            elif isinstance(result, Relationship):
+                result = list(result.instances)
 
             # Multiple results.
             else:
-                result = list(result)
-                for data in result:
-                    if not isinstance(data, Data):
-                        msg = "recv_info() returned an invalid data type: %r"
-                        raise TypeError(msg % type(data))
+                try:
+                    sanitized_result = []
+                    for entity in result:
+                        if isinstance(entity, Data):
+                            sanitized_result.append(entity)
+                        elif isinstance(entity, Relationship):
+                            sanitized_result.extend(entity.instances)
+                        else:
+                            raise TypeError(
+                                "run() returned an invalid data type:"
+                                " %r" % type(entity))
+                except TypeError:
+                    raise
+                except Exception:
+                    raise TypeError(
+                        "run() returned an invalid data type:"
+                        " %r" % type(result))
+                result = sanitized_result
 
             # Always send back the input data as a result,
             # unless discarded by the plugin.
-            if (
+            if isinstance(input_data, Relationship):
+                if (
+                    input_data.instances[1] not in result and
+                    input_data.instances[1].identity not in self.__discarded
+                ):
+                    result.insert(0, input_data.instances[1])
+                if (
+                    input_data.instances[0] not in result and
+                    input_data.instances[0].identity not in self.__discarded
+                ):
+                    result.insert(0, input_data.instances[0])
+            elif (
                 input_data not in result and
                 input_data.identity not in self.__discarded
             ):
@@ -1810,7 +2187,7 @@ class _LocalDataCache(Singleton):
 
             # Warn about discarded data that's explicitly returned.
             if discarded_returned:
-                msg = "recv_info() returned discarded data: "
+                msg = "run() returned discarded data: "
                 msg += ", ".join(discarded_returned)
                 warn(msg, DiscardedResultsWarning)
 
@@ -1828,7 +2205,7 @@ class _LocalDataCache(Singleton):
                 else:
                     graph[data_id] = data
             if merged:
-                msg = "recv_info() returned duplicated results"
+                msg = "run() returned duplicated results"
                 try:
                     msg += ":\n\t" + "\n\t".join(repr(data) for data in merged)
                 except Exception:
@@ -1868,7 +2245,7 @@ class _LocalDataCache(Singleton):
             # No warnings for autogenerated data, though.
             if missing:
                 msg = ("Data created and referenced by plugin,"
-                       " but not returned by recv_info()")
+                       " but not returned by run()")
                 try:
                     missing_ids = {data.identity for data in missing}
                     missing_ids.difference_update(discarded_ref)
@@ -1901,7 +2278,7 @@ class _LocalDataCache(Singleton):
             orphan.difference_update(self.__autogen)     # autogenerated
             if orphan:
                 msg = ("Data created by plugin, but not referenced"
-                       " nor returned by recv_info()")
+                       " nor returned by run()")
                 try:
                     msg += ":\n\t" + "\n\t".join(
                         repr(self.__new_data[data_id]) for data_id in orphan)

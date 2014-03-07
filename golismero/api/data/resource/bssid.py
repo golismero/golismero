@@ -44,8 +44,6 @@ class BSSID(MAC):
     Wi-Fi BSSID (MAC address of a wireless router).
     """
 
-    resource_type = Resource.RESOURCE_BSSID
-
 
     #--------------------------------------------------------------------------
     def __init__(self, bssid, essid = None):

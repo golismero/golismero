@@ -1,0 +1,180 @@
+[
+
+    {
+        "comment": "--- PHP advisories ---",
+
+        "rule_id" : "s1",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePHP"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "((nopsec_)*php[3]*_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^phpBugTracker*_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Java advisories ---",
+
+        "rule_id" : "s2",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareJava"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_(ibm_)*java_prdts_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^gb_oracle_java_se_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^gb_sun_java_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^java_jre_jdk_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^secpod_(oracle|sun)_java_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Python advisories ---",
+
+        "rule_id" : "s3",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePython"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_|secpod_|mod_)*python_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Cold Fusion advisories ---",
+
+        "rule_id" : "s4",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareColdFusion"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_|secpod_)*(adobe_)*coldfusion_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^[Mm]acromedia_[cC]old[fF]usion_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- ASP .Net advisories ---",
+
+        "rule_id" : "s5",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareASPNet"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_ms_(asp_)*dotnet_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Ruby on rails advisories ---",
+
+        "rule_id" : "s6",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareRubyRails"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod)_ruby_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Struts framework advisories ---",
+
+        "rule_id" : "s7",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareStruts"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod)_apache_struts_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Django framework advisories ---",
+
+        "rule_id" : "s8",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareDjango"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod)django_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    }
+]

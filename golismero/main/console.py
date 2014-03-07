@@ -346,12 +346,12 @@ class Console (object):
     # Verbose levels.
 
     DISABLED     = Logger.DISABLED
-    STANDARD     = Logger.STANDARD
+    MINIMAL      = Logger.MINIMAL
     VERBOSE      = Logger.VERBOSE
     MORE_VERBOSE = Logger.MORE_VERBOSE
 
     # Current verbose level.
-    level = STANDARD
+    level = VERBOSE
 
     # Use colors?
     use_colors = True
@@ -380,12 +380,12 @@ class Console (object):
     def display(cls, message):
         """
         Write a message to standard output, as long as the current log level
-        is at least STANDARD.
+        is at least MINIMAL.
 
         :param message: message to write
         :type message: str
         """
-        if  cls.level >= cls.STANDARD:
+        if  cls.level >= cls.MINIMAL:
             cls._display(message)
 
 
@@ -439,12 +439,12 @@ class Console (object):
     def display_error(cls, message):
         """
         Write a message to standard error, as long as the current log level
-        is at least STANDARD.
+        is at least MINIMAL.
 
         :param message: message to write
         :type message: str
         """
-        if cls.level >= cls.STANDARD:
+        if cls.level >= cls.MINIMAL:
             cls._display_error(message)
 
 
@@ -483,8 +483,11 @@ class Console (object):
         This method is called automatically by an exit hook to restore the
         console colors before quitting.
         """
-        if cls.use_colors:
-            sys.stdout.write( colored("") )
+        try:
+            if cls.use_colors:
+                sys.stdout.write( colored("") )
+        except:
+            pass
 
 
 #------------------------------------------------------------------------------

@@ -1,0 +1,255 @@
+[
+
+    {
+        "comment": "--- WordPress advisories ---",
+
+        "rule_id" : "cms1",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareWordPress"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod)_wordpress_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^gb_wordpressmu_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^[Ww]ord[Pp]ress_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- phpBB advisories ---",
+
+        "rule_id" : "cms2",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePHPbb"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_)*phpbb_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Drupal advisories ---",
+
+        "rule_id" : "cms3",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareDrupal"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*drupal_.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Joomla advisories ---",
+
+        "rule_id" : "cms4",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareJoomla"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*joomla_.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- phpMYAdmin advisories ---",
+
+        "rule_id" : "cms5",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePHPMyAdmin"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*phpmyadmin_.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Horde Groupware advisories ---",
+
+        "rule_id" : "cms6",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePHPGroupWare"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*phpgroupware_.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- vBulletin advisories ---",
+
+        "rule_id" : "cms7",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareVBulletin"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*vbulletin.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- DotNetNuke advisories ---",
+
+        "rule_id" : "cms8",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareDotNetNuke"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*dotnetnuke.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- PHP-Nuke advisories ---",
+
+        "rule_id" : "cms9",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePHPNuke"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*php_nuke.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Zope advisories ---",
+
+        "rule_id" : "cms10",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareZope"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_|)*zope.*\\.nasl)",
+                        "operator": "and"
+                    },
+                    {
+                        "regex": "(.*_detect\\.nasl)",
+                        "negate": "true"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    }
+]

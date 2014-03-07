@@ -46,6 +46,7 @@ from ..managers.auditmanager import Audit
 from ..managers.processmanager import PluginContext
 from ..messaging.message import Message
 
+from inspect import isclass
 from os import getpid, unlink
 from thread import get_ident
 
@@ -56,7 +57,7 @@ class PluginTester(object):
     Setup a mock environment to test plugins.
 
     Example:
-        >>> from golismero.api.data.resource.url import BaseUrl
+        >>> from golismero.api.data.resource.url import BaseURL
         >>> from golismero.main.testing import PluginTester
         >>> with PluginTester() as t:
         ...    u = BaseUrl("http://www.example.com/")
@@ -65,7 +66,7 @@ class PluginTester(object):
         [<BaseUrl url='http://www.example.com/'>]
 
     Another example (with a scope):
-        >>> from golismero.api.data.resource.url import BaseUrl
+        >>> from golismero.api.data.resource.url import BaseURL
         >>> from golismero.main.testing import PluginTester
         >>> with PluginTester(autoinit=False) as t:
         ...    t.audit_config.targets = ["http://www.example.com/"]
@@ -76,7 +77,7 @@ class PluginTester(object):
         [<BaseUrl url='http://www.example.com/'>]
 
     Yet another way of doing it:
-        >>> from golismero.api.data.resource.url import BaseUrl
+        >>> from golismero.api.data.resource.url import BaseURL
         >>> from golismero.common import AuditConfig
         >>> from golismero.main.testing import PluginTester
         >>> cfg = AuditConfig()
@@ -237,7 +238,8 @@ class PluginTester(object):
         Config._context  = PluginContext(
             orchestrator_pid = getpid(),
             orchestrator_tid = get_ident(),
-                   msg_queue = orchestrator._Orchestrator__queue,
+                   msg_queue = orchestrator.messageManager.name,
+                     address = orchestrator.messageManager.address,
                   audit_name = self.audit_name,
                 audit_config = self.audit_config,
                  audit_scope = self.audit_scope,
@@ -268,8 +270,12 @@ class PluginTester(object):
         self.init_environment()
 
         # Load the plugin.
-        plugin_info = self.audit.pluginManager.get_plugin_by_id(plugin_id)
-        plugin = self.audit.pluginManager.load_plugin_by_id(plugin_id)
+        if self.audit is not None:
+            pluginManager = self.audit.pluginManager
+        else:
+            pluginManager = self.orchestrator.pluginManager
+        plugin_info = pluginManager.get_plugin_by_id(plugin_id)
+        plugin = pluginManager.load_plugin_by_id(plugin_id)
         return plugin, plugin_info
 
 
@@ -322,11 +328,15 @@ class PluginTester(object):
 
                 # Make sure the plugin can actually process this type of data.
                 # Raise an exception if it doesn't.
-                found = False
-                for clazz in plugin.get_accepted_info():
-                    if isinstance(data, clazz):
-                        found = True
-                        break
+                accepted_info = plugin.get_accepted_types()
+                if isclass(accepted_info):
+                    found = data.is_instance(accepted_info)
+                else:
+                    found = False
+                    for clazz in accepted_info:
+                        if data.is_instance(clazz):
+                            found = True
+                            break
                 if not found:
                     msg = "Plugin %s cannot process data of type %s"
                     raise TypeError(msg % (plugin_id, type(data)))
@@ -335,7 +345,7 @@ class PluginTester(object):
                 Config._context._PluginContext__ack_identity = data.identity
 
                 # Call the plugin.
-                result = plugin.recv_info(data)
+                result = plugin.run(data)
 
                 # Reset the ACK identity.
                 Config._context._PluginContext__ack_identity = None
@@ -375,6 +385,49 @@ class PluginTester(object):
                 raise TypeError(
                     "Plugins of category %s cannot process filenames."
                     % plugin_info.category)
+
+        finally:
+
+            # Unload the plugin and reset the ACK identity.
+            Config._context._PluginContext__plugin_info  = None
+            Config._context._PluginContext__ack_identity = None
+
+
+    #--------------------------------------------------------------------------
+    def run_plugin_method(self, plugin_id, method, *args, **kwargs):
+        """
+        Run the requested plugin method with arbitrary parameters.
+
+        It's the caller's responsibility to check the input message queue of
+        the Orchestrator instance if the plugin sends any messages.
+
+        :param plugin_id: ID of the plugin to test.
+        :type plugin_id: str
+
+        :param method: Method name.
+            All parameters following this one are passed to the method.
+        :type method: str
+
+        :returns: Return value from the plugin method.
+        :rtype: \\*
+        """
+
+        # Load the plugin and reset the ACK identity.
+        # The name MUST be the full ID. This is intentional.
+        plugin, plugin_info = self.get_plugin(plugin_id)
+        Config._context._PluginContext__plugin_info  = plugin_info
+        Config._context._PluginContext__ack_identity = None
+
+        try:
+
+            # Initialize the environment.
+            HTTP._initialize()
+            NetworkCache._clear_local_cache()
+            LocalFile._update_plugin_path()
+            LocalDataCache.on_run()
+
+            # Run the plugin method.
+            return getattr(plugin, method)(*args, **kwargs)
 
         finally:
 

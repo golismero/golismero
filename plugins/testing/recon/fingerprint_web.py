@@ -30,7 +30,7 @@ from golismero.api.config import Config
 from golismero.api.data import discard_data
 from golismero.api.data.information.http import HTTP_Raw_Request
 from golismero.api.data.information.fingerprint import WebServerFingerprint
-from golismero.api.data.resource.url import BaseUrl
+from golismero.api.data.resource.url import BaseURL
 from golismero.api.logger import Logger
 from golismero.api.net import NetworkException
 from golismero.api.net.http import HTTP
@@ -203,17 +203,17 @@ class ServerFingerprinting(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return [BaseUrl]
+    def get_accepted_types(self):
+        return [BaseURL]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
         """
         Main function for server fingerprint. Get an URL and return the fingerprint results.
 
-        :param info: Folder URL.
-        :type info: FolderUrl
+        :param info: Base URL.
+        :type info: BaseURL
 
         :return: Fingerprint.
         :rtype: WebServerFingerprint

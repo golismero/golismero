@@ -31,25 +31,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import sys
 import os
 from os import path
-try:
-    _FIXED_PATH_
-except NameError:
-    here = path.split(path.abspath(__file__))[0]
-    if not here:  # if it fails use cwd instead
-        here = path.abspath(os.getcwd())
-    golismero = path.join(here, "..")
-    thirdparty_libs = path.join(golismero, "thirdparty_libs")
-    if path.exists(thirdparty_libs):
-        sys.path.insert(0, thirdparty_libs)
-        sys.path.insert(0, golismero)
-    _FIXED_PATH_ = True
+here = path.split(path.abspath(__file__))[0]
+if not here:  # if it fails use cwd instead
+    here = path.abspath(os.getcwd())
+golismero = path.join(here, "..")
+thirdparty_libs = path.join(golismero, "thirdparty_libs")
+if path.exists(thirdparty_libs):
+    sys.path.insert(0, thirdparty_libs)
+    sys.path.insert(0, golismero)
 
 
 # Imports.
 from golismero.api.data import Data
 from golismero.api.data.information.text import Text
-from golismero.api.data.resource.url import Url
-from golismero.api.data.vulnerability.information_disclosure.url_disclosure import UrlDisclosure
+from golismero.api.data.resource.url import URL
+from golismero.api.data.vulnerability.information_disclosure.url_disclosure \
+    import UrlDisclosure
 from golismero.api.text.text_utils import generate_random_string
 from golismero.database.auditdb import AuditDB, BaseAuditDB, AuditSQLiteDB
 from golismero.common import AuditConfig, OrchestratorConfig
@@ -352,7 +349,7 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert db.get_audit_times() == (None, None)
 
     # Create some fake data and add it to the database.
-    d1 = Url("http://www.example.com/" + key)
+    d1 = URL("http://www.example.com/" + key)
     d2 = Text(data)
     d3 = UrlDisclosure(d1)
     d1.add_information(d2)
@@ -367,9 +364,6 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert db.has_data_key(d1.identity)
     assert db.has_data_key(d2.identity)
     assert db.has_data_key(d3.identity)
-    assert db.has_data_key(d1.identity, d1.data_type)
-    assert db.has_data_key(d2.identity, d2.data_type)
-    assert db.has_data_key(d3.identity, d3.data_type)
 
     # Test get_data().
     d1p = db.get_data(d1.identity)
@@ -381,21 +375,21 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert d1p.identity == d1.identity
     assert d2p.identity == d2.identity
     assert d3p.identity == d3.identity
-    assert d1p.links == d1.links
+    assert d1p.links == d1.links, (d1p.links, d1.links)
     assert d2p.links == d2.links
     assert d3p.links == d3.links
 
     # Test get_data_types().
-    assert db.get_data_types((d1.identity, d2.identity, d3.identity)) == {(d1.data_type, d1.resource_type), (d2.data_type, d2.information_type), (d3.data_type, d3.vulnerability_type)}
+    assert db.get_data_types((d1.identity, d2.identity, d3.identity)) == {(d1.data_type, d1.resource_type), (d2.data_type, d2.information_type), (d3.data_type, d3.vulnerability_type)}, (db.get_data_types((d1.identity, d2.identity, d3.identity)), {(d1.data_type, d1.resource_type), (d2.data_type, d2.information_type), (d3.data_type, d3.vulnerability_type)})
 
     # Test get_data_count().
     assert db.get_data_count() == 3
     assert db.get_data_count(d1.data_type) == 1
     assert db.get_data_count(d2.data_type) == 1
     assert db.get_data_count(d3.data_type) == 1
-    assert db.get_data_count(d1.data_type, d1.resource_type) == 1
-    assert db.get_data_count(d2.data_type, d2.information_type) == 1
-    assert db.get_data_count(d3.data_type, d3.vulnerability_type) == 1
+    assert db.get_data_count(data_subtype = d1.resource_type) == 1
+    assert db.get_data_count(data_subtype = d2.information_type) == 1
+    assert db.get_data_count(data_subtype = d3.vulnerability_type) == 1
 
     # Test get_many_data().
     assert {x.identity for x in db.get_many_data((d1.identity, d2.identity, d3.identity))} == {d1.identity, d2.identity, d3.identity}
@@ -410,9 +404,6 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert not db.has_data_key(d1.identity)
     assert not db.has_data_key(d2.identity)
     assert not db.has_data_key(d3.identity)
-    assert not db.has_data_key(d1.identity, d1.data_type)
-    assert not db.has_data_key(d2.identity, d2.data_type)
-    assert not db.has_data_key(d3.identity, d3.data_type)
     assert db.get_data_count() == 0
     assert db.get_data_count(d1.data_type) == 0
     assert db.get_data_count(d2.data_type) == 0
@@ -420,10 +411,13 @@ def helper_test_auditdb_data_consistency(db, key, data):
     assert db.get_data_count(d1.data_type, d1.resource_type) == 0
     assert db.get_data_count(d2.data_type, d2.information_type) == 0
     assert db.get_data_count(d3.data_type, d3.vulnerability_type) == 0
+    assert db.get_data_count(data_subtype = d1.resource_type) == 0
+    assert db.get_data_count(data_subtype = d2.information_type) == 0
+    assert db.get_data_count(data_subtype = d3.vulnerability_type) == 0
     assert db.get_data_types((d1.identity, d2.identity, d3.identity)) == set()
-    assert db.get_data(d1.identity) == None
-    assert db.get_data(d2.identity) == None
-    assert db.get_data(d3.identity) == None
+    assert db.get_data(d1.identity) is None
+    assert db.get_data(d2.identity) is None
+    assert db.get_data(d3.identity) is None
 
 
 # Benchmark for the disk database.
@@ -458,7 +452,7 @@ def helper_auditdb_stress(n, dbname = ":auto:"):
 
         print "  -> Writing..."
         for x in xrange(n):
-            d1 = Url("http://www.example.com/" + generate_random_string())
+            d1 = URL("http://www.example.com/" + generate_random_string())
             d2 = Text(generate_random_string())
             d3 = UrlDisclosure(d1)
             d1.add_information(d2)
@@ -477,24 +471,24 @@ def helper_auditdb_stress(n, dbname = ":auto:"):
         keys = disk.get_data_keys(Data.TYPE_INFORMATION)
         assert len(keys) == n
         for key in keys:
-            assert disk.has_data_key(key, Data.TYPE_INFORMATION)
-            data = disk.get_data(key, Data.TYPE_INFORMATION)
+            assert disk.has_data_key(key)
+            data = disk.get_data(key)
             assert data is not None
             assert data.data_type == Data.TYPE_INFORMATION
             assert isinstance(data, Text)
         keys = disk.get_data_keys(Data.TYPE_RESOURCE)
         assert len(keys) == n
         for key in keys:
-            assert disk.has_data_key(key, Data.TYPE_RESOURCE)
-            data = disk.get_data(key, Data.TYPE_RESOURCE)
+            assert disk.has_data_key(key)
+            data = disk.get_data(key)
             assert data is not None
             assert data.data_type == Data.TYPE_RESOURCE
-            assert isinstance(data, Url)
+            assert isinstance(data, URL)
         keys = disk.get_data_keys(Data.TYPE_VULNERABILITY)
         assert len(keys) == n
         for key in keys:
-            assert disk.has_data_key(key, Data.TYPE_VULNERABILITY)
-            data = disk.get_data(key, Data.TYPE_VULNERABILITY)
+            assert disk.has_data_key(key)
+            data = disk.get_data(key)
             assert data is not None
             assert data.data_type == Data.TYPE_VULNERABILITY
             assert isinstance(data, UrlDisclosure)
@@ -526,7 +520,7 @@ def test_auditdb_dump():
         print "Testing the audit database dump..."
         print "  -> Writing..."
         for x in xrange(30):
-            d1 = Url("http://www.example.com/" + generate_random_string())
+            d1 = URL("http://www.example.com/" + generate_random_string())
             d2 = Text(generate_random_string())
             d3 = UrlDisclosure(d1)
             d1.add_information(d2)
@@ -573,6 +567,6 @@ def test_auditdb_dump():
 # Run all tests from the command line.
 if __name__ == "__main__":
     test_auditdb_interfaces()
-    test_auditdb_dump()
     test_auditdb_consistency()
+    test_auditdb_dump()
     test_auditdb_stress()

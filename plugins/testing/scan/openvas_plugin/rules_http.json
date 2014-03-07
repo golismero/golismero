@@ -1,0 +1,30 @@
+[
+    {
+        "comment": "--- HTTP TRACE ---",
+
+        "rule_id" : "h1",
+        "rule_type" : "http",
+        "matching_types":
+            [
+                "InsecureMethod"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^http_trace\\.nasl)"
+                    },
+                    {
+                        "regex": "(^DDI_IIS_dotNet_Trace\\.nasl)"
+                    },
+                    {
+                        "regex": "(^xst_http_trace\\.nasl)"
+                    },
+                    {
+                        "regex": "(^http_proxy_loop_connect\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    }
+]

@@ -42,8 +42,6 @@ class Text(Binary):
     Plain text data.
     """
 
-    information_type = Binary.INFORMATION_PLAIN_TEXT
-
 
     #--------------------------------------------------------------------------
     def __init__(self, data, content_type = "text/plain"):

@@ -5,7 +5,7 @@ Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2014 GoLismero Project
-License     = GNU Public License
+License     = GNU Public License v2
 
 [Arguments]
 
@@ -29,6 +29,10 @@ License     = GNU Public License
 # them may be difficult, but showing them to user verbatim is appropriate.
 #
 mode = dump
+
+# Use this option to control whether to generate a compact JSON (saves disk
+# space) or a beautified JSON (suitable to be read by a human).
+beautify = no
 
 # Command to launch after generating the output file.
 # The string "$1" will be replaced by the output filename.

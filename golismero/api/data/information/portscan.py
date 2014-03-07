@@ -45,8 +45,6 @@ class Portscan(Fingerprint):
     Portscan results.
     """
 
-    information_type = Fingerprint.INFORMATION_PORTSCAN
-
 
     #--------------------------------------------------------------------------
     def __init__(self, ip, ports, timestamp = None):

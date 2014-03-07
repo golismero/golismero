@@ -60,7 +60,7 @@ class ShodanPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         return [IP]
 
 
@@ -77,7 +77,7 @@ class ShodanPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         # This is where we'll collect the data we'll return.
         results = []

@@ -1,0 +1,423 @@
+[
+
+    {
+        "comment": "--- Ubuntu advisories ---",
+
+        "rule_id" : "p1",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformUbuntu"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^ubuntu_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Fedora advisories ---",
+
+        "rule_id" : "p2",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformFedora"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_fedora_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(fcore_.*\\.nasl)",
+                        "operator": "and"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Mandriva advisories ---",
+
+        "rule_id" : "p3",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformMandriva"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_mandriva_.*\\.nasl)",
+                        "operator": "or"
+                    },
+                    {
+                        "regex": "(^mdksa_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Microsoft advisories ---",
+
+        "rule_id" : "p4",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformWindows"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*ms[\\d][\\d].*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^gb_ms_win.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^secpod_ms_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^win_CVE.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Novel advisories ---",
+
+        "rule_id" : "p5",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformNovell"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*novell_.*\\.nasl)",
+                        "operator": "or"
+                    },
+                    {
+                        "regex": "(^secpod_novell_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Solaris advisories ---",
+
+        "rule_id" : "p6",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformSolaris"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_solaris_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Suse advisories ---",
+
+        "rule_id" : "p7",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformSuSE"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*suse_[s]*.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^sles.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Debian advisories ---",
+
+        "rule_id" : "p8",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformDebian"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^deb_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Apple advisories ---",
+
+        "rule_id" : "p9",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformMacOSX"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^macosx_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^gb_apple_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^secpod_apple_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^os[xX]_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- VMWare advisories ---",
+
+        "rule_id" : "p10",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformVMwareESX"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*vmware_[esx]*.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- HP-UX advisories ---",
+
+        "rule_id" : "p11",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformHPUX"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_hp_ux_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- FreeBSD advisories ---",
+
+        "rule_id" : "p12",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformFreeBSD"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*freebsd(sa)*_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- CentOS advisories ---",
+
+        "rule_id" : "p13",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformCentOS"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_CESA[_\\-].*\\.nasl)",
+                        "operator": "or"
+                    }
+                ]
+            ],
+        "content_rules":
+            [
+                [
+                    {
+                        "regex": "((script_name\\(\\\"CentOS Security Advisory CESA))"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Juniper advisories ---",
+
+        "rule_id" : "p14",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformJunos"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^nsm2004_dos\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Slackware advisories ---",
+
+        "rule_id" : "p15",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformSlackware"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^esoft_slk_ssa_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Solaris advisories ---",
+
+        "rule_id" : "p16",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformSolaris"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^gb_solaris_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- RedHat advisories ---",
+
+        "rule_id" : "p17",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformRedHat"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*RHSA[_-].*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Cisco advisories ---",
+
+        "rule_id" : "p18",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformCisco"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^[Cc]isco.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Gentoo advisories ---",
+
+        "rule_id" : "p19",
+        "rule_type" : "platform",
+        "matching_types":
+            [
+                "OutdatedPlatformGentoo"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^glsa.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    }
+]

@@ -46,8 +46,6 @@ class IP(Resource):
     IP address.
     """
 
-    resource_type = Resource.RESOURCE_IP
-
 
     #--------------------------------------------------------------------------
     def __init__(self, address):

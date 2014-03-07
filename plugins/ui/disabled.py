@@ -47,12 +47,12 @@ class DisabledUIPlugin(UIPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         return []
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
         pass
 
 

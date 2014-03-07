@@ -87,12 +87,12 @@ class NmapScanPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         return [IP]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         # Build the command line arguments for Nmap.
         args = shlex.split( Config.plugin_args["args"] )

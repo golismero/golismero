@@ -64,6 +64,9 @@ class __FakeFile(object):
     def close(self):
         pass
 
+# Get the original values for stdout and stderr.
+__orig_stdout, __orig_stderr = sys.stdout, sys.stderr
+
 # Our wrapper to the bootstrap function.
 # It replaces stdout and stderr with a fake file object,
 # and sets a signal handler to commit suicide on Control-C.
@@ -78,7 +81,8 @@ def __patched_bootstrap(self):
 
 if sys.platform == "win32":
 
-    # Wraps around get_command_line() to set our own main() function in new processes.
+    # Wraps around get_command_line()
+    # to set our own main() function in new processes.
     def __patched_get_command_line():
 
         # Calculate the command line that would normally be used.
@@ -130,8 +134,10 @@ if sys.platform == "win32":
     def main():
         from multiprocessing.forking import main as original_main
         from multiprocessing import Process
-        __original_bootstrap = Process._bootstrap
-        Process._bootstrap = __patched_bootstrap
+        if Process._bootstrap.__name__ != "__patched_bootstrap":
+            global __original_bootstrap
+            __original_bootstrap = Process._bootstrap
+            Process._bootstrap = __patched_bootstrap
         stdout, stderr = sys.stdout, sys.stderr
         sys.stdout, sys.stderr = __FakeFile(), __FakeFile()
         try:
@@ -143,16 +149,32 @@ if __name__ != "__parents_main__" and __name__ != "__main__":
 
     # Patch the bootstrap function for child processes.
     from multiprocessing import Process
-    __original_bootstrap = Process._bootstrap
-    Process._bootstrap = __patched_bootstrap
+    if Process._bootstrap.__name__ != "__patched_bootstrap":
+        __original_bootstrap = Process._bootstrap
+        Process._bootstrap = __patched_bootstrap
 
+        if sys.platform == "win32":
+            from multiprocessing import forking
+
+            # Patch the function that calculates
+            # the command line for child processes.
+            from multiprocessing.forking import get_command_line as \
+                _original_get_command_line
+            forking.get_command_line = __patched_get_command_line
+
+            # Patch the function that prepares the data for child processes.
+            from multiprocessing.forking import prepare as _original_prepare
+            forking.prepare = __patched_prepare
+
+# Undoes the patches. This is required to be able to reload GoLismero.
+def undo():
+    Process._bootstrap = __original_bootstrap
     if sys.platform == "win32":
-        from multiprocessing import forking
-
-        # Patch the function that calculates the command line for child processes.
-        from multiprocessing.forking import get_command_line as _original_get_command_line
-        forking.get_command_line = __patched_get_command_line
-
-        # Patch the function that prepares the data for child processes.
-        from multiprocessing.forking import prepare as _original_prepare
-        forking.prepare = __patched_prepare
+        forking.get_command_line = _original_get_command_line
+        forking.prepare = _original_prepare
+    if __orig_stdout is not None and hasattr(sys.stdout, "__class__") and \
+                    sys.stdout.__class__.__name__ == __FakeFile.__name__:
+        sys.stdout = __orig_stdout
+    if __orig_stderr is not None and hasattr(sys.stderr, "__class__") and \
+                    sys.stderr.__class__.__name__ == __FakeFile.__name__:
+        sys.stderr = __orig_stderr

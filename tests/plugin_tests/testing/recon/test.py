@@ -38,7 +38,7 @@ class TestPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
         if not isinstance(info, Data):
             raise TypeError("Expected Data, got %r instead" % type(info))
 
@@ -46,5 +46,5 @@ class TestPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         pass

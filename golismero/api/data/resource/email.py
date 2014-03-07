@@ -45,8 +45,6 @@ class Email(Resource):
     Email address.
     """
 
-    resource_type = Resource.RESOURCE_EMAIL
-
 
     #--------------------------------------------------------------------------
     def __init__(self, address, name = None):

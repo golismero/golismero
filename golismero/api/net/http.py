@@ -38,7 +38,7 @@ from .web_utils import detect_auth_method, get_auth_obj
 from ..config import Config
 from ..data import LocalDataCache, discard_data
 from ..data.information.http import HTTP_Request, HTTP_Response, HTTP_Raw_Request
-from ..data.resource.url import Url
+from ..data.resource.url import URL
 from ...common import Singleton, get_data_folder
 
 from hashlib import md5
@@ -316,11 +316,11 @@ class _HTTP(Singleton):
                     if not cont:
                         return
 
-                # Autogenerate an Url object.
+                # Autogenerate an URL object.
                 # XXX FIXME: the depth level is broken!!!
                 url_obj = None
                 if url != request.url:
-                    url_obj = Url(
+                    url_obj = URL(
                         url         = url,
                         method      = request.method,
                         post_params = request.post_data,

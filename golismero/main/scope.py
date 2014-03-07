@@ -34,7 +34,7 @@ __all__ = ["AuditScope", "DummyScope"]
 
 from ..api.data.resource.domain import Domain
 from ..api.data.resource.ip import IP
-from ..api.data.resource.url import Url
+from ..api.data.resource.url import URL
 from ..api.net.dns import DNS
 from ..api.net.web_utils import ParsedURL, split_hostname
 from ..api.text.text_utils import to_utf8
@@ -120,7 +120,7 @@ class AbstractScope (object):
         result.extend( IP(address) for address in self.addresses )
         result.extend( Domain(domain) for domain in self.domains )
         result.extend( Domain(root) for root in self.roots )
-        result.extend( Url(url) for url in self.web_pages )
+        result.extend( URL(url) for url in self.web_pages )
         return result
 
 

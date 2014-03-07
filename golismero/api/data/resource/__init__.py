@@ -41,21 +41,5 @@ class Resource(Data):
     Base class for resources.
     """
 
-
-    #--------------------------------------------------------------------------
-
-    RESOURCE_UNKNOWN       = 0    # Not a real value!
-    RESOURCE_URL           = 1    # URL
-    RESOURCE_BASE_URL      = 2    # Base URL
-    RESOURCE_FOLDER_URL    = 3    # Folder URL
-    RESOURCE_DOMAIN        = 4    # Domain name
-    RESOURCE_IP            = 5    # IP address
-    RESOURCE_EMAIL         = 6    # Email address
-    RESOURCE_MAC           = 7    # MAC address
-    RESOURCE_BSSID         = 8    # Wi-Fi BSSID
-
-
-    #--------------------------------------------------------------------------
-
     data_type = Data.TYPE_RESOURCE
-    resource_type = RESOURCE_UNKNOWN
+    data_subtype = "resource/abstract"

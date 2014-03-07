@@ -5,10 +5,11 @@ Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2014 GoLismero Project
-License     = GNU Public License
+License     = GNU Public License v2
 
 [Arguments]
-url = http://127.0.0.1:5001
+#url = http://127.0.0.1:5001
+url =
 modulelist = sfp_affilinfo,sfp_bingsearch,sfp_crossref,sfp_dns,sfp_email,sfp_googlesearch,sfp_ir,sfp_malcheck,sfp_pageinfo,sfp_portscan_basic,sfp_spider,sfp_sslcert,sfp_strangeheaders,sfp_webframework,sfp_websvr,
 typelist = AFFILIATE_DOMAIN,AFFILIATE,AFFILIATE_IPADDR,AFFILIATE_WEB_CONTENT,CO_HOSTED_SITE,EMAILADDR,PROVIDER_MAIL,PROVIDER_JAVASCRIPT,WEBSERVER_HTTPHEADERS,HTTP_CODE,IP_ADDRESS,LINKED_URL_EXTERNAL,LINKED_URL_INTERNAL,MALICIOUS_AFFILIATE,MALICIOUS_AFFILIATE_IPADDR,MALICIOUS_COHOST,MALICIOUS_IPADDR,MALICIOUS_SUBDOMAIN,PROVIDER_DNS,WEBSERVER_STRANGEHEADER,TCP_PORT_OPEN,SSL_CERTIFICATE_EXPIRED,SSL_CERTIFICATE_MISMATCH,SUBDOMAIN,TARGET_WEB_CONTENT,URL_PASSWORD,URL_UPLOAD,URL_FORM,URL_STATIC,URL_FLASH,URL_JAVA_APPLET,URL_JAVASCRIPT,INITIAL_TARGET,WEBSERVER_BANNER,
 interval = 1.0

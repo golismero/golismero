@@ -46,7 +46,7 @@ except NameError:
 
 
 from golismero.api.config import Config
-from golismero.api.data.resource.url import BaseUrl
+from golismero.api.data.resource.url import BaseURL
 from golismero.common import AuditConfig, OrchestratorConfig
 from golismero.main.testing import PluginTester
 
@@ -75,7 +75,7 @@ def test_nikto():
         Config._context._PluginContext__plugin_info = plugin_info
         try:
             r, c = plugin.parse_nikto_results(
-                BaseUrl("http://www.example.com/"), path.join(here, csv_file))
+                BaseURL("http://www.example.com/"), path.join(here, csv_file))
             if DEBUG:
                 for d in r:
                     print "-" * 10
@@ -87,14 +87,14 @@ def test_nikto():
                 c[d.__class__.__name__] += 1
             #print c
             assert c.pop("IP") == 1
-            assert c.pop("Url") == 3
+            assert c.pop("URL") == 3
             assert c.pop("UncategorizedVulnerability") == 6
             assert len(c) == 0
         finally:
             Config._context._PluginContext__plugin_info = None
 
         print "Testing Nikto plugin against localhost..."
-        r = t.run_plugin(plugin_id, BaseUrl("http://localhost/"))
+        r = t.run_plugin(plugin_id, BaseURL("http://localhost/"))
         for d in r:
             print "\t%r" % d
 

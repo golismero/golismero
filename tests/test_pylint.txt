@@ -1,5 +1,7 @@
-golismero/api/data/__init__.py:738: [E1101(no-member), Data.display_properties] Instance of 'Data' has no 'vulnerability_type' member
-golismero/api/data/__init__.py:1601: [E1101(no-member), Data.is_instance] Instance of 'Data' has no 'data_subtype' member
+golismero/api/data/__init__.py:720: [E1101(no-member), Entity.is_instance] Instance of 'Entity' has no 'data_type' member
+golismero/api/data/__init__.py:721: [E1101(no-member), Entity.is_instance] Instance of 'Entity' has no 'data_subtype' member
+golismero/api/data/__init__.py:912: [E1101(no-member), Data.display_properties] Instance of 'Data' has no 'vulnerability_type' member
+golismero/api/data/__init__.py:1930: [E1102(not-callable), RelationshipDeserializer.__new__] Rel is not callable
 golismero/api/data/information/fingerprint.py:215: [E0202(method-hidden), OSFingerprint.name] An attribute affected in golismero.api.data.information.fingerprint line 160 hide this method
 golismero/api/data/information/fingerprint.py:240: [E0202(method-hidden), OSFingerprint.vendor] An attribute affected in golismero.api.data.information.fingerprint line 161 hide this method
 golismero/api/data/information/fingerprint.py:265: [E0202(method-hidden), OSFingerprint.type] An attribute affected in golismero.api.data.information.fingerprint line 162 hide this method
@@ -9,38 +11,32 @@ golismero/api/data/information/fingerprint.py:566: [E0202(method-hidden), WebSer
 golismero/api/data/information/fingerprint.py:600: [E0202(method-hidden), WebServerFingerprint.related] An attribute affected in golismero.api.data.information.fingerprint line 479 hide this method
 golismero/api/data/information/http.py:524: [E1103(maybe-no-member), HTTP_Request.__init__] Instance of 'str' has no 'items' member (but some types could not be inferred)
 golismero/api/data/information/http.py:882: [E0202(method-hidden), HTTP_Response.elapsed] An attribute affected in golismero.api.data.information.http line 856 hide this method
-golismero/api/data/resource/bssid.py:93: [E0202(method-hidden), BSSID.essid] An attribute affected in golismero.api.data.resource.bssid line 64 hide this method
-golismero/api/data/vulnerability/__init__.py:518: [E0202(method-hidden), Vulnerability.plugin_id] An attribute affected in golismero.api.data.vulnerability line 282 hide this method
-golismero/api/data/vulnerability/__init__.py:715: [E1101(no-member), Vulnerability.title] Instance of 'Vulnerability' has no '__title' member
-golismero/api/data/vulnerability/__init__.py:736: [E1101(no-member), Vulnerability.description] Instance of 'Vulnerability' has no '__description' member
-golismero/api/data/vulnerability/__init__.py:738: [E0202(method-hidden), Vulnerability.references] An attribute affected in golismero.api.data.vulnerability line 335 hide this method
-golismero/api/data/vulnerability/__init__.py:758: [E1101(no-member), Vulnerability.solution] Instance of 'Vulnerability' has no '__solution' member
-golismero/api/data/vulnerability/__init__.py:1381: [E1101(no-member), UrlVulnerability] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/__init__.py:1471: [E1101(no-member), DomainVulnerability] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/__init__.py:1526: [E1101(no-member), IPVulnerability] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/authentication/weak_credentials.py:97: [E1101(no-member), WeakCredentials] Method '__init__' has no '__doc__' member
+golismero/api/data/resource/bssid.py:91: [E0202(method-hidden), BSSID.essid] An attribute affected in golismero.api.data.resource.bssid line 62 hide this method
+golismero/api/data/vulnerability/__init__.py:560: [E0202(method-hidden), Vulnerability.plugin_id] An attribute affected in golismero.api.data.vulnerability line 299 hide this method
+golismero/api/data/vulnerability/__init__.py:722: [E1101(no-member), Vulnerability.title] Instance of 'Vulnerability' has no '__title' member
+golismero/api/data/vulnerability/__init__.py:743: [E1101(no-member), Vulnerability.description] Instance of 'Vulnerability' has no '__description' member
+golismero/api/data/vulnerability/__init__.py:765: [E1101(no-member), Vulnerability.solution] Instance of 'Vulnerability' has no '__solution' member
+golismero/api/data/vulnerability/__init__.py:780: [E0202(method-hidden), Vulnerability.references] An attribute affected in golismero.api.data.vulnerability line 352 hide this method
+golismero/api/data/vulnerability/authentication/weak_credentials.py:98: [E1101(no-member), WeakCredentials] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/cookie/__init__.py:70: [E1101(no-member), CookieVulnerability] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/default_error_page.py:75: [E1101(no-member), DefaultErrorPage] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/directory_listing.py:72: [E1101(no-member), DirectoryListing] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/dns_zone_transfer.py:93: [E1101(no-member), DNSZoneTransfer] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/domain_disclosure.py:88: [E1101(no-member), DomainDisclosure] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/insecure_method.py:73: [E1101(no-member), InsecureMethod] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/information_disclosure/unhandled_errors.py:73: [E1101(no-member), UnhandledErrors] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/infrastructure/outdated_software.py:82: [E1101(no-member), OutdatedSoftware] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/infrastructure/vulnerable_service.py:88: [E1101(no-member), VulnerableService] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/default_error_page.py:76: [E1101(no-member), DefaultErrorPage] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/directory_listing.py:73: [E1101(no-member), DirectoryListing] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/dns_zone_transfer.py:94: [E1101(no-member), DNSZoneTransfer] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/insecure_method.py:75: [E1101(no-member), InsecureMethod] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/information_disclosure/unhandled_errors.py:74: [E1101(no-member), UnhandledErrors] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/infrastructure/outdated_software.py:83: [E1101(no-member), OutdatedSoftware] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/infrastructure/vulnerable_service.py:89: [E1101(no-member), VulnerableService] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/injection/__init__.py:98: [E1101(no-member), Injection] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/malware/__init__.py:147: [E1101(no-member), Malware] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/malware/backdoor.py:88: [E1101(no-member), Backdoor] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/malware/malicious.py:117: [E1101(no-member), MaliciousASN] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/ssl/insecure_algorithm.py:79: [E1101(no-member), InsecureAlgorithm] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/malware/backdoor.py:89: [E1101(no-member), Backdoor] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/ssl/insecure_algorithm.py:80: [E1101(no-member), InsecureAlgorithm] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/ssl/invalid_common_name.py:70: [E1101(no-member), InvalidCommonName] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/ssl/obsolete_protocol.py:69: [E1101(no-member), ObsoleteProtocol] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/ssl/weak_key.py:76: [E1101(no-member), WeakKey] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/cookie.py:82: [E1101(no-member), SuspiciousCookie] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/cookie.py:83: [E1101(no-member), SuspiciousCookie] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/suspicious/header.py:77: [E1101(no-member), SuspiciousHeader] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/html.py:74: [E1101(no-member), SuspiciousHTML] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/url.py:63: [E1101(no-member), SuspiciousURL] Method '__init__' has no '__doc__' member
-golismero/api/data/vulnerability/suspicious/url.py:85: [E1101(no-member), SuspiciousURLPath] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/html.py:75: [E1101(no-member), SuspiciousHTML] Method '__init__' has no '__doc__' member
+golismero/api/data/vulnerability/suspicious/url.py:86: [E1101(no-member), SuspiciousURLPath] Method '__init__' has no '__doc__' member
 golismero/api/data/vulnerability/vuln_utils.py:443: [E1101(no-member), ] Function 'extract_vuln_ids' has no '__doc__' member
 golismero/api/data/vulnerability/vuln_utils.py:489: [E1101(no-member), ] Function 'convert_references_to_vuln_ids' has no '__doc__' member
 golismero/api/data/vulnerability/vuln_utils.py:527: [E1101(no-member), ] Function 'convert_vuln_ids_to_references' has no '__doc__' member
@@ -128,7 +124,7 @@ golismero/common.py:1190: [E1101(no-member), AuditConfig.check_params] Instance 
 golismero/common.py:1193: [E1101(no-member), AuditConfig.check_params] Instance of 'AuditConfig' has no 'disable_plugins' member
 golismero/common.py:1198: [E1101(no-member), AuditConfig.check_params] Instance of 'AuditConfig' has no 'depth' member
 golismero/common.py:1228: [E1101(no-member), AuditConfig.is_new_audit] Instance of 'AuditConfig' has no 'audit_name' member
-golismero/database/auditdb.py:2677: [E1102(not-callable), AuditMongoDB.mark_plugin_finished] Error is not callable
+golismero/database/auditdb.py:1625: [E1102(not-callable), AuditSQLiteDB.__get_data] Rel is not callable
 golismero/main/console.py:323: [E1101(no-member), _get_terminal_size_linux] Module 'os' has no 'ctermid' member
 golismero/main/launcher.py:74: [E1103(maybe-no-member), run] Instance of 'OrchestratorConfig' has no 'verbose' member (but some types could not be inferred)
 golismero/main/launcher.py:77: [E1103(maybe-no-member), run] Instance of 'OrchestratorConfig' has no 'color' member (but some types could not be inferred)
@@ -136,8 +132,8 @@ golismero/main/launcher.py:237: [E1103(maybe-no-member), _sanitize_config] Insta
 golismero/main/orchestrator.py:88: [E1101(no-member), Orchestrator.__init__] Instance of 'SyncManager' has no 'Queue' member
 golismero/main/testing.py:230: [E1101(no-member), PluginTester.init_environment] Instance of 'AuditManager' has no '_AuditManager__audits' member
 golismero/main/testing.py:241: [E1101(no-member), PluginTester.init_environment] Instance of 'Orchestrator' has no '_Orchestrator__queue' member
-golismero/main/testing.py:398: [E1101(no-member), PluginTester.cleanup] Instance of 'AuditDB' has no 'filename' member
-golismero/managers/auditmanager.py:159: [E1101(no-member), AuditManager.new_audit] Instance of 'AuditDB' has no 'filename' member
+golismero/main/testing.py:403: [E1101(no-member), PluginTester.cleanup] Instance of 'AuditDB' has no 'filename' member
+golismero/managers/auditmanager.py:161: [E1101(no-member), AuditManager.new_audit] Instance of 'AuditDB' has no 'filename' member
 golismero/managers/pluginmanager.py:560: [E1101(no-member), PluginInfo.customize_for_audit] Instance of 'EmptyNewStyleClass' has no '__read_config_file' member
 golismero/managers/processmanager.py:744: [E1101(no-member), PluginContext.remote_call] Instance of 'SyncManager' has no 'Queue' member
 golismero/managers/processmanager.py:976: [E1101(no-member), PluginLauncher.__init__] Instance of 'SyncManager' has no 'Queue' member

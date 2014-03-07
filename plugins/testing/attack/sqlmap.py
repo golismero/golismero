@@ -34,7 +34,7 @@ from time import time
 from traceback import format_exc
 
 from golismero.api.config import Config
-from golismero.api.data.resource.url import Url
+from golismero.api.data.resource.url import URL
 from golismero.api.data.vulnerability.injection.sql import SQLInjection
 from golismero.api.external import run_external_tool, find_binary_in_path, tempdir, get_tools_folder
 from golismero.api.logger import Logger
@@ -56,12 +56,12 @@ class SQLMapTestingPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return [Url]
+    def get_accepted_types(self):
+        return [URL]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         if not info.has_url_params and not info.has_post_params:
             return
@@ -127,7 +127,7 @@ class SQLMapTestingPlugin(TestingPlugin):
         Run SQLMap against the given target.
 
         :param target: URL to scan.
-        :type target: Url
+        :type target: URL
 
         :param args: Arguments to pass to SQLMap.
         :type args: list(str)
@@ -163,7 +163,7 @@ class SQLMapTestingPlugin(TestingPlugin):
         Convert the output of a SQLMap scan to the GoLismero data model.
 
         :param info: Data object to link all results to (optional).
-        :type info: Url
+        :type info: URL
 
         :param output_filename: Path to the output filename.
             The format should always be XML.
@@ -216,7 +216,7 @@ class SQLMapTestingPlugin(TestingPlugin):
                         l_inject_title   = re.search("(Title: )([\w\- ]+)", t).group(2)
                         l_inject_payload = re.search(r"""(Payload: )([\w\- =\'\"\%\&\$\)\(\?\¿\*\@\!\|\/\\\{\}\[\]\<\>\_\:,;\.]+)""", t).group(2)
 
-                        url = Url(info.url, method=l_inject_place, post_params=info.post_params, referer=info.referer)
+                        url = URL(info.url, method=l_inject_place, post_params=info.post_params, referer=info.referer)
                         v = SQLInjection(url,
                             title = "SQL Injection Vulnerability - " + l_inject_title,
                             vulnerable_params = { l_inject_param : l_inject_payload },

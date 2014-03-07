@@ -127,7 +127,7 @@ def test_import():
     audit_config.audit_db = ":memory:"
     with PluginTester(orchestrator_config, audit_config) as t:
         t.run_plugin("import/xml_openvas", path.join(here, "test_openvas.xml"))
-        results = Database.get_many( Database.keys(), Data.TYPE_VULNERABILITY )
+        results = Database.get_many( Database.keys(Data.TYPE_VULNERABILITY) )
         assert len(results) == 1, len(results)
         v = results[0]
         assert v.level == "informational", v.level

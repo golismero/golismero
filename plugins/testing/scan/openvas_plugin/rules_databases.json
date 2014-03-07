@@ -1,0 +1,78 @@
+[
+    {
+        "comment": "--- SQL Server advisory ---",
+
+        "rule_id" : "db1",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareMSSQLServer"
+            ],
+        "filename_rules": "",
+        "content_rules":
+            [
+                [
+                    {
+                            "regex": "(script_name[\\s]*\\([\\s]*\"[\\s]*([mM]icrosoft[\\s]+)*[Ss][Qq][Ll][\\s]+[sS]erver)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- MySQL Server advisory ---",
+
+        "rule_id" : "db2",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareMySQL"
+            ],
+        "filename_rules":             [
+                [
+                    {
+                        "regex": "(^(gb_|secpod_)*(oracle)*mysql[_-]*.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- PostgreSQL advisory ---",
+
+        "rule_id" : "db3",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwarePostgreSQL"
+            ],
+        "filename_rules":             [
+                [
+                    {
+                        "regex": "(^(gb_|secpod_)*postgre[s]*[Ss][Qq][Ll]_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    },
+
+    {
+        "comment": "--- Oracle database advisory ---",
+
+        "rule_id" : "db4",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareOracleDB"
+            ],
+        "filename_rules":             [
+                [
+                    {
+                        "regex": "(^gb_oracle_database_.*\\.nasl)"
+                    }
+                ]
+            ],
+        "content_rules": ""
+    }
+]

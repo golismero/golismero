@@ -43,8 +43,6 @@ class Geolocation(Fingerprint):
     Geolocation data.
     """
 
-    information_type = Fingerprint.INFORMATION_GEOLOCATION
-
 
     #--------------------------------------------------------------------------
     def __init__(self, latitude, longitude,

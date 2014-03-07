@@ -30,7 +30,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-__all__ = ["BaseUrl", "FolderUrl", "Url"]
+__all__ = ["BaseURL", "FolderURL", "URL"]
 
 from . import Resource
 from .domain import Domain
@@ -44,13 +44,13 @@ from urllib import quote
 
 
 #------------------------------------------------------------------------------
-class _AbstractUrl(Resource):
+class _AbstractURL(Resource):
     """
     Abstract class for all URL based resources.
     """
 
     # Not true, but this bypasses an integrity check in the metaclass.
-    resource_type = Resource.RESOURCE_URL
+    data_subtype = "resource/abstract"
 
 
     #--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ class _AbstractUrl(Resource):
         self.__parsed_url = parsed
 
         # Parent constructor.
-        super(_AbstractUrl, self).__init__()
+        super(_AbstractURL, self).__init__()
 
 
     #--------------------------------------------------------------------------
@@ -150,7 +150,7 @@ class _AbstractUrl(Resource):
 
 
 #------------------------------------------------------------------------------
-class Url(_AbstractUrl):
+class URL(_AbstractURL):
     """
     Universal Resource Locator (URL).
 
@@ -174,7 +174,7 @@ class Url(_AbstractUrl):
     - referer
     """
 
-    resource_type = Resource.RESOURCE_URL
+    data_subtype = "url"
 
 
     #--------------------------------------------------------------------------
@@ -233,7 +233,7 @@ class Url(_AbstractUrl):
         self.__referer     = parse_url(referer).url if referer else None
 
         # Call the parent constructor.
-        super(Url, self).__init__(url)
+        super(URL, self).__init__(url)
 
         # Increment the crawling depth by one.
         self.depth += 1
@@ -241,7 +241,7 @@ class Url(_AbstractUrl):
 
     #--------------------------------------------------------------------------
     def __repr__(self):
-        s = "<Url url=%r, method=%r, params=%r, referer=%r, depth=%r>"
+        s = "<URL url=%r, method=%r, params=%r, referer=%r, depth=%r>"
         s %= (self.url, self.method, self.post_params, self.referer, self.depth)
         return s
 
@@ -323,8 +323,8 @@ class Url(_AbstractUrl):
     @property
     def discovered(self):
         if self.is_in_scope():
-            result = FolderUrl.from_url(self.url)
-            result.append( BaseUrl(self.url) )
+            result = FolderURL.from_url(self.url)
+            result.append( BaseURL(self.url) )
             try:
                 result.append( IP(self.hostname) )
             except ValueError:
@@ -334,27 +334,27 @@ class Url(_AbstractUrl):
 
 
 #------------------------------------------------------------------------------
-class BaseUrl(_AbstractUrl):
+class BaseURL(_AbstractURL):
     """
     Base URL.
 
-    Unlike the Url type, which refers to any URL, this type is strictly for
+    Unlike the URL type, which refers to any URL, this type is strictly for
     root level URLs in a web server. Plugins that only run once per web server
     should probably receive this data type.
 
-    For example, a plugin receiving both BaseUrl and Url may get this input:
+    For example, a plugin receiving both BaseURL and URL may get this input:
 
-    - BaseUrl("http://www.example.com/")
-    - Url("http://www.example.com/")
-    - Url("http://www.example.com/index.php")
-    - Url("http://www.example.com/admin.php")
-    - Url("http://www.example.com/login.php")
+    - BaseURL("http://www.example.com/")
+    - URL("http://www.example.com/")
+    - URL("http://www.example.com/index.php")
+    - URL("http://www.example.com/admin.php")
+    - URL("http://www.example.com/login.php")
 
     Notice how the root level URL is sent twice,
-    once as BaseUrl and again the more generic Url.
+    once as BaseURL and again the more generic URL.
     """
 
-    resource_type = Resource.RESOURCE_BASE_URL
+    data_subtype = "base_url"
 
 
     #--------------------------------------------------------------------------
@@ -380,7 +380,7 @@ class BaseUrl(_AbstractUrl):
         url = parsed.url
 
         # Call the parent constructor.
-        super(BaseUrl, self).__init__(url)
+        super(BaseURL, self).__init__(url)
 
         # Reset the crawling depth.
         self.depth = 0
@@ -404,39 +404,39 @@ class BaseUrl(_AbstractUrl):
 
 
 #------------------------------------------------------------------------------
-class FolderUrl(_AbstractUrl):
+class FolderURL(_AbstractURL):
     """
     Folder URL.
 
-    Unlike the Url type, which refers to an URL that's linked or somehow found
-    to be valid, the FolderUrl type refers to inferred URLs to folders detected
+    Unlike the URL type, which refers to an URL that's linked or somehow found
+    to be valid, the FolderURL type refers to inferred URLs to folders detected
     within another URL.
 
     This makes it semantically different, since there's no guarantee that the
     URL actually points to a valid resource, nor that it belongs to the normal
     web access flow.
 
-    For example, a plugin receiving both FolderUrl and Url may get this input:
+    For example, a plugin receiving both FolderURL and URL may get this input:
 
-    - Url("http://www.example.com/wp-content/uploads/2013/06/attachment.pdf")
-    - FolderUrl("http://www.example.com/wp-content/uploads/2013/06/")
-    - FolderUrl("http://www.example.com/wp-content/uploads/2013/")
-    - FolderUrl("http://www.example.com/wp-content/uploads/")
-    - FolderUrl("http://www.example.com/wp-content/")
+    - URL("http://www.example.com/wp-content/uploads/2013/06/attachment.pdf")
+    - FolderURL("http://www.example.com/wp-content/uploads/2013/06/")
+    - FolderURL("http://www.example.com/wp-content/uploads/2013/")
+    - FolderURL("http://www.example.com/wp-content/uploads/")
+    - FolderURL("http://www.example.com/wp-content/")
 
-    Note that the folder URLs may or may not be sent again as an Url object.
+    Note that the folder URLs may or may not be sent again as an URL object.
     For example, for a site that has a link to the "incoming" directory in its
     index page, we may get something like this:
 
-    - Url("http://www.example.com/index.html")
-    - Url("http://www.example.com/incoming/")
-    - FolderUrl("http://www.example.com/incoming/")
+    - URL("http://www.example.com/index.html")
+    - URL("http://www.example.com/incoming/")
+    - FolderURL("http://www.example.com/incoming/")
 
-    FolderUrl objects are never sent for the root folder of a web site.
-    For that, see the BaseUrl data type.
+    FolderURL objects are never sent for the root folder of a web site.
+    For that, see the BaseURL data type.
     """
 
-    resource_type = Resource.RESOURCE_FOLDER_URL
+    data_subtype = "folder_url"
 
 
     #--------------------------------------------------------------------------
@@ -456,7 +456,7 @@ class FolderUrl(_AbstractUrl):
             raise ValueError("URL does not point to a folder! Got: %r" % url)
 
         # Call the parent constructor.
-        super(FolderUrl, self).__init__(parsed.url)
+        super(FolderURL, self).__init__(parsed.url)
 
 
     #--------------------------------------------------------------------------
@@ -467,7 +467,7 @@ class FolderUrl(_AbstractUrl):
         :type url: str
 
         :returns: Inferred folder URLs.
-        :rtype: list(FolderUrl)
+        :rtype: list(FolderURL)
 
         :raises ValueError: Only absolute URLs must be used.
         """
@@ -499,7 +499,7 @@ class FolderUrl(_AbstractUrl):
                 folder_urls.add(parsed.url)
 
         # Return the generated URLs.
-        return [FolderUrl(x) for x in folder_urls]
+        return [FolderURL(x) for x in folder_urls]
 
 
     #--------------------------------------------------------------------------
@@ -512,7 +512,7 @@ class FolderUrl(_AbstractUrl):
     @property
     def discovered(self):
         if self.is_in_scope():
-            result = [ BaseUrl(self.url) ]
+            result = [ BaseURL(self.url) ]
             try:
                 result.append( IP(self.hostname) )
             except ValueError:

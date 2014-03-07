@@ -55,7 +55,7 @@ class Logger (object):
     # Verbose levels
 
     DISABLED     = 0
-    STANDARD     = 1
+    MINIMAL      = 1
     VERBOSE      = 2
     MORE_VERBOSE = 3
 
@@ -91,12 +91,12 @@ class Logger (object):
     @classmethod
     def log(cls, message):
         """
-        Send a log message of STANDARD level.
+        Send a log message of MINIMAL level.
 
         :param message: Message to write.
         :type message: str
         """
-        cls._log(message, cls.STANDARD, is_error = False)
+        cls._log(message, cls.MINIMAL, is_error = False)
 
 
     #--------------------------------------------------------------------------
@@ -127,12 +127,12 @@ class Logger (object):
     @classmethod
     def log_error(cls, message):
         """
-        Send an error log message of STANDARD level.
+        Send an error log message of MINIMAL level.
 
         :param message: Message to write.
         :type message: str
         """
-        cls._log(message, cls.STANDARD, is_error = True)
+        cls._log(message, cls.MINIMAL, is_error = True)
 
 
     #--------------------------------------------------------------------------

@@ -49,8 +49,6 @@ class Image(Binary):
     Image file.
     """
 
-    information_type = Binary.INFORMATION_IMAGE
-
 
     #--------------------------------------------------------------------------
     def __init__(self, data, content_type):

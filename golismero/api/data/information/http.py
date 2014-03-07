@@ -406,7 +406,7 @@ class HTTP_Request (Capture):
     HTTP request information.
     """
 
-    information_type = Capture.INFORMATION_HTTP_REQUEST
+    data_subtype = "http_request"
 
 
     #
@@ -721,7 +721,7 @@ class HTTP_Raw_Request (Capture):
     Raw HTTP request information.
     """
 
-    information_type = Capture.INFORMATION_HTTP_RAW_REQUEST
+    data_subtype = "http_raw_request"
 
 
     #--------------------------------------------------------------------------
@@ -753,7 +753,7 @@ class HTTP_Response (Capture):
     but receive them from the HTTP API.
     """
 
-    information_type = Capture.INFORMATION_HTTP_RESPONSE
+    data_subtype = "http_response"
     min_informations = 1
 
 

@@ -1,0 +1,170 @@
+[
+
+    {
+        "comment": "--- Apache advisories ---",
+
+        "rule_id" : "servers1",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareApache"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_)*apache_.*\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Nginx advisories ---",
+
+        "rule_id" : "servers2",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareNginx"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*nginx_.*\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Internet Information Server advisories ---",
+
+        "rule_id" : "servers3",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareIIS"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^DDI_IIS_Compromised\\.nasl)"
+                    },
+                    {
+                        "regex": "(^(gb|secpod)_(ms_)*iis_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^iis[\\d]*_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^microsoft-iis-nlst-stack-overflow\\.nasl)"
+                    },
+                    {
+                        "regex": "(^remote-MS.*\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Tomcat advisories ---",
+
+        "rule_id" : "servers4",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareTomcat"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb|secpod_)(apache_)*[Tt]om[cC]at_.*\\.nasl)"
+                    },
+                    {
+                        "regex": "(^apache_[Tt]om[cC]at_.*\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Oracle Web Logic Portal advisories ---",
+
+        "rule_id" : "servers5",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareOracleWebLogic"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)*oracle_weblogic_.*\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Microsoft Front Page advisories ---",
+
+        "rule_id" : "servers6",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareFrontPage"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(frontpage_overflow|IIS_frontpage_DOS_2|secpod_ms_frontpage_ext_device_name_dos_vuln)\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- BEA Web Logic advisories ---",
+
+        "rule_id" : "servers7",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareBEAWebLogic"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^BEA_weblogic_Reveal_Script_Code\\.nasl)"
+                    }
+                ]
+            ]
+    },
+
+    {
+        "comment": "--- Lighttpd advisories ---",
+
+        "rule_id" : "servers8",
+        "rule_type" : "software",
+        "matching_types":
+            [
+                "OutdatedSoftwareLighttpd"
+            ],
+        "filename_rules":
+            [
+                [
+                    {
+                        "regex": "(^(gb_)^lighttpd_.*\\.nasl)"
+                    }
+                ]
+            ]
+    }
+
+]

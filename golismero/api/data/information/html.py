@@ -97,8 +97,6 @@ class HTML(File):
         ''
     """
 
-    information_type = File.INFORMATION_HTML
-
 
     #--------------------------------------------------------------------------
     def __init__(self, data):

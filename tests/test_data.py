@@ -54,50 +54,6 @@ from golismero.api.data import LocalDataCache
 from golismero.main.testing import PluginTester
 
 
-# Get the information and resource type IDs.
-INFORMATION_TYPES = {
-    getattr(Information, name)
-    for name in dir(Information)
-    if name.startswith("INFORMATION_")
-}
-RESOURCE_TYPES = {
-    getattr(Resource, name)
-    for name in dir(Resource)
-    if name.startswith("RESOURCE_")
-}
-
-
-# Helper function to test for duplicate type ID numbers.
-def helper_test_dupes(clazz, prefix, numbers):
-    print "Testing %s" % clazz.__name__
-    n_unknown = prefix + "UNKNOWN"
-    unknown = getattr(clazz, n_unknown)
-    assert unknown is 0, unknown
-    for name in dir(clazz):
-        if not name.startswith(prefix) or name == n_unknown:
-            continue
-        value = getattr(clazz, name)
-        assert type(value) is int, type(value)
-        assert value not in numbers, (value, numbers)
-        numbers.add(value)
-
-
-# This test will make sure the data type ID numbers aren't repeated.
-def test_data_type_unique_ids():
-    print "Looking for duplicated data type IDs"
-
-    # Test the base types.
-    helper_test_dupes(Data, "TYPE_", set())
-
-    # Test the subtypes.
-    numbers = set()
-    helper_test_dupes(Information, "INFORMATION_", numbers)
-    helper_test_dupes(Resource, "RESOURCE_", numbers)
-
-    # Make sure the base vulnerability type is "abstract".
-    assert Vulnerability.vulnerability_type == "abstract"
-
-
 # Helper function to load all data types.
 def helper_load_data_types():
     data_types = []
@@ -141,41 +97,36 @@ def helper_load_data_types():
     return data_types
 
 
-# This test will make sure all data types have a correct type ID.
+# This test will make sure all data types have a correct, unique type ID.
 def test_data_types_have_id():
+    seen_types = set()
     print
     print "Testing correctness of data type IDs..."
     data_types = helper_load_data_types()
     assert len(data_types) > 0
     for clazz in data_types:
-        print "--> Checking %s" % clazz.__name__
+        print "--> Checking %s (%s)" % (clazz.__name__, clazz.data_subtype)
         assert type(clazz.data_type) == int
         if issubclass(clazz, Information):
             assert clazz.data_type == Data.TYPE_INFORMATION
             assert clazz.data_subtype == clazz.information_type
-            assert type(clazz.information_type) == int
-            if clazz.__module__ != "golismero.api.data.information":
-                assert clazz.information_type != Information.INFORMATION_UNKNOWN
-                assert clazz.information_type in INFORMATION_TYPES
-            else:
-                assert clazz.information_type == Information.INFORMATION_UNKNOWN
+            assert type(clazz.data_subtype) == str
+            assert clazz.data_subtype.startswith("information/")
         elif issubclass(clazz, Resource):
             assert clazz.data_type == Data.TYPE_RESOURCE
             assert clazz.data_subtype == clazz.resource_type
-            assert type(clazz.resource_type) == int
-            if clazz.__module__ != "golismero.api.data.resource":
-                assert clazz.resource_type != Resource.RESOURCE_UNKNOWN
-                assert clazz.resource_type in RESOURCE_TYPES
-            else:
-                assert clazz.resource_type == Resource.RESOURCE_UNKNOWN
+            assert type(clazz.data_subtype) == str
+            assert clazz.data_subtype.startswith("resource/")
         elif issubclass(clazz, Vulnerability):
             assert clazz.data_type == Data.TYPE_VULNERABILITY
             assert clazz.data_subtype == clazz.vulnerability_type
-            assert type(clazz.vulnerability_type) == str
-            if clazz.__module__ != "golismero.api.data.vulnerability":
-                assert clazz.vulnerability_type != "generic"
+            assert type(clazz.data_subtype) == str
+            assert clazz.data_subtype.startswith("vulnerability/")
         else:
-            assert False  # A new base data class?
+            assert False, clazz  # A new base data class?
+        assert clazz.data_subtype.endswith("/abstract") or \
+               clazz.data_subtype not in seen_types, clazz.data_subtype
+        seen_types.add(clazz.data_subtype)
     print
 
 
@@ -192,10 +143,10 @@ def test_data_links():
 def helper_data_links():
 
     # Create some dummy data.
-    from golismero.api.data.resource.url import Url
+    from golismero.api.data.resource.url import URL
     from golismero.api.data.information.text import Text
     from golismero.api.data.vulnerability.information_disclosure.url_disclosure import UrlDisclosure
-    d1 = Url("http://www.example.com/")
+    d1 = URL("http://www.example.com/")
     d2 = Text("some text")
     d3 = UrlDisclosure(d1)
     d1.add_information(d2)
@@ -203,13 +154,13 @@ def helper_data_links():
     # Test data_type, data_subtype, etc.
     print "Testing Data type checks..."
     assert d1.data_type == Data.TYPE_RESOURCE
-    assert d1.data_subtype == Resource.RESOURCE_URL
-    assert d1.resource_type == Resource.RESOURCE_URL
+    assert d1.data_subtype == URL.data_subtype
+    assert d1.resource_type == d1.data_subtype
     assert d2.data_type == Data.TYPE_INFORMATION
-    assert d2.data_subtype == Information.INFORMATION_PLAIN_TEXT
-    assert d2.information_type == Information.INFORMATION_PLAIN_TEXT
+    assert d2.data_subtype == Text.data_subtype
+    assert d2.information_type == d2.data_subtype
     assert d3.data_type == Data.TYPE_VULNERABILITY
-    assert d3.data_subtype == "information_disclosure/url_disclosure"
+    assert d3.data_subtype == UrlDisclosure.data_subtype
     assert d3.vulnerability_type == d3.data_subtype
 
     # Test validate_link_minimums().
@@ -334,6 +285,5 @@ def helper_data_links():
 
 # Run all tests from the command line.
 if __name__ == "__main__":
-    test_data_type_unique_ids()
     test_data_types_have_id()
     test_data_links()

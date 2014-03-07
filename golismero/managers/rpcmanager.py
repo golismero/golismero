@@ -4,6 +4,7 @@
 """
 Manager of RPC calls from plugins.
 """
+from golismero.api.config import Config
 
 __license__ = """
 GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
@@ -34,6 +35,7 @@ __all__ = ["RPCManager"]
 
 from ..common import pickle
 from ..messaging.codes import MessageCode, MSG_RPC_CODES
+from ..messaging.manager import MessageManager
 
 from functools import partial
 from threading import Thread
@@ -110,6 +112,16 @@ def rpc_bulk(orchestrator, audit_name, rpc_code, *arguments):
 
 
 #------------------------------------------------------------------------------
+# Ensures the message is received by the Orchestrator.
+
+@implementor(MessageCode.MSG_RPC_SEND_MESSAGE)
+def rpc_send_message(orchestrator, audit_name, message):
+
+    # Enqueue the ACK message.
+    orchestrator.enqueue_msg(message)
+
+
+#------------------------------------------------------------------------------
 class RPCManager (object):
     """
     Executes remote procedure calls from plugins.
@@ -158,8 +170,8 @@ class RPCManager (object):
         :param rpc_code: RPC code.
         :type rpc_code: int
 
-        :param response_queue: Response queue.
-        :type response_queue: Queue
+        :param response_queue: Response queue identity.
+        :type response_queue: str
 
         :param args: Positional arguments to the call.
         :type args: tuple
@@ -182,8 +194,13 @@ class RPCManager (object):
 
                 # Run the implementor in a new thread.
                 thread = Thread(
-                    target = self.execute_rpc_implementor,
-                    args = (audit_name, target, response_queue, args, kwargs),
+                    target = self._execute_rpc_implementor_background,
+                    args = (
+                        Config._context,
+                        audit_name,
+                        target,
+                        response_queue,
+                        args, kwargs),
                 )
                 thread.daemon = True
                 thread.start()
@@ -200,11 +217,43 @@ class RPCManager (object):
             if response_queue:
                 error = self.prepare_exception(*sys.exc_info())
                 try:
-                    response_queue.put_nowait( (False, error) )
+                    self.orchestrator.messageManager.send(
+                        response_queue, (False, error))
                 except IOError:
-                    ##import warnings
-                    ##warnings.warn("RPC caller died!")
+                    import warnings
+                    warnings.warn("RPC caller died!")
                     pass
+
+
+    #--------------------------------------------------------------------------
+    def _execute_rpc_implementor_background(self, context, audit_name, target,
+                                           response_queue, args, kwargs):
+        """
+        Honor a remote procedure call request from a plugin,
+        from a background thread. Must only be used as the entry
+        point for said background thread!
+
+        :param context: Plugin execution context.
+        :type context: PluginContext
+
+        :param audit_name: Name of the audit requesting the call.
+        :type audit_name: str
+
+        :param target: RPC implementor function.
+        :type target: callable
+
+        :param response_queue: Response queue identity.
+        :type response_queue: str
+
+        :param args: Positional arguments to the call.
+        :type args: tuple
+
+        :param kwargs: Keyword arguments to the call.
+        :type kwargs: dict
+        """
+        Config._context = context
+        self.execute_rpc_implementor(
+            audit_name, target, response_queue, args, kwargs)
 
 
     #--------------------------------------------------------------------------
@@ -219,8 +268,8 @@ class RPCManager (object):
         :param target: RPC implementor function.
         :type target: callable
 
-        :param response_queue: Response queue.
-        :type response_queue: Queue
+        :param response_queue: Response queue identity.
+        :type response_queue: str
 
         :param args: Positional arguments to the call.
         :type args: tuple
@@ -228,22 +277,23 @@ class RPCManager (object):
         :param kwargs: Keyword arguments to the call.
         :type kwargs: dict
         """
-        success = True
         try:
 
             # Call the implementor and get the response.
             response = target(self.orchestrator, audit_name, *args, **kwargs)
+            success  = True
 
         # Catch exceptions and prepare them for sending.
         except Exception:
             if response_queue:
-                success  = False
                 response = self.prepare_exception(*sys.exc_info())
+                success  = False
 
         # If the call was synchronous,
         # send the response/error back to the plugin.
         if response_queue:
-            response_queue.put_nowait( (success, response) )
+            self.orchestrator.messageManager.send(
+                response_queue, (success, response))
 
 
     #--------------------------------------------------------------------------

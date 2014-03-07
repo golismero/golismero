@@ -132,7 +132,7 @@ class DnsRegister(Capture):
     Base class for DNS Registers.
     """
 
-    information_type = Capture.INFORMATION_DNS_REGISTER
+    data_subtype = "information/dns/abstract"
 
 
     # Types of registers
@@ -371,6 +371,7 @@ class DnsRegister(Capture):
 
 #------------------------------------------------------------------------------
 class DNSRegisterAlgorithm(DnsRegister):
+    data_subtype = "information/dns/abstract"
 
 
     #--------------------------------------------------------------------------
@@ -1858,7 +1859,7 @@ class DnsRegisterSIG(DnsRegisterRRSIG):
     """
     Register type 'RRSIG'
     """
-    pass
+    data_subtype = "dns_register_sig"
 
 
 #------------------------------------------------------------------------------

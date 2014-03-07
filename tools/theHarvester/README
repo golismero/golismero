@@ -1,8 +1,10 @@
-*********************************
-*theHarvester 2.2a              *
-*Coded by Christian Martorella  *
-*cmartorella@edge-security.com  *
-*********************************
+************************************
+*theHarvester 2.3                  *
+*Coded by Christian Martorella     *
+*cmartorella@edge-security.com     *
+*Additions by Marcus Watson        *
+*(@branmacmuffin)                  *
+************************************
 
 What is this?
 -------------
@@ -27,6 +29,8 @@ Passive:
 
 -linkedin: google search engine, specific search for Linkedin users
 
+-dogpile: Dogpile search engine
+
 -shodan: Shodan Computer search engine, will search for ports and banner of the discovered hosts  (http://www.shodanhq.com/)
 
 -vhost: Bing virtual hosts search
@@ -35,12 +39,23 @@ Active:
 -------
 -DNS brute force: this plugin will run a dictionary brute force enumeration
 -DNS reverse lookup: reverse lookup of ip´s discovered in order to find hostnames
--DNS TDL expansion: TLD dictionary brute force enumeration
-
+-DNS TLD expansion: TLD dictionary brute force enumeration using the public suffix list
 
 Dependencies:
-------------
+------------:
 none
+
+Changelog 2.3:
+-Added DogPile
+-Refactored throughout so that new search engines can be added with minimal change of the core code.
+-Refactoring allows us to perform further searches on output (email search on domains found through TLD enumeration?)
+-Explicit XML output with filename (-X or output-xml parameters)
+-Explicit HTML output with filename (-H or outout-html parameters)
+-HTML/XML now include more data
+-Shodan search returns the time the data was updated. This is especially useful when it returns multiple results
+   for the same host/port that were scanned several time.
+-Fixed some bugs/irregularities in the DNS Lookup
+-Exalead and Yandex are faulty and have been commented out (see engine_list in theharvester.py)
 
 Changelog 2.2a:
 ---------------

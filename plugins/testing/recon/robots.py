@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 from golismero.api.data import discard_data
 from golismero.api.config import Config
-from golismero.api.data.resource.url import BaseUrl, Url
+from golismero.api.data.resource.url import BaseURL, URL
 from golismero.api.logger import Logger
 from golismero.api.net import NetworkException, NetworkOutOfScope
 from golismero.api.net.http import HTTP
@@ -49,8 +49,8 @@ class Robots(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return [BaseUrl]
+    def get_accepted_types(self):
+        return [BaseURL]
 
 
     #--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ class Robots(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
         m_return = []
 
         m_url = info.url
@@ -99,7 +99,7 @@ class Robots(TestingPlugin):
             Logger.log_more_verbose("No robots.txt found.")
             return
 
-        u = Url(m_url_robots_txt, referer=m_url)
+        u = URL(m_url_robots_txt, referer=m_url)
         p.add_resource(u)
         m_return.append(u)
         m_return.append(p)
@@ -205,7 +205,7 @@ class Robots(TestingPlugin):
             for i in m_analyzer.unique_texts:
                 l_url    = i.url
                 l_p      = match.pop(l_url)
-                m_result = Url(l_url, referer=m_url)
+                m_result = URL(l_url, referer=m_url)
                 m_result.add_information(l_p)
                 m_return.append(m_result)
                 m_return.append(l_p)
@@ -244,7 +244,7 @@ class Robots(TestingPlugin):
                 except NetworkException:
                     continue
                 if l_p:
-                    m_result = Url(l_url, referer=m_url)
+                    m_result = URL(l_url, referer=m_url)
                     m_result.add_information(l_p)
                     m_return.append(m_result)
                     m_return.append(l_p)

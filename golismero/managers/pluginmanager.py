@@ -33,9 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 __all__ = ["PluginManager", "PluginInfo"]
 
 from .rpcmanager import implementor
+from ..api.audit import get_audit_config, get_audit_scope
 from ..api.config import Config
 from ..api.logger import Logger
-from ..api.plugin import CATEGORIES, STAGES, load_plugin_class_from_info
+from ..api.plugin import CATEGORIES, STAGES, load_plugin_class_from_info, \
+    get_plugin_info
 from ..common import Configuration, OrchestratorConfig, AuditConfig, \
     get_default_plugins_folder, EmptyNewStyleClass
 from ..managers.processmanager import PluginContext
@@ -1523,6 +1525,7 @@ class AuditPluginManager (PluginManager):
                 orchestrator_pid = new_ctx._orchestrator_pid,
                 orchestrator_tid = new_ctx._orchestrator_tid,
                        msg_queue = new_ctx.msg_queue,
+                         address = new_ctx.address,
                     ack_identity = None,
                      plugin_info = self.get_plugin_by_id(plugin_id),
                       audit_name = audit_config.audit_name,
@@ -1619,3 +1622,114 @@ class AuditPluginManager (PluginManager):
             self.__pluginManager = None
             self.__batches       = None
             self.__stages        = None
+
+
+#------------------------------------------------------------------------------
+class SwitchToAudit(object):
+    """
+    Context manager that allows UI plugins to run API calls as if they came
+    from within an audit. This is useful, for example, to have access to the
+    audit database APIs from a UI plugin.
+
+    Example::
+        >>> from golismero.api.data.db import Database
+        >>> with SwitchToAudit("my_audit"):
+        ...     data_ids = Database.keys()
+        ...     print "Ok!"
+        ...
+        Ok!
+        >>> try:
+        ...     Database.keys()
+        ... except Exception:
+        ...     print "Error!"
+        ...
+        Error!
+    """
+
+    def __init__(self, audit_name):
+        if type(audit_name) is not str:
+            raise TypeError("Expected str, got %r instead" % type(audit_name))
+        if not audit_name:
+            raise ValueError("No audit name provided!")
+        self.audit_name = audit_name
+
+    def __enter__(self):
+
+        # Keep the original execution context.
+        self.old_context = old_context = Config._context
+
+        # Get the audit name.
+        audit_name = self.audit_name
+
+        # Update the execution context for this audit.
+        Config._context = PluginContext(
+                   msg_queue = old_context.msg_queue,
+                     address = old_context.address,
+                ack_identity = old_context.ack_identity,
+                 plugin_info = old_context.plugin_info,
+                  audit_name = audit_name,
+                audit_config = get_audit_config(audit_name),
+                 audit_scope = get_audit_scope(audit_name),
+            orchestrator_pid = old_context._orchestrator_pid,
+            orchestrator_tid = old_context._orchestrator_tid)
+
+    def __exit__(self, *args, **kwargs):
+
+        # Restore the original execution context.
+        Config._context = self.old_context
+
+
+#------------------------------------------------------------------------------
+class SwitchToPlugin(object):
+    """
+    Context manager that allows UI plugins to run API calls as if they came
+    from within another plugin.
+
+    Example::
+        >>> from golismero.api.plugin import get_plugin_name
+        >>> with SwitchToPlugin("testing/recon/spider"):
+        ...     print get_plugin_name()
+        ...
+        Web Spider
+        >>> print get_plugin_name()
+        GoLismero
+    """
+
+    def __init__(self, plugin_id, audit_name = None):
+        self.plugin_id  = plugin_id
+        self.audit_name = audit_name
+
+    def __enter__(self):
+
+        # Keep the original execution context.
+        self.old_context = old_context = Config._context
+
+        # Get the plugin information object.
+        plugin_info = get_plugin_info(self.plugin_id)
+
+        # If an audit name was given, get the config and scope.
+        # Otherwise just copy the existing values.
+        audit_name = self.audit_name
+        if audit_name:
+            audit_config = get_audit_config(audit_name)
+            audit_scope  = get_audit_scope(audit_name)
+        else:
+            audit_config = old_context.audit_config
+            audit_scope  = old_context.audit_scope
+
+        # Update the execution context.
+        Config._context = PluginContext(
+                   msg_queue = old_context.msg_queue,
+                     address = old_context.address,
+                ack_identity = old_context.ack_identity,
+                 plugin_info = plugin_info,
+                  audit_name = audit_name,
+                audit_config = audit_config,
+                 audit_scope = audit_scope,
+            orchestrator_pid = old_context._orchestrator_pid,
+            orchestrator_tid = old_context._orchestrator_tid)
+
+    def __exit__(self, *args, **kwargs):
+
+        # Restore the original execution context.
+        Config._context = self.old_context

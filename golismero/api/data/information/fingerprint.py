@@ -83,7 +83,7 @@ def get_all_os_fingerprints(data):
 
     # Get all OS fingerprints associated with the given Data object.
     fingerprints = data.get_associated_informations_by_category(
-        Fingerprint.INFORMATION_OS_FINGERPRINT)
+        OSFingerprint.data_subtype)
 
     # Sort them by accuracy, more accurate fingerprints first.
     return sorted(fingerprints, key=(lambda x: 100.0 - x.accuracy))
@@ -95,7 +95,7 @@ class OSFingerprint(Fingerprint):
     Fingerprint information for a particular operating system.
     """
 
-    information_type = Fingerprint.INFORMATION_OS_FINGERPRINT
+    data_subtype = "os"
 
 
     #--------------------------------------------------------------------------
@@ -339,7 +339,7 @@ class ServiceFingerprint(Fingerprint):
     Service fingerprint.
     """
 
-    information_type = Fingerprint.INFORMATION_SERVICE_FINGERPRINT
+    data_subtype = "service"
 
 
     #--------------------------------------------------------------------------
@@ -424,7 +424,7 @@ class WebServerFingerprint(Fingerprint):
     Fingerprint information for a particular host and web server.
     """
 
-    information_type = Fingerprint.INFORMATION_WEB_SERVER_FINGERPRINT
+    data_subtype = "webserver"
 
 
     #--------------------------------------------------------------------------

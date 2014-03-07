@@ -35,9 +35,9 @@ from golismero.api.data import Data
 from golismero.api.data.information.html import HTML
 from golismero.api.data.information.text import Text
 from golismero.api.data.resource import Resource
-from golismero.api.data.resource.url import Url
+from golismero.api.data.resource.url import URL
 from golismero.api.data.vulnerability.suspicious.url import SuspiciousURLPath
-from golismero.api.data.vulnerability.malware.malicious_url import MaliciousUrl
+from golismero.api.data.vulnerability.malware.malicious import MaliciousUrl
 from golismero.api.plugin import TestingPlugin
 from golismero.api.net.scraper import extract_from_html, extract_from_text
 
@@ -52,14 +52,14 @@ class SuspiciousURLPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return [Url, HTML, Text]
+    def get_accepted_types(self):
+        return [URL, HTML, Text]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
-        if info.is_instance(Url):
+        if info.is_instance(URL):
             return self.analyze_url(info)
         return self.analyze_html(info)
 
@@ -197,7 +197,7 @@ class SuspiciousURLPlugin(TestingPlugin):
         for l_malware_site in l_malware_sites_found:
 
             # Out url
-            u = Url(url = l_malware_site, referer = info.url)
+            u = URL(url = l_malware_site, referer = info.url)
 
             v = MaliciousUrl(u)
             v.add_resource(info)

@@ -281,6 +281,9 @@ class MessageCode(MessageConstants):
     MSG_RPC_SHARED_HEAP_ADD        = 54
     MSG_RPC_SHARED_HEAP_REMOVE     = 55
 
+    # Message API.
+    MSG_RPC_SEND_MESSAGE           = 60
+
 
     #--------------------------------------------------------------------------
     # Status message codes

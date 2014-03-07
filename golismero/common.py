@@ -714,7 +714,7 @@ class OrchestratorConfig (Configuration):
         "ui_mode": (str, "console"),
 
         # Verbosity level.
-        "verbose": (Configuration.integer, 3),
+        "verbose": (Configuration.integer, 2),
 
         # Colorize console?
         "color": (Configuration.boolean, False),
@@ -733,8 +733,7 @@ class OrchestratorConfig (Configuration):
         "plugins_folder": Configuration.string,
 
         # Maximum number plugins to execute concurrently.
-        "max_concurrent": (Configuration.integer,
-                           4 if path.sep == "\\" else 20),
+        "max_concurrent": (Configuration.integer, 4),
 
         #
         # Network options.
@@ -880,6 +879,9 @@ class AuditConfig (Configuration):
 
         # Input files
         "imports": (Configuration.comma_separated_list, []),
+
+        # Redo the audit?
+        "redo": (Configuration.boolean, False),
 
         #
         # Plugin options

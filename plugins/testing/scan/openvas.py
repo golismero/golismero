@@ -27,8 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
 import os.path
-import sys
-import yaml
 
 from functools import partial
 from threading import Event
@@ -37,9 +35,9 @@ from warnings import warn
 from time import sleep
 
 try:
-    from yaml import CLoader as Loader
+    import cPickle as Pickler
 except ImportError:
-    from yaml import Loader
+    import pickle as Pickler
 
 try:
     from xml.etree import cElementTree as etree
@@ -49,24 +47,23 @@ except ImportError:
 from openvas_lib import VulnscanManager, VulnscanException, VulnscanVersionError, VulnscanAuditNotFoundError
 from openvas_lib.data import OpenVASResult
 
-
+from golismero.api.logger import Logger
 from golismero.api.config import Config
 from golismero.api.data.db import Database
-from golismero.api.data.resource.domain import Domain
 from golismero.api.data.resource.ip import IP
-from golismero.api.data.vulnerability import UncategorizedVulnerability, Vulnerability
-from golismero.api.data.vulnerability.infrastructure.outdated_platform import *  # noqa
-from golismero.api.logger import Logger
+from golismero.api.data.resource.domain import Domain
 from golismero.api.net.scraper import extract_from_text
 from golismero.api.plugin import TestingPlugin, ImportPlugin
+from golismero.api.data.vulnerability import UncategorizedVulnerability, Vulnerability
+from golismero.api.data.vulnerability.infrastructure.outdated_platform import *  # noqa
+from golismero.api.data.vulnerability.infrastructure.outdated_software import *  # noqa
 
 
 #------------------------------------------------------------------------------
 # OpenVAS plugin extra files.
 base_dir = os.path.split(os.path.abspath(__file__))[0]
 openvas_dir = os.path.join(base_dir, "openvas_plugin")
-openvas_db = os.path.join(openvas_dir, "openvas.sqlite3")
-openvas_yaml = os.path.join(openvas_dir, "categories.yaml")
+openvas_db = os.path.join(openvas_dir, "openvas.db")
 del base_dir
 
 
@@ -129,12 +126,12 @@ class OpenVASPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         return [IP]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         # Checks if connection was not set as down
         if not self.state.check("connection_down"):
@@ -298,7 +295,7 @@ class OpenVASPlugin(TestingPlugin):
         hosts_seen = {}
 
         # Map of OpenVAS levels to GoLismero levels.
-        OPV_LEVELS_TO_GLM_LEVELS = {
+        openvas_level_2_golismero = {
             'debug': 'informational',
             'log': 'informational',
             'low': "low",
@@ -307,6 +304,7 @@ class OpenVASPlugin(TestingPlugin):
         }
 
         RISKS = {
+            'none': 0,
             'debug': 0,
             'log': 0,
             'low': 1,
@@ -316,65 +314,26 @@ class OpenVASPlugin(TestingPlugin):
         }
 
         # Do we have the OpenVAS plugin database?
-        use_openvas_db = os.path.exists(openvas_db)
-        if not use_openvas_db:
+        if not os.path.exists(openvas_db):
             Logger.log_error(
                 "OpenVAS plugin not initialized, please run setup.py")
-        else:
+            return
 
-            # Load the database using the Django ORM.
-            from standalone.conf import settings
-            try:
-                settings = settings(
-                    DATABASES = {
-                        'default': {
-                            'ENGINE': 'django.db.backends.sqlite3',
-                            'NAME': '%s' % openvas_db,
-                        }
-                    },
-                )
-            except RuntimeError:
-                Logger.log("Django backend previously loaded.")
-
-            # Load the ORM model.
-            sys.path.insert(0, openvas_dir)
-            try:
-                from models import Families, Plugin
-            finally:
-                sys.path.remove(openvas_dir)
-
-            # Load the categories.
-            CATEGORIES = {}
-            if os.path.exists(openvas_yaml):
-                try:
-                    CATEGORIES = yaml.load( open(openvas_yaml, 'rU'),
-                                            Loader=Loader )
-                except Exception, e:
-                    tb = format_exc()
-                    Logger.log_error_verbose(
-                        "Failed to load categories, reason: %s" % str(e))
-                    Logger.log_error_more_verbose(tb)
-            else:
-                Logger.log_error(
-                    "Missing OpenVAS categories file: %s" % openvas_yaml)
+        # Load database
+        use_openvas_db = Pickler.load(open(openvas_db, "rb"))
 
         # For each OpenVAS result...
         for opv in openvas_results:
             try:
-
-                # XXX why would this happen?
-                if not isinstance(opv, OpenVASResult):
-                    warn("Expected OpenVASResult, got %r instead" % type(opv),
-                         RuntimeWarning)
-                    continue
-
                 # Get the host.
                 host = opv.host
 
                 if host is None:
                     continue
 
+                #
                 # Get or create the vulnerable resource.
+                #
                 target = ip
                 if host in hosts_seen:
                     target = hosts_seen[host]
@@ -386,21 +345,6 @@ class OpenVASPlugin(TestingPlugin):
                     hosts_seen[host] = target
                     results.append(target)
 
-                # Get the threat level.
-                try:
-                    level = opv.threat.lower()
-                except Exception:
-                    level = "informational"
-
-                # Get the metadata.
-                nvt = opv.nvt
-                cvss = nvt.cvss_base
-                cvss_vector = nvt.cvss_base_vector
-                cve = nvt.cve.split(", ") if nvt.cve else []
-                oid = nvt.oid
-                name = nvt.name
-                risk = RISKS.get(nvt.risk_factor.lower(), 0)
-
                 # Get the vulnerability description.
                 description = opv.description
                 if not description:
@@ -409,66 +353,61 @@ class OpenVASPlugin(TestingPlugin):
                         description = nvt.summary
                         if not description:
                             description = None
+
+                #
+                # Common data
+                #
+                oid = int(opv.nvt.oid.split(".")[-1])
+                nvt = opv.nvt
+                cve = nvt.cve.split(", ") if nvt.cve else []
+                risk = RISKS.get(nvt.risk_factor.lower(), 0)
+                name = getattr(nvt, "name", "")
+                level = getattr(opv, "threat", "informational").lower()
+                cvss_base = getattr(nvt, "cvss_base", 0.0)
+                references = extract_from_text(description)  # Get the reference URLs.
+
+                # Notes in vuln?
                 if opv.notes:
                     description += "\n" + "\n".join(
                         " - " + note.text
                         for note in opv.notes
                     )
 
-                # Get the reference URLs.
-                references = extract_from_text(description)
-
+                #
                 # Prepare the vulnerability properties.
+                #
                 kwargs = {
-                    "level": OPV_LEVELS_TO_GLM_LEVELS[level.lower()],
+                    "level": openvas_level_2_golismero[level.lower()],
                     "description": description,
                     "references": references,
                     "cve": cve,
-                    "risk": risk
+                    "risk": risk,
+                    "severity": risk,
+                    "impact": risk,
+                    "cvss_base": cvss_base,
+                    "title": name,
+                    "tool_id": "openvas_plugin_%s" % str(oid)
                 }
-                if cvss_vector:
-                    kwargs["cvss_vector"] = cvss_vector
-                elif cvss:
-                    kwargs["cvss_base"] = cvss
-                if name:
-                    kwargs["title"] = name
 
                 # If we have the OpenVAS plugin database, look up the plugin ID
                 # that reported this vulnerability and create the vulnerability
                 # using a specific class. Otherwise use the vulnerability class
                 # for uncategorized vulnerabilities.
-                clazz = UncategorizedVulnerability
-                if use_openvas_db and oid:
-                    oid_spt = oid.split(".")
-                    if len(oid_spt) > 0:
-                        l_plugin_id = oid_spt[-1]
-                        kwargs["tool_id"] = l_plugin_id
-                        try:
-                            l_family = Plugin.objects.get(
-                                plugin_id = l_plugin_id).family_id
-                            l_family = l_family.strip()
+                candidate_classes = ["UncategorizedVulnerability"]
 
-                            if l_plugin_id in CATEGORIES:
-                                clazz = globals()[CATEGORIES[l_plugin_id]]
+                # Looking for plugin ID in database
+                if oid in use_openvas_db:
+                    candidate_classes = use_openvas_db[oid][0]
 
-                            elif l_family in CATEGORIES:
-                                clazz = globals()[CATEGORIES[l_family]]
-                        except Exception, e:
-                            tb = format_exc()
-                            Logger.log_error_verbose(
-                                "Failed to find category %r, reason: %s" %
-                                (l_plugin_id, str(e)))
-                            Logger.log_error_more_verbose(tb)
+                # Make vulnerabilities
+                for c in candidate_classes:
+                    clazz = globals()[c]
 
-                # Create the vulnerability instance.
-                vuln = clazz(**kwargs)
+                    # Create the vuln
+                    vuln = clazz(target, **kwargs)
 
-                # Link the vulnerability to the resource.
-                if target is not None:
-                    target.add_vulnerability(vuln)
-
-                # Add the vulnerability.
-                results.append(vuln)
+                    # Add the vulnerability.
+                    results.append(vuln)
 
             # Skip on error.
             except Exception, e:
@@ -476,7 +415,6 @@ class OpenVASPlugin(TestingPlugin):
                 Logger.log_error_verbose(
                     "Error parsing OpenVAS results: %s" % str(e))
                 Logger.log_error_more_verbose(t)
-                continue
 
         # Return the converted results.
         return results

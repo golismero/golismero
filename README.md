@@ -1,3 +1,8 @@
+### This repository contains the unstable development version.
+### For the stable version go to: <a href="https://github.com/golismero/golismero">https://github.com/golismero/golismero</a></font></p>
+
+---
+
 What's GoLismero?
 =================
 
@@ -125,7 +130,7 @@ pkg install sslscan
 pkg install devel/py-pip
 mkdir /opt 2> /dev/null
 cd /opt
-git clone https://github.com/golismero/golismero.git
+git clone https://github.com/cr0hn/golismero.git
 cd golismero
 pip install -r requirements.txt
 pip install -r requirements_unix.txt
@@ -221,7 +226,7 @@ And you can produce reports in different file formats. The format is guessed fro
 
 ```golismero scan <target> -o <output file name>```
 
-![Run example](https://raw.github.com/golismero/golismero/master/doc/screenshots/run_mac.png "Run example")
+![Run example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/run_mac.png "Run example")
 
 Additionally, you can import results from other tools with the -i option. You can use -i several times to import multiple files.
 
@@ -231,7 +236,7 @@ All results are automatically stored in a database file. You can prevent this wi
 
 ```golismero <target> -nd```
 
-![No database example](https://raw.github.com/golismero/golismero/master/doc/screenshots/no_db_mint.png "No database example")
+![No database example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/no_db_mint.png "No database example")
 
 This allows you to scan the target in one step, and generating the report later. For example, to scan without generating a report:
 
@@ -245,7 +250,7 @@ You can also specify multiple output files:
 
 ```golismero report report.html report.txt report.rst -db example.db```
 
-![Report example](https://raw.github.com/golismero/golismero/master/doc/screenshots/report_win.png "Report example")
+![Report example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/report_win.png "Report example")
 
 Available plugins
 -----------------
@@ -254,13 +259,13 @@ To display the list of available plugins:
 
 ```golismero plugins```
 
-![Plugin list example](https://raw.github.com/golismero/golismero/master/doc/screenshots/plugin_list_mac.png "Plugin list example")
+![Plugin list example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/plugin_list_mac.png "Plugin list example")
 
 You can also query more information about specific plugins:
 
 ```golismero info <plugin>```
 
-![Plugin info example](https://raw.github.com/golismero/golismero/master/doc/screenshots/plugin_info_mint.png "Plugin list example")
+![Plugin info example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/plugin_info_mint.png "Plugin list example")
 
 The full plugin list is also available [online](http://golismero-project.com/doc/plugin_list/index.html).
 
@@ -275,7 +280,7 @@ You can also select multiple plugins using wildcards. For example, you can selec
 
 ```golismero scan <target> -e brute*```
 
-![Run plugin example](https://raw.github.com/golismero/golismero/master/doc/screenshots/run_plugin_mac_2.png "Run plugin example")
+![Run plugin example](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/run_plugin_mac_2.png "Run plugin example")
 
 Reporting and eye candy
 -----------------------
@@ -288,19 +293,19 @@ If no output files are specified, GoLismero reports on the console by default. B
 
 Here's what the HTML report summary looks like on Chrome:
 
-![Report header](https://raw.github.com/golismero/golismero/master/doc/screenshots/report_chrome_header.png "Report header")
+![Report header](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/report_chrome_header.png "Report header")
 
 The table of contents, on Firefox:
 
-![Report table](https://raw.github.com/golismero/golismero/master/doc/screenshots/report_firefox_header.png "Report table")
+![Report table](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/report_firefox_header.png "Report table")
 
 And the details for each vulnerability, on Internet Explorer:
 
-![Report details](https://raw.github.com/golismero/golismero/master/doc/screenshots/report_ie_detail.png "Report details")
+![Report details](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/report_ie_detail.png "Report details")
 
 It's also compatible with mobile devices, like for example an iPad:
 
-![Report summary on iPad](https://raw.github.com/golismero/golismero/master/doc/screenshots/report_ipad.png "Report summary on iPad")
+![Report summary on iPad](https://raw.github.com/cr0hn/golismero/master/doc/screenshots/report_ipad.png "Report summary on iPad")
 
 As you surely noticed, the layout remains consistent across all platforms. The HTML report is completely self contained in a single .html file, making it very easy to share.
 

@@ -5,10 +5,10 @@ Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2014 GoLismero Project
-License     = GNU Public License
+License     = GNU Public License v2
 
 [Arguments]
 
 # Set the width in characters for all tables.
 # Use 0 to disable this feature (each table's width may be different).
-width = 160
+width = 120

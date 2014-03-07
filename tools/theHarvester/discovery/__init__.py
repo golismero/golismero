@@ -1,5 +1,15 @@
-__all__ = [
-    "bingsearch", "googlesearch", "pgpsearch", "linkedinsearch",
-    "exaleadsearch", "yandexsearch", "googlesets", "dnssearch",
-    "shodansearch", "people123", "jigsaw",
-]
+__all__ = ["bingsearch",
+		   "bingsearchapi",
+		   "googlesearch",
+		   "googleprofilesearch",
+		   "pgpsearch",
+		   "linkedinsearch",
+		   "exaleadsearch",
+		   "yandexsearch",
+		   "googlesets",
+		   "dnssearch",
+		   "shodansearch",
+		   "dogpilesearch",
+		   "people123",
+		   "jigsaw",
+		   "search_results"]

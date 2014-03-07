@@ -42,12 +42,12 @@ class DNSZoneTransferPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
+    def get_accepted_types(self):
         return [Domain]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         # Get the root domain only.
         root = info.root
@@ -98,9 +98,8 @@ class DNSZoneTransferPlugin(TestingPlugin):
         # If we don't have the name servers...
         if not ns_servers:
 
-            # Link the vulnerability to the root domain instead.
-            vulnerability = DNSZoneTransfer(root)
-            vulnerability.add_resource(domain)
+            # Assume the root domain also points to the nameserver.
+            vulnerability = DNSZoneTransfer(domain, root)
             results.append(vulnerability)
 
         # If we have the name servers...
@@ -108,24 +107,7 @@ class DNSZoneTransferPlugin(TestingPlugin):
 
             # Create a vulnerability for each nameserver in scope.
             for ns in ns_servers:
-
-                # Instance the vulnerability object.
-                vulnerability = DNSZoneTransfer(ns)
-
-                # Instance a Domain or IP object.
-                try:
-                    resource = IP(ns)
-                except ValueError:
-                    resource = Domain(ns)
-
-                # Associate the resource to the root domain.
-                domain.add_resource(resource)
-
-                # Associate the nameserver to the vulnerability.
-                vulnerability.add_resource(resource)
-
-                # Add both to the results.
-                results.append(resource)
+                vulnerability = DNSZoneTransfer(domain, ns)
                 results.append(vulnerability)
 
         # Return the results.

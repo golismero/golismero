@@ -1,8 +1,8 @@
 [Documentation]
 Name        = theHarvester
-Description = Integration with theHarvester: https://code.google.com/p/theharvester/
+Description = Integration with theHarvester: https://github.com/MarioVilas/theHarvester/
 Author      = GoLismero project team
 Version     = 0.1
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2014 GoLismero Project
-License     = GNU Public License
+License     = GNU Public License v2

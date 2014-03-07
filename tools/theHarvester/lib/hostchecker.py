@@ -8,15 +8,14 @@ import sys
 import socket
 
 class Checker():
-    def __init__(self, hosts):
-        self.hosts = hosts
-        self.realhosts=[]
+	def hosts_to_ips(self, hosts):
+		hosts_ips = {}
 
-    def check(self):
-        for x in self.hosts:
-            try:
-                res=socket.gethostbyname(x)
-                self.realhosts.append(res+":"+x)
-            except Exception, e:
-                pass
-        return self.realhosts
+		for host in hosts:
+			try:
+				ip=socket.gethostbyname(host)
+				hosts_ips[host]=ip
+			except Exception, e:
+				pass
+		return hosts_ips
+		

@@ -27,153 +27,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
-import argparse
+from __future__ import print_function
+
 import re
 import os
-from collections import defaultdict
-from functools import partial
+import json
+import argparse
 
-# Get the param from a function: script_id(value) -> value
-#REG_FUNCTION = r"([\w\W]*%s[\s]*\()([\[\]\.\da-zA-Z\-:\'\"\s]+)(\);[\w\W]*)"
-REG_FUNCTION = r"([\w\W]*%s[\s]*\()([\[\]\.\da-zA-Z\-:\'\"\s]+)(\);[\w\W]*)"
-#REG_FUNCTION = r"([\w\W]*%s[\s]*\()([\[\]\.\da-zA-Z\-:\'\"\s]+)(\);[\w\W]*)"
+from collections import namedtuple, defaultdict
 
-# Get value asignated to one array: array['key'] = value -> value
-REG_ARRAY = r"([\W\w\s]*%s[\s]*\[[\"\'][\.\da-zA-Z\-:\s]*\"\][\s]*\=[\s]*[\'\"])([\-a-zA-Z\s:\.0-9]+)(\";[\w\W]*)"
+try:
+    import cPickle as Pickler
+except ImportError:
+    import pickle as Pickler
 
-# Get value from a string like: 'english: "Some text"' -> Some text
-REG_FILTER_PLUGIN_FAMILIES = r"([\w\W\s]*:[\w\W\s]*\"|\')([\w\W\s]*)([\w\W\s]*\"|\'[\w\W\s]*)"
-REG_FILTER_REMOVE_QUOTES = r"([\"\']*)([a-zA-Z0-9\-]+)([\"\']*)"
+# Global regex
+REGEX_PLUGIN_ID = re.compile(r'(script_[o]*id[\s]*\([\s]*)([\d\w]+)([\s]*\)[\s]*);')
 
+# Custom Types
+RulePack = namedtuple("RulePack", ["rules", "rule_index"])
+RuleComponent = namedtuple("RuleComponent",
+                           [
+                               "rule_id",
+                               "comment",
+                               "matching_types",
+                               "filename_rules",
+                               "content_rules",
+                               "operator",
+                               "rule_type"
+                           ])
 
-# New regexs
-SCRIPT_ID = r"(script_id[\s]*\()([\d]+)([\s]*\))"  # Group 2 -> ID
-GENERIC_FUNC = r"(%s[\s]*\([\"\']*)([a-zA-Z0-9\:\.\:\- ]+)([\s]*[\"\']*\))"  # Group 2 -> Function value
-
-
-#------------------------------------------------------------------------------
-#
-# DJANGO and databases
-#
-#------------------------------------------------------------------------------
-settings = None
-
-def config_bbdd(path_bbdd):
-    """
-    Configure database information.
-
-    :param path_bbdd: string with output BBDD.
-    :type path_bbdd: str
-    """
-    if not isinstance(path_bbdd, basestring):
-        raise TypeError("Expected basestring, got '%s' instead" % type(path_bbdd))
-
-
-    from standalone.conf import settings
-
-    global settings
-
-    m_path = os.path.join(os.path.abspath(path_bbdd), "openvas.sqlite3")
-
-    settings = settings(
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': '%s' % m_path,
-            }
-        },
-    )
-
-    #from standalone import models
-
-    ##------------------------------------------------------------------------------
-    #class Families(models.StandaloneModel):
-        #family_name      = models.CharField(max_length=250, primary_key=True)
-
-    ##------------------------------------------------------------------------------
-    #class Plugin(models.StandaloneModel):
-        ##plugin_name      = models.CharField(max_length=250)
-        #plugin_id        = models.IntegerField(max_length=250, primary_key=True)
-        #plugin_file_name = models.CharField(max_length=255)
-
-        #family           = models.ForeignKey(Families)
-
-
-#------------------------------------------------------------------------------
-#
-# Aux functions
-#
-#------------------------------------------------------------------------------
-def get_function_value(text, function_name):
-    """
-    Using regular expresions, get the value from a first function.
-
-    :param text: Text where looking for.
-    :type text: str
-
-    :param function_name: Function name.
-    :type function_name: str
-
-    :return: Function value.
-    :rtype: str
-    """
-    l_reg = REG_FUNCTION % function_name
-
-    r = re.search(l_reg, text)
-    if r:
-        return r.group(2)
-
-    return None
-
-
-#------------------------------------------------------------------------------
-def get_array_value(text, array_name):
-    """
-    Using regular expresions, get the value from a first function.
-
-    :param text: Text where looking for.
-    :type text: str
-
-    :param array_name: Function name.
-    :type array_name: str
-
-    :return: Function value.
-    :rtype: str
-    """
-    l_reg = REG_ARRAY % array_name
-
-    r = re.search(l_reg, text)
-    if r:
-        return r.group(2)
-
-    return None
-
-
-#------------------------------------------------------------------------------
-def get_nasl_files_list(path):
-    """
-    Get all .nasl files from a path
-
-    :param path: Folder where contains .nasl files.
-    :type path: str
-
-    :return: an iterator with the file name
-    :rtype: iterator(str)
-    """
-
-
-    m_return        = []
-    m_return_append = m_return.append
-    if path:
-        for root, dirs, files in os.walk(path):
-            for l_file in files:
-                if l_file.endswith(".nasl"):
-                    #yield os.path.join(root, l_file)
-                    m_return_append(os.path.join(root, l_file))
-    else:
-        raise ValueError("Path can't be empty.")
-
-    return m_return
+RuleGroup = namedtuple("RuleGroup", ["rules"])
+Rule = namedtuple("Rule", ["regex", "group", "operator_next", "negate"])
 
 
 #------------------------------------------------------------------------------
@@ -181,380 +66,436 @@ def get_nasl_files(path):
     """
     Get all .nasl files from a path
 
-    :param path: Folder where contains .nasl files.
+    :param path: Folder containing .nasl files.
     :type path: str
 
-    :return: an iterator with the file name
+    :return: Iterator of file names.
     :rtype: iterator(str)
     """
-    #yield  os.path.join(path, "macosx_adobe_air_3_6_0_6090.nasl")
-
+    results = []
+    results_append = results.append
     if path:
         for root, dirs, files in os.walk(path):
             for l_file in files:
                 if l_file.endswith(".nasl"):
-                    yield os.path.join(root, l_file)
+                    results_append(os.path.join(root, l_file))
     else:
         raise ValueError("Path can't be empty.")
 
-
-#------------------------------------------------------------------------------
-#
-# Main code
-#
-#------------------------------------------------------------------------------
-# Attempt to do the proccess multi process
-class SharedInfo(object):
-    """"""
-
-
-    #--------------------------------------------------------------------------
-    def __init__(self):
-        """Constructor"""
-        self.family = None
-        self.file_path = None
-        self.plugin_id = None
-
-
-def process_file(log_file, debug, f_name):
-    """"""
-
-    # Process the file
-    try:
-        m_plugin_family, m_plugin_id = get_plugin_info(f_name)
-    except ValueError, e:
-        log_file.write("%s\n" % str(e))
-
-        return
-
-    # Filter plugin info
-    if m_plugin_family.lower() == "english":
-        l = [
-            "#" * 80,
-             "Plugin family 'english': %s " % str(f_name),
-             "\n"
-        ]
-
-        # To log file
-        log_file.writelines(l)
-
-        # To screen
-        print '\n'.join(l)
-        return
-
-    # Debug message
-    if debug:
-        print "Processing: %s (Family) | %s (script_id)" % (m_plugin_family, m_plugin_id)
-
-    from models import Families, Plugin
-
-
-    f = Families()
-    f.family_name = m_plugin_family
-    f.save()
-
-    p = Plugin()
-    p.plugin_id = m_plugin_id
-    p.plugin_file_name = f_name
-    p.family = f
-    p.save()
-
-
-    #try:
-        #results[m_plugin_family].append([m_plugin_id, f_name])
-    #except KeyError:
-        #results[m_plugin_family] = d.list()
-        #results[m_plugin_family].append([m_plugin_id, f_name])
-
-    #return {m_plugin_family : [m_plugin_id, f_name]}
-
-def parse_files_(path_in, path_out, debug=False):
-    """
-    Generate de BBDD.
-    """
-    log_file      = open(os.path.join(path_out, "errors.log"), "w")
-
-    # Split array in N parts
-    f = lambda A, n=3: [A[i:i+n] for i in range(0, len(A), n)]
-
-
-    # Parallel processing
-    from multiprocessing import Pool, Manager
-    m_correlation = Manager().list()
-
-    func = partial(process_file, log_file, debug)
-
-    files = get_nasl_files(path_in)
-
-    p             = Pool(processes=5)
-    p.map(func, files)
-
-    return m_correlation
-    #m_correlation = defaultdict(list)
-    #for e in f(files, chuncks):
-        #r = p.map(func, e)
-
-        ## Filter results
-        #for x in r:
-            #for fam,v in x.iteritems():
-                #m_correlation[fam].append(v)
-
-    #log_file.close()
-
-    #return m_correlation
-
-
-#
-# This code runs oks
-#
-def parse_files(path_in, path_out, debug=False):
-    """
-    Generate de BBDD.
-    """
-    m_correlation = defaultdict(list)
-
-    log_file      = open(os.path.join(path_out, "errors.log"), "w")
-
-    # Parallel processing
-
-    for i, f_name in enumerate(get_nasl_files(path_in)):
-        #if i > 6000:
-            #break
-
-        # Process the file
-        try:
-            m_plugin_family, m_plugin_id = get_plugin_info(f_name)
-        except ValueError, e:
-            log_file.write("%s\n" % str(e))
-
-            continue
-
-        # Filter plugin info
-        if m_plugin_family.lower() == "english":
-            l = [
-                "#" * 80,
-                 "Plugin family 'english': %s " % str(f_name),
-                 "\n"
-            ]
-
-            # To log file
-            log_file.writelines(l)
-
-            # To screen
-            print '\n'.join(l)
-            continue
-
-        # Debug message
-        if debug:
-            print "%s - Processing: %s (Family) | %s (script_id)" % (str(i), m_plugin_family, m_plugin_id)
-
-        # Store info
-        m_correlation[m_plugin_family].append([m_plugin_id, f_name])
-
-    log_file.close()
-
-    return m_correlation
+    return results
 
 
 #------------------------------------------------------------------------------
-def store_in_bbdd(info, debug=False):
+def rules_matcher(text, rules_group, rules_index, verbosity=0):
     """
-    Store in BBDD information.
+    Rules matcher.
 
-    :param info: information to store in BBDD
-    :type info: dict({ 'PLUGIN_FAMILY' : list([PLUGIN_ID, PLUGIN_FILE_NAME])})
+    Applies the rules group to the text and returns True if any rule matches.
 
-    :return: True if all done Oks. False otherwise.
+    :param text: text where match the rules
+    :param text: str
+
+    :param rules_group: a RuleGroup.
+    :type rules_group: RuleGroup
+
+    :param rules_index: dict with rules grouped by type.
+    :type rules_index: dict
+
+    :param verbosity: Verbosity level. Used for debug.
+    :type verbosity: int
+
+    :return: True if match found. False otherwise.
     :rtype: bool
     """
 
+    for rule_group in rules_group:
+        last_matches = False
+        for rule in rule_group.rules:
 
-    from models import Families, Plugin
+            rule_operator = rule.operator_next.lower()
+            rule_regex = rule.regex
+            rule_group = rule.group
+            rule_negate = rule.negate
+
+            # Apply regex
+            if isinstance(rule_regex, basestring) or isinstance(rule_regex, unicode):
+                m = rules_matcher(text, rules_index[rule_regex], rules_index)
+            else:
+                m = rule_regex.search(text)
+
+            # Rule matches?
+            if m:
+                # If group is "*", not concrete group is needed -> Rules matches
+                if rule_group == "*":
+                    if rule_operator == "and":
+                        last_matches = True
+                        continue
+                    else:
+                        # Normal response is True
+                        return False if rule_negate else True
+                else:
+                    if len(m.groups()) != int(rule_group):
+                        # Normal response is False
+                        return True if rule_negate else False
+                    else:
+                        if rule_operator == "and":
+                            last_matches = True
+                            continue
+                        else:
+                            # Normal response is True
+                            return True if rule_negate else False
+            else:
+                # No match found.
+                #
+                # If operator is "or", wait for next rule to
+                # determinate if rule is valid
+                if rule_operator == "and":
+                    # Normal response is False
+                    return False if rule_negate is False else True
+
+                if last_matches:
+                    return True
+
+    # If not found -> no rules that matches.
+    return False
+
+
+#------------------------------------------------------------------------------
+def load_single_rule(rule):
+    """
+    This function loads a single rule from a dict and returns a Rule type.
+
+    :param rule: dict with json information.
+    :type rule: dict
+
+    :return: Rule object.
+    :rtype: Rule
+    """
+
+    _tmp_operator_title_file = rule.get("operator", u"or")
+    _tmp_operator_title_file = _tmp_operator_title_file \
+        if _tmp_operator_title_file != u"" and _tmp_operator_title_file is not None else u"or"
 
     try:
+        _tmp_rule = re.compile(rule["regex"]) if not rule["regex"].startswith("REF://") \
+            else rule["regex"].replace("REF://", "")
+    except re.error, e:
+        print("Error compiling regex '%s': %s" % (rule["regex"], e))
+        exit(1)
 
-        for k, v in info.iteritems():
-            f = Families()
-            f.family_name = k
-            f.save()
+    r = Rule(regex=_tmp_rule,
+             group=rule.get("group", u"*"),
+             operator_next=_tmp_operator_title_file,
+             negate=bool(rule.get("negate", False)))
 
-            for plugin in v:
-                l_plugin_id = plugin[0]
-                l_path      = os.path.split(plugin[1])[1]
-
-                p = Plugin()
-                p.plugin_id        = l_plugin_id
-                p.plugin_file_name = l_path
-                p.family           = f
-                p.save()
-
-    except Exception,e:
-        if debug:
-            print "Error generation BBDD: %s" % str(e)
-        return False
-
-
-    return True
+    return r
 
 
 #------------------------------------------------------------------------------
-def get_plugin_info(f_name):
+def load_rules(rules_path):
     """
-    Gets the filename and return the script_id and the family:
+    Load the rules from json and convert into our custom format.
 
-    :param f_name: file name
-    :type f_name: str
+    :param rules_path: path or file that contains rules files.
+    :type rules_path: str
 
-    :return: tupple (family_name, script_id)
-
-    :raises: ValueError
+    :return: A RulePack object
+    :rtype: RulePack
     """
-    # File/content vars
-    f                   = file(f_name, "rU")
-    f_content           = ""
+    rules_files = []
 
-    # Return values
-    m_plugin_family     = None
-    m_plugin_id         = None
+    if os.path.isdir(rules_path):
+        for root, dirs, files in os.walk(rules_path):
+            for l_file in files:
+                if l_file.startswith("rules_") and l_file.endswith(".json"):
+                    rules_files.append(os.path.join(root, l_file))
+    else:
+        rules_files.append(rules_path)
 
-    # Loop var
-    cont                = True
+    # Load rules file
+    all_rules = []
+    for rule_file in rules_files:
+        with open(rule_file, "rU") as f_in:
+            all_rules.append(json.load(f_in))
 
-    while cont:
+    # Rule index
+    rules_pack_index = defaultdict(list)
 
-        # Read the next 55 lines of the file
-        tmp = []
-        tmp_append = tmp.append
-        for x in range(55):
-            v = f.readline()
-            if v == '':
-                cont = False
-            tmp_append(v)
-        f_content = ''.join(tmp)
+    # Rule list
+    results_rules = []
+    results_rules_append = results_rules.append
 
-        # Looking for "script_id" value
-        if not m_plugin_id:
-            m_plugin_id   = get_function_value(f_content, "script_id")
+    # Parse and load rules
+    for rules in all_rules:
 
-            if m_plugin_id:
-                try:
-                    int(m_plugin_id)
+        for rule_component in rules:
+            #
+            # Rules for file NAME
+            in_filename_rules = []
+            filename_rules = rule_component.get("filename_rules", "")
+            filename_rules = filename_rules if filename_rules != u"" else []
 
-                    if m_plugin_family:
-                        break
-                except ValueError:
-                    m_plugin_id_tmp = re.search(REG_FILTER_REMOVE_QUOTES, m_plugin_id)
+            for rule_group in filename_rules:
 
-                    if m_plugin_id_tmp:
-                        m_plugin_id = m_plugin_id_tmp.group(2)
+                _tmp_rule_group = RuleGroup(rules=[load_single_rule(r) for r in rule_group])
 
-                        if m_plugin_family:
-                            break
-                    else:
-                        m_plugin_id = None
+                # Add rules to index by type
+                rules_pack_index[rule_component["rule_type"]].append(_tmp_rule_group)
 
-        # Looking for "family"" in arrays
-        m_info_array        = get_array_value(f_content, "family")
+                in_filename_rules.append(_tmp_rule_group)
 
-        if m_info_array:
-            m_plugin_family = m_info_array
-            break
+            #
+            # Rules for file CONTENT
+            in_content_rules = []
+            file_content_rules = rule_component.get("content_rules", "")
+            file_content_rules = file_content_rules if file_content_rules != u"" else []
+
+            for rule_group in file_content_rules:
+                _tmp_rule_group = RuleGroup(rules=[load_single_rule(r) for r in rule_group])
+
+                # Add rules to index by type
+                rules_pack_index[rule_component["rule_type"]].append(_tmp_rule_group)
+
+                in_content_rules.append(_tmp_rule_group)
+
+            #
+            # Make the abstract type
+            #
+            _tmp_operator = rule_component.get("operator", "or")
+            _tmp_operator = _tmp_operator if _tmp_operator != u"" and _tmp_operator is not None else "or"
+            component = RuleComponent(rule_id=rule_component.get("rule_id", None),
+                                      comment=rule_component.get("comment", ""),
+                                      matching_types=rule_component["matching_types"],
+                                      filename_rules=in_filename_rules,
+                                      content_rules=in_content_rules,
+                                      operator=_tmp_operator,
+                                      rule_type=rule_component["rule_type"])
+            results_rules_append(component)
+
+    #
+    # Unify all rules
+    #
+    pack = RulePack(rules=results_rules,
+                    rule_index=rules_pack_index)
+
+    return pack
+
+
+#------------------------------------------------------------------------------
+def get_script_id(text):
+    """
+    Get script ID from the text.
+
+    :param text: text where looking for.
+    :type text: str
+
+    :return: script ID
+    :type: int
+    """
+    r = REGEX_PLUGIN_ID.search(text)
+
+    if r:
+        if len(r.groups()) == 3:
+            info = r.group(2)
+
+            # Numeric format -> script_id(12299);
+            try:
+                return int(info)
+            except ValueError:
+                # Variable references -> script_oid(SCRIPT_OID);
+                tmp_regex = r'''(%s[\s]*\=[\s]*[\"\'])([\.\d]+)([\s]*[\"\'][\s]*;)''' % info
+
+                r2 = re.search(tmp_regex, text)
+                if len(r2.groups()) == 3:
+                    info2 = r2.group(2)
+                    return int(info2.split(".")[-1])
         else:
-            # Get family name
-            m_plugin_family_tmp   = get_function_value(f_content, "script_family")
-
-            if m_plugin_family_tmp:
-                # Filter and prepare the plugin_family
-                m_plugin_family = re.search(REG_FILTER_PLUGIN_FAMILIES, m_plugin_family_tmp)
-                if m_plugin_family:
-                    m_plugin_family = m_plugin_family.group(2).replace("\"", "").replace("'","")
-
-                    if m_plugin_id:
-                        break
-                else:
-                    m_plugin_family = m_plugin_family_tmp
-                    if m_plugin_family:
-                        m_plugin_family = m_plugin_family.replace("\"", "").replace("'","")
-
-
-
-    f.close()
-
-    # Errors
-    if not m_plugin_family:
-        raise ValueError("Error processing file %s. Family '%s' can't be processed." % (f_name, m_plugin_family))
-    else:
-        m_plugin_family = m_plugin_family.strip()
-    if not m_plugin_id:
-        raise ValueError("Error processing file %s. Plugin ID '%s' can't be processed." % (f_name, m_plugin_id))
-    else:
-        m_plugin_id = m_plugin_id.strip()
-
-    return (m_plugin_family, m_plugin_id)
+            raise ValueError("Incorrect regex to find ID in plugin.")
 
 
 #------------------------------------------------------------------------------
-def run_tests(path):
-    """Test a .nasl plugin"""
+def extract_info(path, rule_pack, display_processed=False, display_non_match=False, debug=False, verbosity=0):
+    """
+    Extract info from the plugins.
 
-    plugin1 = os.path.join(path, "/Users/Dani/Downloads/openvas-nvt-feed-current/FormMail_detect.nasl")
-    print get_plugin_info(plugin1)
+    :param path: plugins location.
+    :type path: str
+
+    :param rule_pack: RulePack object with rules to apply.
+    :type rule_pack: RulePack
+
+    :param display_non_match: display files that don't match with any rule.
+    :type display_non_match: bool
+
+    :param display_processed: display files that match with some rule.
+    :type display_processed: bool
+
+    :param debug: to enable debug.
+    :type debug: bool
+
+    :return: a dict with the resutls. Format: { "plugin_id": ([ "Class_type_1", "Class_type_2"], "RULE_TYPE") }
+    :type: dict
+    """
+
+    # !!! Don't delete: This var was used for debug purposes and only enbled with "-d" option.
+    plugins = [
+        # "12planet_chat_server_xss.nasl",
+        # "3com_nbx_voip_netset_detection.nasl",
+        # "3com_switches.nasl",
+        # "404_path_disclosure.nasl",
+        # "4553.nasl",
+        # "ubuntu_866_1.nasl",
+        # "gb_ubuntu_USN_990_1.nasl",
+        # "http_trace.nasl"
+        # "freebsd_mod_php4-twig.nasl",
+        # "sles9p5013929.nasl"
+        # "gb_mssql_sp_replwritetovarbin_bof_vuln.nasl",
+        #"gb_fedora_2007_3369_php-pear-MDB2-Driver-mysql_fc7.nasl",
+        # "postgreSQL_multiple_security_vulnerabilities.nasl",
+        # "postgresql_34069.nasl",
+        # "gb_mysql_weak_passwords.nasl",
+        # "mysql_37640.nasl",
+        # "drupal_detect.nasl",
+        "drupal_34779.nasl",
+        # "sles9p5046302.nasl",
+        # "sles9p5017417.nasl",
+        # "sles9p5016079.nasl"
+        # "gb_fedora_2012_9324_mysql_fc16.nasl"
+    ]
+
+    # Load all plugin list
+    if debug:
+        plugin_list = []
+        for p in plugins:
+            plugin_list.append(os.path.join(path, p))
+    else:
+        plugin_list = get_nasl_files(path)
+    plugin_count = len(plugin_list)
+
+    results = {}
+    results_update = results.update
+
+    # For testing
+    files = {}
+    not_processed = {}
+
+    #
+    # Find in plugins
+    #
+    for i in xrange(plugin_count):
+
+        # Get next plugin to process
+        f = plugin_list[i]
+
+        # Read file
+        with open(f, "rU") as f_in:
+            file_content = f_in.read()
+
+        plugin_id = get_script_id(file_content)
+
+        found = False
+        # Apply each Rule component to the plugin
+        for config_rules in rule_pack.rules:
+            rule_type = config_rules.rule_type
+
+            #
+            # 1º - Looking for un file name
+            #
+            if rules_matcher(os.path.split(f)[1], config_rules.filename_rules, rule_pack.rule_index, verbosity):
+                results_update({int(plugin_id): (config_rules.matching_types, rule_type)})
+                found = True
+                files[plugin_id] = f
+
+            # Is enough with the title matching?
+            if found and config_rules.operator == u"or":
+                break
+
+            #
+            # 2º - Looking for in file content
+            #
+            if rules_matcher(file_content, config_rules.content_rules, rule_pack.rule_index, verbosity):
+                results_update({int(plugin_id): (config_rules.matching_types, rule_type)})
+                found = True
+                files[plugin_id] = f
+                break
+
+        # If not match found, add to not found list.
+        if found is False:
+            not_processed[plugin_id] = f
+
+    #
+    # !!! Don't delete. Used for debug
+    #
+    # Display only for debug
+    if display_non_match:
+        print("Non processed files:")
+        for i, v in not_processed.iteritems():
+            print("%s\t%s" % (i, v))
+
+        print("\n\nTotal non processed files: %s" % len(not_processed))
+
+    # Display only for debug
+    if display_processed:
+        print("\n\n[*] Processed files:")
+        for i, v in results.iteritems():
+            print("%s: " % i)
+            print("   - %s (%s)" % (v[0], v[1]))
+            print("   - %s" % files[i])
+
+    print("\n\nTotal processed: %s" % len(results))
+
+    return results
 
 
 #------------------------------------------------------------------------------
 def main(args):
-    """"""
+    """
+    Main function.
 
+    :param args: Arg parser arguments from command line.
+    """
     path_openvas_plugins = args.OPENVAS_PLUGINS
-    path_out             = args.OUTPUT_BBDD
-    debug                = args.DEBUG
-    remove_old           = args.REMOVE_OLD
+    path_out = args.OUTPUT_BBDD
+    debug = args.DEBUG
+    verbosity = args.VERBOSE
+    rules_file = args.RULES
+    display_processed = args.DISPLAY_PROCESSED
+    display_non_match = args.DISPLAY_NOT_MATCH
 
     if not os.path.isdir(path_out):
-        print
-        print "[!] Output database must be a folder, not a file."
-        print
+        print("\n[!] Output database must be a folder, not a file.\n")
         exit(1)
 
+    # Add filename to de database
+    path_out = os.path.join(args.OUTPUT_BBDD, "openvas.db")
 
-    if remove_old:
-        l_bbdd_name = os.path.join(path_out, "openvas.sqlite3")
-        if os.path.exists(l_bbdd_name):
-            if debug:
-                print "Deleting old OpenVAS database: '%s'." % l_bbdd_name
-            os.remove(l_bbdd_name)
-
-    #
-    # Config and generate BBDD
-    #
-    config_bbdd(path_out)
-
-    # This import only can be done after config_bbdd execution
-    from models import Families, Plugin
-
-    # Generate BBDD
-    from django.core.management import call_command
-    call_command("syncdb") # Creates the BBDD
-
-    if args.ONLY_TESTS:
-        run_tests(path_openvas_plugins)
+    # Load rules
+    if rules_file:
+        rule_pack = load_rules(rules_file)
     else:
-        info = parse_files(path_openvas_plugins, path_out, debug=debug)
-        if store_in_bbdd(info, debug):
-            print "Database generated well"
-        else:
-            print "Error while generating dabatase"
+        rule_pack = load_rules(os.getcwd())
+
+    # Extract info form the plugins
+    info = extract_info(path_openvas_plugins, rule_pack, display_processed, display_non_match, debug, verbosity)
+
+    # Store in database
+    Pickler.dump(info, open(path_out, 'wb'), 2)
 
 
-
-if __name__=='__main__':
+#------------------------------------------------------------------------------
+if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Generates OpenVAS database.')
-    parser.add_argument('-o', dest="OUTPUT_BBDD", help="output database folder.", default=os.path.abspath(os.path.split(__file__)[0])) # Current directory default
+    parser.add_argument('-o', dest="OUTPUT_BBDD", help="output database folder.",  # Current directory default
+                        default=os.path.abspath(os.path.split(__file__)[0]))
     parser.add_argument('-p', dest="OPENVAS_PLUGINS", help="openvas plugins path", required=True)
-    parser.add_argument('--remove-old', action="store_true", dest="REMOVE_OLD", help="remove old OpenVAS database")
-    parser.add_argument('--test', action="store_true", dest="ONLY_TESTS", help="only run tests", default=False)
-    parser.add_argument('-v', action="store_true", dest="DEBUG", help="enable debug information", default=False)
+    parser.add_argument('-v', action="count", dest="VERBOSE", help="increases debug level", default=0)
+    parser.add_argument('-d', action="store_true", dest="DEBUG", help="enable debug mode", default=False)
+    parser.add_argument('--rules', dest="RULES", help="load only a concrete file rules", default=None)
+    parser.add_argument('--display-processed', action="store_true", dest="DISPLAY_PROCESSED",
+                        help="display all processed files", default=False)
+    parser.add_argument('--display-non-match', action="store_true", dest="DISPLAY_NOT_MATCH",
+                        help="display files that don't match with any rule", default=False)
 
     args = parser.parse_args()
 

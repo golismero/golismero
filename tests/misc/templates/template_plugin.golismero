@@ -1,0 +1,83 @@
+# Plugin descriptor file.
+#
+# The format is similar to that of a Windows .ini file. There are some
+# specially named sections and required settings, then you can follow
+# them with any section and key/value pairs. Keys may be repeated across
+# sections, but never within a section.
+
+###############################################################################
+
+# Documentation for this plugin.
+# This section is optional, but recommended.
+
+[Documentation]
+
+Name        = Template for plugin development
+Description = Here goes the plugin description that will be shown with the
+  "info" command when running GoLismero. Note how you can span multiple lines
+  by beginning each extra line with at least one blank space.
+Author      = Your name here :)
+Version     = 0.1
+Website     = http://www.your-web-page-here.com/
+Copyright   = Copyright (C) [AUTHOR OF PLUGIN]
+License     = GNU Public License v2
+
+###############################################################################
+
+# Core settings.
+# This section is optional, should only be used in very specific cases.
+
+[Core]
+
+# Python file with the plugin code. Path must be relative to this file.
+# Defaults to the same name as this file but with a .py extension.
+# This is useful for bundling more than one plugin in the same .py file.
+#Module = template_plugin.py
+
+# Python class that implements the plugin.
+# Autodetected when not specified.
+# This is useful for bundling more than one plugin in the same .py file.
+#Class = TemplatePlugin
+
+# Optionally override the plugin execution stage.
+# Normally the stage is deduced from the plugin location.
+# This is only valid for testing plugins.
+#Stage = Recon
+
+# Plugin data dependencies, as a comma-separated list of plugins.
+# It tells GoLismero to make sure all data received by this plugin
+# has been processed before by the plugins specified here.
+# This is only valid for testing plugins.
+#Dependencies = testing/recon/spider, testing/recon/default_error_page
+
+# Recursive flag. If set to "yes" the plugin may receive the same data
+# it outputs. Be careful! This may cause an infinite loop (i.e. the audit
+# would never finish) if you're not careful!
+# This is only valid for testing plugins.
+Recursive = no
+
+###############################################################################
+
+# Arguments for this plugin.
+# Passwords are marked with an asterisk (*) in front of the name.
+# These key/value pairs go to a dictionary at "Config.plugin_args".
+
+[Arguments]
+username = default_username
+*password = default_password
+
+###############################################################################
+
+# Simple way to specify the plugin configuration.
+# These key/value pairs go to a dictionary at "Config.plugin_config".
+
+[Configuration]
+write_your_own = You can write your own key/value pairs here.
+
+# If you need more complex settings, you can define your own
+# sections with their own key/value pairs too. They're loaded
+# as a dictionary of dictionaries at "Config.plugin_extra_config".
+# Note that these settings cannot be overriden by profiles.
+
+[Arbitrary_Section_Names_May_Go_Here_Too]
+key = value

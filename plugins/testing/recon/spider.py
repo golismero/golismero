@@ -27,9 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
 from golismero.api.config import Config
-from golismero.api.data.information import Information
+from golismero.api.data.information.html import HTML
+from golismero.api.data.information.text import Text
 from golismero.api.data.resource.email import Email
-from golismero.api.data.resource.url import Url
+from golismero.api.data.resource.url import URL
 from golismero.api.logger import Logger
 from golismero.api.net import NetworkException
 from golismero.api.net.scraper import extract_from_html, extract_from_text, extract_forms_from_html
@@ -49,12 +50,12 @@ class Spider(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def get_accepted_info(self):
-        return [Url]
+    def get_accepted_types(self):
+        return [URL]
 
 
     #--------------------------------------------------------------------------
-    def recv_info(self, info):
+    def run(self, info):
 
         m_return = []
 
@@ -83,11 +84,11 @@ class Spider(TestingPlugin):
 
         # Get links
         m_forms = None
-        if p.information_type == Information.INFORMATION_HTML:
+        if p.information_type == HTML.data_subtype:
             m_links = extract_from_html(p.raw_data, m_url)
             m_forms = extract_forms_from_html(p.raw_data, m_url)
             #m_links.update( extract_from_text(p.raw_data, m_url) )
-        elif p.information_type == Information.INFORMATION_PLAIN_TEXT:
+        elif p.information_type == Text.data_subtype:
             m_links = extract_from_text(p.raw_data, m_url)
         else:
             return m_return
@@ -126,16 +127,16 @@ class Spider(TestingPlugin):
         if m_urls_in_scope:
             Logger.log_verbose("Found %d links in URL: %s" % (len(m_urls_allowed), m_url))
         else:
-            Logger.log_verbose("No links found in URL: %s" % m_url)
+            Logger.log_more_verbose("No links found in URL: %s" % m_url)
 
-        # Convert to Url data type
+        # Convert to URL data type
         for u in m_urls_in_scope:
             try:
                 p = parse_url(u)
                 if p.scheme == "mailto":
                     m_resource = Email(p.netloc)
                 elif p.scheme in ("http", "https"):
-                    m_resource = Url(url = u, referer = m_url)
+                    m_resource = URL(url = u, referer = m_url)
             except Exception:
                 warn(format_exc(), RuntimeWarning)
             m_resource.add_resource(info)
@@ -179,16 +180,16 @@ class Spider(TestingPlugin):
         if m_forms_in_scope:
             Logger.log_verbose("Found %d forms in URL: %s" % (len(m_forms_in_scope), m_url))
         else:
-            Logger.log_verbose("No forms found in URL: %s" % m_url)
+            Logger.log_more_verbose("No forms found in URL: %s" % m_url)
 
-        # Convert to Url data type
+        # Convert to URL data type
         for u in m_forms_in_scope:
             try:
                 url = u[0]
                 method = u[1]
                 params = {x["name"]: x["value"] for x in u[2]}
 
-                m_resource = Url(url = url, referer = m_url, method=method, post_params=params)
+                m_resource = URL(url = url, referer = m_url, method=method, post_params=params)
             except Exception:
                 warn(format_exc(), RuntimeWarning)
             m_resource.add_resource(info)
