@@ -1645,8 +1645,10 @@ class AuditSQLiteDB (BaseAuditDB):
             if row and bool(row[0]):
                 instance_l = self.__get_data(left_id, get_links)
                 instance_r = self.__get_data(right_id, get_links)
-                Rel = Relationship(instance_l.__class__, instance_r.__class__)
-                return Rel(instance_l, instance_r)
+                if instance_l is not None and instance_r is not None:
+                    Rel = Relationship(
+                        instance_l.__class__, instance_r.__class__)
+                    return Rel(instance_l, instance_r)
             return
 
         # Get the Data object, without the links.
