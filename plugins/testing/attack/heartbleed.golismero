@@ -2,7 +2,7 @@
 Name        = OpenSSL Heartbleed Attack
 Description = Test for the CVE-2014-0160 vulnerability (aka "heartbleed attack").
 Author      = GoLismero project team
-Version     = 0.1
+Version     = 0.2
 Website     = https://github.com/golismero
 Copyright   = Copyright (C) 2011-2014 GoLismero Project
 License     = GNU Public License v2
