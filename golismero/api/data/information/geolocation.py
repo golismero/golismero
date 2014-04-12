@@ -49,7 +49,7 @@ class Geolocation(Fingerprint):
                  country_code = None, country_name = None,
                  region_code = None, region_name = None,
                  city = None, zipcode = None,
-                 metro_code = None, areacode = None,
+                 metro_code = None, area_code = None,
                  street_addr = None, accuracy = None):
         """
         :param latitude: Latitude.
@@ -81,8 +81,8 @@ class Geolocation(Fingerprint):
         :param metro_code: Metropolitan area (DMA) code.
         :type metro_code: str | None
 
-        :param areacode: Area code.
-        :type areacode: str | None
+        :param area_code: Area code.
+        :type area_code: str | None
 
         :param street_addr: Street address.
         :type street_addr: str | None
@@ -109,7 +109,7 @@ class Geolocation(Fingerprint):
         city         = to_utf8(city)
         zipcode      = to_utf8(zipcode)
         metro_code   = to_utf8(metro_code)
-        areacode     = to_utf8(areacode)
+        area_code    = to_utf8(area_code)
         street_addr  = to_utf8(street_addr)
         if accuracy is not None:
             try:
@@ -141,9 +141,9 @@ class Geolocation(Fingerprint):
         if metro_code is not None and type(metro_code) is not str:
             raise TypeError(
                 "Expected string, got %r instead" % type(metro_code))
-        if areacode is not None and type(areacode) is not str:
+        if area_code is not None and type(area_code) is not str:
             raise TypeError(
-                "Expected string, got %r instead" % type(areacode))
+                "Expected string, got %r instead" % type(area_code))
         if street_addr is not None and type(street_addr) is not str:
             raise TypeError(
                 "Expected string, got %r instead" % type(street_addr))
@@ -159,7 +159,7 @@ class Geolocation(Fingerprint):
         self.__city         = city or None
         self.__zipcode      = zipcode or None
         self.__metro_code   = metro_code or None
-        self.__areacode     = areacode or None
+        self.__area_code    = area_code or None
         self.__street_addr  = street_addr or None
 
         # Parent constructor.
@@ -210,12 +210,12 @@ class Geolocation(Fingerprint):
         return (
             "<%s latitude=%f, longitude=%f, country_code=%r,"
             " country_name=%r, region_code=%r, region_name=%r,"
-            " city=%r, zipcode=%r, metro_code=%r, areacode=%r,"
+            " city=%r, zipcode=%r, metro_code=%r, area_code=%r,"
             " street_addr=%r, accuracy=%s>"
             % (self.__class__.__name__,
             self.latitude, self.longitude, self.country_code,
             self.country_name, self.region_code, self.region_name,
-            self.city, self.zipcode, self.metro_code, self.areacode,
+            self.city, self.zipcode, self.metro_code, self.area_code,
             self.street_addr, self.accuracy)
         )
 
@@ -417,27 +417,27 @@ class Geolocation(Fingerprint):
 
     #--------------------------------------------------------------------------
     @merge
-    def areacode(self):
+    def area_code(self):
         """
         :returns: Area code.
         :rtype: str | None
         """
-        return self.__areacode
+        return self.__area_code
 
 
     #--------------------------------------------------------------------------
-    @areacode.setter
-    def areacode(self, areacode):
+    @area_code.setter
+    def area_code(self, area_code):
         """
-        :param areacode: Area name.
-        :type areacode: str
+        :param area_code: Area name.
+        :type area_code: str
         """
-        if areacode is not None:
-            areacode = to_utf8(areacode)
-            if type(areacode) is not str:
+        if area_code is not None:
+            area_code = to_utf8(area_code)
+            if type(area_code) is not str:
                 raise TypeError(
-                    "Expected string, got %r instead" % type(areacode))
-        self.__areacode = areacode
+                    "Expected string, got %r instead" % type(area_code))
+        self.__area_code = area_code
 
 
     #--------------------------------------------------------------------------
