@@ -2,14 +2,10 @@
 # -*- coding: utf-8 -*-
 
 __license__ = """
-GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
-
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
+GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
 Golismero project site: https://github.com/golismero
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -98,7 +94,7 @@ class Spider(TestingPlugin):
             pass
 
         # Do not follow URLs that contain certain keywords
-        m_forbidden = [x for x in WordListLoader.get_wordlist(Config.plugin_config["wordlist_no_spider"])]
+        m_forbidden = [x for x in WordListLoader.get_wordlist_as_list(Config.plugin_config["wordlist_no_spider"])]
         m_urls_allowed = [
             url for url in m_links if not any(x in url for x in m_forbidden)
         ]
@@ -262,7 +258,7 @@ class Spider(TestingPlugin):
             return True
 
         # If URL path in blacklist?
-        m_forbidden = [x for x in WordListLoader.get_wordlist(Config.plugin_config["wordlist_no_spider"])]
+        m_forbidden = [x for x in WordListLoader.get_wordlist_as_list(Config.plugin_config["wordlist_no_spider"])]
         if any(x in url for x in m_forbidden):
             return False
 

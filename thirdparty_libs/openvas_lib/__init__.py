@@ -547,13 +547,13 @@ class VulnscanManager(object):
 
     #----------------------------------------------------------------------
     #
-    # Transform OpenVAS results to GoLismero structures
+    # Transform OpenVAS results to our structures
     #
     #----------------------------------------------------------------------
     @staticmethod
     def transform(xml_results, version="4.0"):
         """
-        Transform the XML results of OpenVAS into GoLismero structures.
+        Transform the XML results of OpenVAS into our structures.
 
         :param xml_results: Input results from OpenVAS in XML format.
         :type xml_results: Element
@@ -561,7 +561,7 @@ class VulnscanManager(object):
         :param version: OpenVAS result version.
         :type version: str
 
-        :return: Results in GoLismero format.
+        :return: Results in our format.
         :rtype: list(OpenVASResult)
 
         :raises: ValueError, VulnscanVersionError
@@ -1267,12 +1267,12 @@ class _OMP(object):
     @staticmethod
     def transform(xml_results):
         """
-        Transform the XML results of OpenVAS into GoLismero structures.
+        Transform the XML results of OpenVAS into our structures.
 
         :param xml_results: Input results from OpenVAS in XML format.
         :type xml_results: Element
 
-        :return: Results in GoLismero format.
+        :return: Results in our format.
         :rtype: list(OpenVASResult)
 
         :raises: ValueError
@@ -1681,12 +1681,12 @@ class _OMPv4(_OMP):
     @staticmethod
     def transform(xml_results):
         """
-        Transform the XML results of OpenVAS into GoLismero structures.
+        Transform the XML results of OpenVAS into our structures.
 
         :param xml_results: Input results from OpenVAS in XML format.
         :type xml_results: Element
 
-        :return: Results in GoLismero format.
+        :return: Results in our format.
         :rtype: list(OpenVASResult)
 
         :raises: ValueError
@@ -1703,11 +1703,11 @@ class _OMPv4(_OMP):
             l_partial_result = OpenVASResult.make_empty_object()
 
             # Ignore log/debug messages, only get the results
-            threat = l_results.find("threat")
-            if threat is None:
-                continue
-            if threat.text in ("Log", "Debug"):
-                continue
+            ##threat = l_results.find("threat")
+            ##if threat is None:
+            ##    continue
+            ##if threat.text in ("Log", "Debug"):
+            ##    continue
 
             # For each result
             for l_val in l_results.getchildren():

@@ -65,3 +65,7 @@ user.conf
 
 # Test data for the HTML report.
 plugins/report/html_report/js/database.js
+
+# Testing files
+.coverage
+htmlcov/

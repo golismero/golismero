@@ -1,3 +1,8 @@
+### This repository contains the unstable development version.
+### For the stable version go to: <a href="https://github.com/golismero/golismero">https://github.com/golismero/golismero</a></font></p>
+
+---
+
 What's GoLismero?
 =================
 
@@ -163,9 +168,10 @@ Windows
 On Windows, you'll have to install each tool separately. You can download them from here:
 - [Python 2.7](http://python.org/download/releases/2.7.6/)
 - [Git](https://code.google.com/p/msysgit/downloads/list)
-- [Perl](http://www.perl.org/get.html#win32)
 - [Nmap](http://nmap.org/download.html#windows)
 - [SSLScan](https://code.google.com/p/sslscan-win/)
+
+Nikto is already bundled with GoLismero, but it requires the Cygwin version of Perl to run, since the native version can't handle Unix paths. You can download if from here: [Cygwin](http://cygwin.com/install.html).
 
 SSLScan for Windows has a bug that causes crashes when writing XML output, which is the one required by GoLismero. The issue has been [unfixed since 2010](https://code.google.com/p/sslscan-win/issues/detail?id=2), so it's not likely to change soon, but there's a workaround: simply upgrade OpenSSL to a newer version. You can get an OpenSSL build from here: [Win32OpenSSL](https://slproweb.com/products/Win32OpenSSL.html).
 

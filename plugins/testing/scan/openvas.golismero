@@ -12,9 +12,11 @@ Module = openvas.py
 Class  = OpenVASPlugin
 
 [Arguments]
-profile   = Full and fast
-user      = admin
-*password = admin
-host      =
-port      = 9390
-timeout   = 30
+profile      = Full and fast
+user         = admin
+*password    = admin
+host         =
+port         = 9390
+timeout      = 30
+import_log   = no
+import_debug = no

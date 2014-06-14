@@ -4,12 +4,8 @@
 __license__ = """
 GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
-
 Golismero project site: https://github.com/golismero
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -320,7 +316,7 @@ class PlecostPlugin(TestingPlugin):
 
         error_page = get_error_page(url).raw_data
 
-        for u in WordListLoader.get_wordlist(wordpress_urls):
+        for u in WordListLoader.get_wordlist_as_list(wordpress_urls):
             total_urls += 1
             tmp_url = urljoin(url, u)
 

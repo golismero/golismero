@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3 class="modal-title">Information</h3>
+</div>
+<div class="modal-body">
+
+    <p ng-show="message !== '' ">{{message}}</p>
+    <p ng-show="message==='' ">To save the custom report press <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAWCAYAAABtwKSvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK5SURBVFhH3ZdbVuJAEIbZE0uSxBf3YCCvswdNuCzAxxm84DMXBUSCdwHlJsoK/kl1mjadNDnpMU/T5/zn71S6qvrrBA7k8B+N3OfnJx4eHjLVarXi5ZNHlr2pZ+7x8RHr9RpfX1/YbDY/9sVigU6nw7ebPKj3x8dHqrpJvlwuWc8cUdEJUTArbzabfLvJg3qnqZfGqSeDoSeTpXRgVPn/IgFDj5oCWbkuTNq6SS5g6MOTpXRgVPmkUW0f+Xw+pH3URuq1JAFDH6CYLm1exETNC8W9GkzewKx5cg6XDowq36uZfn0bl+E43499GYqFJGDoG0hWA7ZZxTA2H6JqmqgOt3MbDSkvUAxmeYKD/AFOlvyaD3VvqutvuhGNL9Cw/UMUe5ElYObzeUQNlMwKbtn8FpVSaG6W0IjNZenARHODuv5Tr9wq7u2WgJnNZnFdlPhrtlulC0WeLx0YVX64t+FDKddEJGDe398TNEC5WMZgOzeKOI+tkcVgGED8AAL9QpfDqPK3GpQNOa94rlxHEjBvb2+YTqc7vA+36KLPrm/gGhbOEtdPtZ5MUh3Zz1AkIMPFjeK+gKFATGeWfCoKGW5fmasLk1p9F0begNuP3xMwk8kE4/E45KewCg567LoLx3LQZfEenIKF023cn9elvMB1YOS+vncdFPIFON143UmP3+tF4r4LGArIqjMYApDnBBA0CsNE82MwO4a69xh1i578ts9W1M+PW/VQ7FsC5vX1FS8vL7L/PuSv0x6Or0PxqyP/dILX7PCPIs93HRhVPvnV0R7v/63C8fXO9QLm+fmZBbNyXZi0dZNcgnl6esrMdWDS1EvjAob+JFEwK9eFSVs3yRnM/f097u7uWGEK/tSHwyFarRbfbvKgnNFolKpuknuex3rm6Odzu91mZFmIatEPvzQjq95BzwX+AncTqgYgu3pPAAAAAElFTkSuQmCC"/> on the new tab to save the report</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="accept()">Accept</button>
+</div>

@@ -11,14 +11,10 @@ Natural language API.
 """
 
 __license__ = """
-GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
-
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
+GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
 Golismero project site: http://golismero-project.com
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 
 This program is free software; you can redistribute it and/or
@@ -43,7 +39,9 @@ __all__ = [
 ]
 
 from nltk import wordpunct_tokenize
-from nltk.corpus import stopwords
+from nltk.corpus import stopwords, words
+
+from num2words import num2words
 
 
 #------------------------------------------------------------------------------
@@ -55,15 +53,28 @@ def get_words(text, min_length = None, max_length = None):
     :param text: Text to parse.
     :type text: str
 
-    :param min_length: Minimum length required. Use None for no limit.
+    :param min_length: Minimum length required by each token. Use None for no limit.
     :type min_length: int | None
 
-    :param min_length: Maximum length allowed. Use None for no limit.
+    :param min_length: Maximum length allowed by each token. Use None for no limit.
     :type min_length: int | None
 
     :return: Set of unique words extracted from the text.
     :rtype: set(str)
+
+    :raises: TypeError, ValueError
     """
+    if min_length is not None:
+        if not isinstance(min_length, int):
+            raise TypeError("Expected int, got '%s' instead" % type(min_length))
+        elif min_length < 0:
+            raise ValueError("Min length must be greater than 0, got %s." % min_length)
+
+    if max_length is not None:
+        if not isinstance(max_length, int):
+            raise TypeError("Expected int, got '%s' instead" % type(min_length))
+        elif max_length < 0:
+            raise ValueError("Min length must be greater than 0, got %s" % max_length)
 
     # Split the text into separate tokens, using natural language
     # punctuation signs. Then filter out by min/max length, and tokens
@@ -90,23 +101,35 @@ def calculate_language_scores(text):
 
     :return: Dictionary with languages and unique stopwords seen in analyzed text.
     :rtype: dict(str -> int)
+
+    :raises: TypeError
     """
+    if not isinstance(text, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(text))
+    if not text:
+        return {}
+
+    languages_ratios = {}
 
     # Split the text into separate tokens, using natural language punctuation signs.
-    words = {word.lower() for word in wordpunct_tokenize(text)}
+    tokens = wordpunct_tokenize(text)
+    tokenized_words = [word.lower() for word in tokens]
 
-    # Return the number of stopwords found per language.
-    return {
-        len( words.intersection( stopwords.words(language) ) )
-        for language in stopwords.fileids()
-    }
+    for language in stopwords.fileids():
+        stopwords_set = set(stopwords.words(language))
+        words_set = set(tokenized_words)
+        common_elements = words_set.intersection(stopwords_set)
+        languages_ratios[language] = len(common_elements)  # language "score"
+
+    return languages_ratios
 
 
 #------------------------------------------------------------------------------
 def detect_language(text):
     """
     Calculate the probability of given text to be written in different
-    languages and return the highest scoring one.
+    languages and return the highest scoring one. 'unknown' if language not
+    recognized.
 
     Example:
         >>> text= "Hello my name is Golismero and I'm a function"
@@ -115,19 +138,35 @@ def detect_language(text):
         >>> text_spanish= "Hola mi nombre es Golismero y soy una funcion"
         >>> detect_language(text)
         'spanish'
+        >>> text= ""
+        >>> detect_language(text)
+        'unknown'
 
     :param text: Text to analyze.
     :type text: str
 
     :return: Detected language.
     :rtype: str
+
+    :raises: TypeError
     """
+    if not isinstance(text, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(text))
+    if not text:
+        return "unknown"
+
     scores = calculate_language_scores(text)
-    return max(scores, key=scores.get)
+    max_score = max(scores, key=scores.get)
+
+    # Check if max score it's really valid results
+    if scores[max_score] == 0:
+        return "unknown"
+    else:
+        return max_score
 
 
 #------------------------------------------------------------------------------
-def number_to_words(n, locale = "EN", num_type = "cardinal"):
+def number_to_words(n, locale="en", num_type="cardinal"):
     """
     Convert an integer numeric value into natural language text.
 
@@ -136,32 +175,42 @@ def number_to_words(n, locale = "EN", num_type = "cardinal"):
 
     :param locale:
         Language to convert to. Currently supported values:
-         - "DE"
-         - "EN"
-         - "EN_GB"
-         - "ES"
-         - "FR"
+         - "de"
+         - "en"
+         - "en_gb"
+         - "es"
+         - "fr"
+         - "lt"
     :type locale: str
 
     :param num_type:
         Type of number. Must be one of the following values:
          - "cardinal"
          - "ordinal"
-         - "currency"
-         - "year"
 
     :returns: Natural language text.
     :rtype: str
 
-    :raise ValueError: Language or number type not supported.
+    :raises: TypeError, ValueError
     """
-    try:
-        module = "num2word_" + locale
-        n2wmod = __import__(module)
-        n2w = n2wmod.n2w(n)
-        method = "to_" + num_type
-        return getattr(n2w, method)()
-    except ImportError:
-        raise ValueError("Language not supported: %s" % locale)
-    except AttributeError:
-        raise ValueError("Number type not supported: %s" % num_type)
+    if not isinstance(n, int):
+        raise TypeError("Expected int, got '%s' instead" % type(n))
+    if not isinstance(locale, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(locale))
+    if not isinstance(num_type, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(num_type))
+    if num_type == "ordinal" and n < 0:
+        raise ValueError("Can't get ordinal value from negative number")
+
+    if num_type == "ordinal":
+        try:
+            return num2words(n, ordinal=True, lang=locale.lower())
+        except NotImplementedError:
+            raise ValueError("Language or num_type are not valid.")
+    elif num_type == "cardinal":
+        try:
+            return num2words(n, ordinal=False, lang=locale.lower())
+        except NotImplementedError:
+            raise ValueError("Language or num_type are not valid.")
+    else:
+        return num2words(n, ordinal=False, lang="en")

@@ -93,6 +93,7 @@ class OpenVASNVT(object):
     OpenVas NVT structure.
     """
 
+
     #----------------------------------------------------------------------
     def __init__(self):
         self.__oid              = None
@@ -111,6 +112,7 @@ class OpenVASNVT(object):
         self.__xrefs            = None
         self.__fingerprints     = None
         self.__tags             = None
+
 
     #----------------------------------------------------------------------
     @classmethod
@@ -183,35 +185,35 @@ class OpenVASNVT(object):
             if not isinstance(tags, basestring):
                 raise TypeError("Expected string, got %r instead" % type(tags))
 
-        cls                    = OpenVASNVT()
-        cls.__oid              = oid
-        cls.__name             = name
-        cls.__cvss_base        = cvss_base
-        cls.__cvss_base_vector = cvss_base_vector
-        cls.__risk_factor      = risk_factor
-        cls.__category         = category
-        cls.__summary          = summary
-        cls.__description      = description
-        cls.__family           = family
+        obj                    = cls()
+        obj.__oid              = oid
+        obj.__name             = name
+        obj.__cvss_base        = cvss_base
+        obj.__cvss_base_vector = cvss_base_vector
+        obj.__risk_factor      = risk_factor
+        obj.__category         = category
+        obj.__summary          = summary
+        obj.__description      = description
+        obj.__family           = family
 
-        cls.__cve              = cve
-        cls.__bid              = bid
-        cls.__bugtraq          = bugtraq
-        cls.__xrefs            = xrefs
-        cls.__fingerprints     = fingerprints
-        cls.__tags             = tags
+        obj.__cve              = cve
+        obj.__bid              = bid
+        obj.__bugtraq          = bugtraq
+        obj.__xrefs            = xrefs
+        obj.__fingerprints     = fingerprints
+        obj.__tags             = tags
 
-        return cls
+        return obj
 
 
     #----------------------------------------------------------------------
     @classmethod
-    def make_empty_object(cls):
+    def make_empty_object(obj):
         """
         :return: make and empty object
         :rtype: OpenVASNVT
         """
-        return OpenVASNVT()
+        return obj()
 
 
     #----------------------------------------------------------------------

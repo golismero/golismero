@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __license__ = """
-GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
+GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
 Authors:
   Jekkay Hu | jekkay<@>gmail.com
@@ -10,7 +10,7 @@ Authors:
   Mario Vilas | mvilas<@>gmail.com
 
 Golismero project site: http://golismero-project.com
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 
 This program is free software; you can redistribute it and/or

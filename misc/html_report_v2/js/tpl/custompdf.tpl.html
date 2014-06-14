@@ -1,0 +1,114 @@
+<div class="modal-header">
+    <h3 class="modal-title">Generate pdf</h3>
+</div>
+<div class="modal-body">
+	<tabset>
+
+		<tab heading="General">
+		    <div class="row">
+		    	<div class="col-sm-4">
+		    		<img class="img-logo" ng-if="general.image" ng-src="{{general.image}}" alt="">
+					<input upload type="file" name="upload">
+		    	</div>
+		    	<div class="col-sm-8">
+		    		<form class="form-horizontal" role="form">
+		    			<div class="form-group">
+							<label for="name-audit" class="col-sm-3 control-label">Audit name:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="name-audit" placeholder="Audit name" ng-model="general.auditName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="header" class="col-sm-3 control-label">Header:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="footer" placeholder="Header template" ng-disabled="!general.enabledHeader" ng-model="general.templateHeader">						
+							</div>
+							<div class="col-sm-2">
+								<input type="checkbox" class="" id="header" placeholder="Header template" ng-model="general.enabledHeader" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name-audit" class="col-sm-3 control-label">Footer:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="footer" placeholder="Footer template" ng-disabled="!general.enabledFooter" ng-model="general.templateFooter">						
+							</div>
+							<div class="col-sm-2">
+								<input type="checkbox" class="" id="footer" placeholder="Footer template" ng-model="general.enabledFooter">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name-audit" class="col-sm-3 control-label">Orientation:</label>
+							<div class="col-sm-9">
+								<input type="radio" ng-model="general.orientation" value="landscape">Landscape</input>
+								<input type="radio" ng-model="general.orientation" value="portrait">Portrait</input>	
+							</div>
+							
+						</div>
+		    		</form>
+		    	</div>
+		    </div>
+		    <hr>
+		    <div class="row">
+		    	<div class="col-sm-3">
+		    		<h4>Summary block</h4>
+		    		<div><input type="checkbox" id="showSummary" ng-model="general.summary.showSummary">Show summary</input></div>
+		    		<div class="submenu"><input type="checkbox" id="showTargets" ng-model="general.summary.showTargets" ng-disabled="!general.summary.showSummary">Show targets</input></div>
+					<div class="submenu"><input type="checkbox" id="showTimes" ng-model="general.summary.showTimes" ng-disabled="!general.summary.showSummary">Show times</input></div>
+					<div class="submenu"><input type="checkbox" id="showTotals" ng-model="general.summary.showTotals" ng-disabled="!general.summary.showSummary">Show totals</input></div>			
+		    	</div>
+		    	<div class="col-sm-3">
+		    		<h4>Charts block</h4>
+		    		<div><input type="checkbox" id="showSummary" ng-model="general.charts.showCharts">Show charts</input></div>
+		    		<div class="submenu"><input type="checkbox" id="showTargets" ng-model="general.charts.showVulnCriticality" ng-disabled="!general.charts.showCharts">Show chart vulnerabilities by criticality</input></div>
+					<div class="submenu"><input type="checkbox" id="showTimes" ng-model="general.charts.showVulnsType"  ng-disabled="!general.charts.showCharts">Show chart vulnerabilities by type</input></div>
+					<div class="submenu"><input type="checkbox" id="showTotals" ng-model="general.charts.showVulnsTarget" ng-disabled="!general.charts.showCharts">Show chart vulnerabilities by target</input></div>		
+		    	</div>
+		    	<div class="col-sm-3">
+		    		<h4>Vulnerabilites block</h4>
+		    		<div><input type="checkbox" id="showSummary" ng-model="general.vulnerabilities.showVulnerabilities">Show vulnerabilities</input></div>    			
+		    	</div>
+		    	<div class="col-sm-3">
+		    		<h4>Technical report block</h4>
+		    		<div><input type="checkbox" id="showSummary" ng-model="general.techReport.showTechnicalReport">Show technical report</input></div>    			
+		    	</div>
+		    </div>
+    	</tab>
+    	<tab heading="Styles" >
+    		
+			<fieldset class="dataStyle" ng-repeat="(key, value) in general.styles"> 
+    			<legend>{{key}} <span class="description" tooltip="{{value.description}}"><i class="glyphicon glyphicon-info-sign" ></i></span></legend>
+    			<div class="contentlegend">
+    				<div class="dataStyleRow">
+    					<div>Font-size:</div>
+    					<input type="number" ng-model="value.fontSize"/>
+    				</div>
+    				<div class="dataStyleRow">
+    					<div>Bold</div>
+    					<input type="checkbox" ng-model="value.bold"/>
+    				</div>
+    				
+    				<div class="dataStyleRow">
+    					<div>Align:</div>
+    					<select ng-model="value.alignment"> 
+    						<option value=""></option>
+	    					<option value="left">left</option>
+	    					<option value="right">right</option>
+	    					<option value="centered">centered</option>
+	    					<option value="justified">justified</option>
+	    				</select>
+    				</div>
+    				<div class="dataStyleRow">
+    					<div>Color:</div>
+    					<input type="text" colorpicker ng-model="value.color"/>
+    				</div>
+    			</div>
+    		</fieldset>
+    	
+    	</tab>
+    </tabset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="generate('open')">Open</button>
+    <button class="btn btn-default" ng-click="generate('save')">Save (recomended for IE)</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+</div>

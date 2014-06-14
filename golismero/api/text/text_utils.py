@@ -6,14 +6,10 @@ Text manipulation utilities.
 """
 
 __license__ = """
-GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
-
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
+GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
 Golismero project site: https://github.com/golismero
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -50,6 +46,8 @@ def char_count(text):
 
     :returns: Number of printable characters in text.
     :rtype: int
+
+    :raises: TypeError
     """
     return sum(1 for _ in finditer(r"\w", text))
 
@@ -62,7 +60,12 @@ def line_count(text):
 
     :returns: Number of lines in text.
     :rtype: int
+
+    :raises: TypeError
     """
+    if not isinstance(text, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(text))
+
     count = text.count("\n")
     if not text.endswith("\n"):
         count += 1
@@ -77,6 +80,8 @@ def word_count(text):
 
     :returns: Number of words in text.
     :rtype: int
+
+    :raises: TypeError
     """
     return sum(1 for _ in finditer(r"\w+", text))
 
@@ -99,6 +104,8 @@ def generate_random_string(length = 30):
 
     :param length: Desired string length.
     :type length: int
+
+    :raises: TypeError
     """
 
     m_available_chars = ascii_letters + digits
@@ -146,8 +153,13 @@ def uncamelcase(string):
 
     :returns: Human-readable string.
     :rtype: str
+
+    :raises: TypeError
     """
-    string = string.replace("_"," ")
+    if not isinstance(string, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(string))
+
+    string = string.replace("_", " ")
     string = __uncamelcase_re.sub(" ", string)
     while "  " in string:
         string = string.replace("  ", " ")
@@ -164,7 +176,12 @@ def hexdump(s):
 
     :returns: Hexadecimal output.
     :rtype: str
+
+    :raises: TypeError
     """
+    if not isinstance(s, basestring):
+        raise TypeError("Expected basestring, got '%s' instead" % type(s))
+
     a = []
     for i in xrange(0, len(s), 16):
         h1 = " ".join("%.2x" % ord(c) for c in s[i:i+8])
@@ -205,7 +222,7 @@ def to_utf8(s):
 #
 def split_first(s, delims):
     """
-    Given a string and an iterable of delimiters, split on the first found
+    Given a string and an another delimiters as strings, split on the first found
     delimiter. Return the two split parts and the matched delimiter.
 
     If not found, then the first part is the full input string.
@@ -222,6 +239,17 @@ def split_first(s, delims):
 
     .. warning: This function was borrowed from the urllib3 project.
                 It may be removed in future versions of GoLismero.
+        
+    :param s: string to delimit to. 
+    :type s: str
+    
+    :param delims: string with delimits characters 
+    :type delims: str
+    
+    :return: a tuple as format: (FIRST_OCCURRENCE, REST_OF_TEXT, MATCHING_CHAR)
+    :rtype: (str, str, str|None)
+
+    :raises: TypeError
     """
     min_idx = None
     min_delim = None

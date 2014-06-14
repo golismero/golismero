@@ -2,14 +2,10 @@
 # -*- coding: utf-8 -*-
 
 __license__ = """
-GoLismero 2.0 - The web knife - Copyright (C) 2011-2013
-
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
+GoLismero 2.0 - The web knife - Copyright (C) 2011-2014
 
 Golismero project site: http://golismero-project.com
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -344,12 +340,14 @@ class NiktoPlugin(TestingPlugin):
                         refs = extract_from_text(text)
                         refs.difference_update(urls_seen.itervalues())
 
-                        # Report the vulnerabilities.
+                        # Convert the information to the GoLismero model.
                         if vuln_tag == "OSVDB-0":
                             kwargs = {"level": "informational"}
                         else:
                             kwargs = extract_vuln_ids(
                                 "%s: %s" % (vuln_tag, text))
+                        kwargs["custom_id"] = ";".join(
+                            (host, ip, port, vuln_tag, method, path, text))
                         kwargs["description"] = text if text else None
                         kwargs["references"]  = refs
                         if "osvdb" in kwargs and "OSVDB-0" in kwargs["osvdb"]:
@@ -359,10 +357,14 @@ class NiktoPlugin(TestingPlugin):
                                 kwargs["osvdb"] = tuple(tmp)
                             else:
                                 del kwargs["osvdb"]
+
+                        # Instance the Vulnerability object.
                         if vuln_tag == "OSVDB-0":
                             vuln = UncategorizedVulnerability(url, **kwargs)
                         else:
                             vuln = VulnerableWebApp(url, **kwargs)
+
+                        # Add the vulnerability to the results.
                         results.append(vuln)
                         vuln_count += 1
 

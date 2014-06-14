@@ -5,12 +5,8 @@
 __license__="""
 GoLismero 2.0 - The web knife.
 
-Authors:
-  Daniel Garcia Garcia a.k.a cr0hn | cr0hn<@>cr0hn.com
-  Mario Vilas | mvilas<@>gmail.com
-
 Golismero project site: https://github.com/golismero
-Golismero project mail: golismero.project<@>gmail.com
+Golismero project mail: contact@golismero-project.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -1082,6 +1078,9 @@ def command_run(parser, P, cmdParams, auditParams):
         msg = str(e)
         if not msg:
             msg = "configuration error!"
+        elif msg == "No targets selected for audit.":
+            msg = "no targets selected for audit " \
+                  "(did you misspell the database filename?)"
         parser.error(msg)
 
     # Launch GoLismero.

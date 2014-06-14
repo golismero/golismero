@@ -1,0 +1,67 @@
+<tr data-anchor="technical-{{item.identity}}" class="headData expanded" ng-init="show=true">
+	<td  ng-click="show= !show" class="tdRowTechCollapse"><span class="glyphicon glyphicon-plus " ng-show="show==false"></span> <span class="glyphicon glyphicon-minus expanded" ng-show="show == true"></span></td>
+	<td  class="tdRowTechIdentity" ><span editable-text="item.nameIdentity" buttons="no">{{item.nameIdentity}}</span></td>
+	<td  class="tdRowTechTarget"><span class="large">{{item.resource}}</span></td>
+	<td  class="tdRowTechVuln hidden-xs" ><span editable-text="item.display_name" onaftersave="updateVulnerabilityType(item)" buttons="no">{{item.display_name}}</span></td>
+	<td  class="tdRowTechLevel" ><div editable-select="item.level" e-ng-options="s.value as s.label for s in levels" buttons="no"  onaftersave="updateLevels(item)"><span class="bold {{obtainLevel(item.level)}}Vulnerability">{{obtainLevel(item.level)}}</span></div></td>
+</tr>
+<tr class="openVulnerabilitiesRow" ng-show="show"><td colspan="5">
+<div class="row ">
+	<div class="col-sm-12">
+		<h4 editable-text="item.title" buttons="no">{{item.title}}</h4>
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="item-form"><span class="bold">Target:</span>{{item.resource}}</div>
+				</div>
+			</div>
+			<div class="row">				
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Vulnerability:</span><span class="editable editable-click" editable-text="item.display_name" buttons="no" onaftersave="updateVulnerabilityType(item)">{{item.display_name}}</span>&nbsp;(<span editable-text="item.data_subtype" buttons="no">{{item.data_subtype}}</span>) </div>
+				</div>
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold ">Criticality:</span><span class="{{obtainLevel(item.level)}}Vulnerability bold editable editable-click" editable-select="item.level" e-ng-options="s.value as s.label for s in levels" buttons="no"  onaftersave="updateLevels(item)">{{obtainLevel(item.level)}}</span> </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Plugin ID:</span><span editable-text="item.plugin_id" buttons="no">{{item.plugin_id}}</span></div> 
+				</div>
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Plugin name:</span><span editable-text="item.plugin_name" buttons="no">{{item.plugin_name}}</span></div>
+				</div>	
+				<div class="col-sm-4">
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Impact:</span><span editable-text="item.impact" buttons="no">{{item.impact}}</span> </div>
+				</div>
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Severity:</span><span editable-text="item.severity" buttons="no">{{item.severity}}</span></div>
+				</div>	
+				<div class="col-sm-4">
+					<div class="item-form"><span class="bold">Risk:</span><span editable-text="item.risk" buttons="no">{{item.risk}}</span></div>
+				</div>			
+			</div>
+			
+		</div>
+		
+		<div class="well" ng-if="item.taxonomy">
+			<span class="bold">Taxonomy:</span>
+			<div ng-repeat="tax in item.taxonomy">{{tax}}</div>
+			
+		</div>
+		<div class="well" ng-if="item.description">
+				<span class="bold">Description:</span> <pre editable-textarea="item.description" buttons="no" e-rows="14" e-cols="40">{{item.description}}</pre>
+			</div>
+		<div class="well" ng-if="item.solution">
+			<span class="bold">Solution:</span> <pre editable-textarea="item.solution" buttons="no" e-rows="17" e-cols="40">{{item.solution}}</pre>
+		</div>
+		<div class="well" ng-if="item.references">	
+			<span class="bold">References:</span>
+			<div ng-repeat="item in item.references"><a href="{{item}}" target="_blank">{{item}}</a></div>
+   		</div>
+   	</div>
+   </div>
+ </td></tr>
