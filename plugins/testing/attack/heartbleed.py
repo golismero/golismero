@@ -31,7 +31,7 @@ import socket
 import struct
 import time
 
-from golismero.api.data import Relationship
+from golismero.api.data import Relationship, discard_data
 from golismero.api.data.information.fingerprint import ServiceFingerprint
 from golismero.api.data.resource.url import BaseURL, URL
 from golismero.api.data.resource.ip import IP
@@ -176,7 +176,10 @@ def main(host, port, starttls = False, version="1.0"):
             }[version])
             return hit_hb(s)
         finally:
-            s.shutdown(2)
+            try:
+                s.shutdown(2)
+            except Exception:
+                pass
     finally:
         s.close()
 
@@ -201,6 +204,7 @@ class HeartbleedPlugin(TestingPlugin):
         # If it's an URL...
         if info.is_instance(BaseURL):
             target = URL(info.url)
+            discard_data(target)
 
             # Get the hostname to test.
             hostname = info.hostname
@@ -310,12 +314,23 @@ class HeartbleedPlugin(TestingPlugin):
         with ConnectionSlot(hostname):
 
             # Test the host and port.
-            success = main(
+            success = self.__test(
                 hostname, port, starttls=starttls, version="1.1")
             if not success:
-                success = main(
+                success = self.__test(
                     hostname, port, starttls=starttls, version="1.2")
                 if not success:
-                    success = main(
+                    success = self.__test(
                         hostname, port, starttls=starttls, version="1.0")
             return success
+
+
+    #--------------------------------------------------------------------------
+    def __test(self, *args, **kwargs):
+        try:
+            return main(*args, **kwargs)
+        except socket.error, e:
+            if e.errno != 104: # connection reset by peer
+                raise
+            return False
+
