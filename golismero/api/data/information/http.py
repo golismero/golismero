@@ -78,14 +78,29 @@ class HTTP_Headers (object):
         """
 
         # Reconstruct the raw headers the best we can.
-        reconstructed = [
-            "%s: %s" % (to_utf8(name),
-                        (to_utf8(value)
-                         if value.endswith("\r\n")
-                         else value + "\r\n")
-                        )
-            for name, value in items
-        ]
+        # reconstructed = [
+        #     "%s: %s" % (to_utf8(name),
+        #                 (to_utf8(value)
+        #                  if value.endswith("\r\n")
+        #                  else value + "\r\n")
+        #                 )
+        #     for name, value in items
+        # ]
+
+        reconstructed = []
+
+        for name,value in items:
+            # because the cookie type is a dict
+            if name == 'Cookie':
+                value=";".join(["%s=%s" %
+                               (k,v) for k,v in value.items() ] )
+
+            if not value.endswith("\r\n"):
+                value = value + "\r\n"
+
+            reconstructed.append("%s: %s" %
+                             (to_utf8(name),to_utf8(value)))
+
         reconstructed.append("\r\n")
         raw_headers = "".join(reconstructed)
 
