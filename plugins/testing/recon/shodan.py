@@ -177,7 +177,7 @@ class ShodanPlugin(TestingPlugin):
                 city = city,
                 zipcode = postal_code,
                 metro_code = dma_code,
-                areacode = area_code,
+                area_code = area_code,
             )
             results.append(geoip)
             geoip.add_resource(info)
@@ -317,7 +317,7 @@ class ShodanPlugin(TestingPlugin):
                             region_name = region_name,
                             city = city,
                             zipcode = postal_code,
-                            areacode = area_code,
+                            area_code = area_code,
                         )
 
                         # If this is the first time we geolocate this IP,
