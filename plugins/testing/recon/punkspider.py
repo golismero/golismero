@@ -135,12 +135,12 @@ class PunkSPIDER(TestingPlugin):
     # The PunkSPIDER API.
 
     URL = (
-        "http://punkspider.hyperiongray.com/service/search/detail/%s"
+        "https://www.punkspider.org/service/search/detail/%s"
     )
 
     HEADERS = {
         "Accept": "*/*",
-        "Referer": "http://punkspider.hyperiongray.com/",
+        "Referer": "https://www.punkspider.org/",
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64)"
                       " AppleWebKit/537.36 (KHTML, like Gecko)"
                       " Chrome/31.0.1650.63 Safari/537.36",
@@ -150,7 +150,8 @@ class PunkSPIDER(TestingPlugin):
     def query_punkspider(self, host_id):
         try:
             r = requests.get(self.URL % host_id,
-                             headers = self.HEADERS)
+                             headers = self.HEADERS,
+                             verify=False)
             assert r.headers["Content-Type"].startswith("application/json"),\
                 "Response from server is not a JSON encoded object"
             return r.json()
