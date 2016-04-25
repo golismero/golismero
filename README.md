@@ -229,13 +229,7 @@ Additionally, you can import results from other tools with the -i option. You ca
 
 ```golismero import nikto_output.csv nmap_output.xml -db database.db```
 
-All results are automatically stored in a database file. You can prevent this with the -nd option:
-
-```golismero <target> -nd```
-
-![No database example](https://raw.github.com/golismero/golismero/master/doc/screenshots/no_db_mint.png "No database example")
-
-This allows you to scan the target in one step, and generating the report later. For example, to scan without generating a report:
+This allows you to scan the target in one step, and generate the report later. For example, to scan without generating a report:
 
 ```golismero scan <target> -db database.db -no```
 
