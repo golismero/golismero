@@ -95,7 +95,7 @@ class ShodanPlugin(TestingPlugin):
             shodan = api.host(ip)
         except Exception, e:
             tb = traceback.format_exc()
-            Logger.log_error("Error querying Shodan: %s" % str(e))
+            Logger.log_error("Error querying Shodan for host %s: %s" % (ip, str(e)))
             Logger.log_error_more_verbose(tb)
             return
 
@@ -149,11 +149,17 @@ class ShodanPlugin(TestingPlugin):
             area_code = shodan.get("area_code")
             if not area_code:
                 area_code = None
+            else:
+                area_code = str(area_code)
             country_code = shodan.get("country_code")
             if not country_code:
                 country_code = shodan.get("country_code3")
                 if not country_code:
                     country_code = None
+                else:
+                    country_code = str(country_code)
+            else:
+                country_code = str(country_code)
             country_name = shodan.get("country_name")
             if not country_name:
                 country_name = None
@@ -163,9 +169,13 @@ class ShodanPlugin(TestingPlugin):
             dma_code = shodan.get("dma_code")
             if not dma_code:
                 dma_code = None
+            else:
+                dma_code = str(dma_code)
             postal_code = shodan.get("postal_code")
             if not postal_code:
                 postal_code = None
+            else:
+                postal_code = str(postal_code)
             region_name = shodan.get("region_name")
             if not region_name:
                 region_name = None
