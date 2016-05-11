@@ -1219,6 +1219,8 @@ class ProcessManager (object):
         # Otherwise just call the plugin directly.
         old_context = Config._context
         try:
+            if not hasattr(context, "_orchestrator_address"):
+                context._orchestrator_address = self.__orchestrator_address
             return bootstrap(context, func, args, kwargs)
         finally:
             Config._context = old_context
