@@ -36,6 +36,7 @@ from ..api.net.web_utils import ParsedURL, split_hostname
 from ..api.text.text_utils import to_utf8
 
 from netaddr import IPAddress, IPNetwork
+from socket import getaddrinfo, AF_INET, AF_INET6
 from warnings import warn
 
 import re
@@ -334,19 +335,14 @@ class AuditScope (AbstractScope):
             else:
                 domains_to_resolve = self.__domains
             for domain in domains_to_resolve:
-
-                # Resolve the IPv4 addresses.
-                resolved_4 = DNS.get_a(domain)
-                for register in resolved_4:
-                    self.__addresses.add(register.address)
-
-                # Resolve the IPv6 addresses.
-                resolved_6 = DNS.get_aaaa(domain)
-                for register in resolved_6:
-                    self.__addresses.add(register.address)
-
-                # Warn when a domain cannot be resolved.
-                if not resolved_4 and not resolved_6:
+                resolved = set(
+                    entry[4][0]
+                    for entry in getaddrinfo(domain, 80)
+                    if entry[0] in (AF_INET, AF_INET6)
+                )
+                if resolved:
+                    self.__addresses.update(resolved)
+                else:
                     msg = "Cannot resolve domain name: %s" % domain
                     warn(msg, RuntimeWarning)
 
