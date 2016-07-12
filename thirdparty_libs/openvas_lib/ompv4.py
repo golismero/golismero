@@ -5,6 +5,9 @@
 This file contains OMPv4 implementation
 """
 
+from openvas_lib import *
+from openvas_lib.common import *
+
 __license__ = """
 OpenVAS connector for OMP protocol.
 
@@ -22,6 +25,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
+
+__all__ = ["OMPv4"]
 
 
 # ------------------------------------------------------------------------------
@@ -145,30 +150,30 @@ class OMPv4(OMP):
 
         :raises: ClientError, ServerError
         """
-        from collections import Iterable
-        if isinstance(hosts, str):
-            m_targets = hosts
-        elif isinstance(hosts, Iterable):
-            m_targets = ",".join(hosts)
+		from collections import Iterable
+		if isinstance(hosts, str):
+			m_targets = hosts
+		elif isinstance(hosts, Iterable):
+			m_targets = ",".join(hosts)
 
 		request = """<create_target>
-            <name>%s</name>
-            <hosts>%s</hosts>
-            <comment>%s</comment>
-        </create_target>""" % (name, m_targets, comment)
+	            <name>%s</name>
+	            <hosts>%s</hosts>
+	            <comment>%s</comment>
+    </create_target>""" % (name, m_targets, comment)
 
 		return self._manager.make_xml_request(request, xml_result=True).get("id")
 
 	# ----------------------------------------------------------------------
 	def delete_target(self, target_id):
 		"""
-        Delete a target in OpenVAS server.
+		Delete a target in OpenVAS server.
 
-        :param target_id: target id
-        :type target_id: str
+		:param target_id: target id
+		:type target_id: str
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 
 		request = """<delete_target target_id="%s" />""" % target_id
 
@@ -177,17 +182,17 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_configs(self, config_id=None):
 		"""
-        Get information about the configs in the server.
+		Get information about the configs in the server.
 
-        If name param is provided, only get the config associated to this name.
+		If name param is provided, only get the config associated to this name.
 
-        :param config_id: config id to get
-        :type config_id: str
+		:param config_id: config id to get
+		:type config_id: str
 
-        :return: `ElementTree`
+		:return: `ElementTree`
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		# Recover all config from OpenVAS
 		if config_id:
 			return self._manager.make_xml_request('<get_configs config_id="%s"/>' % config_id, xml_result=True)
@@ -197,65 +202,21 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_configs_ids(self, name=None):
 		"""
-        Get information about the configured profiles (configs)in the server.
+		Get information about the configured profiles (configs)in the server.
 
-        If name param is provided, only get the ID associated to this name.
+		If name param is provided, only get the ID associated to this name.
 
-        :param name: config name to get
-        :type name: str
+		:param name: config name to get
+		:type name: str
 
-        :return: a dict with the format: {config_name: config_ID}
+		:return: a dict with the format: {config_name: config_ID}
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		m_return = {}
 
-        for x in self.get_configs().findall("config"):
-            m_return[x.find("name").text] = x.get("id")
-
-        if name:
-            return {name: m_return[name]}
-        else:
-            return m_return
-
-    #----------------------------------------------------------------------
-    def get_targets(self, target_id=None):
-        """
-        Get information about the targets in the server.
-
-        If name param is provided, only get the target associated to this name.
-
-        :param target_id: target id to get
-        :type target_id: str
-
-        :return: `ElementTree` | None
-
-        :raises: ClientError, ServerError
-        """
-        # Recover all config from OpenVAS
-        if target_id:
-            return self._manager.make_xml_request('<get_targets id="%s"/>' % target_id,
-                xml_result=True).find('.//target[@id="%s"]' % target_id)
-        else:
-            return self._manager.make_xml_request("<get_targets />", xml_result=True)
-
-    def get_targets_ids(self, name=None):
-        """
-        Get IDs of targets of the server.
-
-        If name param is provided, only get the ID associated to this name.
-
-        :param name: target name to get
-        :type name: str
-
-        :return: a dict with the format: {target_name: target_ID}
-
-        :raises: ClientError, ServerError
-        """
-        m_return = {}
-
-        for x in self.get_targets().findall("target"):
-            m_return[x.find("name").text] = x.get("id")
+		for x in self.get_configs().findall("config"):
+			m_return[x.find("name").text] = x.get("id")
 
 		if name:
 			return {name: m_return[name]}
@@ -263,19 +224,63 @@ class OMPv4(OMP):
 			return m_return
 
 	# ----------------------------------------------------------------------
+	def get_targets(self, target_id=None):
+		"""
+		Get information about the targets in the server.
+
+		If name param is provided, only get the target associated to this name.
+
+		:param target_id: target id to get
+		:type target_id: str
+
+		:return: `ElementTree` | None
+
+		:raises: ClientError, ServerError
+		"""
+		# Recover all config from OpenVAS
+		if target_id:
+			return self._manager.make_xml_request('<get_targets id="%s"/>' % target_id,
+			                                      xml_result=True).find('.//target[@id="%s"]' % target_id)
+		else:
+			return self._manager.make_xml_request("<get_targets />", xml_result=True)
+
+	def get_targets_ids(self, name=None):
+		"""
+		Get IDs of targets of the server.
+
+		If name param is provided, only get the ID associated to this name.
+
+		:param name: target name to get
+		:type name: str
+
+		:return: a dict with the format: {target_name: target_ID}
+
+		:raises: ClientError, ServerError
+		"""
+		m_return = {}
+
+		for x in self.get_targets().findall("target"):
+			m_return[x.find("name").text] = x.get("id")
+
+			if name:
+				return {name: m_return[name]}
+			else:
+				return m_return
+
+	# ----------------------------------------------------------------------
 	def get_tasks(self, task_id=None):
 		"""
-        Get information about the configured profiles in the server.
+		Get information about the configured profiles in the server.
 
-        If name param is provided, only get the task associated to this name.
+		If name param is provided, only get the task associated to this name.
 
-        :param task_id: task id to get
-        :type task_id: str
+		:param task_id: task id to get
+		:type task_id: str
 
-        :return: `ElementTree` | None
+		:return: `ElementTree` | None
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		# Recover all config from OpenVAS
 		if task_id:
 			return self._manager.make_xml_request('<get_tasks id="%s"/>' % task_id,
@@ -286,16 +291,16 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def is_task_running(self, task_id):
 		"""
-        Return true if task is running
+		Return true if task is running
 
-        :param task_id: ID of task to start.
-        :type task_id: str
+		:param task_id: ID of task to start.
+		:type task_id: str
 
-        :return: bool
-        :rtype: bool
+		:return: bool
+		:rtype: bool
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		# Get status with xpath
 		status = self.get_tasks().find('.//task[@id="%s"]/status' % task_id)
 
@@ -307,17 +312,17 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_tasks_ids(self, name=None):
 		"""
-        Get IDs of tasks of the server.
+		Get IDs of tasks of the server.
 
-        If name param is provided, only get the ID associated to this name.
+		If name param is provided, only get the ID associated to this name.
 
-        :param name: task name to get
-        :type name: str
+		:param name: task name to get
+		:type name: str
 
-        :return: a dict with the format: {task_name: task_ID}
+		:return: a dict with the format: {task_name: task_ID}
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 
 		m_return = {}
 
@@ -332,13 +337,13 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_task_status(self, task_id):
 		"""
-        Get task status
+		Get task status
 
-        :param task_id: ID of task to start.
-        :type task_id: str
+		:param task_id: ID of task to start.
+		:type task_id: str
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		if not isinstance(task_id, str):
 			raise TypeError("Expected string, got %r instead" % type(task_id))
 
@@ -352,16 +357,16 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_tasks_progress(self, task_id):
 		"""
-        Get the progress of the task.
+		Get the progress of the task.
 
-        :param task_id: ID of the task
-        :type task_id: str
+		:param task_id: ID of the task
+		:type task_id: str
 
-        :return: a float number between 0-100
-        :rtype: float
+		:return: a float number between 0-100
+		:rtype: float
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		if not isinstance(task_id, str):
 			raise TypeError("Expected string, got %r instead" % type(task_id))
 
@@ -393,19 +398,19 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_tasks_ids_by_status(self, status="Done"):
 		"""
-        Get IDs of tasks of the server depending of their status.
+		Get IDs of tasks of the server depending of their status.
 
-        Allowed status are: "Done", "Paused", "Running", "Stopped".
+		Allowed status are: "Done", "Paused", "Running", "Stopped".
 
-        If name param is provided, only get the ID associated to this name.
+		If name param is provided, only get the ID associated to this name.
 
-        :param status: get task with this status
-        :type status: str - ("Done" |"Paused" | "Running" | "Stopped".)
+		:param status: get task with this status
+		:type status: str - ("Done" |"Paused" | "Running" | "Stopped".)
 
-        :return: a dict with the format: {task_name: task_ID}
+		:return: a dict with the format: {task_name: task_ID}
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		if status not in ("Done", "Paused", "Running", "Stopped"):
 			raise ValueError("Requested status are not allowed")
 
@@ -420,16 +425,16 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def get_results(self, task_id=None):
 		"""
-        Get the results associated to the scan ID.
+		Get the results associated to the scan ID.
 
-        :param task_id: ID of scan to get. All if not provided
-        :type task_id: str
+		:param task_id: ID of scan to get. All if not provided
+		:type task_id: str
 
-        :return: xml object
-        :rtype: `ElementTree`
+		:return: xml object
+		:rtype: `ElementTree`
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 
 		if task_id:
 			m_query = '<get_results task_id="%s"/>' % task_id
@@ -496,16 +501,16 @@ class OMPv4(OMP):
 	# ----------------------------------------------------------------------
 	def start_task(self, task_id):
 		"""
-        Start a task.
+		Start a task.
 
-        :param task_id: ID of task to start.
-        :type task_id: str
+		:param task_id: ID of task to start.
+		:type task_id: str
 
-        :raises: ClientError, ServerError
-        """
+		:raises: ClientError, ServerError
+		"""
 		if not isinstance(task_id, str):
 			raise TypeError("Expected string, got %r instead" % type(task_id))
 
 		m_query = '<start_task task_id="%s"/>' % task_id
 
-        self._manager.make_xml_request(m_query, xml_result=True)
+		self._manager.make_xml_request(m_query, xml_result=True)
