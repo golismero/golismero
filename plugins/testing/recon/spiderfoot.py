@@ -125,6 +125,7 @@ class SpiderFootPlugin(TestingPlugin):
                 "scantarget": info.hostname,
                 "modulelist": self.get_list("modulelist", "module_"),
                 "typelist": self.get_list("typelist", "type_"),
+                "usecase": Config.plugin_args.get("usecase", "all")
             })
             if resp.status_code != 200:
                 r = resp.content
