@@ -341,7 +341,7 @@ class SpiderFootParser(object):
 
         # Make sure the file format is correct.
         assert iterable.next() == [
-            "Updated", "Type", "Module", "Source", "Data"
+            "Updated", "Type", "Module", "Source", "F/P", "Data"
         ], "Unsupported file format!"
 
         # For each row...
@@ -351,9 +351,9 @@ class SpiderFootParser(object):
                     continue
 
                 # Split the row into its columns.
-                assert len(row) == 5, "Broken CSV file! " \
+                assert len(row) == 6, "Broken CSV file! " \
                     "This may happen when using an old version of SpiderFoot."
-                _, sf_type, sf_module, source, raw_data = row
+                _, sf_type, sf_module, source, _, raw_data = row
 
                 # Call the parser method for this data type, if any.
                 method = getattr(self, "sf_" + sf_type, self.sf_null)
@@ -368,6 +368,7 @@ class SpiderFootParser(object):
                 Logger.log_error_verbose(str(e))
                 Logger.log_error_more_verbose(tb)
 
+
         # Reconstruct the suspicious header vulnerabilities.
         for url, headers in self.strange_headers.iteritems():
             try:
@@ -378,8 +379,8 @@ class SpiderFootParser(object):
                         vulnerability = SuspiciousHeader(resp, name, value)
                         self.__add_partial_results((vulnerability,))
                 elif warn_data_lost:
-                    warn("Missing information in SpiderFoot results,"
-                         " some data may be lost", RuntimeError)
+                    warn("Missing information in SpiderFoot results, \
+                          some data may be lost")
                     warn_data_lost = False
             except Exception, e:
                 tb = format_exc()
@@ -394,8 +395,8 @@ class SpiderFootParser(object):
             self.reconstruct_http_headers or
             self.reconstruct_http_data
         ):
-            warn("Missing information in SpiderFoot results,"
-                 " some data may be lost", RuntimeError)
+            warn("Missing information in SpiderFoot results, \
+                  some data may be lost")
             warn_data_lost = False
         self.reconstruct_http_code.clear()
         self.reconstruct_http_headers.clear()
@@ -403,7 +404,8 @@ class SpiderFootParser(object):
         self.reconstructed_http.clear()
 
         # Reconstruct the port scans.
-        for address, ports in self.port_scan:
+        for address in self.port_scan:
+            ports = self.port_scan[address]
             try:
                 ip = IP(address)
                 ps = Portscan(ip, (("OPEN", "TCP", port) for port in ports))
