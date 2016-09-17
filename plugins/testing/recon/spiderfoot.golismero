@@ -15,3 +15,4 @@ typelist = AFFILIATE_DOMAIN,AFFILIATE,AFFILIATE_IPADDR,AFFILIATE_WEB_CONTENT,CO_
 interval = 1.0
 delete = yes
 usecase = all
+create_checks = 60

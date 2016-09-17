@@ -145,8 +145,11 @@ class SpiderFootPlugin(TestingPlugin):
             last_msg = ""
             is_created = False
             scan_id = None
+            create_checks = Config.plugin_args.get("create_checks",60)
+            checks = 0
             while True:
                 resp = get(url_scanlist)
+                checks += 1
                 if resp.status_code != 200:
                     status = "ERROR-FAILED"
                     break
@@ -173,6 +176,12 @@ class SpiderFootPlugin(TestingPlugin):
                 else:
                     if not is_created:
                         Logger.log_verbose("Status: CREATING")
+                        if checks == create_checks:
+                            Logger.log_error(
+                                "Scan not found within %s checks, \
+                                aborting!" % create_checks
+                            )
+                            return
                     else:
                         Logger.log_verbose("Status: DELETED")
                         Logger.log_error(
