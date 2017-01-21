@@ -38,7 +38,7 @@ except ImportError:
     import pickle as Pickler
 
 # Global regex
-REGEX_PLUGIN_ID = re.compile(r'(script_[o]*id[\s]*\([\s]*)([\d\w]+)([\s]*\)[\s]*);')
+REGEX_PLUGIN_ID = re.compile(r'(?:SCRIPT_OID|script_[o]*id)[^\d]+(?:(?:\d+.){9})?(\d+)\'?\"?\)?(?:\s+)?;')
 
 # Custom Types
 RulePack = namedtuple("RulePack", ["rules", "rule_index"])
@@ -291,22 +291,11 @@ def get_script_id(text):
     r = REGEX_PLUGIN_ID.search(text)
 
     if r:
-        if len(r.groups()) == 3:
-            info = r.group(2)
-
-            # Numeric format -> script_id(12299);
+        if len(r.groups()) == 1:
             try:
-                return int(info)
+                return int(r.group(1))
             except ValueError:
-                # Variable references -> script_oid(SCRIPT_OID);
-                tmp_regex = r'''(%s[\s]*\=[\s]*[\"\'])([\.\d]+)([\s]*[\"\'][\s]*;)''' % info
-
-                r2 = re.search(tmp_regex, text)
-                if len(r2.groups()) == 3:
-                    info2 = r2.group(2)
-                    return int(info2.split(".")[-1])
-        else:
-            raise ValueError("Incorrect regex to find ID in plugin.")
+                raise ValueError("Incorrect regex to find ID in plugin.")
 
 
 #------------------------------------------------------------------------------
