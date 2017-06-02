@@ -40,7 +40,7 @@ try:
 except ImportError:
     from xml.etree import ElementTree as etree
 
-from openvas_lib import VulnscanManager, VulnscanException, VulnscanVersionError, VulnscanAuditNotFoundError
+from openvas_lib import VulnscanManager, VulnscanException, VulnscanVersionError, VulnscanAuditNotFoundError, report_parser
 from openvas_lib.data import OpenVASResult
 
 from golismero.api.data import vulnerability
@@ -396,15 +396,6 @@ class OpenVASPlugin(TestingPlugin):
                     hosts_seen[host] = target
                     results.append(target)
 
-                # Get the vulnerability description.
-                description = opv.description
-                if not description:
-                    description = nvt.description
-                    if not description:
-                        description = nvt.summary
-                        if not description:
-                            description = None
-
                 # Extract the relevant information from the results.
                 nvt       = opv.nvt
                 vid       = opv.id
@@ -414,6 +405,15 @@ class OpenVASPlugin(TestingPlugin):
                 level     = LEVELS.get(threat, "informational")
                 risk      = RISKS.get(
                     getattr(opv.nvt, "risk_factor", "none").lower(), 0)
+
+                # Get the vulnerability description.
+                description = opv.raw_description
+                if not description:
+                    description = nvt.description
+                    if not description:
+                        description = nvt.summary
+                        if not description:
+                            description = None
 
                 # Extract the CVEs and Bugtraq IDs.
                 cve = nvt.cve.split(", ") if nvt.cve else []
@@ -524,9 +524,7 @@ class OpenVASImportPlugin(ImportPlugin):
     #--------------------------------------------------------------------------
     def import_results(self, input_file):
         try:
-            xml_results = etree.parse(input_file)
-            xml_root = xml_results.getroot()
-            openvas_results = VulnscanManager.transform(xml_root)
+            openvas_results = report_parser(input_file);
             golismero_results = OpenVASPlugin.parse_results(openvas_results)
             if golismero_results:
                 Database.async_add_many(golismero_results)
