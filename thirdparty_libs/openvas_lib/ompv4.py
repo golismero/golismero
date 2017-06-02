@@ -610,4 +610,6 @@ class OMPv4(OMP):
 
 		m_query = '<start_task task_id="%s"/>' % task_id
 
-		self._manager.make_xml_request(m_query, xml_result=True)
+		m_response = self._manager.make_xml_request(m_query, xml_result=True)
+
+		return m_response

@@ -117,7 +117,7 @@ def report_parser(path_or_file, ignore_log_info=True):
 		if not os.path.isfile(path_or_file):
 			raise IOError("%s is not a file." % path_or_file)
 	else:
-		if not getattr(getattr(path_or_file, "__class__", ""), "__name__", "") in ("file", "StringIO", "StringO"):
+		if not getattr(getattr(path_or_file, "__class__", ""), "__name__", "") in ("file", "StringIO", "StringO", "StringI"):
 			raise TypeError("Expected str or file, got '%s' instead" % type(path_or_file))
 
 	# Parse XML file
@@ -134,7 +134,6 @@ def report_parser(path_or_file, ignore_log_info=True):
 		xml = xml_parsed.getroot()
 	else:
 		raise TypeError("Expected ElementTree or Element, got '%s' instead" % type(xml_parsed))
-
 
 	if "status" in xml.keys():
 		xml = xml[0]
@@ -515,6 +514,7 @@ class VulnscanManager(object):
 		self.__function_handle = None
 		self.__task_id = None
 		self.__target_id = None
+		self.__task_report_id = None
 
 	# ----------------------------------------------------------------------
 	def launch_scan(self, target, **kwargs):
@@ -618,7 +618,8 @@ class VulnscanManager(object):
 
 		# Start the scan
 		try:
-			self.__manager.start_task(m_task_id)
+			m_task_start_response = self.__manager.start_task(m_task_id)
+			self.__task_report_id = m_task_start_response.find("report_id").text
 		except ServerError as e:
 			raise VulnscanScanError(
 				"Unknown error while try to start the task '%s'. Error: %s" % (m_task_id, e.message))
@@ -784,11 +785,16 @@ class VulnscanManager(object):
 				"Task is currently running. Until it not finished, you can't obtain the results.")
 
 		try:
-			m_response = self.__manager.get_results(task_id)
+			# This returns all results from all tasks. Task filter doesn't work.
+			#m_response = self.__manager.get_results(task_id)
+
+			m_response = self.__manager.get_report_xml(self.__task_report_id)
 		except ServerError as e:
 			raise VulnscanServerError("Can't get the results for the task %s. Error: %s" % (task_id, e.message))
 
-		return report_parser(m_response)
+		m_response = etree.tostring(m_response)
+
+		return report_parser_from_text(m_response)
 
 	# ----------------------------------------------------------------------
 	def get_raw_xml(self, task_id):
