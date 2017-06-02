@@ -9,6 +9,7 @@ This file contains interfaces for OMP implementations
 
 import ssl
 import socket
+import logging
 
 from threading import RLock
 
@@ -41,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # OMP Methods and utils
 #
 # ------------------------------------------------------------------------------
-def get_connector(host, username, password, port=9390, timeout=None):
+def get_connector(host, username, password, port=9390, timeout=None, ssl_verify=False):
 	"""
 	Get concrete connector version for server.
 
@@ -60,13 +61,16 @@ def get_connector(host, username, password, port=9390, timeout=None):
 	:param timeout: timeout for connection, in seconds.
 	:type timeout: int
 
+	:param ssl_verify: Whether or not to verify SSL certificates from the server
+	:type ssl_verify: bool
+
 	:return: OMP subtype.
 	:rtype: OMP
 
 	:raises: RemoteVersionError, ServerError, AuthFailedError, TypeError
 	"""
 
-	manager = ConnectionManager(host, username, password, port, timeout)
+	manager = ConnectionManager(host, username, password, port, timeout, ssl_verify)
 
 	# Make concrete connector from version
 	if manager.protocol_version in ("4.0", "5.0", "6.0"):
@@ -89,7 +93,7 @@ class ConnectionManager(object):
 	TIMEOUT = 10.0
 
 	# ----------------------------------------------------------------------
-	def __init__(self, host, username, password, port=9390, timeout=None):
+	def __init__(self, host, username, password, port=9390, timeout=None, ssl_verify=False):
 		"""
 		Open a connection to the manager and authenticate the user.
 
@@ -129,6 +133,7 @@ class ConnectionManager(object):
 		self.__username = username
 		self.__password = password
 		self.__port = port
+		self.__ssl_verify = ssl_verify
 
 		# Controls for timeout
 		self.__timeout = ConnectionManager.TIMEOUT
@@ -145,6 +150,7 @@ class ConnectionManager(object):
 
 		# Get version
 		self.__version = self._get_protocol_version()
+		logging.basicConfig(level=logging.DEBUG)
 
 	# ----------------------------------------------------------------------
 	#
@@ -167,6 +173,17 @@ class ConnectionManager(object):
 		if self.__host == "dummy":
 			return
 
+		# TODO ANUALLY REVIEW SSL CONFIG TO ENSURE SANE & SECURE DEFAULTS
+		# https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
+		sslcontext = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+		sslcontext.options |= ssl.OP_NO_SSLv2
+		sslcontext.options |= ssl.OP_NO_SSLv3
+		sslcipherlist = "ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS"
+		sslcontext.set_ciphers(sslcipherlist)
+		if self.__ssl_verify:
+			sslcontext.verify_mode = ssl.CERT_REQUIRED
+			sslcontext.load_default_certs()
+
 		# Connect to the server
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		sock.settimeout(timeout)
@@ -175,7 +192,7 @@ class ConnectionManager(object):
 		except socket.error as e:
 			raise ServerError(str(e))
 		try:
-			self.socket = ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_TLSv1)
+			self.socket = sslcontext.wrap_socket(sock)
 		except Exception as e:
 			raise ServerError(str(e))
 
@@ -347,7 +364,9 @@ class ConnectionManager(object):
 		if not isinstance(xml_result, bool):
 			raise TypeError("Expected bool, got '%s' instead" % type(xml_result))
 
+		#logging.debug("XMLDATA: " + str(xmldata))
 		response = self._send(xmldata)
+		#logging.debug("RESPONSE: " + etree.tostring(response))
 
 		# Check the response
 		if response is None:
@@ -531,7 +550,64 @@ class OMP(object):
 		raise NotImplementedError()
 
 	# ----------------------------------------------------------------------
-	def create_target(self, name, hosts, comment=""):
+	def create_port_list(self, name, port_range, comment=""):
+		"""
+		Creates a port list in OpenVAS.
+
+		:param name: name to the port list
+		:type name: str
+
+		:param port_range: Port ranges. Should be a string of the form "T:22-80,U:53,88,1337"
+		:type hosts: str
+
+		:param comment: comment to add to port list
+		:type comment: str
+
+		:return: the ID of the created port list.
+		:rtype: str
+
+		:raises: ClientError, ServerError
+		"""
+		raise NotImplementedError()
+
+	# ----------------------------------------------------------------------
+	def create_schedule(self, name, hour, minute, month, day, year, period=None, duration=None, timezone="UTC"):
+		"""
+		Creates a schedule in the OpenVAS server.
+
+		:param name: name to the schedule
+		:type name: str
+
+		:param hour: hour at which to start the schedule, 0 to 23
+		:type hour: str
+
+		:param minute: minute at which to start the schedule, 0 to 59
+		:type minute: str
+
+		:param month: month at which to start the schedule, 1-12
+		:type month: str
+
+		:param year: year at which to start the schedule
+		:type year: str
+
+		:param timezone: The timezone the schedule will follow. The format of a timezone is the same as that of the TZ environment variable on GNU/Linux systems
+		:type timezone: str
+
+		:param period:How often the Manager will repeat the scheduled task. Assumed unit of days
+		:type period: str
+
+		:param duration: How long the Manager will run the scheduled task for. Assumed unit of hours
+		:type period: str
+
+		:return: the ID of the created schedule.
+		:rtype: str
+
+		:raises: ClientError, ServerError
+		"""
+		raise NotImplementedError()
+
+	# ----------------------------------------------------------------------
+	def create_target(self, name, hosts, comment="", port_list="Default"):
 		"""
 		Creates a target in OpenVAS.
 

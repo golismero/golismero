@@ -97,7 +97,7 @@ class OMPv4(OMP):
 			raise AuditNotFoundError()
 
 	# ----------------------------------------------------------------------
-	def create_task(self, name, target, config=None, comment=""):
+	def create_task(self, name, target, config=None, schedule=None, comment=""):
 		"""
         Creates a task in OpenVAS.
 
@@ -109,6 +109,9 @@ class OMPv4(OMP):
 
         :param config: config (profile) name
         :type config: str
+
+        :param schedule: schedule ID to use.
+        :type schedule: str
 
         :param comment: comment to add to task
         :type comment: str
@@ -126,13 +129,103 @@ class OMPv4(OMP):
             <name>%s</name>
             <comment>%s</comment>
             <config id="%s"/>
-            <target id="%s"/>
-            </create_task>""" % (name, comment, config, target)
+            <target id="%s"/>""" % (name, comment, config, target)
+		if schedule:
+			request += """<schedule>%s</schedule>""" % (schedule)
+		request += """</create_task>"""
 
 		return self._manager.make_xml_request(request, xml_result=True).get("id")
 
 	# ----------------------------------------------------------------------
-	def create_target(self, name, hosts, comment=""):
+	def create_port_list(self, name, port_range, comment=""):
+		"""
+        Creates a port list in OpenVAS.
+
+        :param name: name to the port list
+        :type name: str
+
+        :param port_range: Port ranges. Should be a string of the form "T:22-80,U:53,88,1337"
+        :type port_range: str
+
+        :param comment: comment to add to the port list
+        :type comment: str
+
+        :return: the ID of the created target.
+        :rtype: str
+
+        :raises: ClientError, ServerError TODO
+        """
+		request = """<create_port_list>
+	            <name>%s</name>
+	            <port_range>%s</port_range>
+	            <comment>%s</comment>
+    </create_port_list>""" % (name, port_range, comment)
+
+		return self._manager.make_xml_request(request, xml_result=True).get("id")
+
+	# ----------------------------------------------------------------------
+	def create_schedule(self, name, hour, minute, month, day, year, period=None, duration=None,timezone="UTC"):
+		"""
+		Creates a schedule in the OpenVAS server.
+
+		:param name: name to the schedule
+		:type name: str
+
+		:param hour: hour at which to start the schedule, 0 to 23
+		:type hour: str
+
+		:param minute: minute at which to start the schedule, 0 to 59
+		:type minute: str
+
+		:param month: month at which to start the schedule, 1-12
+		:type month: str
+
+		:param year: year at which to start the schedule
+		:type year: str
+
+		:param timezone: The timezone the schedule will follow. The format of a timezone is the same as that of the TZ environment variable on GNU/Linux systems
+		:type timezone: str
+
+		:param period:How often the Manager will repeat the scheduled task. Assumed unit of days
+		:type period: str
+
+		:param duration: How long the Manager will run the scheduled task for. Assumed unit of hours
+		:type period: str
+
+		:return: the ID of the created schedule.
+		:rtype: str
+
+		:raises: ClientError, ServerError
+		"""
+		request = """<create_schedule>
+	            <name>%s</name>
+	            <first_time>
+	            <hour>%s</hour>
+	            <minute>%s</minute>
+	            <month>%s</month>
+	            <day_of_month>%s</day_of_month>
+	            <year>%s</year>
+	            </first_time>
+	            <timezone>%s</timezone>
+	            <comment>%s</comment>""" % (name, hour, minute, month, day, year, timezone, "")
+		if duration:
+			request += """<duration>%s<unit>hour</unit></duration>""" % (duration)
+		else:
+			request += """<duration>0<unit>hour</unit></duration>"""
+		if period:
+			request += """<period>
+	            %s
+	            <unit>day</unit>
+	            </period>""" % (period)
+		else:
+			request += """<period>0<unit>day</unit></period>"""
+		request += """
+    </create_schedule>"""
+
+		return self._manager.make_xml_request(request, xml_result=True).get("id")
+
+	# ----------------------------------------------------------------------
+	def create_target(self, name, hosts, comment="", port_list="Default"):
 		"""
         Creates a target in OpenVAS.
 
@@ -145,6 +238,9 @@ class OMPv4(OMP):
         :param comment: comment to add to task
         :type comment: str
 
+        :param port_list: Port List ID in the server to use for the target
+        :type comment: str
+
         :return: the ID of the created target.
         :rtype: str
 
@@ -154,13 +250,14 @@ class OMPv4(OMP):
 		if isinstance(hosts, str):
 			m_targets = hosts
 		elif isinstance(hosts, Iterable):
-			m_targets = ",".join(hosts)
+			m_targets = str(",".join(hosts))
 
 		request = """<create_target>
 	            <name>%s</name>
 	            <hosts>%s</hosts>
+	            <port_list>%s</port_list>
 	            <comment>%s</comment>
-    </create_target>""" % (name, m_targets, comment)
+    </create_target>""" % (name, m_targets, port_list, comment)
 
 		return self._manager.make_xml_request(request, xml_result=True).get("id")
 
@@ -483,7 +580,7 @@ class OMPv4(OMP):
 				'<get_reports report_id="%s" format_id="6c248850-1f62-11e1-b082-406186ea4fc5"/>' % report_id,
 				xml_result=True)
 		except ServerError as e:
-			raise VulnscanServerError("Can't get the pdf for the report %s. Error: %s" % (report_id, e.message))
+			raise VulnscanServerError("Can't get the HTML for the report %s. Error: %s" % (report_id, e.message))
 		return m_response
 
 	# ----------------------------------------------------------------------
@@ -494,7 +591,7 @@ class OMPv4(OMP):
 		try:
 			m_response = self._manager.make_xml_request('<get_reports report_id="%s" />' % report_id, xml_result=True)
 		except ServerError as e:
-			raise VulnscanServerError("Can't get the xml for the report%s. Error: %s" % (report_id, e.message))
+			raise VulnscanServerError("Can't get the xml for the report %s. Error: %s" % (report_id, e.message))
 
 		return m_response
 
