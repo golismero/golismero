@@ -24,6 +24,7 @@ from openvas_lib.data import *
 from openvas_lib.utils import *
 from openvas_lib.common import *
 
+import re
 __license__ = """
 OpenVAS connector for OMP protocol.
 
@@ -116,7 +117,7 @@ def report_parser(path_or_file, ignore_log_info=True):
 		if not os.path.isfile(path_or_file):
 			raise IOError("%s is not a file." % path_or_file)
 	else:
-		if not getattr(getattr(path_or_file, "__class__", ""), "__name__", "") in ("file", "StringIO", "StringO"):
+		if not getattr(getattr(path_or_file, "__class__", ""), "__name__", "") in ("file", "StringIO", "StringO", "StringI"):
 			raise TypeError("Expected str or file, got '%s' instead" % type(path_or_file))
 
 	# Parse XML file
@@ -134,6 +135,8 @@ def report_parser(path_or_file, ignore_log_info=True):
 	else:
 		raise TypeError("Expected ElementTree or Element, got '%s' instead" % type(xml_parsed))
 
+	if "status" in xml.keys():
+		xml = xml[0]
 	# Check valid xml format
 	if "id" not in xml.keys():
 		raise ValueError("XML format is not valid, doesn't contains id attribute.")
@@ -446,7 +449,7 @@ class VulnscanManager(object):
 	# Methods to manage OpenVAS
 	#
 	# ----------------------------------------------------------------------
-	def __init__(self, host, user, password, port=9390, timeout=None):
+	def __init__(self, host, user, password, port=9390, timeout=None, ssl_verify=False):
 		"""
         :param host: The host where the OpenVAS server is running.
         :type host: str
@@ -459,6 +462,9 @@ class VulnscanManager(object):
 
         :param port: Port number of the OpenVAS server.
         :type port: int
+
+        :param ssl_verify: Whether or not to verify SSL certificates from the server
+        :type ssl_verify: bool
 
         :raises: VulnscanServerError, VulnscanAuthFail, VulnscanVersionError
         """
@@ -487,7 +493,7 @@ class VulnscanManager(object):
 
 		# Create the manager
 		try:
-			self.__manager = get_connector(host, user, password, port, m_time_out)
+			self.__manager = get_connector(host, user, password, port, m_time_out, ssl_verify)
 		except ServerError as e:
 			raise VulnscanServerError("Error while connecting to the server: %s" % e.message)
 		except AuthFailedError:
@@ -508,6 +514,7 @@ class VulnscanManager(object):
 		self.__function_handle = None
 		self.__task_id = None
 		self.__target_id = None
+		self.__task_report_id = None
 
 	# ----------------------------------------------------------------------
 	def launch_scan(self, target, **kwargs):
@@ -554,6 +561,9 @@ class VulnscanManager(object):
         :param target: Target to audit.
         :type target: str
 
+        :param schedule: Schedule ID to use for the scan. (create_schedule provides this)
+        :type schedule: str
+
         :param profile: Scan profile in the OpenVAS server.
         :type profile: str
 
@@ -571,6 +581,7 @@ class VulnscanManager(object):
         """
 
 		profile = kwargs.get("profile", "Full and fast")
+		schedule = kwargs.get("schedule",None)
 		call_back_end = kwargs.get("callback_end", None)
 		call_back_progress = kwargs.get("callback_progress", None)
 		if not (isinstance(target, str) or isinstance(target, Iterable)):
@@ -585,7 +596,7 @@ class VulnscanManager(object):
 		# Create the target
 		try:
 			m_target_id = self.__manager.create_target(m_target_name, target,
-			                                           "Temporal target from OpenVAS Lib")
+			                                           "Temporal target from OpenVAS Lib", "")
 		except ServerError as e:
 			raise VulnscanTargetError("The target already exits on the server. Error: %s" % e.message)
 
@@ -601,13 +612,14 @@ class VulnscanManager(object):
 		# Create task
 		try:
 			m_task_id = self.__manager.create_task(m_job_name, m_target_id, config=m_profile_id,
-			                                       comment="scan from OpenVAS lib")
+			                                       schedule=schedule, comment="scan from OpenVAS lib")
 		except ServerError as e:
 			raise VulnscanScanError("The target selected doesnn't exist in the server. Error: %s" % e.message)
 
 		# Start the scan
 		try:
-			self.__manager.start_task(m_task_id)
+			m_task_start_response = self.__manager.start_task(m_task_id)
+			self.__task_report_id = m_task_start_response.find("report_id").text
 		except ServerError as e:
 			raise VulnscanScanError(
 				"Unknown error while try to start the task '%s'. Error: %s" % (m_task_id, e.message))
@@ -638,6 +650,93 @@ class VulnscanManager(object):
         :rtype: str
         """
 		return self.__target_id
+
+	# ----------------------------------------------------------------------
+	def create_port_list(self, name, port_range, comment=""):
+		"""
+        Creates a port list in OpenVAS.
+
+        :param name: name to the port list
+        :type name: str
+
+        :param port_range:Port ranges. Should be a string of the form "T:22-80,U:53,88,1337"
+        :type hosts: str
+
+        :param comment: comment to be attached to the port range
+        :type hosts: str
+
+        :return: the ID of the created port range.
+        :rtype: str
+
+        :raises: ClientError, ServerError TODO
+        """
+		try:
+			m_port_list_id = self.__manager.create_port_list(name, port_range, "")
+		except ServerError as e:
+			raise ServerError("Error while attempting to create port_list: %s" % e.message)
+		return m_port_list_id
+
+	# ----------------------------------------------------------------------
+	def create_schedule(self, name, hour, minute, month, day, year, period=None, duration=None, timezone="UTC"):
+		"""
+		Creates a schedule in the OpenVAS server.
+
+		:param name: name to the schedule
+		:type name: str
+
+		:param hour: hour at which to start the schedule, 0 to 23
+		:type hour: str
+
+		:param minute: minute at which to start the schedule, 0 to 59
+		:type minute: str
+
+		:param month: month at which to start the schedule, 1-12
+		:type month: str
+
+		:param year: year at which to start the schedule
+		:type year: str
+
+		:param timezone: The timezone the schedule will follow. The format of a timezone is the same as that of the TZ environment variable on GNU/Linux systems
+		:type timezone: str
+
+		:param period:How often the Manager will repeat the scheduled task. Assumed unit of days
+		:type period: str
+
+		:param duration: How long the Manager will run the scheduled task for. Assumed unit of hours
+		:type period: str
+
+		:return: the ID of the created schedule.
+		:rtype: str
+
+		:raises: ClientError, ServerError
+		"""
+		try:
+			m_schedule_id = self.__manager.create_schedule(name, hour, minute, month, day, year, period, duration, timezone)
+		except ServerError as e:
+			raise ServerError("Error while attempting to create schedule: %s" % e.message)
+		return m_schedule_id
+
+	# ----------------------------------------------------------------------
+	def create_target(self, name, hosts, comment="", port_list="Default"):
+		"""
+        Creates a target in OpenVAS.
+
+        :param name: name to the target
+        :type name: str
+
+        :param hosts: target list. Can be only one target or a list of targets
+        :type hosts: str | list(str)
+
+        :return: the ID of the created target.
+        :rtype: str
+
+        :raises: ClientError, ServerError TODO
+        """
+		try:
+			m_target_id = self.__manager.create_target(name, hosts, "", port_list)
+		except ServerError as e:
+			raise VulnscanTargetError("Error while attempting to create target: %s" % e.message)
+		return m_target_id
 
 	# ----------------------------------------------------------------------
 	def delete_scan(self, task_id):
@@ -686,11 +785,44 @@ class VulnscanManager(object):
 				"Task is currently running. Until it not finished, you can't obtain the results.")
 
 		try:
+			# This returns all results from all tasks. Task filter doesn't work.
+			#m_response = self.__manager.get_results(task_id)
+
+			m_response = self.__manager.get_report_xml(self.__task_report_id)
+		except ServerError as e:
+			raise VulnscanServerError("Can't get the results for the task %s. Error: %s" % (task_id, e.message))
+
+		m_response = etree.tostring(m_response)
+
+		return report_parser_from_text(m_response)
+
+	# ----------------------------------------------------------------------
+	def get_raw_xml(self, task_id):
+		"""
+        Get the results associated to the scan ID.
+
+        :param task_id: Scan ID.
+        :type task_id: str
+
+        :return: Scan results. in XML ElementTree form
+        :rtype: ElementTree Element
+
+        :raises: ServerError, TypeError
+        """
+
+		if not isinstance(task_id, str):
+			raise TypeError("Expected string, got %r instead" % type(task_id))
+
+		if self.__manager.is_task_running(task_id):
+			raise VulnscanTaskNotFinishedError(
+				"Task is currently running. Until it not finished, you can't obtain the results.")
+
+		try:
 			m_response = self.__manager.get_results(task_id)
 		except ServerError as e:
 			raise VulnscanServerError("Can't get the results for the task %s. Error: %s" % (task_id, e.message))
 
-		return report_parser(m_response)
+		return m_response
 
 	# ----------------------------------------------------------------------
 	def get_report_id(self, scan_id):
@@ -753,9 +885,27 @@ class VulnscanManager(object):
         :raises: VulnscanAuditNotFoundError
         """
 		try:
-			self.__manager.stop_task(self.task_id)
+			self.__manager.stop_task(task_id)
 		except AuditNotRunningError as e:
 			raise VulnscanAuditNotFoundError(e)
+	# ----------------------------------------------------------------------
+	def get_scan_status(self, task_id):
+		"""
+        Gets the status of the specified scan ID in the OpenVAS server.
+
+        :param task_id: Scan ID.
+        :type task_id: str
+
+        :raises: VulnscanAuditNotFoundError
+        """
+		statusXML = None
+		try:
+			statusXML = self.__manager.get_task_status(task_id)
+		except ServerError as e:
+			raise e
+		if statusXML:
+			return statusXML
+		return None
 
 	# ----------------------------------------------------------------------
 	@property
