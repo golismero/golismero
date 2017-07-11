@@ -42,6 +42,7 @@ from golismero.api.data.vulnerability.vuln_utils import extract_vuln_ids
 from csv import reader
 from os.path import abspath, join, exists, isfile, sep, split
 from traceback import format_exc
+from golismero.api.net.web_utils import generate_user_agent
 
 
 #------------------------------------------------------------------------------
