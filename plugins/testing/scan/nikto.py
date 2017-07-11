@@ -42,6 +42,7 @@ from golismero.api.data.vulnerability.vuln_utils import extract_vuln_ids
 from csv import reader
 from os.path import abspath, join, exists, isfile, sep, split
 from traceback import format_exc
+from golismero.api.net.web_utils import generate_user_agent
 
 
 #------------------------------------------------------------------------------
@@ -83,6 +84,13 @@ class NiktoPlugin(TestingPlugin):
             value = value.replace(" ", "")
             if value:
                 args.extend(["-" + option, value])
+
+        # Add user agent.
+        if Config.audit_config.user_agent:
+            useragent = Config.audit_config.user_agent.lower()
+            if (useragent == 'random'):
+                useragent = generate_user_agent()
+            args.extend(["-useragent", useragent])
 
         # Create a temporary output file.
         with tempfile(suffix = ".csv") as output:
