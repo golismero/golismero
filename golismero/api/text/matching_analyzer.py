@@ -197,7 +197,7 @@ class MatchingAnalyzer(object):
             ratio = get_diff_ratio(self.__base_text, text)
 
             # If it's lower than our boundary...
-            if ratio > self.__min_ratio:
+            if ratio < self.__min_ratio:
 
                 # Invalidate the caches.
                 self.__clear_caches()
