@@ -274,6 +274,7 @@ def http_simple_analyzer(main_url, update_status_func, number_of_entries=4):
     m_d                   = ParsedURL(main_url)
     m_hostname            = m_d.hostname
     m_port                = m_d.port
+    m_scheme              = m_d.scheme
     m_debug               = False # Only for develop
     i                     = 0
     m_counters            = HTTPAnalyzer()
@@ -316,16 +317,17 @@ def http_simple_analyzer(main_url, update_status_func, number_of_entries=4):
             l_response = HTTP.make_raw_request(
                 host        = m_hostname,
                 port        = m_port,
+                proto       = m_scheme,
                 raw_request = m_raw_request,
                 callback    = check_raw_response)
             if l_response:
                 discard_data(l_response)
         except NetworkException,e:
-            Logger.log_error_more_verbose("Server-Fingerprint plugin: No response for URL (%s) with method '%s'. Message: %s" % (m_hostname, l_method, str(e)))
+            Logger.log_error_more_verbose("Server-Fingerprint plugin: No response for host '%s:%d' with method '%s'. Message: %s" % (m_hostname, m_port, l_method, str(e)))
             continue
 
         if not l_response:
-            Logger.log_error_more_verbose("No response for host '%s' with method '%s'." % (m_hostname, l_method))
+            Logger.log_error_more_verbose("No response for host '%s:%d' with method '%s'." % (m_hostname, m_port, l_method))
             continue
 
         if m_debug:
