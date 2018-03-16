@@ -318,8 +318,8 @@ def http_simple_analyzer(main_url, update_status_func, number_of_entries=4):
                 host        = m_hostname,
                 port        = m_port,
                 proto       = m_scheme,
-                raw_request = m_raw_request,
-                callback    = check_raw_response)
+                raw_request = m_raw_request)
+                #callback    = check_raw_response)
             if l_response:
                 discard_data(l_response)
         except NetworkException,e:

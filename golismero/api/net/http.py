@@ -553,6 +553,9 @@ class _HTTP(Singleton):
             except error, e:
                 raise NetworkException(str(e))
 
+        # Should never reach this point.
+        raise Exception("INTERNAL ERROR")
+
 
 #------------------------------------------------------------------------------
 
