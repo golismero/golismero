@@ -156,7 +156,7 @@ class LoadListFromFileAction(argparse.Action):
                     line = line.strip()
                     if not line or line[0] == "#":
                         continue
-                    tokens.append(tokens)
+                    tokens.append(line)
         except Exception:
             parser.error("Error reading file: %s" % values)
         setattr(namespace, self.dest, tokens)
@@ -268,7 +268,7 @@ def cmdline_parser():
     parser.add_argument("--help", action='help', default=argparse.SUPPRESS, help="show this help message and exit")
 
     gr_main = parser.add_argument_group("main options")
-    cmd = gr_main.add_argument("-f", "--file", metavar="FILE", action=LoadListFromFileAction, help="load a list of targets from a plain text file")
+    cmd = gr_main.add_argument("-f", "--file", metavar="FILE", dest="targets", action=LoadListFromFileAction, help="load a list of targets from a plain text file")
     if autocomplete_enabled:
         cmd.completer = FilesCompleter(directories=False)
     cmd = gr_main.add_argument("--config", metavar="FILE", help="global configuration file")
