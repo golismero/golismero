@@ -826,7 +826,7 @@ def parse_analyzer_results(analyzer, banner_counter, number_of_entries=4):
     :type banner_counter: Counter
 
     :return: a tuple as format (server_family, server_version, canonical_name, complete_server_name, related_servers, other_probability_servers)
-    :rtype: tupple
+    :rtype: tuple
     """
 
 
