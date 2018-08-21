@@ -416,14 +416,14 @@ class OpenVASPlugin(TestingPlugin):
                             description = None
 
                 # Extract the CVEs and Bugtraq IDs.
-                cve = nvt.cve.split(", ") if nvt.cve else []
+                cve = nvt.cve if nvt.cve else []
                 if "NOCVE" in cve:
                     cve.remove("NOCVE")
                 bid = []
                 if nvt.bid:
-                    bid.extend("BID-" + x for x in nvt.bid.split(", "))
+                    bid.extend("BID-" + x for x in nvt.bid)
                 if nvt.bugtraq:
-                    bid.extend("BID-" + x for x in nvt.bugtraq.split(", "))
+                    bid.extend("BID-" + x for x in nvt.bugtraq)
                 if "NOBID" in bid:
                     cve.remove("NOBID")
 
